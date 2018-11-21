@@ -1,0 +1,2863 @@
+@charset "utf-8";
+
+/*独立团部分      s*/
+
+
+/*点击准备金弹出的表格    s*/
+
+.fundMsg {
+	clear: both;
+	margin: 0px auto;
+	background-color: #fff;
+	text-align: left;
+	padding: 26px 32px;
+	border-radius: 4px;
+}
+
+.fundMsg ul {}
+
+.fundMsg ul li {
+	display: inline-block;
+	width: 30%;
+	*display: inline;
+	margin-bottom: 12px;
+}
+
+.fundMsg ul li a.proTab {
+	background-color: #ece8e7;
+	padding: 0px;
+	color: #efaa70;
+	width: 74px;
+	height: 28px;
+	line-height: 28px;
+	border-radius: 5px;
+	width: 24%;
+	height: 1.6vw;
+	display: inline-block;
+	font-size: 14px;
+	text-align: center;
+	line-height: 1.6vw;
+	cursor: pointer;
+	background-color: #ece8e7;
+	box-shadow: inset 0px 2px 4px 4px #999999;
+	width: 6vw;
+	height: 28px;
+	line-height: 28px;
+	background-color: #fbfbf9;
+	color: #aeb2b2;
+	box-shadow: 1px 6px 4px #b3b3b1;
+}
+
+.fundMsg ul li a.proTab.tabhover {
+	background-color: #ece8e7;
+	box-shadow: inset 0px 2px 4px 4px #999999;
+}
+
+.fundMsg ul li label {
+	display: inline-block;
+	width: 20%;
+	width: 23%;
+	text-align: center;
+	font-size: 14px;
+}
+
+.fundMsg ul li input[type="text"] {
+	width: 208px;
+	height: 28px;
+	border-radius: 4px;
+	width: 54%;
+	border: solid 1px #ebebeb;
+	outline: none;
+	padding-left: 10px;
+	color: #bfbfbf;
+	font-size: 14px;
+	color: #323232;
+	background-color: #fff;
+}
+
+.userTab {
+	clear: both;
+	margin: 0px auto;
+	background-color: #fff;
+	text-align: left;
+	padding: 26px 32px;
+	border-radius: 4px;
+	margin-top: 2%;
+}
+
+.userTab ul {
+	padding: 10px;
+}
+
+.userTab ul li {}
+
+.userTab ul li label {
+	color: #b3b3b3;
+	font-size: 14px;
+	display: inline-block;
+	width: 10% !important;
+	margin-right: 10px;
+	text-align: center;
+}
+
+.userTab ul li input[type="text"] {
+	width: 290px;
+	height: 20px;
+	padding-left: 8px;
+	height: 1.4vw;
+	border: solid 1px #ebebeb;
+	margin-right: 10px;
+	width: 25% !important;
+	box-sizing: border-box;
+}
+
+.userTab ul.userTabTitle {
+	font-size: 0px;
+}
+
+.userTab ul.userTabTitle li {
+	display: inline-block;
+	width: 25%;
+	text-align: center;
+	margin-right: 10px;
+	font-size: 0px;
+	background-color: #ccc;
+	font-size: 16px;
+	color: #323232;
+}
+
+.userTab ul.userTabTitle li.date {
+	width: 10%;
+}
+
+ul.dtip {}
+
+ul.dtip input[type="text"] {
+	width: 85.8% !important
+}
+
+.updateUserCard.userTab {
+	border: solid 1px #eeeeee;
+}
+
+.fundMsg.updateFundMsg {
+	border: solid 1px #eeeeee;
+}
+
+.fundMsg ul li a.proTab {
+	display: inline-block;
+	min-width: 112px;
+	background-color: #edeae5;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b3b3b1;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+}
+
+.fundMsg ul li a.proTab.tabhover {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+ul.dtip.driverTip {
+	padding-top: 0px;
+}
+
+.floor .addInfo .cardRight.info-guide {
+	margin-top: 32px;
+}
+
+ul.add-msg li.addNewGuide {
+	min-width: 92px;
+	width: 28%;
+}
+
+ul.add-msg li.addNewGuide a {
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	background-color: #9295ff;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 4px;
+	padding: 0px;
+	width: 100%;
+	text-align: center;
+	border-left: 3px #9295ff solid;
+}
+
+.info-guide ul.add-msg li {
+	position: relative;
+}
+
+.info-guide ul.add-msg img {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+	margin-left: 10px;
+	position: absolute;
+	cursor: pointer;
+}
+
+ul.add-msg li.priceInfo {
+	position: relative;
+}
+
+ul.add-msg li.priceInfo img {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+	margin-left: 10px;
+	position: absolute;
+	cursor: pointer;
+}
+
+
+/*导游信息  s*/
+
+.guidesInforContent {
+	background-color: #fff;
+	text-align: left;
+	padding: 26px 32px;
+	border: solid 1px #d2d2d2;
+	border-radius: 4px;
+	clear: both;
+}
+
+.guidesInforContent ul {
+	font-size: 0px;
+}
+
+.guidesInforContent ul li {
+	display: inline-block;
+	width: 32%;
+	font-size: 0px !important;
+	position: relative;
+	overflow: initial !important;
+}
+
+.guidesInforContent ul li label {
+	display: inline-block;
+	/*min-width: 92px;*/
+	min-height: 24px;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: top;
+	/*width: 10%;*/
+	padding: 0px 2%;
+	letter-spacing: 0px;
+	height: 32px;
+	line-height: 32px;
+	margin-right: 2%;
+	width: 30%;
+}
+
+.guidesInforContent ul li input[type='text'] {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #969696;
+	width: 61%;
+}
+
+.guidesInforContent ul li.addNewGuide {
+	margin-top: 26px;
+}
+
+.guidesInforContent ul .newGuide {
+	margin-top: 10px;
+}
+
+.guidesInforContent ul li.addNewGuide a {
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	background-color: #9295ff;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 4px;
+	padding: 0px;
+	width: 40%;
+	text-align: center;
+	border-left: 3px #9295ff solid;
+	min-width: 150px;
+}
+
+.guidesInforTab {
+	display: none;
+}
+
+.guidesInforTab .tabContent {
+	background-color: #fff;
+	text-align: left;
+	/*padding: 26px 32px;
+	border: solid 1px #d2d2d2;
+	border-radius: 4px;*/
+	clear: both;
+}
+
+.guidesInforTab .tabContent ul {}
+
+.guidesInforTab .tabContent ul.reportInfo {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: 0px;
+	text-align: left;
+}
+
+.guidesInforTab .tabContent ul.reportInfo li {
+	border-bottom: solid 1px #eaeaea;
+	clear: both;
+	overflow: hidden;
+	padding: 10px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-bottom: 0px;
+	font-size: 12px;
+}
+
+.guidesInforTab .tabContent ul.reportInfo li.reportTitle {
+	color: #2b2b2b;
+	font-weight: bold;
+}
+
+.guidesInforTab .tabContent ul.reportInfo li.reportTitle dl {
+	float: left;
+	width: 100%;
+	font-size: 0px;
+}
+
+.guidesInforTab .tabContent ul.reportInfo li dl dd {
+	width: 24.6% !important;
+	font-weight: bold !important;
+	display: inline-block;
+	text-align: center;
+	margin-right: 0px;
+	overflow: hidden;
+	white-space: normal !important;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	vertical-align: middle;
+	font-size: 13px !important;
+}
+
+.guidesInforTab .tabContent ul.reportInfo li dl dd a {
+	font-size: 14px;
+	display: inline-block;
+	/*width: 122px;*/
+	width: initial;
+	height: 44px;
+	line-height: 44px;
+	background-color: #9992ff;
+	color: #fff;
+	border-radius: 4px;
+	text-align: center;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 4px;
+}
+
+.updateDialog .updateForm ul.add-msg li.requiredItem label::after {
+	right: -17% !important;
+}
+
+
+/*@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.updateInfo .dialog .guidesInforContent ul li input[type='text'] {
+		width: 40%;
+	}
+	.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		width: 39% !important;
+	}
+}*/
+
+.updateInfo .dialog .guidesInforContent ul li.addNewGuide a {
+	width: 50%;
+}
+
+.guidesInforContent ul li .autocomplete-items {
+	width: 50%;
+	left: 27%;
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1300px) {
+	.guidesInforContent ul li .autocomplete-items {
+		left: 39%;
+	}
+	/*.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		left: 52%;
+	}*/
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1386px) {
+	.guidesInforContent ul li .autocomplete-items {
+		left: 36%;
+	}
+	/*.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		left: 47%;
+	}*/
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1460px) {
+	.guidesInforContent ul li .autocomplete-items {
+		left: 34%;
+	}
+	/*.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		left: 47%;
+	}*/
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1620px) {
+	.guidesInforContent ul li .autocomplete-items {
+		left: 31%;
+	}
+	/*.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		left: 41%;
+	}*/
+}
+
+@media only screen and (min-width: 1680px) and (max-width: 1700px) {
+	.guidesInforContent ul li .autocomplete-items {
+		left: 30%;
+	}
+	/*.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		left: 38%;
+	}*/
+}
+
+
+/*.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+	width: 49%;
+}*/
+
+
+/*@media only screen and (min-width: 1900px) and (max-width: 1920px) {
+	.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		left: 35%;
+	}
+}*/
+
+ul.add-msg li label.tips {
+	background: transparent !important;
+	border: none !important;
+	text-align: left;
+}
+
+ul.add-msg li {
+	clear: both;
+}
+
+ul.add-msg li.exchangeRate {
+	font-size: 14px;
+}
+
+ul.add-msg li.exchangeRate span {
+	display: inline-block;
+	width: 64% !important;
+	text-align: left;
+	padding-left: 4px;
+}
+
+ul.add-msg li.exchangeRate span input[type='text'] {
+	width: 80px !important;
+	text-align: center;
+	padding-left: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li.exchangeRate {
+	color: #323232;
+	font-size: 14px;
+}
+
+.updateDialog .updateForm ul.add-msg li.exchangeRate span {
+	width: 50% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.exchangeRate span input[type='text'] {
+	width: 76px !important;
+	text-align: center;
+	padding-left: 0px;
+}
+
+.guidesInforContent ul li.list-currency {
+	font-size: 0px;
+}
+
+.guidesInforContent ul li.list-currency input[type="text"] {
+	width: 30.5% !important;
+}
+
+.guidesInforContent ul li.list-currency select {
+	width: 25%;
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #969696;
+	vertical-align: top;
+	margin-left: 2%;
+	border-radius: 0px !important;
+	min-width: initial;
+}
+
+ul.add-msg li.list_currency {
+	font-size: 0px;
+}
+
+ul.add-msg li.list_currency input[type='text'] {
+	width: 32% !important;
+}
+
+ul.add-msg li.list_currency select {
+	width: 30% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_currency {
+	font-size: 0px;
+}
+
+.updateDialog .updateForm .cardRight.nm-right.info-price.costInfo ul.add-msg li.list_currency input[type='text'] {
+	width: 25% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_currency select {
+	width: 23% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+}
+
+ul.add-msg li.list_account {
+	font-size: 0px;
+}
+
+ul.add-msg li.list_account input[type="text"] {
+	width: 32% !important;
+}
+
+ul.add-msg li.list_account span {
+	display: inline-block;
+	width: 30% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	color: #6f7073;
+	text-align: left;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account {
+	font-size: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account input[type="text"] {
+	width: 25% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account span {
+	display: inline-block;
+	width: 23% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	color: #6f7073;
+	text-align: left;
+}
+
+
+/*折扣*/
+
+ul.add-msg li.discountCard dl.exchange dd.discount-text select {
+	display: none;
+}
+
+ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency {
+	font-size: 0px;
+}
+
+ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency input[type="text"] {
+	width: 45% !important;
+}
+
+ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency select {
+	width: 45% !important;
+	padding-left: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text select {
+	display: none;
+}
+
+.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency {
+	font-size: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency input[type="text"] {
+	width: 45% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency select {
+	width: 45% !important;
+	min-width: auto;
+	padding-left: 0px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency select {
+		width: 54% !important;
+		font-size: 12px;
+		margin-left: 1px !important;
+	}
+}
+
+
+/*导游信息  e*/
+
+.floor .addInfo .cardLeft {
+	clear: both;
+	display: inline-block;
+}
+
+.floor .addInfo .cardRight.info-price {
+	display: inline-block;
+	margin-top: 0px !important;
+}
+
+.floor .addInfo .cardLeft.info-date {
+	margin-top: 42px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.updateInfo .dialog .guidesInforContent ul li.list-currency input[type='text'] {
+		width: 20%;
+	}
+	.updateInfo .dialog .guidesInforContent ul li.list-currency select {
+		width: 30%;
+		min-width: initial;
+		font-size: 12px;
+		margin-left: 1%;
+	}
+	.updateInfo .dialog .guidesInforContent {
+		padding: 12px;
+	}
+	.updateInfo .dialog .guidesInforContent ul li {
+		width: 33.33%;
+	}
+}
+
+.updateDialog .updateForm ul.add-msg li.exchangeRate span {
+	width: 60% !important;
+}
+
+
+/**/
+
+.floor .addInfo .cardRight.info-price.exchangeRateAndPayment {}
+
+
+/*.floor .addInfo .cardRight.info-price.exchangeRateAndPayment label.markMsg{
+	width: 140px;
+}*/
+
+.floor .addInfo .cardRight.info-price.exchangeRateAndPayment ul li:last-child {
+	margin-bottom: 0px;
+}
+
+.floor .addInfo .cardRight.info-price.collectionInfor {
+	margin-top: 42px !important;
+}
+
+.floor .addInfo .cardRight.info-price.collectionInfor ul li:last-child {
+	margin-bottom: 0px;
+}
+
+.floor .addInfo .cardRight.info-price.costInfo {
+	margin-top: 42px !important;
+}
+
+.floor .addInfo .cardRight.info-price.costInfo ul li:last-child {
+	margin-bottom: 0px;
+}
+
+.floor .addInfo .cardRight.info-price.discountInfo {
+	margin-top: 42px !important;
+}
+
+.floor .addInfo .cardRight.info-price.discountInfo ul li:last-child {
+	margin-bottom: 0px;
+}
+
+.floor .addInfo .cardRight.info-price.profitInfo {
+	margin-top: 42px !important;
+}
+
+.floor .addInfo .cardRight.info-price.profitInfo ul li:last-child {
+	margin-bottom: 0px;
+}
+
+.floor .addInfo .cardRight.info-price.info-date ul li:last-child {
+	margin-bottom: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li textarea {
+	min-height: 100px !important;
+}
+
+.floor .addInfo .cardLeft.groupLeftInfo {
+	vertical-align: top;
+	border: none;
+	background-color: transparent;
+}
+
+.floor .addInfo .cardLeft.groupLeftInfo .cardLeft {
+	width: 100%;
+}
+
+.floor .addInfo .cardRight.groupRightInfo {
+	clear: both;
+	height: initial;
+	display: inline-block;
+	border: none;
+	background-color: transparent;
+	width: 49%;
+}
+
+.floor .addInfo .cardRight.groupRightInfo .cardRight {
+	width: 100%;
+}
+
+ul.add-msg li label.tips {
+	height: initial;
+	line-height: initial;
+}
+
+
+/*利润计算   s*/
+
+ul.add-msg li.list_account.calculateProfit span {
+	width: 8% !important;
+}
+
+ul.add-msg li.list_account.calculateProfit a#group_calculateBtn {
+	width: 20%;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	background-color: #9295ff;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 4px;
+	margin-left: 2%;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account.calculateProfit span {
+	width: 8% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account.calculateProfit a {
+	width: 13%;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	background-color: #9295ff;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 4px;
+	margin-left: 2%;
+	text-align: center;
+}
+
+
+/*利润计算   e*/
+
+ul.add-msg li.priceInfo.list_currency input[type='text'] {
+	width: 64% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_currency input[type='text'] {
+	width: 50% !important;
+}
+
+ul.add-msg li.list_cost {
+	font-size: 0px;
+}
+
+ul.add-msg li.list_cost input[type='text'] {
+	width: 32% !important;
+}
+
+ul.add-msg li.list_cost a {
+	width: 30% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	display: inline-block;
+	text-align: center;
+	height: 29px;
+	line-height: 29px;
+	border-radius: 4px;
+	margin-left: 2%;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	display: inline-block;
+	color: #9295ff;
+}
+
+ul.add-msg li.list_cost a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_cost input[type='text'] {
+	width: 25% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_cost a {
+	width: 23% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+}
+
+.updateDialog .updateForm ul.add-msg li label {
+	height: 26px;
+	line-height: 26px;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_cost a {
+	height: 26px;
+	line-height: 26px;
+}
+
+ul.add-msg li.list_cost span {
+	width: 30% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	display: inline-block;
+	text-align: left;
+	height: 30px;
+	line-height: 30px;
+	font-size: 13px;
+	color: #a8acad;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_cost span {
+	width: 23% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	display: inline-block;
+	text-align: left;
+	height: 26px;
+	line-height: 26px;
+	font-size: 13px;
+	color: #a8acad;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.updateDialog .updateForm ul.add-msg li.list_cost span {
+		width: 30% !important;
+	}
+}
+
+
+/*@media only screen and (min-width: 1440px) and (max-width: 1460px) {
+	.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		left: 43%;
+	}
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1300px) {
+	.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		left: 48%;
+	}
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1386px) {
+	.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		left: 44%;
+	}
+}
+
+@media only screen and (min-width: 1680px) and (max-width: 1700px) {
+	.updateDialog .updateForm .guidesInforContent ul li .autocomplete-items {
+		left: 39%;
+	}
+}*/
+
+ul.add-msg li.wholesalerInfo {
+	position: relative;
+}
+
+ul.add-msg li.wholesalerInfo img {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+	margin-left: 10px;
+	position: absolute;
+	cursor: pointer;
+}
+
+.updateDialog .formAction li.requestReceive {
+	margin-right: 2px;
+	background-color: transparent;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	display: inline-block;
+	height: 26px;
+	line-height: 26px;
+	border-radius: 50px;
+	width: 18%;
+	position: relative;
+}
+
+.updateDialog .formAction li.requestReceive a {
+	display: inline-block;
+	color: #9295ff;
+	height: 30px;
+	line-height: 30px;
+}
+
+.updateDialog .formAction li.requestReceive a img {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	display: none;
+}
+
+.updateDialog .formAction li.requestReceive.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	height: 30px;
+}
+
+.updateDialog .formAction li.requestReceive.selected a {
+	color: #f88032;
+}
+
+.confirmRequest {
+	text-align: center !important;
+	vertical-align: middle;
+	width: 290px;
+	min-height: 266px;
+	padding: 0px;
+	border: solid 2px #9295ff;
+	border-radius: 10px;
+	background-color: #fff;
+	position: fixed;
+	bottom: 30%;
+	left: 49%;
+	box-shadow: 0px 0px 4px #9295ff;
+	overflow: hidden;
+	display: none;
+}
+
+.confirmRequest p input {
+	border: solid 1px #969696;
+	outline: none;
+	height: 26px;
+	line-height: 26px;
+	width: 150.5px;
+	box-sizing: border-box;
+	margin-top: 12px;
+	display: inline-block;
+	width: 47%;
+	vertical-align: bottom;
+	margin-left: 2%;
+}
+
+.confirmRequest p select {
+	border: solid 1px #969696;
+	outline: none;
+	display: inline-block;
+	width: 47%;
+	height: 26px;
+	line-height: 26px;
+	border-radius: 0px;
+	vertical-align: bottom;
+	margin-right: 2%;
+}
+
+.confirmRequest p.notice_content {
+	font-size: 0px;
+}
+
+.confirmRequest .confirmTitle {
+	vertical-align: middle;
+	text-align: center !important;
+	color: #8f8f8f;
+	font-size: 32px;
+	border-bottom: solid 1px #b5b5b5;
+	padding-bottom: 24px;
+	margin: 22px 16px 0px 16px;
+}
+
+.confirmRequest .confirmTitle img {
+	width: 110px;
+	height: 110px;
+}
+
+.confirmRequest p.confirmNotice {
+	text-align: center;
+	font-size: 20px;
+	color: #848484;
+	margin-top: 12px;
+}
+
+.confirmRequest .actionBox {
+	font-size: 0px;
+	text-align: center;
+	margin-top: 26px;
+}
+
+.confirmRequest .actionBox button {
+	display: inline-block;
+	width: 50%;
+	margin-left: 0px !important;
+	height: 45px;
+	line-height: 45px;
+	font-size: 16px;
+	padding: 0px;
+	cursor: pointer;
+}
+
+.confirmRequest .actionBox button.actionConfirm {
+	background-color: #9295ff;
+	color: #fff;
+	border-bottom-left-radius: 7px;
+	border-color: #9595ff;
+}
+
+.confirmRequest .actionBox button.actionCancel {
+	background-color: #e3e4ff;
+	color: #9394fe;
+	border-bottom-right-radius: 7px;
+	border-color: #e3e4ff;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.updateDialog .formAction li.requestReceive {
+		width: 26%;
+	}
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1680px) {
+	.updateDialog .formAction li.requestReceive {
+		width: 20%;
+	}
+}
+
+ul.add-msg li div.amountReceivable {
+	width: 64% !important;
+	margin-left: 6px;
+	display: inline-block;
+	text-align: left;
+	font-size: 0px;
+	vertical-align: top;
+}
+
+ul.add-msg li div.amountReceivable select,
+ul.add-msg li div.amountReceivable input[type='text'] {
+	width: 31.33% !important;
+	margin-left: 0 !important;
+	margin-right: 2%;
+	vertical-align: bottom;
+}
+
+ul.add-msg li.addCollection {
+	text-align: left;
+}
+
+ul.add-msg li.addCollection a {
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	background-color: #9295ff;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 4px;
+	padding: 0px;
+	width: 30%;
+	text-align: center;
+	border-left: 3px #9295ff solid;
+}
+
+.updateDialog .updateForm ul.add-msg li div.amountReceivable select,
+.updateDialog .updateForm ul.add-msg li div.amountReceivable input[type='text'] {
+	width: 31.33% !important;
+	margin-left: 0 !important;
+	margin-right: 2%;
+	min-width: auto;
+	vertical-align: bottom;
+}
+
+.confirmRequest {
+	overflow: initial;
+}
+
+.confirmRequest .autocomplete-items {
+	right: 0px;
+	left: 151px;
+	box-sizing: border-box;
+	width: 136px;
+}
+
+
+/*独立团添加修改       s*/
+
+.guidesInforContent {
+	position: relative;
+}
+
+.guidesInforContent label.markMsg {
+	text-align: center;
+}
+
+.wholesalerInfoContent {
+	position: relative;
+	background-color: #fff;
+	text-align: left;
+	padding: 26px 32px;
+	border: solid 1px #d2d2d2;
+	border-radius: 4px;
+	clear: both;
+	margin-right: 0px !important;
+}
+
+.wholesalerInfoContent label.markMsg {
+	text-align: center;
+}
+
+.wholesalerInfoContent ul li {
+	display: inline-block;
+	width: 32%;
+	font-size: 0px !important;
+	position: relative;
+	overflow: initial !important;
+}
+
+.wholesalerInfoContent ul li label {
+	display: inline-block;
+	min-height: 24px;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: top;
+	width: 30%;
+	padding: 0px 2%;
+	letter-spacing: 0px;
+	height: 32px;
+	line-height: 32px;
+	margin-right: 2%;
+	min-width: initial;
+}
+
+.updateInfo .guidesInforContent ul li label {
+	min-width: initial;
+	width: 28% !important;
+}
+
+.updateInfo .wholesalerInfoContent ul li label {
+	min-width: initial;
+	width: 28% !important;
+}
+
+.updateInfo .guidesInforContent ul li label.switch {
+	margin-right: 2% !important;
+	width: 25% !important;
+}
+
+.updateInfo .guidesInforContent input#updateReserve {
+	/*display: none;*/
+	width: 28.5% !important;
+	/*margin-left: 2% !important;*/
+}
+
+.collectionContent ul li label {
+	min-width: initial !important;
+	width: 30% !important;
+}
+
+.wholesalerInfoContent ul li input[type='text'] {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #969696;
+	width: 61%;
+}
+
+.wholesalerInfoContent ul li.list-currency input[type="text"] {
+	width: 30.5%;
+}
+
+.wholesalerInfoContent ul li.list-currency select {
+	width: 30.5%;
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #969696;
+	vertical-align: top;
+	margin-left: 2%;
+	border-radius: 0px !important;
+	min-width: initial;
+}
+
+.wholesalerInfoContent ul li.addNewWholesaler {
+	margin-top: 26px;
+}
+
+.wholesalerInfoContent ul li.addNewWholesaler a {
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	background-color: #9295ff;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 4px;
+	padding: 0px;
+	width: 40%;
+	text-align: center;
+	border-left: 3px #9295ff solid;
+	min-width: 150px;
+}
+
+.addInforContent {
+	display: inline-block;
+	font-size: 0px;
+}
+
+.addInforContent .guidesInforContent,
+.addInforContent .wholesalerInfoContent,
+.addInforContent .info-price.collectionInfor.collectionContent {
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 0px;
+	/*margin-right: 10px;*/
+	min-height: 162px;
+	/*width: 32% !important;*/
+	margin-right: 2%;
+	width: 27.5% !important;
+	margin-right: 2%;
+	padding: 2% 2%;
+}
+
+.addInforContent .info-price.collectionInfor.collectionContent {
+	padding: 2% 2% !important;
+}
+
+.floor .addInfo .cardRight.info-price.collectionInfor.collectionContent {
+	margin-top: 0px !important;
+}
+
+.addInforContent .info-price.collectionInfor.collectionContent {
+	background-color: #fff;
+	text-align: left;
+	padding: 26px 32px;
+	border: solid 1px #d2d2d2;
+	clear: both;
+	margin-left: 0px;
+	margin-top: 0px !important;
+	position: relative;
+}
+
+.addInforContent .info-price.collectionInfor.collectionContent label.markMsg {
+	text-align: center;
+}
+
+.collectionContent ul {
+	padding: 0px !important;
+}
+
+.addInforContent ul li label {
+	height: 30px;
+	line-height: 30px;
+}
+
+.addInforContent .guidesInforContent ul li {
+	width: 100%;
+	margin-bottom: 13px;
+}
+
+.addInforContent .guidesInforContent ul li.list-currency select {
+	width: 28.5%;
+}
+
+.addInforContent .wholesalerInfoContent ul li {
+	width: 100%;
+	margin-bottom: 13px;
+}
+
+.addInforContent .wholesalerInfoContent ul li.list-currency select {
+	width: 28.5%;
+}
+
+.addInforContent .guidesInforContent ul .newGuide {
+	margin-top: 0px !important;
+}
+
+.wholesalerInfoContent ul li.list-currency input:last-child {
+	width: 23%;
+	margin-left: 2%;
+}
+
+.guidesInforTab .tabContent ul.reportInfo li dl dd a {
+	background-color: transparent;
+	height: 32px;
+	line-height: 32px;
+	margin-top: 0px;
+}
+
+.guidesInforTab .tabContent ul.reportInfo li dl dd a img {
+	width: 30px;
+	height: 30px;
+}
+
+.guidesInforTab .tabContent ul.reportInfo li dl dd {
+	width: 24.6% !important;
+}
+
+.wholesalerInfoTab .tabContent {
+	background-color: #fff;
+	text-align: left;
+	/*padding: 26px 32px;
+	border: solid 1px #d2d2d2;
+	border-radius: 4px;*/
+	clear: both;
+}
+
+.wholesalerInfoTab .tabContent ul.reportInfo {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: 0px;
+	text-align: left;
+}
+
+.wholesalerInfoTab .tabContent ul.reportInfo li {
+	border-bottom: solid 1px #eaeaea;
+	clear: both;
+	overflow: hidden;
+	padding: 10px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-bottom: 0px;
+	font-size: 12px;
+}
+
+.wholesalerInfoTab .tabContent ul.reportInfo li.reportTitle {
+	color: #2b2b2b;
+	font-weight: bold;
+}
+
+.wholesalerInfoTab .tabContent ul.reportInfo li.reportTitle dl {
+	float: left;
+	width: 100%;
+	font-size: 0px;
+}
+
+.wholesalerInfoTab {
+	display: none;
+}
+
+.wholesalerInfoTab .tabContent ul.reportInfo li dl dd {
+	width: 24.6% !important;
+	font-weight: bold !important;
+	display: inline-block;
+	text-align: center;
+	margin-right: 0px;
+	overflow: hidden;
+	white-space: normal !important;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	vertical-align: middle;
+	font-size: 13px !important;
+}
+
+
+/*-收款*/
+
+.collectionInfoTab {
+	display: none;
+}
+
+.collectionInfoTab .tabContent {
+	background-color: #fff;
+	text-align: left;
+	/*padding: 26px 32px;
+	border: solid 1px #d2d2d2;
+	border-radius: 4px;*/
+	clear: both;
+}
+
+.collectionInfoTab .tabContent ul.reportInfo {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: 0px;
+	text-align: left;
+}
+
+.collectionInfoTab .tabContent ul.reportInfo li {
+	border-bottom: solid 1px #eaeaea;
+	clear: both;
+	overflow: hidden;
+	padding: 10px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-bottom: 0px;
+	font-size: 12px;
+}
+
+.collectionInfoTab .tabContent ul.reportInfo li.reportTitle {
+	color: #2b2b2b;
+	font-weight: bold;
+}
+
+.collectionInfoTab .tabContent ul.reportInfo li.reportTitle dl {
+	float: left;
+	width: 100%;
+	font-size: 0px;
+}
+
+.collectionInfoTab .tabContent ul.reportInfo li dl dd {
+	width: 16.6% !important;
+	font-weight: bold !important;
+	display: inline-block;
+	text-align: center;
+	margin-right: 0px;
+	overflow: hidden;
+	white-space: normal !important;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	vertical-align: middle;
+	font-size: 13px !important;
+}
+
+.collectionContent ul.add-msg li.addCollection a {
+	width: 40%;
+	min-width: 150px;
+}
+
+.updateDialog .updateForm .otherInfo ul.add-msg li.list_currency input[type='text'] {
+	width: 25% !important;
+}
+
+.updateDialog .updateForm .cardRight.info-price.collectionInfor.collectionContent {
+	margin-left: 0px !important;
+}
+
+
+/*09.27*/
+
+.guidesInforContent ul li .autocomplete-items {
+	box-sizing: border-box;
+	width: 64%;
+    left: 32.4%;
+}
+
+.wholesalerInfoContent ul li.list-currency input.other_info {
+	width: 28.5%;
+	margin-left: 2%;
+}
+
+.wholesalerInfoContent ul li .autocomplete-items {
+	box-sizing: border-box;
+	width: 64%;
+    left: 32.4%;
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1300px) {
+	.guidesInforContent ul li .autocomplete-items {
+		left: 33.8%;
+	}
+	.wholesalerInfoContent ul li .autocomplete-items {
+		left: 33.8%;
+	}
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1386px) {
+	.guidesInforContent ul li .autocomplete-items {
+		left: 33.5%;
+	}
+	.wholesalerInfoContent ul li .autocomplete-items {
+		left: 33.5%;
+	}
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1460px) {
+	.guidesInforContent ul li .autocomplete-items {
+		left: 33.3%;
+	}
+	.wholesalerInfoContent ul li .autocomplete-items {
+		left: 33.3%;
+	}
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1620px) {
+	.guidesInforContent ul li .autocomplete-items {
+		left: 32.9%;
+	}
+	.wholesalerInfoContent ul li .autocomplete-items {
+		left: 32.9%;
+	}
+}
+
+@media only screen and (min-width: 1680px) and (max-width: 1700px) {
+	.guidesInforContent ul li .autocomplete-items {
+		left: 32.8%;
+	}
+	.wholesalerInfoContent ul li .autocomplete-items {
+		left: 32.8%;
+	}
+}
+
+.addInforTab {
+	display: inline-block;
+	font-size: 0px;
+	width: 100%;
+}
+
+.guidesInforContent ul li input[type='date'] {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #969696;
+	width: 61%;
+}
+
+.guidesInforContent ul li.list-currency input[type="text"]:last-child {
+	width: 28.5%;
+}
+
+.guidesInforContent ul li label.switch {
+	background-color: transparent;
+	border: 0px;
+	text-align: left;
+	padding: 0px;
+	/*width: 30.5%;*/
+	display: inline-block;
+	min-width: initial;
+	width: 28.5%;
+	margin-left: 2%;
+	margin-right: 0px;
+}
+
+.btn-switch {
+	cursor: pointer;
+	width: 52px;
+	height: 31px;
+	position: relative;
+	border: 1px solid #dfdfdf;
+	background-color: #fdfdfd;
+	box-shadow: #dfdfdf 0 0 0 0 inset;
+	border-radius: 20px;
+	background-clip: content-box;
+	display: inline-block;
+	-webkit-appearance: none;
+	user-select: none;
+	outline: none !important;
+}
+
+.btn-switch.large {
+	width: 70px;
+	height: 30px;
+	border-radius: 30px;
+	margin-top: 0px;
+}
+
+.btn-switch.large:before {
+	content: '';
+	width: 28px;
+	height: 28px;
+	border-radius: 30px;
+}
+
+.btn-switch.large:after {
+	content: '生成';
+	color: #999;
+	left: 30px;
+	position: absolute;
+	line-height: 28px;
+	font-size: 14px;
+}
+
+.btn-switch.large:checked:after {
+	content: '';
+	color: #fff;
+	left: 10px;
+	position: absolute;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+.btn-switch.large:checked:before {
+	left: 40px;
+}
+
+.btn-switch:before {
+	content: '';
+	width: 29px;
+	height: 29px;
+	position: absolute;
+	top: 0px;
+	left: 0;
+	border-radius: 20px;
+	background-color: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.btn-switch:checked {
+	border-color: #9295ff;
+	box-shadow: #9295ff 0 0 0 16px inset;
+	background-color: #9295ff;
+}
+
+.btn-switch:checked:before {
+	left: 21px;
+}
+
+.btn-switch.btn-switch-animbg {
+	transition: background-color ease 0.4s;
+}
+
+.btn-switch.btn-switch-animbg:before {
+	transition: left 0.3s;
+}
+
+.btn-switch.btn-switch-animbg:checked {
+	box-shadow: #dfdfdf 0 0 0 0 inset;
+	background-color: #64bd63;
+	transition: border-color 0.4s, background-color ease 0.4s;
+}
+
+.btn-switch.btn-switch-animbg:checked:before {
+	transition: left 0.3s;
+}
+
+.btn-switch.btn-switch-anim {
+	transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+}
+
+.btn-switch.btn-switch-anim:before {
+	transition: left 0.3s;
+}
+
+.btn-switch.btn-switch-anim:checked {
+	box-shadow: #64bd63 0 0 0 16px inset;
+	background-color: #64bd63;
+	transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+}
+
+.btn-switch.btn-switch-anim:checked:before {
+	transition: left 0.3s;
+}
+
+input[type=checkbox]:checked::before {
+	font: normal normal normal 14px/2 FontAwesome;
+}
+
+.guidesInforContent input#reserve {
+	/*display: none;*/
+}
+
+.toPrintPage {
+	background-color: #fff !important;
+	position: fixed !important;
+	padding-bottom: 10px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	border: solid 1px #9299f3 !important;
+	border-radius: 5px;
+	width: 80%;
+	padding: 20px 0px;
+	cursor: pointer;
+	width: 78%;
+	box-shadow: 0px 0px 10px #9299f3;
+	-webkit-box-shadow: 0px 0px 10px #9299f3;
+	min-width: 600px;
+	max-height: 620px;
+	min-height: 200px !important;
+	display: none;
+}
+
+.toPrintPage .reserveContent {
+	clear: both;
+	overflow: hidden;
+	overflow-y: scroll;
+	max-height: 600px;
+}
+
+.toPrintPage ul.reserveTab {
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	float: left;
+	clear: both;
+	overflow: hidden;
+	margin-top: -25px;
+	width: 98% !important;
+	padding: 10px 1%;
+}
+
+.toPrintPage ul.reserveTab li {
+	display: inline-block;
+	width: 10%;
+}
+
+.toPrintPage ul.reserveTab li.createPrintPage {
+	margin-top: 16px;
+}
+
+.toPrintPage ul.reserveTab li.createPrintPage a {
+	background-color: transparent;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	height: 30px;
+	line-height: 30px;
+	width: 100%;
+	display: inline-block;
+}
+
+.toPrintPage ul.reserveTab li.createPrintPage a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.toPrintPage ul.reserveTab li.close {
+	width: 30px;
+	height: 30px;
+	clear: initial;
+}
+
+.toPrintPage ul.reserveTab li.close a {}
+
+.toPrintPage ul.reserveTab li.close a img {
+	width: 30px;
+	height: 30px;
+}
+
+
+/*-更新页面：*/
+
+.updateInfo .dialog .addInforContent .guidesInforContent ul li {
+	width: 100% !important;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.updateInfo .dialog .guidesInforContent {
+		padding: 12px;
+	}
+	.updateInfo .dialog .wholesalerInfoContent {
+		padding: 12px;
+	}
+	.updateInfo .dialog .collectionContent {
+		padding: 12px !important;
+	}
+	.updateInfo .addInforContent ul li label {
+		font-size: 13px;
+	}
+	.updateDialog .collectionContent ul.add-msg li.list_cost a {
+		font-size: 13px;
+	}
+	.updateInfo .wholesalerInfoContent ul li.addNewWholesaler a {
+		width: 48%;
+	}
+	.updateDialog .collectionContent ul.add-msg li.list_cost span {
+		line-height: 16px;
+	}
+}
+
+.updateInfo .wholesalerInfoContent ul li.addNewWholesaler a,
+.updateInfo .guidesInforContent ul li.addNewWholesaler a,
+.updateInfo .collectionContent ul li.addCollection a {
+	width: 50%;
+}
+
+.updateInfo .dialog .collectionContent ul li {
+	margin-left: 0px !important;
+}
+
+.updateInfo .dialog .guidesInforContent ul li input[type='text'],
+.updateInfo .dialog .guidesInforContent ul li input[type='date'] {
+	width: 61% !important;
+}
+
+.updateInfo .guidesInforContent ul li label.switch {
+	margin-right: 2% !important;
+	width: 30.5% !important;
+}
+
+.updateInfo .guidesInforContent ul li.list-currency input[type="text"]:last-child {
+	width: 28.5% !important;
+}
+
+.updateInfo .guidesInforContent ul li.list-currency input[type="text"] {
+	width: 28.5% !important;
+}
+
+.updateInfo .guidesInforContent ul li.list-currency select {
+	width: 30.5% !important;
+	margin-left: 2% !important;
+}
+
+.updateInfo .wholesalerInfoContent ul li.list-currency input[type="text"] {
+	width: 30.5% !important;
+}
+
+.updateInfo .wholesalerInfoContent ul li.list-currency input {
+	width: 28.5% !important;
+}
+
+.updateInfo .wholesalerInfoContent ul li.list-currency select {
+	width: 28.5% !important;
+}
+
+.updateDialog .updateForm .collectionContent ul.add-msg li input[type="text"],
+.updateDialog .updateForm .collectionContent ul.add-msg li select {
+	width: 61% !important;
+	height: 30px;
+	line-height: 30px;
+}
+
+.updateDialog .updateForm .collectionContent ul.add-msg li label {
+	height: 30px;
+	line-height: 30px;
+}
+
+.updateDialog .collectionContent ul.add-msg li.list_cost input[type='text'] {
+	width: 30.5% !important;
+}
+
+.updateDialog .collectionContent ul.add-msg li.list_cost a {
+	width: 28.5% !important;
+}
+
+.updateDialog .guidesInforContent ul li .autocomplete-items {
+	width: 61% !important;
+	left: 36.6%;
+}
+
+.updateDialog .wholesalerInfoContent ul li.list-currency input.other_info {
+	width: 28.5% !important;
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1460px) {
+	.updateDialog .guidesInforContent ul li .autocomplete-items {
+		left: 37.6%;
+	}
+	.updateDialog .wholesalerInfoContent ul li .autocomplete-items {
+		left: 37.6%;
+	}
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1300px) {
+	.updateDialog .guidesInforContent ul li .autocomplete-items {
+		left: 38.7%;
+	}
+	.updateDialog .wholesalerInfoContent ul li .autocomplete-items {
+		left: 38.7%;
+	}
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1386px) {
+	.updateDialog .guidesInforContent ul li .autocomplete-items {
+		left: 37.7%;
+	}
+	.updateDialog .wholesalerInfoContent ul li .autocomplete-items {
+		left: 37.7%;
+	}
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1620px) {
+	.updateDialog .guidesInforContent ul li .autocomplete-items {
+		left: 37.7%;
+	}
+	.updateDialog .wholesalerInfoContent ul li .autocomplete-items {
+		left: 37.7%;
+	}
+}
+
+@media only screen and (min-width: 1680px) and (max-width: 1700px) {
+	.updateDialog .guidesInforContent ul li .autocomplete-items {
+		left: 37.4%;
+	}
+	.updateDialog .wholesalerInfoContent ul li .autocomplete-items {
+		left: 37.4%;
+	}
+}
+
+.updateDialog .collectionContent ul li label {
+	width: 30% !important;
+}
+
+.updateDialog .collectionContent ul.add-msg li div.amountReceivable {
+	width: 62% !important;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.updateInfo .wholesalerInfoContent ul li.addNewWholesaler a,
+	.updateInfo .guidesInforContent ul li.addNewWholesaler a,
+	.updateInfo .collectionContent ul li.addCollection a {
+		width: 58%;
+	}
+	.updateInfo .guidesInforContent ul li.list-currency:first-child label {
+		height: 40px;
+		line-height: 19px;
+	}
+}
+
+.updateInfo .guidesInforTab .tabContent ul.reportInfo li dl dd a {
+	width: initial;
+}
+
+.guidesInforTab,
+.wholesalerInfoTab,
+.collectionInfoTab {
+	/*margin-right: 10px;*/
+	float: initial !important;
+	display: inline-block;
+	visibility: hidden;
+	vertical-align: top;
+	height: 0px;
+	width: 31.5% !important;
+	/*padding: 2% 2%;*/
+	margin-right: 2% !important;
+	border: solid 1px #d2d2d2;
+	border-radius: 4px;
+	background-color: #ffffff;
+	border: solid 1px #d2d2d2;
+	border-radius: 4px;
+	padding: 0px;
+}
+
+.wholesalerInfoTab {
+	margin-right: 0px !important;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.updateInfo .dialog .guidesInforContent ul li label.printReserve {
+		height: 42px;
+		line-height: 20px;
+	}
+}
+
+.guidesInforTab .tabContent ul.reportInfo .guides_info {
+	max-height: 190px;
+}
+
+.guidesInforTab .tabContent ul.reportInfo .guides_info li dl dd {
+	color: #949494;
+}
+
+.wholesalerInfoTab .tabContent ul.reportInfo .wholesaler_info {
+	max-height: 190px;
+}
+
+.wholesalerInfoTab .tabContent ul.reportInfo .wholesaler_info li dl dd {
+	color: #949494;
+}
+
+.collectionInfoTab .tabContent ul.reportInfo .collection_info {
+	max-height: 190px;
+}
+
+.collectionInfoTab .tabContent ul.reportInfo .collection_info li dl dd {
+	color: #949494;
+}
+
+ul.add-msg li.requiredItem input.error {
+	border-color: #d81e06;
+}
+
+.error {
+	border: solid 1px #d81e06 !important;
+}
+
+.wholesalerInfoTab .tabContent ul.reportInfo li dl dd a img {
+	width: 30px;
+	height: 30px;
+}
+
+.collectionInfoTab .tabContent ul.reportInfo li dl dd a img {
+	width: 30px;
+	height: 30px;
+}
+
+.collectionContent ul li {
+	display: inline-block;
+	font-size: 0px !important;
+	overflow: initial !important;
+}
+
+.collectionContent ul li.addCollection {
+	margin-top: 26px;
+}
+
+ul.add-msg li.list_account.totalIncome span {
+	visibility: hidden;
+}
+
+.cardRight.nm-right.otherInfo {
+	margin-top: 40px;
+}
+
+.floor .addInfo .cardLeft.groupLeftInfo ul.add-msg li textarea {
+	/*min-height: 189px;*/
+}
+
+.updateDialog .updateForm ul.add-msg li textarea {
+	min-height: 200px !important;
+}
+
+.floor .addInfo .cardRight.info-date ul li:last-child {
+	margin-bottom: 0px;
+}
+
+.split hr {
+	width: 50% !important;
+}
+
+.addInforTab .split {
+	padding: 0px;
+}
+
+.toPrintPage ul.reserveTab {
+	height: auto;
+}
+
+.toPrintPage .fundMsg ul li label {
+	text-align: left;
+}
+
+.wholesalerInfoContent ul li:last-child {
+	margin-bottom: 0px;
+}
+
+
+/*10.13*/
+
+ul.add-msg li.payment-type div.payment {
+	width: 64%;
+	display: inline-block;
+	margin-left: 6px !important;
+}
+
+ul.add-msg li.payment-type div.payment .paymentMethod {
+	display: inline-block;
+	width: 84%;
+	text-align: left;
+	height: 30px;
+	line-height: 30px;
+}
+
+ul.add-msg li.payment-type div.payment .btn-default {
+	border: solid 1px #969696;
+	border-radius: 0px;
+	height: 30px;
+	padding: 0px 10%;
+	box-sizing: border-box;
+	line-height: 17px;
+}
+
+ul.add-msg li.payment-type.execute .executeItem {
+	width: 16%;
+	text-align: left;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+
+ul.add-msg li.payment-type.execute input.other {
+	display: inline-block;
+	width: 82% !important;
+	text-align: left;
+	margin-left: 2% !important;
+	padding-left: 0px !important;
+	vertical-align: bottom;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	display: none;
+}
+
+ul.add-msg .mcoList {
+	display: none;
+}
+
+ul.add-msg li.payment-type.areaInfo div.payment,
+ul.add-msg li.payment-type.paymentMethodInfo div.payment,
+ul.add-msg li.payment-type.companyInfor div.payment {
+	vertical-align: top;
+}
+
+ul.add-msg li.payment-type.areaInfo .area,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod,
+ul.add-msg li.payment-type .creditCardCompanies {
+	width: 100% !important;
+	text-align: left !important;
+}
+
+ul.add-msg li.payment-type.areaInfo .area .btn-default,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod .btn-default,
+ul.add-msg li.payment-type .creditCardCompanies .btn-default {
+	width: 100% !important;
+	position: relative !important;
+	text-align: left !important;
+	padding: 0px 10px !important;
+}
+
+ul.add-msg li.payment-type.areaInfo .area .btn-default span.caret,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod .btn-default span.caret,
+ul.add-msg li.payment-type .creditCardCompanies .btn-default span.caret {
+	right: 10px !important;
+	position: absolute !important;
+	top: 13px !important;
+}
+
+ul.add-msg li.payment-type.areaInfo .area ul.dropdown-menu,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod ul.dropdown-menu,
+ul.add-msg li.payment-type .creditCardCompanies ul.dropdown-menu {
+	width: 100%;
+}
+
+ul.add-msg li.list_currency .payment.currency_type {
+	width: 30% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency {
+	width: 100% !important;
+	text-align: left !important;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency .btn-default {
+	width: 100% !important;
+	position: relative !important;
+	text-align: left !important;
+	padding: 0px 10px !important;
+	height: 30px;
+	line-height: 17px;
+	border-radius: 0px;
+	border: solid 1px #969696;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency .btn-default span.caret {
+	right: 10px !important;
+	position: absolute !important;
+	top: 13px !important;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency ul.dropdown-menu {
+	width: 100%;
+}
+
+ul.add-msg li.list_account.profitInfor span,
+ul.add-msg li.list_account.rate span {
+	visibility: hidden;
+}
+
+.flightInfor {
+	min-height: 24px;
+	border: solid 1px #969696;
+	outline: none;
+	padding-left: 10px;
+	color: #323232;
+	font-size: 14px;
+	min-height: 30px;
+	line-height: 30px;
+	box-sizing: border-box;
+	width: 64% !important;
+	display: inline-block;
+	margin-left: 0px !important;
+	margin-left: 6px !important;
+	text-align: left;
+}
+
+ul.add-msg li.list_account.calculateProfit span {
+	width: 30% !important;
+	visibility: hidden;
+}
+
+select,
+input {
+	font-size: 14px;
+}
+
+a,
+a:hover {
+	text-decoration: none !important;
+}
+
+.addInforTab {
+	margin-bottom: 10px;
+}
+
+ul.add-msg li.list_account.knownCost span {
+	visibility: hidden;
+}
+
+ul.add-msg li.list_account.totalCost span {
+	visibility: hidden;
+}
+
+ul.add-msg li.requiredBox label::after {
+	content: '*';
+	background: url(../img/required.png) center center no-repeat;
+	background-size: contain;
+	width: 9px;
+	height: 9px;
+	color: transparent;
+	position: absolute;
+	right: -13%;
+	top: 11px;
+}
+
+
+/*供应商类型*/
+
+.addInforContent .wholesalerInfoContent ul li.supplierType {}
+
+.addInforContent .wholesalerInfoContent ul li.supplierType select {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #969696;
+	width: 61%;
+}
+
+.addInforContent .wholesalerInfoContent ul li.supplierType select option:first-child {
+	display: none;
+}
+
+
+/*支付信息    s*/
+
+ul.add-msg li.payment-type div.payment {
+	width: 64%;
+	display: inline-block;
+	margin-left: 6px !important;
+}
+
+ul.add-msg li.payment-type div.payment .paymentMethod {
+	display: inline-block;
+	width: 84%;
+	text-align: left;
+	height: 30px;
+	line-height: 30px;
+}
+
+ul.add-msg li.payment-type div.payment .btn-default {
+	border: solid 1px #969696;
+	border-radius: 0px;
+	height: 30px;
+	padding: 0px 10%;
+	box-sizing: border-box;
+	line-height: 17px;
+}
+
+ul.add-msg li.payment-type.execute .executeItem {
+	width: 16%;
+	text-align: left;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+
+ul.add-msg li.payment-type.execute input.other {
+	display: inline-block;
+	width: 82% !important;
+	text-align: left;
+	margin-left: 2% !important;
+	padding-left: 0px !important;
+	vertical-align: bottom;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	display: none;
+}
+
+ul.add-msg .mcoList {
+	display: none;
+}
+
+ul.add-msg li.payment-type.areaInfo div.payment,
+ul.add-msg li.payment-type.paymentMethodInfo div.payment,
+ul.add-msg li.payment-type.companyInfor div.payment {
+	vertical-align: top;
+}
+
+ul.add-msg li.payment-type.areaInfo .area,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod,
+ul.add-msg li.payment-type .creditCardCompanies {
+	width: 100% !important;
+	text-align: left !important;
+}
+
+ul.add-msg li.payment-type.areaInfo .area .btn-default,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod .btn-default,
+ul.add-msg li.payment-type .creditCardCompanies .btn-default {
+	width: 100% !important;
+	position: relative !important;
+	text-align: left !important;
+	padding: 0px 10px !important;
+}
+
+ul.add-msg li.payment-type.areaInfo .area .btn-default span.caret,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod .btn-default span.caret,
+ul.add-msg li.payment-type .creditCardCompanies .btn-default span.caret {
+	right: 10px !important;
+	position: absolute !important;
+	top: 13px !important;
+}
+
+ul.add-msg li.payment-type.areaInfo .area ul.dropdown-menu,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod ul.dropdown-menu,
+ul.add-msg li.payment-type .creditCardCompanies ul.dropdown-menu {
+	/*width: 100%;*/
+	width: 42%;
+	min-width: initial;
+}
+
+ul.add-msg li.payment-type ul.dropdown-menu.creditCardPayment {
+	width: 200% !important;
+	top: 4px;
+}
+
+
+/*ul.dropdown-menu.methodList {
+    left: -132px;
+}*/
+
+ul.dropdown-menu.no-creditCardPayment {
+	width: 80% !important;
+}
+
+ul.add-msg li.list_currency .payment.currency_type {
+	width: 30% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency {
+	width: 100% !important;
+	text-align: left !important;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency .btn-default {
+	width: 100% !important;
+	position: relative !important;
+	text-align: left !important;
+	padding: 0px 10px !important;
+	height: 30px;
+	line-height: 17px;
+	border-radius: 0px;
+	border: solid 1px #969696;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency .btn-default span.caret {
+	right: 10px !important;
+	position: absolute !important;
+	top: 13px !important;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency ul.dropdown-menu {
+	width: 100%;
+}
+
+ul.add-msg li.list_account.profitInfor span,
+ul.add-msg li.list_account.rate span {
+	visibility: hidden;
+}
+
+ul.add-msg li.dropdown-submenu {
+	font-size: 14px !important;
+}
+
+ul.dropdown-menu.currency_box li {
+	font-size: 14px !important;
+}
+
+ul.add-msg li.payment-type.areaInfo .area ul.dropdown-menu li,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod ul.dropdown-menu li,
+ul.add-msg li.payment-type .creditCardCompanies ul.dropdown-menu li {
+	font-size: 14px !important;
+}
+
+ul.dropdown-menu.currency_box.faceValue_currencyBox,
+ul.dropdown-menu.currency_box.mcoAmount_currencyBox,
+ul.dropdown-menu.currency_box.mcoCredit_currencyBox {
+	width: 99% !important;
+	min-width: initial;
+}
+
+ul.dropdown-menu.companyMenu {
+	width: 100% !important;
+}
+
+.collectionContent ul li.rate {
+	margin-bottom: 0px !important;
+}
+
+.collectionInfoTab .tabContent ul.reportInfo li dl dd {
+	width: 19.6% !important;
+}
+
+div.notesInfor {
+	min-height: 96px;
+	border: solid 1px #969696;
+	outline: none;
+	padding-left: 10px;
+	color: #323232;
+	font-size: 14px;
+	line-height: 30px;
+	box-sizing: border-box;
+	width: 64% !important;
+	display: inline-block;
+	margin-left: 0px !important;
+	margin-left: 6px !important;
+	text-align: left;
+}
+
+
+/*支付信息    e*/
+
+.guidesInforTab div.notFilled,
+.wholesalerInfoTab div.notFilled,
+.collectionInfoTab div.notFilled {
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: solid 1px #eaeaea;
+	display: none;
+}
+
+.guidesInforTab div.notFilled img,
+.wholesalerInfoTab div.notFilled img,
+.collectionInfoTab div.notFilled img {
+	height: 40px;
+	vertical-align: top;
+}
+.guidesInforTab div.notFilled span,
+.wholesalerInfoTab div.notFilled span,
+.collectionInfoTab div.notFilled span {
+	font-size: 14px;
+	color: #949494;
+	margin-left: 2%;
+}
+.guidesInforContent ul.add-msg{padding: 0px;}
+.guidesInforContent ul.add-msg li label {
+    min-width: initial !important;
+    width: 30% !important;
+    margin-right: 0px !important;
+    padding: 0px;
+    vertical-align: top;
+}
+.wholesalerInfoContent ul.add-msg{padding: 0px;}
+.wholesalerInfoContent ul.add-msg li label{
+    min-width: initial !important;
+    width: 30% !important;
+    margin-right: 0px !important;
+    padding: 0px;
+    vertical-align: top;
+}
+
+
+/*订单关联   s*/
+.ordersAssociated{
+	margin-top: 40px;
+}
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox {
+	padding-left: 10px;
+	height: 24px;
+	line-height: 24px;
+	margin-top: 16px;
+	margin-bottom: 36px;
+}
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label {
+	color: #7776c6;
+	font-size: 15px;
+}
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label::after {
+	display: inline-block;
+	position: absolute;
+	left: 0px !important;
+	top: 0px !important;
+	margin-left: -18px !important;
+	padding-left: 3px;
+	font-size: 14px !important;
+	color: #555555;
+	width: 14px !important;
+	height: 14px !important;
+	padding: 1px !important;
+}
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label::before{
+	width: 20px;
+    height: 20px;
+}
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox.checkbox-success input[type="checkbox"]:checked+label::before {
+	background-color: #ffffff !important;
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+	
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox.checkbox label::before {
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox.checkbox-success input[type="checkbox"]:checked+label::after {
+	color: #9295ff !important;
+}
+ul.add-msg li.systemNum.list_currency  input {
+	width: 44% !important;
+}
+ul.add-msg li.systemNum a {
+	display: inline-block;
+	width: 18%;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: top;
+	text-align: center;
+	box-shadow: inset 0px 0px 4px #c8c8c8;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b8b8b8;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	background-color: #ece8e4;
+	margin-left: 2%;
+	background: url(../img/btn.png) center center no-repeat;
+	background-size: 100%;
+}
+
+ul.add-msg li.systemNum a.selected {
+	color: #878aec;
+	box-shadow: inset 0px 6px 10px #B8B8B8;
+}
+ul.add-msg li.list_currency.systemNum{
+	margin-bottom: 0px;
+}
+ul.add-msg div.systemNumTab {    border: solid 1px #d2d2d2;display: none;margin-top: 10px;}
+
+ul.add-msg div.systemNumTab li {}
+
+ul.add-msg div.systemNumTab li dl {
+	font-size: 0px;
+}
+ul.add-msg div.systemNumTab li.tab_title{
+    border: 0px;
+    background-color: #9295ff;
+    margin-bottom: 0px;
+}
+ul.add-msg div.systemNumTab li.tab_content{
+	margin-bottom: 0px;
+	border-bottom: solid 1px #d2d2d2;
+}
+ul.add-msg div.systemNumTab li.tab_content:last-child{
+	border-bottom: 0px;
+}
+ul.add-msg div.systemNumTab li.tab_title dl{}
+ul.add-msg div.systemNumTab li.tab_title dl dd{
+	color: #ffffff;
+}
+ul.add-msg div.systemNumTab li dl dd {
+	font-size: 14px;
+	color: #646464;
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	border-right: solid 1px #d2d2d2;
+	text-align: center;
+	vertical-align: middle;
+}
+ul.add-msg div.systemNumTab li dl dd:last-child{
+	border-right:0px;
+}
+ul.add-msg div.systemNumTab li dl dd.selectInfo{
+	width: 11%;
+}
+ul.add-msg div.systemNumTab li dl dd.numberInfo{
+	/*width: 24%;*/
+	width: 18%;
+}
+ul.add-msg div.systemNumTab li dl dd.salesInfo{
+	/*width: 44.2%;*/
+	width: 38.2%;
+}
+ul.add-msg div.systemNumTab li dl dd.typeInfo{
+	width: 20%;
+}
+/*10.24 s*/
+ul.add-msg div.systemNumTab li dl dd.number{
+	width: 31%;
+}
+ul.add-msg div.systemNumTab li dl dd.number a{
+	text-decoration: underline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #0b6623;
+    display: inline-block;
+    width: 56%;
+    cursor: pointer;
+}
+ul.add-msg div.systemNumTab li.current {
+    border: solid 3px #e69138 !important;
+    width: 98.9%;
+}
+ul.add-msg div.systemNumTab li.current dl dd.number a{
+	width: 57%;
+}
+ul.add-msg div.systemNumTab li.current dl.unfold dd.number a{
+	width: 59%;
+}
+ul.add-msg div.systemNumTab li.current dl {
+	border-bottom: solid 1px #d2d2d2;
+}
+ul.add-msg div.systemNumTab li.current dl:last-child {
+	border-bottom: 0px;
+}
+/*10.24 e*/
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox{
+	margin: 0px;
+	height: 0px;
+}
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label{
+	width: 0px;
+    min-width: initial;
+    border: 0px;
+    padding: 0px;
+}
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label::before{
+	background-color: #ffffff !important;
+    border-color: #7776c6 !important;
+    border: solid 2px !important;
+    left: 3px;
+    top: 6px;
+}
+ul.add-msg div.systemNumTab li dl dd.selectInfo .checkbox input[type="checkbox"]:checked+label::after{
+	top: 0px !important;
+    left: 3px !important;
+}
+/*订单关联   e*/
+/*导游模块   s*/
+.toPrintPage{
+	width: 500px !important;
+    /*position: fixed !important;
+    bottom: 30% !important;
+    left: 40% !important;
+    top: initial !important;
+    max-height: initial;*/
+}
+.toPrintPage .reserveContent{
+	max-height: initial;
+	overflow-y: initial;
+}
+.userTab {
+    margin-top: 0px;
+    padding-top: 0px;
+    max-height: 300px;
+    overflow-y: scroll;
+    padding-bottom: 0px;
+}
+.toPrintPage .reserveContent .reserveFundInfo{
+	
+}
+.toPrintPage .reserveContent .reserveFundInfo ul.add-msg{
+	padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.toPrintPage .reserveContent .reserveFundInfo ul.add-msg li{
+	
+}
+.toPrintPage .reserveContent .reserveFundInfo ul.add-msg li.list_split input{
+	width: 31% !important;
+}
+.toPrintPage .reserveContent .reserveFundInfo ul.add-msg li.list_split input:first-child{
+	margin-right: 2%;
+}
+.toPrintPage .reserveContent .reserveFundInfo ul.add-msg li.list_split a{
+	background-color: #eeebe6;
+    text-align: center;
+    box-shadow: 1px 4px 4px #b3b3b1;
+    font-size: 14px;
+    font-weight: bold;
+    -webkit-transition: all;
+    transition: all;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+    -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+    color: #9295ff;
+    height: 30px;
+    line-height: 30px;
+    width: 30%;
+    display: inline-block;
+}
+.toPrintPage .reserveContent .reserveFundInfo ul.add-msg li.list_split a:first-child{
+	margin-right: 33%;
+}
+.toPrintPage .reserveContent .reserveFundInfo ul.add-msg li.list_split a.selected {
+    background-color: #ece8e7;
+    box-shadow: inset 1px 3px 4px #b8b8b8;
+    color: #f88032;
+}
+.toPrintPage ul.reserveTab li.close {
+    width: 30px;
+    height: 30px;
+    clear: initial;
+    width: 100%;
+    text-align: right;
+    float: initial;
+    opacity: 1;
+}
+.userTab ul li label{
+	width: 16% !important;
+}
+.userTab ul.userTabTitle li.date{
+	width: 16%;
+}
+
+/*导游模块   e*/
+/*10.30*/
+.addInforContent .guidesInforContent ul li:last-child{
+	margin-bottom: 0px;
+}
+.userTab{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.userTab ul.userTabTitle li{
+	margin-right: 1%;
+}
+.userTab ul.userTabTitle li.date{
+	width: 20%;
+}
+.userTab ul li label{
+	width: 20% !important;
+}
+.userTab ul li label{
+	margin-right: 1% !important;
+}
+.userTab ul li input[type="text"]{
+	margin-right: 1% !important;
+}
+ul.add-msg div.systemNumTab li dl dd.number a{
+	text-decoration: underline !important;
+}
+ul.add-msg div.systemNumTab li.current dl.unfold dd.number a {
+    text-decoration: none !important;
+    color: #646464;
+}
+
+ul.add-msg li.destination select{
+	width: 49% !important;
+	display: inline-block;
+	margin-left: 0px !important;
+}
+ul.add-msg li.destination select:last-child{
+	margin-right:0px !important;
+}
+ul.add-msg li.destination select.firstItem{
+	
+}
+ul.add-msg li.destination div{
+	width: 64% !important;
+	display: inline-block;
+	margin-left: 6px !important;
+	text-align: left;
+}
+ul.add-msg li.destination select.selectItem{
+	margin-bottom: 5px;
+}
+@media only screen and (min-width: 1300px) and (max-width: 1440px) {
+	ul.add-msg li.destination select{
+		width: 48.8% !important;
+	}
+}
+@media only screen and (min-width: 1000px) and (max-width: 1280px) {
+	ul.add-msg li.destination select{
+		width: 48% !important;
+	}
+}

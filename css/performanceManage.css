@@ -1,0 +1,383 @@
+@charset "utf-8";
+.theamInfo .showMsg.performanceMsg {
+	padding-bottom: 20px;
+	padding-top: 0px;
+}
+
+.showMsg .floor .groupMsg {
+	position: relative;
+}
+
+.theamInfo .showMsg.performanceMsg .theamTitle {
+	display: inline-block;
+	width: 8%;
+	height: 36px;
+	line-height: 36px;
+	background-color: #9295ff;
+	position: absolute;
+	left: 0px;
+	top: 12px;
+	color: #fff;
+	padding: 0px 1%;
+	text-align: center;
+	letter-spacing: 10px;
+	font-size: 16px;
+}
+
+.theamInfo .showMsg.performanceMsg .theamTitle i {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background-color: #ffffff;
+	border-radius: 50%;
+	float: left;
+	margin-top: 13px;
+}
+
+
+/*业绩部分   */
+.performanceTheam {
+	width: 46%;
+	clear: both;
+	overflow: hidden;
+	display: inline-block;
+	min-height: 734px;
+	padding-top: 20px;
+	border-right: solid 1px #d2d2d2;
+	padding-right: 2%;
+	vertical-align: top;
+}
+
+.performanceTheam.aggregatePerformance {
+	border-right: 0px;
+	padding-left: 20px;
+	padding-right: 0px;
+}
+
+.performanceTheam p.infoTitle {
+	height: 32px;
+	line-height: 32px;
+	position: relative;
+	color: #383838;
+}
+
+.performanceTheam p.infoTitle label {
+	left: 0px;
+	background-color: #f2f4ff;
+	height: auto;
+	width: 14%;
+	font-size: 15px;
+	padding-left: 1%;
+	color: #383838;
+	font-weight: bold;
+	text-align: left;
+	border-left: solid 3px #fbd608;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 1099px) {
+	.performanceTheam p.infoTitle label {
+		width: 22%;
+	}
+	.performanceTheam.aggregatePerformance p.infoTitle label {
+		width: 16% !important;
+	}
+}
+
+@media only screen and (min-width:1100px)and(max-width:1200px) {
+	.performanceTheam p.infoTitle label {
+		width: 22%;
+	}
+}
+
+@media only screen and (min-width:1100px)and (max-width:1499px) {
+	.performanceTheam p.infoTitle label {
+		width: 22%;
+	}
+	.performanceTheam.aggregatePerformance p.infoTitle label {
+		width: 16% !important;
+	}
+}
+
+@media only screen and (min-width:1500px)and (max-width:1800px) {
+	.performanceTheam p.infoTitle label {
+		width: 18%;
+	}
+	.performanceTheam.aggregatePerformance p.infoTitle label {
+		width: 16% !important;
+	}
+}
+
+.performanceTheam p.infoTitle a {
+	display: inline-block;
+	width: 14%;
+	right: 0px;
+	background-color: #f95d50;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 4px;
+	border: solid 1px #d4483f;
+	min-width: 80px;
+}
+
+.performanceTheam.aggregatePerformance p.infoTitle label {
+	width: 10%;
+}
+
+.performanceTheam .filterBox {
+	font-size: 0px;
+	margin-top: 10px;
+}
+
+.performanceTheam .filterBox li {
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	text-align: left;
+	clear: both;
+	overflow: hidden;
+}
+
+.performanceTheam .filterBox li input[type='text'],
+.performanceTheam .filterBox li select,
+.performanceTheam .filterBox li a {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	border: solid 1px #959595;
+	width: 90%;
+	background-color: #fff;
+	padding-left: 10px;
+	color: #a7a6a6;
+}
+
+.performanceTheam .filterBox li.salesItem {
+	width: 30%;
+}
+
+.performanceTheam .filterBox li.dateItem {
+	width: 60%;
+}
+
+.performanceTheam .filterBox li.actionItem {
+	width: 10%;
+}
+
+.performanceTheam .filterBox li a {
+	display: inline-block;
+	font-size: 14px;
+	text-align: center;
+	padding-left: 0px;
+	width: 100%;
+	color: #383838;
+}
+
+.performanceTheam .filterBox li.actionItem {
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 16px;
+	border-radius: 5px;
+	color: #b6b2af;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+}
+
+.performanceTheam .filterBox li.actionItem a {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.performanceTheam .filterBox li.actionItem.actionItem-active {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+}
+
+.performanceTheam .filterBox li.actionItem.actionItem-active a {
+	color: #f88032;
+}
+
+.performanceTheam ul.rankingList {
+	margin-top: 15px;
+	border-left: solid 1px #d2d2d2;
+	border-right: solid 1px #d2d2d2;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.performanceTheam ul.rankingList li {
+	font-size: 0px;
+	cursor: pointer;
+}
+
+.performanceTheam ul.rankingList li dl {
+	font-size: 0px;
+}
+
+.performanceTheam ul.rankingList li dl dd {
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	font-size: 14px;
+	border-right: solid 2px #d2d2d2;
+	width: 19.4%;
+	overflow: hidden;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.performanceTheam ul.rankingList li dl dd:last-child {
+	border-right: 0px;
+}
+
+.performanceTheam ul.rankingList li.listTitle dl {
+	background-color: #9295ff;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.performanceTheam ul.rankingList li.listTitle dl dd {
+	color: #fff;
+}
+
+.performanceTheam ul.rankingList li dl {
+	background-color: #ffffff;
+	border-bottom: solid 1px #d2d2d2;
+}
+
+.salesCard ul.rankingList li:last-child dl {
+	border-bottom: 0px;
+}
+
+.performanceTheam ul.rankingList.performanceList li dl:last-child {
+	border-bottom: 0px;
+}
+
+.performanceTheam ul.rankingList.performanceList {
+	border-bottom: solid 1px #d2d2d2;
+}
+
+.performanceTheam a.order-unfold {
+	display: inline-block;
+	width: 100%;
+	background-color: #9295ff;
+	height: 28px;
+	line-height: 28px;
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	cursor: pointer;
+}
+
+.performanceTheam .order-unfold img {
+	width: 16px;
+	height: 16px;
+	margin-right: 2%;
+}
+
+.performanceTheam .tabCard {
+	padding-top: 0px;
+}
+
+.performanceTheam .tabCard p {
+	text-align: center;
+	font-size: 16px;
+	color: #838383;
+}
+
+
+/*图表    s*/
+.performanceTheam .tabCard .chart {
+	height: 90%;
+}
+.performanceTheam .tabCard .chartMark {
+	height: 24px;
+	line-height: 24px;
+	clear: both;
+	overflow: hidden;
+	text-align: center;
+	position: relative;
+}
+/*图例 */
+.performanceTheam .tabCard .chartMark label {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.performanceTheam .tabCard .chartMark label.line {
+	height: 4px;
+	line-height: 4px;
+	width: 35px;
+	background-color: #003775;
+}
+
+.performanceTheam .tabCard .chartMark label.bar {
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+	background-color: #003775;
+}
+
+.performanceTheam .tabCard .chartMark span {
+	font-size: 16px;
+	color: #838383;
+	vertical-align: middle;
+	margin-left: 5px;
+}
+
+p.tips {
+	display: inline-block;
+	text-align: left;
+	height: 32px;
+	line-height: 32px;
+	margin-top: 10px;
+	font-size: 16px;
+	visibility: hidden;
+}
+
+p.tips label {
+	font-weight: bold;
+	color: #9295ff;
+}
+
+
+/*下拉框*/
+.performanceTheam .filterBox li.salesItem {
+	position: relative;
+	overflow: initial;
+	clear: both;
+	vertical-align: top;
+}
+
+.autocomplete-items {
+	right: 0px !important;
+	width: 89% !important;
+	left: 0px;
+}
+
+.performanceTheam ul.rankingList1 li dl dd {
+	width: 14.4%;
+}
+
+.performanceTheam ul.rankingList1 li dl dd:first-child {
+	width: 38.4%;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1300px) {
+	.performanceTheam ul.rankingList1 li dl dd {
+		width: 13.4%;
+	}
+	.performanceTheam ul.rankingList1 li dl dd:first-child {
+		width: 42.4%;
+	}
+}
+
+.performanceTheam ul.rankingList2 li dl dd {}

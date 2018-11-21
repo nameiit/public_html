@@ -1,0 +1,1138 @@
+@charset "utf-8";
+
+/*系统搜索   s*/
+
+.systematicSearch {
+	position: relative;
+	margin-top: 48px !important;
+	width: 60.54%;
+}
+
+.systematicSearch label.markMsg {
+	display: inline-block;
+	width: 98px;
+	height: 24px;
+	line-height: 24px;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 13px;
+	position: absolute;
+	left: 0px;
+	top: -24px;
+	text-align: center;
+}
+
+.systematicSearch label.markMsg i {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background-color: #fff;
+	border-radius: 50px;
+	position: absolute;
+	left: 12px;
+	top: 9px;
+}
+
+.systematicSearch ul.searchFloor {
+	width: 90.56%;
+	background-color: #ffffff;
+	padding: 15px;
+	border: solid 1px #d2d2d2;
+	margin-bottom: 24px;
+	border-radius: 4px;
+	min-width: 913px;
+}
+
+.systematicSearch ul.searchFloor li {
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 12px;
+	font-size: 0px;
+}
+
+.systematicSearch ul.searchFloor li div {
+	display: inline-block;
+}
+
+.systematicSearch ul.searchFloor li div.leftFloor {
+	width: 35%;
+	vertical-align: top;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor {
+	width: 65%;
+	vertical-align: top;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor input[type="date"] {
+	width: 15%;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor input[type="date"] {
+	margin-left: 0px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor span {
+	display: inline-block;
+	font-size: 22px;
+	color: #6f7073;
+	width: 4%;
+	text-align: center;
+	height: 30px;
+	line-height: 26px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor.invoiceInfo input[type="text"]:last-child {
+	margin-left: 0px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor.invoiceInfo label {
+	vertical-align: top;
+	width: 14.1%;
+	margin-right: 2%;
+}
+
+
+/*.systematicSearch ul.searchFloor li div.rightFloor.invoiceInfo input[type="text"] {
+	width: 15%;
+	margin-left: 1.2%;
+}*/
+
+.systematicSearch ul.searchFloor li div.rightFloor.invoiceInfo span {}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox {
+	margin: 0px;
+	height: 30px;
+	vertical-align: top;
+	/*width: 20%;*/
+	padding-left: 0px;
+	text-align: center;
+	width: auto;
+    padding: 0px 0px 0px 7.8%;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox input {
+	height: initial;
+	line-height: initial;
+	display: none;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox label {
+	background-color: transparent;
+	border: 0px;
+	font-weight: initial;
+	color: #7776c6;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox label::before {
+	top: 7px;
+	left: -5px !important;
+	width: 12px;
+	height: 12px;
+	margin-left: -12px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox label::after {
+	top: -1px !important;
+	left: 1px !important;
+}
+
+.systematicSearch ul.searchFloor li div.rightContent {
+	display: inline-block;
+	width: 49%;
+	margin-right: 1%;
+}
+
+.systematicSearch ul.searchFloor li div.rightContent:last-child {
+	margin-right: 0px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor a {
+	width: 22%;
+	margin-right: 3.1%;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor.finishStatus {}
+
+.systematicSearch ul.searchFloor li div.rightFloor.finishStatus a {
+	color: #cb2431;
+	background-color: #fafbfc;
+	background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
+	box-shadow: none;
+	border: 1px solid rgba(27, 31, 35, 0.2);
+	border-radius: 0.25em;
+	height: 30px;
+	line-height: 30px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor.finishStatus a:not(.triangleBtn):hover {
+	color: #fff;
+	background-color: #cb2431;
+	background-image: linear-gradient(-180deg, #de4450, #cb2431 90%);
+	border-color: rgba(27, 31, 35, 0.5);
+}
+
+/*.systematicSearch ul.searchFloor li div.rightFloor.finishStatus a:focus {
+	box-shadow: 0 0 0 0.2em rgba(203, 36, 49, 0.4);
+}*/
+
+.systematicSearch ul.searchFloor li div.rightFloor.finishStatus a.selected {
+	color: #fff;
+	background-color: #b5202c;
+	background-image: none;
+	border-color: rgba(27, 31, 35, 0.5);
+	box-shadow: inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15);
+}
+
+.systematicSearch ul.searchFloor li div input,
+.systematicSearch ul.searchFloor li div select {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #969696;
+	display: inline-block;
+	width: 47%;
+	margin-left: 4%;
+	vertical-align: top;
+}
+
+.systematicSearch ul.searchFloor li div input[type="date"] {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #969696;
+	display: inline-block;
+	width: 47% !important;
+	margin-left: 4% !important;
+	vertical-align: top;
+}
+
+.systematicSearch ul.searchFloor li div label {
+	display: inline-block;
+	min-height: 24px;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: middle;
+	height: 30px;
+	line-height: 30px;
+	width: 45%;
+	margin-right: 0px !important;
+}
+
+.systematicSearch ul.searchFloor li div a {
+	display: inline-block;
+	margin-right: 0px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	height: 28px;
+	line-height: 28px;
+	width: 44%;
+	margin-right: 9%;
+}
+
+.systematicSearch ul.searchFloor li div a:last-child {
+	margin-right: 0px;
+}
+
+.systematicSearch ul.searchFloor li div a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.systematicSearch ul.actionConfirm {
+	text-align: right;
+}
+
+.systematicSearch ul.actionConfirm li {
+	width: 18% !important;
+	text-align: right;
+	padding-right: 5px;
+}
+
+@media only screen and (min-width: 100px) and (max-width:1280px) {
+	.systematicSearch ul.searchFloor li div label {
+		font-size: 13px;
+	}
+}
+
+.systematicSearch {
+	position: relative;
+	margin-top: 48px !important;
+}
+
+.systematicSearch label.markMsg {
+	display: inline-block;
+	width: 98px;
+	height: 24px;
+	line-height: 24px;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 13px;
+	position: absolute;
+	left: 0px;
+	top: -24px;
+	text-align: center;
+}
+
+.systematicSearch label.markMsg i {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background-color: #fff;
+	border-radius: 50px;
+	position: absolute;
+	left: 12px;
+	top: 9px;
+}
+
+.searchCard {
+	width: 64%;
+	min-height: initial;
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1440px) {
+	.systematicSearch ul.searchFloor li div label {
+		font-size: 13px;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.systematicSearch ul.searchFloor li div label {
+		font-size: 12px;
+	}
+	.systematicSearch ul.searchFloor li div.rightFloor .checkbox label::before {
+		left: -4px !important;
+		width: 10px !important;
+		height: 10px !important;
+	}
+}
+
+.systematicSearch ul.searchFloor li div input.name {
+	width: 22.5%;
+}
+
+.systematicSearch ul.searchFloor li div input.name:last-child {
+	margin-left: 2%;
+}
+
+.systematicSearch ul.searchFloor input,
+.systematicSearch ul.searchFloor select {
+	font-size: 14px;
+	border-radius: 0px !important;
+}
+
+.systematicSearch ul.searchFloor li div.rightContent.salesInfo {
+	display: none;
+}
+
+.systematicSearch {
+	width: 100%;
+}
+
+.systematicSearch ul.searchFloor li div.leftFloor {
+	width: 25%;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor {
+	width: 75%;
+	margin-left: 0px;
+}
+
+.systematicSearch ul.searchFloor li div.rightContent {
+	width: 32.3%;
+	vertical-align: top;
+}
+
+.systematicSearch ul li.dealtime .rightFloor {
+	display: none;
+}
+
+.systematicSearch ul.searchFloor li.place {
+	display: none;
+}
+
+.systematicSearch ul.searchFloor li.btnList {
+	height: 32px;
+	line-height: 32px;
+	margin-bottom: 0px;
+}
+
+.systematicSearch ul.searchFloor li div a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime {
+	vertical-align: bottom;
+	display: none;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime input[type='date'] {
+	width: 45%;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime span {
+	width: 10%;
+}
+
+.systematicSearch ul.searchFloor .rightContent.place {
+	vertical-align: middle;
+	width: 34.3%;
+}
+
+.systematicSearch ul.searchFloor li div.rightContent.placeList {
+	margin-right: 0px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox label {
+	font-size: 13px;
+	padding-left: 0px;
+	width: initial;
+}
+
+.systematicSearch ul.searchFloor li div.placeInfo {
+	width: 66.7%;
+	display: none;
+}
+
+.systematicSearch ul.searchFloor li div.placeInfo div.rightContent.placeList {
+	width: 48.34%;
+}
+
+.systematicSearch ul.searchFloor li div.placeInfo .rightContent.place {
+	width: 51.34%;
+}
+
+.systematicSearch ul.searchFloor li div.customerName {
+	width: 37%;
+}
+
+.systematicSearch ul.searchFloor li div.customerName label {
+	width: 30.3%;
+}
+
+.systematicSearch ul.searchFloor li div.customerName input.name {
+	margin-left: 2.9%;
+	width: 31.7%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo {
+	width: 63%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent {
+	width: 48.45%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent input {
+	margin-left: 4.6% !important;
+	width: 57%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice2,
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice1 {
+	margin-left: 2.6% !important;
+	width: 59%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice2 input {
+	margin-left: 0px !important;
+	width: 100%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice1 input {
+	margin-left: 0px !important;
+	width: 46%;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor.invoiceInfo label {
+	width: 36.2%;
+	margin-left: 2px;
+}
+
+.systematicSearch ul.searchFloor li div input.name:last-child {
+	margin-left: 2% !important;
+	width: 30.3%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo {
+	position: relative;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo img {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	right: -8px;
+	top: 3px;
+	cursor: pointer;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo input {
+	width: 36%;
+	margin-left: 0px !important;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor span {
+	width: 8%;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.filterBox ul.searchFloor li div.invoiceInfo div {
+		width: 48.7%;
+	}
+	.systematicSearch ul.searchFloor li div input,
+	.systematicSearch ul.searchFloor li div select {
+		margin-left: 3%;
+	}
+	.updateTab ul li.number {
+		width: 5.8% !important;
+	}
+	.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent input {
+		margin-left: 4.4% !important;
+	}
+	.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice2,
+	.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice1 {
+		margin-left: 2.4% !important;
+	}
+	.systematicSearch ul.searchFloor li div.invoiceInfo img {
+		right: -13px;
+	}
+}
+
+.filterBox ul.searchFloor li div.invoiceInfo div.invoice1 {
+	display: none;
+}
+
+.filterBox ul.searchFloor li div.invoiceInfo div.invoice2 input {
+	width: 80%;
+}
+
+.updateTab ul.tabList.tabListDetail li {
+	vertical-align: top;
+}
+
+.filterBox ul.searchFloor {
+	min-height: 250px;
+}
+
+
+/*系统搜索   e*/
+
+
+/*选择模块   s*/
+
+.choiceFloor {
+	width: 100%;
+	margin-top: 40px !important;
+	min-width: 913px;
+}
+
+.choiceItem {
+	display: inline-block;
+	background-color: #ffffff;
+	padding: 15px;
+	border: solid 1px #d2d2d2;
+	margin-bottom: 24px;
+	border-radius: 4px;
+	position: relative;
+}
+
+.choiceItem label.markMsg {
+	display: inline-block;
+	width: 98px;
+	height: 24px;
+	line-height: 24px;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 13px;
+	position: absolute;
+	left: 0px;
+	top: -24px;
+	text-align: center;
+}
+
+.choiceItem label.markMsg i {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background-color: #fff;
+	border-radius: 50px;
+	position: absolute;
+	left: 12px;
+	top: 9px;
+}
+
+.dataChoice {
+	width: 66.75%;
+	vertical-align: top;
+	text-align: center;
+	margin-right: 3%;
+}
+
+.quickChoice {
+	width: 18.6%;
+	vertical-align: top;
+}
+
+.choiceItem .choiceInfo {
+	display: inline-block;
+	width: 32.2%;
+	font-size: 14px;
+	vertical-align: top;
+}
+
+.choiceItem .choiceInfo ul li {
+	margin-bottom: 10px;
+}
+
+.choiceItem .choiceInfo ul li.titleTitle {
+	text-align: center;
+	background-color: #ccc;
+	font-size: 16px;
+	color: #323232;
+	width: 94%;
+	height: 30px;
+	line-height: 30px;
+	margin-left: 3%;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent dl {}
+
+.choiceItem .choiceInfo ul li.choiceContent dl dd {
+	display: inline-block;
+	width: 49%;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected {
+	display: inline-block;
+	border: solid 1px #737373;
+	border-radius: 5px;
+	text-align: center;
+	height: 32px;
+	line-height: 32px;
+	background-color: #FFFFFF;
+	position: relative;
+	vertical-align: middle;
+	width: 89%;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected div.checkbox.checkboxBtn {
+	padding-left: 2%;
+	margin: 0px !important;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected div.checkbox.checkboxBtn label {
+	border-radius: 4px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	height: 32px;
+	line-height: 32px;
+	float: initial;
+	position: absolute;
+	right: 0px;
+	letter-spacing: 0px !important;
+	padding-left: 3% !important;
+	padding-right: 3% !important;
+	width: 71% !important;
+	cursor: pointer;
+	background-color: transparent;
+	color: #383838 !important;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected.current div.checkbox.checkboxBtn label {
+	color: #ffffff !important;
+	background-color: #ff765a !important;
+	box-shadow: inset 0px 1px 4px #636363;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.choiceItem .choiceInfo ul li.choiceContent .selected div.checkbox.checkboxBtn label {
+		width: 60% !important;
+	}
+	.choiceItem .choiceInfo {
+		width: 32%;
+	}
+}
+
+
+.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox-success input[type="checkbox"]:checked+label::before {
+	background-color: transparent;
+	border-color: transparent;
+	top: 6px;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox input[type="checkbox"]:checked+label::after {
+	background: url(../img/selected.png) center center no-repeat;
+	top: 3px !important;
+	background-size: 100%;
+	content: '';
+	left: -10px !important;
+	width: 24px !important;
+	height: 24px !important;
+	outline: none;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox label::before {
+	background: url(../img/unselected.png) center center no-repeat;
+	top: 3px !important;
+	background-size: 100%;
+	left: -10px;
+	width: 24px;
+	height: 24px;
+	outline: none;
+	border: none !important;
+	padding: 1px;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox label::before {
+	top: 6px;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox label::after {
+	padding-left: 1px;
+	padding-top: 0px;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox {
+	padding-left: 2%;
+}
+
+
+.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox label {
+	width: 80%;
+	float: right;
+	letter-spacing: 0px !important;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox label i {
+	font-style: normal;
+	visibility: hidden;
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox {
+	padding-left: 2%;
+}
+
+.choiceItem ul.btnList {
+	margin-top: 14px;
+}
+
+.choiceItem ul.btnList li {}
+
+.choiceItem ul.btnList li a {
+	display: inline-block;
+	margin-right: 0px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	height: 30px;
+	line-height: 30px;
+	width: 20%;
+	margin-right: 6%;
+}
+
+.choiceItem ul.btnList li a:last-child {
+	margin-right: 0px;
+}
+
+.choiceItem ul.btnList li a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.choiceItem.quickChoice .choiceInfo {
+	width: 100%;
+}
+
+.choiceItem.quickChoice .choiceInfo dl {}
+
+.choiceItem.quickChoice .choiceInfo dl dd {
+	width: 46% !important;
+	margin-right: 6%;
+}
+
+.choiceItem.quickChoice .choiceInfo dl dd:last-child {
+	margin-right: 0px;
+}
+
+.choiceItem.quickChoice .choiceInfo dl dd a {
+	display: inline-block;
+	display: inline-block;
+	margin-right: 0px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	height: 30px;
+	line-height: 30px;
+	width: 100%;
+}
+
+.choiceItem.quickChoice .choiceInfo dl dd a.current {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.choiceItem.dataChoice .choiceInfo {
+	border-right: dashed 2px #a8aaff;
+}
+
+.choiceItem.dataChoice .choiceInfo.airticketInfo {
+	border-right: 0px !important;
+}
+
+
+/*选择模块   e*/
+
+
+/*确认框       s*/
+
+.confirmSave .checkbox label::before {
+	border-radius: 50px;
+}
+
+.checkbox {
+	margin: 0px !important;
+}
+
+.confirmSave .checkbox label::after {
+	top: 3px !important;
+	text-align: center;
+	line-height: 16px;
+	height: 16px;
+}
+
+.confirmSave .selected {
+	display: inline-block;
+	width: 49%;
+	text-align: center;
+}
+
+.confirmSave .checkbox label::before {
+	top: 2px !important;
+}
+
+.confirmSave div.choiceBtn {
+	display: inline-block;
+	margin-top: 10px !important;
+}
+
+.confirmSave {
+	height: initial;
+}
+
+.confirmNoticeInfo p.saveSuccess {
+	display: none;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.quickChoice {
+		width: 18%;
+	}
+	.choiceItem.quickChoice .choiceInfo dl dd {
+		margin-right: 5%;
+	}
+	.dataChoice {
+		width: 69.3%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected div.checkbox.checkboxBtn label {
+		font-size: 13px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent dl dd {
+		width: 48%;
+	}
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1366px) {
+	.quickChoice {
+		width: 18%;
+	}
+	.choiceItem.quickChoice .choiceInfo dl dd {
+		margin-right: 5%;
+	}
+	.dataChoice {
+		width: 69.3%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected div.checkbox.checkboxBtn label {
+		font-size: 13px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent dl dd {
+		width: 48%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox input[type="checkbox"]:checked+label::after {
+		left: -12px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox label::before {
+		left: -8px;
+	}
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1440px) {
+	.quickChoice {
+		width: 18%;
+	}
+	.choiceItem.quickChoice .choiceInfo dl dd {
+		margin-right: 5%;
+	}
+	.dataChoice {
+		width: 66.8%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected div.checkbox.checkboxBtn label {
+		font-size: 13px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent dl dd {
+		width: 48%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox label::before {
+		left: -10px;
+		width: 22px;
+		height: 22px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox input[type="checkbox"]:checked+label::after {
+		left: -10px !important;
+		width: 22px !important;
+		height: 22px !important;
+	}
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1599px) {
+	.quickChoice {
+		width: 18%;
+	}
+	.choiceItem.quickChoice .choiceInfo dl dd {
+		margin-right: 5%;
+	}
+	.dataChoice {
+		width: 66.8%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected div.checkbox.checkboxBtn label {
+		font-size: 13px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent dl dd {
+		width: 48%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox label::before {
+		left: -3px;
+		width: 22px;
+		height: 22px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox input[type="checkbox"]:checked+label::after {
+		left: -5px !important;
+		width: 22px !important;
+		height: 22px !important;
+	}
+}
+
+@media only screen and (min-width: 1600px) and (max-width:1640px) {
+	.quickChoice {
+		width: 18%;
+	}
+	.choiceItem.quickChoice .choiceInfo dl dd {
+		margin-right: 5%;
+	}
+	.dataChoice {
+		width: 66.8%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected div.checkbox.checkboxBtn label {
+		font-size: 13px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent dl dd {
+		width: 48%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox label::before {
+		left: -4px;
+		width: 22px;
+		height: 22px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox input[type="checkbox"]:checked+label::after {
+		left: -6px !important;
+		width: 22px !important;
+		height: 22px !important;
+	}
+}
+
+@media only screen and (min-width: 1641px) and (max-width: 1680px) {
+	.quickChoice {
+		width: 18%;
+	}
+	.choiceItem.quickChoice .choiceInfo dl dd {
+		margin-right: 5%;
+	}
+	.dataChoice {
+		width: 66.8%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected div.checkbox.checkboxBtn label {
+		font-size: 13px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent dl dd {
+		width: 48%;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox label::before {
+		left: -5px;
+		width: 22px;
+		height: 22px;
+	}
+	.choiceItem .choiceInfo ul li.choiceContent .selected .checkbox input[type="checkbox"]:checked+label::after {
+		left: -7px !important;
+		width: 22px !important;
+		height: 22px !important;
+	}
+}
+
+.checkbox input[type="checkbox"] {
+	outline: none;
+}
+
+.confirmSave div.choiceBtn .checkbox input[type="checkbox"]:checked+label::after {
+	font-family: 'FontAwesome';
+	content: "\f00c";
+	content: '\f111';
+}
+
+
+/*表格    s*/
+
+.resultTab {
+	width: 100%;
+	margin-top: 20px !important;
+	min-width: 913px;
+	display: none;
+}
+
+.resultTab ul.result{
+	background-color: #ffffff;
+	border: solid 1px #DADADA;
+	display: inline-block;
+	border-radius: 5px;
+	min-width: 110px;
+}
+
+.resultTab ul li {
+	border-bottom: solid 1px #DADADA;
+}
+
+.resultTab ul li.title {
+	background-color: #9295ff;
+	color: #fff;
+	height: 48px;
+	line-height: 48px;
+	position: relative;
+	font-size: 16px;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.resultTab ul li.resultNav {}
+
+.resultTab ul li.resultNav dl {}
+
+.resultTab ul li.resultNav dl dd {
+	height: 34px;
+	line-height: 34px;
+	background-color: #9295ff;
+	color: #FFFFFF;
+}
+
+.resultTab ul li.resultDetail {}
+
+.resultTab ul li.resultDetail dl {
+	font-size: 0px;
+	height: 34px;
+	line-height: 34px;
+}
+
+.resultTab ul li dl dd {
+	display: inline-block;
+	font-size: 14px;
+	border-right: solid 1px #dadada;
+	text-align: center;
+	min-height: 34px;
+	line-height: 34px;
+	vertical-align: top;
+	min-width: 110px;
+	width: initial;
+}
+
+.resultTab ul li dl dd:last-child {
+	border-right: 0px;
+}
+
+.choiceFloor.individualTour label {
+	font-size: 14px !important;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.choiceFloor.individualTour label {
+		font-size: 12px !important;
+	}
+	.systematicSearch ul.searchFloor li div.rightFloor .checkbox label i{
+		font-size: 13px;
+	}
+}
+
+
+/*表格    e*/
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox label i{
+	font-style: initial;
+}
+.systematicSearch ul.searchFloor .rightContent.dealTime {
+	vertical-align: bottom;
+	display: none;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime input[type='date'] {
+	width: 43.6% !important;
+	margin-left: 0px !important;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime span {
+	width: 10% !important;
+	display: inline-block;
+}

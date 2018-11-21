@@ -1,0 +1,253 @@
+#calendar {
+	position: relative;
+	width: 100% !important;
+	margin-top: 30px;
+	height: 298px;
+}
+
+#calendar #layui-laydate1,
+#calendar #layui-laydate1 .layui-laydate-main,
+#calendar .layui-laydate-content table {
+	width: 100%;
+	vertical-align: top;
+	margin-top: 5px;
+}
+
+.text_box {
+	padding: 15px !important;
+}
+
+.layui-laydate-content th {
+	font-weight: 400;
+	color: #333;
+	height: 20px !important;
+	line-height: 20px;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+.laydate-theme-grid .laydate-month-list>li,
+.laydate-theme-grid .laydate-year-list>li,
+.laydate-theme-grid .layui-laydate-content td,
+.laydate-theme-grid .layui-laydate-content thead,
+.laydate-theme-molv .layui-laydate-footer {
+	border: 1px solid #e2e2e2;
+	height: 30px;
+	line-height: 30px;
+}
+
+.layui-laydate-main.laydate-main-list-0 {
+	margin-top: 0px !important;
+}
+
+.layui-laydate-content table {
+	margin-top: 0px !important;
+}
+
+.layui-laydate-content td {
+	padding: 0px !important;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+	height: 30px !important;
+}
+
+.layui-laydate-content tr {
+	height: 30px !important;
+}
+
+
+/*悬停时:*/
+
+.layui-laydate-content td:hover {
+	background-color: #fef8e0 !important;
+}
+
+
+/*点击时*/
+
+.layui-laydate .layui-this {
+	background-color: #f9d95e !important;
+	color: #788bab !important;
+}
+
+.layui-laydate-content td {
+	/*color: #758da9 !important;*/
+}
+
+.layui-laydate-content thead tr {
+	background-color: #e6e6e6;
+}
+
+.layui-laydate-content thead tr th {
+	color: #788bab !important;
+}
+
+.layui-layer-rim {
+	border: solid 2px #9295ff !important;
+	box-shadow: 0px 0px 8px #9295ff !important;
+}
+
+.layui-layer-title {
+	color: #8a9bb7 !important;
+	background-color: #e9f6fe !important;
+	text-align: center;
+	padding: 0px !important;
+}
+
+.layui-layer-btn.layui-layer-btn- {
+	padding: 0px !important;
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+	border-color: #9295ff !important;
+	background-color: #9295ff !important;
+	color: #fff !important;
+}
+
+.layui-layer-btn a {
+	height: 34px !important;
+	line-height: 34px !important;
+	border: 1px solid #dedede;
+	border-radius: 2px;
+	font-weight: 400;
+	cursor: pointer;
+	text-decoration: none;
+	display: inline-block !important;
+	text-align: center !important;
+	margin: 0px !important;
+}
+.layui-layer-btn a {
+	background-color: #e5e5e5 !important;
+	color: #89898b !important;
+}
+
+#text_book_title {
+	height: 40px;
+	min-height: initial;
+	resize: none;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.laydate-day-mark {
+	left: 0;
+	font-size: 14px !important;
+	width: 100% !important;
+	height: 15px !important;
+	background-color: #fd7a2a !important;
+	color: #ffffff !important;
+	position: absolute;
+	right: 0px !important;
+	bottom: 0px !important;
+	line-height: 15px !important;
+	border-radius: 10px !important;
+	top: initial !important;
+}
+
+.layui-layer-page .layui-layer-content {
+	overflow: initial !important;
+}
+.layui-layer-rim.infoTips .layui-layer-btn.layui-layer-btn- a.layui-layer-btn0 {
+	width: 100% !important;
+	padding: 0px !important;
+}
+
+.layui-layer-rim.calendarInfo .layui-layer-btn.layui-layer-btn- {
+	margin-top: 2px !important;
+}
+
+.layui-textarea {
+	resize: none;
+}
+
+.laydate-day-mark::after {
+	top: -15px !important;
+}
+
+.layui-laydate-header i.laydate-prev-y {
+	display: none !important;
+}
+
+.layui-laydate-header i.laydate-next-y {
+	display: none !important;
+}
+
+.layui-laydate-header i.laydate-next-m {
+	right: 20px !important;
+	left: initial !important;
+	color: #a5a7fc;
+	background-color: #fbfbf9 !important;
+	border-top: solid 1px #d8d8d6;
+	box-shadow: 0px 2px 4px #d8d8d6;
+}
+
+.layui-laydate-header i.laydate-prev-m {
+	right: 49px !important;
+	left: initial !important;
+	color: #a5a7fc !important;
+	background-color: #fbfbf9 !important;
+	border-top: solid 1px #d8d8d6;
+	box-shadow: 0px 2px 4px #d8d8d6;
+}
+
+.layui-laydate-header i.laydate-next-m.selected {
+	box-shadow: inset 0px 2px 4px #d8d8d6;
+}
+
+.layui-laydate-header i.laydate-prev-m.selected {
+	box-shadow: inset 0px 2px 4px #d8d8d6;
+}
+
+.layui-laydate-footer {
+	display: none;
+}
+
+.layui-laydate-content tr {
+	height: 34px !important;
+}
+
+.layui-laydate,
+.layui-laydate-hint {
+	border: none !important;
+	box-shadow: none !important;
+}
+
+.layui-laydate-header i {
+	top: 0px !important;
+	height: 22px;
+	line-height: 22px;
+}
+
+.layui-laydate-header {
+	padding: 0px !important;
+}
+
+.laydate-set-ym span {
+	color: #788dac !important;
+	font-size: 14px;
+}
+
+.layui-laydate-content thead tr {
+	height: 22px !important;
+}
+
+span.laydate-day-mark {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.layui-laydate-content td {
+	color: #778cab !important;
+}
+
+.layui-laydate-content .laydate-day-next,
+.layui-laydate-content .laydate-day-prev {
+	color: #d2d2d2 !important;
+}
+
+.layui-layer-shade {
+	background-color: transparent !important;
+}

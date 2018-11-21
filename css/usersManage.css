@@ -1,0 +1,673 @@
+@charset "utf-8";
+.navInfo ul li dl {
+	border-top: 0px !important;
+}
+
+.showMsg .floor .groupMsg {
+	min-height: 740px !important;
+}
+
+.theamInfo .showMsg.usersManage {
+	padding-top: 0px;
+}
+
+.usersManageArea {
+	font-size: 0px;
+	text-align: left;
+}
+
+.showMsg .floor .groupMsg {
+	position: relative;
+}
+
+.theamInfo .showMsg.usersManage .theamTitle {
+	display: inline-block;
+	width: 5%;
+	height: 36px;
+	line-height: 36px;
+	background-color: #9295ff;
+	position: absolute;
+	left: 0px;
+	top: 12px;
+	color: #fff;
+	font-size: 16px;
+	padding: 0px 0px 0px 6px;
+	text-align: center;
+	min-width: 92px;
+}
+
+.theamInfo .showMsg.usersManage .theamTitle i {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background-color: #ffffff;
+	border-radius: 50%;
+	float: left;
+	margin-top: 13px;
+}
+
+.usersManageNav {
+	font-size: 0px;
+	display: inline-block;
+	width: 40%;
+	vertical-align: top;
+	margin-top: 26px;
+}
+
+.usersManageNav li {
+	display: inline-block;
+	font-size: 16px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	background-color: #888aee;
+	border-right: solid 1px #484ca5;
+	width: 49.8%;
+}
+
+.usersManageNav li.current-item {
+	background-color: #ff893f;
+}
+
+.usersManageNav li:first-child {
+	border-top-left-radius: 5px;
+}
+
+.usersManageNav li:last-child {
+	border-right: 0px;
+	border-top-right-radius: 5px;
+}
+
+.usersManageNav li a {
+	display: inline-block;
+	width: 100%;
+	/*font-size: 16px;*/
+	color: #ffffff;
+	font-size: 15px;
+}
+
+ul.manageDetail {
+	margin-top: 0px;
+	background-color: #fff;
+	border: solid 1px #d2d2d2;
+	border-radius: 5px;
+	padding-bottom: 1%;
+	width: 39.76%;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-top-color: transparent;
+}
+
+ul.manageDetail li {
+	margin-top: 18px;
+	padding: 0px 2%;
+	margin-top: 10px;
+}
+
+ul.manageDetail li label {
+	display: inline-block;
+	width: 18%;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	line-height: 24px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	min-height: 32px;
+	line-height: 32px;
+	margin-right: 2%;
+	vertical-align: top;
+}
+
+ul.manageDetail li input[type='text'],
+ul.manageDetail li select,
+ul.manageDetail li textarea,
+ul.manageDetail li input[type='password'] {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	width: 78% !important;
+	border: solid 1px #959595;
+	padding-left: 10px;
+	text-align: left;
+}
+
+ul.manageDetail li textarea {
+	border: solid 1px #959595;
+	padding-left: 10px;
+	text-align: left;
+	resize: none;
+	outline: none;
+	height: auto;
+}
+
+ul.manageDetail li.actionFilerBox a {
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	background-color: #9295ff;
+	width: 40%;
+	font-size: 15px;
+	color: #fff;
+	border-radius: 5px;
+}
+
+ul.manageDetail li.actionFilerBox a {
+	margin-right: 18%;
+	text-align: center;
+}
+
+ul.manageDetail li.actionFilerBox a:last-child {
+	margin-right: 0px;
+}
+
+ul.manageDetail li.actionFilerBox {
+	padding: 0px 2%;
+}
+
+.changePassWord {
+	display: none;
+}
+.addItem{
+	display: none;
+}
+
+
+/*确认框   s*/
+
+.confirmUsersInfo {
+	text-align: center !important;
+	vertical-align: middle;
+	width: 290px;
+	height: 266px;
+	padding: 0px;
+	border: solid 2px #9295ff;
+	border-radius: 10px;
+	background-color: #fff;
+	position: fixed;
+	bottom: 30%;
+	left: 49%;
+	box-shadow: 0px 0px 4px #9295ff;
+	overflow: hidden;
+	display: none;
+}
+
+.confirmUsersInfo .confirmTitle {
+	vertical-align: middle;
+	text-align: center !important;
+	color: #8f8f8f;
+	font-size: 32px;
+	border-bottom: solid 1px #b5b5b5;
+	padding-bottom: 24px;
+	margin: 22px 16px 0px 16px;
+}
+
+.confirmUsersInfo .confirmTitle img {
+	width: 110px;
+	height: 110px;
+}
+
+.confirmUsersInfo p.confirmNotice {
+	text-align: center;
+	font-size: 20px;
+	color: #848484;
+	margin-top: 12px;
+}
+
+.confirmUsersInfo .actionBox {
+	font-size: 0px;
+	text-align: center;
+	margin-top: 26px;
+}
+
+.confirmUsersInfo .actionBox button {
+	display: inline-block;
+	width: 50%;
+	margin-left: 0px !important;
+	height: 45px;
+	line-height: 45px;
+	font-size: 16px;
+	padding: 0px;
+	cursor: pointer;
+}
+
+.confirmUsersInfo .actionBox button.actionConfirm {
+	background-color: #9295ff;
+	color: #fff;
+	border-bottom-left-radius: 7px;
+	border-color: #9595ff;
+}
+
+.confirmUsersInfo .actionBox button.actionCancel {
+	background-color: #e3e4ff;
+	color: #9394fe;
+	border-bottom-right-radius: 7px;
+	border-color: #e3e4ff;
+}
+
+
+/*确认框   e*/
+
+
+/*用户管理-管理人员部分   s*/
+
+.usersManageContent {
+	margin-top: 26px;
+}
+
+.userGroup {
+	width: 15%;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 50px;
+	border: solid 1px #d2d2d2;
+	border-radius: 5px;
+}
+
+.userGroup ul {
+	border-radius: 5px;
+}
+
+.userGroup ul li {
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+	color: #888888;
+	text-align: center;
+	background-color: #ffffff;
+	border-bottom: solid 1px #d2d2d2;
+	cursor: pointer;
+}
+.userGroup ul li:last-child{
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.userGroup ul li.selected {
+	background-color: #FADA5E !important;
+	color: #636363;
+}
+
+.userGroup ul li:last-child {
+	border-bottom: 0px;
+}
+
+.userGroup ul li.groupTitle {
+	background-color: #9295ff;
+	color: #fff;
+}
+
+.usersInfo {
+	width: 30%;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 50px;
+	border: solid 1px #d2d2d2;
+	border-radius: 5px;
+}
+
+.usersInfo ul {}
+
+.usersInfo ul li {
+	height: 32px;
+	line-height: 32px;
+	font-size: 0px;
+	color: #888888;
+	text-align: center;
+	background-color: #ffffff;
+	border-bottom: solid 1px #d2d2d2;
+	cursor: pointer;
+}
+
+.usersInfo ul li.selected {
+	background-color: #FADA5E !important;
+	color: #636363;
+}
+
+.usersInfo ul li.selected dd {
+	color: #636363;
+}
+
+.usersInfo ul li.userInfoTitle {
+	background-color: #9295ff;
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.usersInfo ul li.userInfoTitle dl {
+	cursor: pointer;
+}
+
+.usersInfo ul li.userInfoTitle dl dd {}
+
+.usersInfo ul li dl {
+	height: 32px;
+	line-height: 32px;
+	width: 100%;
+}
+
+.usersInfo ul li dl dd {
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	width: 49.6%;
+	border-right: solid 1px #d2d2d2;
+	font-size: 14px;
+	color: #888888;
+	vertical-align: top;
+}
+
+.usersInfo ul li.userInfoTitle dl dd {
+	color: #FFFFFF;
+	font-size: 15px;
+}
+
+.userGroup ul li.groupTitle {
+	font-size: 15px;
+	border-top-left-radius: 5px;
+/*    border-bottom-right-radius: 5px;*/
+    border-top-right-radius: 5px;
+}
+
+.usersInfo ul li:last-child {
+	border-bottom: none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.usersInfo ul li dl dd:last-child {
+	border-right: 0px;
+}
+
+.rightTab {
+	display: inline-block;
+	width: 40%;
+	vertical-align: top;
+}
+
+.rightTab .usersManageNav {
+	width: 100%;
+	margin-top: 0px;
+}
+
+.rightTab ul.manageDetail {
+	width: 99.5%;
+}
+
+
+/*用户管理：管理人员部分  e*/
+
+.usersInfo ul li:hover {
+	border: solid 1px red;
+}
+
+.usersInfo ul li.userInfoTitle:hover {
+	border: 0px;
+}
+
+@media only screen and (min-width: 1450px) and (max-width: 1500px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 74.4% !important;
+	}
+}
+
+@media only screen and (min-width: 1353px) and (max-width: 1449px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 73.6% !important;
+	}
+}
+
+@media only screen and (min-width: 1250px) and (max-width: 1352px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 70.2% !important;
+	}
+}
+
+@media only screen and (min-width: 1150px) and (max-width: 1249px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 70.2% !important;
+	}
+}
+
+@media only screen and (min-width: 1050px) and (max-width: 1149px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 69.5% !important;
+	}
+}
+
+@media only screen and (min-width: 950px) and (max-width: 1049px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 69.4% !important;
+	}
+}
+
+@media only screen and (min-width: 850px) and (max-width: 949px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 69.3% !important;
+	}
+}
+
+@media only screen and (min-width: 750px) and (max-width: 849px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 69.2% !important;
+	}
+}
+
+@media only screen and (min-width: 650px) and (max-width: 749px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 69.1% !important;
+	}
+}
+
+@media only screen and (min-width: 550px) and (max-width: 649px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 69% !important;
+	}
+}
+
+@media only screen and (min-width: 450px) and (max-width: 549px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 68.9% !important;
+	}
+}
+
+@media only screen and (min-width: 300px) and (max-width: 449px) {
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li label {
+		min-width: 90px;
+	}
+	.salesPassWordBox.changePassWord.usersManageInfo ul.manageDetail li input[type='password'] {
+		width: 68.8% !important;
+	}
+}
+ul.manageDetail li.actionFilerBox.actionFloor a{
+	margin-right: 2%;
+    width: 31.6%;
+}
+ul.manageDetail li.actionFilerBox.actionFloor a:last-child{
+	margin-right: 0px;
+}
+.btn-switch {
+	cursor: pointer;
+	width: 52px;
+	height: 31px;
+	position: relative;
+	border: 1px solid #dfdfdf;
+	background-color: #fdfdfd;
+	box-shadow: #dfdfdf 0 0 0 0 inset;
+	border-radius: 20px;
+	background-clip: content-box;
+	display: inline-block;
+	-webkit-appearance: none;
+	user-select: none;
+	outline: none !important;
+}
+
+.btn-switch.large {
+	width: 70px;
+	height: 30px;
+	border-radius: 30px;
+	margin-top: 0px;
+}
+
+.btn-switch.large:before {
+	content: '';
+	width: 28px;
+	height: 28px;
+	border-radius: 30px;
+}
+
+.btn-switch.large:after {
+	content: '';
+	color: #999;
+	left: 30px;
+	position: absolute;
+	line-height: 28px;
+	font-size: 14px;
+}
+
+.btn-switch.large:checked:after {
+	content: '';
+	color: #fff;
+	left: 10px;
+	position: absolute;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+.btn-switch.large:checked:before {
+	left: 40px;
+}
+
+.btn-switch:before {
+	content: '';
+	width: 29px;
+	height: 29px;
+	position: absolute;
+	top: 0px;
+	left: 0;
+	border-radius: 20px;
+	background-color: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.btn-switch:checked {
+	border-color: #9295ff;
+	box-shadow: #9295ff 0 0 0 16px inset;
+	background-color: #9295ff;
+}
+
+.btn-switch:checked:before {
+	left: 21px;
+}
+
+.btn-switch.btn-switch-animbg {
+	transition: background-color ease 0.4s;
+}
+
+.btn-switch.btn-switch-animbg:before {
+	transition: left 0.3s;
+}
+
+.btn-switch.btn-switch-animbg:checked {
+	box-shadow: #dfdfdf 0 0 0 0 inset;
+	background-color: #64bd63;
+	transition: border-color 0.4s, background-color ease 0.4s;
+}
+
+.btn-switch.btn-switch-animbg:checked:before {
+	transition: left 0.3s;
+}
+
+.btn-switch.btn-switch-anim {
+	transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+}
+
+.btn-switch.btn-switch-anim:before {
+	transition: left 0.3s;
+}
+
+.btn-switch.btn-switch-anim:checked {
+	box-shadow: #64bd63 0 0 0 16px inset;
+	background-color: #64bd63;
+	transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+}
+
+.btn-switch.btn-switch-anim:checked:before {
+	transition: left 0.3s;
+}
+
+input[type=checkbox]:checked::before {
+	font: normal normal normal 14px/2 FontAwesome;
+}
+.authorityManageCard{
+	display: inline-block;
+	background-color: #fff;
+    width: 100%;
+    margin-top: 20px;
+    display: none;
+}
+.authorityManageCard ul{
+	 border: solid 1px #d2d2d2;
+	 border-radius: 5px;
+}
+.authorityManageCard ul li{
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+	color: #6f7073;
+	margin-bottom: 10px;
+	padding: 0px 10px;
+}
+.authorityManageCard ul li span{
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 10px;
+}
+.authorityManageCard ul li.title{
+	font-size: 15px;
+	color: #6f7073;
+	text-align: center;
+	border-bottom: solid 1px #D2D2D2;
+	background-color: #9295ff;
+    color: #fff;
+}
+.authorityManageCard ul li div{
+	display: inline-block;
+	width: 49%;
+}

@@ -1,0 +1,600 @@
+@charset "utf-8";
+.theamInfo .showMsg.performanceMsg .theamTitle {
+	width: 8%;
+	letter-spacing: 0px;
+}
+.performanceTheam.chartInfo {
+	border-right: 0px;
+	padding-right: 0px;
+	padding-left: 2%;
+}
+
+.performanceTheam {
+	padding-right: 4%;
+	width: 45%;
+}
+
+.performanceTheam.chartInfo {
+	padding-left: 4%;
+}
+
+.performanceTheam .arrow {
+	width: 50px;
+	height: 50px;
+	background-color: #ebe7e4;
+	text-align: center;
+	line-height: 38px;
+	font-size: 16px;
+	color: #e3853f;
+	font-size: 60px;
+	border-radius: 4px;
+	position: absolute;
+	z-index: 999;
+	cursor: pointer;
+	box-shadow: 0px 0px 4px #666666;
+	right: -25px;
+	top: 41.4%;
+}
+
+.performanceTheam {
+	overflow: initial;
+	position: relative
+}
+
+ul.salesNav {
+	width: 100%;
+	font-size: 0px;
+}
+
+ul.salesNav li {
+	display: inline-block;
+}
+
+ul.salesNav li.salesFilter {
+	width: 40%;
+	visibility: hidden;
+	text-align: left;
+}
+
+ul.salesNav li.backBox {
+	width: 35%;
+	text-align: right;
+	padding-right: 4.2%
+}
+
+ul.salesNav li.optionItem {
+	width: 10%;
+	text-align: left;
+}
+
+ul.salesNav li.optionItem a {
+	display: inline-block;
+	text-align: center;
+	background-color: #9394e7;
+	font-size: 16px;
+	border-radius: 50%;
+	box-shadow: 0px 3px 3px #6262a2;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
+}
+
+ul.salesNav li.optionItem.option-active a {
+	box-shadow: inset 0px 3px 5px #6262a2;
+	background-color: #a7aef2;
+}
+
+ul.salesNav li.optionItem a img {
+	width: 50%;
+}
+
+ul.salesNav li select,
+ul.salesNav li input[type="text"] {
+	box-sizing: border-box;
+	height: 32px;
+	width: 100%;
+	width: 34.5%;
+}
+
+ul.salesNav li input[type="text"] {
+	width: 69%;
+}
+
+.searchable-select {
+	border: solid 1px #afafaf;
+	background-color: #ffffff;
+	height: 32px;
+	line-height: 32px;
+}
+
+.searchable-select-holder {
+	width: 100%;
+	color: #9295ff;
+	text-align: left;
+	height: 32px;
+	line-height: 32px;
+	padding-left: 2%;
+}
+
+.searchable-select-dropdown {
+	border: solid 1px #afafaf;
+}
+
+.salesCard {
+	width: 100%;
+	font-size: 0px;
+	margin-top: 20px;
+}
+
+.salesCard .leftInfo ul li dl dd:last-child {
+	margin-bottom: 0px;
+}
+
+.salesCard .leftInfo {
+	display: inline-block;
+	width: 59%;
+	height: 100%;
+	vertical-align: top;
+}
+
+.salesCard .rightInfo {
+	display: inline-block;
+	width: 40%;
+	height: 100%;
+	min-height: 230px;
+}
+
+.salesCard .rightInfo ul {
+	width: 90%;
+	min-height: 230px;
+	clear: both;
+	overflow: hidden;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+.salesCard .rightInfo ul li.chartTitle {
+	font-size: 16px;
+	background-color: #9295ff;
+	color: #fff;
+	height: 32px;
+	line-height: 32px;
+}
+
+.salesCard .rightInfo ul li.salesName {
+	background-color: #ffffff;
+	color: #ffffff;
+	height: 32px;
+	line-height: 32px;
+	color: #323232;
+	text-align: center;
+	font-size: 14px;
+	border-bottom: solid 1px #cccccc;
+	cursor: pointer;
+	clear: both;
+	overflow: hidden;
+}
+
+.salesCard .rightInfo ul li.salesName.selected {
+	background-color: #D2D2D2;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.salesCard .rightInfo ul li.salesName:last-child {
+	border-bottom: 0px;
+}
+
+.salesCard .leftInfo {
+	clear: both;
+	overflow: hidden;
+}
+
+.salesCard .leftInfo ul {
+	clear: both;
+	overflow: hidden;
+}
+
+.salesCard .leftInfo ul li {
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.salesCard .leftInfo ul li:last-child {
+	margin-bottom: 0px;
+}
+
+.salesCard .leftInfo ul li select,
+.salesCard .leftInfo ul li input[type="text"] {
+	box-sizing: border-box;
+	width: 80%;
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+}
+
+.salesCard .leftInfo ul li dl {}
+
+.salesCard .leftInfo ul li dl dd {
+	margin-bottom: 10px;
+}
+
+.salesCard .leftInfo ul li dl dd label {
+	display: inline-block;
+	min-width: 82px;
+	font-size: 14px;
+	font-weight: bold;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: middle;
+	height: 32px;
+	line-height: 32px;
+	background-color: #e6e6e6;
+	color: #383838;
+	border: solid 1px #737373;
+	text-align: center;
+}
+
+.salesCard .leftInfo ul li dl dd input[type='date'] {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	width: 80%;
+	font-size: 14px;
+}
+
+.performanceTheam ul.rankingList {
+	width: 95.2%;
+	border-bottom: solid 1px #d2d2d2;
+	display: none;
+	clear: both;
+	overflow: hidden;
+	margin-top: 0px;
+}
+
+.performanceTheam p.currency {
+	text-align: right;
+	height: 42px;
+	line-height: 42px;
+	font-size: 14px;
+	width: 95%;
+	color: #323232;
+	font-weight: bold;
+}
+
+.performanceTheam ul.rankingList2 li dl dd {
+	width: 12%;
+}
+
+.performanceTheam ul.rankingList2 li dl dd:first-child {
+	width: 35%;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1300px) {
+	.performanceTheam ul.rankingList2 li dl dd {
+		width: 10%;
+	}
+	.performanceTheam ul.rankingList2 li dl dd:first-child {
+		width: 42%;
+	}
+}
+
+dl.salesDetail {}
+
+ul.rankingList2 li dl dd.cellBox {
+	height: auto;
+	overflow: initial;
+	min-height: 42px;
+	vertical-align: top;
+}
+
+ul.rankingList2 li dl dd.cellBox dl {
+	border-bottom: 0px;
+}
+
+ul.rankingList2 li dl dd.cellBox dl dd.max {
+	color: red;
+}
+
+dl.salesDetail dd {
+	display: block !important;
+	width: 100% !important;
+	height: 20px !important;
+	line-height: 20px !important;
+}
+
+.performanceTheam.chartInfo {}
+
+.performanceTheam ul.rankingList1 {
+	display: block;
+}
+
+
+/*返回概况*/
+
+.ms-back {
+	display: inline-block;
+	width: 45%;
+	height: 32px;
+	line-height: 32px;
+	color: #ffffff;
+	font-size: 16px;
+	background-color: #9295ff;
+	box-shadow: 0px 3px 3px #6262a2;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	border-radius: 4px;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1300px) {
+	.ms-back {
+		font-size: 14px;
+	}
+}
+.ms-back.selected {
+	box-shadow: inset 0px 3px 5px #6262a2;
+	background-color: #a7aef2;
+}
+/*总体业绩部分*/
+.totalCard.salesCard {
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.totalCard.salesCard .leftInfo {
+	width: 100%;
+}
+
+.totalCard.salesCard .leftInfo select,
+.totalCard.salesCard .leftInfo input[type="text"] {
+	width: 49%;
+	display: inline-block;
+	margin-right: 2%;
+	border: solid 1px #dddddd;
+	padding-left: 1%;
+}
+
+.totalCard.salesCard .leftInfo select:last-child {
+	margin-right: 0px;
+}
+
+.totalCard.salesCard .leftInfo input[type="date"] {
+	width: 49%;
+	border: solid 1px #dddddd;
+}
+
+span.filter_title {
+	display: inline-block;
+	width: 40%;
+	height: 32px;
+	line-height: 32px;
+	color: #ffffff;
+	font-size: 16px;
+	background-color: #fe6344;
+	border-radius: 5px;
+	float: left;
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.filter_box select {
+	width: 49% !important;
+}
+
+.selectInfoBox dd {
+	display: inline-block;
+	width: 33%;
+	height: 48px;
+	cursor: pointer;
+	line-height: 48px;
+	font-size: 16px;
+	text-align: center;
+	background-color: #7f82df;
+	color: #fff;
+	border-left: solid 1px #484ca7;
+}
+
+.selectInfoBox dd:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-left: 0px;
+}
+
+.selectInfoBox dd:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.selectInfoBox dd.current-item {
+	background-color: #fd8139;
+}
+
+.totalMsgCard {
+	height: 500px !important;
+	clear: both;
+	overflow: hidden;
+}
+
+a.newChart {
+	display: inline-block;
+	width: 14%;
+	right: 0px;
+	background-color: #f95d50;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 4px;
+	border: solid 1px #d4483f;
+	clear: both;
+	overflow: hidden;
+	height: 32px;
+	line-height: 32px;
+}
+
+.totalMsgCard {
+	padding-top: 0px;
+}
+
+.totalMsgCard p {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.ms-back.totalPage {
+	width: 20%;
+	position: absolute;
+	right: 0px;
+}
+
+.nav-back {
+	width: 100%;
+	height: 32px;
+	font-size: 0px;
+	position: relative;
+}
+
+span.filter_title {
+	display: inline-block;
+	min-width: 92px;
+	min-height: 24px;
+	background-color: #f2f5ff;
+	font-size: 15px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: middle;
+	height: 30px;
+	line-height: 30px;
+	width: 20%;
+	border-radius: 0px;
+}
+
+.diviLine {
+	border-top: dashed 1px #020202;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 40px;
+}
+
+
+/*下拉框*/
+
+ul.salesNav li.salesFilter {
+	position: relative;
+}
+
+ul.salesNav li.salesFilter .autocomplete-items {
+	width: 68% !important;
+}
+
+ul.salesNav li a.confirmBtn {
+	display: inline-block;
+	width: 18%;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: top;
+	text-align: center;
+	box-shadow: inset 0px 0px 4px #c8c8c8;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b8b8b8;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	background-color: #ece8e4;
+	margin-left: 2%;
+	width: 25%;
+}
+
+ul.salesNav li a.confirmBtn.selected {
+	color: #878aec;
+	box-shadow: inset 0px 0px 4px #c8c8c8;
+}
+
+dd.sum.cellBox dl.salesDetail dd {
+	border-right: 0px;
+}
+
+.performanceTheam p.infoTitle {
+	text-align: right;
+}
+
+.performanceTheam p.infoTitle select {
+	box-sizing: border-box;
+	width: 50%;
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+}
+
+
+/*旅行社业绩表现   s*/
+
+.performanceTheam ul.rankingList1.travelAgencyInfo li.listTitle dl dd {
+	width: 49%;
+}
+
+.performanceTheam ul.rankingList1.travelAgencyInfo li dl dd {
+	width: 49%;
+}
+
+.performanceTheam ul.rankingList2.travelAgencyInfo li.listTitle dl dd {
+	width: 33%;
+}
+
+.performanceTheam ul.rankingList2.travelAgencyInfo li dl dd {
+	width: 33%;
+}
+
+.performanceTheam p.infoTitle label.totalPerformance {
+	width: 22%;
+}
+/*旅行社业绩表现   e*/
+.performanceTheam p.currency img {
+	width: 30px;
+	height: 30px
+}
+
+.performanceTheam p.currency {
+	text-align: right;
+	height: 42px;
+	line-height: 42px;
+	font-size: 14px;
+	width: 95%;
+	color: #323232;
+	font-weight: bold;
+	/*border-bottom: 3px solid #9295ff;*/
+	background: #fafafa;
+	/*margin-top: 10px;
+	margin-bottom: 10px;*/
+}
+@media only screen and (min-width: 1400px) and (max-width: 1800px) {
+	.theamInfo .showMsg.performanceMsg .theamTitle {
+		width: 10%;
+	}
+}
+
+@media only screen and (min-width: 400px) and (max-width: 1399px) {
+	.theamInfo .showMsg.performanceMsg .theamTitle {
+		width: 12%;
+	}
+}

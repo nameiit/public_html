@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>打印页面</title>
+		<link href="css/printPage.css" type="text/css" rel="stylesheet" />
+		<link href="layui/css/layui.css" type="text/css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="ReserveFundTab" id="myElementId">
+			<div class="title">
+				<h2>纳美导游备用金领取表</h2>
+			</div>
+			<table class="tourGuidTab">
+				<thead>
+					<tr>
+						<td class="tab-1 tab-bold">公司</td>
+						<td class="tab-2"></td>
+						<td class="tab-1 tab-bold">团号</td>
+						<td class="tab-2" colspan="2"></td>
+						<td class="tab-1 tab-bold">导游</td>
+						<td class="tab-2" colspan="2"></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="tab-1">门票</td>
+						<td class="tab-2">
+							<table>
+								<tr>
+									<td>门票</td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table>
+								<tr>
+									<td>数量(张)</td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table>
+								<tr>
+									<td>单价</td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table>
+								<tr>
+									<td>总数</td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td class="tab-1"></td>
+						<td class="tab-1">小计</td>
+						<td class="tab-1"></td>
+						<td class="tab-1"></td>
+						<td class="tab-1">0</td>
+						<td class="tab-1"></td>
+						<td class="tab-1"></td>
+						<td class="tab-1"></td>
+					</tr>
+					<tr class="mealFee">
+						<td class="tab-1" rowspan="2">
+							餐费
+							<span class="currency"></span>
+						</td>
+						<td class="tab-2">
+							<table class="mealFeeItem date-info">
+								<tr>
+									<td>日期</td>
+								</tr>
+								<!--<tr><td></td></tr>-->
+								<!--<tr><td></td></tr>-->
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="mealFeeItem people-count">
+								<tr>
+									<td>人数(人)</td>
+								</tr>
+								<!--<tr><td></td></tr>-->
+								<!--<tr><td></td></tr>-->
+
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="mealFeeItem lunch-price">
+								<tr>
+									<td>午餐</td>
+								</tr>
+								<!--<tr><td></td></tr>-->
+								<!--<tr><td></td></tr>-->
+
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="mealFeeItem lunch-price-sum">
+								<tr>
+									<td>金额</td>
+								</tr>
+								<!--<tr><td></td></tr>-->
+								<!--<tr><td></td></tr>-->
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="mealFeeItem dinner-price">
+								<tr>
+									<td>晚餐</td>
+								</tr>
+								<!--<tr><td></td></tr>-->
+								<!--<tr><td></td></tr>-->
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="mealFeeItem dinner-price-sum">
+								<tr>
+									<td>金额</td>
+								</tr>
+								<!--<tr><td></td></tr>-->
+								<!--<tr><td></td></tr>-->
+
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="mealFeeItem">
+								<tr>
+									<td>备注</td>
+								</tr>
+								<!--<tr><td></td></tr>-->
+								<!--<tr><td></td></tr>-->
+							</table>
+						</td>
+						<tr>
+							<td class="tab-3" colspan="3">小计</td>
+							<td class="tab-1 lunch-cost">0</td>
+							<td class="tab-1"></td>
+							<td class="tab-1 dinner-cost">0</td>
+							<td class="tab-1"></td>
+						</tr>
+
+					</tr>
+					<tr>
+						<td class="tab-1">
+							小费部分
+							<span class="currency"></span>
+						</td>
+						<td class="tab-2">
+							<table class="driver-tip">
+								<tr>
+									<td>司机小费(人/天)</td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="people-num">
+								<tr>
+									<td>人数(人)</td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="day-num">
+								<tr>
+									<td>天数(天)</td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="driver-tip-sum">
+								<tr>
+									<td>小计</td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table>
+								<tr>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<!--服务费   s-->
+					<tr class="serviceCharge">
+						<td class="tab-1" rowspan="2">
+							服务费用
+							<span class="currency"></span>
+						</td>
+						<td class="tab-2">
+							<table class="serviceChargeItem serviceDate-info">
+								<tr>
+									<td>日期</td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="serviceChargeItem">
+								<tr>
+									<td>人工</td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="serviceChargeItem">
+								<tr>
+									<td>超时</td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="serviceChargeItem">
+								<tr>
+									<td>餐补</td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="serviceChargeItem">
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="serviceChargeItem">
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+						<td class="tab-1">
+							<table class="serviceChargeItem">
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td class="tab-1">小计</td>
+						<td class="tab-1"></td>
+						<td class="tab-1"></td>
+						<td class="tab-1"></td>
+						<td class="tab-1"></td>
+						<td class="tab-1"></td>
+						<td class="tab-1"></td>
+						<!--<td class="tab-1"></td>
+						<td class="tab-1"></td>
+						<td class="tab-1"></td>-->
+					</tr>
+					<!--服务费   e-->
+					<tr>
+						<td class="tab-1"></td>
+						<td class="tab-2">
+						</td>
+						<td class="tab-1">
+						</td>
+						<td class="tab-1">
+						</td>
+						<td class="tab-1">
+						</td>
+						<td class="tab-1">
+						</td>
+						<td class="tab-1">
+						</td>
+						<td class="tab-1">
+						</td>
+					</tr>
+					<tr>
+						<td class="tab-1"></td>
+						<td class="tab-3" colspan="3">
+							导游备用金额取合计(餐费+小费)
+						</td>
+						<td class="tab-3 cost-sum" colspan="3">
+						</td>
+						<td class="tab-1">
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+			<div class="receiverMsg">
+				<ul>
+					<li><label>领取人签字:</label></li>
+					<li><label>日期:</label></li>
+				</ul>
+			</div>
+
+		</div>
+
+	</body>
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="js/jQuery.print.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/homePage/printPage.js"></script>
+
+</html>

@@ -1,0 +1,105 @@
+@charset "utf-8";
+.ReserveFundTab {
+	padding-top: 4%;
+}
+
+.ReserveFundTab .title {
+	height: 40px;
+	line-height: 40px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+.ReserveFundTab .title h2 {
+	display: inline-block;
+	border: solid 2px #1b1b1b;
+	width: 33.33%;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.ReserveFundTab .tourGuidTab {
+	width: 96%;
+	margin: 0px auto;
+	border: solid 1px #1B1B1B;
+	margin-top: 14px;
+}
+
+.ReserveFundTab .tourGuidTab td {
+	height: 28px;
+	line-height: 28px;
+	font-size: 16px;
+	border-right: solid 1px #1B1B1B;
+	font-weight: normal;text-align: center !important;
+}
+
+.ReserveFundTab .tourGuidTab th {}
+
+.ReserveFundTab .tourGuidTab th td {}
+
+.tourGuidTab tr {
+	border-bottom: solid 1px #1B1B1B;
+}
+
+.ReserveFundTab .tourGuidTab td.tab-1 {
+	width: 10%;
+	text-align: center;
+}
+
+.ReserveFundTab .tourGuidTab td.tab-2 {
+	width: 20%;
+	text-align: center;
+}
+
+.ReserveFundTab .tourGuidTab td.tab-3 {
+	width: 30%;
+	text-align: center;
+}
+
+.ReserveFundTab .tourGuidTab td table {
+	width: 100%;
+}
+
+.ReserveFundTab .tourGuidTab td table tr {
+	width: 100%;
+}
+
+.ReserveFundTab .tourGuidTab td table tr:last-child {
+	border-bottom: 0px;
+}
+
+.ReserveFundTab .tourGuidTab td table td {
+	width: 100%;
+	border-right: 0px;
+}
+
+.ReserveFundTab .tourGuidTab td.tab-bold {
+	font-weight: bold;
+}
+
+.ReserveFundTab .receiverMsg {
+	width: 96%;
+	margin: 0px auto;
+	margin-top: 14px;
+}
+
+.ReserveFundTab .receiverMsg ul li {
+	display: inline-block;
+	width: 30%;
+	text-align: left;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #1B1B1B;
+	font-size: 16px;
+	padding-left: 1%;
+}
+
+.ReserveFundTab .receiverMsg ul {
+	display: inline-block;
+	width: 100%;
+	text-align: right;
+	font-size: 0px;
+}
+.tourGuidTab tr span.currency{
+	display: block;
+}

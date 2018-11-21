@@ -1,0 +1,79 @@
+@charset "utf-8";
+.registerPage {
+	background: url(../img/bg1.png) 0 0 no-repeat;
+	height: 100vh;
+	background-size: 100% 100%;
+}
+.registerPage .registerInfo {
+	width: 21.65%;
+	height: 230px;
+	margin: 0px auto;
+	padding-top: 16%;
+}
+.registerPage .registerInfo ul {
+	color: #fff;
+	font-size: 14px;
+}
+
+.registerPage .registerInfo ul li {
+	position: relative;
+	margin-bottom: 10px;
+	clear: both;
+}
+
+.registerPage .registerInfo ul li img {
+	width: 24px;
+	height: 26px;
+	position: absolute;
+	left: 10px;
+	top: 4px;
+}
+
+.registerPage .registerInfo ul li input[type="text"],
+.registerPage .registerInfo ul li input[type="password"],
+.registerPage .registerInfo ul li input[type="button"] {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 20px;
+	box-sizing: border-box;
+	border: none;
+	padding-left: 40px;
+	outline: none;
+}
+
+.registerPage .registerInfo ul li .checkbox {
+	padding: 8px;
+	cursor: pointer;
+}
+
+.registerPage .registerInfo ul li a.forgetPass {
+	color: #fff;
+	padding-left: 14px;
+	border-left: solid 1px #fff;
+	height: 16px;
+	line-height: 16px;
+	display: inline-block;
+}
+
+.registerPage .registerInfo ul li .checkbox label::before {
+	width: 14px;
+	height: 14px;
+}
+
+.registerPage .registerInfo ul li button {
+	padding-left: 0px;
+	background-color: rgba(254, 255, 255, .4);
+	font-size: 16px;
+	color: #fff;
+	vertical-align: middle;
+	cursor: pointer;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 20px;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	border: solid 1px #fff;
+}

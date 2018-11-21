@@ -1,0 +1,1089 @@
+@charset "utf-8";
+.managePage .theamInfo .showMsg {
+	padding-top: 0px;
+}
+.manageArea {
+	font-size: 0px;
+	text-align: left;
+}
+.managePage .groupMsg {
+	width: 100%;
+}
+.manageNav {
+	display: inline-block;
+	width: 12%;
+	vertical-align: top;
+}
+.manageTab {
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;
+}
+
+.manageTabAction {
+	display: inline-block;
+	width: 34%;
+	vertical-align: top;
+}
+
+.manageNav ul {}
+
+.manageNav ul li {
+	width: 64%;
+	height: 32px;
+	line-height: 32px;
+	position: relative;
+	padding-left: 10%;
+}
+
+.manageNav ul li a {
+	display: inline-block;
+	width: 100%;
+	color: #fff;
+	font-size: 16px;
+	text-align: left;
+}
+
+.manageNav ul li a img {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	right: 5%;
+	top: 6px;
+}
+
+.manageNav ul li.salesItem {
+	background-color: #53caea;
+}
+
+.manageNav ul li.guideItem {
+	background-color: #fe6345;
+}
+
+.manageNav ul li.providerItem {
+	background-color: #444450;
+}
+
+.manageTab .tabCard {
+	width: 94%;
+}
+
+.manageTab .tabCard .markManage {
+	width: 100%;
+	height: 46px;
+	line-height: 46px;
+	display: inline-block;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+	border-radius: 5px;
+}
+/*导游*/
+.manageTab .tabCard .markManage.guideMark {
+	background-color: #fe6345;
+}
+/*销售*/
+.manageTab .tabCard .markManage.salesMark {
+	background-color: #53caea;
+}
+/*供应商*/
+.manageTab .tabCard .markManage.supplierMark {
+	background-color: #444450;
+}
+.manageTab .tabCard ul {
+	font-size: 0px;
+	width: 100%;
+	background-color: #fff;
+}
+.manageTab .tabCard ul li {
+	height: 42px;
+	line-height: 42px;
+	font-size: 15px;
+	display: inline-block;
+	border-right: solid 1px #d2d2d2;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.manageTab .tabCard ul.manageTabTitle li:last-child{
+	border: 0px;
+}
+.manageTab .tabCard ul.manageTabTitle {
+	background-color: #9295ff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-top: 5px;
+	border: solid 1px #9295ff;
+}
+.manageTab .tabCard ul.manageTabTitle li {
+	color: #fff;
+	font-size: 15px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: initial;
+	white-space: initial;
+	text-overflow: initial;
+}
+/*适配*/
+@media only screen and (min-width: 300px) and (max-width:1399px) {
+	/*销售code   s*/
+	.manageTab .tabCard ul.manageTabTitle li.codeInfo .searchable-select .searchable-select-holder {
+		width: 30% !important;
+	}
+	/*销售name   s*/
+	.manageTab .tabCard ul.manageTabTitle li.nameInfo .searchable-select-holder {
+		width: 30% !important;
+	}
+	/*销售性别    s*/
+	.manageTab .tabCard ul.manageTabTitle li.genderInfo .searchable-select-holder {
+		width: 16% !important;
+	}
+	/*销售分部    s*/
+	.manageTab .tabCard ul.manageTabTitle li.divisionInfo .searchable-select-holder {
+		width: 26% !important;
+	}
+	/*供应商-名称   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierNameInfo .searchable-select-holder {
+		width: 36% !important;
+	}
+	/*供应商-联系人   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierLinkManInfo .searchable-select-holder {
+		width: 26% !important;
+	}
+	/*供应商-地区      s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierAreaInfo .searchable-select-holder {
+		width: 22% !important;
+	}
+	/*供应商-业务    s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierBusinessInfo .searchable-select-holder {
+		width: 22% !important;
+	}
+	.manageTab .tabCard ul.tourGuideTabTitle li {
+		line-height: 20px;
+		vertical-align: middle;
+	}
+	.manageTab .tabCard ul.tourGuideTabTitle li .searchable-select {
+		margin-top: 0px !important;
+	}
+	.manageTab .tabCard ul.tourGuideTabTitle li .searchable-select-holder {
+		line-height: 20px !important;
+	}
+}
+@media only screen and (min-width:1200px)and (max-width:1299px) {
+	/*销售code   s*/
+	.manageTab .tabCard ul.manageTabTitle li.codeInfo .searchable-select-holder {
+		width: 32% !important;
+	}
+	/*销售name   s*/
+	.manageTab .tabCard ul.manageTabTitle li.nameInfo .searchable-select-holder {
+		width: 32% !important;
+	}
+	/*销售性别    s*/
+	.manageTab .tabCard ul.manageTabTitle li.genderInfo .searchable-select-holder {
+		width: 18% !important;
+	}
+	/*销售分部    s*/
+	.manageTab .tabCard ul.manageTabTitle li.divisionInfo .searchable-select-holder {
+		width: 28% !important;
+	}
+	/*供应商-名称   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierNameInfo .searchable-select-holder {
+		width: 38% !important;
+	}
+	/*供应商-联系人   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierLinkManInfo .searchable-select-holder {
+		width: 28% !important;
+	}
+	/*供应商-地区      s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierAreaInfo .searchable-select-holder {
+		width: 23% !important;
+	}
+	/*供应商-业务    s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierBusinessInfo .searchable-select-holder {
+		width: 23% !important;
+	}
+}
+@media only screen and (min-width:1300px) {
+	/*销售code   s*/
+	.manageTab .tabCard ul.manageTabTitle li.codeInfo .searchable-select-holder {
+		width: 36% !important;
+	}
+	/*销售name   s*/
+	.manageTab .tabCard ul.manageTabTitle li.nameInfo .searchable-select-holder {
+		width: 36% !important;
+	}
+	/*销售性别    s*/
+	.manageTab .tabCard ul.manageTabTitle li.genderInfo .searchable-select-holder {
+		width: 20% !important;
+	}
+	/*销售分部    s*/
+	.manageTab .tabCard ul.manageTabTitle li.divisionInfo .searchable-select-holder {
+		width: 30% !important;
+	}
+	/*供应商-名称   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierNameInfo .searchable-select-holder {
+		width: 40% !important;
+	}
+	/*供应商-联系人   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierLinkManInfo .searchable-select-holder {
+		width: 30% !important;
+	}
+	/*供应商-地区      s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierAreaInfo .searchable-select-holder {
+		width: 25% !important;
+	}
+	/*供应商-业务    s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierBusinessInfo .searchable-select-holder {
+		width: 26% !important;
+	}
+}
+@media only screen and (min-width:1400px) {
+	.manageTab .tabCard ul.tourGuideTabTitle li {
+		line-height: 42px;
+		vertical-align: middle;
+	}
+	.manageTab .tabCard ul.tourGuideTabTitle li .searchable-select {
+		margin-top: -3px !important;
+	}
+	.manageTab .tabCard ul.tourGuideTabTitle li .searchable-select-holder {
+		line-height: 42px !important;
+	}
+	/*供应商-名称   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierNameInfo .searchable-select-holder {
+		width: 43% !important;
+	}
+	/*供应商-联系人   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierLinkManInfo .searchable-select-holder {
+		width: 33% !important;
+	}
+	/*供应商-地区      s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierAreaInfo .searchable-select-holder {
+		width: 27% !important;
+	}
+	/*供应商-业务    s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierBusinessInfo .searchable-select-holder {
+		width: 27% !important;
+	}
+}
+
+
+/*1600*/
+
+@media only screen and (min-width:1550px) {
+	/*销售code   s*/
+	.manageTab .tabCard ul.manageTabTitle li.codeInfo .searchable-select-holder {
+		width: 42% !important;
+	}
+	/*销售name   s*/
+	.manageTab .tabCard ul.manageTabTitle li.nameInfo .searchable-select-holder {
+		width: 42% !important;
+	}
+	/*销售性别    s*/
+	.manageTab .tabCard ul.manageTabTitle li.genderInfo .searchable-select-holder {
+		width: 24% !important;
+	}
+	/*销售分部    s*/
+	.manageTab .tabCard ul.manageTabTitle li.divisionInfo .searchable-select-holder {
+		width: 36% !important;
+	}
+	/*供应商-名称   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierNameInfo .searchable-select-holder {
+		width: 48% !important;
+	}
+	/*供应商-联系人   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierLinkManInfo .searchable-select-holder {
+		width: 36% !important;
+	}
+	/*供应商-地区      s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierAreaInfo .searchable-select-holder {
+		width: 30% !important;
+	}
+	/*供应商-业务    s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierBusinessInfo .searchable-select-holder {
+		width: 30% !important;
+	}
+}
+
+@media only screen and (min-width:1650px) {
+	/*销售code   s*/
+	.manageTab .tabCard ul.manageTabTitle li.codeInfo .searchable-select-holder {
+		width: 44% !important;
+	}
+	/*销售name   s*/
+	.manageTab .tabCard ul.manageTabTitle li.nameInfo .searchable-select-holder {
+		width: 44% !important;
+	}
+	/*销售性别    s*/
+	.manageTab .tabCard ul.manageTabTitle li.genderInfo .searchable-select-holder {
+		width: 25% !important;
+	}
+	/*销售分部    s*/
+	.manageTab .tabCard ul.manageTabTitle li.divisionInfo .searchable-select-holder {
+		width: 38% !important;
+	}
+	/*供应商-名称   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierNameInfo .searchable-select-holder {
+		width: 50% !important;
+	}
+	/*供应商-联系人   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierLinkManInfo .searchable-select-holder {
+		width: 38% !important;
+	}
+	/*供应商-地区      s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierAreaInfo .searchable-select-holder {
+		width: 32% !important;
+	}
+	/*供应商-业务    s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierBusinessInfo .searchable-select-holder {
+		width: 31% !important;
+	}
+}
+
+@media only screen and (min-width:1900px) {
+	/*销售code   s*/
+	.manageTab .tabCard ul.manageTabTitle li.codeInfo .searchable-select-holder {
+		width: 50% !important;
+	}
+	/*销售name   s*/
+	.manageTab .tabCard ul.manageTabTitle li.nameInfo .searchable-select-holder {
+		width: 50% !important;
+	}
+	/*销售性别    s*/
+	.manageTab .tabCard ul.manageTabTitle li.genderInfo .searchable-select-holder {
+		width: 28% !important;
+	}
+	/*销售分部    s*/
+	.manageTab .tabCard ul.manageTabTitle li.divisionInfo .searchable-select-holder {
+		width: 43% !important;
+	}
+	/*供应商-名称   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierNameInfo .searchable-select-holder {
+		width: 58% !important;
+	}
+	/*供应商-联系人   s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierLinkManInfo .searchable-select-holder {
+		width: 42% !important;
+	}
+	/*供应商-地区      s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierAreaInfo .searchable-select-holder {
+		width: 36% !important;
+	}
+	/*供应商-业务    s*/
+	.manageTab .tabCard ul.manageTabTitle li.supplierBusinessInfo .searchable-select-holder {
+		width: 35% !important;
+	}
+}
+
+.manageTab .tabCard ul li.tabId {
+	width: 7%;
+}
+
+.manageTab .tabCard ul li.tabName {
+	width: 14%;
+}
+
+.manageTab .tabCard ul li.tabGender {
+	width: 8%;
+}
+
+.manageTab .tabCard ul li.tabAge {
+	width: 8%;
+}
+
+.manageTab .tabCard ul li.tabTel {
+	width: 15%;
+}
+
+.manageTab .tabCard ul li.tabEmail {
+	width: 10%;
+}
+
+.manageTab .tabCard ul li.tabDetail {
+	width: 19%;
+}
+
+.manageTab .tabCard ul li.tabOtherContact {
+	width: 17%;
+}
+
+ul.manageTabDetail {}
+
+ul.manageTabDetail li {
+	width: 100%;
+	/*border-bottom: solid 1px #d2d2d2;
+	border-right: 0px !important;*/
+	border: solid 1px #d2d2d2;
+    border-top-color: transparent;
+}
+ul.manageTabDetail li dl {
+	font-size: 0px !important;
+	width: 100%;
+	height: 42px;
+	line-height: 42px;
+	text-align: left;
+	cursor: pointer;
+}
+
+ul.manageTabDetail li dd {
+	height: 42px;
+	line-height: 42px;
+	font-size: 15px;
+	display: inline-block;
+	border-right: solid 1px #d2d2d2;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+ul.manageTabDetail li dd:last-child {
+	border: 0px;
+}
+
+ul.manageTabDetail li dd.tabId {
+	width: 7%;
+}
+
+ul.manageTabDetail li dd.tabName {
+	width: 14%;
+}
+
+ul.manageTabDetail li dd.tabGender {
+	width: 8%;
+}
+
+ul.manageTabDetail li dd.tabAge {
+	width: 8%;
+}
+
+ul.manageTabDetail li dd.tabTel {
+	width: 15%;
+}
+
+ul.manageTabDetail li dd.tabEmail {
+	width: 10%;
+}
+
+ul.manageTabDetail li dd.tabDetail {
+	width: 18%;
+	position: relative;
+}
+
+ul.manageTabDetail li dd.tabOtherContact {
+	width: 17%;
+}
+
+.order-unfold {
+	display: inline-block;
+	width: 100%;
+	background-color: #9295ff;
+	height: 28px;
+	line-height: 28px;
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	cursor: pointer;
+	border: solid 1px #9295ff;
+}
+
+.order-unfold img {
+	width: 16px;
+	height: 16px;
+	margin-right: 2%;
+}
+
+ul.manageTabActionNav {
+	font-size: 0px;
+}
+
+ul.manageTabActionNav li {
+	display: inline-block;
+	font-size: 16px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	background-color: #888aee;
+	border-right: solid 1px #484ca5;
+	width: 49.8%;
+}
+
+ul.manageTabActionNav li:last-child {
+	border: 0px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+ul.manageTabActionNav li:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+ul.manageTabActionNav li a {
+	display: inline-block;
+	width: 100%;
+	color: #fff;
+}
+
+ul.manageTabActionNav li.manage-active {
+	background-color: #ff893f;
+}
+ul.manageTabDetail li:hover {
+	/*border: solid 1px red !important;
+	border-bottom: solid 1px red;*/
+	border-color: red;
+	border-top-color: red !important;
+}
+ul.manageTabDetail li.detail-active {
+	background-color: #FADA5E !important;
+}
+
+ul.manageTabDetail li.detail-active dd {
+	color: #636363;
+}
+
+ul.manageTabDetail li dl:hover dd {
+	/*color: #636363;*/
+}
+
+.manageTabAction ul.filerDetail {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-top: 10px;
+	background-color: #fff;
+	border: solid 1px #d2d2d2;
+	border-radius: 5px;
+	padding-bottom: 2%;
+}
+
+.manageTabAction ul.filerDetail li.filterTitle {
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 15px;
+	height: 42px;
+	line-height: 42px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	letter-spacing: 4px;
+	margin-top: 0px;
+	padding: 0px;
+	text-align: left;
+	padding-left: 2%;
+}
+
+.manageTabAction ul.filerDetail li {
+	padding: 0px 2%;
+	margin-top: 4%;
+}
+
+.manageTabAction ul.filerDetail li label {
+	display: inline-block;
+	width: 18%;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	line-height: 24px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	min-height: 32px;
+	line-height: 32px;
+	margin-right: 2%;
+	vertical-align: top;
+}
+
+.manageTabAction ul.filerDetail li input[type="text"],
+.manageTabAction ul.filerDetail li select,
+.manageTabAction ul.filerDetail li input[type="date"] {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	width: 78% !important;
+	border: solid 1px #959595;
+	padding-left: 10px;
+	text-align: left;
+}
+
+.manageTabAction ul.filerDetail li textarea {
+	box-sizing: border-box;
+	display: inline-block;
+	width: 78%;
+	border: solid 1px #959595;
+	padding-left: 10px;
+	text-align: left;
+	resize: none;
+	outline: none;
+}
+
+.manageTabAction ul.filerDetail li.infoDistrict input[type="date"] {
+	width: 37%;
+}
+
+.manageTabAction ul.filerDetail li.infoDistrict span {
+	display: inline-block;
+	font-size: 13px;
+	color: #bfbfbf;
+	width: 4%;
+}
+
+.manageTabAction ul.filerDetail li.actionFilerBox a {
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	background-color: #9295ff;
+	width: 40%;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.manageTabAction ul.filerDetail li.actionFilerBox a {
+	margin-right: 18%;
+	text-align: center;
+}
+
+.manageTabAction ul.filerDetail li.actionFilerBox a:last-child {
+	margin-right: 0px;
+}
+
+.manageTabAction ul.filerDetail li.actionFilerBox {
+	padding: 0px 2%;
+}
+
+
+/*销售部分  s*/
+
+.manageTab .tabCard ul.manageTabTitle li.codeInfo {
+	width: 14%;
+}
+
+.manageTab .tabCard ul.manageTabTitle li.divisionInfo {
+	width: 12%;
+}
+
+ul.manageTabDetail li dd.codeInfo {
+	width: 14%;
+}
+
+ul.manageTabDetail li dd.divisionInfo {
+	width: 12%;
+}
+
+
+/*销售部分  e*/
+
+
+/*供应商部分 s*/
+
+.manageTab .tabCard ul.manageTabTitle li.supplierNameTab {
+	width: 16%;
+}
+
+.manageTab .tabCard ul.manageTabTitle li.supplierEmailTab {
+	width: 13%;
+}
+
+.manageTab .tabCard ul.manageTabTitle li.linkManNameTab {
+	width: 12%;
+}
+
+.manageTab .tabCard ul.manageTabTitle li.areaInfoTab {
+	width: 10%;
+}
+
+.manageTab .tabCard ul.manageTabTitle li.businessTypeTab {
+	width: 10%;
+}
+
+.manageTab .tabCard ul.manageTabTitle li.tabDetailTab {
+	width: 16%;
+}
+
+ul.manageTabDetail li dd.supplierNameTab {
+	width: 16%;
+}
+
+ul.manageTabDetail li dd.supplierEmailTab {
+	width: 13%;
+}
+
+ul.manageTabDetail li dd.linkManNameTab {
+	width: 12%;
+}
+
+ul.manageTabDetail li dd.areaInfoTab {
+	width: 10%;
+}
+
+ul.manageTabDetail li dd.businessTypeTab {
+	width: 10%;
+}
+
+ul.manageTabDetail li dd.tabDetailTab {
+	width: 16%;
+}
+
+.manageTabAction.supplierManageAction ul.filerDetail li label {
+	width: 26%;
+}
+
+.manageTabAction.supplierManageAction ul.filerDetail li input[type="text"],
+.manageTabAction.supplierManageAction ul.filerDetail li select,
+.manageTabAction.supplierManageAction ul.filerDetail li input[type="date"] {
+	width: 70% !important;
+}
+
+
+/*供应商部分 e*/
+
+
+/*详情*/
+
+.detail_container {
+	position: absolute;
+	top: 30px;
+	left: 40px;
+	height: 100px;
+	width: 200px;
+	background-color: #ffffff;
+	border: solid 1px #9295ff;
+	z-index: 999;
+	padding: 4px;
+}
+
+.detail_container em {
+	position: absolute;
+	top: -20px;
+	left: 20px;
+	height: 0;
+	width: 0;
+	border-color: transparent transparent #666 transparent;
+	border-style: solid;
+	border-width: 10px;
+}
+
+.detail_container .detail_content {
+	color: #323232;
+}
+
+.detail_container i {
+	position: absolute;
+	top: -9px;
+	left: -10px;
+	height: 0;
+	width: 0;
+	border-color: transparent transparent #FFFFFF transparent;
+	border-style: solid;
+	border-width: 10px;
+}
+
+.detail_container .detail_content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	text-align: left;
+	overflow: hidden;
+	white-space: initial;
+	line-height: 24px;
+}
+
+.manageTabAction ul.filerDetail.amendBox li.actionFilerBox a {
+	width: 30%;
+	margin-right: 4.4%;
+}
+
+.manageTabAction ul.filerDetail.amendBox li.actionFilerBox a:last-child {
+	margin-right: 0px;
+}
+
+.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+	width: 8.74% !important;
+	min-width: 38px;
+}
+
+ul.manageTabDetail li dd.tabOffice {
+	width: 8.8% !important;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 799px) {
+	.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+		width: 8.3% !important;
+	}
+	ul.manageTabDetail li dd.tabOffice {
+		width: 8.3% !important;
+	}
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1200px) {
+	.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+		width: 8.3% !important;
+	}
+	ul.manageTabDetail li dd.tabOffice {
+		width: 8.3% !important;
+	}
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1280px) {
+	.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+		width: 8.3% !important;
+	}
+	ul.manageTabDetail li dd.tabOffice {
+		width: 8.3% !important;
+	}
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1366px) {
+	.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+		width: 8.4% !important;
+	}
+	ul.manageTabDetail li dd.tabOffice {
+		width: 8.4% !important;
+	}
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1440px) {
+	.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+		width: 8.5% !important;
+	}
+	ul.manageTabDetail li dd.tabOffice {
+		width: 8.5% !important;
+	}
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1500px) {
+	.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+		width: 8.5% !important;
+	}
+	ul.manageTabDetail li dd.tabOffice {
+		width: 8.5% !important;
+	}
+}
+
+@media only screen and (min-width: 1501px) and (max-width: 1600px) {
+	.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+		width: 8.66% !important;
+	}
+	ul.manageTabDetail li dd.tabOffice {
+		width: 8.66% !important;
+	}
+}
+
+@media only screen and (min-width: 1601px) and (max-width: 1700px) {
+	.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+		width: 8.7% !important;
+	}
+	ul.manageTabDetail li dd.tabOffice {
+		width: 8.78% !important;
+	}
+}
+
+@media only screen and (min-width: 1701px) and (max-width: 1829px) {
+	.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+		width: 8.7% !important;
+	}
+	ul.manageTabDetail li dd.tabOffice {
+		width: 8.7% !important;
+	}
+}
+
+@media only screen and (min-width: 1830px) and (max-width: 1920px) {
+	.manageTab .tabCard ul.manageTabTitle li.tabOffice {
+		width: 8.9% !important;
+	}
+	ul.manageTabDetail li dd.tabOffice {
+		width: 8.9% !important;
+	}
+}
+
+.manageTabAction {
+	width: 34% !important;
+}
+
+.manageTab {
+	width: 54% !important;
+}
+
+.manageTab.salesManageTab .tabCard ul li.tabDetail {
+	width: 10% !important;
+}
+
+.salesManageTab ul.manageTabDetail li dd.tabDetail {
+	width: 10% !important;
+}
+
+.manageTabAction ul.filerDetail li label {
+	width: 28%;
+}
+
+.manageTabAction ul.filerDetail li input[type="text"],
+.manageTabAction ul.filerDetail li select,
+.manageTabAction ul.filerDetail li input[type="date"],
+.manageTabAction ul.filerDetail li textarea {
+	width: 68% !important;
+}
+
+.manageNav {
+	position: fixed;
+	width: 10%;
+	left: 18%;
+}
+
+.manageTabAction {
+	width: 26% !important;
+	position: fixed;
+	right: 4%;
+}
+
+.manageTab {
+	margin-left: 13%;
+	width: 52%;
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1440px) {
+	.manageTab {
+		margin-left: 12%;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1200px) {
+	.manageNav {
+		position: initial;
+		width: 12% !important;
+		left: initial;
+	}
+	.manageTabAction {
+		position: initial;
+		right: initial;
+		width: 34% !important;
+	}
+	.manageTab {
+		margin-left: 0px;
+		width: 54% !important;
+	}
+}
+
+.manageTabAction ul.filerDetail li label {
+	width: 30%;
+}
+
+.manageTabAction ul.filerDetail li input[type="text"],
+.manageTabAction ul.filerDetail li select,
+.manageTabAction ul.filerDetail li input[type="date"],
+.manageTabAction ul.filerDetail li textarea {
+	width: 66% !important;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1200px) {
+	.manageNav ul li a {
+		font-size: 14px;
+	}
+	.manageTab .tabCard ul.tourGuideTabTitle li {
+		font-size: 14px;
+	}
+	.manageTabAction ul.filerDetail li label {
+		font-size: 13px;
+	}
+}
+
+.manageTabAction.supplierManageAction ul.filerDetail li textarea {
+	width: 70% !important;
+}
+
+
+/*旅行社管理*/
+
+.manageNav ul li.travelAgencyItem {
+	background-color: #003775;
+}
+
+.manageTab .tabCard .markManage.travelMark {
+	background-color: #003775;
+}
+
+.manageTab .tabCard ul li.travelAgencyInfo {
+	width: 14%;
+}
+
+.manageTab .tabCard ul li.mailInfo {
+	width: 24%;
+}
+
+.manageTab .tabCard ul li.tabTelInfo {
+	width: 17%;
+}
+
+.manageTab .tabCard ul li.createTimeInfo {
+	width: 13%;
+}
+
+.manageTab .tabCard ul li.addressInfo {
+	width: 8%;
+}
+
+.manageTab .tabCard ul li.tabDetailInfo {
+	width: 8%;
+}
+
+.manageTab .tabCard ul li.statusInfo {
+	width: 8%;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1765px) {
+	.manageTab.travelAgencyManageTab .tabCard ul.manageTabTitle li {
+		font-size: 14px;
+	}
+	.manageTab.travelAgencyManageTab ul.manageTabDetail li dd {
+		font-size: 13px;
+	}
+}
+
+ul.manageTabDetail li dd.travelAgencyInfo {
+	width: 14%;
+}
+
+ul.manageTabDetail li dd.mailInfo {
+	width: 24%;
+}
+
+ul.manageTabDetail li dd.tabTelInfo {
+	width: 17%;
+}
+
+ul.manageTabDetail li dd.addressInfo {
+	width: 8%;
+}
+
+ul.manageTabDetail li dd.tabDetailInfo {
+	width: 8%;
+}
+
+ul.manageTabDetail li dd.statusInfo {
+	width: 8%;
+}
+
+ul.manageTabDetail li dd.createTimeInfo {
+	width: 13%;
+}
+
+ul.manageTabDetail li dd {
+	font-size: 14px;
+}
+ul.manageTabDetail li dd.tabOffice.Ystatus{
+	background-color: #00fe00;
+}
+ul.manageTabDetail li dd.tabOffice.Nstatus{
+	background-color: #fe0000;
+}
+ul.manageTabDetail li dd.statusInfo.Ystatus{
+	background-color: #00fe00;
+}
+ul.manageTabDetail li dd.statusInfo.Nstatus{
+	background-color: #fe0000;
+}

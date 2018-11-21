@@ -1,0 +1,890 @@
+@charset "utf-8";
+.filterMessage {
+	margin-top: 30px;
+}
+.filterMessage ul {}
+
+.filterMessage ul li {
+	display: inline-block;
+	width: 16%;
+	height: 32px;
+	line-height: 32px;
+	position: relative;
+}
+
+.filterMessage ul li select,
+.filterMessage ul li input[type=text] {
+	height: 30px;
+	line-height: 30px;
+	box-sizing: border-box;
+	padding-left: 4px;
+	width: 80%;
+	border: solid 1px #BEBEBE;
+}
+
+.filterMessage ul li a {
+	display: inline-block;
+	width: 50%;
+	font-size: 15px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	border-radius: 5px;
+	color: #9295ff;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+}
+
+.messageBoard {}
+
+.messageBoard .leftMessageTab {
+	width: 62%;
+	display: inline-block;
+}
+
+.messageBoard .rightMeaaageTab {
+	width: 38%;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 50px;
+}
+
+.messageBoard .leftMessageTab ul.problemMsg {
+	height: 50px;
+	line-height: 50px;
+}
+
+.messageBoard .leftMessageTab ul.problemMsg li:first-child {
+	display: inline-block;
+	width: 80%;
+}
+
+.messageBoard .leftMessageTab ul.problemMsg li:last-child {
+	display: inline-block;
+	width: 20%;
+	visibility: hidden;
+}
+
+.messageBoard .leftMessageTab ul.problemMsg input[type='checkbox'] {
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	top: 17px;
+}
+
+.messageBoard .leftMessageTab ul.problemMsg li {
+	font-size: 15px;
+	color: #3d3d3d;
+	position: relative;
+}
+
+.messageBoard .leftMessageTab ul.problemMsg li i {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	background-color: #b4b4b4;
+	border-radius: 3px;
+	position: absolute;
+	top: 17px;
+}
+
+.messageBoard .leftMessageTab ul.problemMsg li label {
+	margin-left: 20px;
+}
+
+ul.messageCard {
+	border: solid 1px #d2d2d2;
+	border-radius: 5px;
+}
+
+ul.messageCard li {
+	cursor: pointer;
+}
+
+ul.messageCard li.messageTitle {
+	background-color: #9295ff;
+	color: #ffffff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+ul.messageCard li.messageTitle dl dd {
+	color: #ffffff;
+}
+
+ul.messageCard li dl {
+	font-size: 0px;
+}
+
+ul.messageCard li dd {
+	display: inline-block;
+	border-right: solid 1px #d2d2d2;
+	text-align: center;
+	font-size: 15px;
+	min-height: 38px;
+	line-height: 38px;
+	word-wrap: break-word;
+}
+
+ul.messageCard li dd.askItem {
+	width: 10%;
+	text-align: center;
+}
+
+ul.messageCard li dd.askTime {
+	width: 24%;
+}
+
+ul.messageCard li dd.problemType {
+	width: 12%;
+}
+
+ul.messageCard li dd.problemContent {
+	width: 20%;
+}
+
+ul.messageCard li dd.moreInfo {
+	width: 22%;
+}
+
+ul.messageCard li dd.answerInfo {
+	width: 23%;
+}
+
+ul.messageCard li dd:last-child {
+	border-right: 0px;
+}
+
+ul.messageCard li {
+	background-color: #FFFFFF;
+}
+
+ul.messageCard li dl dd {
+	color: #5f5f5f;
+	vertical-align: top;
+}
+
+ul.messageCard li {
+	border-bottom: solid 1px #D2D2D2;
+}
+
+ul.answerAndAdd {
+	width: 95%;
+	margin-left: 4%;
+	width: 89%;
+	margin-left: 4%;
+	width: 95.5%;
+}
+
+ul.answerAndAdd li {
+	display: inline-block;
+	display: inline-block;
+	font-size: 16px;
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	background-color: #888aee;
+	border-right: solid 1px #484ca5;
+	width: 49.8%;
+	color: #ffffff;
+}
+
+ul.answerAndAdd li:last-child {
+	border-right: 0px;
+}
+
+ul.answerAndAdd li.addItem {
+	border-top-right-radius: 4px;
+}
+
+ul.answerAndAdd li.answerItem {
+	border-top-left-radius: 4px;
+}
+
+ul.answerAndAdd li.selected {
+	background-color: #ff893f;
+}
+
+.rightMeaaageTab .detailMsg {
+	width: 89%;
+	margin-left: 4%;
+	padding-left: 3%;
+	padding-right: 3%;
+	background-color: #ffffff;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	border: solid 1px #d2d2d2;
+	border-top: 0px;
+}
+
+.rightMeaaageTab .detailMsg ul {}
+
+.rightMeaaageTab .detailMsg ul li {}
+
+.rightMeaaageTab .detailMsg ul li label {
+	display: inline-block;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	line-height: 24px;
+	text-align: center;
+	color: #383838;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	height: 32px;
+	line-height: 32px;
+	margin-right: 2%;
+	width: 30%;
+}
+
+.rightMeaaageTab .detailMsg ul li textarea {
+	display: inline-block;
+	/*width: 100%;
+	min-height: 150px;*/
+	resize: none;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 16px;
+	border: solid 1px #959595;
+	width: 94%;
+    min-height: 100px;
+    padding: 3%;
+}
+
+.rightMeaaageTab .detailMsg ul li.actionFilerBox {}
+
+.rightMeaaageTab .detailMsg ul li.actionFilerBox a {
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	background-color: #9295ff;
+	width: 45%;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 5px;
+	text-align: center;
+	margin-right: 10%;
+}
+
+.rightMeaaageTab .detailMsg ul li.actionFilerBox a:last-child {
+	margin-right: 0px;
+}
+
+.rightMeaaageTab .detailMsg p {
+	display: inline-block;
+	min-height: 32px;
+	width: 100%;
+	color: #636363;
+	font-size: 15px;
+}
+/*标题*/
+.rightMeaaageTab .detailMsg p.answerTxt {
+	font-weight: bold;
+	font-size: 28px;
+}
+
+.rightMeaaageTab .answerCard {
+	display: none;
+}
+
+ul.messageCard li.messageDetail.selected {
+	background-color: #FADA5E !important;
+}
+
+ul.messageCard li.messageDetail.selected dl dd {
+	color: #323232 !important;
+}
+
+ul.answerAndAdd li {
+	cursor: pointer;
+}
+
+p.answerMoreInfo {
+	margin-bottom: 10px;
+}
+
+ul.messageCard li.messageDetail.resolved {
+	background-color: #b4b4b4;
+}
+
+ul.messageCard li.messageDetail.resolved dl dd {
+	color: #ffffff;
+}
+
+.detailMsg.resolvedCard {
+	visibility: hidden;
+}
+
+.detailMsg.resolvedCard li a {
+	background-color: #b4b4b4;
+	color: #ffffff;
+}
+
+.filterMessage ul li a.selected {
+	color: #f88032;
+	;
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+}
+
+.rightMeaaageTab .detailMsg.resolvedCard ul li.actionFilerBox a {
+	background-color: #b4b4b4;
+}
+
+/*ul.messageCard li.messageDetail.resolved dl dd {
+	display: -webkit-inline-box;
+	overflow: hidden;
+	white-space: normal!important;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	/*height: 80px !important;*/
+}*/
+
+.detailMsg.resolvedCard p.answerMoreInfo {
+	border-bottom: solid 4px #737373;
+}
+
+.detailMsg.resolvedCard p.answerMoreInfo:last-child {
+	border-bottom: 0px;
+}
+
+ul.messageCard li:last-child {
+	border-bottom: 0px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+ul.messageCard li.messageDetail.selected dl dd {
+	color: #646464;
+}
+
+.filterMessage ul li select option.hover {
+	background-color: #89abd9;
+}
+
+ul.messageCard li dd.problemContent {
+	width: 19%;
+	padding-left: 1%;
+	text-align: left;
+}
+
+ul.messageCard li.messageTitle dd.problemContent {
+	text-align: center;
+}
+
+ul.messageCard li dd.moreInfo {
+	width: 21%;
+	padding-left: 1%;
+	text-align: left;
+}
+
+ul.messageCard li.messageTitle dd.moreInfo {
+	text-align: center;
+}
+
+.detailMsg.resolvedCard p.answerMoreInfo {
+	width: 84% !important;
+	line-height: 32px;
+}
+
+.detailMsg.resolve ul li {
+	min-height: 212px;
+}
+
+
+/*回复框*/
+
+ul.messageCard li.messageDetail.selected dl dd.answerInfo {
+	height: auto !important;
+}
+
+.filterMessage ul li .autocomplete-items {
+	width: 80%;
+	left: 0px;
+	box-sizing: border-box;
+	right: initial;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1358px) {
+	ul.messageCard li.messageDetail dl dd {
+		font-size: 13px;
+	}
+}
+
+.rightMeaaageTab .detailMsg ul li a.applyTicket {
+	display: inline-block;
+	width: 34%;
+	border-radius: 20px;
+	text-align: center;
+	color: #a8acad;
+	background-color: #fbfbf9;
+	box-shadow: -1px 0px 4px #cfcfcd;
+	text-indent: 0px;
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+	float: right;
+}
+
+.rightMeaaageTab .detailMsg ul li a.applyTicket.selected {
+	background-color: #ece8e7;
+	box-shadow: -1px -3px 3px #b8b8b8;
+	color: #9294ff;
+	border-radius: 20px;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard {
+	margin-top: 15px;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li {
+	display: inline-block;
+	margin-right: 4%;
+	margin-bottom: 8px;
+	vertical-align: -webkit-baseline-middle;
+	height: 26px;
+	line-height: 26px;
+	vertical-align: bottom;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li a {
+	display: inline-block;
+	font-size: 13px;
+	color: #7b7b7b;
+	border: solid 1px #d3d3d3;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 20px;
+	height: 24px;
+	line-height: 24px;
+	position: relative;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li a img {
+	position: absolute;
+	right: -5px;
+	top: -6px;
+	display: none;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li a.hover {
+	background-color: #d3d3d3;
+	color: #ffffff;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li.addTitle a {
+	border: none;
+	min-width: 26px;
+	height: 26px;
+	padding: 0px;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li.addTitle a img {
+	display: block !important;
+	width: 26px;
+	height: 26px;
+	right: auto;
+	left: 0px;
+	top: 0px;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li.addTitle a:hover {
+	background-color: transparent;
+	color: transparent;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li.remove a {
+	border: none;
+	min-width: 26px;
+	height: 26px;
+	padding: 0px;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li.remove a img {
+	display: block !important;
+	width: 26px;
+	height: 26px;
+	right: auto;
+	left: 0px;
+	top: 0px;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li.remove a:hover {
+	background-color: transparent;
+	color: transparent;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li.addBox {
+	display: none;
+}
+
+.rightMeaaageTab .detailMsg ul li.questionInfoTxt ul.titleCard li input {
+	box-sizing: border-box;
+	height: 26px;
+	line-height: 26px;
+	border: solid 1px #d3d3d3;
+	border-radius: 20px;
+	outline: none;
+}
+
+.rightMeaaageTab .detailMsg ul li textarea.titleInfo {
+	height: 75px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent {
+	width: 920px;
+	min-height: 400px;
+	padding: 8px;
+	border-radius: 18px;
+	box-shadow: 0px 0px 10px #9299f3;
+	-webkit-box-shadow: 0px 0px 10px #9299f3;
+	position: fixed !important;
+	background-color: #fff !important;
+	z-index: 999;
+	padding-bottom: 30px;
+	position: relative;
+	padding-top: 20px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent a.back {
+	position: absolute;
+	left: 44px;
+	font-size: 16px;
+	color: #9299f3;
+	height: 26px;
+	line-height: 26px;
+	vertical-align: middle;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent a.back img {
+	width: 20px;
+	height: 20px;
+	vertical-align: text-bottom;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent p {
+	height: 30px;
+	line-height: 30px;
+	text-align: right;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent p img {
+	height: 30px;
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent ul.nav {
+	font-size: 0px;
+	border-radius: 8px;
+	margin: 4px 0px 20px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent ul.nav li {
+	display: inline-block;
+	padding: 0px 45px;
+	height: 38px;
+	line-height: 38px;
+	background: #f0f0f0;
+	cursor: pointer;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent ul.nav li:first-child {
+	border-bottom-left-radius: 8px;
+	border-top-left-radius: 8px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent ul.nav li:last-child {
+	border-bottom-right-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent ul.nav li a {
+	display: inline-block;
+	width: 100%;
+	font-size: 16px;
+	color: #666666;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent ul.nav li.selected {
+	background-color: #9295ff;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent ul.nav li.selected a {
+	color: #ffffff;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item {
+	display: none;
+	font-size: 15px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item.selected {
+	display: block;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item form {}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item form ul {
+	font-size: 0px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item form ul li {
+	width: 230px;
+	width: 33%;
+	display: inline-block;
+	position: relative;
+	margin-bottom: 16px;
+	width: 230px;
+	margin-right: 65px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item form ul li:last-child {
+	margin-right: 0px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item span.mark {
+	font-size: 16px;
+	color: #f15a23;
+	display: inline-block;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item span.mark img {
+	position: absolute;
+	width: 80%;
+	width: 4.1%;
+	left: 0px;
+	top: 7px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item span.title {
+	color: #666;
+	font-size: 16px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item span.title.titleOffset {
+	margin-left: 12px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item dl dd {
+	width: 97%;
+	position: relative;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item form ul li:last-child {
+	margin-right: 0px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item input {
+	width: 100%;
+	height: 100%;
+	line-height: 30px;
+	outline: none;
+	border: 0px;
+	font-size: 14px;
+	color: #130c0c;
+	height: 31px;
+	border: 1px solid #ccc;
+	overflow: hidden;
+	border-radius: 4px;
+	margin-top: 10px;
+	padding-left: 8px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item .shippingSpace {
+	font-size: 0px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item .shippingSpace dl {
+	display: inline-block;
+	width: 50%;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item .shippingSpace select {
+	box-sizing: border-box;
+	width: 80%;
+	height: 100%;
+	line-height: 30px;
+	outline: none;
+	border: 0px;
+	font-size: 14px;
+	color: #130c0c;
+	height: 31px;
+	border: 1px solid #ccc;
+	overflow: hidden;
+	border-radius: 4px;
+	margin-top: 10px;
+	padding-left: 8px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item .shippingSpace input {
+	width: 80%;
+	height: 29px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-content {
+	margin: 15px 39px 27px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item li.otherRequest {
+	width: 536px;
+	margin-right: 55px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item a.submit {
+	width: 232px;
+	height: 44px;
+	text-align: center;
+	line-height: 44px;
+	font-size: 18px;
+	color: #fff;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
+	border: 0;
+	background-color: #9295ff;
+	outline: none;
+	display: inline-block;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item dd.roundTrip {
+	width: 516px;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item a.addJourney {
+	width: 810px;
+	height: 36px;
+	line-height: 36px;
+	text-align: left;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-o-border-radius: 6px;
+	color: #9295ff;
+	cursor: pointer;
+	border: 1px dashed #9295ff;
+	padding-left: 12px;
+	margin-bottom: 16px;
+	display: inline-block;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item form ul {
+	position: relative;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item form ul li.remove {
+	position: absolute;
+	top: 30px;
+	right: -30px;
+	width: 32px;
+	cursor: pointer;
+}
+
+.messageBoard .rightMeaaageTab .applyTicketContent .tab-item form ul li.rightOffset {
+	margin-right: 0px;
+}
+
+
+/*确认框    s*/
+
+.confirmUsersInfo {
+	text-align: center !important;
+	vertical-align: middle;
+	width: 290px;
+	height: 266px;
+	padding: 0px;
+	border: solid 2px #9295ff;
+	border-radius: 10px;
+	background-color: #fff;
+	position: fixed;
+	bottom: 30%;
+	left: 49%;
+	box-shadow: 0px 0px 4px #9295ff;
+	overflow: hidden;
+	display: none;
+}
+
+.confirmUsersInfo .confirmTitle {
+	vertical-align: middle;
+	text-align: center !important;
+	color: #8f8f8f;
+	font-size: 32px;
+	border-bottom: solid 1px #b5b5b5;
+	padding-bottom: 24px;
+	margin: 22px 16px 0px 16px;
+}
+
+.confirmUsersInfo .confirmTitle img {
+	width: 110px;
+	height: 110px;
+}
+
+.confirmUsersInfo p.confirmNotice {
+	text-align: center;
+	font-size: 20px;
+	color: #848484;
+	margin-top: 12px;
+}
+
+.confirmUsersInfo .actionBox {
+	font-size: 0px;
+	text-align: center;
+	margin-top: 26px;
+}
+
+.confirmUsersInfo .actionBox button {
+	display: inline-block;
+	width: 50%;
+	margin-left: 0px !important;
+	height: 45px;
+	line-height: 45px;
+	font-size: 16px;
+	padding: 0px;
+	cursor: pointer;
+}
+
+.confirmUsersInfo .actionBox button.actionConfirm {
+	background-color: #9295ff;
+	color: #fff;
+	border-bottom-left-radius: 7px;
+	border-color: #9595ff;
+}
+
+.confirmUsersInfo .actionBox button.actionCancel {
+	background-color: #e3e4ff;
+	color: #9394fe;
+	border-bottom-right-radius: 7px;
+	border-color: #e3e4ff;
+}
+
+
+/*确认框    e*/
+/*模拟textarea*/
+.rightMeaaageTab .detailMsg ul li.moreInfoTxt .moreInfo_content{
+	display: inline-block;
+    width: 94%;
+    min-height: 100px;
+    resize: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: solid 1px #959595;
+    padding: 3%;
+    color: #7b7b7b;
+    font-size: 15px;
+}
+ul.messageCard li.messageDetail dd{
+	line-height: 32px;
+}

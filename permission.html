@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>权限不足</title>
+	</head>
+	<link href="css/style.css" type="text/css" rel="stylesheet" />
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<body>
+		<div class="confirmInfo permission" id="confirmInfoBox">
+			<p class="confirmTitle">
+				<img src="img/confirmInfo.png" />
+			</p>
+			<p class="confirmNotice">
+				权限不足
+			</p>
+			<p class="actionBox">
+				<button class="actionConfirm">
+					确认
+				</button>
+				<button class="actionCancel">
+				取消
+				</button>
+			</p>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	$(function(){
+		permission();
+		function permission(){
+			$(".permission").find("p").find("button").on("click",function(){
+				$(".permission").css("display","none");
+			});
+		}
+	})
+</script>

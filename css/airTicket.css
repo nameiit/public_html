@@ -1,0 +1,3612 @@
+@charset "utf-8";
+
+/*机票部分      s*/
+
+
+/*06-13修改  s*/
+
+.airticketMsg ul.add-msg li input[type="text"],
+.airticketMsg ul.add-msg li input[type="date"],
+.airticketMsg ul.add-msg li select,
+.airticketMsg ul.add-msg li textarea,
+.airticketMsg ul.add-msg li.discountCard dl.discountOption,
+.airticketMsg ul.add-msg li.discountCard dl.exchange,
+.airticketMsg ul.add-msg li.discountCard dl.discountNotice,
+.airticketMsg dl.people-count,
+.airticketMsg dl.ticket-option,
+.airticketMsg ul.add-msg li .roundTripInfo {
+	width: 72% !important;
+	margin-left: 1% !important;
+}
+
+.airticketMsg dl.people-count dd input[type='text'] {
+	width: 50% !important;
+}
+
+
+/*06-13修改  e*/
+
+dl.ticket-option {
+	height: 30px;
+	text-align: left;
+}
+
+dl.ticket-option dd {
+	display: inline-block;
+	font-size: 14px;
+	width: 26%;
+	position: relative;
+	text-indent: 6%;
+	height: 24px;
+	line-height: 24px;
+}
+
+dl.ticket-option dd i {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	border: solid 2px #9295ff;
+	border-radius: 50%;
+	position: absolute;
+	left: 0px;
+	top: 8px;
+	cursor: pointer;
+}
+
+dl.ticket-option dd.option-active {}
+
+dl.ticket-option dd {
+	box-shadow: 0px 0px 4px #cfcfcd;
+	display: inline-block;
+	border-radius: 20px;
+	text-align: center;
+	color: #a8acad;
+	background-color: #fbfbf9;
+	box-shadow: -1px 0px 4px #cfcfcd;
+	text-indent: 0px !important;
+	cursor: pointer;
+	margin-right: 10px;
+}
+
+dl.ticket-option dd.option-active {
+	background-color: #ece8e7;
+	box-shadow: -1px -3px 3px #b8b8b8;
+	color: #9294ff;
+	border-radius: 20px;
+}
+
+dl.ticket-option dd.option-active i {
+	background-color: #fbd608;
+}
+
+dl.people-count {
+	height: 30px;
+	line-height: 30px;
+	text-align: left;
+	font-size: 0px !important;
+}
+
+dl.people-count dd {
+	display: inline-block;
+	width: 33.333% !important;
+	font-size: 14px;
+	position: relative;
+	clear: both;
+	overflow: hidden;
+	height: 30px;
+	line-height: 30px;
+}
+
+dl.people-count dd input[type='text'] {
+	width: 70% !important;
+	margin-left: 0px !important;
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+}
+
+li.ticket-theam {
+	clear: both;
+	overflow: hidden;
+}
+
+
+/*机票更新部分       s*/
+
+.planeTicketsBox li dl dd {
+	width: 6.4% !important;
+}
+
+.dialog-plane dl.ticket-option {
+	width: 77.8% !important;
+	padding: 4px 0px;
+}
+
+.dialog-plane dl.ticket-option dd {
+	width: 26% !important;
+}
+
+.dialog-plane dl.people-count {
+	clear: both;
+	overflow: hidden;
+}
+
+.dialog-plane dl.people-count dd {
+	margin: 0px;
+	height: auto;
+	width: 32.6% !important;
+}
+
+.dialog-plane dl.people-count dd input[type='text'] {
+	width: 61% !important;
+}
+
+.dialog-plane .addClients ul.clients-info li dl dd {
+	width: 100%;
+}
+
+.dialog-plane .addClients ul.clients-info li dl dd input[type="date"] {
+	margin-left: 4% !important;
+	width: 62% !important;
+}
+
+.customerInfo {
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: 0px;
+	padding: 26px 0px !important;
+}
+
+.addClients ul.clients-info {
+	width: 100%;
+	clear: both;
+	overflow: hidden;
+	font-size: 0px;
+	text-align: center;
+	height: 276px;
+}
+
+.addClients ul.clients-info.indiviClientInfo {
+	width: 95%;
+}
+
+.addClients.air-customer ul.clients-info li {
+	width: 49% !important;
+	height: 220px;
+	padding: 0px;
+}
+
+.addClients ul.clients-info li {
+	width: 29.2%;
+	display: inline-block;
+	border-right: dashed 2px #a8aaff;
+	height: 286px;
+	vertical-align: top;
+	padding: 0px 2%;
+	margin-right: 0px;
+	font-size: 14px;
+}
+
+.addClients ul.clients-info li.last-info {
+	border-right: none;
+}
+
+.addClients ul.clients-info li dl {}
+
+.addClients ul.clients-info li dl dd {
+	height: 32px;
+	line-height: 32px;
+	margin-bottom: 17px;
+}
+
+.addClients ul.clients-info li dl dd:last-child {
+	margin-bottom: 0px !important;
+}
+
+.addClients ul.clients-info li dl dd label {
+	display: inline-block;
+	min-width: 92px;
+	min-height: 24px;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: middle;
+	height: 32px;
+	line-height: 32px;
+	width: 30%;
+}
+
+.addClients ul.clients-info li dl dd input[type="text"] {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	width: 62%;
+	margin-left: 4%;
+	border: solid 1px #959595;
+}
+
+.addClients ul.clients-info li dl dd input[type="date"] {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	width: 62%;
+	margin-left: 4%;
+	border: solid 1px #959595;
+}
+
+.addClients ul.clients-info li dl dd select {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	width: 62%;
+	margin-left: 4%;
+	border: solid 1px #959595;
+}
+
+.addClients ul.clients-title {
+	font-size: 0px;
+	clear: both;
+}
+
+.addClients ul.clients-title li {
+	display: inline-block;
+	width: 33%;
+	font-size: 14px;
+	text-align: center;
+}
+
+.addClients ul.clients-title li a {
+	text-align: center;
+	display: inline-block;
+	width: 30%;
+	border-radius: 0px;
+	margin: 0px;
+	margin-bottom: 14px;
+}
+
+.dialog-plane .updateInfo ul.reportInfo li.customerInfoTitle dl dd {
+	width: 13% !important;
+}
+
+.dialog-plane .updateInfo ul.reportInfo li.customerInfo dl dd {
+	width: 13% !important;
+}
+
+a.addClients_update {
+	display: inline-block;
+	padding: 0px 10px;
+	background-color: #9992ff;
+	color: #fff;
+	width: 7%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-radius: 5px;
+	margin-right: 20px;
+	display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	clear: both;
+	overflow: hidden;
+}
+
+.updateDialog .customerInfo.addClients {
+	position: fixed;
+	top: 23%;
+	box-shadow: inset 0px 0px 4px #9299f3;
+	display: none;
+	width: 42%;
+	min-width: 500px;
+	height: 349px;
+}
+
+.updateDialog .addClients.clientsInfoBox ul.clients-info li {
+	height: 270px !important;
+}
+
+.updateDialog .customerInfo.addClients.clientsInfoBox {
+	display: block;
+	position: static;
+	width: auto !important;
+	left: auto !important;
+	right: auto !important;
+	box-shadow: initial;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+.updateDialog .customerInfo.addClients.clientsInfoBox ul.clients-title li {
+	width: 50%;
+}
+
+.updateDialog .addClients.air-customer ul.clients-title li a {
+	margin-top: 0px;
+}
+
+.updateDialog .addClients ul.clients-info li dl dd {
+	width: 100% !important;
+}
+
+.updateInfo .dialog {
+	min-height: auto !important;
+}
+
+.updateDialog .addClients ul.clients-info li {
+	height: 240px;
+}
+
+.close_button#closeAddBox a {
+	border-left: #0px !important;
+	background-color: transparent;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1600px) {
+	.updateDialog .addClients ul.clients-info li dl dd input[type="text"],
+	.updateDialog .addClients ul.clients-info li dl dd input[type="date"],
+	.updateDialog .addClients ul.clients-info li dl dd select {
+		width: 36% !important;
+		min-width: auto !important;
+	}
+	.updateInfo ul.reportInfo li.customerInfo dl dd a.editInfo {
+		width: 100% !important;
+	}
+}
+
+@media only screen and (min-width: 1611px) and (max-width: 2000px) {
+	.updateDialog .addClients ul.clients-info li dl dd input[type="text"],
+	.updateDialog .addClients ul.clients-info li dl dd input[type="date"],
+	.updateDialog .addClients ul.clients-info li dl dd select {
+		width: 50% !important;
+		min-width: auto !important;
+	}
+	.updateInfo ul.reportInfo li.customerInfo dl dd a.editInfo {
+		width: 100% !important;
+	}
+}
+
+.updateDialog .addClients p.confirmAmend,
+.updateDialog .addClients p.confirmAdd {
+	padding: 0px;
+	margin: 0px;
+	height: 32px !important;
+	line-height: 32px !important;
+}
+
+.updateDialog .addClients p.confirmAmend a,
+.updateDialog .addClients p.confirmAdd a {
+	width: 15%;
+}
+
+.updateDialog .addClients ul.clients-info {
+	height: auto !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text input {
+	margin-left: 0px !important;
+}
+
+.updateDialog ul.add-msg li.discountCard dl.discountOption {
+	font-size: 0px !important;
+}
+
+.updateDialog ul.add-msg li.discountCard dl.discountOption dd {
+	margin-right: 6% !important;
+	width: 30% !important;
+}
+
+.updateDialog ul.add-msg li.discountCard dl.discountOption dd:last-child {
+	margin-right: 0px !important;
+}
+
+.updateDialog ul.add-msg li.discountCard dl.exchange dd.discount-text {
+	width: 74% !important;
+}
+
+.updateDialog ul.add-msg li.discountCard dl.exchange dd.discount-apply {
+	width: 26% !important;
+}
+
+.updateDialog .add-msg li.discountCard dl dd.discount-apply a.discountApply {
+	margin-left: 0px !important;
+}
+
+.updateDialog ul.add-msg li.discountCard dl.discountNotice {
+	margin-left: 0px !important;
+	padding-left: 0px !important;
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1440px) {
+	.dialog-plane#airticket-dialog dl.people-count dd {
+		font-size: 10px !important;
+	}
+}
+
+@media only screen and (min-width: 1210px) and (max-width: 1290px) {
+	.dialog-plane#airticket-dialog dl.people-count dd input[type="text"] {
+		margin-left: 0px !important;
+	}
+}
+
+@media only screen and (min-width: 400px) and (max-width: 1200px) {
+	.dialog-plane#airticket-dialog dl.people-count dd input[type="text"] {
+		width: 38% !important;
+		padding-left: 1px
+	}
+}
+
+dl.people-count dd {
+	width: 32.6% !important;
+	padding-left: 1% !important;
+}
+
+dl.people-count dd:first-child {
+	padding-left: 0px !important;
+}
+
+ul.add-msg li.discountCard dl.discountOption {
+	padding-left: 0px !important;
+}
+
+ul.add-msg li.discountCard dl.exchange {
+	padding-left: 0px !important;
+}
+
+ul.add-msg li.discountCard dl.exchange dd.discount-text input {
+	margin-left: 0px !important;
+}
+
+ul.add-msg li.discountCard dl.exchange dd.discount-text {
+	width: 80% !important;
+	display: inline-block;
+}
+
+ul.add-msg li.discountCard dl.exchange dd.discount-apply {
+	text-align: right;
+}
+
+.addClients.air-customer ul.clients-title li {
+	width: 50% !important;
+}
+
+@media only screen and (min-width: 400px) and (max-width: 1200px) {
+	.dialog-plane dl.people-count dd {
+		font-size: 10px !important;
+	}
+}
+
+
+/*机票更新部分       e*/
+
+
+/*机票部分      e*/
+
+#airticket-dialog select {
+	border-radius: initial !important;
+}
+
+ul.add-msg li .roundTripInfo {
+	color: #323232;
+	box-sizing: border-box;
+	background-color: transparent;
+	width: 64% !important;
+	display: inline-block;
+	margin-left: 6px !important;
+	text-align: left;
+	font-size: 0px;
+}
+
+ul.add-msg li .roundTripInfo input[type='text'] {
+	margin-left: 0px !important;
+	display: inline-block;
+	width: 49% !important;
+}
+
+ul.add-msg li .roundTripInfo input[type='text']:last-child {
+	margin-left: 2% !important;
+}
+
+ul.add-msg li input[type='text'].singleTripInfo {
+	display: none;
+}
+
+
+/*行程安排*/
+
+ul.add-msg li .scheduleInfo,
+ul.add-msg li .tourMsg {
+	color: #323232;
+	box-sizing: border-box;
+	background-color: transparent;
+	width: 64% !important;
+	display: inline-block;
+	margin-left: 6px !important;
+	text-align: left;
+	font-size: 0px;
+}
+
+ul.add-msg li .scheduleInfo input[type='text'],
+ul.add-msg li .scheduleInfo input[type='date'] {
+	margin-left: 0px !important;
+	display: inline-block;
+	width: 49% !important;
+}
+
+ul.add-msg li .scheduleInfo input[type='text'] {
+	margin-left: 2% !important;
+}
+
+
+/*更新页面   s*/
+
+.updateDialog .updateForm ul.add-msg li .roundTripInfo {
+	color: #323232;
+	box-sizing: border-box;
+	background-color: transparent;
+	width: 50% !important;
+	display: inline-block;
+	margin-left: 6px !important;
+	text-align: left;
+	font-size: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li .roundTripInfo input[type='text'] {
+	margin-left: 0px !important;
+	display: inline-block;
+	width: 49% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li .roundTripInfo input[type='text']:last-child {
+	margin-left: 2% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li input[type='text'].singleTripInfo {
+	display: none;
+}
+
+
+/*行程安排*/
+
+.dialog-plane ul.add-msg li .scheduleInfo,
+.dialog-plane ul.add-msg li .tourMsg {
+	color: #323232;
+	box-sizing: border-box;
+	background-color: transparent;
+	width: 50% !important;
+	display: inline-block;
+	margin-left: 6px !important;
+	text-align: left;
+	font-size: 0px;
+}
+
+.dialog-plane ul.add-msg li .scheduleInfo input[type='text'],
+.dialog-plane ul.add-msg li .scheduleInfo input[type='date'] {
+	margin-left: 0px !important;
+	display: inline-block;
+	width: 49% !important;
+}
+
+.dialog-plane ul.add-msg li .scheduleInfo input[type='text'] {
+	margin-left: 2% !important;
+}
+
+.dialog-plane ul.add-msg li .tourMsg input[type='text'] {
+	width: 13% !important;
+	margin-left: 0px !important;
+	display: inline-block;
+}
+
+.dialog-plane ul.add-msg li .tourMsg input[type='date'] {
+	width: 30% !important;
+	margin-left: 0px !important;
+	display: inline-block;
+}
+
+ul.add-msg li .tourMsg input[type='text'] {
+	width: 13% !important;
+	margin-left: 0px !important;
+	display: inline-block;
+	margin-right: 1%;
+	padding-left: 0px;
+}
+
+ul.add-msg li .tourMsg input[type='date'] {
+	width: 30% !important;
+	margin-left: 0px !important;
+	display: inline-block;
+}
+
+ul.add-msg li .tourMsg input[type="date"] {
+	margin-right: 1%;
+}
+
+ul.add-msg li .tourMsg span {
+	display: inline-block;
+	font-size: 14px;
+	margin: 0px 4px;
+}
+
+.airticketInfo {
+	position: absolute;
+	right: 0px;
+	top: -30px;
+}
+
+.airticketInfo a {
+	display: inline-block;
+	display: inline-block;
+	width: 24%;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: top;
+	text-align: center;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b6b2af;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+}
+
+.airticketInfo textarea {
+	line-height: 24px;
+	box-sizing: border-box;
+	width: 70%;
+	display: inline-block;
+	vertical-align: middle;
+	border: solid 1px #969696;
+	height: 132px;
+	margin-top: 16px;
+	resize: none;
+	font-size: 14px;
+}
+
+.airticketInfo a.selected {
+	color: #ffffff;
+	text-shadow: 0px 0px 2px #ffffff;
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+
+/*06/12修改*/
+
+.airticketInfo {
+	right: 0px;
+}
+
+.updateDialog .updateForm .airticketInfo {
+	height: 149px !important;
+}
+
+.updateDialog .updateForm .airticketInfo a {
+	height: 26px;
+	line-height: 26px;
+}
+
+.updateDialog .updateForm .airticketInfo textarea {
+	line-height: 26px;
+	height: 117px;
+	resize: none;
+	resize: none;
+}
+
+.airticketInfo {
+	left: -14px;
+	top: -68px;
+	display: inline-block;
+}
+
+.floor .addInfo .cardLeft-individual {
+	margin-top: 40px;
+}
+
+.floor .addInfo .cardRight.info-price-individual {
+	margin-top: 44px !important;
+}
+
+
+/*06-13修改*/
+
+.airticketMsg ul.add-msg li .tourMsg input[type='date'] {
+	width: 33.9% !important;
+	padding-left: 1%;
+	text-align: center;
+}
+
+.airticketMsg ul.add-msg li .tourMsg input[type=date]::-webkit-inner-spin-button {
+	display: none;
+}
+
+.airticketMsg ul.add-msg {
+	padding: 16px 4% !important;
+}
+
+.airticketMsg ul.add-msg li .tourMsg input[type=date]:first-child {
+	margin-right: 1% !important;
+}
+
+.airticketMsg ul.add-msg li label {
+	width: 20% !important;
+}
+
+.airticketMsg ul.add-msg li .tourMsg {
+	width: 76% !important;
+	margin-left: 1% !important;
+}
+
+.updateDialog .updateForm .airticketInfo {
+	width: 52%;
+}
+
+.updateDialog .updateForm ul.add-msg li .tourMsg input[type=date]::-webkit-inner-spin-button {
+	display: none;
+}
+
+.dialog-plane ul.add-msg li .tourMsg input[type='date'] {
+	padding-left: 0px !important;
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1900px) {
+	.dialog-plane#airticket-dialog dl.people-count dd input[type="text"] {
+		width: 36% !important;
+		padding-left: 1px;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1099px) {
+	.dialog-plane#airticket-dialog dl.people-count dd input[type="text"] {
+		width: 28% !important;
+		padding-left: 1px;
+	}
+}
+
+@media only screen and (min-width:1920px) {
+	.dialog-plane ul.add-msg li .scheduleInfo,
+	.dialog-plane ul.add-msg li .tourMsg {
+		width: 78% !important;
+	}
+}
+
+@media only screen and (min-width: 1550px) and (max-width: 1919px) {
+	.dialog-plane ul.add-msg li .scheduleInfo,
+	.dialog-plane ul.add-msg li .tourMsg {
+		width: 70% !important;
+		margin-top: 0px;
+		margin-left: 0px;
+	}
+	.dialog-plane ul.add-msg li .tourMsg input[type='date'] {
+		width: 33% !important;
+	}
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1549px) {
+	.dialog-plane ul.add-msg li .scheduleInfo,
+	.dialog-plane ul.add-msg li .tourMsg {
+		width: 94% !important;
+		margin-top: 10px;
+		margin-left: 0px !important;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1199px) {
+	.dialog-plane ul.add-msg li .scheduleInfo,
+	.dialog-plane ul.add-msg li .tourMsg {
+		width: 94% !important;
+		margin-top: 10px;
+		margin-left: 0px !important;
+	}
+}
+
+
+/*06-14修改*/
+
+.floor .addInfo .cardLeft.itineraryInfo {
+	min-height: auto;
+}
+
+.floor .addInfo .cardLeft.itineraryInfo .airticketInfo {
+	width: 100%;
+	padding: 0px;
+	height: 164px;
+	position: static;
+}
+
+.floor .addInfo .cardLeft.itineraryInfo .airticketInfo a {
+	width: 16%;
+	vertical-align: top;
+	margin-top: 16px;
+}
+
+.floor .addInfo .cardRight.info-date {
+	margin-top: -166px;
+}
+
+.updateDialog .cardRight.info-date {
+	margin-top: -151px !important;
+}
+
+.updateInfo .dialog ul.add-msg li.discountCard dl.discountOption dd {
+	width: 38% !important;
+}
+
+.airticketMsg ul.add-msg li .autocomplete-items {
+	width: 72% !important;
+	box-sizing: border-box;
+	right: 3.2%;
+}
+
+@media only screen and (min-width: 1370px) and (max-width: 1390px) {
+	.airticketMsg ul.add-msg li .autocomplete-items {
+		right: 2.7%;
+	}
+}
+
+@media only screen and (min-width: 1340px) and (max-width: 1369px) {
+	.airticketMsg ul.add-msg li .autocomplete-items {
+		right: 2.5%;
+	}
+}
+
+@media only screen and (min-width: 1310px) and (max-width: 1339px) {
+	.airticketMsg ul.add-msg li .autocomplete-items {
+		right: 2.2%;
+	}
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1309px) {
+	.airticketMsg ul.add-msg li .autocomplete-items {
+		right: 1.8%;
+	}
+}
+
+@media only screen and (min-width: 1250px) and (max-width: 1279px) {
+	.airticketMsg ul.add-msg li .autocomplete-items {
+		right: 1.7%;
+	}
+}
+
+@media only screen and (min-width: 1220px) and (max-width: 1249px) {
+	.airticketMsg ul.add-msg li .autocomplete-items {
+		right: 1.7%;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1219px) {
+	.airticketMsg ul.add-msg li .autocomplete-items {
+		right: 1.3%;
+	}
+}
+
+.airticketAddTab dl.people-count dd.item {
+	padding-left: 14.6% !important;
+	width: 23.6% !important;
+}
+
+.airticketAddTab dl.people-count dd:first-child {
+	width: 23.6% !important;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1200px) {
+	.addClients ul.clients-info li dl dd label {
+		font-size: 13px;
+	}
+}
+
+.updateTab.airTicketUpdateTab ul li.listInvoice {
+	width: 11%;
+}
+
+.updateTab.airTicketUpdateTab ul li dl dd.listInvoice {
+	width: 11% !important;
+}
+
+.airticketMsg ul.add-msg li input[type="date"].startTime,
+.updateDialog .updateForm ul.add-msg li input[type="date"].startTime {
+	width: 40% !important;
+	margin-left: 0px !important;
+}
+
+.airticketMsg ul.add-msg li input[type="text"].airport,
+.updateDialog .updateForm ul.add-msg li input[type="text"].airport {
+	width: 22.5% !important;
+	margin-left: 5% !important;
+}
+
+.airticketMsg ul.add-msg li input[type="text"].airport:last-child,
+
+/*.updateDialog .updateForm ul.add-msg li input[type="text"].airport:last-child {
+	margin-left: 0px !important;
+}*/
+
+.airticketMsg ul.add-msg li span.tourText,
+.updateDialog .updateForm ul.add-msg li span.tourText {
+	display: inline-block;
+	font-size: 14px;
+	color: #6f7073;
+	width: 10%;
+	text-align: center;
+}
+
+.airticketMsg ul.add-msg li div.tour {
+	width: 72% !important;
+	margin-left: 1%;
+	display: inline-block;
+	font-size: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li div.tour {
+	width: 60% !important;
+	font-size: 0px;
+	display: inline-block;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1400px) {
+	.updateDialog .updateForm ul.add-msg li div.tour {
+		width: 62% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li div.tour input[type="text"] {
+		font-size: 12px;
+	}
+}
+
+.airticketMsg ul.add-msg li div.tour input[type="text"] {
+	color: #323232;
+	font-style: normal;
+}
+
+.updateDialog .updateForm ul.add-msg li div.tour input[type="text"] {
+	padding-left: 2% !important;
+	color: #323232;
+	font-style: normal;
+	font-size: 13px;
+}
+
+.airticketMsg ul.add-msg li div.tour input::-webkit-input-placeholder,
+.updateDialog .updateForm ul.add-msg li div.tour input::-webkit-input-placeholder {
+	color: #cac7c7;
+	font-style: italic;
+}
+
+.airticketMsg ul.add-msg li div.tour input::-moz-placeholder,
+.updateDialog .updateForm ul.add-msg li div.tour input::-webkit-input-placeholder {
+	color: #cac7c7;
+	font-style: italic;
+}
+
+.airticketMsg ul.add-msg li div.tour input:-moz-placeholder,
+.updateDialog .updateForm ul.add-msg li div.tour input::-webkit-input-placeholder {
+	color: #cac7c7;
+	font-style: italic;
+}
+
+.airticketMsg ul.add-msg li div.tour input:-ms-input-placeholder,
+.updateDialog .updateForm ul.add-msg li div.tour input::-webkit-input-placeholder {
+	color: #cac7c7;
+	font-style: italic;
+}
+
+.floor .addInfo .cardLeft.itineraryInfo .airticketInfo .btnArea {
+	display: inline-block;
+	width: 20%;
+	vertical-align: top;
+	text-align: right;
+}
+
+.floor .addInfo .cardLeft.itineraryInfo .airticketInfo .btnArea a {
+	width: 80%;
+}
+
+.addClients ul.clients-info li dl dd.requiredItem label::after {
+	content: '*';
+	background: url(../img/required.png) center center no-repeat;
+	background-size: contain;
+	width: 9px;
+	height: 9px;
+	color: transparent;
+	position: absolute;
+	right: -22%;
+	top: 11px;
+}
+
+.addClients ul.clients-info li dl dd.requiredItem label {
+	position: relative;
+}
+
+.airticketMsg ul.add-msg li input[type="text"].flightNum,
+.updateDialog .updateForm ul.add-msg li input[type="text"].flightNum {
+	width: 25% !important;
+	padding-left: 4px;
+	margin-left: 0px !important;
+}
+
+.airticketMsg ul.add-msg li input[type="text"].airport,
+.updateDialog .updateForm ul.add-msg li input[type="text"].airport {
+	width: 12.5%;
+}
+
+.airticketMsg ul.add-msg li input[type="date"].startTime,
+.updateDialog .updateForm ul.add-msg li input[type="date"].startTime {
+	margin-left: 1% !important;
+	padding-left: 4px !important;
+}
+
+.airticketMsg ul.add-msg li input[type="text"].airport,
+.updateDialog .updateForm ul.add-msg li input[type="text"].airport {
+	margin-left: 1% !important;
+	width: 33% !important;
+	text-align: left !important;
+	padding-left: 4px !important;
+}
+
+.updateDialog .formAction li.refunded {
+	background-color: #CCCCCC;
+}
+
+.updateDialog .formAction li.sendInvoice {
+	background-color: #eca28a;
+	min-width: 100px;
+	margin-right: 0px;
+	position: relative;
+	overflow: initial;
+}
+
+.updateDialog .formAction {
+	width: 93.5% !important;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox {
+	min-width: 342px;
+	min-height: 94px;
+	border: solid 1px #9299f3;
+	box-shadow: 0px 0px 10px #9299f3;
+	-webkit-box-shadow: 0px 0px 10px #9299f3;
+	position: absolute;
+	left: -342px;
+	top: 0px;
+	z-index: 999;
+	left: -374px;
+	top: -32px;
+	font-size: 14px;
+	color: #333;
+	line-height: 28px;
+	background: #ffffff;
+	position: relative;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	display: inline-block;
+	height: auto;
+	clear: both;
+	overflow: initial;
+	display: none;
+}
+
+.updateDialog .formAction {
+	overflow: initial !important;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox:before,
+.updateDialog .formAction li.sendInvoice .sendBox:after {
+	content: ' ';
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 20px solid #9299f3;
+	position: absolute;
+	top: 28%;
+	right: -20px;
+	/*background: url(../img/tips_icon.png) no-repeat;*/
+}
+
+
+/*.updateDialog .formAction li.sendInvoice .sendBox.test:before,
+.updateDialog .formAction li.sendInvoice .sendBox.test:after {
+	content: ' ';
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 20px solid #9299f3;
+	position: absolute;
+	right: -20px;
+}*/
+
+.updateDialog .formAction li.sendInvoice .sendBox:after {
+	border-left: 20px solid #ffffff;
+	right: -17px;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul {
+	display: inline-block;
+	width: 92%;
+	padding: 10px 14px;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul li {
+	display: inline-block;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	background-color: transparent;
+	height: auto;
+	font-size: 0px;
+	text-align: left;
+	border-radius: 0px;
+	height: 34px;
+	line-height: 34px;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul li.sendBtn {
+	vertical-align: bottom;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul li input {
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #d3d3d3;
+	width: 270px;
+	display: inline-block;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul li img {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul li a {
+	display: inline-block;
+	width: 122px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul li a.sendMailBtn {
+	margin-right: 24px;
+	border-color: #9295ff !important;
+	background-color: #9295ff !important;
+	color: #fff !important;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul li a.cancelBtn {
+	border: 1px solid #dedede;
+	background-color: #dedede;
+	color: #333;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul li input[type="button"] {
+	display: inline-block;
+	width: 122px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	border-radius: 5px;
+	box-sizing: border-box;
+	cursor: pointer;
+	outline: none;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul li input[type="button"].sendMailBtn {
+	margin-right: 24px;
+	border-color: #9295ff !important;
+	background-color: #9295ff !important;
+	color: #fff !important;
+}
+
+.updateDialog .formAction li.sendInvoice .sendBox ul li input[type="button"].cancelBtn {
+	border: 1px solid #dedede;
+	background-color: #dedede;
+	color: #333;
+}
+
+.layui-layer-shade {
+	background-color: transparent !important;
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+	border-color: #9295ff !important;
+	background-color: #9295ff !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.requiredItem label::after {
+	right: -12% !important;
+}
+
+ul.add-msg li label.tips {
+	background: transparent !important;
+	border: none !important;
+	text-align: left;
+}
+
+ul.add-msg li {
+	clear: both;
+}
+
+ul.add-msg li.exchangeRate {
+	font-size: 14px;
+}
+
+ul.add-msg li.exchangeRate span {
+	display: inline-block;
+	width: 72% !important;
+	text-align: left;
+	padding-left: 4px;
+}
+
+ul.add-msg li.exchangeRate span input[type='text'] {
+	width: 80px !important;
+	text-align: center;
+	padding-left: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li {
+	clear: both;
+}
+
+.updateDialog .updateForm ul.add-msg li.exchangeRate {
+	font-size: 14px;
+}
+
+.updateDialog .updateForm ul.add-msg li.exchangeRate span {
+	display: inline-block;
+	width: 70% !important;
+	text-align: left;
+	padding-left: 4px;
+	color: #333333
+}
+
+.updateDialog .updateForm ul.add-msg li.exchangeRate span input[type='text'] {
+	width: 80px !important;
+	text-align: center;
+	padding-left: 0px;
+}
+
+ul.add-msg li.list_currency {
+	font-size: 0px;
+}
+
+ul.add-msg li.list_currency input[type='text'] {
+	width: 36% !important;
+}
+
+ul.add-msg li.list_currency select {
+	width: 34% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_currency {
+	font-size: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_currency input[type='text'] {
+	width: 25% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_currency select {
+	width: 23% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+}
+
+
+/*折扣*/
+
+ul.add-msg li.discountCard dl.exchange dd.discount-text select {
+	display: none;
+}
+
+ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency {
+	font-size: 0px;
+}
+
+ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency input[type="text"] {
+	width: 45% !important;
+}
+
+ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency select {
+	width: 45% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text select {
+	display: none;
+}
+
+.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency {
+	font-size: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency input[type="text"] {
+	width: 45% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency select {
+	width: 45% !important;
+	min-width: auto;
+	padding-left: 0px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.updateDialog .updateForm ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency select {
+		width: 54% !important;
+		font-size: 12px;
+		margin-left: 1px !important;
+	}
+}
+
+ul.add-msg li.list_account {
+	font-size: 0px;
+}
+
+ul.add-msg li.list_account input[type="text"] {
+	width: 36% !important;
+}
+
+ul.add-msg li.list_account span {
+	display: inline-block;
+	width: 34% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	color: #6f7073;
+	text-align: left;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account {
+	font-size: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account input[type="text"] {
+	width: 36% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account span {
+	display: inline-block;
+	width: 32% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	color: #6f7073;
+	text-align: left;
+}
+
+.updateTab.airTicketUpdateTab ul li.listNum {
+	width: 5% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li.listCreatTime {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li.listLocation {
+	width: 10.8% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li.listInvoice {
+	width: 12% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li.listPayment {
+	width: 11% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li.listCurrency {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li.listProfit {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li.listPrice {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li.listCost {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li.listDiscount {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab.individualUpdateTab ul li dl dd.listNum {
+	width: 5% !important;
+}
+
+.updateTab.airTicketUpdateTab.individualUpdateTab ul li dl dd.listCreatTime {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab.individualUpdateTab ul li dl dd.listLocation {
+	width: 10.8% !important;
+}
+
+.updateTab.airTicketUpdateTab.individualUpdateTab ul li dl dd.listInvoice {
+	width: 12% !important;
+}
+
+.updateTab.airTicketUpdateTab.individualUpdateTab ul li dl dd.listPayment {
+	width: 11% !important;
+}
+
+.updateTab.airTicketUpdateTab.individualUpdateTab ul li dl dd.listCurrency {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab.individualUpdateTab ul li dl dd.listProfit {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab.individualUpdateTab ul li dl dd.listPrice {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab.individualUpdateTab ul li dl dd.listCost {
+	width: 10% !important;
+}
+
+.updateTab.airTicketUpdateTab.individualUpdateTab ul li dl dd.listDiscount {
+	width: 10% !important;
+}
+
+ul.add-msg li.list_cost {
+	font-size: 15px;
+}
+
+ul.add-msg li.list_cost input[type='text'] {
+	width: 36% !important;
+}
+
+ul.add-msg li.list_cost span {
+	width: 34% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	display: inline-block;
+	text-align: left;
+	height: 30px;
+	line-height: 30px;
+	font-size: 13px;
+	color: #a8acad;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_cost {
+	font-size: 15px;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_cost input[type='text'] {
+	width: 25% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_cost span {
+	width: 23% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	display: inline-block;
+	text-align: left;
+	height: 26px;
+	line-height: 26px;
+	font-size: 13px;
+	color: #a8acad;
+}
+
+ul.add-msg li.mcoMarkedWord span {
+	width: 72% !important;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.updateDialog .updateForm ul.add-msg li.list_cost span {
+		width: 30% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li.mcoMarkedWord span {
+		width: 60% !important;
+	}
+	ul.add-msg li.payment-type img {
+		width: 26px !important;
+		height: 26px !important;
+		top: 3px;
+		margin-left: 3px !important;
+	}
+}
+
+.updateDialog .updateForm ul.add-msg li label {
+	height: 26px;
+	line-height: 26px;
+}
+
+ul.add-msg li.list_cost a {
+	width: 34% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	display: inline-block;
+	text-align: center;
+	height: 29px;
+	line-height: 29px;
+	border-radius: 4px;
+	margin-left: 2%;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	display: inline-block;
+	color: #9295ff;
+}
+
+ul.add-msg li.list_cost a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_cost a {
+	width: 23% !important;
+	margin-left: 2% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_cost {
+	font-size: 0px;
+}
+
+.updateDialog .formAction li.requestReceive {
+	margin-right: 2px;
+	background-color: transparent;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	display: inline-block;
+	height: 26px;
+	line-height: 26px;
+	border-radius: 50px;
+	width: 18%;
+	position: relative;
+	vertical-align: top;
+}
+
+.updateDialog .formAction li.requestReceive a {
+	display: inline-block;
+	color: #9295ff;
+	height: 30px;
+	line-height: 30px;
+}
+
+.updateDialog .formAction li.requestReceive a img {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	display: none;
+}
+
+.updateDialog .formAction li.requestReceive.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	height: 30px;
+}
+
+.updateDialog .formAction li.requestReceive.selected a {
+	color: #f88032;
+}
+
+.confirmRequest {
+	text-align: center !important;
+	vertical-align: middle;
+	width: 290px;
+	min-height: 266px;
+	padding: 0px;
+	border: solid 2px #9295ff;
+	border-radius: 10px;
+	background-color: #fff;
+	position: fixed;
+	bottom: 30%;
+	left: 49%;
+	box-shadow: 0px 0px 4px #9295ff;
+	overflow: hidden;
+	display: none;
+}
+
+.confirmRequest p input {
+	border: solid 1px #969696;
+	outline: none;
+	height: 26px;
+	line-height: 26px;
+	width: 150.5px;
+	box-sizing: border-box;
+	margin-top: 12px;
+	display: inline-block;
+	width: 47%;
+	vertical-align: bottom;
+	margin-left: 2%;
+}
+
+.confirmRequest p select {
+	border: solid 1px #969696;
+	outline: none;
+	display: inline-block;
+	width: 47%;
+	height: 26px;
+	line-height: 26px;
+	border-radius: 0px;
+	vertical-align: bottom;
+	margin-right: 2%;
+}
+
+.confirmRequest p.notice_content {
+	font-size: 0px;
+}
+
+.confirmRequest .confirmTitle {
+	vertical-align: middle;
+	text-align: center !important;
+	color: #8f8f8f;
+	font-size: 32px;
+	border-bottom: solid 1px #b5b5b5;
+	padding-bottom: 24px;
+	margin: 22px 16px 0px 16px;
+}
+
+.confirmRequest .confirmTitle img {
+	width: 110px;
+	height: 110px;
+}
+
+.confirmRequest p.confirmNotice {
+	text-align: center;
+	font-size: 20px;
+	color: #848484;
+	margin-top: 12px;
+}
+
+.confirmRequest .actionBox {
+	font-size: 0px;
+	text-align: center;
+	margin-top: 26px;
+}
+
+.confirmRequest .actionBox button {
+	display: inline-block;
+	width: 50%;
+	margin-left: 0px !important;
+	height: 45px;
+	line-height: 45px;
+	font-size: 16px;
+	padding: 0px;
+	cursor: pointer;
+}
+
+.confirmRequest .actionBox button.actionConfirm {
+	background-color: #9295ff;
+	color: #fff;
+	border-bottom-left-radius: 7px;
+	border-color: #9595ff;
+}
+
+.confirmRequest .actionBox button.actionCancel {
+	background-color: #e3e4ff;
+	color: #9394fe;
+	border-bottom-right-radius: 7px;
+	border-color: #e3e4ff;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.updateDialog .formAction li.requestReceive {
+		width: 26%;
+	}
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1680px) {
+	.updateDialog .formAction li.requestReceive {
+		width: 20%;
+	}
+}
+
+.updateDialog .formAction li.sendInvoice {
+	clear: left;
+	margin-right: 10px;
+}
+
+.confirmRequest {
+	overflow: initial;
+}
+
+.confirmRequest .autocomplete-items {
+	right: 0px;
+	left: 151px;
+	box-sizing: border-box;
+	width: 136px;
+}
+
+.airticketMsg ul.add-msg li div.tour {
+	text-align: left;
+}
+
+.airticketMsg ul.add-msg li input[type="text"].airport,
+.updateDialog .updateForm ul.add-msg li input[type="text"].airport {
+	width: 23% !important;
+	min-width: 78px;
+}
+
+.updateDialog .updateForm ul.add-msg li div.tour input {
+	vertical-align: bottom;
+}
+
+.airticketMsg ul.add-msg li div.tour input {
+	vertical-align: bottom;
+}
+
+.airticketMsg ul.add-msg li div.tour {
+	width: 60% !important;
+	margin-left: 4%;
+}
+
+.airticketMsg ul.add-msg li {
+	min-height: 32px;
+}
+
+.updateDialog .updateForm ul.add-msg li {
+	min-height: 26px;
+	margin-left: 2% !important;
+}
+
+.airticketMsg ul.add-msg li img {
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+}
+
+ul.add-msg li.list_cost {
+	font-size: 0px;
+}
+
+.updateDialog .updateForm .cardRight.info-date ul.add-msg li img {
+	width: 26px;
+	height: 26px;
+	vertical-align: top;
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1440px) {
+	.updateDialog .updateForm ul.add-msg li div.tour {
+		width: 72% !important;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.airticketMsg ul.add-msg li div.tour {
+		width: 58% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li div.tour {
+		width: 72% !important;
+	}
+}
+
+.airticketMsg ul.add-msg li input[type="text"].flightNum {
+	width: 35% !important;
+}
+
+.airticketMsg ul.add-msg li input[type="date"].startTime {
+	width: 38% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li input[type="text"].flightNum {
+	width: 30% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li input[type="date"].startTime {
+	width: 41% !important;
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1440px) {
+	.airticketMsg ul.add-msg li input[type="text"].flightNum {
+		width: 32% !important;
+	}
+	.airticketMsg ul.add-msg li input[type="date"].startTime {
+		width: 38% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li input[type="text"].flightNum {
+		width: 30% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li input[type="date"].startTime {
+		width: 42% !important;
+	}
+	/*.updateDialog .updateForm ul.add-msg li {
+   		 margin-left: 2% !important;
+	}*/
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 1680px) {
+	.airticketMsg ul.add-msg li input[type="text"].flightNum {
+		width: 32% !important;
+	}
+	.airticketMsg ul.add-msg li input[type="date"].startTime {
+		width: 38% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li input[type="text"].flightNum {
+		width: 30% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li input[type="date"].startTime {
+		width: 42% !important;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.airticketMsg ul.add-msg li input[type="text"].flightNum {
+		width: 30% !important;
+	}
+	.airticketMsg ul.add-msg li input[type="date"].startTime {
+		width: 38% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li input[type="text"].flightNum {
+		width: 30% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li input[type="date"].startTime {
+		width: 35% !important;
+	}
+}
+
+ul.add-msg li.requiredItem input.error {
+	border-color: #d81e06;
+}
+
+.error {
+	border: solid 1px #d81e06 !important;
+}
+
+.airticketAddTab dl.people-count dd.item {
+	padding-left: 1.86% !important;
+	width: 23.6% !important;
+}
+
+.dialog-plane dl.people-count dd {
+	margin: 0px;
+	height: auto;
+	width: 24.2% !important;
+	vertical-align: top;
+	clear: both;
+	overflow: hidden;
+	font-size: 12px !important;
+}
+
+ul.add-msg li.payment-type div.payment {
+	width: 72% !important;
+	margin-left: 1% !important;
+	display: inline-block;
+	font-size: 0px;
+	text-align: left;
+}
+
+
+/*ul.add-msg li.payment-type button{
+	height: 30px;
+	line-height: 30px;
+	padding: 0px;
+}*/
+
+ul.add-msg li.payment-type div.payment i {
+	font-style: normal;
+}
+
+ul.add-msg li.payment-type div.payment .area {
+	display: inline-block;
+	width: 16%;
+	text-align: left;
+	height: 30px;
+	line-height: 30px;
+}
+
+
+/*ul.add-msg li.payment-type div.payment .area button{
+	width: 100%;
+}*/
+
+ul.add-msg li.payment-type div.payment .paymentMethod {
+	display: inline-block;
+	width: 84%;
+	text-align: left;
+	height: 30px;
+	line-height: 30px;
+}
+
+ul.add-msg li.payment-type div.payment .btn-default {
+	border: solid 1px #969696;
+	border-radius: 0px;
+	height: 30px;
+	padding: 0px 10%;
+	box-sizing: border-box;
+}
+
+ul.add-msg li.payment-type.execute .executeItem {
+	width: 16%;
+	text-align: left;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+
+ul.add-msg li.payment-type.execute input.other {
+	display: inline-block;
+	width: 82% !important;
+	text-align: left;
+	margin-left: 2% !important;
+	padding-left: 0px !important;
+	vertical-align: bottom;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	display: none;
+}
+
+ul.add-msg .mcoList {
+	display: none;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type div.payment .btn-default {
+	height: 26px;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type div.payment {
+	width: 50% !important;
+	margin-left: 6px !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type div.payment .paymentMethod {
+	width: 71%;
+	margin-left: 4%;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type.execute input.other {
+	width: 60% !important;
+	margin-left: 4% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type .dropdown-menu li {
+	margin-left: 0px !important;
+	margin: 0px !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type div.payment .area {
+	width: 25%;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type.execute .executeItem {
+	width: 36%;
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1440px) {
+	.updateDialog .updateForm .dropdown-menu {
+		min-width: 90px;
+	}
+}
+
+@media only screen and (min-width: 1500px) and (max-width: 1600px) {
+	.updateDialog .updateForm ul.add-msg li div.tour {
+		width: 63% !important;
+	}
+}
+
+.updateDialog .updateForm ul.add-msg li.mcoInvoice {
+	height: initial;
+	clear: both;
+	overflow: hidden;
+}
+
+.updateDialog .updateForm ul.add-msg li.mcoInvoice label {
+	height: 42px;
+	line-height: 20px;
+}
+
+.updateDialog .updateForm ul.add-msg li input[type="date"]::-webkit-inner-spin-button {
+	display: none;
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1366px) {
+	.updateDialog .updateForm ul.add-msg li input[type="date"]::-webkit-calendar-picker-indicator {
+		width: 6px;
+		height: 6px;
+	}
+	.updateDialog .updateForm ul.add-msg li input[type="date"]::-webkit-clear-button {
+		display: none;
+	}
+	.updateDialog .updateForm ul.add-msg li input[type="date"] {
+		font-size: 12px !important;
+	}
+}
+
+
+/*支付模块      s*/
+
+ul.add-msg li.payment-type.areaInfo div.payment,
+ul.add-msg li.payment-type.paymentMethodInfo div.payment,
+ul.add-msg li.payment-type.companyInfor div.payment {
+	vertical-align: top;
+}
+
+ul.add-msg li.payment-type.areaInfo .area,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod,
+ul.add-msg li.payment-type .creditCardCompanies {
+	width: 100% !important;
+	text-align: left !important;
+}
+
+ul.add-msg li.payment-type.areaInfo .area .btn-default,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod .btn-default,
+ul.add-msg li.payment-type .creditCardCompanies .btn-default {
+	width: 100% !important;
+	position: relative !important;
+	text-align: left !important;
+	padding: 0px 10px !important;
+}
+
+ul.add-msg li.payment-type.areaInfo .area .btn-default span.caret,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod .btn-default span.caret,
+ul.add-msg li.payment-type .creditCardCompanies .btn-default span.caret {
+	right: 10px !important;
+	position: absolute !important;
+	top: 13px !important;
+}
+
+ul.add-msg li.payment-type.areaInfo .area ul.dropdown-menu,
+ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod ul.dropdown-menu,
+ul.add-msg li.payment-type .creditCardCompanies ul.dropdown-menu {
+	width: 100%;
+}
+
+ul.add-msg li.list_currency .payment.currency_type {
+	width: 34% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency {
+	width: 100% !important;
+	text-align: left !important;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency .btn-default {
+	width: 100% !important;
+	position: relative !important;
+	text-align: left !important;
+	padding: 0px 10px !important;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 0px;
+	border: solid 1px #969696;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency .btn-default span.caret {
+	right: 10px !important;
+	position: absolute !important;
+	top: 13px !important;
+}
+
+ul.add-msg li.list_currency .payment.currency_type .currency ul.dropdown-menu {
+	width: 100%;
+}
+
+ul.add-msg li.list_account.profitInfor span,
+ul.add-msg li.list_account.rate span {
+	visibility: hidden;
+}
+
+
+/*支付模块      e*/
+
+div.notesInfor {
+	min-height: 96px;
+	border: solid 1px #969696;
+	outline: none;
+	padding-left: 10px;
+	color: #323232;
+	font-size: 14px;
+	line-height: 30px;
+	box-sizing: border-box;
+	width: 72% !important;
+	display: inline-block;
+	margin-left: 0px !important;
+	margin-left: 6px !important;
+	text-align: left;
+}
+
+
+/*订单关联    s*/
+
+.ordersAssociated {
+	margin-top: 40px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox {
+	padding-left: 10px;
+	height: 24px;
+	line-height: 24px;
+	margin-top: 16px;
+	margin-bottom: 36px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label {
+	color: #7776c6;
+	font-size: 15px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label::after {
+	display: inline-block;
+	position: absolute;
+	left: 0px !important;
+	top: 0px !important;
+	margin-left: -18px !important;
+	padding-left: 3px;
+	font-size: 14px !important;
+	color: #555555;
+	width: 14px !important;
+	height: 14px !important;
+	padding: 1px !important;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label::before {
+	width: 20px;
+	height: 20px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox.checkbox-success input[type="checkbox"]:checked+label::before {
+	background-color: #ffffff !important;
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox.checkbox label::before {
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox.checkbox-success input[type="checkbox"]:checked+label::after {
+	color: #9295ff !important;
+}
+
+ul.add-msg li.systemNum.list_currency input {
+	width: 52% !important;
+}
+
+ul.add-msg li.systemNum a {
+	display: inline-block;
+	width: 18%;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: top;
+	text-align: center;
+	box-shadow: inset 0px 0px 4px #c8c8c8;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b8b8b8;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	background-color: #ece8e4;
+	margin-left: 2%;
+	background: url(../img/btn.png) center center no-repeat;
+	background-size: 100%;
+}
+
+ul.add-msg li.systemNum a.selected {
+	color: #878aec;
+	box-shadow: inset 0px 6px 10px #B8B8B8;
+}
+
+ul.add-msg li.list_currency.systemNum {
+	margin-bottom: 0px;
+}
+
+ul.add-msg div.systemNumTab {
+	border: solid 1px #d2d2d2;
+	display: none;
+	margin-top: 10px;
+}
+
+ul.add-msg div.systemNumTab li {}
+
+ul.add-msg div.systemNumTab li dl {
+	font-size: 0px;
+}
+
+ul.add-msg div.systemNumTab li.tab_title {
+	border: 0px;
+	background-color: #9295ff;
+	margin-bottom: 0px;
+	margin-left: 0px !important;
+}
+
+ul.add-msg div.systemNumTab li.tab_title dl dd {
+	line-height: 32px !important;
+}
+
+ul.add-msg div.systemNumTab li.tab_content dl dd {
+	height: 26px;
+	line-height: 26px !important;
+}
+
+ul.add-msg div.systemNumTab li.tab_content {
+	margin-left: 0px !important;
+}
+
+ul.add-msg div.systemNumTab li.tab_content dl {
+	height: 26px !important;
+	line-height: 26px !important;
+}
+
+ul.add-msg div.systemNumTab li.tab_content {
+	margin-bottom: 0px;
+	border-bottom: solid 1px #d2d2d2;
+}
+
+ul.add-msg div.systemNumTab li.tab_content:last-child {
+	border-bottom: 0px;
+}
+
+ul.add-msg div.systemNumTab li.tab_title dl {}
+
+ul.add-msg div.systemNumTab li.tab_title dl dd {
+	color: #ffffff;
+}
+
+ul.add-msg div.systemNumTab li dl dd {
+	font-size: 14px;
+	color: #646464;
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	border-right: solid 1px #d2d2d2;
+	text-align: center;
+	vertical-align: middle;
+}
+
+ul.add-msg div.systemNumTab li dl dd:last-child {
+	border-right: 0px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo {
+	width: 11% !important;
+}
+
+ul.add-msg div.systemNumTab li dl dd.numberInfo {
+	/*width: 24%;*/
+	width: 18% !important;
+}
+
+ul.add-msg div.systemNumTab li dl dd.salesInfo {
+	/*width: 44.2%;*/
+	width: 38.2% !important;
+}
+
+ul.add-msg div.systemNumTab li dl dd.typeInfo {
+	width: 20% !important;
+}
+
+
+/*10.24 s*/
+
+ul.add-msg div.systemNumTab li dl dd.number {
+	width: 31% !important;
+}
+
+ul.add-msg div.systemNumTab li dl dd.number a {
+	text-decoration: underline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #0b6623;
+	display: inline-block;
+	width: 45% !important;
+	cursor: pointer;
+}
+
+ul.add-msg div.systemNumTab li.current {
+	border: solid 3px #e69138 !important;
+	width: 98.9% !important;
+}
+
+ul.add-msg div.systemNumTab li.current dl dd.number a {
+	width: 45% !important;
+}
+
+ul.add-msg div.systemNumTab li.current dl.unfold dd.number a {
+	width: 47% !important;
+}
+
+ul.add-msg div.systemNumTab li.current dl {
+	border-bottom: solid 1px #d2d2d2;
+}
+
+ul.add-msg div.systemNumTab li.current dl:last-child {
+	border-bottom: 0px;
+}
+
+
+/*10.24 e*/
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox {
+	margin: 0px;
+	height: 0px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label {
+	width: 0px !important;
+	min-width: initial;
+	border: 0px;
+	padding: 0px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label::before {
+	background-color: #ffffff !important;
+	border-color: #7776c6 !important;
+	border: solid 2px !important;
+	left: 3px;
+	top: 3px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo .checkbox input[type="checkbox"]:checked+label::after {
+	top: -1px !important;
+	left: 3px !important;
+}
+
+
+/*订单关联    e*/
+
+
+/*基本信息    s*/
+
+.addClients ul.clients-info li dl.people-count {
+	width: 51% !important;
+	margin-left: 4% !important;
+	vertical-align: top;
+}
+
+.addClients ul.clients-info li dl.people-count dd {
+	text-align: center;
+}
+
+.addClients ul.clients-info li dl.people-count dd.item {
+	margin-bottom: 17px !important;
+}
+
+.addClients ul.clients-info li dl.people-count dd input {
+	text-align: center;
+}
+
+.addClients ul.clients-info li dl.people-count dd.item input {}
+
+.addClients ul.clients-info {
+	height: auto !important;
+	overflow: initial !important;
+}
+
+.addClients.air-customer ul.clients-info li {
+	height: auto !important;
+}
+
+
+/*基本信息    e*/
+
+
+/*更新页面    s*/
+
+.updateDialog .updateForm ul.add-msg li div.notesInfor {
+	width: 50% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_currency .payment.currency_type {
+	width: 23% !important;
+	height: 26px;
+	line-height: 26px;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_currency .payment.currency_type .currency .btn-default {
+	height: 26px;
+	line-height: 26px;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type div.payment .paymentMethod {
+	margin-left: 0px;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account input[type="text"] {
+	width: 25% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account span {
+	visibility: hidden;
+}
+
+.updateDialog .updateForm .addClients ul.clients-info li dl.people-count {
+	width: 50% !important;
+	height: 32px;
+	line-height: 32px;
+	vertical-align: top;
+}
+
+.updateDialog .updateForm dl.people-count dd.item {
+	padding-left: 1.86% !important;
+	width: 23.6% !important;
+}
+
+.updateDialog .updateForm .addClients ul.clients-info li dl.people-count dd {
+	text-align: center;
+	line-height: 32px !important;
+	height: 32px !important;
+}
+
+.updateDialog .updateForm dl.people-count dd:first-child {
+	width: 23.6% !important;
+}
+
+.updateDialog .updateForm .addClients ul.clients-info {
+	height: auto !important;
+	overflow: initial !important;
+}
+
+.updateDialog .updateForm .addClients.air-customer ul.clients-info li {
+	height: auto !important;
+}
+
+.updateDialog .updateForm ul.add-msg div.systemNumTab li dl dd.number a {
+	width: 54% !important;
+}
+
+.updateDialog .updateForm ul.add-msg div.systemNumTab li.current {
+	width: 98.9% !important;
+}
+
+.updateDialog .updateForm ul.add-msg div.systemNumTab li.current dl dd.number a {
+	width: 54% !important;
+}
+
+.updateDialog .updateForm ul.add-msg div.systemNumTab li.current dl.unfold dd.number a {
+	width: 56% !important;
+}
+
+
+/*更新页面    e*/
+
+
+/*系统搜索   s*/
+
+.systematicSearch {
+	position: relative;
+	margin-top: 48px !important;
+	width: 60.54%;
+}
+
+.systematicSearch label.markMsg {
+	display: inline-block;
+	width: 98px;
+	height: 24px;
+	line-height: 24px;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 13px;
+	position: absolute;
+	left: 0px;
+	top: -24px;
+	text-align: center;
+}
+
+.systematicSearch label.markMsg i {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background-color: #fff;
+	border-radius: 50px;
+	position: absolute;
+	left: 12px;
+	top: 9px;
+}
+
+.systematicSearch ul.searchFloor {
+	width: 96%;
+	background-color: #ffffff;
+	/*padding: 15px;*/
+	border: solid 1px #d2d2d2;
+	margin-bottom: 24px;
+	border-radius: 4px;
+	min-width: 913px;
+	padding: 15px 2% 15px 2%;
+}
+
+.systematicSearch ul.searchFloor li {
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 12px;
+	font-size: 0px;
+}
+
+.systematicSearch ul.searchFloor li div {
+	display: inline-block;
+}
+
+.systematicSearch ul.searchFloor li div.leftFloor {
+	width: 35%;
+	vertical-align: top;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor {
+	width: 65%;
+	vertical-align: top;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor input[type="date"] {
+	width: 15%;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor input[type="date"] {
+	margin-left: 0px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor span {
+	display: inline-block;
+	font-size: 22px;
+	color: #6f7073;
+	width: 4%;
+	text-align: center;
+	height: 30px;
+	line-height: 26px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor.invoiceInfo input[type="text"]:last-child {
+	margin-left: 0px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor.invoiceInfo label {
+	vertical-align: top;
+	width: 14.1%;
+	margin-right: 2%;
+}
+
+
+/*.systematicSearch ul.searchFloor li div.rightFloor.invoiceInfo input[type="text"] {
+	width: 15%;
+	margin-left: 1.2%;
+}*/
+
+.systematicSearch ul.searchFloor li div.rightFloor.invoiceInfo span {}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox {
+	margin: 0px;
+	height: 30px;
+	vertical-align: top;
+	/*width: 20%;*/
+	padding: 0px 0px 0px 7.8% !important;
+	padding-left: 0px;
+	text-align: center;
+	width: auto;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox label i {
+	font-style: initial;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime {
+	vertical-align: bottom;
+	display: none;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime input[type='date'] {
+	width: 43.6% !important;
+	margin-left: 0px !important;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime span {
+	width: 10% !important;
+	display: inline-block;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox input {
+	height: initial;
+	line-height: initial;
+	display: none;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox label {
+	background-color: transparent;
+	border: 0px;
+	font-weight: initial;
+	color: #7776c6;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox label::before {
+	top: 7px;
+	left: -5px !important;
+	width: 16px;
+	height: 16px;
+	margin-left: -12px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox label::after {
+	top: 0px !important;
+	left: 1px !important;
+}
+
+.systematicSearch ul.searchFloor li div.rightContent {
+	display: inline-block;
+	width: 49%;
+	margin-right: 1%;
+}
+
+.systematicSearch ul.searchFloor li div.rightContent:last-child {
+	margin-right: 0px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor a {
+	width: 22%;
+	margin-right: 3.1%;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor.finishStatus {}
+
+.systematicSearch ul.searchFloor li div.rightFloor.finishStatus a {
+	color: #cb2431;
+	background-color: #fafbfc;
+	background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
+	box-shadow: none;
+	border: 1px solid rgba(27, 31, 35, 0.2);
+	border-radius: 0.25em;
+	height: 30px;
+	line-height: 30px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor.finishStatus a:not(.triangleBtn):hover {
+	color: #fff;
+	background-color: #cb2431;
+	background-image: linear-gradient(-180deg, #de4450, #cb2431 90%);
+	border-color: rgba(27, 31, 35, 0.5);
+}
+
+
+/*.systematicSearch ul.searchFloor li div.rightFloor.finishStatus a:focus {
+	box-shadow: 0 0 0 0.2em rgba(203, 36, 49, 0.4);
+}*/
+
+.systematicSearch ul.searchFloor li div.rightFloor.finishStatus a.selected {
+	color: #fff;
+	background-color: #b5202c;
+	background-image: none;
+	border-color: rgba(27, 31, 35, 0.5);
+	box-shadow: inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15);
+}
+
+.systematicSearch ul.searchFloor li div input,
+.systematicSearch ul.searchFloor li div select {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #969696;
+	display: inline-block;
+	width: 47%;
+	margin-left: 4%;
+	vertical-align: top;
+}
+
+.systematicSearch ul.searchFloor li div label {
+	display: inline-block;
+	min-height: 24px;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: middle;
+	height: 30px;
+	line-height: 30px;
+	width: 45%;
+	margin-right: 0px !important;
+}
+
+.systematicSearch ul.searchFloor li div a {
+	display: inline-block;
+	margin-right: 0px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	height: 28px;
+	line-height: 28px;
+	width: 44%;
+	margin-right: 9%;
+}
+
+.systematicSearch ul.searchFloor li div a:last-child {
+	margin-right: 0px;
+}
+
+.systematicSearch ul.searchFloor li div a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.systematicSearch ul.actionConfirm {
+	text-align: right;
+}
+
+.systematicSearch ul.actionConfirm li {
+	width: 18% !important;
+	text-align: right;
+	padding-right: 5px;
+}
+
+@media only screen and (min-width: 100px) and (max-width:1280px) {
+	.systematicSearch ul.searchFloor li div label {
+		font-size: 13px;
+	}
+}
+
+.systematicSearch {
+	position: relative;
+	margin-top: 48px !important;
+}
+
+.systematicSearch label.markMsg {
+	display: inline-block;
+	width: 98px;
+	height: 24px;
+	line-height: 24px;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 13px;
+	position: absolute;
+	left: 0px;
+	top: -24px;
+	text-align: center;
+}
+
+.systematicSearch label.markMsg i {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background-color: #fff;
+	border-radius: 50px;
+	position: absolute;
+	left: 12px;
+	top: 9px;
+}
+
+.searchCard {
+	width: 64%;
+	min-height: initial;
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1440px) {
+	.systematicSearch ul.searchFloor li div label {
+		font-size: 13px;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.systematicSearch ul.searchFloor li div label {
+		font-size: 12px;
+	}
+	.systematicSearch ul.searchFloor li div.rightFloor .checkbox label::before {
+		left: 0px !important;
+	}
+}
+
+.systematicSearch ul.searchFloor li div input.name {
+	width: 22.5%;
+}
+
+.systematicSearch ul.searchFloor li div input.name:last-child {
+	margin-left: 2%;
+}
+
+.systematicSearch ul.searchFloor input,
+.systematicSearch ul.searchFloor select {
+	font-size: 14px;
+	border-radius: 0px !important;
+}
+
+.systematicSearch ul.searchFloor li div.rightContent.salesInfo {
+	display: none;
+}
+
+.systematicSearch {
+	width: 100%;
+}
+
+.systematicSearch ul.searchFloor li div.leftFloor {
+	width: 25%;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor {
+	width: 75%;
+}
+
+.systematicSearch ul.searchFloor li div.rightContent {
+	width: 32.3%;
+	vertical-align: top;
+}
+
+.systematicSearch ul li.dealtime .rightFloor {
+	display: none;
+}
+
+.systematicSearch ul.searchFloor li.place {
+	display: none;
+}
+
+.systematicSearch ul.searchFloor li.btnList {
+	height: 32px;
+	line-height: 32px;
+	margin-bottom: 0px;
+}
+
+.systematicSearch ul.searchFloor li div a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime {
+	vertical-align: bottom;
+	display: none;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime input[type='date'] {
+	width: 45%;
+}
+
+.systematicSearch ul.searchFloor .rightContent.dealTime span {
+	width: 10%;
+}
+
+.systematicSearch ul.searchFloor .rightContent.place {
+	vertical-align: middle;
+	width: 34.3%;
+}
+
+.systematicSearch ul.searchFloor li div.rightContent.placeList {
+	margin-right: 0px;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor .checkbox label {
+	font-size: 13px;
+	padding-left: 0px;
+	width: initial;
+}
+
+.systematicSearch ul.searchFloor li div.placeInfo {
+	width: 66.7%;
+	display: none;
+}
+
+.systematicSearch ul.searchFloor li div.placeInfo div.rightContent.placeList {
+	width: 48.34%;
+}
+
+.systematicSearch ul.searchFloor li div.placeInfo .rightContent.place {
+	width: 51.34%;
+}
+
+.systematicSearch ul.searchFloor li div.customerName {
+	width: 37%;
+}
+
+.systematicSearch ul.searchFloor li div.customerName label {
+	width: 30.3%;
+}
+
+.systematicSearch ul.searchFloor li div.customerName input.name {
+	margin-left: 2.9%;
+	width: 31.7%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo {
+	width: 63%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent {
+	width: 48.45%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent input {
+	margin-left: 4.6% !important;
+	width: 57%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice2,
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice1 {
+	margin-left: 2.6% !important;
+	width: 59%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice2 input {
+	margin-left: 0px !important;
+	width: 100%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice1 input {
+	margin-left: 0px !important;
+	width: 46%;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor.invoiceInfo label {
+	width: 36.2%;
+	margin-left: 2px;
+}
+
+.systematicSearch ul.searchFloor li div input.name:last-child {
+	margin-left: 2% !important;
+	width: 30.3%;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo {
+	position: relative;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo img {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	right: -8px;
+	top: 3px;
+	cursor: pointer;
+}
+
+.systematicSearch ul.searchFloor li div.invoiceInfo input {
+	width: 36%;
+	margin-left: 0px !important;
+}
+
+.systematicSearch ul.searchFloor li div.rightFloor span {
+	width: 8%;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.filterBox ul.searchFloor li div.invoiceInfo div {
+		width: 48.7%;
+	}
+	.systematicSearch ul.searchFloor li div input,
+	.systematicSearch ul.searchFloor li div select {
+		margin-left: 3%;
+	}
+	.updateTab ul li.number {
+		width: 5.8% !important;
+	}
+	.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent input {
+		margin-left: 4.4% !important;
+	}
+	.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice2,
+	.systematicSearch ul.searchFloor li div.invoiceInfo .rightContent .invoice1 {
+		margin-left: 2.4% !important;
+	}
+	.systematicSearch ul.searchFloor li div.invoiceInfo img {
+		right: -13px;
+	}
+}
+
+.filterBox ul.searchFloor li div.invoiceInfo div.invoice1 {
+	display: none;
+}
+
+.filterBox ul.searchFloor li div.invoiceInfo div.invoice2 input {
+	width: 80%;
+}
+
+.updateTab ul.tabList.tabListDetail li {
+	vertical-align: top;
+}
+
+
+/*系统搜索   e*/
+
+
+/*tab*/
+
+.updateTab ul li.systemNum {
+	width: 5%;
+}
+
+.updateTab ul dd.systemNum {
+	width: 5% !important;
+}
+
+.updateTab ul li.locator {
+	width: 8%;
+}
+
+.updateTab ul dd.locator {
+	width: 8% !important;
+}
+
+.updateTab ul li.customerName {
+	width: 8.8%;
+}
+
+.updateTab ul dd.customerName {
+	width: 8.8% !important;
+}
+
+.updateTab ul li.drawer {
+	width: 9%;
+}
+
+.updateTab ul dd.drawer {
+	width: 7% !important;
+}
+
+.updateTab ul li.invoice {
+	width: 8%;
+}
+
+.updateTab ul dd.invoice {
+	width: 8% !important;
+}
+
+.updateTab ul li.mco {
+	width: 6%;
+}
+
+.updateTab ul dd.mco {
+	width: 6% !important;
+}
+
+.updateTab ul li.deal {
+	width: 8%;
+}
+
+.updateTab ul dd.deal {
+	width: 8% !important;
+}
+
+.updateTab ul li.salePrice {
+	width: 8%;
+}
+
+.updateTab ul dd.salePrice {
+	width: 8% !important;
+}
+
+.updateTab ul li.basePrice {
+	width: 11%;
+}
+
+.updateTab ul dd.basePrice {
+	width: 11% !important;
+}
+
+.updateTab ul li.payment {
+	width: 13%;
+}
+
+.updateTab ul dd.payment {
+	width: 13% !important;
+}
+
+.updateTab ul li.profit {
+	width: 7%;
+}
+
+.updateTab ul dd.profit {
+	width: 7% !important;
+}
+
+.updateTab ul li a label {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.updateTab ul li a {
+	position: relative;
+}
+
+.updateTab ul li a img {
+	display: inline-block;
+	width: 20px;
+	position: absolute;
+	right: 0px;
+	cursor: pointer;
+}
+
+.updateTab ul li a img.arrow_up {
+	top: 10px;
+}
+
+.updateTab ul li a img.arrow_down {
+	bottom: 10px;
+}
+
+.updateTab ul li.debt {
+	width: 9%;
+}
+
+.updateTab ul dd.debt {
+	width: 9% !important;
+}
+
+.updateTab ul li.receivable {
+	width: 9%;
+}
+
+.updateTab ul dd.receivable {
+	width: 9% !important;
+}
+
+.updateTab ul li.createDate {
+	width: 8%;
+}
+
+.updateTab ul dd.createDate {
+	width: 8% !important;
+}
+
+.updateTab ul li.startTime {
+	width: 8%;
+}
+
+.updateTab ul dd.startTime {
+	width: 8% !important;
+}
+
+.updateTab ul li.returnTime {
+	width: 8%;
+}
+
+.updateTab ul dd.returnTime {
+	width: 8% !important;
+}
+
+.updateTab ul li.lockStatus {
+	width: 4%;
+}
+
+.updateTab ul dd.lockStatus {
+	width: 4% !important;
+}
+
+.updateTab ul li.finishStatus {
+	width: 4%;
+}
+
+.updateTab ul dd.finishStatus {
+	width: 4% !important;
+}
+
+.updateTab ul li.number {
+	/*width: 6%;*/
+	width: 5.8%;
+}
+
+.updateTab ul dd.number {
+	width: 5.8% !important;
+}
+
+.updateTab ul li dd.yesStatus {
+	color: #fff;
+	background: url(../img/yesStatus_icon.png) center center no-repeat;
+	background-size: 48%;
+}
+
+.updateTab ul li dd.noStatus {
+	color: #fff;
+	background: url(../img/noStatus_icon.png) center center no-repeat;
+	background-size: 42%;
+}
+
+.updateTab ul.tabListDetail li dd a {
+	height: 32px !important;
+	line-height: 32px !important;
+}
+
+.updateTab ul.tabListDetail li dd {
+	height: 32px !important;
+	line-height: 32px !important;
+}
+
+.updateTab ul.tabListDetail li dl {
+	height: 32px !important;
+	line-height: 32px !important;
+}
+
+.updateTab ul.tabList.tabListDetail li {
+	height: 32px !important;
+	line-height: 32px !important;
+}
+
+ul.add-msg div.systemNumTab li dl dd.number a {
+	text-decoration: underline !important;
+}
+
+ul.add-msg div.systemNumTab li.current dl.unfold dd.number a {
+	text-decoration: none !important;
+}
+
+.checkbox input[type=checkbox],
+.checkbox-inline input[type=checkbox],
+.radio input[type=radio],
+.radio-inline input[type=radio] {
+	top: 2px;
+	cursor: pointer;
+	width: 22px;
+	height: 22px;
+	margin-left: -18px;
+	cursor: pointer;
+}
+
+.systematicSearch ul.searchFloor li {
+	overflow: initial;
+	vertical-align: top;
+}
+
+.systematicSearch ul.searchFloor li div.wholesalerInfo {
+	position: relative;
+}
+
+.systematicSearch ul.searchFloor li div.wholesalerInfo .autocomplete-items {
+	top: 32px;
+	width: 46.8%;
+	left: 50%;
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1460px) {
+	.systematicSearch ul.searchFloor li div.wholesalerInfo .autocomplete-items {
+		width: 46.4%;
+		left: 50.5%;
+	}
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1300px) {
+	.systematicSearch ul.searchFloor li div.wholesalerInfo .autocomplete-items {
+		width: 45.6%;
+	}
+}
+
+ul.add-msg li.departure_arrival input[type="text"] {
+	width: 35.5% !important;
+}
+
+ul.add-msg li.departure_arrival input[type="text"].departure {
+	margin-left: 0px !important;
+}
+
+
+/*乘客    s*/
+
+.addClients ul.clients-info li dl dd.passenger {
+	position: relative;
+	min-height: 32px;
+	overflow: initial;
+}
+
+.addClients ul.clients-info li dl dd.passenger div {
+	display: inline-block;
+	width: 51%;
+	margin-left: 4%;
+	text-align: left;
+	font-size: 0px;
+	vertical-align: top;
+}
+
+.addClients ul.clients-info li dl dd.passenger div span:last-child {
+	margin-bottom: 0px !important;
+}
+
+.addClients ul.clients-info li dl dd.passenger div span {
+	display: inline-block;
+	width: 100%;
+	min-height: 32px;
+	margin-bottom: 10px;
+}
+
+.addClients ul.clients-info li dl dd.passenger div input,
+.addClients ul.clients-info li dl dd.passenger div select {
+	display: inline-block;
+	width: 32%;
+	margin-left: 2% !important;
+	vertical-align: top;
+	font-size: 14px;
+}
+
+.addClients ul.clients-info li dl dd.passenger div select {
+	margin-left: 0px !important;
+}
+
+.addClients ul.clients-info li dl dd.passenger img {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	top: 4px;
+	cursor: pointer;
+}
+
+.addClients ul.clients-info li dl dd.passenger img.addInfo {
+	right: 8%;
+}
+
+.addClients ul.clients-info li dl dd.passenger img.deleteInfo {
+	right: 4%;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.addClients ul.clients-info li dl dd.passenger img.addInfo {
+		right: 6%;
+	}
+	.addClients ul.clients-info li dl dd.passenger img.deleteInfo {
+		right: 1%;
+	}
+}
+
+
+/*乘客    e*/
+
+.airticketMsg ul.add-msg li.list_account.rate a {
+	display: inline-block;
+	width: 34% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	text-decoration: none;
+}
+
+.airticketMsg ul.add-msg li.list_account.rate a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.creditCardInfo {
+	display: none;
+}
+
+ul.add-msg li.list_account.profitInfor a {
+	display: inline-block;
+	width: 22% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	font-size: 14px;
+	text-align: center;
+	font-size: 14px;
+	display: inline-block;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #6f7073;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #FFFFFF;
+	text-decoration: none;
+	visibility: hidden;
+}
+
+ul.add-msg li.list_account.profitInfor a:hover {
+	color: #9192fa;
+	border: solid 1px #9192fa;
+	text-decoration: none;
+}
+
+ul.add-msg li.list_account.profitInfor {
+	display: none;
+}
+
+ul.add-msg li.expDate select {
+	box-sizing: border-box;
+	min-height: 24px;
+	border: solid 1px #969696;
+	outline: none;
+	padding-left: 10px;
+	color: #323232;
+	font-size: 14px;
+	height: 30px;
+	line-height: 30px;
+	box-sizing: border-box;
+	width: 22% !important;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1%;
+	background: #e7e9ec;
+	border-radius: 3px;
+	border-color: #ADB1B8 #A2A6AC #8D9096;
+	border-style: solid;
+	border-width: 1px;
+	cursor: pointer;
+	display: inline-block;
+	padding: 0;
+	text-align: center;
+	text-decoration: none!important;
+	vertical-align: middle;
+	min-width: initial;
+	vertical-align: top;
+	min-width: 50px;
+}
+
+ul.add-msg li.expDate div {
+	width: 72% !important;
+	margin-left: 1% !important;
+	display: inline-block;
+	text-align: left;
+}
+
+ul.add-msg li.expDate select:first-child {
+	margin-left: 0px !important;
+}
+
+ul.add-msg li.expDate div.expireDate {
+	width: 36% !important;
+	vertical-align: top;
+	text-align: left;
+}
+
+ul.add-msg li.expDate div.cardholder {
+	width: 36% !important;
+	margin-left: 0px !important;
+	vertical-align: top;
+	text-align: right;
+}
+
+ul.add-msg li.expDate div.cardholder label {
+	min-width: initial;
+	width: 37% !important;
+}
+
+ul.add-msg li.expDate div.cardholder input[type="text"] {
+	width: 54% !important;
+	margin-left: 6% !important;
+}
+
+ul.add-msg li.expDate {
+	font-size: 0px;
+}
+
+.addClients ul.clients-info li dl dd.passenger div select:first-child {
+	width: 20%;
+}
+
+.addClients ul.clients-info li dl dd.passenger div input:last-child {
+	width: 44%;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.addClients.air-customer ul.clients-info li {
+		width: 46% !important;
+		text-align: left;
+		padding-left: 2%;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1600px) {
+	.updateDialog .addClients ul.clients-info li dl dd input[type="text"],
+	.updateDialog .addClients ul.clients-info li dl dd input[type="date"],
+	.updateDialog .addClients ul.clients-info li dl dd select {
+		width: 50% !important;
+	}
+}
+
+.updateDialog .updateForm ul.add-msg li.systemNum a {
+	height: 26px;
+	line-height: 26px;
+	width: 23% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type div.payment {
+	height: 26px;
+	line-height: 26px;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type div.payment .paymentMethod {
+	height: 26px;
+	line-height: 26px;
+}
+
+.updateDialog .updateForm ul.add-msg li.payment-type.areaInfo .area .btn-default span.caret,
+.updateDialog .updateForm ul.add-msg li.payment-type.paymentMethodInfo .paymentMethod .btn-default span.caret,
+.updateDialog .updateForm ul.add-msg li.payment-type .creditCardCompanies .btn-default span.caret {
+	top: 11px !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_currency .payment.currency_type .currency .btn-default span.caret {
+	top: 11px !important;
+}
+
+/*.updateDialog .updateForm ul.add-msg li label {
+	width: 24% !important;
+}*/
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.addClients.air-customer ul.clients-info li {
+		width: 46% !important;
+		text-align: left;
+		padding-left: 2%;
+	}
+	.addClients.air-customer ul.clients-info li:last-child {
+		width: 46% !important;
+		text-align: right;
+		padding-left: 0px;
+		padding-right: 2%;
+	}
+}
+.updateDialog .addClients ul.clients-info li dl dd label{
+	margin-right: 0px !important;
+}
+.updateDialog .addClients ul.clients-info li dl dd.requiredItem label::after{
+	right: -14%;
+}
+.updateTab ul li a{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.updateTab ul li a:hover{
+	text-decoration: none;
+}
+.systematicSearch ul.searchFloor li div a:hover{
+	text-decoration: none;
+}

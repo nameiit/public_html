@@ -1,0 +1,516 @@
+@charset "utf-8";
+/*会计顶部导航    s*/
+.accountingNav.navGroup {}
+
+.accountingNav.navGroup ul {
+	font-size: 0px;
+	width: 98.6% !important;
+    margin: 0px auto;
+}
+.accountingNav.navGroup ul li {
+	width: 22.66%;
+	height: 88px;
+	line-height: 88px;
+	margin-left: 0px;
+	margin-right: 0px;
+	height: 54px;
+	line-height: 54px;
+	min-width: 200px;
+	box-shadow: none;
+	border-radius: 0px;
+	position: relative;
+	background-color: #8a8df6 !important;
+	box-shadow: none !important;
+	border-right: solid 1px #5357ba;
+	font-size: 18px;
+	width: 24.9% !important;
+}
+.accountingNav.navGroup ul li:last-child{
+	border-right: 0px;
+}
+
+.accountingNav.navGroup ul li.accountingNav-active {
+	background-color: #f78c3a !important;
+}
+
+.accountingNav.navGroup ul li.accountingNav-active a {
+	color: #fff !important;
+}
+
+.accountingNav.navGroup ul li:first-child {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.accountingNav.navGroup ul li a {
+	color: #fff !important;
+	display: inline-block;
+	width: 100%;
+}
+/*会计顶部导航    e*/
+.historicRecord .filterBox {
+	min-height: 300px;
+}
+
+.historicRecord .actionRecord {
+	margin-top: 20px;
+}
+
+.historicRecord .actionRecord ul {
+	text-align: left;
+}
+
+.historicRecord .actionRecord ul li {
+	height: 36px;
+	line-height: 36px;
+	display: inline-block;
+	width: 15%;
+	background-color: #9295ff;
+	border-radius: 4px;
+	margin-right: 2%;
+	min-width: 150px;
+	margin-right: 6%;
+}
+
+.historicRecord .actionRecord ul li a {
+	display: inline-block;
+	width: 100%;
+	color: #ffffff;
+	text-align: center;
+	font-size: 16px;
+}
+
+.recordDetail {
+	margin-top: 40px;
+}
+
+
+/*历史记录            e*/
+
+
+/*筛选信息      s*/
+
+.filterInfo {
+	width: 100%;
+	background-color: #fff;
+	position: relative;
+}
+
+.filterInfo ul {
+	text-align: left;
+	width: 100%;
+	width: 96%;
+	padding: 2%;
+	width: 98%;
+	padding: 1%;
+	clear: both;
+}
+
+.filterInfo ul li {
+	width: 45%;
+	min-height: 30px;
+	line-height: 30px;
+	display: inline-block;
+	margin-left: 2%;
+	margin-bottom: 14px;
+	vertical-align: top;
+	height: auto;
+	position: relative;
+	font-size: 0px;
+}
+
+.filterInfo ul li.statusOption {
+	font-size: 14px;
+}
+
+.filterInfo ul li.statusOption a {
+	box-shadow: 0px 0px 4px #cfcfcd;
+	width: 20%;
+	display: inline-block;
+	border-radius: 20px;
+	text-align: center;
+	color: #a8acad;
+	background-color: #fbfbf9;
+	box-shadow: -1px 0px 4px #cfcfcd;
+	text-indent: 0px;
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+	margin-left: 6%;
+}
+
+.filterInfo ul li.statusOption a.option-active {
+	background-color: #ece8e7;
+	box-shadow: -1px -3px 3px #b8b8b8;
+	color: #9294ff;
+	border-radius: 20px;
+}
+
+.filterInfo ul li.infoDistrict input[type="text"] {
+	width: 34.8%;
+}
+
+.filterInfo ul li.infoDistrict input[type="text"]:last-child {
+	margin-left: 0px;
+}
+
+.filterInfo ul li.infoDistrict span {
+	color: #cccccc;
+	display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    width: 20px;
+}
+
+.filterInfo ul li.dateRange span {
+	color: #cccccc;
+	display: inline-block;
+    width: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.filterInfo ul li.dateRange {
+	visibility: hidden;
+}
+
+.filterInfo ul li.finishTime .finishDateRange {
+	text-align: right;
+	padding-right: 3.1%;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 0px;
+}
+
+.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+	width: 16.82%;
+}
+
+.filterInfo ul li.finishTime {
+	text-align: right;
+	width: 96%;
+	margin-left: 0px;
+	display: none;
+}
+
+.filterInfo ul li .statusOption a.option-active {
+	background-color: #ece8e7;
+	box-shadow: -1px -3px 3px #b8b8b8;
+	color: #9294ff;
+	border-radius: 20px;
+}
+
+.filterInfo ul li label {
+	display: inline-block;
+	min-width: 92px;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	letter-spacing: 5px;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: middle;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 5px;
+}
+
+.filterInfo ul li input[type="text"] {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	width: 80%;
+	width: 74%;
+	margin-left: 6%;
+	border: solid 1px #dddddd;
+}
+
+.filterInfo ul li select {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	width: 80%;
+	width: 74%;
+	margin-left: 6%;
+	border: solid 1px #dddddd;
+}
+
+.filterInfo ul li input[type="date"] {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	width: 33%;
+}
+
+.filterInfo label.markMsg {
+	display: inline-block;
+	width: 98px;
+	height: 24px;
+	line-height: 24px;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 13px;
+	position: absolute;
+	left: 0px;
+	top: -24px;
+}
+
+.filterInfo label.markMsg i {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background-color: #fff;
+	border-radius: 50px;
+	position: absolute;
+	left: 12px;
+	top: 9px;
+}
+
+.filterInfo.filterBasicInfo {
+	min-height: 52px;
+}
+
+.filterInfo.filterAdvancedInfo {
+	min-height: 110px;
+	margin-top: 46px;
+}
+
+
+/*筛选信息      e*/
+
+
+/*适配     s*/
+
+@media only screen and (min-width:300px) {
+	.accountingNav.navGroup ul li {
+		width: 23.6%;
+	}
+	.filterInfo ul li input[type="text"] {
+		width: 64%;
+	}
+	.filterInfo ul li select {
+		width: 64%;
+	}
+	.filterInfo ul li.infoDistrict input[type="text"] {
+		width: 28.3%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+		width: 13.67%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange {
+		padding-right: 2.6%;
+	}
+	.filterInfo ul li input[type="date"] {
+		width: 36.8%;
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	.accountingNav.navGroup ul li {
+		width: 23.6%;
+	}
+	.filterInfo ul li input[type="text"] {
+		width: 64%;
+	}
+	.filterInfo ul li select {
+		width: 64%;
+	}
+	.filterInfo ul li.infoDistrict input[type="text"] {
+		width: 28.6%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+		width: 13.67%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange {
+		padding-right: 2.6%;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.accountingNav.navGroup ul li {
+		width: 23.6%;
+	}
+	.filterInfo ul li select {
+		width: 64%;
+	}
+	.filterInfo ul li.infoDistrict input[type="text"] {
+		width: 28.6%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+		width: 13.67%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange {
+		padding-right: 2.6%;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.accountingNav.navGroup ul li {
+		width: 23.5%;
+	}
+	.filterInfo ul li select {
+		width: 64%;
+	}
+	.filterInfo ul li.infoDistrict input[type="text"] {
+		width: 28.7%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+		width: 13.67%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange {
+		padding-right: 2.6%;
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+	.accountingNav.navGroup ul li {
+		width: 23.4%;
+	}
+	.filterInfo ul li select {
+		width: 64.1%;
+	}
+	.filterInfo ul li.infoDistrict input[type="text"] {
+		width: 29%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+		width: 13.94%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange {
+		padding-right: 3.4%;
+	}
+	.filterInfo ul li input[type="text"] {
+		width: 64.1%;
+	}
+}
+
+@media only screen and (min-width: 1366px) {
+	.accountingNav.navGroup ul li {
+		width: 23.26%;
+	}
+	.filterInfo ul li select {
+		width: 63.4%;
+	}
+	.filterInfo ul li.infoDistrict input[type="text"] {
+		width: 28.8%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+		width: 14%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange {
+		padding-right: 4.6%;
+	}
+	.filterInfo ul li input[type="text"] {
+		width: 63.4%;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.accountingNav.navGroup ul li {
+		width: 23.16%;
+	}
+	.filterInfo ul li select {
+		width: 63.4%;
+	}
+	.filterInfo ul li.infoDistrict input[type="text"] {
+		width: 29.1%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+		width: 14.1%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange {
+		padding-right: 5.3%;
+	}
+	.filterInfo ul li input[type="text"] {
+		width: 63.4%;
+	}
+}
+
+@media only screen and (min-width: 1600px) {
+	.accountingNav.navGroup ul li {
+		width: 22.96%;
+	}
+	.filterInfo ul li select {
+		width: 63.34%;
+	}
+	.filterInfo ul li.infoDistrict input[type="text"] {
+		width: 28.99%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+		width: 14.5%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange {
+		padding-right: 6.4%;
+	}
+	.filterInfo ul li input[type="text"] {
+		width: 63.34%;
+	}
+	.filterInfo ul li input[type="date"] {
+		width: 33.9%;
+	}
+}
+
+@media only screen and (min-width: 1680px) {
+	.accountingNav.navGroup ul li {
+		width: 22.9%;
+	}
+	.filterInfo ul li select {
+		width: 63.34%;
+	}
+	.filterInfo ul li.infoDistrict input[type="text"] {
+		width: 29.4%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+		width: 14.6%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange {
+		padding-right: 7%;
+	}
+	.filterInfo ul li input[type="text"] {
+		width: 63.34%;
+	}
+	.filterInfo ul li input[type="date"] {
+		width: 33.6%;
+	}
+}
+@media only screen and (min-width: 1920px) {
+	.filterInfo ul li.finishTime .finishDateRange input[type="date"] {
+		width: 14.9%;
+	}
+	.filterInfo ul li.finishTime .finishDateRange {
+		padding-right: 8.2%
+	}
+	.filterInfo ul li.infoDistrict input[type="text"] {
+		width: 29.6%;
+	}
+}
+
+@media only screen and (min-width: 700px) {
+	.accountingNav.navGroup ul li {
+		width: 22.66%;
+	}
+}
+
+
+/*适配   e*/
+.filterInfo ul li.finishDateOption input[type="date"]{ width: 29.6% !important;border: solid 1px #d2d2d2;}
+.filterInfo ul li.finishDateOption input[type="date"].firstItem{margin-left: 6% !important;}
+.finishDateRange{display: none;}
+@media only screen and (min-width: 1510px) and (max-width: 1810px) {
+	.filterInfo ul li.finishDateOption input[type="date"]{width: 29.2% !important;}
+}
+@media only screen and (min-width: 800px) and (max-width:1500px) {
+	.filterInfo ul li.finishDateOption input[type="date"]{width: 28.9% !important;}
+}
+@media only screen and (min-width: 200px) and (max-width: 799px) {
+	.filterInfo ul li.finishDateOption input[type="date"]{width: 28.8% !important;}
+}
+.filterInfo ul li.infoDistrict input[type="date"].firstItem{
+	margin-left: 6%;
+}
+.filterInfo ul li.infoDistrict input[type="date"]{border: solid 1px #DDDDDD;}
+/*06-13修改*/
+.filterInfo ul li.infoDistrict input[type="date"]::-webkit-inner-spin-button{
+	display: none;
+} 

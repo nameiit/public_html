@@ -1,0 +1,814 @@
+@charset "utf-8";
+.theamInfo .showMsg.homePage {
+	padding-top: 0px;
+}
+
+.theamInfo .showMsg.homePage .floor {
+	font-size: 0px;
+	text-align: left;
+}
+
+.showMsg .floor .groupMsg {
+	min-height: 740px !important;
+	position: relative;
+	padding: 1%;
+	width: 98%;
+}
+
+.homePage .userInfoFloor {
+	height: 168px;
+	line-height: 168px;
+	background-color: #fff;
+	border: solid 1px #e6e6e6;
+	box-shadow: 0px 0px 4px #e6e6e6;
+	border-radius: 4px;
+	font-size: 0px;
+}
+
+.homePage .otherInfoFloor {
+	font-size: 0px;
+}
+
+.homePage .otherUserInfo {
+	display: inline-block;
+	height: 328px;
+	background-color: #FFFFFF;
+	position: relative;
+	margin-top: 10px;
+}
+
+.homePage .otherUserInfo.workCalendar {
+	width: 50%;
+	vertical-align: top;
+	box-shadow: 0px 0px 4px #e6e6e6;
+	border-radius: 4px;
+}
+
+.homePage .otherUserInfo label.mark {
+	min-width: 120px;
+	height: 22px;
+	line-height: 22px;
+	font-size: 14px;
+	color: #758daf;
+	background-color: #e9f6fe;
+	position: absolute;
+	left: 0px;
+	top: 10px;
+	text-align: center;
+}
+
+.homePage .otherUserInfo.pendingItem {
+	width: 25%;
+	margin-left: 1%;
+}
+
+.homePage .otherUserInfo.noticeInfo {
+	width: 23%;
+	margin-left: 1%;
+}
+
+.otherUserInfo.userOrderInfo {
+	display: inline-block;
+	width: 50%;
+	height: 298px;
+	vertical-align: top;
+	box-shadow: -3px 1px 4px #e6e6e6;
+	border-bottom-left-radius: 4px;
+	border-top-left-radius: 4px;
+}
+
+.otherUserInfo.customerGrowth {
+	display: inline-block;
+	width: 50%;
+	height: 258px;
+	box-shadow: 3px 1px 4px #e6e6e6;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+	border-left: solid 1px #e5e5e5;
+	width: 49.9%;
+	border-top: solid 20px #ffffff;
+	border-bottom: solid 20px #ffffff;
+}
+
+.otherUserInfo.customerGrowth label.mark {
+	left: 2%;
+	top: -10px;
+}
+
+.userOrderInfo ul {
+	display: inline-block;
+	margin-top: 54px;
+	clear: both;
+	overflow: hidden;
+}
+
+.homePage .otherUserInfo label.mark.currency {
+	right: 2%;
+	left: auto;
+}
+
+.userOrderInfo ul li {
+	display: inline-block;
+	width: 46%;
+	height: 118px;
+	vertical-align: top;
+	padding-left: 4%;
+	float: left;
+}
+
+.userOrderInfo ul li label {
+	display: inline-block;
+	width: 96px;
+	height: 96px;
+	font-size: 16px;
+	text-align: center;
+	border-radius: 50%;
+	vertical-align: top;
+	color: #ffffff;
+	position: relative;
+}
+
+.userOrderInfo ul li label i {
+	position: absolute;
+	bottom: -16px;
+	font-style: normal;
+	display: inline-block;
+	width: 100%;
+	left: 0px;
+}
+
+.userOrderInfo ul li label.all {
+	background: url(../img/orderBg.png) -34px -14px no-repeat;
+}
+
+.userOrderInfo ul li label.all i {
+	color: #f05977;
+}
+
+.userOrderInfo ul li label.groupTour {
+	background: url(../img/orderBg.png) -315px -14px no-repeat;
+}
+
+.userOrderInfo ul li label.groupTour i {
+	color: #5992f0;
+}
+
+.userOrderInfo ul li label.individualTour {
+	background: url(../img/orderBg.png) -34px -135px no-repeat;
+}
+
+.userOrderInfo ul li label.individualTour i {
+	color: #f0c059;
+}
+
+.userOrderInfo ul li label.airTicket {
+	background: url(../img/orderBg.png) -315px -135px no-repeat;
+}
+
+.userOrderInfo ul li label.airTicket i {
+	color: #f07559;
+}
+
+.userOrderInfo ul li .order-txt {
+	display: inline-block;
+	width: 50%;
+	height: 96px;
+	padding-left: 6%;
+	vertical-align: top;
+}
+
+.userOrderInfo ul li .order-txt p {
+	font-size: 14px;
+	color: #2c2c2c;
+	margin-top: 24px;
+	line-height: initial;
+}
+
+.userOrderInfo ul li .order-txt p:last-child {
+	margin-top: 10px;
+}
+
+.userOrderInfo ul li .order-txt p span {}
+
+.userInfoFloor .weather {
+	display: inline-block;
+	width: 35%;
+	height: 100px;
+	line-height: 100px;
+	position: relative;
+	margin-top: 34px;
+}
+
+.userInfoFloor .weather img {
+	position: absolute;
+	right: 6%;
+}
+
+.userInfoFloor .userNameInfo {
+	height: 80px;
+	display: inline-block;
+	width: 16%;
+	margin-top: 34px;
+	padding-left: 2%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.userInfoFloor .userNameInfo ul {
+	height: 100px;
+	overflow: hidden;
+}
+
+.userInfoFloor .userNameInfo ul li {
+	height: 40px;
+	line-height: 40px;
+	color: #788ba9;
+	font-size: 16px;
+	text-align: left;
+}
+
+.userInfoFloor .userNameInfo ul li span {
+	margin-left: 4%;
+}
+
+.userInfoFloor .loginInfo {
+	display: inline-block;
+	width: 46.8%;
+	height: 70px;
+	margin-top: 34px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-left: solid 1px #778cab;
+	border-right: solid 1px #778cab;
+}
+
+.userInfoFloor .loginInfo ul {
+	height: 100px;
+	overflow: hidden;
+	margin: 0px auto;
+	width: 90%;
+}
+
+.userInfoFloor .loginInfo ul li {
+	height: 35px;
+	line-height: 35px;
+	display: inline-block;
+	font-size: 16px;
+	color: #788ba9;
+	width: 44%;
+	float: left;
+	padding-left: 6%;
+}
+
+.userInfoFloor .loginInfo ul li span {
+	margin-left: 4%;
+}
+
+.userInfoFloor .loginInfo ul li a {
+	color: #788ba9;
+}
+
+.homePage .otherUserInfo.pendingItem ul,
+.homePage .otherUserInfo.noticeInfo ul {
+	margin-top: 37px;
+	padding: 0px 6%;
+}
+
+.homePage .otherUserInfo.pendingItem ul li,
+.homePage .otherUserInfo.noticeInfo ul li {
+	height: 42px;
+	line-height: 42px;
+	font-size: 16px;
+	color: #788ba9;
+	border-bottom: solid 1px #e6e6e6;
+	position: relative;
+	cursor: pointer;
+}
+
+.homePage .otherUserInfo.pendingItem,
+.homePage .otherUserInfo.noticeInfo {
+	vertical-align: top;
+	box-shadow: 0px 0px 4px #e6e6e6;
+	border-radius: 4px;
+}
+
+.homePage .otherUserInfo.pendingItem ul li a,
+.homePage .otherUserInfo.noticeInfo ul li a {
+	display: inline-block;
+	width: 64%;
+	position: relative;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.homePage .otherUserInfo.pendingItem ul li a i,
+.homePage .otherUserInfo.noticeInfo ul li a i {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: #fe2b54;
+	
+	margin-right: 4%;
+}
+.layui-form-item p {
+	color: #8a9bb5;
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+.otherUserInfo.pendingItem ul li img,
+.homePage .otherUserInfo.noticeInfo ul li img {
+	width: 28px;
+	height: 30px;
+	position: absolute;
+	right: 4%;
+	bottom: 7px;
+}
+.layui-layer-setwin .layui-layer-close1 {
+	display: none;
+}
+
+.otherUserInfo.noticeInfo ul li a span {
+	display: inline-block;
+	width: 100%;
+}
+
+.userOrderInfo ul li .order-txt p {
+	font-size: 15px;
+	color: #2c2c2c;
+	margin-top: 24px;
+	height: 20px;
+	line-height: 20px;
+	display: inline-block;
+	width: 100%;
+	position: relative;
+}
+
+.userOrderInfo ul li .order-txt p span {
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 80%;
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	font-size: 15px;
+}
+
+.userInfoFloor .userNameInfo ul li {
+	position: relative;
+}
+
+.userInfoFloor .userNameInfo ul li span {
+	margin-left: 4%;
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 64%;
+	height: 40px;
+	line-height: 40px;
+	position: absolute;
+}
+
+
+/*客户增长*/
+
+.otherUserInfo.customerGrowth .customerGrowthInfo {
+	height: 232px;
+	margin-top: 54px;
+}
+
+.userInfoFloor .weather ul {
+	display: inline-block;
+	width: 72%;
+	height: 100px;
+	font-size: 0px;
+	padding-left: 4%;
+}
+
+.userInfoFloor .weather ul li {
+	display: inline-block;
+	width: 30%;
+	vertical-align: top;
+}
+
+.userInfoFloor .weather ul li.tmp {
+	font-size: 60px;
+	color: #788ba9;
+	text-align: right;
+}
+
+.userInfoFloor .weather ul li.currentCity {
+	font-size: 16px;
+	color: #788ba9;
+	height: 30px;
+	line-height: 26px;
+	vertical-align: text-top;
+	width: 14%;
+	text-align: center;
+}
+
+.userInfoFloor .weather ul li.condTxt {
+	font-size: 16px;
+	color: #788ba9;
+	height: 30px;
+	line-height: 26px;
+	vertical-align: text-top;
+	width: 14%;
+	text-align: left;
+}
+
+.userInfoFloor .weather ul li.windSc {
+	font-size: 16px;
+	color: #788ba9;
+	height: 30px;
+	line-height: 26px;
+	vertical-align: text-top;
+	width: 14%;
+	text-align: left;
+}
+
+.userInfoFloor .weather ul li.windDir {
+	font-size: 16px;
+	color: #788ba9;
+	height: 30px;
+	line-height: 26px;
+	vertical-align: text-top;
+	width: 14%;
+	text-align: left;
+}
+
+.layui-laydate i.markDay {
+	position: absolute;
+	top: -5px;
+	font-style: normal;
+	left: 0px;
+	display: inline-block;
+	width: 100%;
+}
+
+.layui-laydate td#currentDate {
+	background-color: darkred !important;
+	background-color: #9295ff !important;
+	color: #ffffff !important;
+}
+
+.homePage .otherUserInfo.pendingItem ul li a {
+	width: 98% !important;
+}
+
+.userInfoFloor .weather ul li.otherInfo {
+	vertical-align: middle;
+	width: 69%;
+}
+
+.userInfoFloor .weather ul li.otherInfo dl {
+	padding-left: 4%;
+}
+
+.userInfoFloor .weather ul li.otherInfo dl.otherInfo dd {
+	display: inline-block;
+	width: initial;
+	margin-right: 10px;
+}
+
+.userInfoFloor .weather ul li.otherInfo dl dd {
+	height: 14.5px;
+	color: #788ba9;
+	font-size: 18px;
+	line-height: 14.5px;
+	text-align: left;
+	height: 20px;
+	line-height: 20px;
+}
+
+.homePage .otherUserInfo.noticeInfo ul li a {
+	overflow: initial;
+}
+
+.homePage .otherUserInfo.noticeInfo ul li a span {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.homePage .otherUserInfo.noticeInfo ul li a span {
+	vertical-align: top;
+	display: inline-block;
+}
+
+/*.homePage .otherUserInfo.pendingItem a.addNewItem {
+	width: 24%;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: top;
+	text-align: center;
+	box-shadow: 0px 0px 4px #c8c8c8;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b8b8b8;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	display: inline-block;
+	text-align: center;
+	color: #a8acad;
+	background-color: #fbfbf9;
+	box-shadow: -1px 0px 4px #cfcfcd;
+	vertical-align: middle;
+	background: url(../img/btn_bg.png) center center no-repeat;
+	margin-top: 52px;
+	margin-left: 6%;
+}*/
+.homePage .otherUserInfo.pendingItem a.addNewItem{
+	display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 50%;
+    box-shadow: 0px 3px 3px #758daf;
+    transition: all;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+    -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+	background-color: #e9f6fe;
+}
+
+.homePage .otherUserInfo.pendingItem ul {
+	margin-top: 0px;
+}
+
+/*.homePage .otherUserInfo.pendingItem a.addNewItem.selected {
+	background-color: #ece8e7;
+	box-shadow: inset -1px -3px 3px #b8b8b8;
+	color: #9294ff;
+}*/
+.homePage .otherUserInfo.pendingItem a.addNewItem.selected{
+	box-shadow: inset 0px 3px 5px #758daf;
+    background-color: #e9f6fe;
+}
+
+.calendarInfo .layui-form-item p.title {
+	margin-bottom: 10px;
+}
+
+.calendarInfo .layui-layer-btn.layui-layer-btn- {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+
+.calendarInfo span.checkbox {
+	padding-left: 10px;
+	height: 24px;
+	line-height: 24px;
+}
+
+.calendarInfo span.checkbox label {
+	color: #7776c6;
+	font-size: 15px;
+}
+
+.calendarInfo span.checkbox label::after {
+	display: inline-block;
+	position: absolute;
+	left: 0px !important;
+	top: -2px !important;
+	margin-left: -18px !important;
+	padding-left: 3px;
+	font-size: 14px !important;
+	color: #555555;
+	padding: 1px !important;
+}
+
+.calendarInfo span.checkbox-success input[type="checkbox"]:checked+label::before {
+	background-color: #ffffff !important;
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+}
+
+.calendarInfo span.checkbox label::before {
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+	top: 1px;
+}
+
+.calendarInfo span.checkbox-success input[type="checkbox"]:checked+label::after {
+	color: #9295ff !important;
+	left: -1px;
+}
+
+
+/*添加事项的标题和内容*/
+
+.newMatters .layui-form-item p.title {
+	margin-bottom: 10px;
+}
+
+.newMatters .layui-layer-btn.layui-layer-btn- {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+
+.newMatters span.checkbox {
+	padding-left: 10px;
+	height: 24px;
+	line-height: 24px;
+}
+
+.newMatters span.checkbox label {
+	color: #7776c6;
+	font-size: 15px;
+}
+
+.newMatters span.checkbox label::after {
+	display: inline-block;
+	position: absolute;
+	left: 0px !important;
+	top: -2px !important;
+	margin-left: -18px !important;
+	padding-left: 3px;
+	font-size: 14px !important;
+	color: #555555;
+	width: 14px !important;
+	height: 14px !important;
+	padding: 1px !important;
+}
+
+.newMatters span.checkbox-success input[type="checkbox"]:checked+label::before {
+	background-color: #ffffff !important;
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+}
+
+.newMatters span.checkbox label::before {
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+	top: 1px;
+}
+
+.newMatters span.checkbox-success input[type="checkbox"]:checked+label::after {
+	color: #9295ff !important;
+}
+
+
+/*修改待处理事项的标题和内容*/
+
+.amendMatters .layui-form-item p.title {
+	margin-bottom: 10px;
+}
+
+.amendMatters .layui-layer-btn.layui-layer-btn- {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+
+.amendMatters span.checkbox {
+	padding-left: 10px;
+	height: 24px;
+	line-height: 24px;
+}
+
+.amendMatters span.checkbox label {
+	color: #7776c6;
+	font-size: 15px;
+}
+
+.amendMatters span.checkbox label::after {
+	display: inline-block;
+	position: absolute;
+	left: 0px !important;
+	top: -2px !important;
+	margin-left: -18px !important;
+	padding-left: 3px;
+	font-size: 14px !important;
+	color: #555555;
+	width: 14px !important;
+	height: 14px !important;
+	padding: 1px !important;
+}
+
+.amendMatters span.checkbox-success input[type="checkbox"]:checked+label::before {
+	background-color: #ffffff !important;
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+}
+
+.amendMatters span.checkbox label::before {
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+	top: 1px;
+}
+
+.amendMatters span.checkbox-success input[type="checkbox"]:checked+label::after {
+	color: #9295ff !important;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1300px) {
+	.userInfoFloor .weather ul li.tmp {
+		font-size: 54px;
+	}
+}
+
+
+/*最近七日销售榜     s*/
+
+.otherUserInfo.customerGrowth .customerGrowthInfo ul {
+	padding: 0px 10%;
+	position: relative;
+}
+
+.otherUserInfo.customerGrowth .customerGrowthInfo ul li {
+	display: inline-block;
+	width: 28%;
+	margin-right: 6%;
+}
+
+.otherUserInfo.customerGrowth .customerGrowthInfo ul li:last-child {
+	margin-right: 0px;
+}
+
+.otherUserInfo.customerGrowth .customerGrowthInfo ul li a {
+	display: inline-block;
+	position: relative;
+	width:100%;
+}
+
+.otherUserInfo.customerGrowth .customerGrowthInfo ul li a img {
+	width: 100%;
+	/*border: solid 1px #d3d3d3;*/
+    border-radius: 3px;
+}
+
+.otherUserInfo.customerGrowth .customerGrowthInfo ul li a label {
+	position: absolute;
+	bottom: -35px;
+	display: inline-block;
+	width: 100%;
+	font-size: 16px;
+	left: 0px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	color: #788ba9;
+	font-weight: bold;
+}
+.otherUserInfo.customerGrowth .customerGrowthInfo ul li.top{
+	position: absolute;
+	top: -49px;
+	left: 38%;
+}
+/*最近七日销售榜     e*/
+.homePage .otherUserInfo.pendingItem ul{
+    margin-top: 52px;
+}
+.homePage .otherUserInfo.pendingItem a.addNewItem{
+	position: absolute;
+    right: 6%;
+    top: 10px;
+    margin: 0px;
+    /*width: 36%;*/
+}
+.homePage .otherUserInfo.pendingItem a.addNewItem img{
+	width: 50%;
+}
+.homePage .otherUserInfo.pendingItem{
+	position: relative;
+	
+}
+.homePage .otherUserInfo.noticeInfo ul li a{
+	width: 100%;
+}
+.homePage .otherUserInfo.noticeInfo ul li img{
+	left: 0px;
+   	top: 13px;
+    width: 14px;
+    height: 14px;
+}
+.homePage .otherUserInfo.noticeInfo ul li a label{margin-left: 5%;}
+.homePage .otherUserInfo.noticeInfo ul li a span {
+    width: 72%;
+}
+.layui-layer-rim.infoTips   .layui-layer-setwin .layui-layer-close2{display: none;}
+.homePage .otherUserInfo.noticeInfo ul{
+	overflow-x: hidden;
+}
+.homePage .otherUserInfo.pendingItem ul li a{
+	position: relative;
+	height: 42px;
+    line-height: 42px;
+}
+.homePage .otherUserInfo.pendingItem ul li span{
+	position: absolute;
+	left: 24px;
+}

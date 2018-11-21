@@ -1,0 +1,850 @@
+	@charset "utf-8";
+	.filterInfo ul li.statusOption .checkbox {
+		display: inline-block;
+		width: 16%;
+		height: 30px !important;
+		line-height: 30px !important;
+		min-width: 89px;
+	}
+	
+	.filterInfo ul li.statusOption .checkbox.firstCheck {
+		margin-left: 6%;
+	}
+	
+	.checkbox label {
+		background-color: transparent !important;
+		color: #383838 !important;
+		letter-spacing: 0px !important;
+		padding-left: 0px !important;
+		min-width: 70px !important;
+		border-left: none !important;
+		border-right: none !important;
+		font-weight: 100 !important;
+		cursor: pointer;
+	}
+	
+	.filterInfo ul li.statusOption .checkbox-success input[type="checkbox"]:checked+label::before {
+		height: 15px;
+		line-height: 15px;
+		width: 15px;
+		text-align: center;
+		background-color: #e7e7e7;
+		border-color: #adadad;
+		top: 6.6px;
+	}
+	
+	.filterInfo ul li.statusOption .checkbox-success input[type="checkbox"]:checked+label::after {
+		color: #404040;
+	}
+	
+	.filterInfo ul li.statusOption .checkbox label::after {
+		height: 15px;
+		width: 15px;
+		top: 0px;
+		font-size: 14px;
+		padding-left: 0.5px;
+	}
+	
+	.filterInfo ul li.statusOption .checkbox label::before {
+		height: 15px;
+		width: 15px;
+		top: 6.6px;
+	}
+	
+	.historicRecord .actionRecord ul li a {
+		height: 36px;
+		line-height: 36px;
+	}
+	
+	.historicRecord .actionRecord ul li {
+		height: initial;
+		line-height: initial;
+	}
+	
+	.tabCard {
+		margin-top: 46px;
+	}
+	
+	.tabCard ul {}
+	
+	.checkbox {
+		position: relative;
+	}
+	
+	.tabCard ul li {
+		display: inline-block;
+		width: 11.28%;
+		border: solid 1px #737373;
+		border-radius: 5px;
+		text-align: center;
+		height: 32px;
+		line-height: 32px;
+	}
+	
+	.tabCard ul li.selected .checkbox-success input[type="checkbox"]:checked+label::before {
+		background-color: transparent;
+		border-color: transparent;
+		top: 6px;
+	}
+	
+	.tabCard .checkbox input[type="checkbox"]:checked+label::after {
+		background: url(../img/selected.png) center center no-repeat;
+		top: 7px;
+		background-size: 100%;
+		content: '';
+		width: 18px;
+		height: 18px;
+		left: -1.5px;
+	}
+	
+	.tabCard .checkbox label::before {
+		background: url(../img/unselected.png) center center no-repeat;
+		top: 7px;
+		background-size: 100%;
+		left: -1.5px;
+	}
+	
+	.tabCard ul li .checkbox label::before {
+		top: 6px;
+	}
+	
+	.tabCard ul li .checkbox label::after {
+		padding-left: 1px;
+		padding-top: 0px;
+	}
+	
+	.tabCard ul li.selected .checkbox {
+		padding-left: 2%;
+	}
+	
+	.tabCard ul li.selected .checkbox label {
+		color: #ffffff !important;
+		background-color: #ff765a !important;
+		width: 80%;
+		border-radius: 4px;
+		float: right;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+		height: 32px;
+		line-height: 32px;
+		float: initial;
+		position: absolute;
+		right: 0px;
+		box-shadow: inset 0px 1px 4px #636363;
+	}
+	
+	.tabCard ul li .checkbox label {
+		width: 80%;
+		float: right;
+		letter-spacing: 0px !important;
+	}
+	
+	.tabCard ul li .checkbox label i {
+		font-style: normal;
+		visibility: hidden;
+	}
+	
+	.tabCard ul li .checkbox {
+		padding-left: 2%;
+	}
+	
+	@media only screen and (min-width: 400px) and (max-width: 800px) {
+		.tabCard ul li .checkbox label {}
+	}
+	
+	.resultInfo {
+		margin-top: 30px;
+		clear: both;
+		overflow: hidden;
+		text-align: left;
+	}
+	
+	.resultInfo ul {
+		background-color: #ffffff;
+		border: solid 1px #DADADA;
+		display: inline-block;
+	}
+	
+	.resultInfo ul li {
+		border-bottom: solid 1px #DADADA;
+	}
+	
+	.resultInfo ul li:last-child {
+		border-bottom: none;
+		border-radius: 5px;
+		border-radius: initial;
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+	
+	.resultInfo ul li.title {
+		background-color: #9295ff;
+		color: #fff;
+		position: relative;
+		height: 48px;
+		line-height: 48px;
+		position: relative;
+		font-size: 16px;
+		text-align: center;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+	}
+	
+	.resultInfo ul {
+		border-radius: 5px;
+	}
+	
+	.resultInfo ul li.title span {
+		position: absolute;
+		right: 0px;
+		font-size: 14px;
+		top: 20px;
+		height: 20px;
+		line-height: 20px;
+		color: #e7e8ea;
+		right: 20px;
+	}
+	
+	.resultInfo ul li.title i {
+		font-style: normal;
+	}
+	
+	.resultInfo ul li.resultNav {
+		height: 34px;
+		line-height: 34px;
+		background-color: #9295ff;
+		color: #FFFFFF;
+		text-align: left;
+	}
+	
+	.resultInfo ul li.resultNav dl {
+		font-size: 0px;
+		height: 34px;
+		line-height: 34px;
+	}
+	
+	.resultInfo ul li.resultNav dl dd {
+		display: inline-block;
+		width: 150px;
+		font-size: 14px;
+		border-right: solid 1px #dadada;
+		text-align: center;
+	}
+	
+	.resultInfo ul li.resultNav dl dd:last-child {
+		border-right: 0px;
+	}
+	
+	.resultInfo ul li.resultDetail {
+		height: 34px;
+		line-height: 34px;
+		background-color: #ffffff;
+		color: #636363;
+		text-align: left;
+		clear: both;
+		overflow: hidden;
+	}
+	
+	.resultInfo ul li.resultDetail:hover {
+		border: solid 0.01rem red;
+		cursor: pointer;
+	}
+	
+	.resultInfo ul li.resultDetail dl {
+		font-size: 0px;
+		min-height: 35px;
+		line-height: 35px;
+	}
+	
+	.resultInfo ul li.resultDetail dl dd {
+		display: inline-block;
+		font-size: 14px;
+		border-right: solid 1px #dadada;
+		text-align: center;
+		min-height: 34px;
+		line-height: 34px;
+		vertical-align: top;
+	}
+	
+	.resultInfo ul li.resultDetail dl dd:last-child {
+		border-right: 0px;
+	}
+	/*独立团部分   s*/
+	
+	.filterGroupTourInfo {
+		min-height: 110px;
+		margin-top: 46px;
+	}
+	
+	.filterInfo.filterGroupTourInfo label.markMsg {
+		padding-right: 10px;
+		width: 88px;
+		text-align: right;
+	}
+	
+	.filterInfo.filterGroupTourInfo ul li input[type="text"] {}
+	
+	.groupTourInfo label.markMsg {
+		padding-right: 10px;
+		width: 88px;
+		text-align: right;
+	}
+	/*独立团部分   e*/
+	/*机票部分   s*/
+	
+	.filterInfo ul li.passengerNum {}
+	
+	.filterInfo ul li.passengerNum div {
+		width: 80%;
+		display: inline-block;
+		margin-left: 6%;
+		height: 30px;
+		line-height: 30px;
+		font-size: 0px;
+	}
+	
+	.filterInfo ul li.passengerNum input {
+		display: inline-block;
+		height: 30px;
+		line-height: 30px;
+		width: 30%;
+		font-size: 14px;
+		text-align: center;
+		color: #323232;
+		border: solid 1px #dddddd;
+		margin-right: 4.2%;
+		min-width: 60px;
+		margin-left: 0px !important;
+		width: 30.7%;
+	}
+	
+	.filterInfo ul li.passengerNum input[type='text'].lastItem {
+		margin-right: 0px;
+	}
+	
+	@media only screen and (min-width: 300px) {
+		.filterInfo ul li.passengerNum div {
+			width: 64%;
+		}
+		.filterInfo ul li.passengerNum input {
+			margin-right: 3.8%;
+		}
+	}
+	
+	@media only screen and (min-width: 800px) {
+		.filterInfo ul li.passengerNum div {
+			width: 64%;
+		}
+		.filterInfo ul li.passengerNum input {
+			margin-right: 3.8%;
+		}
+	}
+	
+	@media only screen and (min-width: 1280px) {
+		.filterInfo ul li.passengerNum div {
+			width: 64.1%;
+		}
+		.filterInfo ul li.passengerNum a {
+			margin-right: 3.9%;
+		}
+	}
+	
+	@media only screen and (min-width: 1680px) {
+		.filterInfo ul li.passengerNum div {
+			width: 63.34%;
+		}
+		.filterInfo ul li.passengerNum input {
+			margin-right: 4%;
+		}
+	}
+	
+	@media only screen and (min-width: 1600px) {
+		.filterInfo ul li.passengerNum div {
+			width: 63.34%;
+		}
+		.filterInfo ul li.passengerNum a {
+			margin-right: 4.1%;
+		}
+	}
+	
+	@media only screen and (min-width: 1440px) {
+		.filterInfo ul li.passengerNum div {
+			width: 63.4%;
+		}
+		.filterInfo ul li.passengerNum a {
+			margin-right: 4%;
+		}
+	}
+	
+	@media only screen and (min-width: 1366px) {
+		.filterInfo ul li.passengerNum div {
+			width: 63.4%;
+		}
+		.filterInfo ul li.passengerNum input {
+			margin-right: 3.9%;
+		}
+	}
+	
+	.filterInfo ul li.spectator label {
+		letter-spacing: 0px;
+	}
+	
+	.filterInfo ul li.refundInfo {
+		font-size: 14px;
+	}
+	
+	.filterInfo ul li.statusOption.refundInfo div.firstItem {
+		margin-left: 6%;
+	}
+	
+	.filterInfo ul li.statusOption.refundInfo div {
+		height: 30px;
+		line-height: 30px;
+		display: inline-block;
+		width: 16%;
+		position: relative;
+	}
+	
+	.filterInfo ul li.statusOption.refundInfo div i {
+		font-style: normal;
+		min-width: 70px;
+		display: inline-block;
+		text-align: right;
+	}
+	
+	.filterInfo ul li.statusOption.refundInfo input[type="radio"] {
+		width: 17px;
+		height: 17px;
+		position: absolute;
+		top: 6px;
+		left: 2px;
+	}
+	
+	.tabCard ul li .checkbox label {
+		letter-spacing: 0px !important;
+		padding-left: 3% !important;
+		padding-right: 3% !important;
+		width: 71% !important;
+	}
+	
+	.tabCard ul li .checkbox label i {
+		display: none;
+		display: inline-block;
+		width: 100%;
+	}
+	
+	@media only screen and (min-width: 1500px) and (max-width: 1600px) {
+		.tabCard ul li .checkbox label {
+			width: 74% !important;
+		}
+		.tabCard .checkbox label::before {
+			left: -1.5px;
+		}
+		.tabCard .checkbox input[type="checkbox"]:checked+label::after {
+			left: -1.5px;
+		}
+	}
+	
+	@media only screen and (min-width: 1601px) and (max-width: 1700px) {
+		.tabCard ul li .checkbox label {
+			width: 76% !important;
+		}
+		.tabCard .checkbox label::before {
+			left: -2px;
+		}
+		.tabCard .checkbox input[type="checkbox"]:checked+label::after {
+			left: -2px;
+		}
+	}
+	
+	@media only screen and (min-width: 1701px) and (max-width: 1800px) {
+		.tabCard ul li .checkbox label {
+			width: 43% !important;
+		}
+		.tabCard .checkbox label::before {
+			left: -3px;
+		}
+		.tabCard .checkbox input[type="checkbox"]:checked+label::after {
+			left: -3px;
+		}
+		.tabCard ul li .checkbox label {
+			padding-left: 16% !important;
+			padding-right: 16% !important;
+		}
+	}
+	
+	@media only screen and (min-width: 1801px) and (max-width: 1900px) {
+		.tabCard ul li .checkbox label {
+			width: 43% !important;
+		}
+		.tabCard .checkbox label::before {
+			left: -3px;
+		}
+		.tabCard .checkbox input[type="checkbox"]:checked+label::after {
+			left: -3px;
+		}
+		.tabCard ul li .checkbox label {
+			padding-left: 20% !important;
+			padding-right: 16% !important;
+		}
+	}
+	
+	@media only screen and (min-width: 1901px) and (max-width: 1920px) {
+		.tabCard ul li .checkbox label {
+			width: 43% !important;
+		}
+		.tabCard .checkbox label::before {
+			left: -3px;
+		}
+		.tabCard .checkbox input[type="checkbox"]:checked+label::after {
+			left: -3px;
+		}
+		.tabCard ul li .checkbox label {
+			padding-left: 20% !important;
+			padding-right: 20% !important;
+		}
+	}
+	
+	.filterInfo ul li.choice {
+		position: relative;
+		display: inline-block;
+	}
+	
+	.filterInfo ul li.choice label.radio {
+		background-color: transparent !important;
+		border-left: initial !important;
+		border-right: initial !important;
+		color: #383838 !important;
+		letter-spacing: 0px !important;
+		padding-left: 0px !important;
+		min-width: 89px !important;
+		font-weight: initial !important;
+		width: 16% !important;
+		margin-left: 6%;
+	}
+	
+	.filterInfo ul li.choice .radio {
+		position: relative;
+		display: inline-block;
+		font-weight: 400;
+		color: #0c4757;
+		padding-left: 25px;
+		cursor: pointer;
+	}
+	
+	.filterInfo ul li.choice .radio input {
+		position: absolute;
+		left: -9999px;
+	}
+	
+	.filterInfo ul li.choice .radio i {
+		display: block;
+		position: absolute;
+		top: 6px;
+		left: 0;
+		width: 15px;
+		height: 15px;
+		outline: 0;
+		border: 1px solid #cccccc;
+		background: #FFFFFF;
+		border-radius: 50%;
+		transition: border-color .3s -webkit-transition: border-color .3s;
+	}
+	
+	.filterInfo ul li.choice .radio input:checked+i {
+		border-color: #f78c3a;
+	}
+	
+	.filterInfo ul li.choice .radio input+i:after {
+		position: absolute;
+		content: '';
+		top: 3px;
+		left: 3px;
+		width: 9px;
+		height: 9px;
+		border-radius: 50%;
+		background-color: #f78c3a;
+		opacity: 0;
+		transition: opacity .1s;
+		-webkit-transition: opacity .1s;
+	}
+	
+	.filterInfo ul li.choice .radio input:checked+i:after {
+		opacity: 1;
+	}
+	
+	.filterInfo ul li.choice label.radio span {
+		background-color: transparent !important;
+		border-left: initial !important;
+		border-right: initial !important;
+		color: #383838 !important;
+		letter-spacing: 0px !important;
+		padding-left: 0px !important;
+		min-width: 71px !important;
+		font-weight: initial !important;
+		display: inline-block;
+		position: absolute;
+		right: 0px;
+		text-align: left;
+	}
+	/*机票"退款"部分       s*/
+	
+	@media only screen and (min-width: 300px) and (max-width: 1600px) {
+		.filterInfo ul li.choice label.radio span {
+			right: -22px !important;
+		}
+	}
+	
+	@media only screen and (min-width: 1601px) and (max-width: 1700px) {
+		.filterInfo ul li.choice label.radio span {
+			right: -19px !important;
+		}
+	}
+	
+	@media only screen and (min-width: 1701px) and (max-width: 1800px) {
+		.filterInfo ul li.choice label.radio span {
+			right: -14px !important
+		}
+	}
+	
+	@media only screen and (min-width: 1801px) and (max-width: 1900px) {
+		.filterInfo ul li.choice label.radio span {
+			right: -10px !important;
+		}
+	}
+	
+	@media only screen and (min-width: 1901px) and (max-width: 2000px) {
+		.filterInfo ul li.choice label.radio span {
+			right: -6px !important;
+		}
+	}
+	/*机票"退款"部分       e*/
+	
+	@media only screen and (min-width: 300px) and (max-width: 1200px) {
+		.filterInfo ul li.infoDistrict input[type="text"],
+		.filterInfo ul li.infoDistrict input[type="date"] {
+			width: 28.7%;
+		}
+	}
+	
+	@media only screen and (min-width: 1201px) and (max-width: 1300px) {
+		.filterInfo ul li.infoDistrict input[type="text"],
+		.filterInfo ul li.infoDistrict input[type="date"] {
+			width: 29%;
+		}
+	}
+	
+	@media only screen and (min-width: 1301px) and (max-width: 1400px) {
+		.filterInfo ul li.infoDistrict input[type="text"],
+		.filterInfo ul li.infoDistrict input[type="date"] {
+			width: 28.8%;
+		}
+	}
+	
+	@media only screen and (min-width: 1401px) and (max-width: 1500px) {
+		.filterInfo ul li.infoDistrict input[type="text"],
+		.filterInfo ul li.infoDistrict input[type="date"] {
+			width: 29%;
+		}
+	}
+	
+	@media only screen and (min-width: 1501px) and (max-width: 1600px) {
+		.filterInfo ul li.infoDistrict input[type="text"],
+		.filterInfo ul li.infoDistrict input[type="date"] {
+			width: 29.2%;
+		}
+	}
+	
+	@media only screen and (min-width: 1601px) and (max-width: 1700px) {
+		.filterInfo ul li.infoDistrict input[type="text"],
+		.filterInfo ul li.infoDistrict input[type="date"] {
+			width: 29.3%;
+		}
+	}
+	
+	@media only screen and (min-width: 1701px) and (max-width: 1800px) {
+		.filterInfo ul li.infoDistrict input[type="text"],
+		.filterInfo ul li.infoDistrict input[type="date"] {
+			width: 29.5%;
+		}
+	}
+	
+	@media only screen and (min-width: 1801px) and (max-width: 1920px) {
+		.filterInfo ul li.infoDistrict input[type="text"],
+		.filterInfo ul li.infoDistrict input[type="date"] {
+			width: 29.7%;
+		}
+	}
+	
+	.filterInfo ul li.dateOption .groupTourDateRange {
+		visibility: initial;
+		display: none;
+		width: 100%;
+		font-size: 0px;
+	}
+	
+	.filterInfo ul li.dateOption .groupTourDateRange input.firstItem {
+		margin-left: 6% !important;
+	}
+	
+	.filterInfo ul li.dateOption .groupTourDateRange input {
+		width: 28.4%;
+	}
+	
+	.filterInfo ul li.dateOption .groupTourDateRange span {
+		display: inline-block;
+		width: 20px;
+		text-align: center;
+		font-size: 18px;
+	}
+	
+	@media only screen and (min-width: 100px) and (max-width: 1901px) {
+		.filterInfo ul li.dateOption .groupTourDateRange input {
+			width: 28.4% !important;
+		}
+	}
+	
+	.filterInfo ul li .autocomplete-items {
+		width: 63%;
+		left: 27.37%;
+		right: initial;
+	}
+	
+	@media only screen and (min-width: 1800px) and (max-width: 1900px) {
+		.filterInfo ul li .autocomplete-items {
+			width: 63%;
+			left: 27.4%;
+		}
+	}
+	
+	@media only screen and (min-width: 1700px) and (max-width: 1800px) {
+		.filterInfo ul li .autocomplete-items {
+			width: 63%;
+			left: 27.4%;
+		}
+	}
+	
+	@media only screen and (min-width: 1680px) and (max-width: 1700px) {
+		.filterInfo ul li .autocomplete-items {
+			width: 63.1%;
+			left: 27.6%;
+		}
+	}
+	
+	@media only screen and (min-width:1600px) and (max-width: 1679px) {
+		.filterInfo ul li .autocomplete-items {
+			width: 63%;
+			left: 27.7%;
+		}
+	}
+	
+	@media only screen and (min-width:1440px) and (max-width: 1599px) {
+		.filterInfo ul li .autocomplete-items {
+			width: 62.8%;
+			left: 28%;
+		}
+	}
+	
+	@media only screen and (min-width:1366px) and (max-width: 1439px) {
+		.filterInfo ul li .autocomplete-items {
+			width: 62.7%;
+			left: 28.1%;
+		}
+	}
+	
+	@media only screen and (min-width:1280px) and (max-width: 1365px) {
+		.filterInfo ul li .autocomplete-items {
+			width: 63.4%;
+			left: 28.2%;
+		}
+	}
+	
+	@media only screen and (min-width:1024px) and (max-width: 1279px) {
+		.filterInfo ul li .autocomplete-items {
+			width: 63.4%;
+			left: 28.2%;
+		}
+	}
+	
+	.filterGroupTourInfo.filterInfo ul {
+		clear: initial;
+		overflow: initial;
+	}
+	
+	ul.pagination {
+		border: none;
+		background-color: transparent;
+	}
+	
+	.filterInfo ul li.infoDistrict a {
+		display: inline-block;
+		width: 28px;
+		height: 28px;
+		line-height: 28px;
+		border: solid 1px #DDDDDD;
+		text-align: center;
+		font-size: 14px;
+		color: #646464;
+		vertical-align: top;
+		margin-right: 10px;
+	}
+	
+	.filterInfo ul li.infoDistrict .currencyInfo {
+		margin-left: 6%;
+		display: inline-block;
+		width: 70%;
+	}
+	
+	.filterInfo ul li.infoDistrict .currencyInfo input[type='text'] {
+		margin-left: 0px;
+		width: 35%;
+	}
+	.filterInfo ul li.infoDistrict .currencyInfo input[type='text']:last-child{
+		margin-right: 0px;
+	}
+	
+	.showMsg .floor .groupMsg .filterInfo ul li label {
+		min-width: initial;
+		width: 20%;
+		vertical-align: top;
+	}
+	
+	.resultInfo ul li.resultNav dl dd {
+		min-width: 110px;
+		width: initial;
+	}
+	
+	.resultInfo ul li.resultDetail dl dd {
+		min-width: 110px;
+		width: initial;
+	}
+	
+	.filterInfo ul li.dateOption .groupTourDateRange input[type='date']::-webkit-inner-spin-button {
+		display: none;
+	}
+	
+	.filterInfo.filterAdvancedInfo ul li {
+		font-size: 0px;
+	}
+	
+	.filterInfo.filterAdvancedInfo ul li label {
+		vertical-align: top;
+	}
+	
+	.filterInfo.filterAdvancedInfo ul li.infoDistrict {
+		font-size: 0px;
+    	vertical-align: top;
+	}
+	.filterInfo ul li.statusOption.checkboxItem .checkbox label{
+		text-align: left;
+		padding-left: 5px !important;
+	}
+	.filterInfo ul li.statusOption.checkboxItem .checkbox label::after{
+		left: 1px !important;
+	}
+	.filterInfo ul li.statusOption.checkboxItem .checkbox{
+		width: auto !important;
+	}
+	.resultInfo ul li.resultDetail dl dd.guideName{
+		width: 250px;
+	}

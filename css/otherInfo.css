@@ -1,0 +1,4250 @@
+@charset "utf-8";
+.navInfo ul li dl {
+	border-top: 0px !important;
+}
+
+.showMsg .floor .groupMsg {
+	min-height: 740px !important;
+}
+
+.theamInfo .showMsg.otherManage {
+	padding-top: 0px;
+}
+
+.otherManageArea {
+	font-size: 0px;
+	text-align: left;
+}
+
+.showMsg .floor .groupMsg {
+	position: relative;
+}
+
+.theamInfo .showMsg.otherManage .theamTitle {
+	display: inline-block;
+	width: 5%;
+	height: 36px;
+	line-height: 36px;
+	background-color: #9295ff;
+	position: absolute;
+	left: 0px;
+	top: 12px;
+	color: #fff;
+	font-size: 16px;
+	padding: 0px 0px 0px 6px;
+	text-align: center;
+	min-width: 92px;
+}
+
+.theamInfo .showMsg.otherManage .theamTitle i {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background-color: #ffffff;
+	border-radius: 50%;
+	float: left;
+	margin-top: 13px;
+}
+
+.leftInfoCard {
+	display: inline-block;
+	width: 49%;
+	min-height: 400px;
+	clear: both;
+	overflow: hidden;
+}
+
+.rightInfoCard {
+	display: inline-block;
+	width: 49%;
+	min-height: 400px;
+	clear: both;
+	overflow: hidden;
+	vertical-align: top;
+	margin-top: 127px;
+}
+
+.otherManageNav {
+	margin-top: 25px;
+}
+
+.otherManageNav ul {
+	font-size: 0px;
+}
+
+.otherManageNav ul li {
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	background-color: #7f82df;
+	border-left: solid 1px #484ca7;
+	min-width: 110px;
+	width: 19.82%;
+	min-width: 88px;
+}
+
+.otherManageNav ul li:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-left: 0px;
+}
+
+.otherManageNav ul li:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.otherManageNav ul li a {
+	width: 100%;
+	font-size: 15px;
+	color: #ffffff;
+	text-align: center;
+	display: inline-block;
+}
+
+.otherManageNav ul li.current-item {
+	background-color: #fc8038;
+}
+
+.checkbox {
+	padding-left: 10px;
+	height: 24px;
+	line-height: 24px;
+	margin-top: 16px;
+	margin-bottom: 36px;
+}
+
+.checkbox label {
+	color: #7776c6;
+	font-size: 15px;
+}
+
+.checkbox label::after {
+	display: inline-block;
+	position: absolute;
+	left: 0px !important;
+	top: 0px !important;
+	margin-left: -18px !important;
+	padding-left: 3px;
+	font-size: 14px !important;
+	color: #555555;
+	width: 14px !important;
+	height: 14px !important;
+	padding: 1px !important;
+}
+
+.checkbox-success input[type="checkbox"]:checked+label::before {
+	background-color: #ffffff !important;
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+}
+
+.checkbox label::before {
+	border-color: #9295ff !important;
+	border: solid 2px !important;
+}
+
+.checkbox-success input[type="checkbox"]:checked+label::after {
+	color: #9295ff !important;
+}
+
+.filterBox {}
+
+.filterBox ul {
+	font-size: 0px;
+}
+
+.filterBox li {
+	display: inline-block;
+}
+
+.filterBox li.discountCode {
+	width: 30%;
+}
+
+.filterBox li.discountCode input[type='text'],
+.filterBox li.discountAmount input[type='text'] {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	padding-left: 8px;
+	width: 94%;
+	border: solid 1px #bebebe;
+}
+
+.filterBox li.discountAmount {
+	width: 30%;
+}
+
+.filterBox li.action-item {
+	width: 18%;
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	min-width: 44px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b6b2af;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	margin-right: 3.5%;
+}
+
+.filterBox li.action-item a {
+	color: #b6b2af;
+	display: inline-block;
+	width: 100%;
+	color: #9295ff;
+}
+
+.filterBox li.action-item:last-child {
+	margin-right: 0px;
+}
+
+.filterBox li.action-item.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+}
+
+.filterBox li.action-item.selected a {
+	color: #f88032;
+}
+
+ul.listInfo {
+	margin-top: 24px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 99.2%;
+	border: solid 1px #d2d2d2;
+	border-radius: 10px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+ul.listInfo li {
+	width: 100%;
+	border-bottom: solid 1px #d2d2d2;
+	background-color: #ffffff;
+}
+
+ul.listInfo li:last-child {
+	border-bottom: 0px;
+}
+
+ul.listInfo li.listTitle {
+	border: 0px;
+	background-color: #9295ff;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+ul.listInfo li.listTitle dd {
+	display: inline-block;
+	color: #ffffff !important;
+}
+
+ul.listInfo li.listTitle dd:first-child {
+	border-top-left-radius: 10px;
+}
+
+ul.listInfo li.listTitle dd:last-child {
+	border-top-right-radius: 10px;
+}
+
+ul.listInfo li dd {}
+
+ul.listInfo li dl {}
+
+ul.listInfo li dl dd {
+	display: inline-block;
+	font-size: 14px;
+	border-right: solid 1px #d2d2d2;
+	width: 24.82%;
+	text-align: center;
+	color: #646464;
+	min-width: 110px;
+	line-height: initial;
+	vertical-align: middle;
+	word-wrap: break-word;
+	min-height: 32px;
+	line-height: 32px;
+}
+
+ul.listInfo li.listTitle dd {
+	height: 42px;
+	line-height: 42px;
+}
+
+ul.listInfo li dl dd:last-child {
+	border-right: 0px;
+}
+
+ul.listInfo.disabledListInfo {
+	display: none;
+}
+
+ul.listInfo.disabledListInfo li dd {
+	width: 19.82%;
+	min-width: 80px;
+}
+
+ul.addInfo {
+	width: 60%;
+	margin-left: 6%;
+	background-color: #fff;
+	padding-bottom: 2%;
+	border: solid 1px #DDDDDD;
+	border-radius: 5px;
+}
+
+ul.addInfo li.title {
+	width: 100%;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 15px;
+	height: 42px;
+	line-height: 42px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-top: 0px;
+	padding: 0px;
+	text-align: center;
+}
+
+ul.addInfo li {
+	margin-top: 18px;
+	padding: 0px 2%;
+	position: relative;
+}
+
+ul.addInfo li label {
+	display: inline-block;
+	width: 18%;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	line-height: 24px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	height: 32px;
+	line-height: 32px;
+	margin-right: 2%;
+	width: 30%;
+}
+
+ul.addInfo li input[type='text'],
+ul.addInfo li textarea {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	width: 78%;
+	border: solid 1px #959595;
+	padding-left: 10px;
+	text-align: left;
+	width: 66%;
+	vertical-align: top;
+	resize: none;
+}
+
+ul.addInfo li textarea {
+	height: auto !important;
+}
+
+ul.addInfo li.actionFilerBox {
+	padding: 0px 2%;
+}
+
+ul.addInfo li.actionFilerBox a {
+	margin-right: 19%;
+}
+
+ul.addInfo li.actionFilerBox a {
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	background-color: #9295ff;
+	width: 40%;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 5px;
+	text-align: center;
+}
+
+ul.addInfo li.actionFilerBox a:last-child {
+	margin-right: 0px;
+}
+
+
+/*客户来源部分*/
+
+ul.salesNav {
+	width: 100%;
+	font-size: 0px;
+	margin-top: 36px;
+	margin-bottom: 36px;
+}
+
+ul.salesNav li {
+	display: inline-block;
+}
+
+ul.salesNav li.salesFilter {
+	width: 80%;
+	visibility: hidden;
+	text-align: left;
+}
+
+ul.salesNav li.backBox {
+	width: 35%;
+	text-align: right;
+	padding-right: 4.2%
+}
+
+ul.salesNav li.optionItem {
+	width: 10%;
+	text-align: left;
+}
+
+ul.salesNav li.optionItem a {
+	display: inline-block;
+	text-align: center;
+	background-color: #9394e7;
+	font-size: 16px;
+	border-radius: 50%;
+	box-shadow: 0px 3px 3px #6262a2;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
+}
+
+ul.salesNav li.optionItem.option-active a {
+	box-shadow: inset 0px 3px 5px #6262a2;
+	background-color: #a7aef2;
+}
+
+ul.salesNav li.optionItem a img {
+	width: 50%;
+}
+
+ul.salesNav li select,
+ul.salesNav li input[type="text"] {
+	box-sizing: border-box;
+	height: 32px;
+	width: 100%;
+	width: 34.5%;
+}
+
+ul.salesNav li input[type="text"] {
+	width: 99.6%;
+}
+
+.rightInfo {
+	display: inline-block;
+	width: 40%;
+	height: 100%;
+	min-height: 260px;
+}
+
+.rightInfo ul {
+	width: 90%;
+	height: 100%;
+	clear: both;
+	overflow: hidden;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+.rightInfo ul li.chartTitle {
+	font-size: 16px;
+	background-color: #9295ff;
+	color: #fff;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+}
+
+.rightInfo ul li.salesName {
+	background-color: #ffffff;
+	color: #ffffff;
+	height: 32px;
+	line-height: 32px;
+	color: #323232;
+	text-align: center;
+	font-size: 14px;
+	border-bottom: solid 1px #cccccc;
+	cursor: pointer;
+	clear: both;
+	overflow: hidden;
+}
+
+.rightInfo ul li.salesName.selected {
+	background-color: #D2D2D2;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.rightInfo ul li.salesName:last-child {
+	border-bottom: 0px;
+}
+
+ul.listInfo li dl:hover {
+	border: solid 1px red;
+	cursor: pointer;
+}
+
+ul.listInfo li.listTitle dl:hover {
+	border: none !important;
+}
+
+ul.listInfo li dl:hover dd {
+	color: #636363;
+}
+
+
+/*选中状态*/
+
+ul.listInfo li dl.selected {
+	background-color: #FADA5E;
+	color: #636363;
+}
+
+.checkbox input[type="checkbox"]:checked+label::after {
+	font-size: 14px !important;
+}
+
+ul.listInfo li.listTitle dl:hover {
+	background-color: transparent;
+}
+
+
+/*加载下一页*/
+
+.leftInfoCard a.order-unfold {
+	display: inline-block;
+	width: 99.2%;
+	background-color: #9295ff;
+	height: 28px;
+	line-height: 28px;
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	cursor: pointer;
+	border: solid 1px #D2D2D2;
+}
+
+.leftInfoCard a.order-unfold img {
+	width: 16px;
+	height: 16px;
+	margin-right: 2%;
+}
+
+ul.salesNav li.salesFilter input[type='text'] {
+	width: 60%;
+}
+
+ul.salesNav li.salesFilter .addBtn {
+	display: inline-block;
+	width: 18%;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #ccc;
+	vertical-align: top;
+	text-align: center;
+	box-shadow: 0px 0px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b3b3b1;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	background-color: #edeae5;
+	margin-left: 2%;
+}
+
+ul.salesNav li.salesFilter .addBtn.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.divisionRightInfo {
+	margin-top: 30px;
+	width: 100%;
+}
+
+.divisionRightInfo ul.divisionName {
+	width: 19.82%;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.divisionRightInfo ul.divisionDetail {
+	display: inline-block;
+	border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
+	border-left: solid 1px #cccccc;
+	width: 79.7%;
+	vertical-align: top;
+}
+
+.divisionRightInfo ul.divisionDetail li.detailText {
+	display: inline-block;
+	background-color: #ffffff;
+	color: #ffffff;
+	min-height: 32px;
+	line-height: 32px;
+	color: #323232;
+	text-align: center;
+	font-size: 14px;
+	border-bottom: solid 1px #cccccc;
+	cursor: pointer;
+	clear: both;
+	overflow: hidden;
+	word-break: break-word;
+	vertical-align: middle;
+	width: 100%;
+}
+
+.divisionRightInfo ul.divisionDetail li.detailText:last-child {
+	border-bottom: 0px;
+}
+
+.divisionRightInfoCard {
+	margin-top: 30px;
+}
+
+.divisionRightInfo ul.divisionMsg {
+	height: 100%;
+	clear: both;
+	overflow: hidden;
+	border-radius: 5px;
+	background-color: #fff;
+	border: solid 1px #CCCCCC;
+	width: 99.6%;
+	border-bottom-left-radius: initial;
+	border-bottom-right-radius: initial;
+}
+
+.divisionRightInfo ul.divisionMsg li {
+	background-color: #ffffff;
+	color: #ffffff;
+	color: #323232;
+	text-align: center;
+	font-size: 14px;
+	border-bottom: solid 1px #cccccc;
+	cursor: pointer;
+	clear: both;
+	overflow: hidden;
+}
+
+.divisionRightInfo ul.divisionMsg li dl {
+	width: 100%;
+	height: 100%;
+	font-size: 0px;
+}
+
+.divisionRightInfo ul.divisionMsg li dl dd {
+	font-size: 14px;
+	min-height: 32px;
+	line-height: 32px;
+}
+
+.divisionRightInfo ul.divisionMsg li dl dd.divisionName {
+	width: 28.82%;
+	display: inline-block;
+	border-right: solid 1px #CCCCCC;
+}
+
+.divisionRightInfo ul.divisionMsg li dl dd.divisionDetail {
+	width: 69.7%;
+	vertical-align: top;
+	display: inline-block;
+	word-break: break-word;
+	padding-left: 1%;
+	text-align: left !important;
+}
+
+.divisionRightInfo ul.divisionMsg li.tabTitle {
+	font-size: 16px;
+	background-color: #9295ff;
+	color: #ffffff;
+}
+
+.divisionRightInfo ul.divisionMsg li.tabTitle dd.divisionDetail {
+	text-align: center !important;
+}
+
+.divisionRightInfo ul.divisionMsg li:last-child {
+	border-bottom: 0px;
+}
+
+.divisionRightInfo ul.divisionMsg li:hover {
+	border: solid 1px red;
+}
+
+.divisionRightInfo ul.divisionMsg li.tabTitle:hover {
+	border: none;
+	border-right: none;
+}
+
+.otherManageNav ul li {
+	width: 9.72%;
+}
+
+ul.listInfo.defaultList li dl dd.detailMsg {
+	vertical-align: top;
+	display: inline-block;
+	word-break: break-word;
+	padding-left: 1%;
+	text-align: left;
+	width: 23.82%;
+	line-height: 32px !important;
+	clear: both;
+	overflow: hidden;
+}
+
+ul.listInfo.disabledListInfo li dl dd.detailMsg {
+	vertical-align: top;
+	display: inline-block;
+	word-break: break-word;
+	padding-left: 1%;
+	text-align: left;
+	width: 18.82%;
+	line-height: 32px !important;
+	clear: both;
+	overflow: hidden;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 1245px) {
+	ul.listInfo.defaultList li dl dd.detailMsg {
+		padding-left: 0px;
+	}
+	ul.listInfo.disabledListInfo li dl dd.detailMsg {
+		padding-left: 0px;
+	}
+}
+
+
+/*其他管理    其他s*/
+
+.otherManageArea .leftManageInfo {
+	display: inline-block;
+	width: 40%;
+	min-height: 800px;
+	width: 36%;
+	vertical-align: top;
+	margin-top: 20px;
+	padding-right: 3%;
+}
+
+.otherManageArea .rightManageInfo {
+	display: inline-block;
+	width: 60%;
+	min-height: 800px;
+	vertical-align: top;
+	margin-top: 20px;
+}
+
+.otherManageArea .manageCard {
+	background-color: #ffffff;
+	border-radius: 4px;
+	margin-bottom: 26px;
+	padding-bottom: 15px;
+	border: solid 1px #d2d2d2;
+}
+
+.otherManageArea .manageCard ul {}
+
+.otherManageArea .manageCard ul li {
+	min-height: 32px;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+.otherManageArea .manageCard ul li.manageAction {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.otherManageArea .manageCard ul li.manageTitle {
+	height: 40px;
+	line-height: 40px;
+	background-color: #9295ff;
+	color: #ffffff;
+	text-align: center;
+	font-size: 16px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.otherManageArea .manageCard ul li dl.manageCardNav {}
+
+.otherManageArea .manageCard ul li dl.manageCardNav dd {}
+
+.otherManageArea .manageCard ul li dl.manageCardNav dd.optionItem {
+	width: 15%;
+	text-align: left;
+	display: inline-block;
+}
+
+.otherManageArea .manageCard ul li dl.manageCardNav dd.optionItem a {
+	display: inline-block;
+	text-align: center;
+	background-color: #9394e7;
+	font-size: 16px;
+	border-radius: 50%;
+	box-shadow: 0px 3px 3px #6262a2;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	width: 42px;
+	height: 42px;
+	line-height: 42px
+}
+
+.otherManageArea .manageCard ul li dl.manageCardNav dd.optionItem a img {
+	width: 50%;
+}
+
+.otherManageArea .manageCard ul li dl.manageCardNav dd.confirmManageInfo {
+	width: 70%;
+	text-align: left;
+	display: inline-block;
+	display: none;
+}
+
+.otherManageArea .manageCard ul li dl.manageCardNav dd.confirmManageInfo input {
+	width: 78%;
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	border: solid 1px #959595;
+}
+
+.otherManageArea .manageCard ul li dl.manageCardNav dd.confirmManageInfo a {
+	display: inline-block;
+	width: 18%;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: top;
+	text-align: center;
+	box-shadow: inset 0px 0px 4px #c8c8c8;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b8b8b8;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	background-color: #ece8e4;
+	margin-left: 2%;
+	background: url(../img/btn.png) center center no-repeat;
+}
+
+.otherManageArea .manageCard ul li.manegeDetailInfo {}
+
+.otherManageArea .manageCard ul li.manegeDetailInfo label {
+	display: inline-block;
+	min-width: 92px;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	text-align: center;
+	color: #383838;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	border-right: solid 1px #f2f5ff;
+	height: 32px;
+	line-height: 32px;
+	vertical-align: top;
+	width: 30%;
+}
+
+.otherManageArea .manageCard ul li.manegeDetailInfo dl {
+	width: 60%;
+	display: inline-block;
+	border: solid 1px #d2d2d2;
+	margin-left: 2%;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.otherManageArea .manageCard ul li.manegeDetailInfo dl dd {
+	background-color: #ffffff;
+	color: #ffffff;
+	height: 32px;
+	line-height: 32px;
+	color: #323232;
+	text-align: center;
+	font-size: 14px;
+	border-bottom: solid 1px #cccccc;
+	cursor: pointer;
+	clear: both;
+	overflow: hidden;
+}
+
+.otherManageArea .manageCard a.order-unfold {
+	display: inline-block;
+	width: 100%;
+	background-color: #9295ff;
+	height: 28px;
+	line-height: 28px;
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	cursor: pointer;
+	width: 60%;
+	margin-left: 2%;
+	border: solid 1px #9295ff;
+}
+
+.otherManageArea .manageCard a.order-unfold img {
+	width: 16px;
+	height: 16px;
+	margin-right: 2%;
+}
+
+.otherManageArea .manageCard ul li dl.manageCardNav dd.optionItem.option-active a {
+	box-shadow: inset 0px 3px 5px #6262a2;
+	background-color: #a7aef2;
+}
+
+.otherManageArea .manageCard ul li dl.manageCardNav dd.confirmManageInfo a.option-active {
+	color: #878aec;
+	box-shadow: inset 0px 6px 10px #B8B8B8;
+}
+
+.manageCard.divisionCard ul li.manageAction {
+	width: 70%;
+}
+
+.manageCard.divisionCard .divisionRightInfo {
+	width: 57%;
+	margin-top: 0px;
+	margin-left: 2%;
+	border: solid 1px #DDDDDD;
+	border-radius: 5px;
+}
+
+.manageCard.divisionCard .divisionRightInfo dl {
+	width: 100% !important;
+	margin-left: 0px !important;
+	border: none !important;
+	display: block !important;
+}
+
+.manageCard.divisionCard .divisionRightInfo dl dd {
+	border: none !important;
+	background-color: transparent !important;
+}
+
+.manageCard.divisionCard .divisionRightInfo dl dd.divisionName {
+	border-right: solid 1px #DDDDDD !important;
+}
+
+.manageCard.divisionCard .divisionRightInfo ul.divisionMsg li.tabTitle dd {
+	color: #FFFFFF !important;
+}
+
+.manageCard.manageContent.paymentManage {
+	width: 60%;
+}
+
+.manageCard.manageContent.paymentManage a.order-unfold {
+	width: 60%;
+}
+
+.manageCard.divisionCard a.order-unfold {
+	width: 57%;
+	border: none;
+}
+
+.otherManageArea .manageCard ul li.manegeDetailInfo dl dd.selected {
+	background-color: #D2D2D2;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.otherManageArea .manageCard.manageContent ul li.manegeDetailInfo dl {
+	min-height: 210px;
+}
+
+.manageCard.divisionCard .divisionRightInfoCard {
+	display: inline-block;
+	width: 38%;
+	margin-top: 0px;
+	border: solid 1px #DDDDDD;
+	margin-left: 2%;
+	min-height: auto;
+	border-radius: 5px;
+}
+
+.manageCard.divisionCard .divisionRightInfoCard ul.addInfo {
+	width: 100%;
+	margin-left: 0px;
+}
+
+.manageCard.divisionCard .divisionRightInfoCard ul.addInfo input[type='text'],
+.manageCard.divisionCard .divisionRightInfoCard textarea {
+	width: 64%;
+}
+
+.manageCard.divisionCard .divisionRightInfoCard textarea {
+	line-height: 24px;
+}
+
+.manageCard.divisionCard li.manegeDetailInfo {
+	margin-top: 15px;
+}
+
+.manageCard.divisionCard ul li.manegeDetailInfo dl dd {
+	min-height: 32px;
+	height: auto;
+}
+
+.manageCard.divisionCard .divisionRightInfo ul.divisionMsg li.tabTitle {}
+
+.manageCard.divisionCard ul.addInfo li.title {
+	padding: 0px;
+}
+
+.manageCard.divisionCard ul li.manegeDetailInfo label {
+	min-width: initial;
+}
+
+.manageCard.exchangeRateCard {
+	width: 60%;
+}
+
+.manageCard.exchangeRateCard ul li a {
+	display: inline-block;
+	width: 24%;
+	height: 32px;
+	line-height: 32px;
+	vertical-align: top;
+	text-align: center;
+	box-shadow: 0px 0px 4px #c8c8c8;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b8b8b8;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	background-color: #ece8e4;
+	background: url(../img/btn_bg.png) center center no-repeat;
+}
+
+.manageCard.exchangeRateCard ul li a.selected {
+	color: #878aec;
+	box-shadow: inset 0px 0px 4px #c8c8c8;
+}
+
+.manageCard.exchangeRateCard ul li a:last-child {
+	margin-left: 3%;
+}
+
+.manageCard.exchangeRateCard dl {
+	min-height: initial !important;
+	border: none !important;
+}
+
+.manageCard.exchangeRateCard dl dd {
+	border: none !important;
+	color: #3a3c68;
+}
+
+.manageCard.exchangeRateCard dl dd input[type='text'] {
+	box-sizing: border-box;
+	height: 30px;
+	width: 80px;
+	color: #c1c1c1;
+	text-align: center;
+	border: solid 1px #3a3c68;
+	height: 24px;
+	line-height: 24px;
+	font-size: 16px;
+}
+
+.manageCard.exchangeRateCard li.manegeDetailInfo {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.otherManageNav ul li {
+	width: 17%;
+}
+
+.manageCard.exchangeRateCard ul li.manegeDetailInfo label {
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+	margin-top: 4px;
+	width: 35%;
+}
+
+.manageCard.exchangeRateCard ul li.manegeDetailInfo dl dd {
+	text-align: left;
+	font-size: 16px;
+}
+
+.manageCard.exchangeRateCard ul li a.current {
+	box-shadow: inset 0px 4px 10px #B8B8B8;
+}
+
+.otherManageArea .manageCard ul li.manegeDetailInfo dl dd:last-child {
+	border-bottom: none;
+}
+
+
+/*其他管理    其他e*/
+
+@media only screen and (min-width: 1230px) and (max-width: 1384px) {
+	.manageCard.exchangeRateCard ul li.manegeDetailInfo dl dd {
+		font-size: 13px;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1229px) {
+	.manageCard.exchangeRateCard ul li.manegeDetailInfo dl dd {
+		font-size: 12px;
+	}
+}
+
+
+/*其他管理-公告管理    s*/
+
+.filterBox li.author {
+	width: 30%;
+}
+
+.filterBox li.author input[type="text"] {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	padding-left: 8px;
+	width: 94%;
+	border: solid 1px #bebebe;
+}
+
+.filterBox li.mco_info .checkbox {
+	margin: 0px;
+}
+
+.filterBox li.mco_info .checkbox label::before {
+	top: -1px;
+}
+
+.filterBox li.mco_info .checkbox-success input[type="checkbox"]:checked+label::after {
+	top: -1px !important;
+}
+
+.filterBox li.mco_btn a {
+	display: inline-block;
+	border-radius: 20px;
+	text-align: center;
+	color: #a8acad;
+	background-color: #fbfbf9;
+	box-shadow: -1px 0px 4px #cfcfcd;
+	text-indent: 0px;
+	width: 30%;
+	height: 30px;
+	line-height: 30px;
+	min-width: 100px;
+	font-size: 14px;
+	vertical-align: baseline;
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+.filterBox li.mco_btn a.selected {
+	background-color: #ece8e7;
+	box-shadow: -1px -3px 3px #b8b8b8;
+	color: #9294ff;
+	border-radius: 20px;
+}
+
+ul.listInfo li dd.notice_content {
+	width: 49.64%;
+}
+
+ul.listInfo li.listDetail dd.notice_content {
+	text-align: left;
+	padding-left: 1%;
+	width: 48.64%;
+	white-space: pre-line;
+}
+
+ul.addInfo li.receiver {}
+
+ul.addInfo li.receiver dl {
+	width: 66%;
+	display: inline-block;
+}
+
+ul.addInfo li.receiver label {
+	vertical-align: top;
+}
+
+ul.addInfo li.receiver dl dd {}
+
+ul.addInfo li.receiver dl dd div.checkbox {
+	margin: 0px;
+	height: 20px;
+	line-height: 20px;
+	margin-bottom: 10px;
+}
+
+ul.addInfo li.receiver dl dd label {
+	background-color: transparent;
+	border: none;
+	width: initial;
+	height: initial;
+	line-height: initial;
+	color: #7776c6;
+	font-weight: initial;
+}
+
+ul.addInfo li.receiver dl dd div.checkbox input[type="checkbox"]:checked+label::after {
+	top: 2px !important;
+}
+
+ul.addInfo li.getReceiver {
+	display: none;
+}
+
+ul.addInfo li.getReceiver textarea {
+	width: 100%;
+	font-size: 14px;
+	color: #6f7073;
+}
+
+ul.addInfo li.category {}
+
+ul.addInfo li.category select {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	border: solid 1px #959595;
+	padding-left: 10px;
+	text-align: left;
+	width: 30%;
+	vertical-align: top;
+}
+
+ul.addInfo li.category input.other_info {
+	width: 35%;
+	margin-left: 2%;
+	display: none;
+}
+
+ul.addInfo li.top_info {}
+
+ul.addInfo li.top_info label.switch {
+	background-color: transparent;
+	border: none;
+	width: initial;
+	/*height: initial;
+	line-height: initial;*/
+	color: #7776c6;
+	font-weight: initial;
+	vertical-align: bottom;
+	margin-left: 4%;
+}
+
+ul.addInfo li.top_info input.systemNum {
+	width: 32% !important;
+	vertical-align: bottom;
+}
+
+ul.addInfo li.notice_content {}
+
+ul.addInfo li.notice_content textarea {
+	width: 100%;
+	margin-top: 10px;
+}
+
+ul.addInfo li.top_info .checkbox-success input[type="checkbox"]:checked+label::after {
+	top: 1px !important;
+}
+
+.filterBox li.mco_info {
+	/*margin-left: 20px;*/
+}
+
+.filterBox li.searchInfo {
+	/*margin-left: 20px;*/
+}
+
+ul.listInfo.disabledListInfo li.listTitle {}
+
+ul.listInfo.disabledListInfo li.listTitle dd.notice_content {
+	width: 39.82%;
+}
+
+ul.listInfo.disabledListInfo li.listDetail dd.notice_content {
+	width: 38.82%;
+}
+
+ul.addInfo li.top_info div.checkbox {
+	margin: 0px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	ul.addInfo li.receiver label {
+		font-size: 13px;
+	}
+	ul.addInfo li.category label {
+		font-size: 13px;
+	}
+	ul.addInfo li.notice_content label {
+		font-size: 13px;
+	}
+	ul.addInfo li.category input.other_info {
+		width: 34%;
+	}
+}
+
+.filterBox {}
+
+.filterBox ul {}
+
+.filterBox ul li.mco_info {
+	width: 100%;
+	padding-left: 2px;
+}
+
+.filterBox ul li.mco_info a {
+	box-shadow: 0px 0px 4px #cfcfcd;
+	display: inline-block;
+	border-radius: 20px;
+	text-align: center;
+	color: #a8acad;
+	background-color: #fbfbf9;
+	box-shadow: -1px 0px 4px #cfcfcd;
+	text-indent: 0px !important;
+	cursor: pointer;
+	margin-right: 10px;
+	height: 24px;
+	line-height: 24px;
+	display: inline-block;
+	width: 16%;
+	font-size: 14px;
+}
+
+.filterBox ul li.mco_info a.selected {
+	background-color: #ece8e7;
+	box-shadow: -1px -3px 3px #b8b8b8;
+	color: #9294ff;
+	border-radius: 20px;
+}
+
+.rightInfoCard.noticeManage_rightInfo {
+	margin-top: 72px;
+}
+
+
+/*其他管理-公告管理     e*/
+
+ul.addInfo li.currencyInfor {}
+
+ul.addInfo li.currencyInfor select {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	width: 78%;
+	border: solid 1px #959595;
+	padding-left: 10px;
+	text-align: left;
+	width: 66%;
+	vertical-align: top;
+}
+
+ul.addInfo li.receiver dl dd select {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	width: 78%;
+	border: solid 1px #959595;
+	padding-left: 10px;
+	text-align: left;
+	width: 66%;
+	vertical-align: top;
+}
+
+ul.addInfo li.receiver dl dd:first-child {
+	margin-bottom: 10px;
+}
+
+ul.addInfo li.dateInfo {}
+
+ul.addInfo li.dateInfo input[type="date"] {
+	box-sizing: border-box;
+	height: 32px;
+	line-height: 32px;
+	display: inline-block;
+	width: 78%;
+	border: solid 1px #959595;
+	padding-left: 10px;
+	text-align: left;
+	width: 43%;
+	vertical-align: top;
+}
+
+ul.addInfo li.notice_content textarea {
+	height: auto !important;
+	min-height: 128px;
+}
+
+ul.addInfo li.receiver dl dd a {
+	display: inline-block;
+	width: 20%;
+	height: 30px;
+	line-height: 30px;
+	background-color: #9295ff;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 4px;
+	margin-left: 2%;
+	text-align: center;
+}
+
+ul.addInfo li.receiver dl dd .autocomplete-items {
+	width: 62.6%;
+}
+
+ul.addInfo li.receiver dl dd:last-child {
+	display: none;
+}
+
+ul.addInfo li.getReceiver textarea {
+	width: 66%;
+}
+
+
+/*确认发布*/
+
+.confirmNoticeInfo {
+	text-align: center !important;
+	vertical-align: middle;
+	width: 290px;
+	height: 266px;
+	padding: 0px;
+	border: solid 2px #9295ff;
+	border-radius: 10px;
+	background-color: #fff;
+	position: fixed;
+	bottom: 30%;
+	left: 49%;
+	box-shadow: 0px 0px 4px #9295ff;
+	overflow: hidden;
+	display: none;
+}
+
+.confirmNoticeInfo .confirmTitle {
+	vertical-align: middle;
+	text-align: center !important;
+	color: #8f8f8f;
+	font-size: 32px;
+	border-bottom: solid 1px #b5b5b5;
+	padding-bottom: 24px;
+	margin: 22px 16px 0px 16px;
+}
+
+.confirmNoticeInfo .confirmTitle img {
+	width: 110px;
+	height: 110px;
+}
+
+.confirmNoticeInfo p.confirmNotice {
+	text-align: center;
+	font-size: 20px;
+	color: #848484;
+	margin-top: 12px;
+}
+
+.confirmNoticeInfo .actionBox {
+	font-size: 0px;
+	text-align: center;
+	margin-top: 26px;
+}
+
+.confirmNoticeInfo .actionBox button {
+	display: inline-block;
+	width: 50%;
+	margin-left: 0px !important;
+	height: 45px;
+	line-height: 45px;
+	font-size: 16px;
+	padding: 0px;
+	cursor: pointer;
+}
+
+.confirmNoticeInfo .actionBox button.actionConfirm {
+	background-color: #9295ff;
+	color: #fff;
+	border-bottom-left-radius: 7px;
+	border-color: #9595ff;
+}
+
+.confirmNoticeInfo .actionBox button.actionCancel {
+	background-color: #e3e4ff;
+	color: #9394fe;
+	border-bottom-right-radius: 7px;
+	border-color: #e3e4ff;
+}
+
+ul.addInfo li.receiver dl dd a {
+	margin-left: 2%;
+	height: 30px;
+	line-height: 30px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	margin-right: 3.5%;
+	display: inline-block;
+	color: #9295ff;
+	width: 20%;
+}
+
+ul.addInfo li.receiver dl dd a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.filterBox ul li.mco_info {
+	display: inline-block;
+	width: 50%;
+}
+
+.filterBox ul li.mco_info a {
+	width: 32%;
+}
+
+.filterBox ul li.deleteNotice {
+	display: inline-block;
+	width: 49%;
+	text-align: right;
+}
+
+.filterBox ul li.deleteNotice a {
+	display: inline-block;
+	width: 40%;
+	margin-right: 0px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b6b2af;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	display: inline-block;
+	color: #9295ff;
+	height: 24px;
+	line-height: 24px;
+}
+
+.filterBox ul li.deleteNotice a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+ul.listInfo li dd.noticeID {
+	width: 14%;
+	min-width: initial;
+}
+
+ul.listInfo li dd.notice_content {
+	width: 35.64%;
+}
+
+ul.listInfo li.listDetail dd.notice_content {
+	width: 34.64%;
+}
+
+ul.listInfo li.listDetail dd.noticeID {
+	width: 14%;
+	min-width: initial;
+}
+
+ul.listInfo.disabledListInfo li.listTitle dd.notice_content {
+	width: 25.7%;
+}
+
+ul.listInfo.disabledListInfo li.listDetail dd.notice_content {
+	width: 24.7%;
+}
+
+.filterBox ul li.deleteNotice {
+	text-align: left;
+}
+
+.otherManageNav ul li {
+	width: 12.2%;
+}
+
+
+/*财务确认*/
+
+ul.listInfo li.listTitle dd.confirm_ID {
+	width: 8%;
+}
+
+ul.listInfo li.listDetail dd.confirm_ID {
+	width: 8%;
+}
+
+ul.listInfo li.listTitle dd.confirm_author {
+	width: 16%;
+}
+
+ul.listInfo li.listDetail dd.confirm_author {
+	width: 16%;
+}
+
+ul.listInfo li.listTitle dd.confirm_time {
+	width: 24%;
+}
+
+ul.listInfo li.listDetail dd.confirm_time {
+	width: 24%;
+}
+
+ul.listInfo li.listTitle dd.confirm_orderID {
+	width: 12.82%;
+}
+
+ul.listInfo li.listDetail dd.confirm_orderID {
+	width: 12.82%;
+}
+
+ul.listInfo li.listTitle dd.confirm_detail {
+	width: 25.82%;
+}
+
+ul.listInfo li.listDetail dd.confirm_detail {
+	width: 25.82%;
+}
+
+ul.listInfo li.listTitle dd.confirm_notes {
+	width: 24.82%;
+}
+
+ul.listInfo li.listDetail dd.confirm_notes {
+	width: 24.82%;
+}
+
+ul.listInfo li.listTitle dd.confirm_type {
+	width: 12%;
+}
+
+ul.listInfo li.listDetail dd.confirm_type {
+	width: 12%;
+}
+
+.filterBox.noticeManage {
+	margin-top: 24px;
+}
+
+.filterBox.noticeManage ul li:first-child {
+	width: 50%;
+}
+
+.filterBox.noticeManage ul li .checkbox {
+	margin: 0px;
+}
+
+.filterBox.noticeManage ul li.deleteNotice {
+	text-align: right;
+}
+
+
+/*订单变动查询   s*/
+
+.leftInfoCard.orderChangeQuery {
+	width: 60%;
+}
+
+.rightInfoCard.orderChangeQuery {
+	width: 40%;
+	margin-top: 24px;
+}
+
+.theamInfo .showMsg.otherManage .theamTitle.orderChange {
+	width: 9%;
+}
+
+.orderChangeQuery ul.listInfo li dd {
+	min-width: initial;
+	padding: 0px 1%;
+}
+
+.orderChangeQuery ul.listInfo li dd.logID {
+	width: 8%;
+}
+
+.orderChangeQuery ul.listInfo li dd.orderNum {
+	width: 8%;
+}
+
+.orderChangeQuery ul.listInfo li dd.changedBy {
+	width: 12%;
+}
+
+.orderChangeQuery ul.listInfo li dd.amendantRecord {
+	width: 12%;
+}
+
+.orderChangeQuery ul.listInfo li dd.beforeChange {
+	width: 12%;
+}
+
+.orderChangeQuery ul.listInfo li dd.afterChange {
+	width: 12%;
+}
+
+.orderChangeQuery ul.listInfo li dd.changeTime {
+	width: 21%;
+}
+
+.rightInfoCard.orderChangeQuery ul.addInfo li.dateInfo {
+	font-size: 0px;
+}
+
+.rightInfoCard.orderChangeQuery ul.addInfo li.dateInfo span {
+	display: inline-block;
+	width: 100%;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.rightInfoCard.orderChangeQuery ul.addInfo li.dateInfo input[type='date'] {
+	width: 100%;
+}
+
+.rightInfoCard.orderChangeQuery ul.addInfo li.dateInfo div {
+	width: 66%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.orderChangeQuery ul.listInfo li dd.changeTime {
+		width: 20.9%;
+	}
+	.theamInfo .showMsg.otherManage .theamTitle.orderChange {
+		width: 13%;
+	}
+}
+
+
+/*订单变动查询   e*/
+
+
+/*扩展功能          s*/
+
+.extensionItem {
+	width: 100%;
+	margin-top: 32px;
+	font-size: 0px;
+}
+
+.extensionItem ul.tab-nav {
+	display: inline-block;
+	vertical-align: top;
+	/*border: solid 1px #d2d2d2;*/
+}
+
+.extensionItem ul.tab-nav li {
+	height: 32px;
+	line-height: 32px;
+	font-size: 14px;
+	color: #888888;
+	text-align: center;
+	background-color: #ffffff;
+	border: solid 1px #d2d2d2;
+	cursor: pointer;
+	background-color: #cacaca;
+	margin-bottom: 3px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+.extensionItem ul.tab-nav li:last-child {
+	/*border-bottom: 0px;*/
+}
+
+.extensionItem ul.tab-nav li.selected {
+	/*background-color: #FADA5E;*/
+	color: #636363;
+	background-color: #ffffff;
+	border-right: 0px;
+}
+
+.extensionItem ul.tab-nav li a {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	font-size: 14px;
+	min-width: 100px;
+	line-height: 30px;
+}
+
+.extensionItem .tab-item {
+	display: inline-block;
+	/*width: 500px;
+	vertical-align: top;
+	padding: 10px;
+	background-color: #FFFFFF;
+	border: solid 1px #d2d2d2;*/
+	width: 418px;
+	vertical-align: top;
+	padding: 40px;
+	background-color: #FFFFFF;
+	border: solid 1px #d2d2d2;
+	min-height: 420px;
+}
+
+.extensionItem .tab-item ul li {
+	clear: both;
+	min-height: 32px;
+}
+
+.extensionItem .tab-item ul li span.status {
+	display: inline-block;
+	font-size: 14px;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: top;
+	margin-left: 10px;
+}
+
+.extensionItem .tab-item ul li.item-content {
+	position: relative;
+	margin-top: 30px;
+	background-color: #FFFFFF;
+	margin-bottom: 50px;
+}
+
+.extensionItem .tab-item ul li.item-content:last-child {
+	margin-bottom: 0px;
+}
+
+.extensionItem .tab-item ul li.item-content label.markMsg {
+	display: inline-block;
+	width: 98px;
+	height: 24px;
+	line-height: 24px;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 13px;
+	position: absolute;
+	left: 0px;
+	top: -24px;
+	text-align: center;
+}
+
+.extensionItem .tab-item ul li.item-content label.markMsg i {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background-color: #fff;
+	border-radius: 50px;
+	position: absolute;
+	left: 12px;
+	top: 9px;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg {
+	padding: 16px 4% !important;
+	border: solid 1px #d2d2d2;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li:last-child {
+	margin-bottom: 0px !important;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.discountCard label {
+	height: 66px !important;
+	line-height: 66px !important;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use {
+	display: inline-block;
+	min-height: initial;
+	width: 33%;
+	margin-bottom: 0px;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use label {
+	background-color: transparent;
+	border: none;
+	width: initial;
+	height: initial;
+	line-height: initial;
+	color: #7776c6;
+	font-weight: initial;
+	min-width: initial;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use div.checkbox {
+	margin: 0px !important;
+}
+
+.extensionItem .tab-item ul li.item-content.extraContent li.use {
+	/*width: initial !important;*/
+	width: 100% !important;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.list_currency {}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li input {
+	vertical-align: top;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.list_currency input {
+	width: 32% !important;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.list_currency select {
+	width: 30% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+}
+
+.extensionItem .tab-item {
+	display: none;
+}
+
+.extensionItem .tab-item.current {
+	display: inline-block;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency {
+	font-size: 0px;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency input[type="text"] {
+	width: 45% !important;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.discountCard dl.exchange dd.discount-text.list-currency select {
+	width: 45% !important;
+	padding-left: 0px;
+}
+
+.btn-switch {
+	cursor: pointer;
+	width: 52px;
+	height: 31px;
+	position: relative;
+	border: 1px solid #dfdfdf;
+	background-color: #fdfdfd;
+	box-shadow: #dfdfdf 0 0 0 0 inset;
+	border-radius: 20px;
+	background-clip: content-box;
+	display: inline-block;
+	-webkit-appearance: none;
+	user-select: none;
+	outline: none !important;
+}
+
+.btn-switch.large {
+	width: 70px;
+	height: 30px;
+	border-radius: 30px;
+}
+
+.btn-switch.large:before {
+	content: '';
+	width: 28px;
+	height: 28px;
+	border-radius: 30px;
+}
+
+.btn-switch.large:after {
+	content: '';
+	color: #999;
+	left: 30px;
+	position: absolute;
+	line-height: 28px;
+	font-size: 14px;
+}
+
+.btn-switch.large:checked:after {
+	content: '';
+	color: #fff;
+	left: 10px;
+	position: absolute;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+.btn-switch.large:checked:before {
+	left: 40px;
+}
+
+.btn-switch:before {
+	content: '';
+	width: 29px;
+	height: 29px;
+	position: absolute;
+	top: 0px;
+	left: 0;
+	border-radius: 20px;
+	background-color: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.btn-switch:checked {
+	border-color: #9295ff;
+	box-shadow: #9295ff 0 0 0 16px inset;
+	background-color: #9295ff;
+}
+
+.btn-switch:checked:before {
+	left: 21px;
+}
+
+.btn-switch.btn-switch-animbg {
+	transition: background-color ease 0.4s;
+}
+
+.btn-switch.btn-switch-animbg:before {
+	transition: left 0.3s;
+}
+
+.btn-switch.btn-switch-animbg:checked {
+	box-shadow: #dfdfdf 0 0 0 0 inset;
+	background-color: #64bd63;
+	transition: border-color 0.4s, background-color ease 0.4s;
+}
+
+.btn-switch.btn-switch-animbg:checked:before {
+	transition: left 0.3s;
+}
+
+.btn-switch.btn-switch-anim {
+	transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+}
+
+.btn-switch.btn-switch-anim:before {
+	transition: left 0.3s;
+}
+
+.btn-switch.btn-switch-anim:checked {
+	box-shadow: #64bd63 0 0 0 16px inset;
+	background-color: #64bd63;
+	transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+}
+
+.btn-switch.btn-switch-anim:checked:before {
+	transition: left 0.3s;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected {
+	display: inline-block;
+	min-width: 150px;
+	border: solid 1px #737373;
+	border-radius: 5px;
+	text-align: center;
+	height: 32px;
+	line-height: 32px;
+	background-color: #FFFFFF;
+	position: relative;
+	vertical-align: middle;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected div.checkbox.checkboxBtn {
+	padding-left: 2%;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected div.checkbox.checkboxBtn label {
+	color: #ffffff !important;
+	background-color: #ff765a !important;
+	border-radius: 4px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	height: 32px;
+	line-height: 32px;
+	float: initial;
+	position: absolute;
+	right: 0px;
+	box-shadow: inset 0px 1px 4px #636363;
+	letter-spacing: 0px !important;
+	padding-left: 3% !important;
+	padding-right: 3% !important;
+	width: 71% !important;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected .checkbox-success input[type="checkbox"]:checked+label::before {
+	background-color: transparent;
+	border-color: transparent;
+	top: 6px;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected .checkbox input[type="checkbox"]:checked+label::after {
+	background: url(../img/selected.png) center center no-repeat;
+	top: 4px !important;
+	background-size: 100%;
+	content: '';
+	left: -11.5px !important;
+	width: 24px !important;
+	height: 24px !important;
+	outline: none;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected .checkbox label::before {
+	background: url(../img/unselected.png) center center no-repeat;
+	top: 1px !important;
+	background-size: 100%;
+	left: -11.5px;
+	width: 24px;
+	height: 24px;
+	outline: none;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected .checkbox label::before {
+	top: 6px;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected .checkbox label::after {
+	padding-left: 1px;
+	padding-top: 0px;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected .checkbox {
+	padding-left: 2%;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected .checkbox label {
+	color: #ffffff !important;
+	background-color: #ff765a !important;
+	width: 80%;
+	border-radius: 4px;
+	float: right;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	height: 32px;
+	line-height: 32px;
+	float: initial;
+	position: absolute;
+	right: 0px;
+	box-shadow: inset 0px 1px 4px #636363;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected .checkbox label {
+	width: 80%;
+	float: right;
+	letter-spacing: 0px !important;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected .checkbox label i {
+	font-style: normal;
+	visibility: hidden;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.use .selected .checkbox {
+	padding-left: 2%;
+}
+
+.extensionItem .tab-item ul li.use.agencyInfo .checkbox1 {
+	width: 18px;
+	display: inline-block;
+}
+
+.extensionItem .tab-item ul li.goPage {
+	padding-left: 29px;
+	min-height: initial;
+	margin-bottom: 10px;
+}
+
+.extensionItem .tab-item ul li.goPage a {
+	display: inline-block;
+	color: #6da4ca;
+	font-size: 14px;
+	text-decoration: underline;
+}
+
+.extensionItem .tab-item ul li.item-content.extraContent ul.add-msg li.use {
+	margin-bottom: 10px;
+}
+
+.extensionItem .tab-item ul li.item-content.extraContent ul.add-msg li.use:last-child {
+	margin-bottom: 0px;
+}
+
+
+/*扩展功能          e*/
+
+
+/*MCO 刷卡公司    s*/
+
+.manageCard.creditCardCompanies {
+	width: 60% !important;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl {
+	/*min-height: 210px;*/
+	min-height: 32px;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor dl.detailTitle,
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor dl.detailContent {
+	display: inline-block;
+	width: 100%;
+	margin-left: 0px;
+	border: 0px;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li {
+	padding: 0px;
+	background-color: #9295ff;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li.contentInfo {
+	background-color: #FFFFFF;
+	cursor: pointer;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li.contentInfo dd {
+	background-color: #FFFFFF;
+	color: #323232;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li.contentInfo.selected {
+	background-color: #D2D2D2;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li.contentInfo.selected dd {
+	background-color: #D2D2D2;
+	color: #FFFFFF;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li.contentInfo.selected dl {
+	border-bottom-color: #FFFFFF !important;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li.contentInfo.selected dd.orderInfo {
+	border-right-color: #FFFFFF !important;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li dl {
+	border-bottom: solid 1px #D2D2D2 !important;
+	height: 32px;
+	line-height: 32px;
+	min-height: initial;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor dl.detailTitle dd,
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor dl.detailContent dd {
+	display: inline-block;
+	border: 0px;
+	color: #ffffff;
+	background-color: #9295ff;
+	border-radius: 0px;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor dd.orderInfo {
+	width: 28.6%;
+	border-right: solid 1px #d2d2d2 !important;
+}
+
+.otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor dd.nameInfor {
+	width: 70%;
+}
+
+
+/*MCO 刷卡公司    e*/
+
+.extensionItem .tab-item ul li.item-content .checkbox-success input[type="checkbox"]:checked+label::after {
+	top: 2px !important;
+}
+
+
+/*财务确认    s*/
+
+ul.listInfo.confirmFloor li.listDetail dd {
+	white-space: initial;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	/*vertical-align: top;*/
+}
+
+ul.listInfo.confirmFloor li.listDetail dl {
+	/*min-height: 42px;
+	line-height: 42px;*/
+}
+
+ul.listInfo.confirmFloor li dd.systemNum {
+	width: 5%;
+}
+
+ul.listInfo.confirmFloor li dd.salesPerson {
+	width: 10%;
+}
+
+ul.listInfo.confirmFloor li dd.dealTime {
+	width: 6.4%;
+}
+
+ul.listInfo.confirmFloor li dd.customerName {
+	width: 8.4%;
+}
+
+ul.listInfo.confirmFloor li dd.invoice {
+	width: 5.4%;
+}
+
+ul.listInfo.confirmFloor li dd.wholesaler {
+	width: 4.4%;
+}
+
+ul.listInfo.confirmFloor li dd.payment {
+	width: 10.6%;
+}
+
+ul.listInfo.confirmFloor li dd.type {
+	width: 4.4%;
+}
+
+ul.listInfo.confirmFloor li dd.amount {
+	width: 7%;
+}
+
+ul.listInfo.confirmFloor li dd.status {
+	width: 13%;
+}
+
+ul.listInfo.confirmFloor li dd.lockStatus {
+	width: 4%;
+}
+
+ul.listInfo.confirmFloor li dd.clearStatus {
+	width: 4%;
+}
+
+ul.listInfo.confirmFloor li dd.finishStatus {
+	width: 4%;
+}
+
+ul.listInfo.confirmFloor li dd.paidStatus {
+	width: 4%;
+}
+
+ul.listInfo.confirmFloor li dd.locator {
+	width: 6%;
+}
+
+ul.listInfo.confirmFloor li dd.airlines {
+	width: 6%;
+}
+
+ul.listInfo.confirmFloor li dd.number {
+	width: 9%;
+}
+
+ul.listInfo.confirmFloor li dd.yesStatus {
+	/*background-color: #00ff00;*/
+	color: #fff;
+	background: url(../img/yesStatus_icon.png) center center no-repeat;
+	/*background-size: 60%;*/
+	background-size: 48%;
+}
+
+ul.listInfo.confirmFloor li dd.noStatus {
+	/*background-color: #ff0000;*/
+	color: #fff;
+	background: url(../img/noStatus_icon.png) center center no-repeat;
+	/*background-size: 60%;*/
+	background-size: 42%;
+}
+
+ul.listInfo.confirmFloor li dd.finishCell {
+	background-color: #ff9900;
+	color: #fff;
+}
+
+ul.listInfo.confirmFloor li dd.number a {
+	display: inline-block;
+	color: #6da4ca;
+	font-size: 14px;
+	text-decoration: underline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #0b6623;
+	min-height: 32px;
+}
+
+ul.listInfo.confirmFloor li.listTitle dd.externalInvoice {
+	line-height: 21px;
+}
+
+.filterBox ul.searchFloor {
+	width: 94.6%;
+	background-color: #ffffff;
+	padding: 15px;
+	border: solid 1px #d2d2d2;
+	margin-bottom: 24px;
+	border-radius: 4px;
+}
+
+.filterBox ul.searchFloor li {
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 12px;
+}
+
+.filterBox ul.searchFloor li div {
+	display: inline-block;
+}
+
+.filterBox ul.searchFloor li div.leftFloor {
+	width: 35%;
+	vertical-align: top;
+}
+
+.filterBox ul.searchFloor li div.rightFloor {
+	width: 65%;
+	vertical-align: top;
+}
+
+.filterBox ul.searchFloor li div.rightFloor input[type="date"] {
+	/*width: 46%;*/
+	width: 33%;
+}
+
+.filterBox ul.searchFloor li div.rightFloor input[type="date"] {
+	margin-left: 0px;
+}
+
+.filterBox ul.searchFloor li div.rightFloor span {
+	display: inline-block;
+	font-size: 22px;
+	color: #6f7073;
+	width: 8%;
+	text-align: center;
+	height: 30px;
+	/*line-height: 30px;*/
+	line-height: 26px;
+}
+
+.filterBox ul.searchFloor li div.rightFloor.invoiceInfo label {
+	vertical-align: top;
+	width: 22%;
+	margin-right: 2%;
+}
+
+.filterBox ul.searchFloor li div.rightFloor.invoiceInfo input[type="text"] {
+	margin-left: 0px;
+	width: 26%;
+}
+
+.filterBox ul.searchFloor li div.rightFloor.invoiceInfo span {}
+
+.filterBox ul.searchFloor li div.rightFloor .checkbox {
+	margin: 0px;
+	height: 30px;
+	vertical-align: top;
+/*	width: 20%;*/
+	width: auto;
+	padding-left: 0px;
+	text-align: center;
+	padding: 0px 0px 0px 7.8%;;
+}
+
+.filterBox ul.searchFloor li div.rightFloor .checkbox input {
+	height: initial;
+	line-height: initial;
+	display: none;
+}
+
+.filterBox ul.searchFloor li div.rightFloor .checkbox label {
+	background-color: transparent;
+	border: 0px;
+	font-weight: initial;
+	color: #7776c6;
+	width: initial;
+}
+.filterBox ul.searchFloor li div.rightFloor .checkbox label i{
+	font-style: initial;
+}
+
+.filterBox ul.searchFloor li div.rightFloor .checkbox label::before {
+	top: 5px;
+	left: -5px !important;
+}
+
+.filterBox ul.searchFloor li div.rightFloor .checkbox label::after {
+	top: -1px !important;
+	left: -5px !important;
+}
+
+.filterBox ul.searchFloor li div.rightContent {
+	display: inline-block;
+	width: 49%;
+	margin-right: 2%;
+}
+
+.filterBox ul.searchFloor li div.rightContent:last-child {
+	margin-right: 0px;
+}
+
+.filterBox ul.searchFloor li div.rightFloor a {
+	width: 22%;
+	margin-right: 3.1%;
+}
+
+.filterBox ul.searchFloor li div.rightFloor.finishStatus {}
+
+.filterBox ul.searchFloor li div.rightFloor.finishStatus a {
+	color: #cb2431;
+	background-color: #fafbfc;
+	background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
+	box-shadow: none;
+	border: 1px solid rgba(27, 31, 35, 0.2);
+	border-radius: 0.25em;
+	height: 30px;
+	line-height: 30px;
+}
+
+.filterBox ul.searchFloor li div.rightFloor.finishStatus a:not(.triangleBtn):hover {
+	color: #fff;
+	background-color: #cb2431;
+	background-image: linear-gradient(-180deg, #de4450, #cb2431 90%);
+	border-color: rgba(27, 31, 35, 0.5);
+}
+
+
+/*.filterBox ul.searchFloor li div.rightFloor.finishStatus a:focus {
+	box-shadow: 0 0 0 0.2em rgba(203, 36, 49, 0.4);
+}*/
+
+.filterBox ul.searchFloor li div.rightFloor.finishStatus a.selected {
+	color: #fff;
+	background-color: #b5202c;
+	background-image: none;
+	border-color: rgba(27, 31, 35, 0.5);
+	box-shadow: inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15);
+}
+
+.filterBox ul.searchFloor li div input,
+.filterBox ul.searchFloor li div select {
+	box-sizing: border-box;
+	height: 30px;
+	line-height: 30px;
+	border: solid 1px #969696;
+	display: inline-block;
+	width: 47%;
+	margin-left: 4%;
+	vertical-align: top;
+}
+
+.filterBox ul.searchFloor li div label {
+	display: inline-block;
+	min-height: 24px;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: middle;
+	height: 30px;
+	line-height: 30px;
+	width: 45%;
+}
+
+.filterBox ul.searchFloor li div a {
+	display: inline-block;
+	margin-right: 0px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	height: 28px;
+	line-height: 28px;
+	width: 44%;
+	margin-right: 9%;
+}
+
+.filterBox ul.searchFloor li div a:last-child {
+	margin-right: 0px;
+}
+
+.filterBox ul.searchFloor li div a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.filterBox ul.actionConfirm {
+	text-align: right;
+}
+
+.filterBox ul.actionConfirm li {
+	width: 18% !important;
+	text-align: right;
+	padding-right: 5px;
+}
+
+.rightInfoCard.rightFloor {
+	margin-top: 312px;
+	display: none;
+	margin-left: 20px;
+}
+
+@media only screen and (min-width: 100px) and (max-width:1280px) {
+	ul.listInfo li.listTitle dd {
+		font-size: 13px;
+	}
+	.rightInfoCard.rightFloor {
+		margin-left: 18px;
+	}
+	.filterBox ul.searchFloor li div label {
+		font-size: 13px;
+	}
+}
+
+.systematicSearch {
+	position: relative;
+	margin-top: 48px !important;
+}
+
+.systematicSearch label.markMsg {
+	display: inline-block;
+	width: 98px;
+	height: 24px;
+	line-height: 24px;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 13px;
+	position: absolute;
+	left: 0px;
+	top: -24px;
+	text-align: center;
+}
+
+.systematicSearch label.markMsg i {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background-color: #fff;
+	border-radius: 50px;
+	position: absolute;
+	left: 12px;
+	top: 9px;
+}
+
+ul.listInfo.defaultList.confirmlist.confirmFloor {
+	/*width: 94%;*/
+	width: 100%;
+}
+
+.searchCard {
+	width: 64%;
+	min-height: initial;
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1440px) {
+	.filterBox ul.searchFloor li div label {
+		font-size: 13px;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.filterBox ul.searchFloor li div label {
+		font-size: 12px;
+	}
+	.filterBox ul.searchFloor li div.rightFloor .checkbox label::before {
+		left: 0px !important;
+	}
+}
+
+.filterBox ul li.dealtime .rightFloor {
+	display: none;
+}
+
+.filterBox ul.searchFloor li.place {
+	display: none;
+}
+
+.rightInfoCard.rightFloor {
+	width: 30%;
+	/*height: 200px;*/
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 0px;
+	min-height: initial;
+}
+
+.rightInfoCard.rightFloor ul {
+	width: 94.6%;
+	padding: 15px;
+	margin-bottom: 24px;
+	margin-top: 259px;
+}
+
+.rightInfoCard.rightFloor ul li {}
+
+.rightInfoCard.rightFloor ul li a {
+	display: inline-block;
+	margin-right: 0px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	height: 28px;
+	line-height: 28px;
+	width: 20%;
+	margin-right: 5%;
+}
+
+.rightInfoCard.rightFloor ul li a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+ul.listInfo.confirmFloor li.current {
+	border: solid 3px #e69138 !important;
+	width: 99.6%;
+}
+
+ul.listInfo.confirmFloor {
+	margin-top: 0px;
+}
+
+ul.listInfo.confirmFloor li.current dl {
+	border-bottom: solid 1px #d2d2d2;
+}
+
+ul.listInfo.confirmFloor li.current dl:last-child {
+	border-bottom: 0px;
+}
+
+ul.listInfo.confirmFloor li dl.unfold dd.number a {
+	color: #646464;
+	text-decoration: none;
+}
+
+ul.listInfo.confirmFloor li dd.number a {
+	width: 70%;
+}
+
+ul.listInfo.confirmFloor li.current dl.unfold dd.number a {
+	width: 74%;
+}
+
+ul.listInfo.confirmFloor li dl:hover {
+	border-bottom-color: red !important;
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1460px) {
+	ul.listInfo.confirmFloor li dd.number a {
+		width: 95%;
+	}
+	ul.listInfo.confirmFloor li.current dl.unfold dd.number a {
+		width: 98%;
+	}
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1300px) {
+	ul.listInfo.confirmFloor li dd.number a {
+		font-size: 12px;
+	}
+	ul.listInfo.confirmFloor li dd.number {
+		width: 8.3%;
+	}
+	ul.listInfo.confirmFloor li dd.number a {
+		width: 102%;
+		text-align: left;
+		padding-left: 2%;
+	}
+	ul.listInfo.confirmFloor li.current dl.unfold dd.number a {
+		width: 109%;
+	}
+	ul.listInfo.confirmFloor li dl dd {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1386px) {
+	ul.listInfo.confirmFloor li dd.number a {
+		width: 97%;
+	}
+	ul.listInfo.confirmFloor li.current dl.unfold dd.number a {
+		width: 102%;
+	}
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1620px) {
+	ul.listInfo.confirmFloor li dd.number a {
+		width: 85%;
+	}
+	ul.listInfo.confirmFloor li.current dl.unfold dd.number a {
+		width: 88%;
+	}
+}
+
+@media only screen and (min-width: 1680px) and (max-width: 1700px) {
+	ul.listInfo.confirmFloor li dd.number a {
+		width: 80%;
+	}
+	ul.listInfo.confirmFloor li.current dl.unfold dd.number a {
+		width: 84%;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1200px) {
+	ul.listInfo.confirmFloor li dd.number {
+		width: 8%;
+	}
+	ul.listInfo.confirmFloor li dd.number a {
+		width: 80%;
+	}
+	ul.listInfo.confirmFloor li.current dl.unfold dd.number a {
+		width: 84%;
+	}
+}
+
+ul.listInfo.confirmFloor li.current dl.summaryInfo {
+	background-color: #e69138;
+}
+
+ul.listInfo.confirmFloor li.current dl.summaryInfo dd {
+	color: #FFFFFF;
+}
+
+ul.listInfo.confirmFloor li.current dl.summaryInfo dd a {
+	color: #FFFFFF;
+}
+
+ul.listInfo.confirmFloor li.current dl.summaryInfo dd.systemNum {
+	font-weight: bold;
+}
+
+ul.listInfo.confirmFloor li dl:not(.summaryInfo) dd.systemNum.selected {
+	/*background-color: #C21807;*/
+	color: #FFFFFF;
+	background: url(../img/selected_bg.png) center center no-repeat;
+	background-size: 80%;
+}
+
+
+/*财务确认    e*/
+
+
+/*扩展-订单关联   s*/
+
+.extensionItem .tab-item {
+	min-height: 360px;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.systemNum input {
+	width: 46% !important;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.systemNum a {
+	display: inline-block;
+	width: 18%;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: top;
+	text-align: center;
+	box-shadow: inset 0px 0px 4px #c8c8c8;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b8b8b8;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	background-color: #ece8e4;
+	margin-left: 2%;
+	background: url(../img/btn.png) center center no-repeat;
+}
+
+.extensionItem .tab-item ul li.item-content ul.add-msg li.systemNum a.selected {
+	color: #878aec;
+	box-shadow: inset 0px 6px 10px #B8B8B8;
+}
+
+
+/*系统编号*/
+
+ul.add-msg li.list_currency.systemNum {
+	margin-bottom: 0px;
+}
+
+ul.add-msg div.systemNumTab {
+	border: solid 1px #d2d2d2;
+	display: none;
+	margin-top: 10px;
+}
+
+ul.add-msg div.systemNumTab li {}
+
+ul.add-msg div.systemNumTab li dl {
+	font-size: 0px;
+}
+
+ul.add-msg div.systemNumTab li.tab_title {
+	border: 0px;
+	background-color: #9295ff;
+	margin-bottom: 0px;
+}
+
+ul.add-msg div.systemNumTab li.tab_content {
+	margin-bottom: 0px;
+	border-bottom: solid 1px #d2d2d2;
+}
+
+ul.add-msg div.systemNumTab li.tab_content:last-child {
+	border-bottom: 0px;
+}
+
+ul.add-msg div.systemNumTab li.tab_title dl {}
+
+ul.add-msg div.systemNumTab li.tab_title dl dd {
+	color: #ffffff;
+}
+
+ul.add-msg div.systemNumTab li dl dd {
+	font-size: 14px;
+	color: #646464;
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	border-right: solid 1px #d2d2d2;
+	text-align: center;
+	vertical-align: middle;
+}
+
+ul.add-msg div.systemNumTab li dl dd:last-child {
+	border-right: 0px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo {
+	width: 11%;
+}
+
+ul.add-msg div.systemNumTab li dl dd.numberInfo {
+	/*width: 24%;*/
+	width: 18%;
+}
+
+ul.add-msg div.systemNumTab li dl dd.salesInfo {
+	/*width: 44.2%;*/
+	width: 38.2%;
+}
+
+ul.add-msg div.systemNumTab li dl dd.typeInfo {
+	width: 20%;
+}
+
+
+/*10.24 s*/
+
+ul.add-msg div.systemNumTab li dl dd.number {
+	width: 31%;
+}
+
+ul.add-msg div.systemNumTab li dl dd.number a {
+	text-decoration: underline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #0b6623;
+	display: inline-block;
+	width: 78%;
+	cursor: pointer;
+}
+
+ul.add-msg div.systemNumTab li.current {
+	border: solid 3px #e69138 !important;
+	width: 98.9%;
+}
+
+ul.add-msg div.systemNumTab li.current dl dd.number a {
+	width: 80%;
+}
+
+ul.add-msg div.systemNumTab li.current dl.unfold dd.number a {
+	width: 84%;
+}
+
+ul.add-msg div.systemNumTab li.current dl {
+	border-bottom: solid 1px #d2d2d2;
+}
+
+ul.add-msg div.systemNumTab li.current dl:last-child {
+	border-bottom: 0px;
+}
+
+
+/*10.24 e*/
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox {
+	margin: 0px;
+	height: 0px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label {
+	width: 0px;
+	min-width: initial;
+	border: 0px;
+	padding: 0px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label::before {
+	background-color: #ffffff !important;
+	border-color: #7776c6 !important;
+	border: solid 2px #7776c6 !important;
+	left: -3px;
+	top: 6px;
+}
+
+ul.add-msg div.systemNumTab li dl dd.selectInfo .checkbox input[type="checkbox"]:checked+label::after {
+	top: 0px !important;
+	left: -3px !important;
+}
+
+
+/*扩展-订单关联   e*/
+
+
+/*财务确认   s*/
+
+.filterBox ul.searchFloor li div input.name {
+	width: 23.5%;
+}
+
+.filterBox ul.searchFloor li div input.name:last-child {
+	margin-left: 0px;
+	margin-left: 2%;
+}
+
+.filterBox ul.searchFloor li div.rightFloor a {
+	width: 17%;
+}
+
+.filterBox ul.searchFloor li div.moreOptions {
+	display: inline-block;
+	width: 18% !important;
+	height: 32px;
+	line-height: 32px;
+	vertical-align: bottom;
+}
+
+.filterBox ul.searchFloor li div.moreOptions a.triangleBtn {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	position: relative;
+	margin-right: 0px;
+	background-color: transparent;
+	background-image: none;
+	border-color: transparent;
+	outline: none !important;
+	border: none;
+}
+
+.filterBox ul.searchFloor li div.moreOptions a.triangleBtn:focus {
+	border: none !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.filterBox ul.searchFloor li div.moreOptions a.triangleBtn:hover {
+	background-color: transparent !important;
+	background-image: none !important;
+	background-color: transparent !important;
+	background-image: none !important;
+	box-shadow: none !important;
+	border: none !important;
+	outline: none !important;
+}
+
+.filterBox ul.searchFloor li div.moreOptions a.triangleBtn:hover i {
+	background: url(../img/triangle_icon2.png) center center no-repeat;
+	background-size: 100%;
+}
+
+.filterBox ul.searchFloor li div.moreOptions a.triangleBtn:hover+span.optionsTxt {
+	display: inline-block !important;
+}
+
+.filterBox ul.searchFloor li div.moreOptions a.triangleBtn.active {
+	background-color: transparent !important;
+	background-image: none !important;
+	background-color: transparent !important;
+	background-image: none !important;
+	box-shadow: none !important;
+	border: none !important;
+}
+
+.filterBox ul.searchFloor li div.moreOptions a.triangleBtn.active i {
+	background: url(../img/triangle_icon2.png) center center no-repeat;
+	background-size: 100%;
+}
+
+.filterBox ul.searchFloor li div.moreOptions a.triangleBtn i {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background: url(../img/triangle_icon.png) center center no-repeat;
+	background-size: 100%;
+	border: none !important;
+	outline: none;
+}
+
+.filterBox ul.searchFloor li div.moreOptions span {
+	display: inline-block;
+	font-size: 14px;
+	width: 48%;
+	vertical-align: top;
+	height: 30px;
+	line-height: 30px;
+	display: none;
+	min-width: 62px;
+}
+
+.filterBox ul.searchFloor li div.rightFloor.finishStatus.cancelStatus {
+	margin-left: 37%;
+	margin-top: 12px;
+	display: none;
+}
+
+.filterBox ul.searchFloor li div input,
+.filterBox ul.searchFloor li div select {
+	width: 49%;
+}
+
+.filterBox ul.searchFloor li div.rightFloor {
+	width: 63%;
+	margin-left: 2%;
+}
+
+.filterBox ul.searchFloor li div.rightFloor.invoiceInfo input[type="text"] {
+	width: 24%;
+}
+
+.filterBox ul.searchFloor li div.rightContent {
+	display: inline-block;
+	width: 48%;
+	margin-right: 3%;
+}
+
+
+/*@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.leftInfoCard.searchCard {
+		width: 72% !important;
+	}
+	.accounting-right {
+		width: 28%;
+	}
+}*/
+
+
+/*总计    s*/
+
+.accountingContent .groupMsg div.sumAmount {
+	height: 30px;
+	line-height: 30px;
+	min-width: 120px;
+	float: right;
+	background-color: #666666;
+	color: #ffffff;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	width: auto;
+}
+
+.accountingContent .groupMsg div.sumAmount i {
+	display: inline-block;
+	font-size: 14px;
+	font-style: initial;
+	background-color: #9295ff;
+	color: #FFFFFF;
+	width: 36%;
+	text-align: center;
+	border-radius: 5px;
+	min-width: 40px;
+}
+
+.accountingContent .groupMsg div.sumAmount span {
+	display: inline-block;
+	font-size: 14px;
+	width: 64%;
+	text-align: center;
+	min-width: 60px;
+}
+
+.filterBox ul.searchFloor {
+	margin-bottom: 0px;
+}
+
+
+/*总计    e*/
+
+
+/*当前时间   s*/
+
+.accountingContent .groupMsg div.currentTime {
+	height: 30px;
+	line-height: 30px;
+	width: 300px;
+	float: right;
+	background-color: #666666;
+	color: #ffffff;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	/* width: 100%;*/
+}
+
+.accountingContent .groupMsg div.currentTime i {
+	display: inline-block;
+	font-size: 14px;
+	font-style: initial;
+	background-color: #9295ff;
+	color: #FFFFFF;
+	width: 48%;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.accountingContent .groupMsg div.currentTime span {
+	display: inline-block;
+	font-size: 14px;
+	width: 48%;
+	text-align: center;
+}
+
+
+/*当前时间   e*/
+
+
+/*check number s*/
+
+.accountingContent .groupMsg div.checkNumber {
+	height: 30px;
+	line-height: 30px;
+	float: right;
+	background-color: #666666;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	min-width: 320px;
+}
+
+.accountingContent .groupMsg div.checkNumber a.check {
+	display: inline-block;
+	font-size: 14px;
+	font-style: initial;
+	background-color: #9295ff;
+	color: #FFFFFF;
+	width: 54%;
+	text-align: center;
+	border-radius: 5px;
+	position: relative;
+}
+
+.accountingContent .groupMsg div.checkNumber a.check ul {
+	position: absolute;
+	background-color: #9295ff;
+	top: 0px;
+	width: 100%;
+	border-radius: 15px;
+	display: none;
+}
+
+.accountingContent .groupMsg div.checkNumber a.check ul li:hover {
+	background-color: #666666;
+	border-radius: 5px;
+}
+
+.accountingContent .groupMsg div.checkNumber a.check img {
+	width: 20px;
+	float: right;
+	margin-top: 11px;
+}
+
+.accountingContent .groupMsg div.checkNumber a.check label {
+	display: inline-block;
+	width: 100%;
+}
+
+.accountingContent .groupMsg div.checkNumber input {
+	display: inline-block;
+	width: 31%;
+	height: 27px;
+	line-height: 27px;
+	box-sizing: border-box;
+	border: 0px;
+	border-radius: 5px;
+	margin-left: 1%;
+	margin-right: 1%;
+	outline: none;
+	background-color: transparent;
+	color: #FFFFFF;
+}
+
+.accountingContent .groupMsg div.checkNumber a.confirm {
+	width: 12%;
+	border-radius: 5px;
+	height: 26px;
+	line-height: 26px;
+	display: inline-block;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.accountingContent .groupMsg div.checkNumber.current {
+	background-color: #FFFFFF;
+	border: solid 2px #c21807;
+	border-radius: 7px;
+}
+
+.accountingContent .groupMsg div.checkNumber.current input {
+	display: inline-block;
+	width: 31%;
+	height: 27px;
+	line-height: 27px;
+	box-sizing: border-box;
+	border: 0px;
+	border-radius: 5px;
+	margin-left: 1%;
+	margin-right: 1%;
+	outline: none;
+}
+
+.accountingContent .groupMsg div.checkNumber.current a.confirm {
+	background-color: #0b6623;
+	width: 12%;
+	border-radius: 5px;
+	height: 26px;
+	line-height: 26px;
+}
+
+.accountingContent .groupMsg div.checkNumber a.confirm:hover {
+	background-color: #eaedef;
+	color: #2d2621;
+}
+
+
+/*check number e*/
+
+.filterBox ul.searchFloor li.btnList {
+	margin-top: 10px;
+}
+
+
+/*.searchCard{
+	min-width: 900px;
+}*/
+
+.accounting-right {
+	width: 36%;
+	margin-top: 0px;
+	vertical-align: bottom;
+	height: initial;
+	min-height: 200px;
+}
+
+ul.listInfo.defaultList.confirmlist.confirmFloor {
+	margin-top: 16px;
+}
+
+.accountingContent .groupMsg div.currentTime {
+	margin-top: 60px;
+}
+
+
+/*财务确认   e*/
+
+
+/*MCO    s*/
+
+.rightInfoCard.mcoManage_rightInfo ul.addInfo li {}
+
+.rightInfoCard.mcoManage_rightInfo ul.addInfo li.top_info span {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 10px;
+	font-size: 14px;
+	color: #6f7073;
+	height: 32px;
+	line-height: 32px;
+	margin-left: 0px;
+}
+
+.rightInfoCard.mcoManage_rightInfo ul.addInfo li input[type='text'],
+.rightInfoCard.mcoManage_rightInfo ul.addInfo li textarea {
+	width: 64%;
+}
+
+.filterBox ul.searchFloor li div.rightFloor.finishStatus a {
+	margin-right: 2%;
+}
+
+.filterBox ul.searchFloor li div.moreOptions a.triangleBtn i {
+	background-size: 80% !important;
+}
+
+
+/*.searchCard {
+	width: 70%;
+}
+
+.accounting-right {
+	width: 28%;
+}*/
+
+@media only screen and (min-width: 1440px) and (max-width: 1680px) {
+	/*.filterBox ul.searchFloor li div.rightFloor a{
+		width: 15% !important;
+		font-size: 13px;
+	}
+	.filterBox ul.searchFloor li div.moreOptions{
+		width: 25% !important;
+	}*/
+	.accountingContent .groupMsg div.sumAmount span {
+		font-size: 13px;
+	}
+	.filterBox ul.searchFloor li div.moreOptions {
+		width: 24% !important;
+	}
+	.filterBox ul.searchFloor {
+		padding: 2%;
+	}
+	.filterBox ul.searchFloor li div.rightFloor.finishStatus a.confirmFinish.confirmBtn {
+		margin-right: 0px !important;
+	}
+}
+
+.filterBox ul.searchFloor li div.moreOptions span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	min-width: 56px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1430px) {
+	.filterBox ul.searchFloor li div input,
+	.filterBox ul.searchFloor li div select {
+		margin-left: 3%;
+	}
+	.filterBox ul.searchFloor li div.rightFloor.finishStatus.cancelStatus a {
+		width: 20%;
+	}
+	.filterBox ul.searchFloor li div.rightFloor.finishStatus a {
+		font-size: 12px;
+	}
+	.filterBox ul.searchFloor li div.moreOptions a.triangleBtn i {
+		width: 25px;
+		height: 25px;
+	}
+	ul.listInfo.confirmFloor li dd.number {
+		width: 8%;
+	}
+	.filterBox ul.searchFloor li div.moreOptions span {
+		min-width: initial;
+	}
+	.filterBox ul.searchFloor li div.rightFloor.invoiceInfo label {
+		margin-right: 1%;
+	}
+}
+
+
+/*MCO    e*/
+
+
+/*10.29  s*/
+
+@media only screen and (min-width: 1430px) and (max-width: 1550px) {
+	.filterBox ul.searchFloor li div.rightFloor.finishStatus.cancelStatus a {
+		width: 22%;
+	}
+}
+
+.accountingContent .groupMsg div.currentTime {
+	height: 28px;
+	line-height: 28px;
+}
+
+.accountingContent .groupMsg div.currentTime i {
+	width: 42%;
+	text-align: left;
+	padding-left: 9px;
+	height: 28px;
+	line-height: 28px;
+}
+
+.accountingContent .groupMsg div.currentTime span {
+	width: 54%;
+	height: 28px;
+	line-height: 28px;
+}
+
+.accountingContent .groupMsg div.checkNumber {
+	height: 28px;
+	line-height: 28px;
+	margin-bottom: 0px;
+}
+
+.accountingContent .groupMsg div.checkNumber a label {
+	padding-top: 4px;
+	padding-bottom: 5px;
+}
+
+.accountingContent .groupMsg div.checkNumber a.check ul li {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	letter-spacing: 2px;
+	padding-left: 9px;
+	text-align: left;
+}
+
+.accountingContent .groupMsg div.checkNumber a.check img {
+	margin-top: 0px;
+	position: absolute;
+	right: 1px;
+	top: 11px;
+	width: 18px;
+}
+
+.accountingContent .groupMsg div.checkNumber input {
+	width: 37%;
+}
+
+.accountingContent .groupMsg div.sumAmount {
+	height: 28px;
+	line-height: 28px;
+	margin-bottom: 0px;
+}
+
+.accountingContent .groupMsg div.sumAmount i {
+	height: 28px;
+	line-height: 28px;
+	width: 50%;
+}
+
+.accountingContent .groupMsg div.sumAmount span {
+	height: 28px;
+	line-height: 28px;
+	width: 50%;
+}
+
+.accountingContent .groupMsg div.checkNumber a.confirm {
+	height: 24px;
+	line-height: 24px;
+}
+
+.accountingContent .groupMsg div.currentTime {
+	margin-top: 0px;
+	width: 290px;
+}
+
+.accountingContent .groupMsg div.checkNumber a.check {
+	width: 48%;
+}
+
+.accountingContent .groupMsg div.checkNumber a.check label {
+	text-align: left;
+	padding-left: 9px;
+}
+
+.accounting-right {
+	min-height: initial;
+	overflow: initial;
+}
+
+.accountingContent .groupMsg div.currentTime i {
+	letter-spacing: 2px;
+}
+
+.accountingContent .groupMsg div.checkNumber a.check label {
+	letter-spacing: 2px;
+	height: 28px;
+	line-height: 28px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.accountingContent .groupMsg div.sumAmount i {
+	letter-spacing: 2px;
+}
+
+.accountingContent .groupMsg div.checkNumber input {
+	letter-spacing: 2px;
+}
+
+
+/*检索框   s*/
+
+.filterBox ul.searchFloor li div.rightContent.salesInfo {
+	position: relative;
+}
+
+.filterBox ul.searchFloor li div.rightContent.salesInfo .autocomplete-items {
+	width: 49.2%;
+	top: 30px;
+	left: 50.2%;
+	background-color: #ffffff;
+	box-sizing: border-box;
+}
+
+.filterBox ul.searchFloor li div.rightContent.salesInfo .autocomplete-items div {
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+	text-align: center;
+}
+
+.filterBox ul.searchFloor li div.wholesalerInfo {
+	position: relative;
+}
+
+.filterBox ul.searchFloor li div.wholesalerInfo .autocomplete-items {
+	width: 49.2%;
+	top: 30px;
+	left: 50.2%;
+	background-color: #ffffff;
+	box-sizing: border-box;
+}
+
+.filterBox ul.searchFloor li div.wholesalerInfo .autocomplete-items div {
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+	text-align: center;
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1460px) {
+	.filterBox ul.searchFloor li div.rightContent.salesInfo .autocomplete-items {
+		left: 50.6%;
+	}
+	.filterBox ul.searchFloor li div.wholesalerInfo .autocomplete-items {
+		left: 50.6%;
+	}
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1300px) {
+	.filterBox ul.searchFloor li div.rightContent.salesInfo .autocomplete-items {
+		left: 50%;
+	}
+	.filterBox ul.searchFloor li div.wholesalerInfo .autocomplete-items {
+		left: 50%;
+	}
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1386px) {
+	.filterBox ul.searchFloor li div.rightContent.salesInfo .autocomplete-items {
+		left: 50%;
+	}
+	.filterBox ul.searchFloor li div.wholesalerInfo .autocomplete-items {
+		left: 50%;
+	}
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1620px) {
+	.filterBox ul.searchFloor li div.rightContent.salesInfo .autocomplete-items {
+		left: 50.2%;
+	}
+	.filterBox ul.searchFloor li div.wholesalerInfo .autocomplete-items {
+		left: 50.2%;
+	}
+}
+
+@media only screen and (min-width: 1680px) and (max-width: 1700px) {
+	.filterBox ul.searchFloor li div.rightContent.salesInfo .autocomplete-items {
+		left: 50.4%;
+	}
+	.filterBox ul.searchFloor li div.wholesalerInfo .autocomplete-items {
+		left: 50.4%;
+	}
+}
+
+
+/*检索框   e*/
+
+
+/*10.29  e*/
+
+ul.listInfo.defaultList.confirmlist.confirmFloor {
+	margin-top: 10px;
+}
+
+.filterBox ul.searchFloor li div.rightContent.invoiceInfo {
+	vertical-align: top;
+}
+
+.filterBox ul.searchFloor li div.rightContent.wholesalerInfo {
+	vertical-align: top;
+}
+
+.filterBox ul.searchFloor li div.rightContent.invoiceInfo input {
+	width: 20.4%;
+}
+
+.filterBox ul.searchFloor li div.rightContent.invoiceInfo label {
+	vertical-align: top;
+}
+
+.filterBox ul.searchFloor li div.rightContent.invoiceInfo input:last-child {
+	margin-left: 0px;
+}
+
+.filterBox ul.searchFloor li div.rightFloor.invoiceInfo span {}
+
+ul.listInfo.confirmFloor li dd.systemNum {
+	width: 5%;
+}
+
+ul.listInfo.confirmFloor li dd.invoice {
+	width: 8%;
+}
+
+ul.listInfo.confirmFloor li dd.profit {
+	width: 11%;
+}
+
+ul.listInfo.confirmFloor li dd.debt {
+	width: 10%;
+}
+
+ul.listInfo.confirmFloor li dd.receivable {
+	width: 10%;
+}
+
+ul.listInfo.confirmFloor li dd.salePrice {
+	width: 10%;
+}
+
+ul.listInfo.confirmFloor li dd.createDate {
+	width: 9%;
+}
+
+ul.listInfo.confirmFloor li dd.startTime {
+	width: 9%;
+}
+
+ul.listInfo.confirmFloor li dd.returnTime {
+	width: 9%;
+}
+
+ul.listInfo.confirmFloor li dd.lockStatus {
+	width: 4%;
+}
+
+ul.listInfo.confirmFloor li dd.finishStatus {
+	width: 4%;
+}
+
+ul.listInfo.confirmFloor li dd.number {
+	width: 9.8%;
+}
+ul.listInfo.confirmFloor li dd.mco {
+	width: 8%;
+}
+
+
+
+
+ul.listInfo.confirmFloor li dd label {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+ul.listInfo li.listTitle dd {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+ul.listInfo.confirmFloor li dd span {
+	display: inline-block;
+}
+
+ul.listInfo.confirmFloor li dd {
+	position: relative;
+}
+
+ul.listInfo.confirmFloor li dd img {
+	display: inline-block;
+	width: 20px;
+	position: absolute;
+	right: 0px;
+	cursor: pointer;
+}
+
+ul.listInfo.confirmFloor li dd img.arrow_down {
+	bottom: 10px;
+}
+
+ul.listInfo.confirmFloor li dd img.arrow_up {
+	top: 10px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1430px) {
+	ul.listInfo.confirmFloor li dd.number {
+		width: 8.8%;
+	}
+}
+
+.filterBox ul.searchFloor li.btnList {
+	margin-bottom: 0px;
+}
+
+.filterBox ul.searchFloor {
+	min-height: 292px;
+}
+
+
+/*会计服务     s*/
+
+.accounting-right {
+	position: relative;
+	background-color: #FFFFFF;
+	border: solid 1px #d2d2d2;
+	width: 35.8%;
+	border-radius: 4px;
+	vertical-align: top;
+	margin-top: 48px;
+	min-height: 322px;
+}
+
+.accounting-right label.markMsg {
+	text-align: center;
+}
+
+.accounting-right ul.add-msg {
+	padding: 15px;
+	padding-top: 0px;
+}
+
+.accounting-right ul.add-msg li {
+	margin-bottom: 12px;
+}
+
+.accounting-right ul.add-msg li label {
+	vertical-align: top;
+}
+
+.accounting-right ul.add-msg li.titleInfo {
+	display: block;
+	height: 24px;
+}
+
+.accounting-right ul.add-msg li.titleInfo label {
+	visibility: hidden;
+}
+
+.accounting-right ul.add-msg li.titleInfo span {
+	display: inline-block;
+	font-size: 14px;
+	margin-left: 2% !important;
+	text-align: center;
+	height: 24px;
+	line-height: 24px;
+	color: #323232;
+	background-color: #ccc;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.accounting-right ul.add-msg li.titleInfo.single-row span {
+	width: 68% !important;
+}
+
+.accounting-right ul.add-msg li.titleInfo.single-row span:last-child {
+	display: none;
+}
+
+.accounting-right ul.add-msg li.titleInfo.multi-row span {
+	width: 33%
+}
+
+.accounting-right ul.add-msg li.titleInfo.multi-row span:last-child {
+	display: inline-block;
+}
+
+.accounting-right ul.add-msg li input[type="text"] {
+	width: 68% !important;
+	margin-left: 2% !important;
+}
+
+.accounting-right ul.add-msg li.single-row input[type="text"]:last-child {
+	display: none;
+}
+
+
+/*选中多行*/
+
+.accounting-right ul.add-msg li.multi-row input[type="text"] {
+	width: 33% !important;
+	background-color: #fff;
+}
+
+.accounting-right ul.add-msg li.multi-row input[type="text"]:last-child {
+	display: inline-block;
+}
+
+.accounting-right ul.add-msg li.checkNo {
+	display: none;
+}
+
+.accounting-right ul.add-msg li.actionTabInfo {}
+
+.accounting-right ul.add-msg li.actionTabInfo a:first-child {
+	margin-left: 0px;
+}
+
+.accounting-right ul.add-msg li.actionTabInfo a {
+	display: inline-block;
+	margin-left: 2%;
+	display: inline-block;
+	margin-right: 0px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	height: 28px;
+	line-height: 28px;
+	width: 31.6%;
+}
+
+.accounting-right ul.add-msg li.actionTabInfo a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.accounting-right ul.add-msg li.finishStatus a,
+.accounting-right ul.add-msg li.cancelStatus a {
+	color: #cb2431;
+	background-color: #fafbfc;
+	background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
+	box-shadow: none;
+	border: 1px solid rgba(27, 31, 35, 0.2);
+	border-radius: 0.25em;
+	height: 30px;
+	line-height: 30px;
+	margin-left: 2%;
+	font-weight: bold;
+	display: inline-block;
+	width: 22.8%;
+	font-size: 14px;
+	text-align: center;
+}
+
+.accounting-right ul.add-msg li.finishStatus a:first-child,
+.accounting-right ul.add-msg li.cancelStatus a:first-child {
+	margin-left: 0px;
+}
+
+.accounting-right ul.add-msg li.finishStatus a:hover,
+.accounting-right ul.add-msg li.cancelStatus a:hover {
+	color: #fff;
+	background-color: #cb2431;
+	background-image: linear-gradient(-180deg, #de4450, #cb2431 90%);
+	border-color: rgba(27, 31, 35, 0.5);
+}
+
+.accounting-right ul.add-msg li.cancelStatus a:hover {
+	/*box-shadow: 0 0 0 0.2em rgba(203, 36, 49, 0.4);*/
+}
+
+.accounting-right ul.add-msg li.finishStatus a.selected,
+.accounting-right ul.add-msg li.cancelStatus a.selected {
+	color: #fff;
+	background-color: #b5202c;
+	background-image: none;
+	border-color: rgba(27, 31, 35, 0.5);
+	box-shadow: inset 0 0.15em 0.3em rgba(27, 31, 35, 0.15);
+}
+
+.accounting-right ul.add-msg li.moreOptions {
+	margin-bottom: 0px;
+}
+
+.accounting-right ul.add-msg li.moreOptions a {
+	display: inline-block;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #6f7073;
+	height: 30px;
+	line-height: 30px;
+	width: 98.8%;
+	border: solid 1px #ffffff;
+}
+
+.accounting-right ul.add-msg li.moreOptions a.selected {
+	color: #9192fa;
+	border: solid 1px #9192fa;
+}
+
+.accounting-right ul.add-msg li.moreOptions a:hover {
+	color: #9192fa;
+	border: solid 1px #9192fa;
+}
+
+.accounting-right ul.add-msg li.cancelStatus {
+	display: none;
+}
+
+.filterBox ul.searchFloor li div.currencyInfo {
+	position: relative;
+}
+
+.filterBox ul.searchFloor li div.currencyInfo div.rightContent {
+	color: #d80027;
+	font-size: 14px;
+	width: 98%;
+	text-align: right;
+	position: absolute;
+	bottom: -35px;
+}
+
+.filterBox ul.searchFloor li div.currencyInfo div.rightContent img {
+	height: 28px;
+	line-height: 28px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.accounting-right {
+		width: 34%;
+	}
+	ul.add-msg li label {
+		min-width: initial !important;
+	}
+	.accounting-right ul.add-msg li.finishStatus a,
+	.accounting-right ul.add-msg li.cancelStatus a {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap
+	}
+	.accounting-right ul.add-msg li.actionTabInfo a {
+		font-size: 12px;
+	}
+	.filterBox ul.searchFloor li div.rightFloor .checkbox label::after {
+		left: 0px !important;
+	}
+}
+
+.filterBox ul.searchFloor li div.rightContent.invoiceInfo {
+	position: relative;
+}
+
+.filterBox ul.searchFloor li div.rightContent.invoiceInfo img {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	right: -22px;
+	top: 3px;
+	cursor: pointer;
+}
+
+.filterBox ul.searchFloor li div.rightContent.invoiceInfo input {
+	width: 42%;
+	margin-left: 0px !important;
+}
+
+.filterBox ul.searchFloor li div.rightFloor span {
+	width: 16%;
+}
+
+.filterBox ul.searchFloor li div.rightContent.invoiceInfo div {
+	margin-left: 4%;
+	width: 49%;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.filterBox ul.searchFloor li div.rightContent.invoiceInfo div {
+		width: 48.7%;
+	}
+}
+
+.filterBox ul.searchFloor li div.rightContent.invoiceInfo div.invoice1 {
+	display: none;
+}
+
+.filterBox ul.searchFloor li div.rightContent.invoiceInfo div.invoice2 input {
+	width: 100%;
+}
+
+
+/*会计服务     e*/
+
+ul.addInfo li.top_info:not(.mcoInfo) label {
+	background-color: transparent;
+	border: 0px;
+	width: initial;
+	height: initial;
+	line-height: initial;
+}
+/*没有记录*/
+.noRecord {
+	text-align: center !important;
+	vertical-align: middle;
+	width: 290px;
+	height: 266px;
+	padding: 0px;
+	border: solid 2px #9295ff;
+	border-radius: 10px;
+	background-color: #fff;
+	position: fixed;
+	bottom: 30%;
+	left: 49%;
+	box-shadow: 0px 0px 4px #9295ff;
+	overflow: hidden;
+	display: none;
+}
+
+.noRecord .confirmTitle {
+	vertical-align: middle;
+	text-align: center !important;
+	color: #8f8f8f;
+	font-size: 32px;
+	border-bottom: solid 1px #b5b5b5;
+	padding-bottom: 24px;
+	margin: 22px 16px 0px 16px;
+}
+
+.noRecord .confirmTitle img {
+	width: 110px;
+	height: 110px;
+}
+
+.noRecord p.confirmNotice {
+	text-align: center;
+	font-size: 20px;
+	color: #848484;
+	margin-top: 12px;
+}
+
+.noRecord .actionBox {
+	font-size: 0px;
+	text-align: center;
+	margin-top: 26px;
+}
+.noRecord .actionBox button {
+	display: inline-block;
+	width: 50%;
+	margin-left: 0px !important;
+	height: 45px;
+	line-height: 45px;
+	font-size: 16px;
+	padding: 0px;
+	cursor: pointer;
+}
+.noRecord .actionBox button.actionCancel {
+	background-color: #e3e4ff;
+	color: #9394fe;
+	border-bottom-right-radius: 7px;
+	border-color: #e3e4ff;
+	width: 100%;
+}
+@media only screen and (min-width: 100px) and (max-width: 1800px) {
+	ul.addInfo li.mcoInfo input.systemNum{
+		width: 22% !important;
+	}
+}
+@media only screen and (min-width: 100px) and (max-width: 1800px) {
+	ul.addInfo li.mcoInfo .btn-switch.large{
+		width: 60px;
+	}
+}

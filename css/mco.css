@@ -1,0 +1,339 @@
+@charset "utf-8";
+
+/*MCO*/
+
+.filterBox {
+	margin-top: 24px;
+}
+
+.filterBox ul li.markCompleted {
+	display: inline-block;
+	width: 22%
+}
+
+.filterBox ul li.deleteNotice {
+	width: 18%;
+}
+
+.filterBox ul li.deleteNotice a {
+	width: 90%;
+}
+
+.filterBox ul li.markCompleted a {
+	display: inline-block;
+	width: 90%;
+	margin-right: 0px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b6b2af;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	height: 24px;
+	line-height: 24px;
+}
+
+.filterBox ul li.deleteNotice a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.filterBox ul li.markCompleted a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.confirmNoticeInfo {
+	height: initial;
+}
+
+ul.listInfo li.listTitle dd {
+	min-width: initial;
+}
+
+ul.listInfo li.listDetail dd {
+	min-width: initial;
+}
+
+ul.listInfo li.listTitle dd.mco_ID {
+	width: 10%;
+}
+
+ul.listInfo li.listTitle dd.mco_author {
+	width: 16%;
+}
+
+ul.listInfo li.listTitle dd.mco_time {
+	width: 23%;
+}
+
+ul.listInfo li.listDetail dd.mco_ID {
+	width: 10%;
+}
+
+ul.listInfo li.listDetail dd.mco_author {
+	width: 16%;
+}
+
+ul.listInfo li.listDetail dd.mco_time {
+	width: 23%;
+}
+
+.rightInfoCard.mcoManage_rightInfo {
+	margin-top: 72px;
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.title {
+	color: #FFFFFF;
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.actionFilerBox {
+	font-size: 0px;
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.time {
+	font-size: 14px;
+	color: #6f7073;
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.requiredItem::after {
+	content: '*';
+	background: url(../img/required.png) center center no-repeat;
+	background-size: contain;
+	width: 9px;
+	height: 9px;
+	color: transparent;
+	position: absolute;
+	/*left: 36%;*/
+	top: 11px;
+	left: 32.4%;
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.time input {
+	min-height: 24px;
+	border: solid 1px #969696;
+	outline: none;
+	padding-left: 10px;
+	color: #323232;
+	font-size: 14px;
+	height: 30px;
+	line-height: 30px;
+	box-sizing: border-box;
+	display: inline-block;
+	margin-left: 0px !important;
+	width: 25%;
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.time span {
+	display: inline-block;
+	width: 18%;
+	font-size: 14px;
+	line-height: 24px;
+	height: 32px;
+	line-height: 32px;
+	margin-right: 4%;
+	width: 32%;
+	padding-left: 10px;
+	color: #6f7073;
+	font-weight: bold
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.time i {
+	font-style: normal;
+	display: inline-block;
+	width: 30%;
+	margin-left: 3%;
+}
+
+ul.addInfo li label {
+	margin-right: 4%;
+	/*width: 32%;
+	padding-left: 10px;
+	text-align: left;*/
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.expDate select {
+	box-sizing: border-box;
+	min-height: 24px;
+	border: solid 1px #969696;
+	outline: none;
+	padding-left: 10px;
+	color: #323232;
+	font-size: 14px;
+	height: 30px;
+	line-height: 30px;
+	box-sizing: border-box;
+	width: 13% !important;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1%;
+	background: #e7e9ec;
+	border-radius: 3px;
+	border-color: #ADB1B8 #A2A6AC #8D9096;
+	border-style: solid;
+	border-width: 1px;
+	cursor: pointer;
+	display: inline-block;
+	padding: 0;
+	text-align: center;
+	text-decoration: none!important;
+	vertical-align: middle;
+	min-width: initial;
+	vertical-align: top;
+}
+
+ul.addInfo li input[type='text'],
+ul.addInfo li textarea {
+	width: 50%;
+}
+
+
+/*ul.addInfo {
+	width: 70%;
+}*/
+
+.rightInfoCard.mcoManage_rightInfo ul li.mark input {
+	width: 8% !important;
+	padding-left: 0px;
+}
+
+
+/*ul.addInfo li label.other {
+	height: 66px;
+	line-height: 22px;
+	white-space: pre-line;
+	word-break: break-all;
+}*/
+
+
+/*@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	ul.addInfo li label {
+		width: 36%;
+	}
+	.rightInfoCard.mcoManage_rightInfo ul li.time span {
+		width: 36%;
+	}
+	.rightInfoCard.mcoManage_rightInfo ul li.requiredItem::after {
+		left: 41%;
+	}
+	.rightInfoCard.mcoManage_rightInfo ul li.time input{
+		width: 22%;
+	}
+}
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	ul.addInfo li label {
+		font-size: 12px;
+	}
+}*/
+
+.rightInfoCard.mcoManage_rightInfo ul.addInfo li .autocomplete-items {
+	width: 48%;
+	right: 0px;
+	left: 35.2%;
+	box-sizing: border-box;
+}
+
+@media only screen and (min-width:1440px) and (max-width: 1460px) {
+	.rightInfoCard.mcoManage_rightInfo ul.addInfo li .autocomplete-items {
+		left: 35.6%;
+	}
+}
+
+@media only screen and (min-width:1280px) and (max-width: 1300px) {
+	.rightInfoCard.mcoManage_rightInfo ul.addInfo li .autocomplete-items {
+		left: 35.6%;
+	}
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1386px) {
+	.rightInfoCard.mcoManage_rightInfo ul.addInfo li .autocomplete-items {
+		left: 35.6%;
+	}
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1620px) {
+	.rightInfoCard.mcoManage_rightInfo ul.addInfo li .autocomplete-items {
+		left: 35.6%;
+	}
+}
+
+@media only screen and (min-width: 1680px) and (max-width: 1700px) {
+	.rightInfoCard.mcoManage_rightInfo ul.addInfo li .autocomplete-items {
+		left: 35.4%;
+	}
+}
+ul.listInfo li.listTitle dd.mco_ID {
+	width: 8%;
+}
+
+ul.listInfo li.listDetail dd.mco_ID {
+	width: 8%;
+}
+
+ul.listInfo li.listTitle dd.mco_author {
+	width: 12%;
+}
+
+ul.listInfo li.listDetail dd.mco_author {
+	width: 12%;
+}
+
+ul.listInfo li.listTitle dd.mco_time {
+	width: 19%;
+}
+
+ul.listInfo li.listDetail dd.mco_time {
+	width: 19%;
+}
+
+ul.listInfo li.listTitle dd.mco_bankCard {
+	width: 34.82%;
+}
+
+ul.listInfo li.listDetail dd.mco_bankCard {
+	width: 32.82%;
+	text-align: left;
+	padding-left: 2%;
+}
+
+ul.listInfo li.listDetail dd {
+	white-space: pre-line;
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.time span {
+	display: inline-block;
+	font-size: 14px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px transparent solid;
+	height: 32px;
+	line-height: 32px;
+	margin-right: 4%;
+	width: 30%;
+	padding-left: 0px;
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.time {
+	font-size: 0px;
+}
+
+.rightInfoCard.mcoManage_rightInfo ul li.time i {
+	font-size: 14px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.rightInfoCard.mcoManage_rightInfo ul li.expDate select {
+		width: 21% !important;
+	}
+}

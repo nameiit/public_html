@@ -1,0 +1,510 @@
+@charset "utf-8";
+.showMsg .floor .groupMsg {
+	position: relative;
+}
+
+.theamTitle {
+	display: inline-block;
+	width: 5%;
+	height: 36px;
+	line-height: 36px;
+	background-color: #9295ff;
+	position: absolute;
+	left: 0px;
+	top: 12px;
+	color: #fff;
+	font-size: 16px;
+	padding: 0px 0px 0px 6px;
+	text-align: center;
+	min-width: 92px;
+}
+
+.theamTitle i {
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background-color: #ffffff;
+	border-radius: 50%;
+	float: left;
+	margin-top: 13px;
+}
+
+.updateInfo ul.filterBox {
+	margin-top: 36px;
+}
+
+.updateInfo ul.filterBox li label {
+	display: inline-block;
+	display: inline-block;
+	min-width: 116px;
+	min-height: 32px;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	text-align: center;
+	color: #42424c;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: middle;
+	height: 32px;
+	line-height: 32px;
+	width: 8%;
+	text-align: left;
+	padding-left: 1%;
+	margin-right: 2% !important;
+}
+
+.updateInfo ul.filterBox li.datePicker select,
+.updateInfo ul.filterBox dl.selectRange dd input[type="date"],
+.updateInfo ul.filterBox li.optionItem input[type="text"] {
+	height: 32px;
+	line-height: 32px;
+	border-radius: 0px;
+	border: solid 1px #9e9e9e;
+	min-width: 120px;
+}
+
+.updateInfo ul.filterBox li.datePicker dl dd i {
+	display: inline-block;
+	min-width: 52px;
+	font-size: 14px;
+	font-weight: bold;
+	border-right: solid 1px #f2f5ff;
+	vertical-align: middle;
+	height: 32px;
+	line-height: 32px;
+	background-color: #e6e6e6;
+	color: #383838;
+	border: solid 1px #737373;
+	text-align: center;
+	font-style: normal;
+	width: 20%;
+}
+
+.updateInfo ul.filterBox dl.selectRange dd {
+	width: 48% !important;
+	margin-left: 10px;
+	width: 48% !important;
+	margin-left: 2%
+}
+
+.updateInfo ul.filterBox dl.selectRange dd:last-child {
+	margin-left: 0px;
+}
+
+.updateInfo ul.filterBox dl.selectRange dd input[type="date"] {
+	width: 40%;
+}
+
+.updateInfo ul.filterBox li dl.confirmMsg {
+	width: 60%;
+	display: inline-block;
+}
+
+.updateInfo ul.filterBox li dl.confirmMsg dd {
+	margin-left: 2%;
+	width: auto !important;
+}
+
+.updateInfo ul.filterBox li dl.confirmMsg dd a {
+	display: inline-block;
+	min-width: 112px;
+	background-color: #edeae5;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	color: #b3b3b1;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+}
+
+.updateInfo ul.filterBox li dl.confirmMsg dd a.confirm-active {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.updateTab {
+	font-size: 0px;
+	margin-top: 35px;
+}
+
+.updateTab ul {
+	width: 100%;
+	font-size: 0px;
+	border-left: solid 1px #d2d2d2;
+	border-right: solid 1px #d2d2d2;
+	border-bottom: solid 1px #d2d2d2;
+}
+
+.updateTab ul.tabListTitle {
+	display: inline-block;
+	background-color: #9295ff;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.updateTab ul li {
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	margin-bottom: 0px;
+	border-right: solid 1px #d2d2d2;
+}
+
+.updateTab ul li:last-child {
+	border-right: 0px;
+}
+
+.updateTab ul li a {
+	display: inline-block;
+	color: #fff;
+	font-size: 14px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+	width: 100%;
+}
+
+.updateTab ul li.listNum {
+	width: 5%;
+}
+
+.updateTab ul li.listCreatTime {
+	width: 10%;
+}
+
+.updateTab ul li.listGroupNum {
+	width: 10%;
+}
+
+.updateTab ul li.listJourney {
+	width: 13%;
+}
+
+.updateTab ul li.listPayment {
+	width: 11%;
+}
+
+.updateTab ul li.listCurrency {
+	width: 10%;
+}
+
+.updateTab ul li.listProfit {
+	width: 10%;
+}
+
+.updateTab ul li.listPrice {
+	width: 10%;
+}
+
+.updateTab ul li.listCost {
+	width: 10%;
+}
+
+.updateTab ul li.listDiscount {
+	width: 10%;
+}
+
+
+/*散拼团部分   s*/
+
+.updateTab.individualUpdateTab ul li.listNum {
+	width: 4%;
+}
+
+.updateTab.individualUpdateTab ul li.listCreatTime {
+	width: 9%;
+}
+
+.updateTab.individualUpdateTab ul li.listGroupNum {
+	width: 11%;
+}
+
+.updateTab.individualUpdateTab ul li.listJourney {
+	width: 10%;
+}
+
+.updateTab.individualUpdateTab ul li.listPayment {
+	width: 10%;
+}
+
+.updateTab.individualUpdateTab ul li.listCurrency {
+	width: 9%;
+}
+
+.updateTab.individualUpdateTab ul li.listProfit {
+	width: 9%;
+}
+
+.updateTab.individualUpdateTab ul li.listPrice {
+	width: 9%;
+}
+
+.updateTab.individualUpdateTab ul li.listCost {
+	width: 9%;
+}
+
+.updateTab.individualUpdateTab ul li.listDiscount {
+	width: 9%;
+}
+
+.updateTab.individualUpdateTab ul li.listSales {
+	width: 9.8%;
+}
+
+
+/*散拼团 部分  e*/
+
+
+/*机票更新部分 s*/
+
+.updateTab.airTicketUpdateTab ul li.listFightNum {
+	width: 11%;
+}
+
+.updateTab.airTicketUpdateTab ul li.listLocation {
+	width: 9.8%;
+}
+
+.updateTab.airTicketUpdateTab ul li.listReturnCash {
+	width: 10%;
+}
+
+
+/*机票更新部分 e*/
+
+.updateTab ul.tabListDetail li {
+	width: 100%;
+	background-color: #fff;
+	border-bottom: solid 1px #d2d2d2;
+	border-right: 0px;
+}
+
+.updateTab ul.tabListDetail li:hover {
+	border: solid 1px red;
+	border-bottom:solid 1px red !important;
+}
+
+.updateTab ul.tabListDetail li:hover a {
+	color: #fff;
+	color: #636363;
+}
+
+.updateTab ul.tabListDetail li.selected {
+	background-color: #9dc4c3 !important;
+}
+
+.updateTab ul.tabListDetail li.selected a {
+	color: #ffffff;
+}
+
+.updateTab ul.tabListDetail li:last-child {
+	border-bottom: 0px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.updateTab ul.tabListDetail li dl {
+	width: 100%;
+	font-size: 0px;
+	height: 42px;
+	line-height: 42px;
+	margin-bottom: 0px;
+	/*border-bottom: solid 1px #d2d2d2;*/
+}
+
+.updateTab ul.tabListDetail li dd {
+	border-right: solid 1px #d2d2d2;
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	clear: both;
+	overflow: hidden;
+}
+
+.updateTab ul.tabListDetail li dd a {
+	display: inline-block;
+	color: #323232;
+	font-size: 14px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.updateTab ul li dl dd.listNum {
+	width: 5% !important;
+}
+
+.updateTab ul li dl dd.listCreatTime {
+	width: 10% !important;
+}
+
+.updateTab ul li dl dd.listGroupNum {
+	width: 10% !important;
+}
+
+.updateTab ul li dl dd.listJourney {
+	width: 13% !important;
+}
+
+.updateTab ul li dl dd.listPayment {
+	width: 11% !important;
+}
+
+.updateTab ul li dl dd.listCurrency {
+	width: 10% !important;
+}
+
+.updateTab ul li dl dd.listProfit {
+	width: 10% !important;
+}
+
+.updateTab ul li dl dd.listPrice {
+	width: 10% !important;
+}
+
+.updateTab ul li dl dd.listCost {
+	width: 10% !important;
+}
+
+.updateTab ul li dl dd.listDiscount {
+	width: 10% !important;
+}
+
+.updateTab ul li dl dd:last-child {
+	border-right: 0px;
+}
+
+
+/*散拼团部分   s*/
+
+.updateTab.individualUpdateTab ul li dl dd.listNum {
+	width: 4% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listCreatTime {
+	width: 9% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listGroupNum {
+	width: 11% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listJourney {
+	width: 10% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listPayment {
+	width: 10% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listCurrency {
+	width: 9% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listProfit {
+	width: 9% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listPrice {
+	width: 9% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listCost {
+	width: 9% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listDiscount {
+	width: 9% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listDiscount {
+	width: 9% !important;
+}
+
+.updateTab.individualUpdateTab ul li dl dd.listSales {
+	width: 9.8% !important;
+}
+
+
+/*散拼团部分   e*/
+
+
+/*机票部分      s*/
+
+.updateTab.airTicketUpdateTab ul li dl dd.listFightNum {
+	width: 11% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li dl dd.listLocation {
+	width: 9.8% !important;
+}
+
+.updateTab.airTicketUpdateTab ul li dl dd.listReturnCash {
+	width: 10% !important;
+}
+
+
+/*机票部分      e*/
+
+.groupTourUpdateTab.updateTab ul li.listPayment {
+	width: 9%;
+}
+
+.groupTourUpdateTab.updateTab ul li dl dd.listPayment {
+	width: 9% !important;
+}
+
+.groupTourUpdateTab.updateTab ul li.listCurrency {
+	width: 8%;
+}
+
+.groupTourUpdateTab.updateTab ul li dl dd.listCurrency {
+	width: 8% !important;
+}
+
+.groupTourUpdateTab.updateTab ul li dl dd.listCost {
+	width: 14% !important;
+}
+
+.groupTourUpdateTab.updateTab ul li.listCost {
+	width: 14%;
+}
+
+.updateTab ul.tabListDetail li{
+	overflow: initial;
+}
+
+.updateTab ul.tabListDetail li dl{
+	position: relative;
+}
+
+.updateTab ul.tabListDetail li dl label{
+	position: absolute;
+    display: inline-block;
+    width: 7px;
+    height: 100%;
+    left: -7px;
+    margin-right: 0px !important;
+    z-index: 99999999;
+}
+
+.updateTab ul.tabListDetail li dl label.confirmedStatus{
+	 background-color: #98FB98;
+}
+.updateTab ul.tabListDetail li dl label.otherStatus{
+	 background-color: #fa8041;
+}

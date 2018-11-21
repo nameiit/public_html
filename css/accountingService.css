@@ -1,0 +1,1022 @@
+@charset "utf-8";
+.theamInfo .showMsg.kuaijiMsg {
+	font-size: 0px;
+	padding-top: 0px;
+}
+
+.theamInfo .showMsg.kuaijiMsg .accountingService {
+	width: 100%;
+}
+
+.theamInfo .showMsg.kuaijiMsg .accountingService .groupMsg {
+	min-height: 740px;
+}
+
+.kuaijiMsg .accountingLeft {
+	width: 36%;
+	display: inline-block;
+	vertical-align: top;
+	width: 25%;
+}
+
+.kuaijiMsg .accountingRight {
+	width: 60%;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 1%;
+	width: 74%;
+}
+
+.kuaijiMsg .accountingLeft .filerCondition {
+	border-radius: 10px;
+}
+
+.kuaijiMsg .accountingLeft .modifyOrders {
+	border-radius: 10px;
+	display: none;
+	margin-top: 48px;
+}
+
+.kuaijiMsg .accountingRight {
+	border-radius: 10px;
+}
+
+.filerCondition ul.serviceNav {
+	width: 100%;
+	height: 48px;
+}
+
+.filerCondition ul.serviceNav li {
+	display: inline-block;
+	height: 48px;
+	width: 33%;
+	background-color: #7f82df;
+	border-left: solid 1px #484ca7;
+}
+
+.filerCondition ul.serviceNav li a {
+	display: inline-block;
+	height: 48px;
+	line-height: 48px;
+	color: #fff;
+	width: 100%;
+	font-size: 15px;
+}
+
+.filerCondition ul.serviceNav li:first-child {
+	border-left: 0px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.filerCondition ul.serviceNav li:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.filerCondition ul.serviceNav li.service-active {
+	background-color: #fd8139;
+}
+
+.filerCondition ul.filerDetail {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	margin-top: 10px;
+	background-color: #fff;
+	border: solid 1px #d2d2d2;
+	border-radius: 5px;
+	padding-bottom: 2%;
+}
+
+.filerCondition ul.filerDetail li.filterTitle {
+	width: 100%;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 15px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	letter-spacing: 2px;
+	margin-top: 0px;
+	padding: 0px;
+	height: 32px;
+	line-height: 32px;
+
+}
+
+.filerCondition ul.filerDetail li {
+	padding: 0px 2%;
+	margin-top: 4%;
+	margin-top: 3%;
+}
+
+.filerCondition ul.filerDetail li label {
+	display: inline-block;
+	width: 18%;
+	background-color: #f2f5ff;
+	font-size: 14px;
+	line-height: 24px;
+	text-align: center;
+	color: #6f7073;
+	font-weight: bold;
+	border-left: 3px #fbd608 solid;
+	margin-right: 2%;
+	width: 30%;
+	height: 30px;
+	line-height: 30px;
+}
+
+.filerCondition ul.filerDetail li.infoDistrict label {
+	float: left;
+	clear: both;
+	height: 66px;
+	line-height: 66px;
+}
+
+.filerCondition ul.filerDetail li.infoDistrict span {
+	margin-left: 0px !important;
+}
+
+.filerCondition ul.filerDetail li.infoDistrict input[type="date"] {
+	margin-bottom: 0px !important;
+}
+
+.filerCondition ul.filerDetail li input[type="text"],
+.filerCondition ul.filerDetail li select,
+.filerCondition ul.filerDetail li input[type="date"] {
+	box-sizing: border-box;
+	display: inline-block;
+	width: 78%;
+	border: solid 1px #959595;
+	padding-left: 10px;
+	text-align: left;
+	width: 66%;
+	height: 30px;
+	line-height: 30px;
+}
+
+.filerCondition ul.filerDetail li {
+	position: relative;
+}
+
+.autocomplete-items {
+	margin-left: 0px;
+	width: 74.5%;
+	max-height: 350px;
+	overflow: scroll;
+	border-bottom: none;
+	border-top: none;
+	z-index: 99;
+	border: solid 1px #969696;
+	outline: none;
+	font-size: 14px;
+	position: absolute;
+	right: 2.8%;
+	width: 62.8%;
+}
+
+@media only screen and (min-width: 400px) and (max-width:1024px) {
+	.filerCondition .autocomplete-items {
+		right: 2% !important;
+	}
+}
+
+@media only screen and (min-width:1366px) {
+	.filerCondition .autocomplete-items {
+		right: 2.6% !important;
+		width: 62.4%;
+	}
+}
+
+@media only screen and (min-width: 1440px) {
+	.filerCondition .autocomplete-items {
+		right: 2.2% !important;
+		width: 62.6%;
+	}
+}
+
+@media only screen and (min-width: 1600px) {
+	.filerCondition .autocomplete-items {
+		right: 2.5% !important;
+		width: 62.8%;
+	}
+}
+
+@media only screen and (min-width: 1680px) {
+	.filerCondition .autocomplete-items {
+		right: 2.5% !important;
+		width: 62.8%;
+	}
+}
+
+@media only screen and (min-width:1920px) {
+	.filerCondition .autocomplete-items {
+		right: 2.8% !important;
+		width: 62.4%;
+	}
+}
+
+.filerCondition ul.filerDetail li.infoDistrict input[type="date"] {
+	margin-bottom: 10px;
+}
+
+.filerCondition ul.filerDetail li.infoDistrict span {
+	display: inline-block;
+	font-size: 13px;
+	color: #bfbfbf;
+	width: 4%;
+	margin-left: 29.4%;
+	height: 6px;
+	line-height: 6px;
+}
+
+.filerCondition ul.filerDetail li.actionFilerBox a {
+	display: inline-block;
+	background-color: #9295ff;
+	width: 40%;
+	font-size: 14px;
+	color: #fff;
+	border-radius: 5px;
+	height: 30px;
+	line-height: 30px;
+}
+
+.filerCondition ul.filerDetail li.actionFilerBox a {
+	margin-right: 19%
+}
+
+.filerCondition ul.filerDetail li.actionFilerBox a:last-child {
+	margin-right: 0px;
+}
+
+.filerCondition ul.filerDetail li.actionFilerBox {
+	padding: 0px 2%;
+	clear: both;
+	overflow: hidden;
+}
+
+.modifyOrders.filerCondition .filerDetail {
+	margin-top: 0px;
+}
+
+.modifyOrders.filerCondition li.filterTitle {
+	text-align: left;
+	padding: 0px 2.5% !important;
+	width: 95% !important;
+	margin-top: 0px !important;
+}
+
+.modifyOrders.filerCondition li.discountCard input[type="text"] {
+	width: 78%;
+}
+
+.modifyOrders.filerCondition ul.filerDetail li a.discountItem:last-child {
+	margin-right: 0px;
+}
+
+@media only screen and (min-width: 400px) and (max-width: 1336px) {
+	.modifyOrders.filerCondition li.discountCard a.discount-apply {
+		width: 100% !important;
+		margin-left: 0px !important;
+	}
+	.modifyOrders.filerCondition li.discountCard input[type="text"] {
+		width: 100% !important;
+	}
+	.modifyOrders.filerCondition li.discountCard label {
+		height: 104px !important;
+		line-height: 104px !important;
+	}
+}
+
+.modifyOrders.filerCondition li.discountCard a.discount-apply {
+	display: inline-block;
+	width: 20%;
+	font-size: 12px;
+	background-color: #9295ff;
+	color: #fff;
+	margin-left: 2%;
+	height: 30px;
+	line-height: 30px;
+}
+
+.modifyOrders.filerCondition li div.msgDiscount {
+	width: 78%;
+	display: inline-block;
+	width: 66%;
+	height: 26px;
+	line-height: 26px;
+}
+
+.modifyOrders.filerCondition ul.filerDetail li {
+	margin-top: 4%;
+}
+
+.modifyOrders.filerCondition ul.filerDetail li a.discountItem {
+	display: inline-block;
+	border-radius: 20px;
+	text-align: center;
+	color: #a8acad;
+	background-color: #fbfbf9;
+	box-shadow: -1px 0px 4px #cfcfcd;
+	width: 46%;
+	font-size: 14px;
+	margin-right: 4%;
+	height: 26px;
+	line-height: 26px;
+}
+
+.modifyOrders.filerCondition ul.filerDetail a.discountItem.discount-active {
+	background-color: #ece8e7;
+	box-shadow: -1px -3px 3px #b8b8b8;
+	color: #9294ff;
+	border-radius: 20px;
+}
+
+.modifyOrders.filerCondition li.discountCard label {
+	vertical-align: top;
+	height: 60px;
+	line-height: 60px;
+}
+
+.modifyOrders.filerCondition li.discountCard .discountNotice {
+	display: inline-block;
+	width: 100%;
+	font-size: 14px;
+	color: #9295ff;
+	text-align: left;
+	display: none;
+}
+
+.accountingRight ul.orderStatus {
+	height: 48px;
+	line-height: 48px;
+	border-radius: 5px;
+}
+
+.accountingRight ul.orderStatus li {
+	display: inline-block;
+	font-size: 14px;
+	border-right: solid 1px #375057;
+	cursor: pointer;
+}
+
+.accountingRight ul.orderStatus li.action-checkAll {
+	width: 19.6%;
+	background-color: #9295ff;
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+
+/*散拼团   s*/
+
+.accountingRight.indiviOrders ul.orderStatus li.action-checkAll {
+	color: #5b5b5b;
+}
+
+
+/*散拼团   e*/
+
+.accountingRight ul.orderStatus li.action-checkAll img {
+	width: 20px;
+	height: 20px;
+	margin-right: 2%;
+}
+
+.accountingRight ul.orderStatus li:last-child {
+	border-right: 0px;
+}
+
+.accountingRight .orderList {
+	border: solid 1px #d2d2d2;
+	margin-top: 10px;
+	border-radius: 5px;
+}
+
+.accountingRight .orderList ul.order-title {
+	width: 100%;
+	font-size: 0px;
+	white-space: nowrap;
+	background-color: #9295ff;
+	border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.accountingRight .orderList ul.order-title li {
+	display: inline-block;
+	font-size: 14px;
+	color: #fff;
+	border-right: solid 1px #d2d2d2;
+	height: 42px;
+	line-height: 42px;
+}
+
+.accountingRight .orderList ul li:last-child {
+	border-right: 0px !important;
+}
+
+.accountingRight .orderList ul li.order-id {
+	border-top-left-radius: 5px;
+	width: 8.2%;
+}
+
+.accountingRight .orderList ul li.group-num {
+	width: 12%;
+}
+
+.accountingRight .orderList ul li.createDate {
+	width: 12%;
+}
+
+.accountingRight .orderList ul li.salesman {
+	width: 12%;
+}
+
+.accountingRight .orderList ul li.clients {
+	width: 14%;
+}
+
+.accountingRight .orderList ul li.transactionDetails {
+	width: 32%;
+}
+
+.accountingRight .orderList ul li.discount-code {
+	width: 9.3%;
+	border-top-right-radius: 5px;
+}
+
+.accountingRight .orderList ul.order-detail li {
+	height: 40px;
+}
+
+.accountingRight .orderList ul.order-detail {
+	white-space: nowrap;
+	width: 100%;
+}
+
+.accountingRight .orderList ul.order-detail li {
+	width: 100%;
+}
+
+.accountingRight .orderList ul.order-detail li dd {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	border-right: solid 1px #d2d2d2;
+}
+
+.accountingRight .orderList ul.order-detail li dd.order-id {
+	width: 8.2%;
+}
+
+.accountingRight .orderList ul.order-detail li dd.group-num,
+.accountingRight .orderList ul.order-detail li dd.locator {
+	width: 12%;
+}
+
+.accountingRight .orderList ul.order-detail li dd.createDate {
+	width: 12%;
+}
+
+.accountingRight .orderList ul.order-detail li dd.salesman {
+	width: 12%;
+}
+
+.accountingRight .orderList ul.order-detail li dd.clients,
+.accountingRight .orderList ul.order-detail li dd.invoice {
+	width: 14%;
+}
+
+.accountingRight .orderList ul.order-detail li dd.transactionDetails {
+	width: 32%;
+}
+
+.accountingRight .orderList ul.order-detail li dd.discount-code {
+	width: 9.3%;
+	border-top-right-radius: 5px;
+}
+
+.accountingRight .orderList ul.order-detail li dl {
+	font-size: 0px;
+	white-space: nowrap;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: #fff;
+	border-bottom: solid 1px #d2d2d2;
+}
+
+.accountingRight .orderList ul.order-detail li dd:last-child {
+	border-right: 0px;
+}
+
+.accountingRight .orderList ul.order-detail li {
+	display: initial;
+}
+
+.accountingRight .orderList a.order-unfold {
+	display: inline-block;
+	width: 100%;
+	background-color: #9295ff;
+	height: 28px;
+	line-height: 28px;
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	cursor: pointer;
+}
+
+.accountingRight .orderList a.order-unfold img {
+	width: 16px;
+	height: 16px;
+	margin-right: 2%;
+}
+
+.accountingRight .orderList ul.order-detail li dl:hover {
+	border: solid 1px red;
+}
+
+.accountingRight .orderList ul.order-detail li dl:hover dd {}
+
+
+/*已clear订单*/
+
+.accountingRight .orderList ul.order-detail li dl.clearAndUnlock:hover {
+	background-color: #bebebe !important;
+	border: solid 1px red;
+}
+
+.accountingRight .orderList ul.order-detail li dl.clearAndUnlock:hover dd {
+	color: #ffffff !important;
+}
+
+
+/*选中状态*/
+
+.accountingRight .orderList ul.order-detail li dl.order-active {
+	background-color: #FADA5E !important;
+}
+
+.accountingRight .orderList ul.order-detail li dl.order-active dd {
+	color: #636363 !important;
+}
+
+.accountingRight .orderList ul.order-detail li dl.order-active.clearAndUnlock:hover {
+	background-color: #FADA5E !important;
+	border: solid 1px red;
+}
+
+.accountingRight .orderList ul.order-detail li dl.order-active.clearAndUnlock:hover dd {
+	color: #636363 !important;
+}
+
+
+/*已经clear但没有lock的*/
+
+.accountingRight .orderList ul.order-detail li dl.clearAndUnlock {
+	background-color: #bebebe;
+}
+
+.accountingRight .orderList ul.order-detail li dl.clearAndUnlock dd {
+	color: #ffffff;
+}
+
+@media only screen and (min-width: 400px) and (max-width: 1000px) {
+	.accountingRight .orderList ul.order-title li {
+		font-size: 12px;
+	}
+	.accountingRight .orderList ul.order-detail li dd {
+		font-size: 12px;
+	}
+	.accountingRight .orderList ul li.discount-code {
+		width: 9%;
+	}
+	.accountingRight .orderList ul.order-detail li dd.discount-code {
+		width: 9%;
+	}
+}
+
+
+/*修改    s*/
+
+.accountingRight ul.orderStatus li.action-check {
+	width: 13%;
+	margin-right: 2%;
+	color: #a8acad !important;
+	background-color: #fbfbf9;
+	box-shadow: 0px 2px 4px #cfcfcd;
+	border-right: 0px;
+	border-radius: 0px;
+	font-size: 16px;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+}
+
+
+/*按下的状态*/
+
+.accountingRight ul.orderStatus li.action-check.check-active {
+	background-color: #ece8e7;
+	box-shadow: -1px -3px 3px #b8b8b8;
+	color: #eeaf6c !important;
+}
+
+.accountingRight ul.orderStatus li.action-check img {
+	width: 20px;
+	height: 20px;
+	margin-right: 2%;
+	margin-top: -3px;
+}
+
+.accountingRight ul.orderStatus li.action-item {
+	width: 32.8% !important;
+	margin-left: 4%;
+	border-radius: 0px;
+	border: 0px;
+	background-color: #fbfbf9;
+	box-shadow: -1px 0px 4px #cfcfcd;
+	color: #8f8f8d;
+	border-radius: 10px;
+	font-size: 16px;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+}
+
+.accountingRight ul.orderStatus li.action-item.action-clear {
+	margin-left: 0px;
+}
+
+.accountingRight ul.orderStatus li.action-item.current-status {
+	background-color: #ece8e7;
+	box-shadow: -1px -3px 3px #b8b8b8;
+	color: #9294ff;
+}
+
+.orderList ul.order-detail li dl dd.order-id.checkAll {
+	background-color: #ddddff;
+	color: #323232 !important;
+}
+
+
+/*修改   	e*/
+
+.accountingRight .orderList ul.title-order li {
+	display: inline-block;
+	font-size: 14px;
+	color: #fff;
+	background-color: #9295ff;
+	border-right: solid 1px #d2d2d2;
+	height: 42px;
+	line-height: 42px;
+}
+
+.accountingRight .orderList ul.content-title li {
+	height: 40px;
+}
+
+.accountingRight .orderList ul.content-title li dl {
+	font-size: 0px;
+	white-space: nowrap;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: #fff;
+	border-bottom: solid 1px #d2d2d2;
+}
+
+.accountingRight .orderList ul.content-title li dl:hover {
+	background-color: #9dc4c3 !important;
+}
+
+.accountingRight .orderList ul.content-title li {
+	height: 40px;
+}
+
+.accountingRight .orderList ul.content-title {
+	white-space: nowrap;
+	width: 100%;
+}
+
+.accountingRight .orderList ul.content-title li {
+	width: 100%;
+}
+
+.accountingRight .orderList ul.content-title li dd {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	border-right: solid 1px #d2d2d2;
+}
+
+.accountingRight .orderList ul.content-title li dd.order-id {
+	width: 8%;
+	border-top-left-radius: 5px;
+}
+
+.accountingRight .orderList ul.content-title li dd.group-num {
+	width: 12%;
+}
+
+.accountingRight .orderList ul.content-title li dd.createDate {
+	width: 16%;
+}
+
+.accountingRight .orderList ul.content-title li dd.salesman {
+	width: 14%;
+}
+
+.accountingRight .orderList ul.content-title li dd.clients {
+	width: 14%;
+}
+
+.accountingRight .orderList ul.content-title li dd.transactionDetails {
+	width: 26%;
+}
+
+.accountingRight .orderList ul.content-title li dd.discount-code {
+	width: 9.3%;
+	border-top-right-radius: 5px;
+}
+
+.accountingRight .orderList ul.content-title li dl {
+	font-size: 0px;
+	white-space: nowrap;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: #fff;
+	border-bottom: solid 1px #d2d2d2;
+}
+
+.accountingRight .orderList ul.content-title li dd:last-child {
+	border-right: 0px;
+}
+
+.accountingRight .orderList ul.content-title li {
+	display: initial;
+}
+
+.accountingRight .orderList ul.content-title li dl:hover dd {
+	color: #ffffff;
+}
+
+.kuaijiMsg .accountingLeft {
+	position: fixed;
+	width: 20%;
+	left: 16.8%;
+}
+
+.kuaijiMsg .accountingRight {
+	margin-left: 27%;
+}
+
+.kuaijiMsg .accountingLeft .modifyOrders {
+	margin-top: 4%;
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1440px) {
+	.kuaijiMsg .accountingRight {
+		margin-left: 26%;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1200px) {
+	.kuaijiMsg .accountingLeft {
+		position: initial !important;
+		width: 25% !important;
+		left: 0px !important;
+		top: 0px !important;
+	}
+	.kuaijiMsg .accountingRight {
+		margin-left: 1%;
+	}
+}
+
+
+/*可视高度小于*/
+
+@media only screen and (min-height: 100px) and (max-height: 767px) {
+	.kuaijiMsg .accountingLeft {
+		position: initial;
+		width: 25% !important;
+		left: 0px !important;
+		top: 0px !important;
+	}
+	.kuaijiMsg .accountingRight {
+		margin-left: 1%;
+	}
+}
+
+.accountingRight .orderList {
+	position: relative;
+}
+
+.accountingRight .orderList a.backTop {
+	position: absolute;
+    right: -27px;
+    bottom: 0px;
+    display: inline-block;
+    width: 28px;
+}
+
+.accountingRight .orderList a.backTop img {
+	width: 100%;
+    height: 44.32px;
+}
+
+
+/*会计服务修改*/
+
+.accountingRight .orderList ul.order-detail li dl.userList {
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	display: none;
+	background: url(../img/listbg.png) center center no-repeat;
+	background-size: 101% 130%;
+	position: relative;
+}
+/*选中*/
+.accountingRight .orderList ul.order-detail li dl.userList.selected {
+	background: url(../img/listbg2.png) center center no-repeat !important;
+	background-size: 101% 130%;
+}
+.accountingRight .orderList ul.order-detail li dl.userList.selected dd {
+	color: #636363 !important;
+}
+/*CLEAR*/
+.accountingRight .orderList ul.order-detail li dl.userList.clear {
+	background: url(../img/listbg_clear.png) center center no-repeat;
+	background-size: 101% 130%;
+}
+.accountingRight .orderList ul.order-detail li dl.userList.clear dd{
+	color: #ffffff;
+}
+/*LOCK*/
+.accountingRight .orderList ul.order-detail li dl.userList.lock {
+	position: relative;
+
+}
+.accountingRight .orderList ul.order-detail li dl.userList.lock dd{
+}
+.accountingRight .orderList ul.order-detail li dl.userList.lock hr{
+	position: absolute;
+    top: 14px;
+    width: 100%;
+    background-color: red;
+    display: inline-block;
+    height: 2px;
+    border: 0px;
+    left: 0px;
+}
+
+
+.accountingRight .orderList ul.order-detail li dl.userList dd {
+	border-right: 0px;
+}
+
+.accountingRight .orderList ul.order-detail li dl.userList dd.listStatus {
+	width: 8%;
+	height: 30px;
+	position: relative;
+}
+
+.accountingRight .orderList ul.order-detail li dl.userList dd.listStatus input[type='checkbox'] {
+	width: 22px;
+	height: 22px;
+	position: absolute;
+	top: 5px;
+	left: 38%;
+}
+
+.accountingRight .orderList ul.order-detail li dl.userList dd.nameMsg {
+	width: 23%;
+}
+
+.accountingRight .orderList ul.order-detail li dl.userList dd.currencyMsg {
+	width: 23%;
+}
+
+.accountingRight .orderList ul.order-detail li dl.userList dd.sumMsg {
+	width: 23%;
+}
+
+.accountingRight .orderList ul.order-detail li dl.userList dd.discountMsg {
+	width: 23%;
+}
+
+.modifyOrders.filerCondition li input.listDetailInfo {
+	width: 66% !important;
+}
+
+.modifyOrders.filerCondition.ordersTab li.discountCard label {
+	height: 30px !important;
+	line-height: 30px !important;
+}
+/*06-12修改*/
+.modifyOrders.filerCondition.ordersTab li.discountCard input[type="text"]{
+	width: 66% !important;
+}
+@media only screen and (min-width: 100px) and (max-width: 1300px) {
+	.modifyOrders.filerCondition.airTicketOrders ul.filerDetail li label{
+		font-size: 12px;
+	}
+}
+.accountingRight .airTicket_orderList.orderList ul li.order-id{
+	width: 6.2%;
+}
+.accountingRight .airTicket_orderList.orderList ul li.group-num{
+	width: 10%;
+}
+.accountingRight .airTicket_orderList.orderList ul li.clients{
+	width: 12%;
+}
+.accountingRight .airTicket_orderList.orderList ul li.createDate{
+	width: 10%;
+}
+.accountingRight .airTicket_orderList.orderList ul li.salesman{
+	width: 10%;
+}
+.accountingRight .airTicket_orderList.orderList ul li.provider{
+	width: 10%;
+}
+.accountingRight .airTicket_orderList.orderList ul.order-detail li dd.order-id{
+	width: 6.2%;
+}
+.accountingRight .airTicket_orderList.orderList ul.order-detail li dd.group-num{
+	width: 10%;
+}
+.accountingRight .airTicket_orderList.orderList ul.order-detail li dd.clients{
+	width: 12%;
+}
+.accountingRight .airTicket_orderList.orderList ul.order-detail li dd.createDate{
+	width: 10%;
+}
+.accountingRight .airTicket_orderList.orderList ul.order-detail li dd.salesman{
+	width: 10%;
+}
+.accountingRight .airTicket_orderList.orderList ul.order-detail li dd.provider{
+	width: 10%;
+}
+.accountingRight .orderList ul li{
+	border-top-left-radius: 5px;
+	width: 14.2% !important;
+}
+.accountingRight .orderList ul.order-detail li dd{
+	width: 14.2% !important;
+	height: 40px;
+    line-height: 40px;
+}
+
+.modifyOrders.filerCondition ul.filerDetail li.list-currency{
+	font-size: 0px;
+}
+.modifyOrders.filerCondition ul.filerDetail li.list-currency input{
+	width: 33%;
+	display: inline-block;
+	vertical-align: bottom;
+}
+.modifyOrders.filerCondition ul.filerDetail li.list-currency select{
+	width: 31%;margin-left: 2%;
+	display: inline-block;
+	vertical-align: bottom;
+}
+.accountingRight .orderList.groupOrderList ul li{
+	    width: 12.4% !important;
+}
+.accountingRight .orderList.groupOrderList ul.order-detail li dd{
+	width: 12.4% !important;
+}
+.accountingRight .orderList ul.order-title li{
+	position: relative;
+	cursor: pointer;
+}
+.accountingRight .orderList ul.order-title li img{
+	display: inline-block;
+	width: 20px;
+	position: absolute;
+	right: 0px;
+	cursor: pointer;
+}
+.accountingRight .orderList ul.order-title li img.arrow_up{
+	    top: 10px;
+}
+.accountingRight .orderList ul.order-title li img.arrow_down{
+	    bottom: 10px;
+}

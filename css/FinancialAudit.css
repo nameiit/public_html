@@ -1,0 +1,435 @@
+@charset "utf-8";
+.navFloor {
+	text-align: left;
+}
+
+.navFloor ul {
+	font-size: 0px;
+}
+
+.navFloor ul li {
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	background-color: #7f82df;
+	border-left: solid 1px #484ca7;
+	min-width: 88px;
+	width: 10%;
+}
+
+.navFloor ul li.current {
+	background-color: #fc8038;
+}
+
+.navFloor ul li:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-left: 0px;
+}
+
+.navFloor ul li:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.navFloor ul li a {
+	display: inline-block;
+	width: 100%;
+	font-size: 15px;
+	color: #ffffff;
+	text-align: center;
+}
+
+/*.cancelClear,
+.cancelPaid,
+.cancelFinish {
+	display: none;
+}*/
+
+.contentFloor .cancelFloor {
+	position: relative;
+	background-color: #ffffff;
+	padding: 15px;
+	border: solid 1px #d2d2d2;
+	border-radius: 4px;
+	min-height: 290px;
+	margin-top: 44px;
+}
+
+.contentFloor .cancelFloor label.markMsg {
+	display: inline-block;
+	width: 180px;
+	height: 26px;
+	line-height: 26px;
+	background-color: #9295ff;
+	color: #fff;
+	font-size: 13px;
+	position: absolute;
+	left: 0px;
+	top: -24px;
+	text-align: center;
+}
+
+.contentFloor .cancelFloor label.markMsg i {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background-color: #fff;
+	border-radius: 50px;
+	position: absolute;
+	left: 12px;
+	top: 9px;
+}
+
+.contentFloor .cancelFloor ul.btnList {}
+
+.contentFloor .cancelFloor ul.btnList li {
+	display: inline-block;
+	width: 100%;
+}
+
+.contentFloor .cancelFloor ul.btnList li a {
+	display: inline-block;
+	margin-right: 0px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	height: 30px;
+	line-height: 30px;
+	width: 8%;
+}
+
+.contentFloor .cancelFloor ul.btnList li a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.contentFloor .cancelFloor ul.btnList li a.rejectBtn {
+	margin-left: 10px;
+}
+
+ul.tabFloor {
+	width: 100%;
+	border: solid 1px #d2d2d2;
+	border-radius: 10px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	margin-top: 10px;
+}
+
+ul.tabFloor li {
+	width: 100%;
+	border-bottom: solid 1px #d2d2d2;
+	background-color: #ffffff;
+}
+
+ul.tabFloor li dl {
+	cursor: pointer;
+	font-size: 0px;
+}
+
+ul.tabFloor li dl dd {
+	vertical-align: middle;
+	word-wrap: break-word;
+	min-height: 32px;
+	text-align: center;
+	color: #646464;
+	display: inline-block;
+	font-size: 14px;
+	border-right: solid 1px #d2d2d2;
+	line-height: 32px;
+}
+
+ul.tabFloor li dl:hover {
+	border: solid 1px red;
+}
+
+ul.tabFloor li.listTitle dl:hover {
+	border: none !important;
+}
+
+ul.tabFloor li dl:hover dd {
+	color: #636363;
+}
+
+ul.tabFloor li.listTitle {
+	border: 0px;
+	background-color: #9295ff;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+ul.tabFloor li.listTitle dl {}
+
+ul.tabFloor li.listTitle dl dd {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	height: 42px;
+	line-height: 42px;
+	font-size: 14px;
+	border-right: solid 1px #d2d2d2;
+	vertical-align: middle;
+	word-wrap: break-word;
+	text-align: center;
+	display: inline-block;
+	color: #ffffff;
+	position: relative;
+	min-width: initial;
+}
+
+ul.tabFloor li.listDetail {}
+
+ul.tabFloor li.listDetail dl {}
+
+ul.tabFloor li.listDetail dl dd {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+ul.tabFloor li dl dd label {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+ul.tabFloor li dl dd span {
+	display: inline-block;
+}
+
+ul.tabFloor li.listTitle dl dd:first-child {
+	border-top-left-radius: 10px;
+}
+
+ul.tabFloor li.listTitle dl dd:last-child {
+	border-top-right-radius: 10px;
+}
+
+ul.tabFloor li dl dd:last-child {
+	border-right: 0px;
+}
+
+ul.tabFloor li dl dd img {
+	display: inline-block;
+	width: 20px;
+	position: absolute;
+	right: 0px;
+	cursor: pointer;
+}
+
+ul.tabFloor li dl dd img.arrow_up {
+	top: 10px;
+}
+
+ul.tabFloor li dl dd img.arrow_down {
+	bottom: 10px;
+}
+
+ul.tabFloor dl dd.systemNum {
+	width: 6%;
+}
+
+ul.tabFloor dl dd.invoice {
+	width: 8%;
+}
+
+ul.tabFloor dl dd.profit {
+	width: 10%;
+}
+
+ul.tabFloor dl dd.debt {
+	width: 10%;
+}
+
+ul.tabFloor dl dd.receivable {
+	width: 10%;
+}
+
+ul.tabFloor dl dd.salePrice {
+	width: 10%;
+}
+
+ul.tabFloor dl dd.createDate {
+	width: 9%;
+}
+
+ul.tabFloor dl dd.startTime {
+	width: 9%;
+}
+
+ul.tabFloor dl dd.returnTime {
+	width: 9%;
+}
+
+ul.tabFloor dl dd.lockStatus {
+	width: 4%;
+}
+
+ul.tabFloor dl dd.finishStatus {
+	width: 4%;
+}
+
+ul.tabFloor li.current {
+	border: solid 3px #e69138 !important;
+	width: 99.6%;
+}
+
+ul.tabFloor li.current dl {
+	border-bottom: solid 1px #d2d2d2;
+}
+
+ul.tabFloor li.current dl:last-child {
+	border-bottom: 0px;
+}
+
+ul.tabFloor dl dd.number {
+	width: 9.8%;
+}
+
+ul.tabFloor dl dd.number a {
+	display: inline-block;
+	color: #6da4ca;
+	font-size: 14px;
+	text-decoration: underline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #0b6623;
+	min-height: 32px;
+	width: 70%;
+}
+
+ul.tabFloor dl dd.yesStatus {
+	color: #fff;
+	background: url(../img/yesStatus_icon.png) center center no-repeat;
+	background-size: 48%;
+}
+
+ul.tabFloor dl dd.noStatus {
+	color: #fff;
+	background: url(../img/noStatus_icon.png) center center no-repeat;
+	background-size: 42%;
+}
+
+ul.tabFloor li:last-child {
+	border-bottom: 0px;
+}
+
+ul.tabFloor li dl dd.systemNum.selected {
+	color: #FFFFFF;
+	background: url(../img/selected_bg.png) center center no-repeat;
+	background-size: 80%;
+}
+
+
+/*提示框   s*/
+
+.confirmNoticeInfo {
+	text-align: center !important;
+	vertical-align: middle;
+	width: 290px;
+	min-height: 266px;
+	padding: 0px;
+	border: solid 2px #9295ff;
+	border-radius: 10px;
+	background-color: #fff;
+	position: fixed;
+	bottom: 30%;
+	left: 49%;
+	box-shadow: 0px 0px 4px #9295ff;
+	overflow: hidden;
+	display: none;
+}
+
+.confirmNoticeInfo .confirmTitle {
+	vertical-align: middle;
+	text-align: center !important;
+	color: #8f8f8f;
+	font-size: 32px;
+	border-bottom: solid 1px #b5b5b5;
+	padding-bottom: 24px;
+	margin: 22px 16px 0px 16px;
+}
+
+.confirmNoticeInfo .confirmTitle img {
+	width: 110px;
+	height: 110px;
+}
+
+.confirmNoticeInfo p.confirmNotice {
+	text-align: center;
+	font-size: 20px;
+	color: #848484;
+	margin-top: 12px;
+}
+
+.confirmNoticeInfo .actionBox {
+	font-size: 0px;
+	text-align: center;
+	margin-top: 26px;
+}
+
+.confirmNoticeInfo .actionBox button {
+	display: inline-block;
+	width: 50%;
+	margin-left: 0px !important;
+	height: 45px;
+	line-height: 45px;
+	font-size: 16px;
+	padding: 0px;
+	cursor: pointer;
+}
+
+.confirmNoticeInfo .actionBox button.actionConfirm {
+	background-color: #9295ff;
+	color: #fff;
+	border-bottom-left-radius: 7px;
+	border-color: #9595ff;
+}
+
+.confirmNoticeInfo .actionBox button.actionCancel {
+	background-color: #e3e4ff;
+	color: #9394fe;
+	border-bottom-right-radius: 7px;
+	border-color: #e3e4ff;
+}
+
+
+/*提示框   e*/
+
+.nav-box.eg {
+	text-align: left;
+	position: absolute;
+    bottom: 0px;
+}
+.contentFloor{position: relative;}
+.contentFloor a.backTop{
+	position: absolute;
+    right: -28px;
+    display: inline-block;
+    width: 30px;
+    height: 48px;
+    bottom: 0px;
+}
+.contentFloor a.backTop img{
+	display: inline-block;
+    width: 100%;
+    height: 100%;
+}
