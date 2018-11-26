@@ -1,0 +1,11 @@
+[21-Nov-2018 21:00:00 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20
+[21-Nov-2018 21:00:34 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20
+[21-Nov-2018 21:00:36 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20
+[21-Nov-2018 21:16:59 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20
+[21-Nov-2018 21:18:04 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20
+[21-Nov-2018 21:18:08 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20
+[21-Nov-2018 21:19:14 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20
+[21-Nov-2018 21:23:16 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20
+[21-Nov-2018 21:23:19 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20
+[21-Nov-2018 21:25:28 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20
+[21-Nov-2018 21:25:31 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 20

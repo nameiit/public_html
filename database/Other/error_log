@@ -1,0 +1,21 @@
+[21-Nov-2018 20:40:54 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '11.70.0.51' (101) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 12
+[21-Nov-2018 20:40:54 UTC] PHP Warning:  mysqli_set_charset() expects parameter 1 to be mysqli, boolean given in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 13
+[21-Nov-2018 20:40:54 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '11.70.0.51' (101) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 12
+[21-Nov-2018 20:40:54 UTC] PHP Warning:  mysqli_set_charset() expects parameter 1 to be mysqli, boolean given in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 13
+[21-Nov-2018 20:40:54 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '11.70.0.51' (101) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 12
+[21-Nov-2018 20:40:54 UTC] PHP Warning:  mysqli_set_charset() expects parameter 1 to be mysqli, boolean given in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 13
+[21-Nov-2018 20:58:50 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 67
+[21-Nov-2018 20:58:50 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 69
+[21-Nov-2018 21:28:44 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 67
+[21-Nov-2018 21:28:44 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 69
+[21-Nov-2018 21:28:49 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 67
+[21-Nov-2018 21:28:49 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 69
+[21-Nov-2018 21:28:50 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 67
+[21-Nov-2018 21:28:50 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 69
+[21-Nov-2018 21:28:50 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 67
+[21-Nov-2018 21:28:50 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 69
+[21-Nov-2018 21:28:54 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 67
+[21-Nov-2018 21:28:54 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 69
+[21-Nov-2018 21:54:24 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 67
+[21-Nov-2018 21:54:24 UTC] PHP Notice:  Undefined index: action in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 69
+[21-Nov-2018 21:54:24 UTC] PHP Notice:  Trying to get property 'num_rows' of non-object in /home/qvk6rse7iqie/public_html/database/Other/UserAdmin.php on line 55
