@@ -28,9 +28,8 @@ $lock_status = $_GET['lock_status'] == 'all' ? '%' : $_GET['lock_status'];
 $clear_status = $_GET['clear_status'] == 'all' ? '%' : $_GET['clear_status'];
 $paid_status = $_GET['paid_status'] == 'all' ? '%' : $_GET['paid_status'];
 $finish_status = $_GET['finish_status'] == 'all' ? '%' : $_GET['finish_status'];
-$offset = $_GET['offset'];
 
-$sql = "SELECT count(*)
+$sql = "SELECT count(*) FROM (SELECT count(*) AS count
         FROM Airtickettour a
         LEFT JOIN Transactions t
         ON a.airticket_tour_id = t.airticket_tour_id
@@ -46,7 +45,7 @@ $sql = "SELECT count(*)
         ON r.transaction_id = t.transaction_id
         JOIN AirSchedule asl
         ON asl.airticket_tour_id = a.airticket_tour_id
-        JOIN CustomerSource cs
+        LEFT JOIN CustomerSource cs
         ON cs.source_id = t.source_id
         WHERE t.transaction_id LIKE '$transaction_id'
         AND a.locators LIKE '$locator'
@@ -70,10 +69,9 @@ if ($invoice != '%') {
   $sql .= " AND (fs.invoice >= '$from_invoice' AND fs.invoice <= '$to_invoice')";
 }
 
-$sql .=" GROUP BY a.airticket_tour_id";
-echo $sql;
-// $result = $conn->query($sql);
-// echo $result->fetch_assoc()['count(*)'];
+$sql .=" GROUP BY a.airticket_tour_id) for_count";
+$result = $conn->query($sql);
+echo $result->fetch_assoc()['count(*)'];
 
 mysqli_close($conn);
  ?>

@@ -337,3 +337,15 @@ ul.listInfo li.listDetail dd {
 		width: 21% !important;
 	}
 }
+ul.listInfo li.listTitle dd.mco_bankCard{
+	width: 22.82%;
+}
+ul.listInfo li.listTitle dd.mco_receiver{
+	width: 12%;
+}
+ul.listInfo li.listDetail dd.mco_bankCard{
+	width: 20.82%;
+}
+ul.listInfo li.listDetail dd.mco_receiver{
+	width: 12%;
+}

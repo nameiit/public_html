@@ -219,9 +219,9 @@ ul.add-msg li.exchangeRate span input[type='text'] {
 	font-size: 14px;
 }
 
-.updateDialog .updateForm ul.add-msg li.exchangeRate span {
+/*.updateDialog .updateForm ul.add-msg li.exchangeRate span {
 	width: 50% !important;
-}
+}*/
 
 .updateDialog .updateForm ul.add-msg li.exchangeRate span input[type='text'] {
 	width: 80px !important;
@@ -2729,9 +2729,9 @@ ul.add-msg div.systemNumTab li.tab_title dl dd {
 	line-height: 14px;
 }
 
-.updateDialog .updateForm ul.add-msg li.list_currency input[type='text'] {
+/*.updateDialog .updateForm ul.add-msg li.list_currency input[type='text'] {
 	width: 32% !important;
-}
+}*/
 
 .updateDialog .updateForm ul.add-msg li.list_account input[type="text"] {
 	width: 32% !important;
@@ -2990,4 +2990,117 @@ ul.add-msg li.rate a.selected{
 }
 @media only screen and (min-width: 100px) and (max-width: 1440px) {
 	.updateTab ul li.number{width: 5.8%;}
+}
+.partCreditCard{
+	display: none;
+}
+.floor .addInfo .cardLeft.indivUpdateLeftInfo ul.add-msg li input{
+	width: 50% !important;
+}
+.updateDialog .updateForm ul.add-msg li div.notesInfor{
+	width: 50% !important;
+}
+.floor .addInfo .cardLeft.indivUpdateLeftInfo ul.add-msg li.list_currency input{
+	width: 30% !important;
+}
+.updateDialog .updateForm ul.add-msg li.expDate div.expireDate{
+	width: 22% !important;
+}
+.updateDialog .updateForm  ul.add-msg li.expDate div.cardholder{
+	width: 28.5% !important;
+}
+.updateDialog .updateForm ul.add-msg li.expDate div.expireDate select{
+	width: 35% !important;
+    padding-left: 0px;
+    min-width: 40px;
+}
+.updateDialog .updateForm ul.add-msg li.expDate div.cardholder label{
+	width: 46% !important;
+}
+.updateDialog .updateForm ul.add-msg li.expDate div.cardholder input[type="text"]{
+	margin-left: 2% !important;
+	width: 43% !important;
+}
+@media only screen and (min-width: 100px) and (max-width: 1512px) {
+	.updateDialog .updateForm ul.add-msg li.expDate div.expireDate{
+		width: 50% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li.expDate div.expireDate select{
+		width: 15% !important;
+		margin-left: 2.2% !important;
+	}
+	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder{
+		width: 74.5% !important;
+		margin-top: 13px;
+	}
+	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder label{
+		min-width: 92px;
+		width: initial !important;
+	}
+	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder input[type="text"]{
+		width: 28.4% !important;
+    	float: left;
+    	min-width: 83px;
+    	margin-left: 2.8% !important;
+	}
+}
+.updateDialog .updateForm .cardLeft label.markMsg{
+	width: 108px !important;
+}
+.updateDialog .updateForm ul.add-msg li.destination select{
+	width: 49% !important;
+	min-width: initial;
+}
+.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li input[type="date"],
+.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li input[type="text"]{
+	width: 64% !important;
+}
+.updateDialog .updateForm .indivUpdateRightInfo .payService ul.add-msg li.list_currency input[type='text']{
+	width: 32% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account{
+	visibility: visible;
+    display: block;
+}
+.updateDialog .updateForm ul.add-msg li.list_account.rate a{
+	display: inline-block;
+    width: 30% !important;
+    margin-left: 2% !important;
+    vertical-align: top;
+    height: 26px;
+    line-height: 26px;
+    font-size: 14px;
+    background-color: #eeebe6;
+    text-align: center;
+    box-shadow: 1px 4px 4px #b3b3b1;
+    font-size: 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    -webkit-transition: all;
+    transition: all;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+    -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+    color: #9295ff;
+    text-decoration: none;
+}
+.updateDialog .updateForm ul.add-msg li.list_account.rate a.selected{
+	background-color: #ece8e7;
+    box-shadow: inset 1px 3px 4px #b8b8b8;
+    color: #f88032;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account.rate input[type="text"]{
+	width: 32% !important;
+}
+.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li.list_account input[type="text"]{
+	width: 32% !important;
+}
+.updateTab ul li.profit{
+	width: 13%;
+}
+.updateTab ul dd.profit{
+	width: 13% !important;
 }

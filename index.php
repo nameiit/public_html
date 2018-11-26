@@ -50,18 +50,18 @@ session_start();
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
-									<a href="IndividualTour/IndividualTourCreate.php" >
+									<a href="IndividualTour/IndividualTourCreate.php" class="lab-active">
 										<label></label> 散拼团
 									</a>
 								</dd>

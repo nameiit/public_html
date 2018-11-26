@@ -50,16 +50,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -100,7 +100,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								</dd>
 								<dd>
 									<a href="Supplement.php">
-										<label></label>增补单
+										<label></label>增补以及退款
 									</a>
 								</dd>
 							</dl>
@@ -183,12 +183,12 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</div>
 										</li>
 										<li>
-											<div class="leftFloor customerName">
+											<!--<div class="leftFloor customerName">
 												<label>顾客姓名</label>
 												<input type="text" placeholder="Last Name" class="name" id="lname">
 												<input type="text" placeholder="First Name" class="name" id="fname">
-											</div>
-											<div class="rightFloor invoiceInfo">
+											</div>-->
+											<div class="rightFloor invoiceInfo airTicket_invoice">
 												<div class="rightContent invoiceInfo">
 													<label>INVOICE</label>
 													<div class="invoice1">
@@ -206,7 +206,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 										<li>
 											<div class="leftFloor">
 												<label>Airline</label>
-												<input type="text" 1>
+												<input type="text" id="airline-filter">
 											</div>
 											<div class="rightFloor">
 												<div class="rightContent">
@@ -249,23 +249,23 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</div>
 														<div class="rightContent place" id="non-cc-payment-type">
 															<div class="checkbox checkbox-success">
-																<input id="cash" class="styled" type="checkbox">
+																<input id="cash" class="styled" type="checkbox" checked="checked">
 																<label for="cash"><i>现金</i></label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="check" class="styled" type="checkbox">
+																<input id="check" class="styled" type="checkbox" checked="checked">
 																<label for="check"><i>支票</i></label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="alipay" class="styled" type="checkbox">
+																<input id="alipay" class="styled" type="checkbox" checked="checked">
 																<label for="alipay"><i>支付宝</i></label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="wechat" class="styled" type="checkbox">
+																<input id="wechat" class="styled" type="checkbox" checked="checked">
 																<label for="wechat"><i>微信支付</i></label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="remit" class="styled" type="checkbox">
+																<input id="remit" class="styled" type="checkbox" checked="checked">
 																<label for="remit"><i>汇款</i></label>
 															</div>
 														</div>
@@ -537,8 +537,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="airline_filter">
-																	<label for="airline_filter">Airline<i></i> </label>
+																	<input class="styled" type="checkbox" id="airline">
+																	<label for="airline">Airline<i></i> </label>
 																</div>
 															</div>
 														</dd>
@@ -557,8 +557,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd class="choiceContent">
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="arrival_date">
-																	<label for="arrival_date">返程时间<i></i></label>
+																	<input class="styled" type="checkbox" id="back_date">
+																	<label for="back_date">返程时间<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -695,16 +695,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<!--<dd></dd>-->
 											</dl>
 										</li>
-										<li class="resultDetail">
-											<dl>
+										<!-- <li class="resultDetail"> -->
+											<!-- <dl> -->
 												<!--<dd></dd>-->
-											</dl>
-										</li>
-										<li class="resultDetail">
-											<dl>
+											<!-- </dl> -->
+										<!-- </li> -->
+										<!-- <li class="resultDetail"> -->
+											<!-- <dl> -->
 												<!--<dd></dd>-->
-											</dl>
-										</li>
+											<!-- </dl> -->
+										<!-- </li> -->
 									</ul>
 									<!--分页   s-->
 									<div class="nav-box eg">

@@ -14,7 +14,7 @@ $invoice = $_POST['invoice'];
 $source = empty($_POST['source'])? 'unknown' : $_POST['source'];
 $note = $_POST['note'];
 
-$exchange_rate = $_POST['exchange_rate'];
+$exchange_rate = empty($_POST['exchange_rate'])? 'nothing' : $_POST['exchange_rate'];
 $payment_area = $_POST['payment_area'];
 $sell_price = $_POST['sell_price'];
 $sell_price_currency = $_POST['sell_price_currency'];
@@ -105,8 +105,53 @@ $query = "SELECT salesperson_id FROM Salesperson WHERE salesperson_code = '$sale
 $result = $conn->query($query);
 $salespersonId = $result->fetch_assoc()['salesperson_id'];
 
-
-$query = "INSERT INTO AirticketTour
+if ($exchange_rate == 'nothing') {
+  $query = "INSERT INTO AirticketTour
+          (
+            flight_code,
+            salesperson_id,
+            locators,
+            round_trip,
+            ticket_type,
+            adult_number,
+            youth_number,
+            child_number,
+            infant_number,
+            itinerary,
+            invoice,
+            selling_price,
+            selling_currency,
+            base_price,
+            base_currency,
+            wholesaler_id,
+            deal_location,
+            payment_type,
+            ticketed_date,
+            customer_id
+          ) VALUES (
+            '$air_company_code',
+            '$salespersonId',
+            '$locator',
+            '$roundTrip',
+            '$ticketType',
+            '$numOfAdult',
+            '$numOfYouth',
+            '$numOfChildren',
+            '$numOfInfant',
+            '$itinerary',
+            '$invoice',
+            '$sell_price',
+            '$sell_price_currency',
+            '$base_price',
+            '$base_price_currency',
+            (SELECT wholesaler_id FROM Wholesaler WHERE wholesaler_code LIKE '$wholesaler'),
+            '$payment_area',
+            '$payment_type',
+            '$ticketedTime',
+            '$customerId'
+          )";
+} else {
+  $query = "INSERT INTO AirticketTour
           (
             flight_code,
             salesperson_id,
@@ -140,7 +185,7 @@ $query = "INSERT INTO AirticketTour
             '$numOfInfant',
             '$itinerary',
             '$invoice',
-            '$exchange_rate',
+            $exchange_rate,
             '$sell_price',
             '$sell_price_currency',
             '$base_price',
@@ -150,6 +195,8 @@ $query = "INSERT INTO AirticketTour
             '$payment_type',
             '$ticketedTime'
           )";
+}
+echo $query;
 $conn->query($query);
 
 $query = "SELECT max(airticket_tour_id) FROM AirticketTour
@@ -326,10 +373,14 @@ if ($payment_type == 'airall') {
               arrival_date,
               following_id_collection,
               total_profit,
-              base_price)
+              debt_raw,
+              debt_cleared,
+              received_raw,
+              received_finished
           SELECT
             $transaction_id,
-            '$invoice', 'N', 'N', 'Y', 'N', $base_price_trans,
+            '$invoice', 'N', 'N', 'Y', 'N',
+            $base_price_trans,
             'CC',
             $sell_price_trans,
             t.create_time,
@@ -337,33 +388,40 @@ if ($payment_type == 'airall') {
             '$return_date',
             group_concat(tc.following_id SEPARATOR ','),
             $sell_price_trans - $base_price_trans,
-            $base_price_trans
+            $base_price_trans,
+            0,
+            $sell_price_trans,
+            0
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id
           WHERE t.transaction_id = $transaction_id
           GROUP BY tc.starter_id";
     $conn->query($sql);
-} else if ($payment_type = 'airmco') {
-  $pikachu = $mco_value . '-' . $mco_credit;
+} else if ($payment_type == 'airmco') {
   $sql = "INSERT INTO FinanceStatus (
               transaction_id,
               invoice,
               lock_status,clear_status,paid_status,finish_status,
               debt, received, selling_price, create_time,
               depart_date, arrival_date, following_id_collection,
-              total_profit, base_price)
+              total_profit, debt_raw,
+              debt_cleared,
+              received_raw,
+              received_finished)
           SELECT
             $transaction_id,
-            '$invoice', 'N', 'N', 'N', 'N', $base_price_trans - $mco_credit,
+            '$invoice', 'N', 'N', 'N', 'N',
+            $base_price_trans,
             'CC',
-            $sell_price,
+            0,
             t.create_time,
             '$start_date',
             '$return_date',
             group_concat(tc.following_id SEPARATOR ','),
-            $sell_price_trans -  $base_price_trans + $mco_credit,
-            $base_price_trans
+            $face_value - $base_price_trans,
+            $base_price_trans, 0,
+            $face_value, 0
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id
@@ -371,24 +429,28 @@ if ($payment_type == 'airall') {
           GROUP BY tc.starter_id";
     // echo $sql;
     $conn->query($sql);
-    $mco_value = '-' . $mco_value;
     $sql = "INSERT INTO FinanceStatus (
               transaction_id,
               invoice,
               lock_status,clear_status,paid_status,finish_status,
               debt, received, selling_price, create_time,
               depart_date, arrival_date,
-              total_profit, base_price, ending)
+              total_profit, ending, debt_raw,
+              debt_cleared,
+              received_raw,
+              received_finished)
           SELECT
             $transaction_id,
-            '$invoice','N', 'N','N', 'N', '$pikachu',
+            '$invoice','N', 'N','N', 'N',
+            concat('$mco_value', '/', '$mco_credit'),
             'CC',
-            $sell_price,
+            $sell_price_trans,
             t.create_time,
             '$start_date',
             '$return_date',
-            '$mco_value',
-            $base_price_trans, 'mco'
+            $mco_credit,
+            'mco', $mco_value - $mco_credit, 0,
+            $mco_value, 0
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id
@@ -407,18 +469,23 @@ if ($payment_type == 'airall') {
               arrival_date,
               following_id_collection,
               total_profit,
-              base_price)
+              debt_raw,
+              debt_cleared,
+              received_raw,
+              received_finished)
           SELECT
             $transaction_id,
-            '$invoice', 'N', 'N', 'N', 'N', $base_price_trans,
+            '$invoice', 'N', 'N', 'N', 'N',
+            $base_price_trans,
             $sell_price_trans,
             $sell_price_trans,
             t.create_time,
             '$start_date',
             '$return_date',
             group_concat(tc.following_id SEPARATOR ','),
-            $profit_trans,
-            $base_price_trans
+            $sell_price_trans - $base_price_trans,
+            $base_price_trans, 0,
+            $sell_price_trans, 0
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id

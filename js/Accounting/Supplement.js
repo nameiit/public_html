@@ -8,7 +8,7 @@ $(function() {
 	noRecord();
 	confirmSupplement();
 	confirmRefund();
-	
+
 	//退款金额-汇率：
 	$(".supplementfloor ul.searchFloor.refund li.refundAmount").find("select").on("change", function() {
 		var currentTxt = $.trim($(this).find("option:selected").text());
@@ -31,7 +31,6 @@ $(function() {
 			}
 		});
 	});
-
 });
 
 //切换:
@@ -81,6 +80,7 @@ function resetInfo() {
 		$(".searchResult").css("display", "none");
 	});
 }
+
 //搜索   s
 function searchInfo() {
 	$(".supplementfloor ul.searchFloor li.btnList a").on("mouseup", function() {
@@ -93,96 +93,114 @@ function searchInfo() {
 		var type = $.trim($(".supplementfloor ul.manageNav.searchInfo li.current-item").text());
 		if(type == "旅游团") {
 			if($("ul.touristGroups li input.systemNum").val() !== "") {
-				$(".searchResult").css("display", "block");
 				$(".searchResult ul li.title dl dd.changeItem").text("团号");
 				$(".searchResult ul li.detail dl dd.changeItem").addClass("groupNum");
 				$(".searchResult ul li.detail dl dd.changeItem").removeClass("locator");
-				//				groupSearch();
+				tourSearch();
 			}
-
-		}
-		if(type == "机票") {
+			else{
+				alert("系统编号不能为空");
+			}
+		} else if(type == "机票") {
 			if($("ul.airticketInfo li input.systemNum").val() !== "") {
 				$(".searchResult ul li.title dl dd.changeItem").text("Locator");
 				$(".searchResult ul li.detail dl dd.changeItem").addClass("locator");
 				$(".searchResult ul li.detail dl dd.changeItem").removeClass("groupNum");
-				$(".searchResult").css("display", "block");
-				//				airticketSearch();
+				airticketSearch();
 			}
-
+			else{
+				alert("系统编号不能为空");
+			}
 		}
 	});
 }
+
 //旅游团搜索
-function groupSearch() {
-	//	var systemNumTxt = $("ul.touristGroups li input.systemNum").val();
-	//	var groupNumTxt = $(" ul.touristGroups li input.groupNum").val();
-	//	var listText = $("div.systemNumTab li dl dd.systemNum").text();
-	//	var currentInputTxt = $.trim(systemNumTxt);
-	//	var currentListTxt = $.trim(listText);
-	//	if(systemNumTxt !== "") {
-	//		var e = `
-	//						<li class="detail">
-	//							<dl>
-	//								<dd class="systemNum">
-	//									` + systemNumTxt + `
-	//								</dd>
-	//								<dd class="changeItem">
-	//									` + groupNumTxt + `
-	//								</dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//							</dl>
-	//						</li>
-	//					`;
-	//		$(".searchResult ul li.title").after(e);
-	//		heightRange();
-	//
-	//	}
+function tourSearch() {
+	$.ajax({
+		url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/Supplement/getTourInfo.php'),
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		type: 'GET',
+		data: {
+			transaction_id: $("#tour-transaction-id").val(),
+			product_code: $("#tour-product-code").val()
+		},
+		success: function(response) {
+			response = JSON.parse(response);
+
+			if (response.length > 0) {
+				$("li.detail").remove();
+				$(".searchResult").css("display", "block");
+				for (var i = 0; i < response.length; i++) {
+					$displayInfo = `
+					<li class="detail">
+						<dl>
+							<dd class="systemNum">` + response[i]['transaction_id'] + `</dd>
+							<dd>` + response[i]['type'] + `</dd>
+							<dd class="changeItem">` + response[i]['product_code'] + `</dd>
+							<dd>` + response[i]['total_profit'] + `</dd>
+							<dd>` + response[i]['selling_price'] + `</dd>
+							<dd>` + response[i]['received'] + `</dd>
+							<dd>` + response[i]['debt'] + `</dd>
+							<dd>` + response[i]['debt_cleared'] + `</dd>
+						</dl>
+					</li>`;
+
+					$("div.searchResult ul").append($displayInfo);
+				}
+			} else {
+				$(".searchResult").css("display", "none");
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log(textStatus, errorThrown);
+		}
+	});
 }
+
 //机票搜索
 function airticketSearch() {
-	//	var systemNumTxt = $("ul.searchFloor.airticketInfo li input.systemNum").val();
-	//	var locatorTxt = $(" ul.searchFloor.airticketInfo li input.locator").val();
-	//	var listText = $("div.systemNumTab li dl dd.systemNum").text();
-	//	var currentInputTxt = $.trim(systemNumTxt);
-	//	var currentListTxt = $.trim(listText);
-	//	if(systemNumTxt !== "") {
-	//		if(currentListTxt.indexOf(currentInputTxt) == -1) {
-	//			var e = `
-	//						<li class="detail">
-	//							<dl>
-	//								<dd class="systemNum">
-	//									` + systemNumTxt + `
-	//								</dd>
-	//								<dd class="changeItem">
-	//									` + locatorTxt + `
-	//								</dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//								<dd></dd>
-	//							</dl>
-	//						</li>
-	//					`;
-	//			$(".searchResult ul li.title").after(e);
-	//			$("ul.searchFloor.airticketInfo li.systemNum input").val("");
-	//			heightRange();
-	//
-	//		} else {
-	//			$("ul.searchFloor.airticketInfo li.systemNum input").val("");
-	//		}
-	//	}
+	$.ajax({
+		url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/Supplement/getAirTicketInfo.php'),
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		type: 'GET',
+		data: {
+			transaction_id: $("#airticket-transaction-id").val(),
+			ticket_number: $("#airticket-number").val(),
+			locator: $("#airticket-locator").val(),
+			invoice: $("#airticket-invoice").val()
+		},
+		success: function(response) {
+			response = JSON.parse(response);
+
+			if (response.length > 0) {
+				$("li.detail").remove();
+				$(".searchResult").css("display", "block");
+				for (var i = 0; i < response.length; i++) {
+					$displayInfo = `
+					<li class="detail">
+						<dl>
+							<dd class="systemNum">` + response[i]['transaction_id'] + `</dd>
+							<dd>` + response[i]['type'] + `</dd>
+							<dd class="changeItem">` + response[i]['invoice'] + `</dd>
+							<dd>` + response[i]['total_profit'] + `</dd>
+							<dd>` + response[i]['selling_price'] + `</dd>
+							<dd>` + response[i]['received'] + `</dd>
+							<dd>` + response[i]['debt'] + `</dd>
+							<dd>` + response[i]['debt_cleared'] + `</dd>
+						</dl>
+					</li>`;
+
+					$("div.searchResult ul").append($displayInfo);
+				}
+			} else {
+				$(".searchResult").css("display", "none");
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			console.log(textStatus, errorThrown);
+		}
+	});
 }
 
 function toUsersManagePage() {
@@ -198,7 +216,6 @@ function toUsersManagePage() {
 		}
 	});
 }
-//旅游团搜索   e
 
 //增补-退款：
 //确认增补：
@@ -221,21 +238,37 @@ function confirmSupplement() {
 			$(".confirmSupplement").css("display", "block");
 			//确认
 			$(".confirmSupplement").find("p.actionBox").find("button.actionConfirm").on("click", function() {
-				setTimeout(function() {
-					$(".confirmSupplement").css("display", "none");
-				}, 500);
+				$.ajax({
+					url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/Supplement/createSup.php'),
+					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+					type: 'POST',
+					data: {
+						transaction_id: $("#sup-transaction-id").val(),
+						extra_in: $("#sup-extra-in").val(),
+						extra_in_currency: $("#sup-extra-in-currency").val(),
+						extra_out: $("#sup-extra-out").val(),
+						extra_out_currency: $("#sup-extra-out-currency").val(),
+						sup_exchange_rate: $("#sup-exchange-rate").val()
+					},
+					success: function(response) {
+						console.log(response);
+						$(".confirmSupplement").css("display", "none");
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(textStatus, errorThrown);
+					}
+				});
 			});
 			//取消
 			$(".confirmSupplement").find("p.actionBox").find("button.actionCancel").on("click", function() {
 				$(".confirmSupplement").css("display", "none");
 			});
-
 		} else {
 			alert("请确认增补信息已填写完整");
 		}
-
 	});
 }
+
 //确认退款：
 function confirmRefund() {
 	$("ul.searchFloor.refund li.btnList").find("a.confirmBtn").on("click", function() {
@@ -255,19 +288,33 @@ function confirmRefund() {
 			$(".confirmRefund").css("display", "block");
 			//确认
 			$(".confirmRefund").find("p.actionBox").find("button.actionConfirm").on("click", function() {
-				setTimeout(function() {
-					$(".confirmRefund").css("display", "none");
-				}, 500);
+				$.ajax({
+					url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/Supplement/createRefund.php'),
+					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+					type: 'POST',
+					data: {
+						transaction_id: $("#ref-transaction-id").val(),
+						ref_type: $("#ref-type").val(),
+						ref_value: $("#ref-value").val(),
+						ref_currency: $("#ref-currency").val(),
+						ref_exchange_rate: $("#ref-exchange-rate").val()
+					},
+					success: function(response) {
+						console.log(response);
+						$(".confirmRefund").css("display", "none");
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(textStatus, errorThrown);
+					}
+				});
 			});
 			//取消
 			$(".confirmRefund").find("p.actionBox").find("button.actionCancel").on("click", function() {
 				$(".confirmRefund").css("display", "none");
 			});
-
 		} else {
 			alert("请确认退款信息已填写完整");
 		}
-
 	});
 }
 

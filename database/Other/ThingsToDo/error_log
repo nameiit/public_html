@@ -1,4 +1,0 @@
-[21-Nov-2018 20:41:15 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '11.70.0.51' (110) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 12
-[21-Nov-2018 20:41:15 UTC] PHP Warning:  mysqli_set_charset() expects parameter 1 to be mysqli, boolean given in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 13
-[21-Nov-2018 20:51:02 UTC] PHP Warning:  mysqli_connect(): (HY000/2003): Can't connect to MySQL server on '11.70.0.51' (101) in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 12
-[21-Nov-2018 20:51:02 UTC] PHP Warning:  mysqli_set_charset() expects parameter 1 to be mysqli, boolean given in /home/qvk6rse7iqie/public_html/database/dbConnection.php on line 13

@@ -50,16 +50,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -100,7 +100,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								</dd>
 								<dd>
 									<a href="Supplement.php">
-										<label></label>增补单
+										<label></label>增补以及退款
 									</a>
 								</dd>
 							</dl>
@@ -140,11 +140,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								<label class="theamTitle"> <i></i>数据导出</label>
 								<div class="otherManageNav">
 									<ul>
-										<!--<li>
-											<a href="javascript:void(0);">
-												独立团
-											</a>
-										</li>-->
 										<li class="current-item">
 											<a href="javascript:void(0);">
 												旅游团
@@ -246,31 +241,31 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</div>
 														<div class="rightContent place" id="non-cc-payment-type">
 															<div class="checkbox checkbox-success">
-																<input id="cash" class="styled" type="checkbox">
+																<input id="cash" class="styled" type="checkbox" checked="checked">
 																<label for="cash">
 																	<i>现金</i>
 																</label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="check" class="styled" type="checkbox">
+																<input id="check" class="styled" type="checkbox" checked="checked">
 																<label for="check">
 																	<i>支票</i>
 																</label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="alipay" class="styled" type="checkbox">
+																<input id="alipay" class="styled" type="checkbox" checked="checked">
 																<label for="alipay">
 																	<i>支付宝</i>
 																</label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="wechat" class="styled" type="checkbox">
+																<input id="wechat" class="styled" type="checkbox" checked="checked">
 																<label for="wechat">
 																	<i>微信支付</i>
 																</label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="remit" class="styled" type="checkbox">
+																<input id="remit" class="styled" type="checkbox" checked="checked">
 																<label for="remit"><i>汇款</i></label>
 															</div>
 														</div>
@@ -318,10 +313,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<a href="javascript:void(0);" class="resetBtn" id="filter-reset">重置</a>
 											</div>
 										</li>
-
 									</ul>
 								</div>
-
 								<!--系统筛选    e-->
 								<!--选择模块    s-->
 								<div class="choiceFloor individualTour">
@@ -337,36 +330,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="systemNum">
-																	<label for="systemNum">系统编号<i></i> </label>
+																	<input class="styled" type="checkbox" id="transaction_id">
+																	<label for="transaction_id">系统编号<i></i> </label>
 																</div>
 															</div>
 														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="salesman">
-																	<label for="salesman">业务员<i></i></label>
-																</div>
-															</div>
-														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="invoice">
-																	<label for="invoice">INVOICE<i></i></label>
-																</div>
-															</div>
-														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="createDate">
-																	<label for="createDate">创建日期<i></i></label>
+																	<input class="styled" type="checkbox" id="salesperson_code">
+																	<label for="salesperson_code">业务员<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -377,16 +350,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="localGuide">
-																	<label for="localGuide">地接商<i></i></label>
+																	<input class="styled" type="checkbox" id="indiv_tour_invoice">
+																	<label for="indiv_tour_invoice">INVOICE<i></i></label>
 																</div>
 															</div>
 														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="clientType">
-																	<label for="clientType">客户类型<i></i></label>
+																	<input class="styled" type="checkbox" id="create_time">
+																	<label for="create_time">创建日期<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -397,16 +370,36 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="customerName">
-																	<label for="customerName">客户姓名<i></i></label>
+																	<input class="styled" type="checkbox" id="wholesaler_code">
+																	<label for="wholesaler_code">地接商<i></i></label>
 																</div>
 															</div>
 														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="customerOrigin">
-																	<label for="customerOrigin">客户来源<i></i></label>
+																	<input class="styled" type="checkbox" id="type">
+																	<label for="type">客户类型<i></i></label>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="customer_name">
+																	<label for="customer_name">客户姓名<i></i></label>
+																</div>
+															</div>
+														</dd>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="source_name">
+																	<label for="source_name">客户来源<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -424,36 +417,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="exchangeRate">
-																	<label for="exchangeRate">汇率<i></i></label>
+																	<input class="styled" type="checkbox" id="exchange_rate">
+																	<label for="exchange_rate">汇率<i></i></label>
 																</div>
 															</div>
 														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="clearingForm">
-																	<label for="clearingForm">结算方式<i></i></label>
-																</div>
-															</div>
-														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="amountPayable">
-																	<label for="amountPayable">应付金额<i></i></label>
-																</div>
-															</div>
-														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="amountPayment">
-																	<label for="amountPayment">实付金额<i></i></label>
+																	<input class="styled" type="checkbox" id="payment_type">
+																	<label for="payment_type">结算方式<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -464,8 +437,28 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="amountReceivable">
-																	<label for="amountReceivable">应收金额<i></i></label>
+																	<input class="styled" type="checkbox" id="debt">
+																	<label for="debt">应付金额<i></i></label>
+																</div>
+															</div>
+														</dd>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="debt_cleared">
+																	<label for="debt_cleared">实付金额<i></i></label>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="selling_price">
+																	<label for="selling_price">应收金额<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -484,36 +477,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="supplement">
-																	<label for="supplement">增补单<i></i></label>
+																	<input class="styled" type="checkbox" id="extra_supplement">
+																	<label for="extra_supplement">增补单<i></i></label>
 																</div>
 															</div>
 														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="refund">
-																	<label for="refund">申请退款<i></i></label>
-																</div>
-															</div>
-														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="payRefund">
-																	<label for="payRefund">实付退款<i></i></label>
-																</div>
-															</div>
-														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="receiveRefund">
-																	<label for="receiveRefund">实收退款<i></i></label>
+																	<input class="styled" type="checkbox" id="give_me_refund_usd">
+																	<label for="give_me_refund_usd">申请退款<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -524,8 +497,28 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="profit">
-																	<label for="profit">毛利<i></i></label>
+																	<input class="styled" type="checkbox" id="okay_its_yours">
+																	<label for="okay_its_yours">实付退款<i></i></label>
+																</div>
+															</div>
+														</dd>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="nice_gotit">
+																	<label for="nice_gotit">实收退款<i></i></label>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="total_profit">
+																	<label for="total_profit">毛利<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -634,10 +627,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd>
 														</dd>
 													</dl>
-												</li>-
+												</li>
 											</ul>
-
-
 										</div>
 										<!--机票信息   e-->
 										<ul class="btnList">
@@ -783,6 +774,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 		<script src="../js/jquery-1.11.0.min.js" type="text/javascript"></script>
 		<script src="../js/jquery.pagination.js" type="text/javascript"></script>
 		<script src="../js/homePage/public.js" type="text/javascript"></script>
-		<script src="../js/Accounting/dataExport.js" type="text/javascript"></script>
+		<script src="../js/Accounting/TouristGroupDataExport.js" type="text/javascript"></script>
 	</body>
 </html>

@@ -26,36 +26,74 @@ $paid_status = $_GET['paid_status'] == 'all' ? '%' : $_GET['paid_status'];
 $finish_status = $_GET['finish_status'] == 'all' ? '%' : $_GET['finish_status'];
 $offset = $_GET['offset'];
 
+$airline = empty($_GET['airline']) ? '%' : $_GET['airline'];
+
+if ($payment_type == 'non-cc') {
+  $deal_location = $_GET['deal_location'];
+  $non_cc_payment_type_arr = json_decode($_GET['non_cc_payment_type']);
+}
+
 $sql = "SELECT
-          fs.transaction_id, fs.invoice, fs.total_profit, concat(fs.clear_status, '|', debt) AS debt,
-          REPLACE(REPLACE(concat(fs.paid_status, '|', fs.received), 'Y|CC', 'CC'), 'N|CC', 'CC') AS received, fs.selling_price, fs.create_time, fs.depart_date,
-          fs.arrival_date, fs.lock_status, fs.finish_status, fs.following_id_collection, t.type, a.payment_type, fs.check_no,
-          concat(UPPER(c.lname), '/', c.fname) as customer_name, IFNULL(concat(mp.mco_currency, mp.mco_value, '|', mp.mco_credit), '') AS mco
+          concat(fs.transaction_id, IFNULL(fs.ending, '')) AS transaction_id,
+          fs.invoice,
+          fs.total_profit,
+          concat(fs.clear_status, '|', debt) AS debt,
+          REPLACE(REPLACE(concat(fs.paid_status, '|', fs.received), 'Y|CC', 'CC'), 'N|CC', 'CC') AS received,
+          fs.selling_price,
+          fs.create_time,
+          fs.depart_date,
+          fs.arrival_date,
+          fs.lock_status,
+          fs.finish_status,
+          fs.following_id_collection,
+          (SELECT GROUP_CONCAT(concat(UPPER(an.lname), '/', an.fname) SEPARATOR ',') 
+            FROM AirticketNumber an 
+            JOIN Transactions ts 
+            ON an.airticket_tour_id = ts.airticket_tour_id 
+            WHERE ts.transaction_id = t.transaction_id 
+            GROUP BY an.airticket_tour_id) AS customer_name
         FROM FinanceStatus fs
         JOIN Transactions t ON fs.transaction_id = t.transaction_id
         JOIN AirticketTour a ON a.airticket_tour_id = t.airticket_tour_id
-        LEFT JOIN McoPayment mp ON mp.mp_id = a.mp_id
         JOIN Salesperson s ON a.salesperson_id = s.salesperson_id
-        JOIN Customer c ON a.customer_id = c.customer_id
         JOIN Wholesaler w ON a.wholesaler_id = w.wholesaler_id
-        -- JOIN AirSchedule asl ON a.airticket_tour_id = asl.airticket_tour_id
         WHERE fs.transaction_id LIKE '$transaction_id'
         AND s.salesperson_code LIKE '$salesperson'
         AND t.settle_time >= '$from_date'
         AND t.settle_time <= '$to_date'
-        AND c.lname LIKE concat('%', '$lname', '%')
-        AND c.fname LIKE concat('%', '$fname', '%')
         AND w.wholesaler_code LIKE '$wholesaler'
         AND a.locators LIKE '$locator'
-        -- AND asl.airline LIKE '$airline'
         AND fs.lock_status LIKE '$lock_status'
         AND fs.clear_status LIKE '$clear_status'
         AND fs.paid_status LIKE '$paid_status'
-        AND fs.finish_status LIKE '$finish_status'";
+        AND fs.finish_status LIKE '$finish_status'
+        AND a.airticket_tour_id IN 
+        (SELECT airticket_tour_id 
+        FROM AirticketNumber 
+        WHERE fname LIKE concat('%', '$fname','%') 
+        AND lname LIKE concat('%','$lname','%')) 
+        AND a.airticket_tour_id IN 
+        (SELECT airticket_tour_id FROM AirSchedule WHERE airline LIKE '$airline')";
 if ($invoice != '%') {
     $sql .= " AND fs.invoice LIKE '$invoice'";
 } else if ($from_invoice != '%' or $to_invoice != '%') {
     $sql .= " AND (fs.invoice >= '$from_invoice' AND fs.invoice <= '$to_invoice')";
+}
+
+if ($payment_type == 'cc'){
+    $sql .= " AND fs.received = 'CC'";
+} else if ($payment_type == 'mco') {
+    $sql .= " AND fs.ending = 'mco'";
+} else if ($payment_type == 'non-cc') {
+    $sql .= " AND a.deal_location LIKE '$deal_location'";
+    if (sizeof($non_cc_payment_type_arr) > 0) {
+        $sql .= " AND a.payment_type IN (";
+        for ($i = 0; $i < sizeof($non_cc_payment_type_arr); $i++) {
+            $sql = $sql . "'" . $non_cc_payment_type_arr[$i] . "',";
+        }
+        $sql = substr($sql, 0, -1);
+        $sql .= ")";
+    }
 }
 
 if (!empty($_GET['create_time_sort'])) {
@@ -68,6 +106,10 @@ if (!empty($_GET['create_time_sort'])) {
   $sql .= " ORDER BY fs.transaction_id DESC";
 }
 $sql .= " LIMIT 15 OFFSET $offset";
+
+// echo $sql;
+
+
 $result = $conn->query($sql);
 
 $res = array();

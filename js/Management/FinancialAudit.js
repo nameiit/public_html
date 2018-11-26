@@ -73,25 +73,25 @@ function confirmCancel() {
 	rejectCancelLock();
 	lockPagination();
 	arrowStatus_lock();
-	radminidLockInfo();
+//	radminidLockInfo();
 	//取消CLEAR:
 	cancelClear();
 	rejectCancelClear();
 	clearPagination();
 	arrowStatus_clear();
-	radminidClearInfo();
+//	radminidClearInfo();
 	//取消PAID:
 	cancelPaid();
 	rejectCancelPaid();
 	paidPagination();
 	arrowStatus_paid();
-	radminidPaidInfo();
+//	radminidPaidInfo();
 	//取消FINISH:
 	cancelFinish();
 	rejectCancelFinish();
 	finishPagination();
 	arrowStatus_finish();
-	radminidFinishInfo();
+//	radminidFinishInfo();
 }
 
 function autoHeight() {
@@ -223,9 +223,6 @@ function lockPagination() {
 							<dd class="returnTime"></dd>
 							<dd class="lockStatus"></dd>
 							<dd class="finishStatus"></dd>
-							<dd class="number">
-								<a href="javascript:void(0);"></a>
-							</dd>
 						</dl>
 					</li>`;
 			$(".cancelLock ul.tabFloor").find("li.listTitle").after(e);
@@ -234,6 +231,7 @@ function lockPagination() {
 		}
 	});
 }
+
 //取消LOCK-"箭头切换"
 function arrowStatus_lock() {
 	$(".cancelLock ul li.listTitle dd").on("click", function() {
@@ -249,57 +247,57 @@ function arrowStatus_lock() {
 	});
 }
 //取消LOCK-关联编号：
-function radminidLockInfo() {
-	$(".cancelLock ul li dd.number a").on("click", function() {
-		if($.trim($(this).text()) == "") {} 
-		else {
-			var thisLi = $(this).parent().parent().parent("li");
-			var summaryNum = $.trim(thisLi.find("dd.number").text());
-			var lockInfo = thisLi.find("dd.lockStatus").attr("class"); //LOCK状态
-			var clearInfo = $.trim(thisLi.find("dd.debt").text()); //CLEAR
-			var finishInfo = thisLi.find("dd.finishStatus").attr("class"); //FINISH
-			var paidInfo = thisLi.find("dd.receivable").text(); //PAID
-			var finishTxt = $.trim(thisLi.find("dd.finishStatus").text());
-			if(thisLi.find("dl.unfold").css("display") == "block") {
-				thisLi.find("dl.unfold").remove();
-				thisLi.removeClass("current");
-				heightRange();
-			} else {
-				var currentNum = thisLi.find("dd.systemNum").text();
-				var numInfo = $.trim($(this).text()).split(",");
-				for(var i = 0; i < numInfo.length; i++) {
-					var e = `
-					<dl class="unfold">
-						<dd class="systemNum">` + numInfo[i] + `
-						</dd>
-						<dd class="invoice"></dd>
-						<dd class="profit"></dd>
-						<dd class="debt">` + clearInfo + `</dd>
-						<dd class="receivable">` + paidInfo + `</dd>
-						<dd class="salePrice"></dd>
-						<dd class="createDate"></dd>
-						<dd class="startTime"></dd>
-						<dd class="returnTime"></dd>
-						<dd	class="` + lockInfo + `"></dd>
-						<dd class="` + finishInfo + `"></dd>
-						<dd class="number">
-							<a href="javascript:void(0);">
-							</a>
-						</dd>
-					</div>
-					`;
-					thisLi.append(e);
-					autoHeight();
-					heightRange();
-					$(".cancelLock ul li dl.unfold dd.number a").unbind("click");
-				}
-				thisLi.addClass("current");
-				autoHeight();
-			}
-		}
-
-	});
-}
+//function radminidLockInfo() {
+//	$(".cancelLock ul li dd.number a").on("click", function() {
+//		if($.trim($(this).text()) == "") {} 
+//		else {
+//			var thisLi = $(this).parent().parent().parent("li");
+//			var summaryNum = $.trim(thisLi.find("dd.number").text());
+//			var lockInfo = thisLi.find("dd.lockStatus").attr("class"); //LOCK状态
+//			var clearInfo = $.trim(thisLi.find("dd.debt").text()); //CLEAR
+//			var finishInfo = thisLi.find("dd.finishStatus").attr("class"); //FINISH
+//			var paidInfo = thisLi.find("dd.receivable").text(); //PAID
+//			var finishTxt = $.trim(thisLi.find("dd.finishStatus").text());
+//			if(thisLi.find("dl.unfold").css("display") == "block") {
+//				thisLi.find("dl.unfold").remove();
+//				thisLi.removeClass("current");
+//				heightRange();
+//			} else {
+//				var currentNum = thisLi.find("dd.systemNum").text();
+//				var numInfo = $.trim($(this).text()).split(",");
+//				for(var i = 0; i < numInfo.length; i++) {
+//					var e = `
+//					<dl class="unfold">
+//						<dd class="systemNum">` + numInfo[i] + `
+//						</dd>
+//						<dd class="invoice"></dd>
+//						<dd class="profit"></dd>
+//						<dd class="debt">` + clearInfo + `</dd>
+//						<dd class="receivable">` + paidInfo + `</dd>
+//						<dd class="salePrice"></dd>
+//						<dd class="createDate"></dd>
+//						<dd class="startTime"></dd>
+//						<dd class="returnTime"></dd>
+//						<dd	class="` + lockInfo + `"></dd>
+//						<dd class="` + finishInfo + `"></dd>
+//						<dd class="number">
+//							<a href="javascript:void(0);">
+//							</a>
+//						</dd>
+//					</div>
+//					`;
+//					thisLi.append(e);
+//					autoHeight();
+//					heightRange();
+//					$(".cancelLock ul li dl.unfold dd.number a").unbind("click");
+//				}
+//				thisLi.addClass("current");
+//				autoHeight();
+//			}
+//		}
+//
+//	});
+//}
 
 //取消CLEAR-"取消"
 function cancelClear() {
@@ -399,9 +397,6 @@ function clearPagination() {
 							<dd class="returnTime"></dd>
 							<dd class="lockStatus"></dd>
 							<dd class="finishStatus"></dd>
-							<dd class="number">
-								<a href="javascript:void(0);"></a>
-							</dd>
 						</dl>
 					</li>`;
 			$(".cancelClear ul.tabFloor").find("li.listTitle").after(e);
@@ -426,58 +421,58 @@ function arrowStatus_clear() {
 	});
 }
 //取消Clear-关联编号：
-function radminidClearInfo() {
-	$(".cancelClear ul li dd.number a").on("click", function() {
-		if($.trim($(this).text()) == "") {} 
-		else {
-			var thisLi = $(this).parent().parent().parent("li");
-			var summaryNum = $.trim(thisLi.find("dd.number").text());
-			var lockInfo = thisLi.find("dd.lockStatus").attr("class"); //LOCK状态
-			var clearInfo = $.trim(thisLi.find("dd.debt").text()); //CLEAR
-			var finishInfo = thisLi.find("dd.finishStatus").attr("class"); //FINISH
-			var paidInfo = thisLi.find("dd.receivable").text(); //PAID
-			var finishTxt = $.trim(thisLi.find("dd.finishStatus").text());
-			if(thisLi.find("dl.unfold").css("display") == "block") {
-				thisLi.find("dl.unfold").remove();
-				thisLi.removeClass("current");
-				heightRange();
-			} else {
-				var currentNum = thisLi.find("dd.systemNum").text();
-				var numInfo = $.trim($(this).text()).split(",");
-				for(var i = 0; i < numInfo.length; i++) {
-					var e = `
-					<dl class="unfold">
-						<dd class="systemNum">` + numInfo[i] + `
-						</dd>
-						<dd class="invoice"></dd>
-						<dd class="profit"></dd>
-						<dd class="debt">` + clearInfo + `</dd>
-						<dd class="receivable">` + paidInfo + `</dd>
-						<dd class="salePrice"></dd>
-						<dd class="createDate"></dd>
-						<dd class="startTime"></dd>
-						<dd class="returnTime"></dd>
-						<dd	class="` + lockInfo + `"></dd>
-						<dd class="` + finishInfo + `"></dd>
-						<dd class="number">
-							<a href="javascript:void(0);">
-							
-							</a>
-						</dd>
-					</div>
-					`;
-					thisLi.append(e);
-					autoHeight();
-					heightRange();
-					$(".cancelClear ul li dl.unfold dd.number a").unbind("click");
-				}
-				thisLi.addClass("current");
-				autoHeight();
-			}
-		}
-
-	});
-}
+//function radminidClearInfo() {
+//	$(".cancelClear ul li dd.number a").on("click", function() {
+//		if($.trim($(this).text()) == "") {} 
+//		else {
+//			var thisLi = $(this).parent().parent().parent("li");
+//			var summaryNum = $.trim(thisLi.find("dd.number").text());
+//			var lockInfo = thisLi.find("dd.lockStatus").attr("class"); //LOCK状态
+//			var clearInfo = $.trim(thisLi.find("dd.debt").text()); //CLEAR
+//			var finishInfo = thisLi.find("dd.finishStatus").attr("class"); //FINISH
+//			var paidInfo = thisLi.find("dd.receivable").text(); //PAID
+//			var finishTxt = $.trim(thisLi.find("dd.finishStatus").text());
+//			if(thisLi.find("dl.unfold").css("display") == "block") {
+//				thisLi.find("dl.unfold").remove();
+//				thisLi.removeClass("current");
+//				heightRange();
+//			} else {
+//				var currentNum = thisLi.find("dd.systemNum").text();
+//				var numInfo = $.trim($(this).text()).split(",");
+//				for(var i = 0; i < numInfo.length; i++) {
+//					var e = `
+//					<dl class="unfold">
+//						<dd class="systemNum">` + numInfo[i] + `
+//						</dd>
+//						<dd class="invoice"></dd>
+//						<dd class="profit"></dd>
+//						<dd class="debt">` + clearInfo + `</dd>
+//						<dd class="receivable">` + paidInfo + `</dd>
+//						<dd class="salePrice"></dd>
+//						<dd class="createDate"></dd>
+//						<dd class="startTime"></dd>
+//						<dd class="returnTime"></dd>
+//						<dd	class="` + lockInfo + `"></dd>
+//						<dd class="` + finishInfo + `"></dd>
+//						<dd class="number">
+//							<a href="javascript:void(0);">
+//							
+//							</a>
+//						</dd>
+//					</div>
+//					`;
+//					thisLi.append(e);
+//					autoHeight();
+//					heightRange();
+//					$(".cancelClear ul li dl.unfold dd.number a").unbind("click");
+//				}
+//				thisLi.addClass("current");
+//				autoHeight();
+//			}
+//		}
+//
+//	});
+//}
 //取消PAID-"取消"
 function cancelPaid() {
 	$(".contentFloor .cancelFloor ul.btnList li a.cancelPaidBtn").on("click", function() {
@@ -611,9 +606,6 @@ function paidPagination() {
 							<dd class="returnTime"></dd>
 							<dd class="lockStatus"></dd>
 							<dd class="finishStatus"></dd>
-							<dd class="number">
-								<a href="javascript:void(0);"></a>
-							</dd>
 						</dl>
 					</li>`;
 			$(".cancelPaid ul.tabFloor").find("li.listTitle").after(e);
@@ -623,6 +615,7 @@ function paidPagination() {
 		}
 	});
 }
+
 //取消PAID-"切换"
 function arrowStatus_paid() {
 	$(".cancelPaid ul li.listTitle dd").on("click", function() {
@@ -638,59 +631,59 @@ function arrowStatus_paid() {
 	});
 }
 //取消Paid-关联编号：
-function radminidPaidInfo() {
-	$(".cancelPaid ul li dd.number a").on("click", function() {
-		if($.trim($(this).text()) == "") {} 
-		else {
-			var thisLi = $(this).parent().parent().parent("li");
-			var summaryNum = $.trim(thisLi.find("dd.number").text());
-			var lockInfo = thisLi.find("dd.lockStatus").attr("class"); //LOCK状态
-			var clearInfo = $.trim(thisLi.find("dd.debt").text()); //CLEAR
-			var finishInfo = thisLi.find("dd.finishStatus").attr("class"); //FINISH
-			var paidInfo = thisLi.find("dd.receivable").text(); //PAID
-			var finishTxt = $.trim(thisLi.find("dd.finishStatus").text());
-			if(thisLi.find("dl.unfold").css("display") == "block") {
-				thisLi.find("dl.unfold").remove();
-				thisLi.removeClass("current");
-				heightRange();
-			} 
-			else {
-				var currentNum = thisLi.find("dd.systemNum").text();
-				var numInfo = $.trim($(this).text()).split(",");
-				for(var i = 0; i < numInfo.length; i++) {
-					var e = `
-					<dl class="unfold">
-						<dd class="systemNum">` + numInfo[i] + `
-						</dd>
-						<dd class="invoice"></dd>
-						<dd class="profit"></dd>
-						<dd class="debt">` + clearInfo + `</dd>
-						<dd class="receivable">` + paidInfo + `</dd>
-						<dd class="salePrice"></dd>
-						<dd class="createDate"></dd>
-						<dd class="startTime"></dd>
-						<dd class="returnTime"></dd>
-						<dd	class="` + lockInfo + `"></dd>
-						<dd class="` + finishInfo + `"></dd>
-						<dd class="number">
-							<a href="javascript:void(0);">
-							
-							</a>
-						</dd>
-					</div>
-					`;
-					thisLi.append(e);
-					autoHeight();
-					heightRange();
-					$(".cancelPaid ul li dl.unfold dd.number a").unbind("click");
-				}
-				thisLi.addClass("current");
-				autoHeight();
-			}
-		}
-
-	});
-}
+//function radminidPaidInfo() {
+//	$(".cancelPaid ul li dd.number a").on("click", function() {
+//		if($.trim($(this).text()) == "") {} 
+//		else {
+//			var thisLi = $(this).parent().parent().parent("li");
+//			var summaryNum = $.trim(thisLi.find("dd.number").text());
+//			var lockInfo = thisLi.find("dd.lockStatus").attr("class"); //LOCK状态
+//			var clearInfo = $.trim(thisLi.find("dd.debt").text()); //CLEAR
+//			var finishInfo = thisLi.find("dd.finishStatus").attr("class"); //FINISH
+//			var paidInfo = thisLi.find("dd.receivable").text(); //PAID
+//			var finishTxt = $.trim(thisLi.find("dd.finishStatus").text());
+//			if(thisLi.find("dl.unfold").css("display") == "block") {
+//				thisLi.find("dl.unfold").remove();
+//				thisLi.removeClass("current");
+//				heightRange();
+//			} 
+//			else {
+//				var currentNum = thisLi.find("dd.systemNum").text();
+//				var numInfo = $.trim($(this).text()).split(",");
+//				for(var i = 0; i < numInfo.length; i++) {
+//					var e = `
+//					<dl class="unfold">
+//						<dd class="systemNum">` + numInfo[i] + `
+//						</dd>
+//						<dd class="invoice"></dd>
+//						<dd class="profit"></dd>
+//						<dd class="debt">` + clearInfo + `</dd>
+//						<dd class="receivable">` + paidInfo + `</dd>
+//						<dd class="salePrice"></dd>
+//						<dd class="createDate"></dd>
+//						<dd class="startTime"></dd>
+//						<dd class="returnTime"></dd>
+//						<dd	class="` + lockInfo + `"></dd>
+//						<dd class="` + finishInfo + `"></dd>
+//						<dd class="number">
+//							<a href="javascript:void(0);">
+//							
+//							</a>
+//						</dd>
+//					</div>
+//					`;
+//					thisLi.append(e);
+//					autoHeight();
+//					heightRange();
+//					$(".cancelPaid ul li dl.unfold dd.number a").unbind("click");
+//				}
+//				thisLi.addClass("current");
+//				autoHeight();
+//			}
+//		}
+//
+//	});
+//}
 
 
 //取消FINISH-"取消":
@@ -789,9 +782,6 @@ function finishPagination() {
 							<dd class="returnTime"></dd>
 							<dd class="lockStatus"></dd>
 							<dd class="finishStatus"></dd>
-							<dd class="number">
-								<a href="javascript:void(0);"></a>
-							</dd>
 						</dl>
 					</li>`;
 			$(".cancelFinish ul.tabFloor").find("li.listTitle").after(e);
@@ -801,6 +791,7 @@ function finishPagination() {
 		}
 	});
 }
+
 //取消FINISH-"切换":
 function arrowStatus_finish() {
 	$(".cancelFinish ul li.listTitle dd").on("click", function() {
@@ -816,58 +807,58 @@ function arrowStatus_finish() {
 	});
 }
 //取消Paid-关联编号：
-function radminidFinishInfo() {
-	$(".cancelFinish ul li dd.number a").on("click", function() {
-		if($.trim($(this).text()) == "") {} 
-		else {
-			var thisLi = $(this).parent().parent().parent("li");
-			var summaryNum = $.trim(thisLi.find("dd.number").text());
-			var lockInfo = thisLi.find("dd.lockStatus").attr("class"); //LOCK状态
-			var clearInfo = $.trim(thisLi.find("dd.debt").text()); //CLEAR
-			var finishInfo = thisLi.find("dd.finishStatus").attr("class"); //FINISH
-			var paidInfo = thisLi.find("dd.receivable").text(); //PAID
-			var finishTxt = $.trim(thisLi.find("dd.finishStatus").text());
-			if(thisLi.find("dl.unfold").css("display") == "block") {
-				thisLi.find("dl.unfold").remove();
-				thisLi.removeClass("current");
-				heightRange();
-			} else {
-				var currentNum = thisLi.find("dd.systemNum").text();
-				var numInfo = $.trim($(this).text()).split(",");
-				for(var i = 0; i < numInfo.length; i++) {
-					var e = `
-					<dl class="unfold">
-						<dd class="systemNum">` + numInfo[i] + `
-						</dd>
-						<dd class="invoice"></dd>
-						<dd class="profit"></dd>
-						<dd class="debt">` + clearInfo + `</dd>
-						<dd class="receivable">` + paidInfo + `</dd>
-						<dd class="salePrice"></dd>
-						<dd class="createDate"></dd>
-						<dd class="startTime"></dd>
-						<dd class="returnTime"></dd>
-						<dd	class="` + lockInfo + `"></dd>
-						<dd class="` + finishInfo + `"></dd>
-						<dd class="number">
-							<a href="javascript:void(0);">
-							
-							</a>
-						</dd>
-					</div>
-					`;
-					thisLi.append(e);
-					autoHeight();
-					heightRange();
-					$(".cancelFinish ul li dl.unfold dd.number a").unbind("click");
-				}
-				thisLi.addClass("current");
-				autoHeight();
-			}
-		}
-
-	});
-}
+//function radminidFinishInfo() {
+//	$(".cancelFinish ul li dd.number a").on("click", function() {
+//		if($.trim($(this).text()) == "") {} 
+//		else {
+//			var thisLi = $(this).parent().parent().parent("li");
+//			var summaryNum = $.trim(thisLi.find("dd.number").text());
+//			var lockInfo = thisLi.find("dd.lockStatus").attr("class"); //LOCK状态
+//			var clearInfo = $.trim(thisLi.find("dd.debt").text()); //CLEAR
+//			var finishInfo = thisLi.find("dd.finishStatus").attr("class"); //FINISH
+//			var paidInfo = thisLi.find("dd.receivable").text(); //PAID
+//			var finishTxt = $.trim(thisLi.find("dd.finishStatus").text());
+//			if(thisLi.find("dl.unfold").css("display") == "block") {
+//				thisLi.find("dl.unfold").remove();
+//				thisLi.removeClass("current");
+//				heightRange();
+//			} else {
+//				var currentNum = thisLi.find("dd.systemNum").text();
+//				var numInfo = $.trim($(this).text()).split(",");
+//				for(var i = 0; i < numInfo.length; i++) {
+//					var e = `
+//					<dl class="unfold">
+//						<dd class="systemNum">` + numInfo[i] + `
+//						</dd>
+//						<dd class="invoice"></dd>
+//						<dd class="profit"></dd>
+//						<dd class="debt">` + clearInfo + `</dd>
+//						<dd class="receivable">` + paidInfo + `</dd>
+//						<dd class="salePrice"></dd>
+//						<dd class="createDate"></dd>
+//						<dd class="startTime"></dd>
+//						<dd class="returnTime"></dd>
+//						<dd	class="` + lockInfo + `"></dd>
+//						<dd class="` + finishInfo + `"></dd>
+//						<dd class="number">
+//							<a href="javascript:void(0);">
+//							
+//							</a>
+//						</dd>
+//					</div>
+//					`;
+//					thisLi.append(e);
+//					autoHeight();
+//					heightRange();
+//					$(".cancelFinish ul li dl.unfold dd.number a").unbind("click");
+//				}
+//				thisLi.addClass("current");
+//				autoHeight();
+//			}
+//		}
+//
+//	});
+//}
 //返回顶部：
 function backToTop() {
 	$(".contentFloor a.backTop").on("click", function() {

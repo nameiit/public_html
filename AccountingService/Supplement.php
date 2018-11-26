@@ -50,16 +50,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -100,7 +100,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								</dd>
 								<dd>
 									<a href="Supplement.php" class="lab-active">
-										<label></label>增补单
+										<label></label>增补以及退款
 									</a>
 								</dd>
 							</dl>
@@ -137,7 +137,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 					<div class="showMsg otherManage">
 						<div class="floor otherManageArea accountingContent">
 							<div class="groupMsg">
-								<label class="theamTitle"> <i></i>增补单</label>
+								<label class="theamTitle supplementTitle"> <i></i>增补以及退款</label>
 								<!--旅游团搜索   s-->
 								<div class="groupSearch supplementfloor">
 									<!--<label class="markMsg"><i></i>旅游团搜索</label>-->
@@ -154,13 +154,13 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 										</li>
 									</ul>
 									<ul class="searchFloor touristGroups">
-										<li>
+										<li class="requiredItem">
 											<label>系统编号</label>
-											<input type="text"  class="systemNum"/>
+											<input type="text" class="systemNum" id="tour-transaction-id">
 										</li>
 										<li>
 											<label>团号</label>
-											<input type="text" class="groupNum"/>
+											<input type="text" class="groupNum" id="tour-product-code">
 										</li>
 										<li class="btnList">
 											<a href="javascript:void(0);" class="queryBtn">
@@ -172,21 +172,21 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 										</li>
 									</ul>
 									<ul class="searchFloor airticketInfo">
-										<li>
+										<li class="requiredItem">
 											<label>系统编号</label>
-											<input type="text"  class="systemNum"/>
+											<input type="text"  class="systemNum" id="airticket-transaction-id">
 										</li>
 										<li>
 											<label>票号</label>
-											<input type="text" class="ticketNum"/>
+											<input type="text" class="ticketNum"  id="airticket-number">
 										</li>
 										<li>
 											<label>Locator</label>
-											<input type="text" class="locator"/>
+											<input type="text" class="locator" id="airticket-locator">
 										</li>
 										<li>
 											<label>INVOICE</label>
-											<input type="text" class="invoice"/>
+											<input type="text" class="invoice" id="airticket-invoice">
 										</li>
 										<li class="btnList">
 											<a href="javascript:void(0);" class="queryBtn">
@@ -215,29 +215,29 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 										</li>
 									</ul>
 									<ul class="searchFloor supplement">
-										<li>
+										<li class="requiredItem">
 											<label>系统编号</label>
-											<input type="text" />
+											<input type="text" id="sup-transaction-id">
 										</li>
 										<li class="supplementItem">
 											<label>增补收入</label>
-											<input type="text" />
-											<select>
-												<option>美元</option>
-												<option>人民币</option>
+											<input type="text" id="sup-extra-in">
+											<select id="sup-extra-in-currency">
+												<option value="USD">美元</option>
+												<option value="RMB">人民币</option>
 											</select>
 										</li>
 										<li class="supplementItem">
 											<label>增补成本</label>
-											<input type="text" />
-											<select>
-												<option>美元</option>
-												<option>人民币</option>
+											<input type="text" id="sup-extra-out">
+											<select id="sup-extra-out-currency">
+												<option value="USD">美元</option>
+												<option value="RMB">人民币</option>
 											</select>
 										</li>
 										<li class="exchangeRate">
 											<label>汇率</label>
-											<input type="text" />
+											<input type="text" id="sup-exchange-rate">
 										</li>
 										<li class="btnList">
 											<a href="javascript:void(0);" class="confirmBtn">
@@ -249,28 +249,28 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 										</li>
 									</ul>
 									<ul class="searchFloor refund">
-										<li>
+										<li class="requiredItem">
 											<label>系统编号</label>
-											<input type="text" />
+											<input type="text" id="ref-transaction-id">
 										</li>
 										<li>
 											<label>申请退款</label>
-											<select class="refund">
-												<option>已收金额退款</option>
-												<option>已付金额退款</option>
+											<select class="refund" id="ref-type">
+												<option value="okay_its_yours">已收金额退款</option>
+												<option value="nice_gotit">已付金额退款</option>
 											</select>
 										</li>
 										<li class="supplementItem refundAmount">
 											<label>退款金额</label>
-											<input type="text" />
-											<select>
-												<option>美元</option>
-												<option>人民币</option>
+											<input type="text" id="ref-value">
+											<select id="ref-currency">
+												<option value="USD">美元</option>
+												<option value="RMB">人民币</option>
 											</select>
 										</li>
 										<li class="exchangeRate">
 											<label>汇率</label>
-											<input type="text" />
+											<input type="text" id="ref-exchange-rate">
 										</li>
 										<li class="btnList">
 											<a href="javascript:void(0);" class="confirmBtn">
@@ -289,29 +289,13 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<li class="title">
 												<dl>
 													<dd>系统编号</dd>
+													<dd>类型</dd>
 													<dd class="changeItem">团号</dd>
 													<dd>利润</dd>
 													<dd>应收金额</dd>
 													<dd>实收金额</dd>
 													<dd>应付金额</dd>
 													<dd>实付金额</dd>
-													<dd>申请退款</dd>
-													<dd>实付退款</dd>
-													<dd>实收退款</dd>
-												</dl>
-											</li>
-											<li class="detail">
-												<dl>
-													<dd class="systemNum">1</dd>
-													<dd class="changeItem">AAAAAA</dd>
-													<dd>1000</dd>
-													<dd>1000</dd>
-													<dd>1000</dd>
-													<dd>1000</dd>
-													<dd>1000</dd>
-													<dd>0</dd>
-													<dd>0</dd>
-													<dd>0</dd>
 												</dl>
 											</li>
 										</ul>
@@ -329,7 +313,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<button	class="actionCancel">取消</button>
 										</p>
 									</div>
-									<!--确认框     e-->	
+									<!--确认框     e-->
 							</div>
 						</div>
 					</div>

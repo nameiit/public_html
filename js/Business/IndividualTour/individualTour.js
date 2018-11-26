@@ -21,6 +21,8 @@ $(function() {
 	destinationInfo();
 	showProfitBox();
 	rateInfo();
+	fullMcoPayment();
+	partCreditCard();
 	$("ul.add-msg li.list_cost a").on("mousedown", function() {
 		$(this).addClass("selected");
 	});
@@ -222,18 +224,17 @@ function sendFormMsg() {
 				$("ul.add-msg .mcoList").find("input").val("");
 				$("span.currency_txt").text("美元");
 
-
 				$("ul.add-msg div.systemNumTab").css("display", "none");
 				$("ul.add-msg div.systemNumTab").find("li.tab_content").remove();
 				$(".addClients ul.clients-info li dl dd input").val("");
 				//重置：
 				$(".creditCardInfo").find("input").val("");
 				$(".creditCardInfo").find("select").prop('selectedIndex', 0);
-				$(".creditCardInfo").css("display","none");
+				$(".creditCardInfo").css("display", "none");
 
 				$("span#indiv-tour-payment-type").text("支付方式");
 				$("span#mco-party").text("");
-				$(".mcoList").css("display","none");
+				$(".mcoList").css("display", "none");
 
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -299,9 +300,7 @@ function addClients() {
 
 		$("span#indiv-tour-payment-type").text("支付方式");
 		$("span#mco-party").text("");
-		$(".mcoList").css("display","none");
-
-
+		$(".mcoList").css("display", "none");
 
 		var leftHeight = $(".navInfo ul").height()
 		var rightHeight = $(".theamInfo").height();
@@ -499,6 +498,7 @@ function checkNull() {
 		return true;
 	}
 }
+
 function checkPaymentMethod() {
 	if($.trim($("span#indiv-tour-payment-type").text()) == "支付方式") {
 		$("ul.add-msg li.payment-type.paymentMethodInfo div.payment").addClass("error");
@@ -510,6 +510,7 @@ function checkPaymentMethod() {
 		return true;
 	}
 }
+
 function checkNumber() {
 	var m = 0;
 	var checkNum = /^\d+(\.\d+)?$/;
@@ -765,6 +766,7 @@ function paymentMethod() {
 		$(".payService ul li .payment").find("ul.dropdown-menu.creditCardPayment").css("width", "200%");
 		$(".payService ul li .payment").find("ul.dropdown-menu.drop3Menu").css("width", "120px");
 		$(".payService ul li .payment").find("ul.dropdown-menu.drop3Menu").css("min-width", "initial");
+		$(".partCreditCard").css("display", "none");
 	});
 	if($(".mcoList").css("display") == "block") {
 		$(".mcoList").css("display", "block");
@@ -791,7 +793,6 @@ function paymentMethod() {
 		$("span.mcoCredit_currency").text("美元");
 		$("span.faceValue_currency").text("美元");
 
-
 		//输入信用卡
 		$(".creditCardInfo").find("input").val("");
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
@@ -805,25 +806,24 @@ function paymentMethod() {
 		$("ul.add-msg li.payment-type.paymentMethodInfo div.payment").removeClass("error");
 		$("ul.add-msg li.payment-type.paymentMethodInfo div.payment").find(".btn-default").css("border", "solid 1px #969696");
 		//信用卡和MCO支付
-		if(($.trim(payment_type.text()) == "供应商部分刷卡+额外MCO")||($.trim(payment_type.text()) == "全额MCO")) {
+		if(($.trim(payment_type.text()) == "供应商部分刷卡+额外MCO") || ($.trim(payment_type.text()) == "全额MCO")) {
 			$(".mcoList").css("display", "block");
 			$("input#face-value").removeClass("notRequired");
 			$("input#mco-value").removeClass("notRequired");
 			$("input#mco-credit").removeClass("notRequired");
 			$("input#card-number").removeClass("notRequired");
 			$("input#card-holder").removeClass("notRequired");
-//			console.log($(".requiredItem").find("input:not([class='notRequired'])").length);
-			$("ul.add-msg li.list_account.profitInfor a").css("visibility","visible");
-			$(".creditCardInfo").css("display","block");
-		}
-		else {
+			//			console.log($(".requiredItem").find("input:not([class='notRequired'])").length);
+			$("ul.add-msg li.list_account.profitInfor a").css("visibility", "visible");
+			$(".creditCardInfo").css("display", "block");
+		} else {
 			$(".mcoList").css("display", "none");
 			$("input#face-value").addClass("notRequired");
 			$("input#mco-value").addClass("notRequired");
 			$("input#mco-credit").addClass("notRequired");
 			$("input#card-number").addClass("notRequired");
 			$("input#card-holder").addClass("notRequired");
-			$("ul.add-msg li.list_account.profitInfor a").css("visibility","hidden");
+			$("ul.add-msg li.list_account.profitInfor a").css("visibility", "hidden");
 
 			$("input#face-value").val("");
 			$("input#mco-value").val("");
@@ -835,12 +835,14 @@ function paymentMethod() {
 			$("span.mcoCredit_currency").text("美元");
 			$("span.faceValue_currency").text("美元");
 
-
 			$(".creditCardInfo").find("input").val("");
 			$(".creditCardInfo").find("select").prop('selectedIndex', 0);
-			$(".creditCardInfo").css("display","none");
+			$(".creditCardInfo").css("display", "none");
 		}
 		heightRange();
+		$(".partCreditCard").css("display", "none");
+		$("input.non-creditCardAmount").val("");
+		$("input.creditCardAmount").val("");
 	});
 
 	//非刷卡支付
@@ -871,27 +873,25 @@ function paymentMethod() {
 		$(".creditCardInfo").find("input").val("");
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 		$(".creditCardInfo").css("display", "none");
-
-
-
-
+		$(".partCreditCard").css("display", "none");
+		$("input.non-creditCardAmount").val("");
+		$("input.creditCardAmount").val("");
 
 	});
 	//供应商部分刷卡+非刷卡支付
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.drop3Menu").find("li").find("a").on("click", function() {
 		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
-		payment_type.text("供应商部分刷卡+" + $(this).text());
+		var payment_txt = "供应商部分刷卡+" + $.trim($(this).text());
+		$("span#indiv-tour-payment-type").text(payment_txt);
 		$(".mcoList").css("display", "none");
+		$(".partCreditCard").css("display", "block");
 	});
-
 	//刷卡公司
 	$(".payService ul li .payment").find("ul.companyMenu").find("li").find("a").on("click", function() {
 		var companyInfo = $(".payService ul li .payment").find(".creditCardCompanies").find("button.btn").find("span.txt");
 		companyInfo.text($(this).text());
 	});
-
 }
-
 function priceCalculate() {
 	//票面-MCO金额-卖价
 	//MCO金额=卖价-票面
@@ -1286,7 +1286,6 @@ function getCalculateProfitInfo() {
 		mcoAmount = $("input.indiv_mcoAmount").val();
 		mcoCredit = $("input.mcoCreditInfo").val();
 
-
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "人民币") {
 			salePrice = $("input#indiv_sale_price").val();
 			basePrice = $("input#indiv_base_price").val();
@@ -1468,6 +1467,7 @@ function getCalculateProfitInfo() {
 		}
 	});
 }
+
 function profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate) {
 	profitType();
 	//利润=卖价-底价-MCO金额+MCO Credit
@@ -1706,10 +1706,9 @@ function destinationSecondClass() {
 		var currentTxt = $.trim($(this).find("option:selected").text());
 		if(currentTxt == "二级分类") {
 			$("ul.add-msg li.destination select.thirdItem").find("option").not(".firstOption").css("display", "none");
-			$("ul.add-msg li.destination select.thirdItem").find("option.firstOption").css("display","block");
+			$("ul.add-msg li.destination select.thirdItem").find("option.firstOption").css("display", "block");
 			$("ul.add-msg li.destination select.thirdItem").prop('selectedIndex', 0);
-		} 
-		else {
+		} else {
 			$("ul.add-msg li.destination select.thirdItem").find("option").not(".firstOption").css("display", "block");
 			if(currentTxt == "马代") {
 				$("ul.add-msg li.destination select.thirdItem").find("option").not(".maldives").css("display", "none");
@@ -1751,54 +1750,58 @@ function destinationSecondClass() {
 	});
 }
 //利润的显示
-function showProfitBox(){
-	$(".payService").find("input").on("keyup",function(){
-		var salePrice=$("input#indiv_sale_price").val();
-		var basePrice=$("input#indiv_base_price").val();
-		if(salePrice==""||basePrice==""){
-			$("li.list_account.profitInfor").css("display","none");
-		}
-		else{
-			$("li.list_account.profitInfor").css("display","block");
+function showProfitBox() {
+	$(".payService").find("input").on("keyup", function() {
+		var salePrice = $("input#indiv_sale_price").val();
+		var basePrice = $("input#indiv_base_price").val();
+		if(salePrice == "" || basePrice == "") {
+			$("li.list_account.profitInfor").css("display", "none");
+		} else {
+			$("li.list_account.profitInfor").css("display", "block");
 		}
 	});
 }
 //费率   s
-function rateInfo(){
+function rateInfo() {
 	$("ul.add-msg li.rate a").on("mousedown", function() {
 		$(this).addClass("selected");
 	});
 	$("ul.add-msg li.rate a").on("mouseup", function() {
 		$(this).removeClass("selected");
 	});
-	$("ul.add-msg li.rate a").on("click",function(){
+	$("ul.add-msg li.rate a").on("click", function() {
 		profitType();
-		var mcoAmount=$("input#mco-value").val();//MCO金额
-		var mcoCredit=$("input#mco-credit").val();//MCO Credit
+		var mcoAmount = $("input#mco-value").val(); //MCO金额
+		var mcoCredit = $("input#mco-credit").val(); //MCO Credit
 		var exchangeRate;
 		var profit;
 		var salePrice;
 		var basePrice;
-		if(mcoAmount==""){
+		if(mcoAmount == "") {
 			alert("请先输入MCO金额");
-		}
-		else{
-			
+		} else {
+
 			$("input#mco-credit").val((Number(mcoAmount) * 0.96).toFixed(2));
 			$("input#fee-ratio").val("4.00%");
 		}
-		mcoCredit=$("input#mco-credit").val();
-		mcoAmount=$("input#mco-value").val();
-		exchangeRate=$("input#exchange_rate").val();
-		profit=$("input#indiv-profit");
-		salePrice=$("input#indiv_sale_price").val();
-		basePrice=$("input#indiv_base_price").val();
+		mcoCredit = $("input#mco-credit").val();
+		mcoAmount = $("input#mco-value").val();
+		exchangeRate = $("input#exchange_rate").val();
+		profit = $("input#indiv-profit");
+		salePrice = $("input#indiv_sale_price").val();
+		basePrice = $("input#indiv_base_price").val();
 		if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "美元") {
 			if($("span.salePrice_currency").text() == "人民币") {
 				salePrice = (salePrice / exchangeRate).toFixed(2);
 			}
 			if($("span.basePrice_currency").text() == "人民币") {
 				basePrice = (basePrice / exchangeRate).toFixed(2);
+			}
+			if($.trim($("span.mcoAmount_currency").text()) == "人民币") {
+				mcoAmount = (mcoAmount / exchangeRate).toFixed(2);
+			}
+			if($.trim($("span.mcoCredit_currency").text()) == "人民币") {
+				mcoCredit = (mcoCredit / exchangeRate).toFixed(2);
 			}
 		}
 		if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "人民币") {
@@ -1809,7 +1812,71 @@ function rateInfo(){
 		}
 		profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate);
 	});
-	
+
 }
 
 //费率   e
+//选择全额mco
+function fullMcoPayment() {
+	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.creditCardPayment").find("li").find("a").on("click", function() {
+		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
+		payment_type.text($(this).text());
+		if($.trim(payment_type.text()) == "全额MCO") {
+			var salePrice = $("input#indiv_sale_price").val();
+			if($.trim(salePrice) !== "") {
+				$("input#face-value").val(0);
+				$("input#mco-value").val(salePrice);
+			}
+		}
+		if($.trim(payment_type.text()) == "供应商部分刷卡+额外MCO") {
+			$("input#face-value").val("");
+			$("input#mco-value").val("");
+		}
+		var mcoCredit = $("input#mco-credit").val();
+		var mcoAmount = $("input#mco-value").val();
+		var exchangeRate = $("input#exchange_rate").val();
+		var profit = $("input#indiv-profit");
+		var salePrice = $("input#indiv_sale_price").val();
+		var basePrice = $("input#indiv_base_price").val();
+		if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "美元") {
+			if($("span.salePrice_currency").text() == "人民币") {
+				salePrice = (salePrice / exchangeRate).toFixed(2);
+			}
+			if($("span.basePrice_currency").text() == "人民币") {
+				basePrice = (basePrice / exchangeRate).toFixed(2);
+			}
+			if($.trim($("span.mcoAmount_currency").text()) == "人民币") {
+				mcoAmount = (mcoAmount / exchangeRate).toFixed(2);
+			}
+			if($.trim($("span.mcoCredit_currency").text()) == "人民币") {
+				mcoCredit = (mcoCredit / exchangeRate).toFixed(2);
+			}
+
+		}
+		if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "人民币") {
+			salePrice = $("input#air_amountDue").val();
+			basePrice = $("input#air-ticket-base-price").val();
+			mcoAmount = $("input#mco-value").val();
+			mcoCredit = $("input#mco-credit").val();
+		}
+		profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate);
+	});
+}
+
+function partCreditCard() {
+	$("input.creditCardAmount").on("keyup", function() {
+		var salePrice = $("input#indiv_sale_price").val();
+		if((salePrice !== "") && ($("input.non-creditCardAmount").val() == "")) {
+			var amount = Number(salePrice - $(this).val());
+			$("input.non-creditCardAmount").val(amount);
+		}
+	})
+	$("input.non-creditCardAmount").on("keyup", function() {
+		var salePrice = $("input#indiv_sale_price").val();
+		if((salePrice !== "") && ($("input.creditCardAmount").val() == "")) {
+			var amount = Number(salePrice - $(this).val());
+			$("input.creditCardAmount").val(amount);
+		}
+
+	})
+}

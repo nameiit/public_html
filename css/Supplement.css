@@ -332,3 +332,20 @@ ul.searchFloor.refund {
 .supplementfloor ul.searchFloor li.exchangeRate{
 	display: none;
 }
+.supplementfloor ul.searchFloor li{
+	position: relative;
+}
+.supplementfloor ul.searchFloor li.requiredItem label::after {
+    content: '*';
+    background: url(../img/required.png) center center no-repeat;
+    background-size: contain;
+    width: 9px;
+    height: 9px;
+    color: transparent;
+    position: absolute;
+    left: 22%;
+    top: 11px;
+}
+.searchResult ul li dl dd{
+	width: 12.4%;
+}

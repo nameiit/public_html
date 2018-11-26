@@ -37,8 +37,8 @@ $sql = "SELECT
           cs.source_name,
           w.wholesaler_code,
           a.invoice,
-          a.ticketed_date,
-          concat(UPPER(c.fname), '/', c.lname) AS customer_name,
+          DATE_FORMAT(a.ticketed_date, '%Y-%m-%d') as ticketed_date,
+          concat(UPPER(an.fname), '/', an.lname) AS customer_name,
           t.note,
           a.exchange_rate_usd_rmb,
           a.payment_type,
@@ -51,8 +51,8 @@ $sql = "SELECT
           fs.total_profit,
           GROUP_CONCAT(an.airticket_number SEPARATOR ',') AS airticket_number,
           GROUP_CONCAT(DISTINCT asl.airline SEPARATOR ',') AS airline,
-          a.depart_date,
-          a.back_date,
+          DATE_FORMAT(a.depart_date, '%Y-%m-%d') as depart_date,
+          DATE_FORMAT(a.back_date, '%Y-%m-%d') as back_date,
           a.ticket_type,
           a.round_trip,
           a.locators,
@@ -72,7 +72,7 @@ $sql = "SELECT
         ON r.transaction_id = t.transaction_id
         JOIN AirSchedule asl
         ON asl.airticket_tour_id = a.airticket_tour_id
-        JOIN CustomerSource cs
+        LEFT JOIN CustomerSource cs
         ON cs.source_id = t.source_id
         WHERE t.transaction_id LIKE '$transaction_id'
         AND a.locators LIKE '$locator'
@@ -97,6 +97,20 @@ if ($invoice != '%') {
 }
 
 $sql .=" GROUP BY a.airticket_tour_id";
+if (isset($_GET['offset'])) {
+    $sql .= " LIMIT 20 OFFSET $offset";
+}
+$result = $conn->query($sql);
+
+$res = array();
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $res[] = $row;
+    }
+}
+
+echo json_encode($res);
+
 
 mysqli_close($conn);
  ?>

@@ -1136,3 +1136,21 @@
 	width: 10% !important;
 	display: inline-block;
 }
+.rightFloor.invoiceInfo.airTicket_invoice div label{
+	width: 31% !important;
+	margin-left: 0px !important;
+}
+.rightFloor.invoiceInfo.airTicket_invoice div.rightContent{
+	    width: 57.45% !important;
+}
+.systematicSearch ul.searchFloor li .rightFloor.invoiceInfo.airTicket_invoice .rightContent .invoice2, 
+.systematicSearch ul.searchFloor li .rightFloor.invoiceInfo.airTicket_invoice .rightContent .invoice1{
+	margin-left: 2.8% !important;
+	width: 65%;
+}
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.systematicSearch ul.searchFloor li .rightFloor.invoiceInfo.airTicket_invoice .rightContent .invoice2, 
+	.systematicSearch ul.searchFloor li .rightFloor.invoiceInfo.airTicket_invoice .rightContent .invoice1{
+		margin-left: 2.4% !important;
+	}
+}

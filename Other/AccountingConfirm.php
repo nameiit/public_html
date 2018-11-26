@@ -50,18 +50,18 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
-									<a href="../IndividualTour/IndividualTourCreate.php">
+									<a href="../IndividualTour/IndividualTourCreate.php" class="lab-active">
 										<label></label> 散拼团
 									</a>
 								</dd>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								</dd>
 								<dd>
 									<a href="../AccountingService/Supplement.php">
-										<label></label>增补单
+										<label></label>增补以及退款
 									</a>
 								</dd>
 							</dl>
@@ -174,7 +174,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<select id="type">
 															<option value="all">全部</option>
 															<option value="group">独立团</option>
-															<option value="indiv">散拼团</option>
+															<option value="individual">散拼团</option>
 															<option value="airticket">机票</option>
 														</select>
 													</div>
@@ -249,29 +249,29 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<label>成交地点</label>
 													<select id="deal-location">
 														<option value="all">全部</option>
-														<option value="china">中国</option>
-														<option value="us">美国</option>
+														<option value="CN">中国</option>
+														<option value="US">美国</option>
 													</select>
 												</div>
 												<div class="rightFloor" id="non-cc-payment-type">
 													<div class="checkbox checkbox-success">
-														<input id="cash" class="styled" type="checkbox">
+														<input id="cash" class="styled" type="checkbox" checked="checked">
 														<label for="cash"><i>现金</i></label>
 													</div>
 													<div class="checkbox checkbox-success">
-														<input id="check" class="styled" type="checkbox">
+														<input id="check" class="styled" type="checkbox" checked="checked">
 														<label for="check"><i>支票</i></label>
 													</div>
 													<div class="checkbox checkbox-success">
-														<input id="alipay" class="styled" type="checkbox"/>
+														<input id="alipay" class="styled" type="checkbox" checked="checked"/>
 														<label for="alipay"><i>支付宝</i></label>
 													</div>
 													<div class="checkbox checkbox-success">
-														<input id="wechat" class="styled" type="checkbox" />
+														<input id="wechat" class="styled" type="checkbox" checked="checked"/>
 														<label for="wechat"><i>微信支付</i></label>
 													</div>
 													<div class="checkbox checkbox-success">
-														<input id="remit" class="styled" type="checkbox" />
+														<input id="remit" class="styled" type="checkbox" checked="checked"/>
 														<label for="remit"><i>汇款</i></label>
 													</div>
 												</div>
@@ -298,7 +298,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<!--增补单-->
 													<div class="rightContent">
 														<label>增补单</label>
-														<select>
+														<select id="sup">
 															<option value="all">全部</option>
 															<option value="Y">YES</option>
 															<option value="N">NO</option>
@@ -327,7 +327,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<!--退款-->
 													<div class="rightContent">
 														<label>退款</label>
-														<select>
+														<select id="ref">
 															<option value="all">全部</option>
 															<option value="Y">YES</option>
 															<option value="N">NO</option>
@@ -362,7 +362,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 										<li class="single-row cellBox invoiceCell">
 											<label>INVOICE</label>
 											<input type="text" />
-											<input type="text" />
+											<input type="text" disabled="disabled"/>
 										</li>
 										<li class="single-row cellBox debtCell">
 											<label>Debt</label>
@@ -428,7 +428,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</dd>
 											<dd class="salePrice">
 												<label>
-													卖价&#40;<span id="sum_selling_price"></span>&#41;
+													卖价
 												</label>
 											</dd>
 											<dd class="createDate" id="create-time-sort">
@@ -617,6 +617,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 		</div>
 		<script type="text/javascript">
 			  var checkNumber = {};
+			  var fs_id = {};
 		</script>
 		<script src="../js/jquery.min.js" type="text/javascript"></script>
 		<script src="../js/jquery.pagination.js" type="text/javascript"></script>

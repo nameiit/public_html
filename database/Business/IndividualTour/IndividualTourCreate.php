@@ -232,14 +232,14 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
               lock_status,clear_status,paid_status,finish_status,
               debt, received, selling_price, create_time,
               depart_date, arrival_date, following_id_collection,
-              total_profit, base_price)
+              total_profit, debt_raw, received_raw, debt_cleared, received_finished)
           SELECT
             $transactionId,
             '$invoice',
             'N', 'N', 'N', 'N',
             $base_price_trans, 'CC', $sell_price_trans, t.create_time,
             '$indiv_startTime', '$indiv_endTime', group_concat(tc.following_id SEPARATOR ','),
-            $profit_trans, $base_price_trans
+            $sell_price_trans - $base_price_trans, $base_price_trans, $sell_price_trans, 0, 0
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id
@@ -264,14 +264,14 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
                   lock_status,clear_status,paid_status,finish_status,
                   debt, received, selling_price, create_time,
                   depart_date, arrival_date, following_id_collection,
-                  total_profit, base_price)
+                  total_profit, debt_raw, debt_cleared, received_raw, received_finished)
             SELECT
               $transactionId,
               '$invoice',
               'N', 'N', 'N', 'N',
               $base_price_trans, 'CC', $sell_price_trans, t.create_time,
               '$indiv_startTime', '$indiv_endTime', group_concat(tc.following_id SEPARATOR ','),
-              $face_value - $base_price_trans, $base_price_trans
+              $face_value - $base_price_trans, $base_price_trans, 0, $face_value, 0
             FROM Transactions t
             LEFT JOIN TransactionCollections tc
             ON tc.starter_id = t.transaction_id
@@ -283,14 +283,14 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
                 lock_status,clear_status,paid_status,finish_status,
                 debt, received, selling_price, create_time,
                 depart_date, arrival_date, following_id_collection,
-                total_profit, base_price, ending)
+                total_profit,debt_raw, debt_cleared, received_raw, received_finished, ending)
           SELECT
             $transactionId,
             '$invoice',
             'N', 'N', 'N', 'N',
-            $mco_value - $mco_credit, $mco_value, $sell_price_trans, t.create_time,
+            concat($mco_value, '/', $mco_credit), 'CC', 0, t.create_time,
             '$indiv_startTime', '$indiv_endTime', group_concat(tc.following_id SEPARATOR ','),
-            $mco_credit, $base_price_trans, 'mco'
+            $mco_credit, $mco_value - $mco_credit, 0, $mco_value, 0, 'mco'
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id
@@ -348,19 +348,19 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
   $expired_date_month = $_POST['expired_date_month'];
   $expired_date_year = $_POST['expired_date_year'];
   $card_holder = $_POST['card_holder'];
-  $base_price_trans_minus = '-' . $base_price_trans;
+
   $sql = "INSERT INTO FinanceStatus(transaction_id, invoice,
                 lock_status,clear_status,paid_status,finish_status,
                 debt, received, selling_price, create_time,
                 depart_date, arrival_date, following_id_collection,
-                total_profit, base_price, ending)
+                total_profit, debt_raw, debt_cleared, received_raw, received_finished)
           SELECT
             $transactionId,
             '$invoice',
             'N', 'N', 'N', 'N',
             $base_price_trans, 'CC', $sell_price_trans, t.create_time,
             '$indiv_startTime', '$indiv_endTime', group_concat(tc.following_id SEPARATOR ','),
-            $base_price_trans_minus, $base_price_trans, 'mco'
+            - $base_price_trans, $base_price_trans, 0, 0, 0
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id
@@ -372,14 +372,14 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
                 lock_status,clear_status,paid_status,finish_status,
                 debt, received, selling_price, create_time,
                 depart_date, arrival_date, following_id_collection,
-                total_profit, base_price, ending)
+                total_profit, debt_raw, debt_cleared, received_raw, received_finished, ending)
           SELECT
             $transactionId,
             '$invoice',
             'N', 'N', 'N', 'N',
-            $mco_value - $mco_credit, $mco_value, $sell_price_trans, t.create_time,
+            concat($mco_value, '/', $mco_credit), 'CC', 0, t.create_time,
             '$indiv_startTime', '$indiv_endTime', group_concat(tc.following_id SEPARATOR ','),
-            $mco_credit, $base_price_trans, 'mco'
+            $mco_credit, $mco_value - $mco_credit, 0, $mco_value, 0, 'mco'
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id
@@ -429,14 +429,14 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
               lock_status,clear_status,paid_status,finish_status,
               debt, received, selling_price, create_time,
               depart_date, arrival_date, following_id_collection,
-              total_profit, base_price)
+              total_profit, debt_raw, debt_cleared, received_raw, received_finished)
           SELECT
             $transactionId,
             '$invoice',
             'N', 'N', 'N', 'N',
-            $base_price + $mco_value - $mco_credit, $sell_price, $sell_price,t.create_time,
+            $base_price_trans, $sell_price_trans, $sell_price_trans, t.create_time,
             '$indiv_startTime', '$indiv_endTime', group_concat(tc.following_id SEPARATOR ','),
-            $profit_trans, $base_price_trans
+            $sell_price_trans - $base_price_trans, $base_price_trans, 0, $sell_price_trans, 0
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id

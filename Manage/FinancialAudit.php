@@ -48,15 +48,15 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png"> 业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -182,7 +182,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</dd>
 													<dd class="lockStatus">LOCK</dd>
 													<dd class="finishStatus">FINISH</dd>
-													<dd class="number">关联</dd>
+													<!--<dd class="number">关联</dd>-->
 												</dl>
 											</li>
 											<li class="listDetail">
@@ -204,9 +204,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<dd class="returnTime">2018-12-12</dd>
 													<dd class="lockStatus yesStatus"></dd>
 													<dd class="finishStatus noStatus"></dd>
-													<dd class="number">
+													<!--<dd class="number">
 														<a href="javascript:void(0);">123</a>
-													</dd>
+													</dd>-->
 												</dl>
 											</li>
 											<li class="listDetail">
@@ -228,9 +228,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<dd class="returnTime">2018-12-12</dd>
 													<dd class="lockStatus yesStatus"></dd>
 													<dd class="finishStatus noStatus"></dd>
-													<dd class="number">
+													<!--<dd class="number">
 														<a href="javascript:void(0);">123</a>
-													</dd>
+													</dd>-->
 												</dl>
 											</li>
 										</ul>
@@ -243,7 +243,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 									<!--取消CLEAR  s-->
 									<div class="cancelFloor cancelClear" id="cancelClear">
 										<!--clear-->
-										<label class="markMsg"><i></i>申请列表-取消CLEAER</label>
+										<label class="markMsg"><i></i>申请列表-取消CLEAR</label>
 										<ul class="btnList">
 											<li>
 												<a href="javascript:void(0);" class="selectAllBtn nm-left">
@@ -300,7 +300,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</dd>
 													<dd class="lockStatus">LOCK</dd>
 													<dd class="finishStatus">FINISH</dd>
-													<dd class="number">关联</dd>
+													<!--<dd class="number">关联</dd>-->
 												</dl>
 											</li>
 											<li class="listDetail">
@@ -322,9 +322,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<dd class="returnTime">2018-12-12</dd>
 													<dd class="lockStatus yesStatus"></dd>
 													<dd class="finishStatus yesStatus"></dd>
-													<dd class="number">
+													<!--<dd class="number">
 														<a href="javascript:void(0);">124</a>
-													</dd>
+													</dd>-->
 												</dl>
 											</li>
 											<li class="listDetail">
@@ -346,9 +346,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<dd class="returnTime">2018-12-12</dd>
 													<dd class="lockStatus yesStatus"></dd>
 													<dd class="finishStatus yesStatus"></dd>
-													<dd class="number">
+													<!--<dd class="number">
 														<a href="javascript:void(0);">124</a>
-													</dd>
+													</dd>-->
 												</dl>
 											</li>
 										</ul>
@@ -418,7 +418,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</dd>
 													<dd class="lockStatus">LOCK</dd>
 													<dd class="finishStatus">FINISH</dd>
-													<dd class="number">关联</dd>
+													<!--<dd class="number">关联</dd>-->
 												</dl>
 											</li>
 											<li class="listDetail">
@@ -440,9 +440,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<dd class="returnTime">2018-12-12</dd>
 													<dd class="lockStatus noStatus"></dd>
 													<dd class="finishStatus noStatus"></dd>
-													<dd class="number">
+													<!--<dd class="number">
 														<a href="javascript:void(0);">126</a>
-													</dd>
+													</dd>-->
 												</dl>
 											</li>
 											<li class="listDetail">
@@ -464,9 +464,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<dd class="returnTime">2018-12-12</dd>
 													<dd class="lockStatus yesStatus"></dd>
 													<dd class="finishStatus yesStatus"></dd>
-													<dd class="number">
+													<!--<dd class="number">
 														<a href="javascript:void(0);">124</a>
-													</dd>
+													</dd>-->
 												</dl>
 											</li>
 											<li class="listDetail">
@@ -488,9 +488,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<dd class="returnTime">2018-12-12</dd>
 													<dd class="lockStatus yesStatus"></dd>
 													<dd class="finishStatus yesStatus"></dd>
-													<dd class="number">
+													<!--<dd class="number">
 														<a href="javascript:void(0);">124</a>
-													</dd>
+													</dd>-->
 												</dl>
 											</li>
 										</ul>
@@ -560,7 +560,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</dd>
 													<dd class="lockStatus">LOCK</dd>
 													<dd class="finishStatus">FINISH</dd>
-													<dd class="number">关联</dd>
+													<!--<dd class="number">关联</dd>-->
 												</dl>
 											</li>
 											<li class="listDetail">
@@ -582,9 +582,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<dd class="returnTime">2018-12-12</dd>
 													<dd class="lockStatus noStatus"></dd>
 													<dd class="finishStatus yesStatus"></dd>
-													<dd class="number">
+													<!--<dd class="number">
 														<a href="javascript:void(0);">122</a>
-													</dd>
+													</dd>-->
 												</dl>
 											</li>
 											<li class="listDetail">
@@ -606,9 +606,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<dd class="returnTime">2018-12-12</dd>
 													<dd class="lockStatus yesStatus"></dd>
 													<dd class="finishStatus yesStatus"></dd>
-													<dd class="number">
+													<!--<dd class="number">
 														<a href="javascript:void(0);">124</a>
-													</dd>
+													</dd>-->
 												</dl>
 											</li>
 										</ul>
@@ -619,7 +619,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 									</div>
 									<!--取消FINISH e-->
 									<a href="javascript:void(0);" class="backTop">
-										<img src="../img/back.png">
+										<img src="../img/top_icon2.png">
 									</a>
 								</div>
 								<!--提示框   s-->

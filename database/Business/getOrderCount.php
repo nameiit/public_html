@@ -54,32 +54,60 @@ if ($_GET['orderType'] == 'group') {
       $non_cc_payment_type_arr = json_decode($_GET['non_cc_payment_type']);
     }
 
-    $query = "SELECT COUNT(*)
-              FROM FinanceStatus fs
-              JOIN Transactions t ON fs.transaction_id = t.transaction_id
-              JOIN IndividualTour i ON i.indiv_tour_id = t.indiv_tour_id
-              JOIN Salesperson s ON i.salesperson_id = s.salesperson_id
-              JOIN Customer c ON i.customer_id = c.customer_id
-              JOIN Wholesaler w ON i.wholesaler_id = w.wholesaler_id
-              WHERE fs.transaction_id LIKE '$transaction_id'
-              AND i.product_code LIKE '$product_code'
-              AND t.settle_time >= '$from_date'
-              AND t.settle_time <= '$to_date'
-              AND c.lname LIKE concat('%', '$lname', '%')
-              AND c.fname LIKE concat('%', '$fname', '%')
-              AND w.wholesaler_code LIKE '$wholesaler'
-              AND fs.lock_status LIKE '$lock_status'
-              AND fs.clear_status LIKE '$clear_status'
-              AND fs.paid_status LIKE '$paid_status'
-              AND fs.finish_status LIKE '$finish_status'";
-    if ($invoice != '%') {
-        $query .= " AND fs.invoice LIKE '$invoice'";
-    } else if ($from_invoice != '%' or $to_invoice != '%') {
-        $query .= " AND (fs.invoice >= '$from_invoice' AND fs.invoice <= '$to_invoice')";
+    $sql_indiv = "SELECT count(*) AS num_orders, 
+                    sum(fs.debt_raw) AS sum_debt, 
+                    sum(fs.received_raw) AS sum_received, 
+                    sum(fs.total_profit) AS sum_profit
+                    FROM FinanceStatus fs
+                    JOIN Transactions t ON fs.transaction_id = t.transaction_id
+                    JOIN IndividualTour i ON i.indiv_tour_id = t.indiv_tour_id
+                    JOIN Salesperson s ON i.salesperson_id = s.salesperson_id
+                    JOIN Wholesaler w ON i.wholesaler_id = w.wholesaler_id
+                    JOIN Customer c ON i.customer_id = c.customer_id
+                    WHERE fs.transaction_id LIKE '$transaction_id'
+                    AND s.salesperson_code LIKE '$salesperson'
+                    AND t.settle_time >= '$from_date'
+                    AND t.settle_time <= '$to_date'
+                    AND w.wholesaler_code LIKE '$wholesaler'
+                    AND fs.lock_status LIKE '$lock_status'
+                    AND fs.clear_status LIKE '$clear_status'
+                    AND fs.paid_status LIKE '$paid_status'
+                    AND fs.finish_status LIKE '$finish_status'
+                    AND c.fname LIKE '$fname' 
+                    AND c.lname LIKE '$lname'
+                    ";
+    if ($payment_type == 'cc'){
+        $sql_indiv .= " AND fs.received = 'CC'";
+    } else if ($payment_type == 'mco') {
+        $sql_indiv .= " AND fs.ending = 'mco'";
+    } else if ($payment_type == 'non-cc') {
+        $sql_indiv .= " AND i.deal_location LIKE '$deal_location'";
+    if (sizeof($non_cc_payment_type_arr) > 0) {
+        $sql_indiv .= " AND i.payment_type IN (";
+        for ($i = 0; $i < sizeof($non_cc_payment_type_arr); $i++) {
+            $sql_indiv = $sql_indiv . "'" . $non_cc_payment_type_arr[$i] . "','" . 'wholesaler' . $non_cc_payment_type_arr[$i] . "',";
+        }
+        $sql_indiv = substr($sql_indiv, 0, -1);
+        $sql_indiv .= ")";
+        }
     }
-    echo $query;
-    $result = $conn->query($query);
-    echo $result->fetch_assoc()['COUNT(*)'];
+
+    if ($invoice != '%') {
+    $sql_indiv .= " AND fs.invoice LIKE '$invoice'";
+    } else if ($from_invoice != '%' or $to_invoice != '%') {
+    $sql_indiv .= " AND (fs.invoice >= '$from_invoice' AND fs.invoice <= '$to_invoice')";
+    }
+    echo $sql_indiv;
+    $result = $conn->query($sql_indiv);
+
+    $res = array();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $res = $row;
+    }
+
+    echo json_encode($res);
+    
 } else if ($_GET['orderType'] == 'airticket') {
     $salesperson = $login_username;
     $transaction_id = empty($_GET['transaction_id']) ? '%' : $_GET['transaction_id'];
@@ -98,38 +126,69 @@ if ($_GET['orderType'] == 'group') {
     $paid_status = $_GET['paid_status'] == 'all' ? '%' : $_GET['paid_status'];
     $finish_status = $_GET['finish_status'] == 'all' ? '%' : $_GET['finish_status'];
 
+    $airline = empty($_GET['airline']) ? '%' : $_GET['airline'];
+
     if ($payment_type == 'non-cc') {
       $deal_location = $_GET['deal_location'];
       $non_cc_payment_type_arr = json_decode($_GET['non_cc_payment_type']);
     }
-    $sql = "SELECT count(*)
+    $sql = "SELECT
+                count(*) AS num_orders,
+                sum(fs.total_profit) AS sum_profit,
+                sum(fs.debt_raw) AS sum_debt,
+                sum(fs.received_raw) AS sum_received
             FROM FinanceStatus fs
             JOIN Transactions t ON fs.transaction_id = t.transaction_id
             JOIN AirticketTour a ON a.airticket_tour_id = t.airticket_tour_id
             JOIN Salesperson s ON a.salesperson_id = s.salesperson_id
-            JOIN Customer c ON a.customer_id = c.customer_id
             JOIN Wholesaler w ON a.wholesaler_id = w.wholesaler_id
-            -- JOIN AirSchedule asl ON a.airticket_tour_id = asl.airticket_tour_id
             WHERE fs.transaction_id LIKE '$transaction_id'
             AND s.salesperson_code LIKE '$salesperson'
             AND t.settle_time >= '$from_date'
             AND t.settle_time <= '$to_date'
-            AND c.lname LIKE concat('%', '$lname', '%')
-            AND c.fname LIKE concat('%', '$fname', '%')
             AND w.wholesaler_code LIKE '$wholesaler'
             AND a.locators LIKE '$locator'
-            -- AND asl.airline LIKE '$airline'
             AND fs.lock_status LIKE '$lock_status'
             AND fs.clear_status LIKE '$clear_status'
             AND fs.paid_status LIKE '$paid_status'
-            AND fs.finish_status LIKE '$finish_status'";
+            AND fs.finish_status LIKE '$finish_status'
+            AND a.airticket_tour_id IN
+            (SELECT airticket_tour_id
+            FROM AirticketNumber
+            WHERE fname LIKE concat('%', '$fname','%')
+            AND lname LIKE concat('%','$lname','%'))
+            AND a.airticket_tour_id IN
+            (SELECT airticket_tour_id FROM AirSchedule WHERE airline LIKE '$airline')";
     if ($invoice != '%') {
         $sql .= " AND fs.invoice LIKE '$invoice'";
     } else if ($from_invoice != '%' or $to_invoice != '%') {
         $sql .= " AND (fs.invoice >= '$from_invoice' AND fs.invoice <= '$to_invoice')";
     }
+
+    if ($payment_type == 'cc'){
+        $sql .= " AND fs.received = 'CC'";
+    } else if ($payment_type == 'mco') {
+        $sql .= " AND fs.ending = 'mco'";
+    } else if ($payment_type == 'non-cc') {
+        $sql .= " AND a.deal_location LIKE '$deal_location'";
+        if (sizeof($non_cc_payment_type_arr) > 0) {
+            $sql .= " AND a.payment_type IN (";
+            for ($i = 0; $i < sizeof($non_cc_payment_type_arr); $i++) {
+                $sql = $sql . "'" . $non_cc_payment_type_arr[$i] . "',";
+            }
+            $sql = substr($sql, 0, -1);
+            $sql .= ")";
+        }
+    }
     $result = $conn->query($sql);
-    echo $result->fetch_assoc()['count(*)'];
+
+    $res = array();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $res = $row;
+    }
+
+    echo json_encode($res);
 }
 
 mysqli_close($conn);

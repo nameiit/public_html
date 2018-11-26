@@ -4248,3 +4248,6 @@ ul.addInfo li.top_info:not(.mcoInfo) label {
 		width: 60px;
 	}
 }
+.theamInfo .showMsg.otherManage .theamTitle.supplementTitle{
+	width: 10%;
+}

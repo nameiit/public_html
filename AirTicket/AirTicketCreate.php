@@ -56,11 +56,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								业务
 							</a>
 							<dl class="detailMsg">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php" >
 										<label></label> 散拼团
@@ -463,10 +463,10 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</div>
 													<!--持卡人  e-->
 												</li>
-												<!--<li class="requiredItem">
-													<label class="nm-left">持卡人</label>
-													<input type="text" id="card-holder">
-												</li>-->
+												<li>
+													<label class="nm-left">MCO负责人</label>
+													<input type="text" placeholder="Search..." />
+												</li>
 											</div>
 										</ul>
 

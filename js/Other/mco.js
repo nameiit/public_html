@@ -237,6 +237,7 @@ function loadNotExpiredMCO() {
 										<dl>
 											<dd class="mco_ID">` + response[i]['notice_id'] + `</dd>
 											<dd class="mco_author">` + response[i]['edited_by'] + `</dd>
+											<dd class="mco_receiver"></dd>
 											<dd class="mco_time">` + response[i]['create_time'] + `</dd>
 											<dd class="mco_bankCard">` + response[i]['content'] + `</dd>
 											<dd class="mco_content">` + response[i]['note'] + `</dd>

@@ -170,7 +170,8 @@ ul.manageDetail li.actionFilerBox {
 .changePassWord {
 	display: none;
 }
-.addItem{
+
+.addItem {
 	display: none;
 }
 
@@ -280,7 +281,8 @@ ul.manageDetail li.actionFilerBox {
 	border-bottom: solid 1px #d2d2d2;
 	cursor: pointer;
 }
-.userGroup ul li:last-child{
+
+.userGroup ul li:last-child {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
@@ -368,8 +370,8 @@ ul.manageDetail li.actionFilerBox {
 .userGroup ul li.groupTitle {
 	font-size: 15px;
 	border-top-left-radius: 5px;
-/*    border-bottom-right-radius: 5px;*/
-    border-top-right-radius: 5px;
+	/*    border-bottom-right-radius: 5px;*/
+	border-top-right-radius: 5px;
 }
 
 .usersInfo ul li:last-child {
@@ -515,13 +517,16 @@ ul.manageDetail li.actionFilerBox {
 		width: 68.8% !important;
 	}
 }
-ul.manageDetail li.actionFilerBox.actionFloor a{
+
+ul.manageDetail li.actionFilerBox.actionFloor a {
 	margin-right: 2%;
-    width: 31.6%;
+	width: 31.6%;
 }
-ul.manageDetail li.actionFilerBox.actionFloor a:last-child{
+
+ul.manageDetail li.actionFilerBox.actionFloor a:last-child {
 	margin-right: 0px;
 }
+
 .btn-switch {
 	cursor: pointer;
 	width: 52px;
@@ -635,18 +640,21 @@ ul.manageDetail li.actionFilerBox.actionFloor a:last-child{
 input[type=checkbox]:checked::before {
 	font: normal normal normal 14px/2 FontAwesome;
 }
-.authorityManageCard{
+
+.authorityManageCard {
 	display: inline-block;
 	background-color: #fff;
-    width: 100%;
-    margin-top: 20px;
-    display: none;
+	width: 100%;
+	margin-top: 20px;
+	display: none;
 }
-.authorityManageCard ul{
-	 border: solid 1px #d2d2d2;
-	 border-radius: 5px;
+
+.authorityManageCard ul {
+	border: solid 1px #d2d2d2;
+	border-radius: 5px;
 }
-.authorityManageCard ul li{
+
+.authorityManageCard ul li {
 	height: 32px;
 	line-height: 32px;
 	font-size: 14px;
@@ -654,20 +662,54 @@ input[type=checkbox]:checked::before {
 	margin-bottom: 10px;
 	padding: 0px 10px;
 }
-.authorityManageCard ul li span{
+
+.authorityManageCard ul li span {
 	display: inline-block;
 	vertical-align: top;
 	margin-left: 10px;
 }
-.authorityManageCard ul li.title{
+
+.authorityManageCard ul li.title {
 	font-size: 15px;
 	color: #6f7073;
 	text-align: center;
 	border-bottom: solid 1px #D2D2D2;
 	background-color: #9295ff;
-    color: #fff;
+	color: #fff;
 }
-.authorityManageCard ul li div{
+
+.authorityManageCard ul li div {
 	display: inline-block;
 	width: 49%;
+}
+
+.authorityManageCard ul li div {
+	vertical-align: top;
+}
+
+.authorityManageCard ul li span {
+	margin-left: 1%;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1320px) {
+	.authorityManageCard ul li span {
+		font-size: 13px;
+		width: 68%;
+		float: right;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.btn-switch.large {
+		width: 30%;
+	}
+}
+
+@media only screen and (min-width: 1321px) and (max-width: 1500px) {
+	.authorityManageCard ul li span {
+		font-size: 13px;
+	}
+	.btn-switch.large {
+		width: 30%;
+	}
 }

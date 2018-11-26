@@ -56,11 +56,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								业务
 							</a>
 							<dl class="detailMsg">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="javascript:void(0);" class="lab-active">
 										<label></label> 散拼团
@@ -258,6 +258,10 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<label class="nm-left">持卡人</label>
 														<input type="text" id="card-holder" class="notRequired">
 													</div>
+												</li>
+												<li>
+													<label class="nm-left">MCO负责人</label>
+													<input type="text" placeholder="Search..." />
 												</li>
 											</ul>
 										</div>
@@ -563,6 +567,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</div>
 													</div>
 												</li>
+												<div class="partCreditCard">
+													<li>
+														<label class="nm-left">供应商刷卡金额</label>
+														<input type="text" class="creditCardAmount" />
+													</li>
+													<li>
+														<label class="nm-left">非刷卡金额</label>
+														<input type="text"  class="non-creditCardAmount"/>
+													</li>
+												</div>
 												<div class="mcoList">
 													<li class="requiredItem payment-type companyInfor">
 														<label class="nm-left">刷卡公司</label>

@@ -375,7 +375,7 @@ function addMcoInfo() {
 				//当前为背景为灰色
 				//				$(this).parentsUntil(".manageCard.creditCardCompanies").find("li.contentInfo:last").addClass("selected").siblings("li.contentInfo").removeClass("selected");
 				$(this).parentsUntil(".manageCard.creditCardCompanies").find("dd.confirmManageInfo").find("input").val(" "); //清空输入框的值
-//				selectedMcoInfo();
+				//				selectedMcoInfo();
 				heightRange();
 			}
 		});
@@ -413,8 +413,9 @@ function addMcoInfo() {
 
 	});
 }
+
 function selectedMcoInfo() {
-	$(document).on("click", ".manageCard.creditCardCompanies li .companyInfor ul li.contentInfo", function () {	
+	$(document).on("click", ".manageCard.creditCardCompanies li .companyInfor ul li.contentInfo", function() {
 		if(!$(this).hasClass("selected")) {
 			$(this).addClass("selected");
 		} else {
@@ -426,17 +427,22 @@ function selectedMcoInfo() {
 function removeMcoInfo() {
 	$(".otherManageArea .manageCard.creditCardCompanies").find(".minusItem").on("click", function() {
 		//移除当前选中的元素
-		$(".otherManageArea .manageCard.creditCardCompanies").find("li.contentInfo.selected").remove();
-
-		var orderInfo = $(".otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li.contentInfo dd.orderInfo");
-		orderInfo.each(function(i, item) {
-			$(item).text(i + 1);
-		});
-		if($(".manageCard.creditCardCompanies").find("li.contentInfo").length < 1) {
-			localStorage.setItem("orderNum", 0);
+		if($(".otherManageArea .manageCard.creditCardCompanies").find("li.contentInfo.selected").length < 1) {
+			alert("至少选中一行");
 		}
-		$(".otherManageArea .manageCard.creditCardCompanies").find("dd.confirmManageInfo").find("input").val(" ");
-		addMcoInfo();
-		selectedMcoInfo();
+		else {
+			$(".otherManageArea .manageCard.creditCardCompanies").find("li.contentInfo.selected").remove();
+
+			var orderInfo = $(".otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li.contentInfo dd.orderInfo");
+			orderInfo.each(function(i, item) {
+				$(item).text(i + 1);
+			});
+			if($(".manageCard.creditCardCompanies").find("li.contentInfo").length < 1) {
+				localStorage.setItem("orderNum", 0);
+			}
+			$(".otherManageArea .manageCard.creditCardCompanies").find("dd.confirmManageInfo").find("input").val(" ");
+			addMcoInfo();
+		}
+
 	});
 }

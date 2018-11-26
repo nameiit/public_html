@@ -3,7 +3,10 @@ $(document).ready(function () {
    *  载入当前页的数据
    */
   function loadCurrentPage(data) {
+    // 清空之前的数据
     checkNumber = {};
+    fs_id = {};
+
     $.ajax({
       url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/getOrderList.php'),
       headers: {
@@ -42,6 +45,7 @@ $(document).ready(function () {
           if (response[i]['check_no'] != null) {
             checkNumber[response[i]['transaction_id']] = response[i]['check_no'];
           }
+          fs_id[response[i]['transaction_id']] = response[i]['fs_id'];
         }
         radminidInfo();
         autoHeight();
@@ -95,22 +99,22 @@ $(document).ready(function () {
        			$(".noRecord").css("display", "none");
        		});
         } else {
-          $('#confirmPagination').pagination({
-						totalData: num_orders,
-						showData: 20,
-						current: 0,
-						coping: true,
-						homePage: '首页',
-						endPage: '末页',
-						prevContent: '上页',
-						nextContent: '下页',
-						callback: function(api) {
-							var j = api.getCurrent(); //获取当前页
-              data['offset'] = (j - 1) * 20;
-              loadCurrentPage(data);
-						}
-					});
-					$('ul.pagination').find('a').click();
+            $('#confirmPagination').pagination({
+                totalData: num_orders,
+                showData: 20,
+                current: 0,
+                coping: true,
+                homePage: '首页',
+                endPage: '末页',
+                prevContent: '上页',
+                nextContent: '下页',
+                callback: function(api) {
+                    var j = api.getCurrent(); //获取当前页
+                    data['offset'] = (j - 1) * 20;
+                    loadCurrentPage(data);
+                }
+            });
+            $('ul.pagination').find('a').click();
         }
         heightRange();
       },
@@ -176,7 +180,9 @@ $(document).ready(function () {
       lock_status: $("#lock-status").val(),
       clear_status: $("#clear-status").val(),
       paid_status: $("#paid-status").val(),
-      finish_status: $("#paid-status").val()
+      finish_status: $("#paid-status").val(),
+      sup: $("#sup").val(),
+      ref: $("#ref").val()
     };
 
     var today = new Date();
@@ -223,7 +229,7 @@ $(document).ready(function () {
     loadData(getFilterData());
   });
 
- 	$("#filter-reset").on('click', function () {
+  $("#filter-reset").on('click', function () {
     loadData(getFilterData());
   });
 

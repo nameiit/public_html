@@ -58,11 +58,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								业务
 							</a>
 							<dl class="detailMsg">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -193,7 +193,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<div class="rightFloor invoiceInfo">
 													<div class="rightContent">
 														<label>Airline</label>
-														<input type="text" />
+														<input type="text" id = "airline">
 													</div>
 													<div class="rightContent">
 														<label>INVOICE</label>
@@ -236,23 +236,23 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</div>
 														<div class="rightContent place" id="non-cc-payment-type">
 															<div class="checkbox checkbox-success">
-																<input id="cash" class="styled" type="checkbox">
+																<input id="cash" class="styled" type="checkbox" checked="checked">
 																<label for="cash"><i>现金</i></label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="check" class="styled" type="checkbox">
+																<input id="check" class="styled" type="checkbox" checked="checked">
 																<label for="check"><i>支票</i></label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="alipay" class="styled" type="checkbox">
+																<input id="alipay" class="styled" type="checkbox" checked="checked">
 																<label for="alipay"><i>支付宝</i></label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="wechat" class="styled" type="checkbox">
+																<input id="wechat" class="styled" type="checkbox" checked="checked">
 																<label for="wechat"><i>微信支付</i></label>
 															</div>
 															<div class="checkbox checkbox-success">
-																<input id="remit" class="styled" type="checkbox">
+																<input id="remit" class="styled" type="checkbox" checked="checked">
 																<label for="remit"><i>汇款</i></label>
 															</div>
 														</div>
@@ -314,31 +314,35 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<a href="javascript:void(0);">INVOICE</a>
 											</li>
 											<li class="profit">
-												<a href="javascript:void(0);">利润</a>
+												<a href="javascript:void(0);">
+													<label>
+														利润(<span id="sum_profit"></span>)
+													</label>
+												</a>
 											</li>
 											<li class="debt">
 												<a href="javascript:void(0);">
 													<label>
-														Debt(<span>123456.78</span>)
+														Debt(<span id="sum_debt"></span>)
 													</label>
 												</a>
 											</li>
 											<li class="receivable">
 												<a href="javascript:void(0);">
 													<label>
-														应收款(<span>123456.78</span>)
+														应收款(<span id="sum_received"></span>)
 													</label>
 												</a>
 											</li>
-											<li class="mco">
+											<!-- <li class="mco">
 												<a href="javascript:void(0);">
 													MCO
 												</a>
-											</li>
+											</li> -->
 											<li class="salePrice">
 												<a href="javascript:void(0);">
 													<label>
-														卖价(<span>123456.78</span>)
+														卖价
 													</label>
 												</a>
 											</li>
@@ -405,11 +409,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															Y&nbsp;|&nbsp;12345.99
 														</a>
 													</dd>
-													<dd class="mco">
+													<!-- <dd class="mco">
 														<a href="javascript:void(0);">
 															mco
 														</a>
-													</dd>
+													</dd> -->
 													<dd class="salePrice">
 														<a href="javascript:void(0);">
 															12345.99
@@ -464,11 +468,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															Y&nbsp;|&nbsp;12345.99
 														</a>
 													</dd>
-													<dd class="mco">
+													<!-- <dd class="mco">
 														<a href="javascript:void(0);">
 															mco
 														</a>
-													</dd>
+													</dd> -->
 													<dd class="salePrice">
 														<a href="javascript:void(0);">
 															12345.99
@@ -600,6 +604,12 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<label class="nm-left">开票商</label>
 														<input type="text" id="update-wholesaler" placeholder="Search..."/>
 													</li>
+													<!--出票时间-->
+													<li class="requiredItem">
+														<label class="nm-left">出票时间</label>
+														<input type="date">
+													</li>
+													
 													<li class="requiredItem">
 														<label class="nm-left">INVOICE</label>
 														<input type="text" id="air-ticket-create-invoice">
@@ -789,7 +799,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<li class="list_account rate">
 															<label class="nm-left">费率</label>
 															<input type="text" class="rateInfo" id="mco-ratio">
-															<span></span>
+															<!--<span></span>-->
+															<a href="javascript:void(0);">以4%计算</a>
 														</li>
 													</div>
 													<li class="list_account profitInfor">
@@ -797,6 +808,52 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<input type="text" disabled="disabled" id="airTicket_update_profit">
 														<span id="profit-currency">美元</span>
 													</li>
+													<div class="creditCardInfo">
+														<hr>
+														<li class="requiredItem">
+															<label class="nm-left">卡号</label>
+															<input type="text" id="card-number" class="notRequired">
+														</li>
+														<li class="requiredItem expDate">
+															<label class="nm-left">过期日</label>
+															<div class="expireDate">
+																<select id="expired-date-month">
+																	<option value="01">01</option>
+																	<option value="02">02</option>
+																	<option value="03">03</option>
+																	<option value="04">04</option>
+																	<option value="05">05</option>
+																	<option value="06">06</option>
+																	<option value="07">07</option>
+																	<option value="08">08</option>
+																	<option value="09">09</option>
+																	<option value="10">10</option>
+																	<option value="11">11</option>
+																	<option value="12">12</option>
+																</select>
+																<select id="expired-date-year">
+																	<option value="18">18</option>
+																	<option value="19">19</option>
+																	<option value="20">20</option>
+																	<option value="21">21</option>
+																	<option value="22">22</option>
+																	<option value="23">23</option>
+																	<option value="24">24</option>
+																	<option value="25">25</option>
+																</select>
+															</div>
+															<!--持卡人  s-->
+															<div class="cardholder">
+																<label class="nm-left">持卡人</label>
+																<input type="text" id="card-holder"  class="notRequired"/>
+															</div>
+															<!--持卡人  e-->
+															</li>
+															<li>
+																<label class="nm-left">MCO负责人</label>
+																<input type="text" placeholder="Search..." />
+															</li>
+														</div>
 												</ul>
 											</div>
 											<!--订单关联    s-->
@@ -868,7 +925,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<ul class="clients-info">
 													<li>
 														<dl>
-															<dd class="requiredItem">
+															<!--<dd class="requiredItem">
 																<label>人数</label>
 																<dl class="people-count">
 																	<dd>成人<input type="text" value="0" id="air-ticket-create-adult-number" class="nm-right"/></dd>
@@ -876,11 +933,28 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																	<dd class="item">儿童<input type="text" value="0" id="air-ticket-create-children-number" class="nm-right"/></dd>
 																	<dd class="item">婴儿<input type="text" value="0" id="air-ticket-create-baby-number" class="nm-right"/></dd>
 																</dl>
-															</dd>
-															<dd class="requiredItem">
+															</dd>-->
+															<!--<dd class="requiredItem">
 																<label>乘客姓名</label>
 																<input type="text" id="air-ticket-create-passenger-list">
-															</dd>
+															</dd>-->
+															<dd class="requiredItem passenger">
+																<label>乘客</label>
+																<div id="passenger-list">
+																	<span>
+																		<select class="passenger-info">
+																			<option value="adult">成人</option>
+																			<option value="youth">青年</option>
+																			<option value="children">儿童</option>
+																			<option value="infant">婴儿</option>
+																		</select>
+																		<input type="text" placeholder="姓/名" class="passenger-name">
+																		<input type="text" placeholder="票号" class='passenger-ticket-number'>
+																	</span>
+																</div>
+																	<img src="../img/addIcon.png" class="addInfo">
+																	<img src="../img/deleteIcon.png" class="deleteInfo">
+																</dd>
 															<dd class="requiredItem">
 																<label>电话</label>
 																<input type="text" id="update-customer-phone">

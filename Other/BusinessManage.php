@@ -51,18 +51,18 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
-									<a href="../IndividualTour/IndividualTourCreate.php">
+									<a href="../IndividualTour/IndividualTourCreate.php" class="lab-active">
 										<label></label> 散拼团
 									</a>
 								</dd>
@@ -101,7 +101,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								</dd>
 								<dd>
 									<a href="../AccountingService/Supplement.php">
-										<label></label>增补单
+										<label></label>增补以及退款
 									</a>
 								</dd> 
 							</dl>
@@ -170,6 +170,17 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<dl>
 												<dd class="mco_ID">ID</dd>
 												<dd class="mco_author">发布人</dd>
+												<dd class="mco_receiver">接收人</dd>
+												<dd class="mco_time">发布时间</dd>
+												<dd class="mco_bankCard">银行卡信息</dd>
+												<dd class="mco_content">信息备注</dd>
+											</dl>
+										</li>
+										<li class="listDetail">
+											<dl>
+												<dd class="mco_ID">ID</dd>
+												<dd class="mco_author">发布人</dd>
+												<dd class="mco_receiver">接收人</dd>
 												<dd class="mco_time">发布时间</dd>
 												<dd class="mco_bankCard">银行卡信息</dd>
 												<dd class="mco_content">信息备注</dd>

@@ -6,7 +6,6 @@ $(function() {
 	choiceDate();
 	incomeAccount();
 	toUsersManagePage();
-	Pagination();
 
 	var choiceInfo = $(".choiceItem .choiceInfo");
 	var maxHeight;
@@ -19,31 +18,6 @@ $(function() {
 		"height": maxHeight,
 	});
 })
-
-function Pagination() {
- 	$('#choicePagination').pagination({
- 		totalData: 20,
- 		showData: 10,
- 		coping: true,
- 		homePage: '首页',
- 		endPage: '末页',
- 		prevContent: '上页',
- 		nextContent: '下页',
- 		callback: function(api) {
- 			var j = api.getCurrent(); //获取当前页
- 			$("li.resultDetail").remove();
- 			var e = `<li class="resultDetail">
-						<dl></dl>`;
- 			$(".resultTab").find("li.resultNav").after(e);
- 			var ddCell=`<dd></dd>`;
-   			for(var i=0;i<$(".resultTab ul li.resultNav").find("dd").length;i++){
-   				console.log($(".resultTab ul li.resultNav").find("dd").length);
-   				$(".resultTab").find("li.resultDetail").find("dl").append(ddCell);
-   			}
- 			heightRange();
- 		}
- 	});
- }
 
 function systematicSearch() {
 	$(".filterBox ul.searchFloor li.btnList").find("a").on("mousedown", function() {
@@ -84,11 +58,22 @@ function resetSystematicSearch() {
 
 function checkInvoice() {
 	$(".systematicSearch ul.searchFloor li div.invoiceInfo div.invoice1").find("input").on("keyup", function() {
-		if(!isNaN($(this).val())) {
-
+		if($(this).siblings("input").val() == "") {
+			alert("请确认两项信息已输入");
 		} else {
-			alert("请确认填写数字格式");
-			$(this).val("");
+			if((!isNaN($(this).val())) && (!isNaN($(this).siblings("input").val()))) {
+
+			} else {
+				alert("请确认填写数字格式");
+				if(isNaN($(this).val())) {
+					$(this).val("");
+					$(this).focus();
+				}
+				if(isNaN($(this).siblings("input").val())) {
+					$(this).siblings("input").val("");
+					$(this).siblings("input").focus();
+				}
+			}
 		}
 	});
 	$(".systematicSearch ul.searchFloor li div.invoiceInfo").find("img").on("click", function() {
@@ -175,9 +160,6 @@ function choiceDate() {
 	default3();
 	default4();
 	salesJournal();
-	// viewTable();
-	downData();
-
 }
 
 //重置：
@@ -291,58 +273,6 @@ function saveScheme() {
 	});
 }
 
-//查看表格s
-// function viewTable() {
-// 	$(".choiceItem ul.btnList li a.viewBtn").on("click", function() {
-// 		var choiceNum = $(".choiceItem .choiceInfo ul li.choiceContent .selected.current").length;
-// 		var dlBox = $(".resultTab ul li.resultNav dl");
-// 		var dlDetail = $(".resultTab ul li.resultDetail dl");
-// 		if(choiceNum < 1) {
-// 			alert("至少选择一项");
-// 			dlBox.empty();
-// 			dlDetail.empty();
-// 			$(".resultTab").css("display", "none");
-// 		} else {
-// 			$(".resultTab").css("display", "block");
-// 			var labelTxt;
-// 			var choiceNum = $(".choiceItem .choiceInfo ul li.choiceContent .selected.current").length;
-// 			var selectedItem = $(".choiceItem .choiceInfo ul li.choiceContent div.selected.current");
-// 			dlBox.empty();
-// 			dlDetail.empty();
-// 			for(var i = 0; i < choiceNum; i++) {
-// 				labelTxt = $.trim($(selectedItem).eq(i).find("div.checkbox").find("label").text());
-// 				var e = `<dd>` + labelTxt + `</dd>`;
-// 				dlBox.append(e);
-// 				dlDetail.append(`<dd>123456789</dd>`);
-// 				autoWidth();
-// 				if(autoWidth() > $(".resultTab").outerWidth()) {
-// 					$(".resultTab").css({
-// 						"overflow-x": "scroll",
-// 					});
-// 				} else {
-// 					$(".resultTab").css({
-// 						"overflow-x": "initial"
-// 					});
-// 				}
-// 				heightRange();
-// 			}
-// 		}
-// 		heightRange();
-// 	});
-//
-// }
-
-//下载数据至本地
-function downData() {
-	$(".choiceItem ul.btnList li a.downData").on("click", function() {
-		var choiceNum = $(".choiceItem .choiceInfo ul li.choiceContent .selected.current").length;
-		if(choiceNum < 1) {
-			alert("至少选择一项");
-		} else {
-
-		}
-	});
-}
 
 function autoWidth() {
 	var dlBox = $(".resultTab ul li.resultNav dl");
@@ -373,10 +303,7 @@ function toUsersManagePage() {
 	});
 }
 
-//查看表格e
-
-
-$(document).ready(function () {
+$(document).ready(function() {
 	/*
 	 *   Retuan date in 'YYYY-MM-DD' format
 	 */
@@ -398,13 +325,13 @@ $(document).ready(function () {
 		var day = today.getDate();
 
 		var diff = $("#settletime").val();
-		if (diff.length == 15) {
+		if(diff.length == 15) {
 			diff = diff[14];
 		} else {
 			diff = diff.substring(14, 16);
 		}
 
-		if (month - Number(diff) < 0) {
+		if(month - Number(diff) < 0) {
 			from_date = new Date(year - 1, 12 - (Number(diff) - month), 1);
 			to_date = new Date(year - 1, 12 - (Number(diff) - month) + 1, 0);
 		} else {
@@ -425,7 +352,7 @@ $(document).ready(function () {
 			from_invoice: $("#from-invoice").val(),
 			to_invoice: $("#to-invoice").val(),
 			invoice: $("#invoice-filter").val(),
-			airline: $("#airline").val(),
+			airline: $("#airline-filter").val(),
 			leave_date: $("#leave-date").val(),
 			return_date: $("#return-date").val(),
 			issue_time: $("#issue-time").val(),
@@ -453,20 +380,20 @@ $(document).ready(function () {
 		} else if($("#settletime").val() == 'current_month') {
 			data['from_date'] = formatDate(new Date(year, month, 1));
 			data['to_date'] = formatDate(to_date);
-		} else if ($("#settletime").val().startsWith('current_month-')) {
+		} else if($("#settletime").val().startsWith('current_month-')) {
 			getFromAndToDate(data);
 		} else {
-			from_date = $("#from-date").val() == ""? "0" : $("#from-date").val();
-			to_date = $("#to-date").val() == ""? formatDate(to_date) : $("#to-date").val();
+			from_date = $("#from-date").val() == "" ? "0" : $("#from-date").val();
+			to_date = $("#to-date").val() == "" ? formatDate(to_date) : $("#to-date").val();
 			data['from_date'] = from_date;
 			data['to_date'] = to_date;
 		}
 
-		if (data['payment_type'] == 'non-cc') {
+		if(data['payment_type'] == 'non-cc') {
 			data['deal_location'] = $("#deal-location").val();
 			var non_cc_payment_type = [];
-			$("#non-cc-payment-type div input").each(function () {
-				if ($(this)[0].checked) {
+			$("#non-cc-payment-type div input").each(function() {
+				if($(this)[0].checked) {
 					non_cc_payment_type.push($(this)[0].id);
 				}
 			});
@@ -476,41 +403,40 @@ $(document).ready(function () {
 		return data;
 	}
 
-	$(".choiceItem ul.btnList li a.viewBtn").on("click", function() {
-			var choiceNum = $(".choiceItem .choiceInfo ul li.choiceContent .selected.current").length;
-			var dlBox = $(".resultTab ul li.resultNav dl");
-			var dlDetail = $(".resultTab ul li.resultDetail dl");
+	// 查看数据
+	function getDisplayData(filter) {
+		$("li.resultDetail").remove();
+		var dlBox = $(".resultTab ul li.resultNav dl");
 
-			var data = getFilterData();
-			if(choiceNum < 1) {
-				alert("至少选择一项");
-				dlBox.empty();
-				dlDetail.empty();
-				$(".resultTab").css("display", "none");
-			} else {
-				$.ajax({
-		      url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/DataExport/airTicketExportGetCount.php'),
-		      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-		      type: 'GET',
-		      data: data,
-		      success: function(response) {
-						console.log(response);
-		      },
-		      error: function(jqXHR, textStatus, errorThrown) {
-		        console.log(textStatus, errorThrown);
-		      }
-		    });
+		$.ajax({
+			url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/DataExport/airTicketDataExport.php'),
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			type: 'GET',
+			data: filter,
+			success: function(response) {
+				response = JSON.parse(response);
+				console.log(response);
+
 				$(".resultTab").css("display", "block");
 				var labelTxt;
 				var choiceNum = $(".choiceItem .choiceInfo ul li.choiceContent .selected.current").length;
 				var selectedItem = $(".choiceItem .choiceInfo ul li.choiceContent div.selected.current");
 				dlBox.empty();
-				dlDetail.empty();
+
 				for(var i = 0; i < choiceNum; i++) {
 					labelTxt = $.trim($(selectedItem).eq(i).find("div.checkbox").find("label").text());
 					var e = `<dd>` + labelTxt + `</dd>`;
 					dlBox.append(e);
-					dlDetail.append(`<dd>123456789</dd>`);
+				}
+
+				for (var i = 0; i < response.length; i++) {
+					var resultDetail = `<li class="resultDetail"><dl>`;
+					for (var j = 0; j < choiceNum; j++) {
+						var selectedId = $(selectedItem).eq(j).find("input")[0].id;
+						resultDetail += `<dd>` + response[i][selectedId] + `</dd>`;
+					}
+					resultDetail += `</dl></li>`;
+					$("ul.result").append(resultDetail);
 					autoWidth();
 					if(autoWidth() > $(".resultTab").outerWidth()) {
 						$(".resultTab").css({
@@ -523,7 +449,134 @@ $(document).ready(function () {
 					}
 					heightRange();
 				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(textStatus, errorThrown);
 			}
-			heightRange();
 		});
+	}
+	$(".choiceItem ul.btnList li a.viewBtn").on("click", function() {
+		var choiceNum = $(".choiceItem .choiceInfo ul li.choiceContent .selected.current").length;
+
+		var data = getFilterData();
+		if(choiceNum < 1) {
+			alert("至少选择一项");
+			dlBox.empty();
+			dlDetail.empty();
+			$(".resultTab").css("display", "none");
+		} else {
+			$.ajax({
+				url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/DataExport/airTicketExportGetCount.php'),
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				type: 'GET',
+				data: data,
+				success: function(numOfTransactions) {
+					console.log(numOfTransactions);
+					// 拿到符合要求的订单的数量
+					if (numOfTransactions == 0) {
+						/***
+						* 弹窗显示找不到结果
+						***/
+						alert("没有符合的结果");
+					} else {
+						$('#choicePagination').pagination({
+							totalData: numOfTransactions,
+							showData: 20,
+							current: 0,
+							coping: true,
+							homePage: '首页',
+							endPage: '末页',
+							prevContent: '上页',
+							nextContent: '下页',
+							callback: function(api) {
+								var i = api.getCurrent(); //获取当前页
+								var inputData = data;
+								inputData['offset'] = (i - 1) * 20;
+								getDisplayData(inputData);
+							}
+						});
+						$('ul.pagination').find('a').click();
+					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
+				}
+			});
+		}
+	});
+
+
+	function JSONToCSVConvertor(JSONData, ReportTitle) {
+	    var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+
+	    var CSV = '';
+
+	    CSV += ReportTitle + '\r\n\n';
+
+		var row = "";
+
+		var choiceNum = $(".choiceItem .choiceInfo ul li.choiceContent .selected.current").length;
+		var selectedItem = $(".choiceItem .choiceInfo ul li.choiceContent div.selected.current");
+		for(var i = 0; i < choiceNum; i++) {
+			row += $.trim($(selectedItem).eq(i).find("div.checkbox").find("label").text()) + ',';
+		}
+		row = row.slice(0, -1);
+
+		CSV += row + '\r\n';
+
+	    for (var i = 0; i < arrData.length; i++) {
+	        var row = "";
+			for(var j = 0; j < choiceNum; j++) {
+				var label = $(selectedItem).eq(j).find("input")[0].id;
+				var temp = arrData[i][label] == null ? '' : arrData[i][label];
+				row += '"' + temp + '",';
+			}
+	        row.slice(0, row.length - 1);
+	        CSV += row + '\r\n';
+	    }
+
+	    if (CSV == '') {
+	        alert("Invalid data");
+	        return;
+	    }
+
+	    //Generate a file name
+	    var fileName = "机票数据导出";
+
+	    var uri = 'data:text/csv;charset=utf-8,\uFEFF' + CSV;
+
+	    var link = document.createElement("a");
+	    link.href = uri;
+
+	    link.style = "visibility:hidden";
+	    link.download = fileName + ".csv";
+
+	    document.body.appendChild(link);
+	    link.click();
+	    document.body.removeChild(link);
+	}
+
+	// 下载数据
+	$(".choiceItem ul.btnList li a.downData").on("click", function() {
+		var choiceNum = $(".choiceItem .choiceInfo ul li.choiceContent .selected.current").length;
+		if(choiceNum < 1) {
+			alert("至少选择一项");
+		} else {
+			var filter = getFilterData();
+			$.ajax({
+				url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/DataExport/airTicketDataExport.php'),
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				type: 'GET',
+				data: filter,
+				success: function(response) {
+					response = JSON.parse(response);
+					console.log(response);
+					JSONToCSVConvertor(response, "机票数据导出");
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
+				}
+			});
+		}
+	});
 });

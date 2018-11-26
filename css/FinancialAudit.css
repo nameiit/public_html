@@ -247,35 +247,35 @@ ul.tabFloor dl dd.systemNum {
 }
 
 ul.tabFloor dl dd.invoice {
-	width: 8%;
+	width: 9%;
 }
 
 ul.tabFloor dl dd.profit {
-	width: 10%;
+	width: 11%;
 }
 
 ul.tabFloor dl dd.debt {
-	width: 10%;
+	width: 11%;
 }
 
 ul.tabFloor dl dd.receivable {
-	width: 10%;
+	width: 11%;
 }
 
 ul.tabFloor dl dd.salePrice {
-	width: 10%;
+	width: 11%;
 }
 
 ul.tabFloor dl dd.createDate {
-	width: 9%;
+	width: 10.6%;
 }
 
 ul.tabFloor dl dd.startTime {
-	width: 9%;
+	width: 10.6%;
 }
 
 ul.tabFloor dl dd.returnTime {
-	width: 9%;
+	width: 10.6%;
 }
 
 ul.tabFloor dl dd.lockStatus {
@@ -421,15 +421,25 @@ ul.tabFloor li dl dd.systemNum.selected {
 }
 .contentFloor{position: relative;}
 .contentFloor a.backTop{
-	position: absolute;
-    right: -28px;
     display: inline-block;
-    width: 30px;
-    height: 48px;
-    bottom: 0px;
+    width: 96px;
+    height: 96px;
+    position: fixed;
+    bottom: 84px;
+    right: 0%;
 }
 .contentFloor a.backTop img{
 	display: inline-block;
     width: 100%;
     height: 100%;
+}
+@media only screen and (min-width: 1366px) and (max-width: 1440px) {
+	.contentFloor a.backTop{
+		right: 1.6%;
+	}
+}
+@media only screen and (min-width: 1280px) and (max-width: 1365px) {
+	.contentFloor a.backTop{
+		right: 1.1%;
+	}
 }

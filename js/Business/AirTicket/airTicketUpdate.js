@@ -15,6 +15,8 @@ $(document).ready(function() {
 	resetSystematicSearch();
 	checkInvoice();
 	arrowStatus();
+	rateInfo();//费率
+	passengerInfo();//乘客
 	$("ul.add-msg li.list_cost a").on("mousedown", function() {
 		$(this).addClass("selected");
 	});
@@ -51,7 +53,7 @@ $(document).ready(function() {
 			data: data,
 			success: function(response) {
 				response = JSON.parse(response);
-				//				console.log(response);
+				// console.log(response);
 				$('ul.tabListDetail').empty();
 				for(var i = 0; i < response.length; i++) {
 					var wholesaler = response[i]['wholesaler_code'] == null ? '' : response[i]['wholesaler_code'];
@@ -65,7 +67,6 @@ $(document).ready(function() {
 	                <dd class='profit'><a href='javascript:void(0);'>` + response[i]['total_profit'] + `</a></dd>
 	                <dd class='debt'><a href='javascript:void(0);'>` + response[i]['debt'] + `</a></dd>
 	                <dd class='receivable'><a href='javascript:void(0);'>` + response[i]['received'] + `</a></dd>
-	                <dd class='mco'><a href='javascript:void(0);'>` + response[i]['mco'] + `</a></dd>
 	                <dd class='salePrice'><a href='javascript:void(0);'>` + response[i]['selling_price'] + `</a></dd>
 	                <dd class='createDate'><a href='javascript:void(0);'>` + response[i]['create_time'].substring(0, 10) + `</a></dd>
 	                <dd class='customerName'><a href='javascript:void(0);'>` + response[i]['customer_name'] + `</a></dd>
@@ -91,13 +92,31 @@ $(document).ready(function() {
 			type: 'GET',
 			data: data,
 			success: function(response) {
-				if(response == 0) {
+				response = JSON.parse(response);
+
+				if(response['sum_profit'] == null) {
+					$("#sum_profit").text(0);
+				} else {
+					$("#sum_profit").text(response['sum_profit']);
+				}
+				if(response['sum_debt'] == null) {
+					$("#sum_debt").text(0);
+				} else {
+					$("#sum_debt").text(response['sum_debt']);
+				}
+				if(response['sum_received'] == null) {
+					$("#sum_received").text(0);
+				} else {
+					$("#sum_received").text(response['sum_received']);
+				}
+
+				var num_orders = response['num_orders'];
+				if(num_orders == 0) {
 					$(".noResultBox").css("display", "block");
 				} else {
-					console.log(response);
 					$('.tabListDetail').empty();
 					$('#airticket-pagination').pagination({
-						totalData: response,
+						totalData: num_orders,
 						showData: 15,
 						current: 0,
 						coping: true,
@@ -176,7 +195,8 @@ $(document).ready(function() {
 			lock_status: $("#lock-status").val(),
 			clear_status: $("#clear-status").val(),
 			paid_status: $("#paid-status").val(),
-			finish_status: $("#paid-status").val()
+			finish_status: $("#paid-status").val(),
+			airline: $("#airline").val()
 		};
 
 		var today = new Date();
@@ -235,6 +255,9 @@ $(document).ready(function() {
 		// unconfirmedRequest();
 		$(this).addClass("active").siblings().removeClass("active");
 		var transactionId = $('.active').find('dl dd.systemNum a')['0'].innerText;
+		if(isNaN(transactionId)) {
+			transactionId = transactionId.substring(0, transactionId.length - 3);
+		}
 		// $("#airTicketDiscountNotice_update").css("display", "none");
 		$.ajax({
 			url: location.protocol.concat("//").concat(location.host).concat('/database/Business/AirTicket/AirTicketGetDetail.php'),
@@ -299,7 +322,7 @@ $(document).ready(function() {
 					<img src="../img/deleteIcon.png" class="deleteInfo"/>
 					`
 				);
-//				travelInfor();
+				//				travelInfor();
 				for(var i = 0; i < numTrips; i++) {
 					$(".flightNum").eq(i).val(response['flight_number'][i]);
 					$("input.startTime").eq(i).val(response['depart_date'][i].substring(0, 10));
@@ -1052,6 +1075,7 @@ function updateAirTicketTourDiscount(discountText, discountNotice, discountApply
 
 	});
 }
+
 function confirmRequest() {
 	$(".updateDialog .formAction li.requestReceive").on("click", function() {
 		if(!$(".updateDialog .formAction li.requestReceive").hasClass("selected")) {
@@ -1194,7 +1218,7 @@ function paymentMethod() {
 		var currency_type = $(this).parent("li").parent("ul").parent("div.dropdown").find("span.currency_txt");
 		currency_type.text($(this).text());
 
-		//		//汇率必填验证：
+		//汇率必填验证：
 		var currencyArr = [];
 		var num = 0;
 		var len = $("span.currency_txt").length;
@@ -1206,7 +1230,6 @@ function paymentMethod() {
 		});
 		if(($.inArray("人民币", currencyArr) !== -1) && num < len) {
 			$(".airticketMsg ul.add-msg li.exchangeRate").addClass("requiredItem");
-			//			//			alert("请输入汇率信息");
 		} else {
 			$(".airticketMsg ul.add-msg li.exchangeRate").removeClass("requiredItem");
 		}
@@ -1215,6 +1238,34 @@ function paymentMethod() {
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.methodList").find("li").find("a").on("click", function() {
 		$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.methodList").css("width", "50%");
 	});
+	if($(".mcoList").css("display") == "block") {
+		$(".mcoList").css("display", "block");
+		$("input#face-value").removeClass("notRequired");
+		$("input#mco-value").removeClass("notRequired");
+		$("input#mco-credit").removeClass("notRequired");
+		$("input#card-number").removeClass("notRequired");
+		$("input#card-holder").removeClass("notRequired");
+
+	} else {
+		$("input#face-value").addClass("notRequired");
+		$("input#mco-value").addClass("notRequired");
+		$("input#mco-credit").addClass("notRequired");
+		$("input#card-number").addClass("notRequired");
+		$("input#card-holder").addClass("notRequired");
+		
+		$("input#face-value").val("");
+		$("input#mco-value").val("");
+		$("input#mco-credit").val("");
+		$("input#mco-ratio").val("");
+		$("span#mco-party").text("");
+		$("span.mcoAmount_currency").text("美元");
+		$("span.mcoCredit_currency").text("美元");
+		$("span.faceValue_currency").text("美元");
+		$(".creditCardInfo").find("input").val("");
+		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
+		$(".creditCardInfo").css("display", "none");
+		
+	}
 	//支付方式-信用卡
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.creditCardPayment").find("li").find("a").on("click", function() {
 		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
@@ -1222,8 +1273,33 @@ function paymentMethod() {
 		//信用卡和MCO支付
 		if(payment_type.text() == "航司刷卡+MCO") {
 			$(".mcoList").css("display", "block");
-		} else {
+			
+			$("input#face-value").removeClass("notRequired");
+			$("input#mco-value").removeClass("notRequired");
+			$("input#mco-credit").removeClass("notRequired");
+			$("input#card-number").removeClass("notRequired");
+			$("input#card-holder").removeClass("notRequired");
+			$(".creditCardInfo").css("display", "block"); //输入信用卡
+		} 
+		else {
 			$(".mcoList").css("display", "none");
+			$(".creditCardInfo").find("input").val("");
+			$(".creditCardInfo").find("select").prop('selectedIndex', 0);
+			$(".creditCardInfo").css("display", "none"); //输入信用卡
+			$("input#face-value").addClass("notRequired");
+			$("input#mco-value").addClass("notRequired");
+			$("input#mco-credit").addClass("notRequired");
+			$("input#card-number").addClass("notRequired");
+			$("input#card-holder").addClass("notRequired");
+			$("input#face-value").val("");
+			$("input#mco-value").val("");
+			$("input#mco-credit").val("");
+			$("input#mco-ratio").val("");
+			$("span#mco-party").text("");
+			$("span.mcoAmount_currency").text("美元");
+			$("span.mcoCredit_currency").text("美元");
+			$("span.faceValue_currency").text("美元");
+			
 		}
 	});
 	//支付方式-非信用卡
@@ -1231,6 +1307,27 @@ function paymentMethod() {
 		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
 		payment_type.text($(this).text());
 		$(".mcoList").css("display", "none");
+		
+		$("input#face-value").addClass("notRequired");
+		$("input#mco-value").addClass("notRequired");
+		$("input#mco-credit").addClass("notRequired");
+		$("input#card-number").addClass("notRequired");
+		$("input#card-holder").addClass("notRequired");
+		$("input#face-value").val("");
+		$("input#mco-value").val("");
+		$("input#mco-credit").val("");
+		$("input#mco-ratio").val("");
+		$("span#mco-party").text("");
+		
+		$("span.mcoAmount_currency").text("美元");
+		$("span.mcoCredit_currency").text("美元");
+		$("span.faceValue_currency").text("美元");
+		
+		$(".creditCardInfo").find("input").val("");
+		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
+		$(".creditCardInfo").css("display", "none");
+		
+		
 	});
 	//刷卡公司:
 	$(".payService ul li .payment").find("ul.companyMenu").find("li").find("a").on("click", function() {
@@ -1412,15 +1509,7 @@ function mcoCreditCalculate(mcoCreditBox, mcoAmount, rateInfo) {
 	var mcoCreditTxt = (Number(mcoAmount - (mcoAmount * rateInfo))).toFixed(2);
 	mcoCreditBox.val(mcoCreditTxt);
 }
-
-//function mcoAmountCalculate2(mcoAmountBox, mcoCreditInfo, rateInfo) {
-//	//MCO金额=MCO Credit/(1-费率);
-//
-//	var mcoAmountTxt = (Number(mcoCreditInfo / (1 - rateInfo))).toFixed(2);
-//	mcoAmountBox.val(mcoAmountTxt);
-//}
 //利润
-
 function getCalculateprofitInfo() {
 	//利润=卖价-底价-MCO金额+MCO Credit
 	var exchangeRate = $("input#update-exchange-rate").val();
@@ -1986,12 +2075,22 @@ function getTimeInfo() {
 //INVOICE输入检测
 function checkInvoice() {
 	$(".systematicSearch ul.searchFloor li div.invoiceInfo div.invoice1").find("input").on("keyup", function() {
-		if(!isNaN($(this).val())) {
-
+		if($(this).siblings("input").val() == "") {
+			alert("请确认两项信息已输入");
 		} else {
-			alert("请确认填写数字格式");
-			$(this).val("");
+			if((!isNaN($(this).val())) && (!isNaN($(this).siblings("input").val()))) {
 
+			} else {
+				alert("请确认填写数字格式");
+				if(isNaN($(this).val())) {
+					$(this).val("");
+					$(this).focus();
+				}
+				if(isNaN($(this).siblings("input").val())) {
+					$(this).siblings("input").val("");
+					$(this).siblings("input").focus();
+				}
+			}
 		}
 	});
 	$(".systematicSearch ul.searchFloor li div.invoiceInfo").find("img").on("click", function() {
@@ -2022,4 +2121,89 @@ function arrowStatus() {
 		$(this).parent("li").siblings("li").find("img.arrow_down").attr("src", "../img/arrowDown0_icon.png");
 		$(this).parent("li").siblings("li").find("img.arrow_up").attr("src", "../img/arrowUp0_icon.png");
 	});
+}
+
+//费率：
+function rateInfo() {
+	$(".updateDialog .updateForm ul.add-msg li.list_account.rate a").on("mousedown", function() {
+		$(this).addClass("selected");
+	});
+	$(".updateDialog .updateForm ul.add-msg li.list_account.rate a").on("mouseup", function() {
+		$(this).removeClass("selected");
+	});
+	$(".updateDialog .updateForm ul.add-msg li.list_account.rate a").on("click", function() {
+		profitType();
+		var mcoAmount = $("input#mco-value").val(); //MCO金额
+		var mcoCredit = $("input#mco-credit").val(); //MCO Credit
+		var exchangeRate;
+		var profit;
+		var salePrice;
+		var basePrice;
+		if(mcoAmount == "") {
+			alert("请先输入MCO金额");
+		} else {
+			$("input#mco-credit").val((Number(mcoAmount) * 0.96).toFixed(2));
+			$("input#mco-ratio").val("4.00%");
+		}
+		mcoCredit = $("input#mco-credit").val();
+		mcoAmount = $("input#mco-value").val();
+		exchangeRate = $("input#exchange_rate").val();
+		profit = $("input#airTicketProfit");
+		salePrice = $("input#air_amountDue").val();
+		basePrice = $("input#air-ticket-base-price").val();
+		if($("li.list_account.profitInfor").find("span").text() == "美元") {
+			//卖价人民币
+			if($("span.salePrice_currency").text() == "人民币") {
+				salePrice = (salePrice / exchangeRate).toFixed(2);
+			}
+			//底价人民币
+			if($("span.basePrice_currency").text() == "人民币") {
+				basePrice = (basePrice / exchangeRate).toFixed(2);
+			}
+		}
+		if($("li.list_account.profitInfor").find("span").text() == "人民币") {
+			salePrice = $("input#air_amountDue").val();
+			basePrice = $("input#air-ticket-base-price").val();
+			mcoAmount = $("input#mco-value").val();
+			mcoCredit = $("input#mco-credit").val();
+		}
+		profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate);
+
+	})
+}
+
+
+function passengerInfo() {
+	$(document).on('click', '.addClients ul.clients-info li dl dd.passenger img.addInfo', function() {
+		addPassenger();
+	});
+	$(document).on('click', '.addClients ul.clients-info li dl dd.passenger img.deleteInfo', function() {
+		deletePassenger();
+	});
+}
+//添加
+function addPassenger() {
+	var e = `
+			<span class="new">
+			<select class='passenger-info'>
+				<option value='adult'>成人</option>
+				<option value='youth'>青年</option>
+				<option value='children'>儿童</option>
+				<option value='infant'>婴儿</option>
+			</select>
+			<input type="text"  placeholder="姓/名" class='passenger-name'>
+			<input type="text"  placeholder="票号" class='passenger-ticket-number'>
+		</span>`;
+	$(".addClients ul.clients-info li dl dd.passenger div").append(e);
+	heightRange();
+}
+//删除
+function deletePassenger() {
+	if($(".addClients ul.clients-info li dl dd.passenger div span").length > 1) {
+		$(".addClients ul.clients-info li dl dd.passenger div span").last().remove();
+	} 
+	else {
+		alert("至少含一项乘客信息");
+	}
+	heightRange();
 }

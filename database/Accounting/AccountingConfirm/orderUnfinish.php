@@ -4,6 +4,7 @@ include('../../dbConnection.php');
 session_start();
 $account_id = $_SESSION["username"];
 $transaction_id_list = json_decode($_POST['transaction_id_list']);
+$fs_id_list = json_decode($_POST['fs_id_list']);
 
 $sql = "SELECT finish_counter
         FROM PowerControl pc
@@ -13,6 +14,14 @@ $sql = "SELECT finish_counter
 $result = $conn->query($sql);
 $access_permission = $result->fetch_assoc()['finish_counter'];
 if ($access_permission == 'N') {
+  for ($i = 0; $i < sizeof($fs_id_list); $i++) {
+      $sql = "INSERT INTO AuditProcess (
+                fs_id, status, cancel_request
+              ) VALUES (
+                $fs_id_list[$i], 'pending','finish'
+              )";
+      $conn->query($sql);
+  }
   echo 'No access permission';
 } else {
   for ($i = 0; $i < sizeof($transaction_id_list); $i++) {
