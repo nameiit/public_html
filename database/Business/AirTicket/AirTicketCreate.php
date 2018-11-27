@@ -283,7 +283,7 @@ if ($payment_type == 'airmco') {
 
   $card_number = $_POST['card_number'];
   $expire_month = $_POST['expire_month'];
-  $expire_year = $_POST['expire_month'];
+  $expire_year = $_POST['expire_year'];
   $card_holder = $_POST['card_holder'];
   $mco_receiver = $_POST['mco_receiver'];
 
@@ -315,7 +315,7 @@ if ($payment_type == 'airmco') {
             '$card_holder', '$card_number', '$expire_date', 'USD', '$mco_value_trans', '$noticeId', 'N', current_timestamp
           )";
 
-  // echo $sql;
+  echo $sql;
   $conn->query($sql);
 
   $sql = "SELECT mco_id FROM McoInfo WHERE notice_id = '$noticeId'";

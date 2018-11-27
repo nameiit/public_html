@@ -107,7 +107,7 @@ $(document).ready(function() {
 					var lockStatus = response[i]['lock_status'] == 'Y' ? 'yesStatus' : 'noStatus';
 					var finishStatus = response[i]['finish_status'] == 'Y' ? 'yesStatus' : 'noStatus';
 					var following_id = response[i]['following_id_collection'] == null ? '' : response[i]['following_id_collection'];
-					
+
 					var $html = `
 							<li><dl class="callout_button">
 	                <dd class="systemNum"><a href='javascript:void(0);'>` + response[i]['transaction_id'] + `</a></dd>
@@ -278,7 +278,7 @@ $(document).ready(function() {
 			data['to_date'] = to_date;
 		}
 
-	if (data['payment_type'] == 'non-cc') {
+		if (data['payment_type'] == 'non-cc') {
       data['deal_location'] = $("#deal-location").val();
       var non_cc_payment_type = [];
       $("#non-cc-payment-type div input").each(function () {
@@ -319,29 +319,29 @@ $(document).ready(function() {
 		unconfirmedRequest();
 
 		$(this).addClass("active").siblings().removeClass("active");
-		var transactionId = $('.active').find('dl dd.listNum a')['0'].innerText;
+		var transactionId = $('.active').find('dl dd.systemNum a')['0'].innerText;
+		if(isNaN(transactionId)) {
+			transactionId = transactionId.substring(0, transactionId.length - 3);
+		}
 		$("#indivDiscountNotice_update").css("display", "none");
 
 		var url = location.protocol.concat("//").concat(location.host).concat('/database/Business/IndividualTour/IndividualTourGetDetail.php');
 		$.ajax({
 			url: url,
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 			type: 'GET',
-			data: {
-				transaction_id: transactionId
-			},
+			data: { transaction_id: transactionId },
 			success: function(response) {
 				response = JSON.parse(response);
+				console.log(response);
 
-				individual_tour_id = response['indiv_tour_id'];
-				// 填充弹出窗口的数据
-				$("#update-product-code").val(response['product_code']);
-				$("#indiv_tour_name").val(response['tour_name']);
-				$("#invoice").val(response['indiv_tour_invoice']);
+				// individual_tour_id = response['indiv_tour_id'];
+				// // 填充弹出窗口的数据
+				$("#indiv_tour_id").val(response['product_code']);
 				$("#indiv_salesperson").val(response['salesperson_code']);
+				$("#indiv_tour_name").val(response['tour_name']);
 				$("#indiv_wholesaler").val(response['wholesaler_code']);
+				$("#invoice").val(response['indiv_tour_invoice']);
 				$("#indiv_source").val(response['source_name']);
 				$("#indiv_note").val(response['note']);
 
@@ -350,59 +350,90 @@ $(document).ready(function() {
 				$("#indiv_num_days").val(response['duration']);
 
 				$("#indiv_exchange_rate").val(response['exchange_rate']);
+				var deal_location = (response['deal_location'] == 'US') ? '美国' : '中国';
+				$("#payment-area")[0].innerHTML = deal_location;
+
 				$("#indiv_base_price").val(response['base_price']);
-				$("#update_base_price_currency").val(response['base_currency']);
-				$("#update-indiv-payment-type").val(response['payment_type']);
-				$("#update_indivAmountDue").val(response['selling_price']);
-				$("#update_sell_price_currency").val(response['selling_currency']);
-				// $("#transaction_fee").val(response['commission_fee']);
-				// $("#update_sale_price").val(response['received']);
+				var base_currency = response['base_currency'] == 'USD' ? '美元' : '人民币';
+				$("#base-price-currency")[0].innerHTML = base_currency;
 
-				// if(response['code'] != null) {
-				// 	$("dd.discount-code").addClass("option-active").siblings().removeClass("option-active");
-				// 	$("#indivDiscountText_update").val(response['code']);
-				// 	$("#indivDiscountOption_update").find("dd.discount-code").click();
-				// } else {
-				// 	$("dd.discount-code").removeClass("option-active").siblings().addClass("option-active");
-				// 	$("#indivDiscountText_update").val(response['coupon']);
-				// 	$("#indivDiscountText_update_currency").val(response['coupon_currency']);
-				// 	$("#indivDiscountOption_update").find("dd.coupon").click();
-				// }
-				// $("#indivDiscountApply_update").click();
+				$("#indiv_sale_price").val(response['selling_price']);
+				var selling_currency = response['selling_currency'] == 'USD' ? '美元' : '人民币';
+				$("#sell-price-currency")[0].innerHTML = selling_currency;
 
-				// if(response['process'] != null) {
-				// 	$(".updateDialog .formAction li.requestReceive").addClass("selected");
-				// 	$(".updateDialog .formAction li.requestReceive").find("a").find("img").css("display", "inline-block");
-				// 	$(".updateDialog .formAction li.requestReceive").find("a").find("span").text("已请求财务确认接收");
-				// }
-
+				var payment_type = response['payment_type'];
+				if (payment_type == 'cash') {
+					payment_type = '现金';
+				} else if (payment_type == 'check') {
+					payment_type = '支票';
+				} else if (payment_type == 'alipay') {
+					payment_type = '支付宝';
+				} else if (payment_type == 'wechat') {
+					payment_type = '微信支付';
+				} else if (payment_type == 'remit') {
+					payment_type = 'REMIT';
+				} else if (payment_type == 'wholesalerall') {
+					payment_type = '供应商全额刷卡';
+				} else if (payment_type == 'wholesalercheck') {
+					payment_type = '供应商部分刷卡+支票';
+				} else if (payment_type == 'wholesalercash') {
+					payment_type = '供应商部分刷卡+现金';
+				} else if (payment_type == 'wholesaleralipay') {
+					payment_type = '供应商部分刷卡+支付宝';
+				} else if (payment_type == 'wholesalerwechat') {
+					payment_type = '供应商部分刷卡+微信支付';
+				} else if (payment_type == 'wholesalerremit') {
+					payment_type = '供应商部分刷卡+REMIT';
+				} else if (payment_type == 'wholesalermco') {
+					payment_type = '供应商部分刷卡+额外MCO';
+				} else if (payment_type == 'mcoall') {
+					payment_type = '全额MCO';
+				}
+				$("#indiv-tour-payment-type")[0].innerHTML = payment_type;
 				$("#indiv-profit").val(response['total_profit']);
 
-				$("#add-customer-lname").val(response['lname']);
-				$("#add-customer-fname").val(response['fname']);
+				if(payment_type == "供应商部分刷卡+额外MCO" || payment_type == '全额MCO') {
+					$("#wholesalermco").click();
+					$("#mco-party").text(response['mco_party']);
+					$("#face-value").val(response['face_value']);
+					var face_currency = '美元';
+					if(response['face_currency'] == 'RMB') {
+						face_currency = '人民币';
+					};
+					$("#face-currency").text(face_currency);
+					$("#mco-value").val(response['mco_value']);
+					var mco_currency = '美元';
+					if(response['mco_currency'] == 'RMB') {
+						mco_currency = '人民币';
+					};
+					$("#mco-currency").text(mco_currency);
+					$("#mco-credit").val(response['mco_credit']);
+					var mco_credit_currency = '美元';
+					if(response['mco_credit_currency'] == 'RMB') {
+						mco_credit_currency = '人民币';
+					};
+					$("#mco-credit-currency").text(mco_credit_currency);
+					$("#fee-ratio").val(response['fee_ratio']);
+
+					$("#card-number").val(response['card_number']);
+					var expire_date = response['exp_date'].split("/");
+					$("#expired-date-month").val(expire_date[0]);
+					$("#expired-date-year").val(expire_date[1]);
+					$("#card-holder").val(response['cardholder']);
+					$("#mco-receiver").val(response['account_id']);
+				}
+
+
+				$("#indivLastName").val(response['lname']);
+				$("#indivFirstName").val(response['fname']);
 				$("#indivClientTel").val(response['phone']);
 				$("#indivOtherContact").val(response['other_contact_type']);
+				$("#indivOtherContactLabell").text(response['other_contact_type'] + '帐号');
 				$("#indivOtherContactNumber").val(response['other_contact_number']);
 				$("#indivBirthday").val(response['birth_date'].substring(0, 10));
 				$("#indivGender").val(response['gender']);
 				$("#indivClientEmail").val(response['email']);
 				$("#indivZipCode").val(response['zipcode']);
-				// $("#add-customer-join-date").val(response['join_date'].substring(0, 10));
-				// $("#add-customer-join-location").val(response['join_location']);
-				// $("#add-customer-leave-date").val(response['leave_date'].substring(0, 10));
-				// $("#add-customer-leave-location").val(response['leave_location']);
-
-				// $("#dialog2").css("display", "block");
-				// autoCenter($("#dialog2"));
-				// if($.trim($(".info-price-individual ul.add-msg li.discountCard dl.discountOption dd.option-active a").text()) == "折扣码") {
-				// 	$(".updateInfo .dialog ul.add-msg li.discountCard").find("dl.exchange").find("dd.discount-text").removeClass("list-currency");
-				// 	$(".info-price-individual  ul.add-msg li.discountCard dl.exchange dd.discount-text select").css("display", "none");
-				// }
-				// if($.trim($("ul.add-msg li.discountCard dl.discountOption dd.option-active a").text()) == "折扣金额") {
-				// 	$(".updateInfo .dialog ul.add-msg li.discountCard").find("dl.exchange").find("dd.discount-text").addClass("list-currency");
-				// 	$(".info-price-individual ul.add-msg li.discountCard dl.exchange dd.discount-text select").css("display", "inline-block");
-				// }
-				// updateFinancialInfo();
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus, errorThrown);

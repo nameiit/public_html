@@ -39,15 +39,6 @@ $gender = $_POST['gender'];
 $email = $_POST['email'];
 $zipcode = $_POST['zipcode'];
 
-/******
-在这里
-*****/
-$cc_amount = $_POST['cc_amount'];
-$noncc_amount = $_POST['noncc_amount'];
-/******
-在这里
-*****/
-
 
 $query = "SELECT * FROM Customer WHERE fname = '$fname' AND lname = '$lname'";
 $result = $conn->query($query);
@@ -234,8 +225,21 @@ if ($face_currency == 'RMB') {
   $face_value /= $exchange_rate;
 }
 
-if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $payment_type == 'wholesalercash' || $payment_type == 'wholesaleralipay' || $payment_type == 'wholesalerwechat' || $payment_type == 'wholesalerremit') {
+if ($payment_type == 'wholesalerall' ||
+    $payment_type == 'wholesalercheck' ||
+    $payment_type == 'wholesalercash' ||
+    $payment_type == 'wholesaleralipay' ||
+    $payment_type == 'wholesalerwechat' ||
+    $payment_type == 'wholesalerremit') {
 
+  /******
+  在这里
+  *****/
+  $cc_amount = $_POST['cc_amount'];
+  $noncc_amount = $_POST['noncc_amount'];
+  /******
+  在这里
+  *****/
   $sql = "INSERT INTO FinanceStatus(transaction_id,
               invoice,
               lock_status,clear_status,paid_status,finish_status,

@@ -73,7 +73,7 @@ $query = "SELECT
         ON tc.starter_id = t.transaction_id
         WHERE t.transaction_id = $transactionId
         GROUP BY tc.starter_id";
-echo $query;
+// echo $query;
 $result = $conn->query($query);
 
 $res = array();

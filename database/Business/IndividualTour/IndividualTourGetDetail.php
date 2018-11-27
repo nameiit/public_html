@@ -60,6 +60,7 @@ $query = "SELECT
           JOIN CustomerSource cs ON cs.source_id = t.source_id
           JOIN FinanceStatus fs ON fs.transaction_id = t.transaction_id
           WHERE t.transaction_id = '$transactionId'";
+// echo $query;
 $result = $conn->query($query);
 if ($result->num_rows > 0) {
     echo json_encode($result->fetch_assoc());

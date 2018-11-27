@@ -555,7 +555,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</li>
 														<li>
 															<label class="nm-left">地接商团名</label>
-															<input type="text" id="update-tour-name">
+															<input type="text" id="indiv_tour_name">
 														</li>
 														<li class="requiredItem indivWholesaler">
 															<label class="nm-left">地接商</label>
@@ -571,8 +571,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</li>
 														<li>
 															<label class="nm-left">备注</label>
-															<!--<textarea rows="5" id="update-note"></textarea>-->
-															<div class="notesInfor" contenteditable="true" id="indiv_note"></div>
+															<textarea rows="5" id="indiv_note"></textarea>
+															<!-- <div class="notesInfor" contenteditable="true" id="indiv_note"></div> -->
 														</li>
 													</ul>
 												</div>
@@ -792,7 +792,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<ul class="add-msg">
 														<li class="exchangeRate">
 															<label class="nm-left">成交汇率</label>
-															<span>1&nbsp;&nbsp;美元&nbsp;&nbsp;=&nbsp;&nbsp; <input type="text" id="indiv_exchange_rate" disabled value="6.6">&nbsp;&nbsp;人民币</span>
+															<span>1&nbsp;&nbsp;美元&nbsp;&nbsp;=&nbsp;&nbsp; <input type="text" id="indiv_exchange_rate" disabled>&nbsp;&nbsp;人民币</span>
 														</li>
 														<!--支付地点 -->
 														<li class="requiredItem payment-type areaInfo">
@@ -913,7 +913,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																					</ul>
 																				</li>
 																				<li>
-																					<a tabindex="0">
+																					<a tabindex="0" id="wholesalermco">
 																						供应商部分刷卡+额外MCO
 																					</a>
 																				</li>

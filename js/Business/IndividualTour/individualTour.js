@@ -135,7 +135,7 @@ function sendFormMsg() {
 			zipcode: $("#indivZipCode").val(),
 		};
 
-		if(payment_type == 'wholesalermco' || payment_type == 'mcoall') {
+		if (payment_type == 'wholesalermco' || payment_type == 'mcoall') {
 			var mco_party = $("#mco-party")[0].innerHTML;
 			var face_value = $("#face-value").val();
 			var face_currency = $("#face-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
@@ -166,10 +166,15 @@ function sendFormMsg() {
 				card_holder: card_holder,
 				mco_receiver: mco_receiver
 			});
+		} else if (payment_type == 'wholesalercheck' ||
+							 payment_type == 'wholesalercash' ||
+							 payment_type == 'wholesaleralipay' ||
+							 payment_type == 'wholesalerwechat' ||
+							 payment_type == 'wholesalerremit') {
+			data['cc_amount'] = $("#wholesaler-charge-amount").val();
+			data['noncc_amount'] = $("#mco-charge-amount").val();
 		}
 
-		data['cc_amount'] = $("#wholesaler-charge-amount").val();
-		data['noncc_amount'] = $("#mco-charge-amount").val();
 
 		if($("dd.selectInfo div.checkbox input").length > 0) {
 			var collection_list = [];
@@ -895,9 +900,9 @@ function paymentMethod() {
 		console.log(payment_txt);
 		$(".mcoList").css("display", "none");
 		$(".partCreditCard").css("display", "block");
-		
-		
-		
+
+
+
 	});
 	//刷卡公司
 	$(".payService ul li .payment").find("ul.companyMenu").find("li").find("a").on("click", function() {
