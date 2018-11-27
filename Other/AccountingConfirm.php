@@ -428,7 +428,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</dd>
 											<dd class="salePrice">
 												<label>
-													卖价
+													卖价&#40;<span id="sum_selling_price"></span>&#41;
 												</label>
 											</dd>
 											<dd class="createDate" id="create-time-sort">

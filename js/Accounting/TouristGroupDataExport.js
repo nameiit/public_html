@@ -619,13 +619,13 @@ $(document).ready(function() {
 	    //Generate a file name
 	    var fileName = "旅游团数据导出";
 
-	    var uri = 'data:text/csv;charset=utf-8,\uFEFF' + CSV;
+	    var uri = 'data:text/xls;charset=utf-8,\uFEFF' + CSV;
 
 	    var link = document.createElement("a");
 	    link.href = uri;
 
 	    link.style = "visibility:hidden";
-	    link.download = fileName + ".csv";
+	    link.download = fileName + ".xls";
 
 	    document.body.appendChild(link);
 	    link.click();

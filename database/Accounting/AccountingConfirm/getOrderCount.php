@@ -32,6 +32,7 @@ $sql = "SELECT
           sum(fs.debt_raw) AS sum_debt,
           sum(fs.received) AS sum_received,
           sum(fs.selling_price) AS sum_selling_price,
+          sum(fs.total_profit) AS sum_profit,
           t.type
         FROM FinanceStatus fs
         JOIN Transactions t ON fs.transaction_id = t.transaction_id
@@ -91,6 +92,7 @@ $sql_indiv = "SELECT
                 sum(fs.debt_raw) AS sum_debt,
                 sum(fs.received) AS sum_received,
                 sum(fs.selling_price) AS sum_selling_price,
+                sum(fs.total_profit) AS sum_profit,
                 t.type
               FROM FinanceStatus fs
               JOIN Transactions t ON fs.transaction_id = t.transaction_id
@@ -148,12 +150,13 @@ if ($locator == '%' and $airline == '%') {
     $sql = "SELECT sum(num_orders) AS num_orders,
               sum(sum_debt) AS sum_debt,
               sum(sum_received) AS sum_received,
-              sum(sum_selling_price) AS sum_selling_price
+              sum(sum_selling_price) AS sum_selling_price,
+              sum(sum_profit) AS sum_profit
             FROM ( " . $sql . " UNION " . $sql_indiv . " ) fs
             WHERE fs.type LIKE '$type'";
 }
 
-echo $sql;
+// echo $sql;
 $result = $conn->query($sql);
 
 $res = array();

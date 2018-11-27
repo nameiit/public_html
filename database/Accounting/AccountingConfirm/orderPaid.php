@@ -3,7 +3,7 @@ include('../../dbConnection.php');
 
 session_start();
 $account_id = $_SESSION["username"];
-$transaction_id_list = json_decode($_POST['transaction_id_list']);
+$fs_id_list = json_decode($_POST['fs_id_list']);
 
 $sql = "SELECT paid_power
         FROM PowerControl pc
@@ -16,10 +16,10 @@ $access_permission = $result->fetch_assoc()['paid_power'];
 if ($access_permission == 'N') {
   echo 'No access permission';
 } else {
-  for ($i = 0; $i < sizeof($transaction_id_list); $i++) {
+  for ($i = 0; $i < sizeof($fs_id_list); $i++) {
     $sql = "UPDATE FinanceStatus
             SET paid_status = 'Y'
-            WHERE transaction_id = $transaction_id_list[$i]";
+            WHERE fs_id = $fs_id_list[$i]";
     $conn->query($sql);
   }
 }

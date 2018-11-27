@@ -3,7 +3,6 @@ include('../../dbConnection.php');
 
 session_start();
 $account_id = $_SESSION["username"];
-$transaction_id_list = json_decode($_POST['transaction_id_list']);
 $fs_id_list = json_decode($_POST['fs_id_list']);
 
 $sql = "SELECT clear_counter
@@ -24,10 +23,10 @@ if ($access_permission == 'N') {
   }
   echo 'No access permission';
 } else {
-  for ($i = 0; $i < sizeof($transaction_id_list); $i++) {
+  for ($i = 0; $i < sizeof($fs_id_list); $i++) {
     $sql = "UPDATE FinanceStatus
             SET clear_status = 'N'
-            WHERE transaction_id = $transaction_id_list[$i]";
+            WHERE fs_id = $fs_id_list[$i]";
     $conn->query($sql);
   }
 }

@@ -351,9 +351,10 @@
  		$(".confirmLockInfo").css("display", "block");
  		//确认
  		$(".confirmLockInfo").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
- 			var transaction_id_list = [];
+      var fs_id_list = [];
  			$("dd.systemNum.selected").each(function() {
- 				transaction_id_list.push($(this)[0].innerHTML);
+        var transaction_id = $(this)[0].innerText;
+        fs_id_list.push(fs_id[transaction_id]);
  			});
 
  			if($.trim($(".confirmNoticeInfo p.confirmNotice").text()) !== "部分编号无法执行该操作") {
@@ -361,7 +362,7 @@
  					url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/orderLock.php'),
  					type: 'POST',
  					data: {
- 						transaction_id_list: JSON.stringify(transaction_id_list)
+            fs_id_list: JSON.stringify(fs_id_list)
  					},
  					success: function(response) {
  						if(response == 'No access permission') {
@@ -422,17 +423,18 @@
  			}
  			$(".confirmClearInfo").css("display", "block");
  			$(".confirmClearInfo").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
- 				var transaction_id_list = [];
- 				$("dd.systemNum.selected").each(function() {
- 					transaction_id_list.push($(this)[0].innerHTML);
- 				});
+        var fs_id_list = [];
+   			$("dd.systemNum.selected").each(function() {
+          var transaction_id = $(this)[0].innerText;
+          fs_id_list.push(fs_id[transaction_id]);
+   			});
 
  				if($.trim($(".confirmNoticeInfo p.confirmNotice").text()) !== "部分编号无法执行该操作") {
  					$.ajax({
  						url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/orderClear.php'),
  						type: 'POST',
  						data: {
- 							transaction_id_list: JSON.stringify(transaction_id_list)
+              fs_id_list: JSON.stringify(fs_id_list)
  						},
  						success: function(response) {
  							if(response == 'No access permission') {
@@ -537,17 +539,18 @@
  		$(".confirmPaidInfo").css("display", "block");
  		$(".confirmPaidInfo").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
  			if($.trim($(".confirmNoticeInfo  p.confirmNotice").text()) !== "部分编号无法执行该操作") {
- 				var transaction_id_list = [];
- 				$("dd.systemNum.selected").each(function() {
- 					transaction_id_list.push($(this)[0].innerHTML);
- 				});
+        var fs_id_list = [];
+   			$("dd.systemNum.selected").each(function() {
+          var transaction_id = $(this)[0].innerText;
+          fs_id_list.push(fs_id[transaction_id]);
+   			});
 
  				if($.trim($(".confirmNoticeInfo p.confirmNotice").text()) !== "部分编号无法执行该操作") {
  					$.ajax({
  						url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/orderPaid.php'),
  						type: 'POST',
  						data: {
- 							transaction_id_list: JSON.stringify(transaction_id_list)
+              fs_id_list: JSON.stringify(fs_id_list)
  						},
  						success: function(response) {
  							if(response == 'No access permission') {
@@ -616,17 +619,18 @@
  			//确认Finish
  			$(".confirmInfoFinish").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
  				if($.trim($(".confirmNoticeInfo  p.confirmNotice").text()) !== "部分编号无法执行该操作") {
- 					var transaction_id_list = [];
- 					$("dd.systemNum.selected").each(function() {
- 						transaction_id_list.push($(this)[0].innerHTML);
- 					});
+          var fs_id_list = [];
+     			$("dd.systemNum.selected").each(function() {
+            var transaction_id = $(this)[0].innerText;
+            fs_id_list.push(fs_id[transaction_id]);
+     			});
 
  					if($.trim($(".confirmNoticeInfo p.confirmNotice").text()) !== "部分编号无法执行该操作") {
  						$.ajax({
  							url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/orderFinish.php'),
  							type: 'POST',
  							data: {
- 								transaction_id_list: JSON.stringify(transaction_id_list)
+                fs_id_list: JSON.stringify(fs_id_list)
  							},
  							success: function(response) {
  								if(response == 'No access permission') {
@@ -729,19 +733,16 @@
 
  		$(".cancelLockTips p.confirmNotice").html("取消LOCK<br><span style='font-size:14px;'>该操作会同时取消CLEAR</span>");
  		$(".cancelLockTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
- 			var transaction_id_list = [];
  			var fs_id_list = [];
  			$("dd.systemNum.selected").each(function() {
- 				var transaction_id = $(this)[0].innerHTML;
- 				transaction_id_list.push(transaction_id);
- 				fs_id_list.push(fs_id[Number(transaction_id)]);
+ 				var transaction_id = $(this)[0].innerText;
+ 				fs_id_list.push(fs_id[transaction_id]);
  			});
 
  			$.ajax({
  				url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/orderUnlock.php'),
  				type: 'POST',
  				data: {
- 					transaction_id_list: JSON.stringify(transaction_id_list),
  					fs_id_list: JSON.stringify(fs_id_list)
  				},
  				success: function(response) {
@@ -804,19 +805,16 @@
  		$(".cancelClearTips p.confirmNotice").text("取消CLEAR");
  		//确认
  		$(".cancelClearTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
- 			var transaction_id_list = [];
  			var fs_id_list = [];
  			$("dd.systemNum.selected").each(function() {
- 				var transaction_id = $(this)[0].innerHTML;
- 				transaction_id_list.push(transaction_id);
- 				fs_id_list.push(fs_id[Number(transaction_id)]);
+ 				var transaction_id = $(this)[0].innerText;
+ 				fs_id_list.push(fs_id[transaction_id]);
  			});
 
  			$.ajax({
  				url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/orderUnclear.php'),
  				type: 'POST',
  				data: {
- 					transaction_id_list: JSON.stringify(transaction_id_list),
  					fs_id_list: JSON.stringify(fs_id_list)
  				},
  				success: function(response) {
@@ -897,19 +895,16 @@
 
  		//确认：
  		$(".cancelPaidTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
- 			var transaction_id_list = [];
  			var fs_id_list = [];
  			$("dd.systemNum.selected").each(function() {
- 				var transaction_id = $(this)[0].innerHTML;
- 				transaction_id_list.push(transaction_id);
- 				fs_id_list.push(fs_id[Number(transaction_id)]);
+ 				var transaction_id = $(this)[0].innerText;
+ 				fs_id_list.push(fs_id[transaction_id]);
  			});
 
  			$.ajax({
  				url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/orderUnpaid.php'),
  				type: 'POST',
  				data: {
- 					transaction_id_list: JSON.stringify(transaction_id_list),
  					fs_id_list: JSON.stringify(fs_id_list)
  				},
  				success: function(response) {
@@ -974,19 +969,16 @@
  		$(".cancelFinishTips p.confirmNotice").text("取消FINISH");
  		//确认
  		$(".cancelFinishTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
- 			var transaction_id_list = [];
  			var fs_id_list = [];
  			$("dd.systemNum.selected").each(function() {
- 				var transaction_id = $(this)[0].innerHTML;
- 				transaction_id_list.push(transaction_id);
- 				fs_id_list.push(fs_id[Number(transaction_id)]);
+ 				var transaction_id = $(this)[0].innerText;
+ 				fs_id_list.push(fs_id[transaction_id]);
  			});
 
  			$.ajax({
  				url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/orderUnfinish.php'),
  				type: 'POST',
  				data: {
- 					transaction_id_list: JSON.stringify(transaction_id_list),
  					fs_id_list: JSON.stringify(fs_id_list)
  				},
  				success: function(response) {
