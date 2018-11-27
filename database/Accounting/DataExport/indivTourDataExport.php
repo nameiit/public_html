@@ -38,18 +38,18 @@ $sql = "SELECT
             cs.source_name,
             i.exchange_rate,
             i.payment_type,
-            (SELECT sum(fs.debt_raw) 
+            (SELECT sum(fs.debt_raw)
                 FROM FinanceStatus fs
                 WHERE fs.transaction_id = t.transaction_id
                 AND fs.ending <> 'ref'
                 AND fs.ending <> 'sup') AS debt,
             (SELECT sum(fs.debt_cleared)
-                FROM FinanceStatus fs 
+                FROM FinanceStatus fs
                 WHERE fs.transaction_id = t.transaction_id
                 AND fs.ending <> 'ref'
                 AND fs.ending <> 'sup') AS debt_cleared,
             (SELECT sum(fs.received_raw)
-                FROM FinanceStatus fs 
+                FROM FinanceStatus fs
                 WHERE fs.transaction_id = t.transaction_id
                 AND fs.ending <> 'ref'
                 AND fs.ending <> 'sup') AS selling_price,
@@ -63,23 +63,23 @@ $sql = "SELECT
                 WHERE ep.transaction_id = t.transaction_id
                 ) AS extra_supplement,
             (SELECT REPLACE(concat('-', IFNULL(sum(r.okay_its_yours_usd_pending), 0), '|', '+', IFNULL(sum(r.nice_gotit_usd_pending), 0)), '-0.00|+0.00', '')
-                FROM Refund r  
+                FROM Refund r
                 WHERE r.transaction_id = t.transaction_id) AS give_me_refund_usd,
-            (SELECT sum(r.okay_its_yours_usd) 
-                FROM Refund r 
+            (SELECT sum(r.okay_its_yours_usd)
+                FROM Refund r
                 WHERE r.transaction_id = t.transaction_id) AS okay_its_yours,
-            (SELECT sum(r.nice_gotit_usd) 
-                FROM Refund r 
+            (SELECT sum(r.nice_gotit_usd)
+                FROM Refund r
                 WHERE r.transaction_id = t.transaction_id) AS nice_gotit,
-            (SELECT sum(fs.total_profit) 
-                FROM FinanceStatus fs 
+            (SELECT sum(fs.total_profit)
+                FROM FinanceStatus fs
                 WHERE fs.transaction_id = t.transaction_id) AS total_profit,
-            i.tour_name, 
-            i.product_code, 
-            DATE_FORMAT(i.depart_date, '%Y-%m-%d') AS depart_date, 
-            DATE_FORMAT(i.arrival_date, '%Y-%m-%d') AS arrival_date, 
+            i.tour_name,
+            i.product_code,
+            DATE_FORMAT(i.depart_date, '%Y-%m-%d') AS depart_date,
+            DATE_FORMAT(i.arrival_date, '%Y-%m-%d') AS arrival_date,
             (SELECT REPLACE(concat(us_class, '/', first_class, '/', second_class, '/', third_class), 'us/first/second/third', 'NULL')
-                FROM DestinationList 
+                FROM DestinationList
                 WHERE dl_id = i.dl_id) AS destination_list
         FROM Transactions t
         JOIN IndividualTour i ON t.indiv_tour_id = i.indiv_tour_id
@@ -102,12 +102,12 @@ if ($invoice != '%') {
     $sql .= " AND t.transaction_id IN (SELECT DISTINCT transaction_id FROM FinanceStatus WHERE invoice LIKE '$invoice')";
   } else if ($from_invoice != '%' or $to_invoice != '%') {
     $sql .= " AND t.transaction_id IN (
-              SELECT DISTINCT transacation_id 
-              FROM FinanceStatus 
-              WHERE invoice >= '$from_invoice' 
+              SELECT DISTINCT transacation_id
+              FROM FinanceStatus
+              WHERE invoice >= '$from_invoice'
               AND invoice <= '$to_invoice')";
   }
-  
+
   if ($payment_type == 'cc'){
     $sql .= " AND t.transaction_id IN (SELECT DISTINCT transaction_id FROM FiancenStatus WHERE received = 'CC')";
   } else if ($payment_type == 'mco') {
@@ -123,7 +123,7 @@ if ($invoice != '%') {
         $sql .= ")";
     }
   }
-  
+
 
 if (isset($_GET['offset'])) {
     $sql .= " LIMIT 20 OFFSET $offset";

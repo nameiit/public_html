@@ -37,44 +37,44 @@ $sql = "SELECT
           w.wholesaler_code,
           a.invoice,
           DATE_FORMAT(a.ticketed_date, '%Y-%m-%d') as ticketed_date,
-          (SELECT GROUP_CONCAT(concat(UPPER(an.fname), '/', an.lname) SEPARATOR ',') 
-            FROM AirticketNumber an 
-            WHERE an.airticket_tour_id = a.airticket_tour_id 
+          (SELECT GROUP_CONCAT(concat(UPPER(an.fname), '/', an.lname) SEPARATOR ',')
+            FROM AirticketNumber an
+            WHERE an.airticket_tour_id = a.airticket_tour_id
             GROUP BY an.airticket_tour_id) AS customer_name,
           t.note,
           a.exchange_rate_usd_rmb,
           a.payment_type,
-          (SELECT sum(fs.selling_price) 
-            FROM FinanceStatus fs 
-            WHERE fs.transaction_id = t.transaction_id 
-            AND fs.ending IS NOT 'ref') AS selling_price,
-          (SELECT sum(fs.received_finished) 
-            FROM FinanceStatus fs 
+          (SELECT sum(fs.selling_price)
+            FROM FinanceStatus fs
             WHERE fs.transaction_id = t.transaction_id
-            AND fs.ending IS NOT 'ref') AS received,
-          (SELECT sum(fs.debt_raw) 
-            FROM FinanceStatus fs 
+            AND fs.ending <> 'ref') AS selling_price,
+          (SELECT sum(fs.received_finished)
+            FROM FinanceStatus fs
             WHERE fs.transaction_id = t.transaction_id
-            AND fs.ending IS NOT 'ref') AS base_price,
+            AND fs.ending <> 'ref') AS received,
+          (SELECT sum(fs.debt_raw)
+            FROM FinanceStatus fs
+            WHERE fs.transaction_id = t.transaction_id
+            AND fs.ending <> 'ref') AS base_price,
           (SELECT REPLACE(concat('-', IFNULL(sum(r.okay_its_yours_usd_pending), 0), '|', '+', IFNULL(sum(r.nice_gotit_usd_pending), 0)), '-0.00|+0.00', '')
-            FROM Refund r  
+            FROM Refund r
             WHERE r.transaction_id = t.transaction_id) AS give_me_refund_usd,
-          (SELECT sum(r.okay_its_yours_usd) 
-            FROM Refund r 
+          (SELECT sum(r.okay_its_yours_usd)
+            FROM Refund r
             WHERE r.transaction_id = t.transaction_id) AS okay_its_yours_usd,
-          (SELECT sum(r.nice_gotit_usd) 
-            FROM Refund r 
+          (SELECT sum(r.nice_gotit_usd)
+            FROM Refund r
             WHERE r.transaction_id = t.transaction_id) AS nice_gotit_usd,
-          (SELECT sum(fs.total_profit) 
-            FROM FinanceStatus fs 
+          (SELECT sum(fs.total_profit)
+            FROM FinanceStatus fs
             WHERE fs.transaction_id = t.transaction_id) AS total_profit,
-          (SELECT GROUP_CONCAT(an.airticket_number SEPARATOR ',') 
-            FROM AirticketNumber an 
-            WHERE an.airticket_tour_id = a.airticket_tour_id 
-            GROUP BY an.airticket_tour_id) AS airticket_number,  
-          (SELECT GROUP_CONCAT(DISTINCT asl.airline SEPARATOR ',') 
-            FROM AirSchedule asl 
-            WHERE asl.airticket_tour_id = a.airticket_tour_id 
+          (SELECT GROUP_CONCAT(an.airticket_number SEPARATOR ',')
+            FROM AirticketNumber an
+            WHERE an.airticket_tour_id = a.airticket_tour_id
+            GROUP BY an.airticket_tour_id) AS airticket_number,
+          (SELECT GROUP_CONCAT(DISTINCT asl.airline SEPARATOR ',')
+            FROM AirSchedule asl
+            WHERE asl.airticket_tour_id = a.airticket_tour_id
             GROUP BY asl.airticket_tour_id) AS airline,
           DATE_FORMAT(a.depart_date, '%Y-%m-%d') as depart_date,
           DATE_FORMAT(a.back_date, '%Y-%m-%d') as back_date,
@@ -96,8 +96,8 @@ $sql = "SELECT
         AND t.settle_time <= '$to_date'
         AND t.settle_time >= '$from_date'
         AND a.airticket_tour_id IN (
-          SELECT DISTINCT airticket_tour_id 
-          FROM Airschedule 
+          SELECT DISTINCT airticket_tour_id
+          FROM Airschedule
           WHERE airline LIKE '$airline'
           AND (depart_date LIKE '$depart_date'
           OR depart_date LIKE '$back_date')
@@ -112,9 +112,9 @@ if ($invoice != '%') {
   $sql .= " AND t.transaction_id IN (SELECT DISTINCT transaction_id FROM FinanceStatus WHERE invoice LIKE '$invoice')";
 } else if ($from_invoice != '%' or $to_invoice != '%') {
   $sql .= " AND t.transaction_id IN (
-            SELECT DISTINCT transacation_id 
-            FROM FinanceStatus 
-            WHERE invoice >= '$from_invoice' 
+            SELECT DISTINCT transacation_id
+            FROM FinanceStatus
+            WHERE invoice >= '$from_invoice'
             AND invoice <= '$to_invoice')";
 }
 
