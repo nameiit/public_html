@@ -54,10 +54,11 @@ if ($_GET['orderType'] == 'group') {
       $non_cc_payment_type_arr = json_decode($_GET['non_cc_payment_type']);
     }
 
-    $sql_indiv = "SELECT count(*) AS num_orders, 
-                    sum(fs.debt_raw) AS sum_debt, 
-                    sum(fs.received_raw) AS sum_received, 
-                    sum(fs.total_profit) AS sum_profit
+    $sql_indiv = "SELECT count(*) AS num_orders,
+                    sum(fs.debt_raw) AS sum_debt,
+                    sum(fs.received_raw) AS sum_received,
+                    sum(fs.total_profit) AS sum_profit,
+                    sum(fs.selling_price) AS sum_selling_price
                     FROM FinanceStatus fs
                     JOIN Transactions t ON fs.transaction_id = t.transaction_id
                     JOIN IndividualTour i ON i.indiv_tour_id = t.indiv_tour_id
@@ -73,7 +74,7 @@ if ($_GET['orderType'] == 'group') {
                     AND fs.clear_status LIKE '$clear_status'
                     AND fs.paid_status LIKE '$paid_status'
                     AND fs.finish_status LIKE '$finish_status'
-                    AND c.fname LIKE '$fname' 
+                    AND c.fname LIKE '$fname'
                     AND c.lname LIKE '$lname'
                     ";
     if ($payment_type == 'cc'){
@@ -93,11 +94,11 @@ if ($_GET['orderType'] == 'group') {
     }
 
     if ($invoice != '%') {
-    $sql_indiv .= " AND fs.invoice LIKE '$invoice'";
+      $sql_indiv .= " AND fs.invoice LIKE '$invoice'";
     } else if ($from_invoice != '%' or $to_invoice != '%') {
-    $sql_indiv .= " AND (fs.invoice >= '$from_invoice' AND fs.invoice <= '$to_invoice')";
+      $sql_indiv .= " AND (fs.invoice >= '$from_invoice' AND fs.invoice <= '$to_invoice')";
     }
-    echo $sql_indiv;
+    // echo $sql_indiv;
     $result = $conn->query($sql_indiv);
 
     $res = array();
@@ -107,7 +108,7 @@ if ($_GET['orderType'] == 'group') {
     }
 
     echo json_encode($res);
-    
+
 } else if ($_GET['orderType'] == 'airticket') {
     $salesperson = $login_username;
     $transaction_id = empty($_GET['transaction_id']) ? '%' : $_GET['transaction_id'];
@@ -136,7 +137,8 @@ if ($_GET['orderType'] == 'group') {
                 count(*) AS num_orders,
                 sum(fs.total_profit) AS sum_profit,
                 sum(fs.debt_raw) AS sum_debt,
-                sum(fs.received_raw) AS sum_received
+                sum(fs.received_raw) AS sum_received,
+                sum(fs.selling_price) AS sum_selling_price
             FROM FinanceStatus fs
             JOIN Transactions t ON fs.transaction_id = t.transaction_id
             JOIN AirticketTour a ON a.airticket_tour_id = t.airticket_tour_id

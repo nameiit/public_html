@@ -6,8 +6,6 @@ $locator = empty($_GET['locator']) ? '%' : $_GET['locator'];
 $from_date = $_GET['from_date'];
 $to_date = $_GET['to_date'];
 
-$fname = empty($_GET['fname']) ? '%' : $_GET['fname'];
-$lname = empty($_GET['lname']) ? '%' : $_GET['lname'];
 $from_invoice = empty($_GET['from_invoice']) ? '%' : $_GET['from_invoice'];
 $to_invoice = empty($_GET['to_invoice']) ? '%' : $_GET['to_invoice'];
 $invoice = empty($_GET['invoice']) ? '%' : $_GET['invoice'];
@@ -19,8 +17,9 @@ $ticketed_date = empty($_GET['issue_time']) ? '%' : $_GET['issue_time'];
 
 $wholesaler = empty($_GET['wholesaler']) ? '%' : $_GET['wholesaler'];
 $payment_type = $_GET['payment_type'];
+
 if ($payment_type == 'non-cc') {
-  $deal_location = $_GET['deal_location'];
+  $deal_location = $_GET['deal_location'] == 'all' ? '%' : $_GET['deal_location'];
   $non_cc_payment_type_arr = json_decode($_GET['non_cc_payment_type']);
 }
 
@@ -38,19 +37,45 @@ $sql = "SELECT
           w.wholesaler_code,
           a.invoice,
           DATE_FORMAT(a.ticketed_date, '%Y-%m-%d') as ticketed_date,
-          concat(UPPER(an.fname), '/', an.lname) AS customer_name,
+          (SELECT GROUP_CONCAT(concat(UPPER(an.fname), '/', an.lname) SEPARATOR ',') 
+            FROM AirticketNumber an 
+            WHERE an.airticket_tour_id = a.airticket_tour_id 
+            GROUP BY an.airticket_tour_id) AS customer_name,
           t.note,
           a.exchange_rate_usd_rmb,
           a.payment_type,
-          fs.selling_price,
-          fs.received,
-          fs.base_price,
-          r.give_me_refund_usd,
-          r.okay_its_yours_usd,
-          r.nice_gotit_usd,
-          fs.total_profit,
-          GROUP_CONCAT(an.airticket_number SEPARATOR ',') AS airticket_number,
-          GROUP_CONCAT(DISTINCT asl.airline SEPARATOR ',') AS airline,
+          (SELECT sum(fs.selling_price) 
+            FROM FinanceStatus fs 
+            WHERE fs.transaction_id = t.transaction_id 
+            AND fs.ending IS NOT 'ref') AS selling_price,
+          (SELECT sum(fs.received_finished) 
+            FROM FinanceStatus fs 
+            WHERE fs.transaction_id = t.transaction_id
+            AND fs.ending IS NOT 'ref') AS received,
+          (SELECT sum(fs.debt_raw) 
+            FROM FinanceStatus fs 
+            WHERE fs.transaction_id = t.transaction_id
+            AND fs.ending IS NOT 'ref') AS base_price,
+          (SELECT REPLACE(concat('-', IFNULL(sum(r.okay_its_yours_usd_pending), 0), '|', '+', IFNULL(sum(r.nice_gotit_usd_pending), 0)), '-0.00|+0.00', '')
+            FROM Refund r  
+            WHERE r.transaction_id = t.transaction_id) AS give_me_refund_usd,
+          (SELECT sum(r.okay_its_yours_usd) 
+            FROM Refund r 
+            WHERE r.transaction_id = t.transaction_id) AS okay_its_yours_usd,
+          (SELECT sum(r.nice_gotit_usd) 
+            FROM Refund r 
+            WHERE r.transaction_id = t.transaction_id) AS nice_gotit_usd,
+          (SELECT sum(fs.total_profit) 
+            FROM FinanceStatus fs 
+            WHERE fs.transaction_id = t.transaction_id) AS total_profit,
+          (SELECT GROUP_CONCAT(an.airticket_number SEPARATOR ',') 
+            FROM AirticketNumber an 
+            WHERE an.airticket_tour_id = a.airticket_tour_id 
+            GROUP BY an.airticket_tour_id) AS airticket_number,  
+          (SELECT GROUP_CONCAT(DISTINCT asl.airline SEPARATOR ',') 
+            FROM AirSchedule asl 
+            WHERE asl.airticket_tour_id = a.airticket_tour_id 
+            GROUP BY asl.airticket_tour_id) AS airline,
           DATE_FORMAT(a.depart_date, '%Y-%m-%d') as depart_date,
           DATE_FORMAT(a.back_date, '%Y-%m-%d') as back_date,
           a.ticket_type,
@@ -64,42 +89,57 @@ $sql = "SELECT
         ON a.salesperson_id = s.salesperson_id
         JOIN Wholesaler w
         ON a.wholesaler_id = w.wholesaler_id
-        JOIN AirticketNumber an
-        ON an.airticket_tour_id = a.airticket_tour_id
-        JOIN FinanceStatus fs
-        ON t.transaction_id = fs.transaction_id
-        LEFT JOIN Refund r
-        ON r.transaction_id = t.transaction_id
-        JOIN AirSchedule asl
-        ON asl.airticket_tour_id = a.airticket_tour_id
         LEFT JOIN CustomerSource cs
         ON cs.source_id = t.source_id
         WHERE t.transaction_id LIKE '$transaction_id'
         AND a.locators LIKE '$locator'
         AND t.settle_time <= '$to_date'
         AND t.settle_time >= '$from_date'
-        AND an.fname LIKE concat('%', '$fname', '%')
-        AND an.lname LIKE concat('%', '$lname', '%')
-        AND asl.airline LIKE '$airline'
-        AND a.depart_date LIKE '$depart_date'
-        AND a.back_date LIKE '$back_date'
+        AND a.airticket_tour_id IN (
+          SELECT DISTINCT airticket_tour_id 
+          FROM Airschedule 
+          WHERE airline LIKE '$airline'
+          AND (depart_date LIKE '$depart_date'
+          OR depart_date LIKE '$back_date')
+        )
         AND a.ticketed_date LIKE '$ticketed_date'
         AND w.wholesaler_code LIKE '$wholesaler'
-        AND fs.lock_status LIKE '$lock_status'
-        AND fs.clear_status LIKE '$clear_status'
-        AND fs.paid_status LIKE '$paid_status'
-        AND fs.finish_status LIKE '$finish_status'";
+        AND t.transaction_id IN (
+          SELECT DISTINCT transaction_id FROM FinanceStatus WHERE lock_status LIKE '$lock_status' AND clear_status LIKE '$clear_status' AND paid_status LIKE '$paid_status' AND finish_status LIKE '$finish_status'
+        )";
 
 if ($invoice != '%') {
-  $sql .= " AND fs.invoice LIKE '$invoice'";
+  $sql .= " AND t.transaction_id IN (SELECT DISTINCT transaction_id FROM FinanceStatus WHERE invoice LIKE '$invoice')";
 } else if ($from_invoice != '%' or $to_invoice != '%') {
-  $sql .= " AND (fs.invoice >= '$from_invoice' AND fs.invoice <= '$to_invoice')";
+  $sql .= " AND t.transaction_id IN (
+            SELECT DISTINCT transacation_id 
+            FROM FinanceStatus 
+            WHERE invoice >= '$from_invoice' 
+            AND invoice <= '$to_invoice')";
 }
 
-$sql .=" GROUP BY a.airticket_tour_id";
+if ($payment_type == 'cc'){
+  $sql .= " AND t.transaction_id IN (SELECT DISTINCT transaction_id FROM FiancenStatus WHERE received = 'CC')";
+} else if ($payment_type == 'mco') {
+  $sql .= " AND t.transaction_id IN (SELECT DISTINCT transaction_id FROM FiancenStatus WHERE ending = 'mco')";
+} else if ($payment_type == 'non-cc') {
+  $sql .= " AND a.deal_location LIKE '$deal_location'";
+  if (sizeof($non_cc_payment_type_arr) > 0) {
+      $sql .= " AND a.payment_type IN (";
+      for ($i = 0; $i < sizeof($non_cc_payment_type_arr); $i++) {
+          $sql = $sql . "'" . $non_cc_payment_type_arr[$i] . "',";
+      }
+      $sql = substr($sql, 0, -1);
+      $sql .= ")";
+  }
+}
+
 if (isset($_GET['offset'])) {
     $sql .= " LIMIT 20 OFFSET $offset";
 }
+
+
+// echo $sql;
 $result = $conn->query($sql);
 
 $res = array();

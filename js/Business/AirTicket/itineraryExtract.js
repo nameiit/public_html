@@ -75,7 +75,7 @@ $(document).ready(function () {
           `);
       }
       $("#air-ticket-create-total-number").val(res[0]['name'].length);
-      
+
       for (var i = 0; i < res[0]['name'].length; i++) {
         $(".passenger-name").eq(i).val(res[0]['name'][i]);
       }
@@ -191,7 +191,7 @@ $(document).ready(function () {
     if(invoice) {
       var invoicestr = invoice[0].split(' ')[1];
     } else {
-      var invoicestr = " ";
+      var invoicestr = "";
     }
 
     // 行程
@@ -313,7 +313,7 @@ $(document).ready(function () {
     if(invoice) {
       var invoicestr = invoice[0].split(' ')[2];
     } else {
-      var invoicestr = " ";
+      var invoicestr = "";
     }
 
     // 行程
@@ -499,7 +499,7 @@ $(document).ready(function () {
     if(invoice) {
       var invoicestr = invoice[0].split(' ')[2];
     } else {
-      var invoicestr = " ";
+      var invoicestr = "";
     }
 
     // 行程信息

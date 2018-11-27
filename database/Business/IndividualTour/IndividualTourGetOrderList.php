@@ -29,7 +29,9 @@ if ($payment_type == 'non-cc') {
   $deal_location = $_GET['deal_location'];
   $non_cc_payment_type_arr = json_decode($_GET['non_cc_payment_type']);
 }
- 
+
+$offset = $_GET['offset'];
+
 $sql_indiv = "SELECT
                 fs.fs_id,
                 concat(fs.transaction_id, IFNULL(fs.ending, '')) AS transaction_id,
@@ -46,7 +48,8 @@ $sql_indiv = "SELECT
                 fs.following_id_collection,
                 t.type,
                 i.payment_type,
-                fs.check_no
+                fs.check_no,
+                concat(UPPER(c.lname), '/', c.fname) as customer_name
             FROM FinanceStatus fs
             JOIN Transactions t ON fs.transaction_id = t.transaction_id
             JOIN IndividualTour i ON i.indiv_tour_id = t.indiv_tour_id
@@ -62,7 +65,7 @@ $sql_indiv = "SELECT
             AND fs.clear_status LIKE '$clear_status'
             AND fs.paid_status LIKE '$paid_status'
             AND fs.finish_status LIKE '$finish_status'
-            AND c.fname LIKE '$fname' 
+            AND c.fname LIKE '$fname'
             AND c.lname LIKE '$lname'
             ";
 if ($payment_type == 'cc'){
@@ -97,7 +100,7 @@ if (!empty($_GET['create_time_sort'])) {
     $sql .= $_GET['return_time_sort'];
 } else {
     $sql .= " ORDER BY fs.transaction_id DESC";
-}  
+}
 $sql .= " LIMIT 20 OFFSET $offset";
 
 $result = $conn->query($sql);

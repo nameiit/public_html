@@ -39,6 +39,15 @@ $gender = $_POST['gender'];
 $email = $_POST['email'];
 $zipcode = $_POST['zipcode'];
 
+/******
+在这里
+*****/
+$cc_amount = $_POST['cc_amount'];
+$noncc_amount = $_POST['noncc_amount'];
+/******
+在这里
+*****/
+
 
 $query = "SELECT * FROM Customer WHERE fname = '$fname' AND lname = '$lname'";
 $result = $conn->query($query);
@@ -172,28 +181,28 @@ if ($prof_currency == 'RMB') {
   $profit_trans = $profit / $indiv_exchange_rate;
 }
 $transactionsInsertSql = "INSERT INTO Transactions(
-    type,
-    indiv_tour_id,
-    note,
-    create_time,
-    settle_time,
-    source_id,
-    received,
-    expense,
-    total_profit,
-    currency
-  ) VALUES (
-    'individual',
-    '$individualTourId',
-    '$indiv_note',
-    current_timestamp,
-    (SELECT arrival_date FROM IndividualTour WHERE indiv_tour_id = $individualTourId),
-    (SELECT source_id FROM CustomerSource WHERE source_name = '$indiv_source'),
-    '$sell_price_trans',
-    '$base_price_trans',
-    $profit_trans,
-    'USD'
-)";
+                            type,
+                            indiv_tour_id,
+                            note,
+                            create_time,
+                            settle_time,
+                            source_id,
+                            received,
+                            expense,
+                            total_profit,
+                            currency
+                          ) VALUES (
+                            'individual',
+                            '$individualTourId',
+                            '$indiv_note',
+                            current_timestamp,
+                            (SELECT arrival_date FROM IndividualTour WHERE indiv_tour_id = $individualTourId),
+                            (SELECT source_id FROM CustomerSource WHERE source_name = '$indiv_source'),
+                            '$sell_price_trans',
+                            '$base_price_trans',
+                            $profit_trans,
+                            'USD'
+                        )";
 $conn->query($transactionsInsertSql);
 
 $sql = "SELECT max(transaction_id) AS transaction_id
@@ -260,6 +269,8 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
     $expired_date_month = $_POST['expired_date_month'];
     $expired_date_year = $_POST['expired_date_year'];
     $card_holder = $_POST['card_holder'];
+    $mco_receiver = $_POST['mco_receiver'];
+
     $sql = "INSERT INTO FinanceStatus(transaction_id, invoice,
                   lock_status,clear_status,paid_status,finish_status,
                   debt, received, selling_price, create_time,
@@ -298,6 +309,45 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
           GROUP BY tc.starter_id
           ";
   $conn->query($sql);
+
+  $expire_date = $expired_date_month . '/' . $expired_date_year;
+
+  $sql = "INSERT INTO NoticeBoard (valid_until, edited_by, category) VALUES (CURRENT_DATE + INTERVAL 1 year, $salesperson_id, 'mco')";
+  $conn->query($sql);
+  $sql = "SELECT max(notice_id) AS notice_id FROM NoticeBoard WHERE edited_by = $salesperson_id AND category = 'mco'";
+  $result = $conn->query($sql);
+  $notice_id = $result->fetch_assoc()['notice_id'];
+  $sql = "INSERT INTO NoticeTarget (notice_id, target_id)
+          SELECT '$notice_id', ua.user_id
+          FROM UserAccount ua
+          WHERE ua.account_id LIKE '$mco_receiver'";
+
+  // echo $sql;
+  $conn->query($sql);
+  $sql = "INSERT INTO McoInfo
+          (
+            cardholder,
+            card_number,
+            exp_date,
+            notice_id,
+            create_time,
+            charging_amount,
+            charging_amount_currency
+          ) VALUES
+          (
+            '$card_holder',
+            '$card_number',
+            '$expire_date',
+            '$notice_id',
+            current_timestamp,
+            '$mco_value',
+            'USD'
+          )";
+  $conn->query($sql);
+  $sql = "SELECT mco_id FROM McoInfo WHERE notice_id = '$notice_id'";
+  $result = $conn->query($sql);
+  $mco_id = $result->fetch_assoc()['mco_id'];
+
   $sql = "INSERT INTO McoPayment
           (
             mco_party,
@@ -307,7 +357,8 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
             fee_ratio,
             face_currency,
             mco_currency,
-            mco_credit_currency
+            mco_credit_currency,
+            mco_id
           ) VALUES (
             '$mco_party',
             '$face_value',
@@ -316,7 +367,8 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
             '$fee_ratio',
             '$face_currency',
             '$mco_currency',
-            '$mco_credit_currency'
+            '$mco_credit_currency',
+            '$mco_id'
           )";
     $conn->query($sql);
 
@@ -326,14 +378,7 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
 
     $sql = "UPDATE IndividualTour SET mp_id = '$mp_id' WHERE indiv_tour_id = '$individualTourId'";
     $conn->query($sql);
-    $sql = "INSERT INTO NoticeBoard (valid_until, edited_by, category) VALUES (CURRENT_DATE + INTERVAL 1 year, $salesperson_id, 'mco')";
-    $conn->query($sql);
-    $sql = "SELECT max(notice_id) FROM NoticeBoard WHERE edited_by = $salesperson_id AND category = 'mco'";
-    $result = $conn->query($sql);
-    $notice_id = $result->fetch_assoc()['notice_id'];
-    $exp_date = $expired_date_month . '/' . $expired_date_year;
-    $sql = "INSERT INTO McoInfo (cardholder, card_number, exp_date, notice_id, used_id, create_time) VALUES ('$card_holder', '$card_number', '$exp_date', $notice_id, current_timestamp)";
-    $conn->query($sql);
+
 } else if ($payment_type == 'mcoall') {
   $mco_party = $_POST['mco_party'];
   $face_value = $_POST['face_value'];
@@ -420,6 +465,11 @@ if ($payment_type == 'wholesalerall' || $payment_type == 'wholesalercheck' || $p
     $sql = "SELECT max(notice_id) FROM NoticeBoard WHERE edited_by = $salesperson_id AND category = 'mco'";
     $result = $conn->query($sql);
     $notice_id = $result->fetch_assoc()['notice_id'];
+    $sql = "INSERT INTO NoticeTarget (notice_id, target_id)
+            SELECT $notice_id, ua.user_id
+            FROM UserAccount
+            WHERE ua.account_id LIKE '$mco_receiver'";
+    $conn->query($sql);
     $exp_date = $expired_date_month . '/' . $expired_date_year;
     $sql = "INSERT INTO McoInfo (cardholder, card_number, exp_date, notice_id, used_id, create_time) VALUES ('$card_holder', '$card_number', '$exp_date', $notice_id, current_timestamp)";
     $conn->query($sql);

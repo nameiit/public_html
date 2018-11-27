@@ -212,7 +212,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<li>
 												<div class="leftFloor wholesalerInfo">
 													<label>开票商</label>
-													<input type="text"  placeholder="Search..." id="wholesaler">
+													<input type="text"  placeholder="Search..." id="wholesaler-filter">
 												</div>
 												<div class="rightFloor">
 													<div class="rightContent">
@@ -342,7 +342,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<li class="salePrice">
 												<a href="javascript:void(0);">
 													<label>
-														卖价
+														卖价(<span id="sum_selling_price"></span>)
 													</label>
 												</a>
 											</li>
@@ -570,9 +570,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<div class="cardLeft nm-left cardLeft-individual">
 												<label class="markMsg"><i></i>基本信息</label>
 												<ul class="add-msg add-msg-individual-left">
-													<li class="requiredItem">
+													<li class="requiredItem salesperson">
 														<label class="nm-left">销售人员</label>
-														<input id="update-salesperson" type="text" placeholder="Search...">
+														<input id="airticket_salesperson" type="text" placeholder="Search...">
 													</li>
 													<li class="requiredItem">
 														<label class="nm-left">机票定位</label>
@@ -592,7 +592,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<li class="ticket-theam requiredItem">
 														<label class="nm-left">团散</label>
 														<dl class="ticket-option">
-															<dd class="update-group" id="update-ticket-type">团票</dd>
+															<dd class="update-group" id="air-ticket-create-ticket-type">团票</dd>
 															<dd class="update-individual option-active">散票</dd>
 														</dl>
 													</li>
@@ -602,25 +602,26 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</li>
 													<li>
 														<label class="nm-left">开票商</label>
-														<input type="text" id="update-wholesaler" placeholder="Search..."/>
+														<input type="text" id="wholesaler" placeholder="Search..."/>
 													</li>
 													<!--出票时间-->
 													<li class="requiredItem">
 														<label class="nm-left">出票时间</label>
-														<input type="date">
+														<input type="date" id="ticketed_time">
 													</li>
-													
+
 													<li class="requiredItem">
 														<label class="nm-left">INVOICE</label>
 														<input type="text" id="air-ticket-create-invoice">
 													</li>
-													<li>
+													<li class="airticketSource">
 														<label class="nm-left">顾客来源</label>
-														<input type="text" id="update-source" placeholder="Search..." />
+														<input type="text" id="airticket_source" placeholder="Search..." />
 													</li>
 													<li>
 														<label class="nm-left">备注</label>
-														<div class="notesInfor" contenteditable="true" id="air-ticket-create-note"></div>
+														<textarea rows="5" id="air-ticket-create-note"></textarea>
+														<!-- <div class="notesInfor" contenteditable="true" id="air-ticket-create-note"></div> -->
 													</li>
 												</ul>
 											</div>
@@ -644,7 +645,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<ul class="add-msg">
 													<li class="exchangeRate requiredItem">
 														<label class="nm-left">成交汇率</label>
-														<span>1&nbsp;&nbsp;美元&nbsp;&nbsp;=&nbsp;&nbsp; <input type="text" id="update-exchange-rate"  value="6.8"  disabled>&nbsp;&nbsp;人民币</span>
+														<span>1&nbsp;&nbsp;美元&nbsp;&nbsp;=&nbsp;&nbsp; <input type="text" id="exchange_rate" disabled>&nbsp;&nbsp;人民币</span>
 													</li>
 													<li class="requiredItem payment-type areaInfo">
 														<label class="nm-left">成交地点</label>
@@ -662,24 +663,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</div>
 													</li>
 													<li class="requiredItem list_currency">
-														<label class="nm-left">卖价</label>
-														<input type="text" id="update-sell-price" class="numFormat airTicket_sellPrice"/>
-														<div class="payment currency_type">
-															<div class="dropdown currency">
-																<button class="btn btn-default" type="button" data-toggle="dropdown">
-																    <span id="sell-price-currency" class="txt currency_txt salePrice_currency">美元</span>
-																    <span class="caret"></span>
-																</button>
-																<ul class="dropdown-menu currency_box salePrice_currencyBox" role="menu">
-																	<li><a tabindex="0">美元</a></li>
-																	<li><a tabindex="0">人民币</a></li>
-																</ul>
-															</div>
-														</div>
-													</li>
-													<li class="requiredItem list_currency">
 														<label class="nm-left">底价</label>
-														<input type="text" id="update-base-price" class="numFormat"/>
+														<input type="text" id="air-ticket-base-price" class="numFormat"/>
 														<div class="payment currency_type">
 															<div class="dropdown currency">
 																<button class="btn btn-default" type="button" data-toggle="dropdown">
@@ -693,12 +678,28 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															</div>
 														</div>
 													</li>
+													<li class="requiredItem list_currency">
+														<label class="nm-left">卖价</label>
+														<input type="text" id="air_amountDue" class="numFormat airTicket_sellPrice"/>
+														<div class="payment currency_type">
+															<div class="dropdown currency">
+																<button class="btn btn-default" type="button" data-toggle="dropdown">
+																    <span id="sell-price-currency" class="txt currency_txt salePrice_currency">美元</span>
+																    <span class="caret"></span>
+																</button>
+																<ul class="dropdown-menu currency_box salePrice_currencyBox" role="menu">
+																	<li><a tabindex="0">美元</a></li>
+																	<li><a tabindex="0">人民币</a></li>
+																</ul>
+															</div>
+														</div>
+													</li>
 													<li class="requiredItem payment-type paymentMethodInfo">
 														<label class="nm-left">支付方式</label>
 														<div class="payment">
 															<div class="dropdown paymentMethod">
 																<button class="btn btn-default" type="button" data-toggle="dropdown">
-																   	<span id="update-payment-type" class="txt">支付方式</span>
+																   	<span id="air-ticket-create-payment-type" class="txt">支付方式</span>
 																    <span class="caret"></span>
 																</button>
 																<ul class="dropdown-menu methodList" role="menu">
@@ -754,7 +755,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															<div class="payment currency_type">
 																<div class="dropdown currency">
 																	<button class="btn btn-default" type="button" data-toggle="dropdown">
-																	    <span id="face-value-currency" class="txt currency_txt faceValue_currency">美元</span>
+																	    <span id="face-currency" class="txt currency_txt faceValue_currency">美元</span>
 																	    <span class="caret"></span>
 																	</button>
 																	<ul class="dropdown-menu currency_box faceValue_currencyBox" role="menu">
@@ -770,7 +771,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															<div class="payment currency_type">
 																<div class="dropdown currency">
 																	<button class="btn btn-default" type="button" data-toggle="dropdown">
-																	    <span id="mco-value-currency" class="txt currency_txt mcoAmount_currency">美元</span>
+																	    <span id="mco-currency" class="txt currency_txt mcoAmount_currency">美元</span>
 																	    <span class="caret"></span>
 																	</button>
 																	<ul class="dropdown-menu currency_box mcoAmount_currencyBox" role="menu">
@@ -798,14 +799,14 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</li>
 														<li class="list_account rate">
 															<label class="nm-left">费率</label>
-															<input type="text" class="rateInfo" id="mco-ratio">
+															<input type="text" class="rateInfo" id="fee-ratio">
 															<!--<span></span>-->
 															<a href="javascript:void(0);">以4%计算</a>
 														</li>
 													</div>
 													<li class="list_account profitInfor">
 														<label class="nm-left">利润</label>
-														<input type="text" disabled="disabled" id="airTicket_update_profit">
+														<input type="text" disabled="disabled" id="airTicketProfit">
 														<span id="profit-currency">美元</span>
 													</li>
 													<div class="creditCardInfo">
@@ -849,9 +850,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															</div>
 															<!--持卡人  e-->
 															</li>
-															<li>
+															<li class="requiredItem mcoReceiver">
 																<label class="nm-left">MCO负责人</label>
-																<input type="text" placeholder="Search..." />
+																<input type="text" placeholder="Search..." id="mco-receiver">
 															</li>
 														</div>
 												</ul>
@@ -957,11 +958,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																</dd>
 															<dd class="requiredItem">
 																<label>电话</label>
-																<input type="text" id="update-customer-phone">
+																<input type="text" id="ticket-create-customer-phone">
 															</dd>
 															<dd class="requiredItem">
 																<label>邮箱</label>
-																<input type="text" id="update-customer-email">
+																<input type="text" id="ticket-create-customer-email">
 															</dd>
 														</dl>
 													</li>
@@ -977,11 +978,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															</dd>-->
 															<dd class="birthday">
 																<label>生日</label>
-																<input type="date" id="update-customer-birthday">
+																<input type="date" id="ticket-create-customer-birthday">
 															</dd>
 															<dd class="gender">
 																<label>性别</label>
-																<select id="update-customer-gender">
+																<select id="ticket-create-customer-gender">
 																	<option value="UNKNOWN">Unknown</option>
 																	<option value="M">男</option>
 																	<option value="F">女</option>
@@ -989,19 +990,19 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															</dd>
 															<dd>
 																<label>其他联系方式</label>
-																<select id="update-customer-otherContact">
+																<select id="ticket-create-customer-otherContact">
 																	<option value="WeChat">WeChat</option>
 																	<option value="QQ">QQ</option>
 																	<option value="Facebook">Facebook</option>
 																</select>
 															</dd>
 															<dd>
-																<label id="update-customer-otherContactLabel">WeChat账号</label>
-																<input type="text" id="update-customer-otherContactNumber">
+																<label id="ticket-create-customer-otherContactLabel">WeChat账号</label>
+																<input type="text" id="ticket-create-customer-otherContactNumber">
 															</dd>
 															<dd class="zipCode">
 																<label>邮政编码</label>
-																<input type="text" id="update-customer-zipcode">
+																<input type="text" id="ticket-create-customer-zipcode">
 															</dd>
 														</dl>
 													</li>

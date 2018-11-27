@@ -184,7 +184,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												</li>
 												<li>
 													<label class="nm-left">备注</label>
-													<div class="notesInfor" contenteditable="true" id="indiv_note"></div>
+													<textarea rows="5" id="indiv_note"></textarea>
+													<!-- <div class="notesInfor" contenteditable="true" id="indiv_note"></div> -->
 												</li>
 											</ul>
 										</div>
@@ -259,9 +260,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<input type="text" id="card-holder" class="notRequired">
 													</div>
 												</li>
-												<li>
+												<li class="requiredItem">
 													<label class="nm-left">MCO负责人</label>
-													<input type="text" placeholder="Search..." />
+													<input type="text" placeholder="Search..." id="mco-receiver">
 												</li>
 											</ul>
 										</div>
@@ -570,11 +571,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<div class="partCreditCard">
 													<li>
 														<label class="nm-left">供应商刷卡金额</label>
-														<input type="text" class="creditCardAmount" />
+														<input type="text" class="creditCardAmount" id="wholesaler-charge-amount">
 													</li>
 													<li>
 														<label class="nm-left">非刷卡金额</label>
-														<input type="text"  class="non-creditCardAmount"/>
+														<input type="text"  class="non-creditCardAmount" id="mco-charge-amount">
 													</li>
 												</div>
 												<div class="mcoList">
@@ -677,7 +678,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<li class="rate">
 														<label class="nm-left">费率</label>
 														<input type="text" class="rateInfo" id="fee-ratio">
-														<a href="javascript:void(0);" class="">以4%计算</a>	
+														<a href="javascript:void(0);" >以4%计算</a>
 													</li>
 												</div>
 												<!--支付方式      e-->

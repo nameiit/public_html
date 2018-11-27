@@ -183,12 +183,12 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</div>
 										</li>
 										<li>
-											<div class="leftFloor customerName">
+											<!--<div class="leftFloor customerName">
 												<label>顾客姓名</label>
 												<input type="text" placeholder="Last Name" class="name" id="lname">
 												<input type="text" placeholder="First Name" class="name" id="fname">
-											</div>
-											<div class="rightFloor invoiceInfo">
+											</div>-->
+											<div class="rightFloor invoiceInfo airTicket_invoice">
 												<div class="rightContent invoiceInfo">
 													<label>INVOICE</label>
 													<div class="invoice1">

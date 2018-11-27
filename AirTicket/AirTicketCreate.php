@@ -177,7 +177,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<li class="ticket-theam requiredItem">
 												<label class="nm-left">往返</label>
 												<dl class="ticket-option flightCodeNav">
-													<dd class="option-active  roundTripItem" id="air-ticket-create-round-trip">往返</dd>
+													<dd class="option-active roundTripItem" id="air-ticket-create-round-trip">往返</dd>
 													<dd class="singleTripItem">单程</dd>
 												</dl>
 											</li>
@@ -211,7 +211,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</li>
 											<li class="requiredItem">
 												<label class="nm-left">出票时间</label>
-												<input type="date" id="ticketed_time"/>
+												<input type="date" id="ticketed_time">
 											</li>
 											<li class="requiredItem">
 												<label class="nm-left">INVOICE</label>
@@ -227,8 +227,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</li>
 											<li>
 												<label class="nm-left">备注</label>
-												<!--<textarea rows="5" id="air-ticket-create-note"></textarea>-->
-												<div class="notesInfor" contenteditable="true" id="air-ticket-create-note"></div>
+												<textarea rows="5" id="air-ticket-create-note"></textarea>
+												<!-- <div class="notesInfor" contenteditable="true" id="air-ticket-create-note"></div> -->
 											</li>
 										</ul>
 									</div>
@@ -463,9 +463,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</div>
 													<!--持卡人  e-->
 												</li>
-												<li>
+												<li class="requiredItem">
 													<label class="nm-left">MCO负责人</label>
-													<input type="text" placeholder="Search..." />
+													<input type="text" placeholder="Search..." id="mco-receiver">
 												</li>
 											</div>
 										</ul>
@@ -611,75 +611,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												</dl>
 											</li>
 										</ul>
-									</div>
-									<div class="addClients customerInfo editcustomerInfo nm-hide air-customer">
-										<a href="#" class="close-customer nm-right" id="plane-close-customer">
-											<img src="../img/close.png">
-										</a>
-										<ul class="clients-title">
-											<li><a>基本信息</a></li>
-											<li><a>客户信息</a></li>
-										</ul>
-										<ul class="clients-info">
-											<li>
-												<dl>
-													<dd class="pname">
-														<label>姓</label>
-														<input type="text" id="ticket-edit-customer-lastName"/>
-													</dd>
-													<dd class="pname">
-														<label>名</label>
-														<input type="text" id="ticket-edit-customer-firstName"/>
-													</dd>
-													<dd>
-														<label>电话</label>
-														<input type="text" id="ticket-edit-customer-phone"/>
-													</dd>
-													<dd>
-														<label>其他联系方式</label>
-														<select id="ticket-edit-customer-otherContack">
-															<option value="WeChat">WeChat</option>
-															<option value="QQ">QQ</option>
-															<option value="Facebook">Facebook</option>
-														</select>
-													</dd>
-													<dd>
-														<label id="ticket-edit-customer-otherContactLabel">WeChat账号</label>
-														<input type="text" id="ticket-edit-customer-otherContackNumber"/>
-													</dd>
-												</dl>
-											</li>
-											<li class="last-info">
-												<dl>
-													<dd class="birthday">
-														<label>生日</label>
-														<input type="date" id="ticket-edit-customer-birthday"/>
-													</dd>
-													<dd  class="gender">
-														<label>性别</label>
-														<select name="" id="ticket-edit-customer-gender">
-															<option value="M">男</option>
-															<option value="F">女</option>
-														</select>
-													</dd>
-													<dd>
-														<label>邮箱</label>
-														<input type="text" id="ticket-edit-customer-email"/>
-													</dd>
-													<dd class="zipCode">
-														<label style="letter-spacing: 9px;">邮政编码</label>
-														<input type="text" id="ticket-edit-customer-zipCode"/>
-													</dd>
-													<dd class="otherMsg">
-														<label>其他注意事项</label>
-														<input type="text" id="ticket-edit-customer-otherMsg"/>
-													</dd>
-												</dl>
-											</li>
-										</ul>
-										<p>
-											<a href="javascript:void(0);" id="plane-CustomerInfo">确认修改</a>
-										</p>
 									</div>
 									<!--04/13  添加客户信息e-->
 									<ul class="submitInfo">

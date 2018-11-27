@@ -765,6 +765,7 @@
  							}
  						});
  					}
+          $(".cancelLockTips").find("p.actionBox").find("button.actionConfirm").unbind("click");
  					$(".cancelLockTips").css("display", "none");
  				},
  				error: function(jqXHR, textStatus, errorThrown) {
@@ -834,6 +835,7 @@
  							}
  						});
  					}
+          $(".cancelClearTips").find("p.actionBox").find("button.actionConfirm").unbind("click");
  					$(".cancelClearTips").css("display", "none");
  				},
  				error: function(jqXHR, textStatus, errorThrown) {
@@ -926,18 +928,14 @@
  								receivableArr.splice(0, 1, "N");
  								$(item).find("dd.receivable").text(receivableArr[0] + " | " + receivableArr[1]);
  							}
- 							// 							if(($.trim($(item).find("dd.receivable").text()) == "CC")) {
- 							// 								var currentTxt = "N" + "|" + "0";
- 							// 								currentTxt.replace("|", "")
- 							// 								$(item).find("dd.receivable").text(currentTxt);
- 							// 							}
- 							// 							//Finish状态：
+
  							if($(item).find("dd.finishStatus").hasClass("yesStatus")) {
  								$(item).find("dd.finishStatus").removeClass("yesStatus");
  								$(item).find("dd.finishStatus").addClass("noStatus");
  							}
  						});
  					}
+          $(".cancelPaidTips").find("p.actionBox").find("button.actionConfirm").unbind("click");
  					$(".cancelPaidTips").css("display", "none");
  				},
  				error: function(jqXHR, textStatus, errorThrown) {
@@ -1002,6 +1000,7 @@
  							}
  						});
  					}
+          $(".cancelFinishTips").find("p.actionBox").find("button.actionConfirm").unbind("click")
  					$(".cancelFinishTips").css("display", "none");
  				},
  				error: function(jqXHR, textStatus, errorThrown) {
@@ -1256,7 +1255,7 @@
  		var systemNumSelected = $.trim($("ul.listInfo.confirmFloor li dl:not(.summaryInfo) dd.systemNum.selected").text());
  		if(systemNumSelected.indexOf("mco") !== -1) {
  			$(".accounting-right ul.add-msg li.receivableCell input").first().val($.trim(debtTxt.split('|')[1]).split('/')[0]);
- 		} 
+ 		}
  		else {
  			//应收款
  			if(receivableTxt == "CC") {

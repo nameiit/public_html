@@ -118,7 +118,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 										<li><a href="#cancelClear">取消CLEAR</a></li>
 										<li><a href="#cancelPaid">取消PAID</a></li>
 										<li><a href="#cancelFinish">取消FINISH</a></li>
-									</ul> 
+									</ul>
 								</div>
 								<!--内容-->
 								<div class="contentFloor">
@@ -140,7 +140,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</li>
 										</ul>
 										<!--tab s-->
-										<ul class="tabFloor">
+										<ul class="tabFloor" id="unlock-request-list">
 											<li class="listTitle">
 												<dl>
 													<dd class="systemNum">系统编号</dd>
@@ -258,7 +258,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</li>
 										</ul>
 										<!--tab s-->
-										<ul class="tabFloor">
+										<ul class="tabFloor" id="unclear-request-list">
 											<li class="listTitle">
 												<dl>
 													<dd class="systemNum">系统编号</dd>
@@ -376,7 +376,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</li>
 										</ul>
 										<!--tab s-->
-										<ul class="tabFloor">
+										<ul class="tabFloor" id="unpaid-request-list">
 											<li class="listTitle">
 												<dl>
 													<dd class="systemNum">系统编号</dd>
@@ -518,7 +518,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</li>
 										</ul>
 										<!--tab s-->
-										<ul class="tabFloor">
+										<ul class="tabFloor" id="unfinish-request-list">
 											<li class="listTitle">
 												<dl>
 													<dd class="systemNum">系统编号</dd>
@@ -642,6 +642,12 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 			</div>
 			<!--content e-->
 		</div>
+		<script type="text/javascript">
+			lock_ap_id = {};
+			clear_ap_id = {};
+			paid_ap_id = {};
+			finish_ap_id = {};
+		</script>
 		<script src="../js/jquery.min.js" type="text/javascript"></script>
 		<script src="../js/homePage/public.js" type="text/javascript"></script>
 		<script src="../js/jquery.pagination.js" type="text/javascript"></script>

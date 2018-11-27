@@ -28,13 +28,11 @@ function listStatus() {
 	$(".navFloor").find("ul").find("li").on("click", function() {
 		var index = $(this).index();
 		$(this).addClass("current").siblings("li").removeClass("current");
-//		$(".contentFloor").find(".cancelFloor").eq(index).css("display", "block").siblings(".cancelFloor").css("display", "none");
 		var offsetTop=$(".contentFloor").find(".cancelFloor").eq(index).offset().top-26;
-//		console.log(offsetTop+"   "+index);
 		$("html,body").animate({
 			scrollTop:offsetTop
 		},{duration: 500,easing: "swing"});
-		
+
 		autoHeight();
 	});
 	var ddCell = $("ul.tabFloor li dd");
@@ -51,10 +49,18 @@ function listStatus() {
 function confirmCancel() {
 	//选中状态：
 	$(document).on("click", "ul.tabFloor li.listDetail dl dd:not([class='number'])", function() {
+		var len=$(this).parent().parent().parent().find("li.listDetail").length;
 		if($(this).parent().find("dd.systemNum").hasClass("selected")) {
 			$(this).parent().find("dd.systemNum").removeClass("selected");
-		} else {
+			if($(this).parent().parent().parent().find("dd.systemNum.selected").length==0){
+				$(this).parent().parent("li.listDetail").parent("ul").siblings("ul.btnList").find("a.selectAllBtn").text("全选");
+			}
+		}
+		else {
 			$(this).parent().find("dd.systemNum").addClass("selected");
+			if($(this).parent().parent().parent().find("dd.systemNum.selected").length==len){
+				$(this).parent().parent("li.listDetail").parent("ul").siblings("ul.btnList").find("a.selectAllBtn").text("全不选");
+			}
 		}
 	});
 	//全选：
@@ -71,25 +77,21 @@ function confirmCancel() {
 	//取消LOCK:
 	cancelLock();
 	rejectCancelLock();
-	lockPagination();
 	arrowStatus_lock();
 //	radminidLockInfo();
 	//取消CLEAR:
 	cancelClear();
 	rejectCancelClear();
-	clearPagination();
 	arrowStatus_clear();
 //	radminidClearInfo();
 	//取消PAID:
 	cancelPaid();
 	rejectCancelPaid();
-	paidPagination();
 	arrowStatus_paid();
 //	radminidPaidInfo();
 	//取消FINISH:
 	cancelFinish();
 	rejectCancelFinish();
-	finishPagination();
 	arrowStatus_finish();
 //	radminidFinishInfo();
 }
@@ -119,6 +121,7 @@ function autoHeight() {
 		}
 	}
 }
+
 //取消LOCK-"取消"
 function cancelLock() {
 	$(".contentFloor .cancelFloor ul.btnList li a.cancelLockBtn").on("click", function() {
@@ -138,35 +141,33 @@ function cancelLock() {
 			$(".cancelLockTips").css("display", "block");
 			//确认
 			$(".cancelLockTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
-				//取消LOCK
-				$(".cancelLock ul.tabFloor li.listDetail dl dd.systemNum.selected").parent("dl").each(function(i, item) {
-					$(item).find("dd.lockStatus").removeClass("yesStatus");
-					$(item).find("dd.lockStatus").addClass("noStatus");
-					//取消CLEAR
-					var debtInfo = $.trim($(item).find("dd.debt").text()).split("|")[0];
-					if($.trim(debtInfo) == "Y") {
-						var debtArr = [];
-						var clearInfo = $.trim($(item).find("dd.debt").text()).split("|");
-						for(var j = 0; j < clearInfo.length; j++) {
-							debtArr.push(clearInfo[j]);
-						}
-						debtArr.splice(0, 1, "N");
-						$(item).find("dd.debt").text(debtArr[0] + " | " + debtArr[1]);
-					}
-					setTimeout(function() {
-						$(".cancelLockTips").css("display", "none");
-					}, 500);
-				});
-
+				var ap_ip_list = [];
+				for (var i = 0; i < $(".cancelLock ul.tabFloor li.listDetail dl dd.systemNum.selected").length; i++) {
+					var id = $(".cancelLock ul.tabFloor li.listDetail dl dd.systemNum.selected")[i].innerText;
+					ap_ip_list.push(lock_ap_id[Number(id)]);
+				}
+				$.ajax({
+		      url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/cancelLock.php'),
+		      type: 'POST',
+					data: {
+						ap_id_list: JSON.stringify(ap_ip_list)
+					},
+		      success: function(response) {
+						location.reload();
+		      },
+		      error: function(jqXHR, textStatus, errorThrown) {
+		        console.log(textStatus, errorThrown);
+		      }
+		    });
 			});
 			//取消
 			$(".cancelLockTips").find("p.actionBox").find("button.actionCancel").unbind("click").on("click", function() {
 				$(".cancelLockTips").css("display", "none");
 			});
-
 		}
 	});
 }
+
 //取消LOCK-"驳回"
 function rejectCancelLock() {
 	$(".contentFloor .cancelLock ul.btnList li a.rejectBtn").on("click", function() {
@@ -186,48 +187,29 @@ function rejectCancelLock() {
 			$(".rejectCancelLockTips").css("display", "block");
 			//确认
 			$(".rejectCancelLockTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
-				setTimeout(function() {
-					$(".rejectCancelLockTips").css("display", "none");
-				}, 500);
+				var ap_ip_list = [];
+				for (var i = 0; i < $(".cancelLock ul.tabFloor li.listDetail dl dd.systemNum.selected").length; i++) {
+					var id = $(".cancelLock ul.tabFloor li.listDetail dl dd.systemNum.selected")[i].innerText;
+					ap_ip_list.push(lock_ap_id[Number(id)]);
+				}
+				$.ajax({
+					url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/reject.php'),
+					type: 'POST',
+					data: {
+						ap_id_list: JSON.stringify(ap_ip_list)
+					},
+					success: function(response) {
+						location.reload();
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(textStatus, errorThrown);
+					}
+				});
 			});
 			//取消
 			$(".rejectCancelLockTips").find("p.actionBox").find("button.actionCancel").unbind("click").on("click", function() {
 				$(".rejectCancelLockTips").css("display", "none");
 			});
-		}
-	});
-}
-//取消LOCK-分页
-function lockPagination() {
-	$('#lockPagination').pagination({
-		totalData: 20,
-		showData: 10,
-		coping: true,
-		homePage: '首页',
-		endPage: '末页',
-		prevContent: '上页',
-		nextContent: '下页',
-		callback: function(api) {
-			var j = api.getCurrent(); //获取当前页
-			$(".cancelLock ul li.listDetail").remove();
-			var e = `<li class="listDetail">
-						<dl>
-							<dd class="systemNum"></dd>
-							<dd class="invoice"></dd>
-							<dd class="profit"></dd>
-							<dd class="debt"></dd>
-							<dd class="receivable"></dd>
-							<dd class="salePrice"></dd>
-							<dd class="createDate"></dd>
-							<dd class="startTime"></dd>
-							<dd class="returnTime"></dd>
-							<dd class="lockStatus"></dd>
-							<dd class="finishStatus"></dd>
-						</dl>
-					</li>`;
-			$(".cancelLock ul.tabFloor").find("li.listTitle").after(e);
-			heightRange();
-			autoHeight();
 		}
 	});
 }
@@ -246,10 +228,11 @@ function arrowStatus_lock() {
 		$(this).siblings("dd").find("img.arrow_up").attr("src", "../img/arrowUp0_icon.png");
 	});
 }
+
 //取消LOCK-关联编号：
 //function radminidLockInfo() {
 //	$(".cancelLock ul li dd.number a").on("click", function() {
-//		if($.trim($(this).text()) == "") {} 
+//		if($.trim($(this).text()) == "") {}
 //		else {
 //			var thisLi = $(this).parent().parent().parent("li");
 //			var summaryNum = $.trim(thisLi.find("dd.number").text());
@@ -315,24 +298,27 @@ function cancelClear() {
 			$(".confirmNoticeInfo").removeClass("rejectCancelFinishTips");
 			$(".confirmNoticeInfo").addClass("cancelClearTips");
 			$(".cancelClearTips").css("display", "block");
-			$(".cancelClearTips p.confirmNotice").html("确认CLEAR");
+			$(".cancelClearTips p.confirmNotice").html("取消CLEAR");
 			//确认
 			$(".cancelClearTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
-				$(".cancelClear ul.tabFloor li.listDetail dl dd.systemNum.selected").parent("dl").each(function(i, item) {
-					var debtInfo = $.trim($(item).find("dd.debt").text()).split("|")[0];
-					if($.trim(debtInfo) == "Y") {
-						var debtArr = [];
-						var clearInfo = $.trim($(item).find("dd.debt").text()).split("|");
-						for(var j = 0; j < clearInfo.length; j++) {
-							debtArr.push(clearInfo[j]);
-						}
-						debtArr.splice(0, 1, "N");
-						$(item).find("dd.debt").text(debtArr[0] + " | " + debtArr[1]);
-					}
-				});
-				setTimeout(function() {
-					$(".cancelClearTips").css("display", "none");
-				}, 500);
+				var ap_ip_list = [];
+				for (var i = 0; i < $(".cancelClear ul.tabFloor li.listDetail dl dd.systemNum.selected").length; i++) {
+					var id = $(".cancelClear ul.tabFloor li.listDetail dl dd.systemNum.selected")[i].innerText;
+					ap_ip_list.push(clear_ap_id[Number(id)]);
+				}
+				$.ajax({
+		      url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/cancelClear.php'),
+		      type: 'POST',
+					data: {
+						ap_id_list: JSON.stringify(ap_ip_list)
+					},
+		      success: function(response) {
+						location.reload();
+		      },
+		      error: function(jqXHR, textStatus, errorThrown) {
+		        console.log(textStatus, errorThrown);
+		      }
+		    });
 			});
 			//取消
 			$(".cancelClearTips").find("p.actionBox").find("button.actionCancel").unbind("click").on("click", function() {
@@ -341,6 +327,7 @@ function cancelClear() {
 		}
 	});
 }
+
 //取消CLEAR-"驳回"
 function rejectCancelClear() {
 	$(".contentFloor .cancelClear ul.btnList li a.rejectBtn").on("click", function() {
@@ -360,9 +347,24 @@ function rejectCancelClear() {
 			$(".rejectCancelClearTips").css("display", "block");
 			//确认
 			$(".rejectCancelClearTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
-				setTimeout(function() {
-					$(".rejectCancelClearTips").css("display", "none");
-				}, 500);
+				var ap_ip_list = [];
+				for (var i = 0; i < $(".cancelClear ul.tabFloor li.listDetail dl dd.systemNum.selected").length; i++) {
+					var id = $(".cancelClear ul.tabFloor li.listDetail dl dd.systemNum.selected")[i].innerText;
+					ap_ip_list.push(clear_ap_id[Number(id)]);
+				}
+				$.ajax({
+					url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/reject.php'),
+					type: 'POST',
+					data: {
+						ap_id_list: JSON.stringify(ap_ip_list)
+					},
+					success: function(response) {
+						location.reload();
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(textStatus, errorThrown);
+					}
+				});
 			});
 			//取消
 			$(".rejectCancelClearTips").find("p.actionBox").find("button.actionCancel").unbind("click").on("click", function() {
@@ -371,40 +373,7 @@ function rejectCancelClear() {
 		}
 	});
 }
-//取消Clear-"分页"
-function clearPagination() {
-	$('#clearPagination').pagination({
-		totalData: 30,
-		showData: 10,
-		coping: true,
-		homePage: '首页',
-		endPage: '末页',
-		prevContent: '上页',
-		nextContent: '下页',
-		callback: function(api) {
-			var j = api.getCurrent(); //获取当前页
-			$(".cancelClear ul li.listDetail").remove();
-			var e = `<li class="listDetail">
-						<dl>
-							<dd class="systemNum"></dd>
-							<dd class="invoice"></dd>
-							<dd class="profit"></dd>
-							<dd class="debt"></dd>
-							<dd class="receivable"></dd>
-							<dd class="salePrice"></dd>
-							<dd class="createDate"></dd>
-							<dd class="startTime"></dd>
-							<dd class="returnTime"></dd>
-							<dd class="lockStatus"></dd>
-							<dd class="finishStatus"></dd>
-						</dl>
-					</li>`;
-			$(".cancelClear ul.tabFloor").find("li.listTitle").after(e);
-			heightRange();
-			autoHeight();
-		}
-	});
-}
+
 
 //取消Clear"箭头切换"
 function arrowStatus_clear() {
@@ -420,10 +389,11 @@ function arrowStatus_clear() {
 		$(this).siblings("dd").find("img.arrow_up").attr("src", "../img/arrowUp0_icon.png");
 	});
 }
+
 //取消Clear-关联编号：
 //function radminidClearInfo() {
 //	$(".cancelClear ul li dd.number a").on("click", function() {
-//		if($.trim($(this).text()) == "") {} 
+//		if($.trim($(this).text()) == "") {}
 //		else {
 //			var thisLi = $(this).parent().parent().parent("li");
 //			var summaryNum = $.trim(thisLi.find("dd.number").text());
@@ -456,7 +426,7 @@ function arrowStatus_clear() {
 //						<dd class="` + finishInfo + `"></dd>
 //						<dd class="number">
 //							<a href="javascript:void(0);">
-//							
+//
 //							</a>
 //						</dd>
 //					</div>
@@ -474,6 +444,7 @@ function arrowStatus_clear() {
 //	});
 //}
 //取消PAID-"取消"
+
 function cancelPaid() {
 	$(".contentFloor .cancelFloor ul.btnList li a.cancelPaidBtn").on("click", function() {
 
@@ -512,50 +483,44 @@ function cancelPaid() {
 					$(".cancelPaidTips").find("p.actionBox").find("button.actionCancel").css("width", "50%");
 					$(".cancelPaidTips .confirmTitle img").attr("src", "../img/confirmInfo.png");
 				}
-
 			});
 
 			//确认
 			$(".cancelPaidTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
-				$(".cancelPaid ul.tabFloor li.listDetail dl dd.systemNum.selected").parent("dl").each(function(i, item) {
-					var receivableType = $.trim($(item).find("dd.receivable").text()).split("|")[0];
-					//改变应收款的状态
-					if($.trim(receivableType) == "Y") {
-						var receivableArr = [];
-						var paidInfo = $.trim($(item).find("dd.receivable").text()).split("|");
-						for(var j = 0; j < paidInfo.length; j++) {
-							receivableArr.push(paidInfo[j]);
-						}
-						receivableArr.splice(0, 1, "N");
-						$(item).find("dd.receivable").text(receivableArr[0] + " | " + receivableArr[1]);
-					}
-					//Finish状态：
-					if($(item).find("dd.finishStatus").hasClass("yesStatus")) {
-						$(item).find("dd.finishStatus").removeClass("yesStatus");
-						$(item).find("dd.finishStatus").addClass("noStatus");
-					}
-				});
-				setTimeout(function() {
-					$(".cancelPaidTips").css("display", "none");
-				}, 500);
+				var ap_ip_list = [];
+				for (var i = 0; i < $(".cancelPaid ul.tabFloor li.listDetail dl dd.systemNum.selected").length; i++) {
+					var id = $(".cancelPaid ul.tabFloor li.listDetail dl dd.systemNum.selected")[i].innerText;
+					ap_ip_list.push(paid_ap_id[Number(id)]);
+				}
+				$.ajax({
+		      url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/cancelPaid.php'),
+		      type: 'POST',
+					data: {
+						ap_id_list: JSON.stringify(ap_ip_list)
+					},
+		      success: function(response) {
+						location.reload();
+		      },
+		      error: function(jqXHR, textStatus, errorThrown) {
+		        console.log(textStatus, errorThrown);
+		      }
+		    });
 			});
 			//取消：
 			$(".cancelPaidTips").find("p.actionBox").find("button.actionCancel").unbind("click").on("click", function() {
 				$(".cancelPaidTips").css("display", "none");
 			});
-
 		}
-
 	});
-
 }
+
 //取消PAID-"驳回"：
 function rejectCancelPaid() {
 	$(".contentFloor .cancelPaid ul.btnList li a.rejectBtn").on("click", function() {
 		var len = $(".cancelPaid ul.tabFloor li.listDetail dl dd.systemNum.selected").length;
 		if(len < 1) {
 			alert("至少选中一行");
-		} 
+		}
 		else {
 			$(".confirmNoticeInfo").removeClass("rejectCancelClearTips");
 			$(".confirmNoticeInfo").removeClass("rejectCancelLockTips");
@@ -569,49 +534,29 @@ function rejectCancelPaid() {
 			$(".rejectCancelPaidTips").css("display", "block");
 			//确认
 			$(".rejectCancelPaidTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
-				setTimeout(function() {
-					$(".rejectCancelPaidTips").css("display", "none");
-				}, 500);
+				var ap_ip_list = [];
+				for (var i = 0; i < $(".cancelPaid ul.tabFloor li.listDetail dl dd.systemNum.selected").length; i++) {
+					var id = $(".cancelPaid ul.tabFloor li.listDetail dl dd.systemNum.selected")[i].innerText;
+					ap_ip_list.push(paid_ap_id[Number(id)]);
+				}
+				$.ajax({
+					url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/reject.php'),
+					type: 'POST',
+					data: {
+						ap_id_list: JSON.stringify(ap_ip_list)
+					},
+					success: function(response) {
+						location.reload();
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(textStatus, errorThrown);
+					}
+				});
 			});
 			//取消
 			$(".rejectCancelPaidTips").find("p.actionBox").find("button.actionCancel").unbind("click").on("click", function() {
 				$(".rejectCancelPaidTips").css("display", "none");
 			});
-		}
-	});
-}
-//取消PAID-"分页"
-function paidPagination() {
-	$('#paidPagination').pagination({
-		totalData: 10,
-		showData: 10,
-		coping: true,
-		homePage: '首页',
-		endPage: '末页',
-		prevContent: '上页',
-		nextContent: '下页',
-		callback: function(api) {
-			var j = api.getCurrent(); //获取当前页
-			$(".cancelPaid ul li.listDetail").remove();
-			var e = `<li class="listDetail">
-						<dl>
-							<dd class="systemNum"></dd>
-							<dd class="invoice"></dd>
-							<dd class="profit"></dd>
-							<dd class="debt"></dd>
-							<dd class="receivable"></dd>
-							<dd class="salePrice"></dd>
-							<dd class="createDate"></dd>
-							<dd class="startTime"></dd>
-							<dd class="returnTime"></dd>
-							<dd class="lockStatus"></dd>
-							<dd class="finishStatus"></dd>
-						</dl>
-					</li>`;
-			$(".cancelPaid ul.tabFloor").find("li.listTitle").after(e);
-			heightRange();
-			autoHeight();
-			
 		}
 	});
 }
@@ -630,10 +575,11 @@ function arrowStatus_paid() {
 		$(this).siblings("dd").find("img.arrow_up").attr("src", "../img/arrowUp0_icon.png");
 	});
 }
+
 //取消Paid-关联编号：
 //function radminidPaidInfo() {
 //	$(".cancelPaid ul li dd.number a").on("click", function() {
-//		if($.trim($(this).text()) == "") {} 
+//		if($.trim($(this).text()) == "") {}
 //		else {
 //			var thisLi = $(this).parent().parent().parent("li");
 //			var summaryNum = $.trim(thisLi.find("dd.number").text());
@@ -646,7 +592,7 @@ function arrowStatus_paid() {
 //				thisLi.find("dl.unfold").remove();
 //				thisLi.removeClass("current");
 //				heightRange();
-//			} 
+//			}
 //			else {
 //				var currentNum = thisLi.find("dd.systemNum").text();
 //				var numInfo = $.trim($(this).text()).split(",");
@@ -667,7 +613,7 @@ function arrowStatus_paid() {
 //						<dd class="` + finishInfo + `"></dd>
 //						<dd class="number">
 //							<a href="javascript:void(0);">
-//							
+//
 //							</a>
 //						</dd>
 //					</div>
@@ -685,14 +631,13 @@ function arrowStatus_paid() {
 //	});
 //}
 
-
 //取消FINISH-"取消":
 function cancelFinish() {
 	$(".contentFloor .cancelFloor ul.btnList li a.cancelFinishBtn").on("click", function() {
 		var len = $(".cancelFinish ul.tabFloor li.listDetail dl dd.systemNum.selected").length;
 		if(len < 1) {
 			alert("至少选中一行");
-		} 
+		}
 		else {
 			$(".confirmNoticeInfo").removeClass("cancelLockTips");
 			$(".confirmNoticeInfo").removeClass("rejectCancelLockTips");
@@ -707,15 +652,24 @@ function cancelFinish() {
 			$(".cancelFinishTips").css("display","block");
 			//确认：
 			$(".cancelFinishTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
-				$(".cancelFinish ul.tabFloor li.listDetail dl dd.systemNum.selected").parent("dl").each(function(i, item) {
-					if($(item).find("dd.finishStatus").hasClass("yesStatus")) {
-						$(item).find("dd.finishStatus").removeClass("yesStatus");
-						$(item).find("dd.finishStatus").addClass("noStatus");
-					}
-					setTimeout(function() {
-						$(".cancelFinishTips").css("display", "none");
-					}, 500);
-				});
+				var ap_ip_list = [];
+				for (var i = 0; i < $(".cancelFinish ul.tabFloor li.listDetail dl dd.systemNum.selected").length; i++) {
+					var id = $(".cancelFinish ul.tabFloor li.listDetail dl dd.systemNum.selected")[i].innerText;
+					ap_ip_list.push(finish_ap_id[Number(id)]);
+				}
+				$.ajax({
+		      url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/cancelFinish.php'),
+		      type: 'POST',
+					data: {
+						ap_id_list: JSON.stringify(ap_ip_list)
+					},
+		      success: function(response) {
+						location.reload();
+		      },
+		      error: function(jqXHR, textStatus, errorThrown) {
+		        console.log(textStatus, errorThrown);
+		      }
+		    });
 			});
 			//取消：
 			$(".cancelFinishTips").find("p.actionBox").find("button.actionCancel").unbind("click").on("click", function() {
@@ -726,6 +680,7 @@ function cancelFinish() {
 
 	});
 }
+
 //取消FINISH-"驳回":
 function rejectCancelFinish() {
 	$(".contentFloor .cancelFinish  ul.btnList li a.rejectBtn").on("click", function() {
@@ -745,49 +700,29 @@ function rejectCancelFinish() {
 			$(".rejectCancelFinishTips").css("display", "block");
 			//确认
 			$(".rejectCancelFinishTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
-				setTimeout(function() {
-					$(".rejectCancelFinishTips").css("display", "none");
-				}, 500);
+				var ap_ip_list = [];
+				for (var i = 0; i < $(".cancelFinish ul.tabFloor li.listDetail dl dd.systemNum.selected").length; i++) {
+					var id = $(".cancelFinish ul.tabFloor li.listDetail dl dd.systemNum.selected")[i].innerText;
+					ap_ip_list.push(finish_ap_id[Number(id)]);
+				}
+				$.ajax({
+					url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/reject.php'),
+					type: 'POST',
+					data: {
+						ap_id_list: JSON.stringify(ap_ip_list)
+					},
+					success: function(response) {
+						location.reload();
+					},
+					error: function(jqXHR, textStatus, errorThrown) {
+						console.log(textStatus, errorThrown);
+					}
+				});
 			});
 			//取消
 			$(".rejectCancelFinishTips").find("p.actionBox").find("button.actionCancel").unbind("click").on("click", function() {
 				$(".rejectCancelFinishTips").css("display", "none");
 			});
-		}
-	});
-}
-//取消FINISH-"分页":
-function finishPagination() {
-	$('#finishPagination').pagination({
-		totalData: 10,
-		showData: 2,
-		coping: true,
-		homePage: '首页',
-		endPage: '末页',
-		prevContent: '上页',
-		nextContent: '下页',
-		callback: function(api) {
-			var j = api.getCurrent(); //获取当前页
-			$(".cancelFinish ul li.listDetail").remove();
-			var e = `<li class="listDetail">
-						<dl>
-							<dd class="systemNum"></dd>
-							<dd class="invoice"></dd>
-							<dd class="profit"></dd>
-							<dd class="debt"></dd>
-							<dd class="receivable"></dd>
-							<dd class="salePrice"></dd>
-							<dd class="createDate"></dd>
-							<dd class="startTime"></dd>
-							<dd class="returnTime"></dd>
-							<dd class="lockStatus"></dd>
-							<dd class="finishStatus"></dd>
-						</dl>
-					</li>`;
-			$(".cancelFinish ul.tabFloor").find("li.listTitle").after(e);
-			heightRange();
-			autoHeight();
-			
 		}
 	});
 }
@@ -806,10 +741,11 @@ function arrowStatus_finish() {
 		$(this).siblings("dd").find("img.arrow_up").attr("src", "../img/arrowUp0_icon.png");
 	});
 }
+
 //取消Paid-关联编号：
 //function radminidFinishInfo() {
 //	$(".cancelFinish ul li dd.number a").on("click", function() {
-//		if($.trim($(this).text()) == "") {} 
+//		if($.trim($(this).text()) == "") {}
 //		else {
 //			var thisLi = $(this).parent().parent().parent("li");
 //			var summaryNum = $.trim(thisLi.find("dd.number").text());
@@ -842,7 +778,7 @@ function arrowStatus_finish() {
 //						<dd class="` + finishInfo + `"></dd>
 //						<dd class="number">
 //							<a href="javascript:void(0);">
-//							
+//
 //							</a>
 //						</dd>
 //					</div>
@@ -860,6 +796,7 @@ function arrowStatus_finish() {
 //	});
 //}
 //返回顶部：
+
 function backToTop() {
 	$(".contentFloor a.backTop").on("click", function() {
 		$("html, body").animate({
@@ -867,3 +804,301 @@ function backToTop() {
 		});
 	});
 }
+
+$(document).ready(function () {
+	function loadUnlockCancel(data) {
+		lock_ap_id = {};
+    $.ajax({
+      url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/getUnlockList.php'),
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      type: 'GET',
+      data: data,
+      success: function(response) {
+				$("#unlock-request-list li.listDetail").remove();
+				response = JSON.parse(response);
+				for (var i = 0; i < response.length; i++) {
+					lock_ap_id[response[i]['transaction_id']] = response[i]['ap_id'];
+					var lockStatus = response[i]['lock_status'] == 'Y'? 'yesStatus' : 'noStatus';
+          var finishStatus = response[i]['finish_status'] == 'Y'? 'yesStatus' : 'noStatus';
+					$append = `
+						<li class="listDetail">
+							<dl>
+								<dd class="systemNum">`+ response[i]['transaction_id'] + `</dd>
+								<dd class="invoice">`+ response[i]['invoice'] + `</dd>
+								<dd class="profit">`+ response[i]['total_profit'] + `</dd>
+								<dd class="debt">`+ response[i]['debt'] + `</dd>
+								<dd class="receivable">`+ response[i]['received'] + `</dd>
+								<dd class="salePrice">`+ response[i]['selling_price'] + `</dd>
+								<dd class="createDate">`+ response[i]['create_time'].substring(0, 10) + `</dd>
+								<dd class="startTime">`+ response[i]['depart_date'].substring(0, 10) + `</dd>
+								<dd class="returnTime">`+ response[i]['arrival_date'].substring(0, 10) + `</dd>
+								<dd class="lockStatus ` + lockStatus + `"></dd>
+								<dd class="finishStatus ` + finishStatus + `"></dd>
+							</dl>
+						</li>
+					`;
+					$("#unlock-request-list").append($append);
+					heightRange();
+					autoHeight();
+				}
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      }
+    });
+  }
+  function getUnlockCount() {
+    $("ul#unlock-request-list .listDetail").remove();
+    $.ajax({
+      url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/getUnlockCount.php'),
+      type: 'GET',
+      success: function(response) {
+        if(response != 0) {
+          $('#lockPagination').pagination({
+              totalData: response,
+              showData: 10,
+              current: 0,
+              coping: true,
+              homePage: '首页',
+              endPage: '末页',
+              prevContent: '上页',
+              nextContent: '下页',
+              callback: function(api) {
+                  var j = api.getCurrent(); //获取当前页
+									var data = {offset: (j - 1) * 10};
+                  loadUnlockCancel(data);
+              }
+          });
+          $('ul#lockPagination').find('a').click();
+        }
+        heightRange();
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      }
+    });
+  }
+	getUnlockCount();
+
+	function loadUnclearCancel(data) {
+		clear_ap_id = {};
+    $.ajax({
+      url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/getUnclearList.php'),
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      type: 'GET',
+      data: data,
+      success: function(response) {
+				$("#unclear-request-list li.listDetail").remove();
+				response = JSON.parse(response);
+				for (var i = 0; i < response.length; i++) {
+					clear_ap_id[response[i]['transaction_id']] = response[i]['ap_id'];
+					var lockStatus = response[i]['lock_status'] == 'Y'? 'yesStatus' : 'noStatus';
+          var finishStatus = response[i]['finish_status'] == 'Y'? 'yesStatus' : 'noStatus';
+					$append = `
+						<li class="listDetail">
+							<dl>
+								<dd class="systemNum">`+ response[i]['transaction_id'] + `</dd>
+								<dd class="invoice">`+ response[i]['invoice'] + `</dd>
+								<dd class="profit">`+ response[i]['total_profit'] + `</dd>
+								<dd class="debt">`+ response[i]['debt'] + `</dd>
+								<dd class="receivable">`+ response[i]['received'] + `</dd>
+								<dd class="salePrice">`+ response[i]['selling_price'] + `</dd>
+								<dd class="createDate">`+ response[i]['create_time'].substring(0, 10) + `</dd>
+								<dd class="startTime">`+ response[i]['depart_date'].substring(0, 10) + `</dd>
+								<dd class="returnTime">`+ response[i]['arrival_date'].substring(0, 10) + `</dd>
+								<dd class="lockStatus ` + lockStatus + `"></dd>
+								<dd class="finishStatus ` + finishStatus + `"></dd>
+							</dl>
+						</li>
+					`;
+					$("#unclear-request-list").append($append);
+					heightRange();
+					autoHeight();
+				}
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      }
+    });
+  }
+  function getUnclearCount() {
+    $("u#unclear-request-list .listDetail").remove();
+    $.ajax({
+      url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/getUnclearCount.php'),
+      type: 'GET',
+      success: function(response) {
+        if(response != 0) {
+          $('#clearPagination').pagination({
+              totalData: response,
+              showData: 10,
+              current: 0,
+              coping: true,
+              homePage: '首页',
+              endPage: '末页',
+              prevContent: '上页',
+              nextContent: '下页',
+              callback: function(api) {
+                  var j = api.getCurrent(); //获取当前页
+									var data = {offset: (j - 1) * 10};
+                  loadUnclearCancel(data);
+              }
+          });
+          $('ul#clearPagination').find('a').click();
+        }
+        heightRange();
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      }
+    });
+  }
+	getUnclearCount();
+
+	function loadUnpaidCancel(data) {
+		paid_ap_id = {};
+    $.ajax({
+      url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/getUnpaidList.php'),
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      type: 'GET',
+      data: data,
+      success: function(response) {
+				$("#unpaid-request-list li.listDetail").remove();
+				response = JSON.parse(response);
+				for (var i = 0; i < response.length; i++) {
+					paid_ap_id[response[i]['transaction_id']] = response[i]['ap_id'];
+					var lockStatus = response[i]['lock_status'] == 'Y'? 'yesStatus' : 'noStatus';
+          var finishStatus = response[i]['finish_status'] == 'Y'? 'yesStatus' : 'noStatus';
+					$append = `
+						<li class="listDetail">
+							<dl>
+								<dd class="systemNum">`+ response[i]['transaction_id'] + `</dd>
+								<dd class="invoice">`+ response[i]['invoice'] + `</dd>
+								<dd class="profit">`+ response[i]['total_profit'] + `</dd>
+								<dd class="debt">`+ response[i]['debt'] + `</dd>
+								<dd class="receivable">`+ response[i]['received'] + `</dd>
+								<dd class="salePrice">`+ response[i]['selling_price'] + `</dd>
+								<dd class="createDate">`+ response[i]['create_time'].substring(0, 10) + `</dd>
+								<dd class="startTime">`+ response[i]['depart_date'].substring(0, 10) + `</dd>
+								<dd class="returnTime">`+ response[i]['arrival_date'].substring(0, 10) + `</dd>
+								<dd class="lockStatus ` + lockStatus + `"></dd>
+								<dd class="finishStatus ` + finishStatus + `"></dd>
+							</dl>
+						</li>
+					`;
+					$("#unpaid-request-list").append($append);
+					heightRange();
+					autoHeight();
+				}
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      }
+    });
+  }
+  function getUnpaidCount() {
+    $("ul#unpaid-request-list .listDetail").remove();
+    $.ajax({
+      url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/getUnpaidCount.php'),
+      type: 'GET',
+      success: function(response) {
+        if(response != 0) {
+          $('#paidPagination').pagination({
+              totalData: response,
+              showData: 10,
+              current: 0,
+              coping: true,
+              homePage: '首页',
+              endPage: '末页',
+              prevContent: '上页',
+              nextContent: '下页',
+              callback: function(api) {
+                  var j = api.getCurrent(); //获取当前页
+									var data = {offset: (j - 1) * 10};
+                  loadUnpaidCancel(data);
+              }
+          });
+          $('ul#paidPagination').find('a').click();
+        }
+        heightRange();
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      }
+    });
+  }
+	getUnpaidCount();
+
+	function loadUnfinishCancel(data) {
+		finish_ap_id = {};
+		$.ajax({
+			url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/getUnfinishList.php'),
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			type: 'GET',
+			data: data,
+			success: function(response) {
+				$("#unfinish-request-list li.listDetail").remove();
+				response = JSON.parse(response);
+				for (var i = 0; i < response.length; i++) {
+					finish_ap_id[response[i]['transaction_id']] = response[i]['ap_id'];
+					var lockStatus = response[i]['lock_status'] == 'Y'? 'yesStatus' : 'noStatus';
+					var finishStatus = response[i]['finish_status'] == 'Y'? 'yesStatus' : 'noStatus';
+					$append = `
+						<li class="listDetail">
+							<dl>
+								<dd class="systemNum">`+ response[i]['transaction_id'] + `</dd>
+								<dd class="invoice">`+ response[i]['invoice'] + `</dd>
+								<dd class="profit">`+ response[i]['total_profit'] + `</dd>
+								<dd class="debt">`+ response[i]['debt'] + `</dd>
+								<dd class="receivable">`+ response[i]['received'] + `</dd>
+								<dd class="salePrice">`+ response[i]['selling_price'] + `</dd>
+								<dd class="createDate">`+ response[i]['create_time'].substring(0, 10) + `</dd>
+								<dd class="startTime">`+ response[i]['depart_date'].substring(0, 10) + `</dd>
+								<dd class="returnTime">`+ response[i]['arrival_date'].substring(0, 10) + `</dd>
+								<dd class="lockStatus ` + lockStatus + `"></dd>
+								<dd class="finishStatus ` + finishStatus + `"></dd>
+							</dl>
+						</li>
+					`;
+					$("#unfinish-request-list").append($append);
+					heightRange();
+					autoHeight();
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(textStatus, errorThrown);
+			}
+		});
+	}
+	function getUnfinishCount() {
+		$("ul#unfinish-request-list .listDetail").remove();
+		$.ajax({
+			url: location.protocol.concat("//").concat(location.host).concat('/database/Management/audit/getUnfinishCount.php'),
+			type: 'GET',
+			success: function(response) {
+				if(response != 0) {
+					$('#finishPagination').pagination({
+							totalData: response,
+							showData: 10,
+							current: 0,
+							coping: true,
+							homePage: '首页',
+							endPage: '末页',
+							prevContent: '上页',
+							nextContent: '下页',
+							callback: function(api) {
+									var j = api.getCurrent(); //获取当前页
+									var data = {offset: (j - 1) * 10};
+									loadUnfinishCancel(data);
+							}
+					});
+					$('ul#finishPagination').find('a').click();
+				}
+				heightRange();
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(textStatus, errorThrown);
+			}
+		});
+	}
+	getUnfinishCount();
+});

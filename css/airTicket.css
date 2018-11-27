@@ -3576,6 +3576,7 @@ ul.add-msg li.expDate {
 	top: 11px !important;
 }
 
+
 /*.updateDialog .updateForm ul.add-msg li label {
 	width: 24% !important;
 }*/
@@ -3593,123 +3594,220 @@ ul.add-msg li.expDate {
 		padding-right: 2%;
 	}
 }
-.updateDialog .addClients ul.clients-info li dl dd label{
+
+.updateDialog .addClients ul.clients-info li dl dd label {
 	margin-right: 0px !important;
 }
-.updateDialog .addClients ul.clients-info li dl dd.requiredItem label::after{
+
+.updateDialog .addClients ul.clients-info li dl dd.requiredItem label::after {
 	right: -14%;
 }
-.updateTab ul li a{
+
+.updateTab ul li a {
 	overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
-.updateTab ul li a:hover{
+
+.updateTab ul li a:hover {
 	text-decoration: none;
 }
-.systematicSearch ul.searchFloor li div a:hover{
+
+.systematicSearch ul.searchFloor li div a:hover {
 	text-decoration: none;
 }
+
 .updateTab ul li.profit {
-    width: 13%;
+	width: 13%;
 }
-.updateTab ul dd.profit{
+
+.updateTab ul dd.profit {
 	width: 13% !important;
 }
-.updateDialog .updateForm ul.add-msg li.list_account{
+
+.updateDialog .updateForm ul.add-msg li.list_account {
 	visibility: visible;
-    display: block;
+	display: block;
 }
-.updateDialog .updateForm ul.add-msg li.list_account.rate a{
+
+.updateDialog .updateForm ul.add-msg li.list_account.rate a {
 	display: inline-block;
-    width: 23% !important;
-    margin-left: 2% !important;
-    vertical-align: top;
-    height: 26px;
-    line-height: 26px;
-    font-size: 14px;
-    background-color: #eeebe6;
-    text-align: center;
-    box-shadow: 1px 4px 4px #b3b3b1;
-    font-size: 14px;
-    border-radius: 5px;
-    font-weight: bold;
-    -webkit-transition: all;
-    transition: all;
-    -webkit-transition-timing-function: linear;
-    transition-timing-function: linear;
-    -webkit-transition-duration: .5s;
-    transition-duration: .5s;
-    color: #9295ff;
-    text-decoration: none;
+	width: 23% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	text-decoration: none;
 }
-.updateDialog .updateForm ul.add-msg li.list_account.rate a.selected{
+
+.updateDialog .updateForm ul.add-msg li.list_account.rate a.selected {
 	background-color: #ece8e7;
-    box-shadow: inset 1px 3px 4px #b8b8b8;
-    color: #f88032;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
 }
-.updateDialog .updateForm ul.add-msg li.expDate div.expireDate{
+
+.updateDialog .updateForm ul.add-msg li.expDate div.expireDate {
 	width: 22% !important;
 }
-.updateDialog .updateForm  ul.add-msg li.expDate div.cardholder{
+
+.updateDialog .updateForm ul.add-msg li.expDate div.cardholder {
 	width: 28% !important;
 }
-.updateDialog .updateForm ul.add-msg li.expDate div.expireDate select{
+
+.updateDialog .updateForm ul.add-msg li.expDate div.expireDate select {
 	width: 35% !important;
-    padding-left: 0px;
-    min-width: 40px;
+	padding-left: 0px;
+	min-width: 40px;
 }
-.updateDialog .updateForm ul.add-msg li.expDate div.cardholder label{
+
+.updateDialog .updateForm ul.add-msg li.expDate div.cardholder label {
 	width: 46%;
 }
-.updateDialog .updateForm ul.add-msg li.expDate div.cardholder input[type="text"]{
+
+.updateDialog .updateForm ul.add-msg li.expDate div.cardholder input[type="text"] {
 	margin-left: 2% !important;
 	width: 53% !important;
 }
+
 @media only screen and (min-width: 100px) and (max-width: 1512px) {
-	.updateDialog .updateForm ul.add-msg li.expDate div.expireDate{
+	.updateDialog .updateForm ul.add-msg li.expDate div.expireDate {
 		width: 50% !important;
 	}
-	.updateDialog .updateForm ul.add-msg li.expDate div.expireDate select{
+	.updateDialog .updateForm ul.add-msg li.expDate div.expireDate select {
 		width: 15% !important;
 		margin-left: 1% !important;
 	}
-	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder{
+	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder {
 		width: 74.5% !important;
 		margin-top: 13px;
 	}
-	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder label{
+	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder label {
 		min-width: 92px;
 		width: initial !important;
 	}
-	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder input[type="text"]{
+	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder input[type="text"] {
 		width: 28.4% !important;
-    	float: left;
-    	min-width: 83px;
+		float: left;
+		min-width: 83px;
 	}
-	.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger div input[type="text"]:last-child{
+	.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger div input[type="text"]:last-child {
 		margin-left: 0px !important;
-	    width: 40% !important;
-	    margin-top: 10px;
+		width: 40% !important;
+		margin-top: 10px;
 	}
-	.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger img.addInfo{
+	.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger img.addInfo {
 		right: 8% !important;
 	}
 }
-.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger div select:first-child{
+
+.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger div select:first-child {
 	width: 25% !important;
-    min-width: 50px !important;
+	min-width: 50px !important;
 }
-.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger div input[type="text"]{
-	    width: 35% !important;
+
+.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger div input[type="text"] {
+	width: 35% !important;
 }
-.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger img{
+
+.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger img {
 	width: 20px;
 	height: 20px;
 }
-.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger img.deleteInfo{
+
+.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger img.deleteInfo {
 	right: 1%;
 }
-.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger img.addInfo{
+
+.updateDialog .updateForm .addClients ul.clients-info li dl dd.passenger img.addInfo {
 	right: 5%;
+}
+
+.updateDialog .updateForm ul.add-msg li.mcoReceiver {}
+
+.updateDialog .updateForm ul.add-msg li.mcoReceiver .autocomplete-items {
+	width: 49.6%;
+	right: 31.1%;
+}
+
+.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+	right: 29.6%;
+	width: 49.5%;
+}
+.updateDialog .updateForm ul.add-msg li.airticketSource .autocomplete-items{
+	right: 29.6%;
+	width: 49.5%;
+}
+
+@media only screen and (min-width: 1680px) and (max-width: 1780px) {
+	.updateDialog .updateForm ul.add-msg li.mcoReceiver .autocomplete-items {
+		right: 28.8%;
+	}
+	.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+		right: 27%;
+	}
+	.updateDialog .updateForm ul.add-msg li.airticketSource .autocomplete-items{
+		right: 27%;
+	}
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1679px) {
+	.updateDialog .updateForm ul.add-msg li.mcoReceiver .autocomplete-items {
+		right: 27.6%;
+	}
+	.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+		right: 25.8%;
+	}
+	.updateDialog .updateForm ul.add-msg li.airticketSource .autocomplete-items{
+		right: 25.8%;
+	}
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1599px) {
+	.updateDialog .updateForm ul.add-msg li.mcoReceiver .autocomplete-items {
+		right: 24.4%;
+	}
+	.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+		right: 22%;
+	}
+	.updateDialog .updateForm ul.add-msg li.airticketSource .autocomplete-items{
+		right: 22%;
+	}
+}
+
+@media only screen and (min-width: 1366px) and (max-width:1439px) {
+	.updateDialog .updateForm ul.add-msg li.mcoReceiver .autocomplete-items {
+		right: 23.8%;
+	}
+	.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+		right: 21.8%;
+	}
+	.updateDialog .updateForm ul.add-msg li.airticketSource .autocomplete-items{
+		right: 21.8%;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.updateDialog .updateForm ul.add-msg li.mcoReceiver .autocomplete-items {
+		right: 20.8%;
+	}
+	.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+		right: 18.7%;
+	}
+	.updateDialog .updateForm ul.add-msg li.airticketSource .autocomplete-items {
+		right: 18.7%;
+	}
 }

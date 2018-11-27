@@ -75,7 +75,7 @@ $(document).ready(function () {
             type: 'GET',
             data: {action: 'getMcoParty'},
             success: function(response) {
-            console.log(response);	
+            console.log(response);
               response = JSON.parse(response);
               for (var i = 0; i < response.length; i++) {
                 $html = `
@@ -114,6 +114,36 @@ $(document).ready(function () {
             }
         });
     });
+    $(".otherManageArea .manageCard.creditCardCompanies").find(".minusItem").on("click", function() {
+  		//移除当前选中的元素
+  		if($(".otherManageArea .manageCard.creditCardCompanies").find("li.contentInfo.selected").length < 1) {
+  			alert("至少选中一行");
+  		}
+  		else {
+        mco_party_list = [];
+        for (var i = 0; i < $("dl.companyInfor li.selected dd.nameInfor").length; i++) {
+          mco_party_list.push($("dl.companyInfor li.selected dd.nameInfor")[i].innerText);
+        }
+        console.log(mco_party_list);
+
+        var url = location.protocol.concat("//").concat(location.host).concat('/database/Other/OtherManagement.php');
+        $.ajax({
+            url: url,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            type: 'POST',
+            data: {
+                action: 'deleteMcoParty',
+                mcp_party_list: JSON.stringify(mco_party_list)
+            },
+            success: function(response) {
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+  		}
+  	});
 
 
     function loadCustomerSource() {

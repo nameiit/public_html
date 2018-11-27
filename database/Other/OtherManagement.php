@@ -51,6 +51,17 @@ class OtherManagement {
 		$conn -> query($sql);
 	}
 
+	function deleteMcoParty() {
+		global $conn;
+
+		$mco_party_list = json_decode($_POST['mcp_party_list']);
+
+		for ($i = 0; $i < sizeof($mco_party_list); $i++) {
+			$sql = "DELETE FROM McoParty WHERE party_title = '$mco_party_list[$i]'";
+			$conn -> query($sql);
+		}
+	}
+
 	function getCustomerSource() {
 		global $conn;
 
@@ -103,6 +114,8 @@ if ($_GET['action'] == 'getDepartment') {
 	$result = $otherManagement -> addMcoParty();
 } else if ($_POST['action'] == 'addDepartment') {
 	$result = $otherManagement -> addDepartment();
+} else if ($_POST['action'] == 'deleteMcoParty') {
+	$otherManagement -> deleteMcoParty();
 }
 echo $result;
 

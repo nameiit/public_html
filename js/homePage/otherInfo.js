@@ -358,7 +358,7 @@ function addMcoInfo() {
 			//			else if(currentListTxt.indexOf(currentInputTxt) !== -1) {
 			//				//					alert("输入的销售人员信息不能一致");
 			//				$(this).parentsUntil(".manageCard.creditCardCompanies").find("dd.confirmManageInfo").find("input").val(" ");
-			//			} 
+			//			}
 			else {
 				var e = `<li class="contentInfo">
 								<dl class="detailContent">
@@ -390,7 +390,7 @@ function addMcoInfo() {
 				//				if(currentListTxt.indexOf(currentInputTxt) !== -1) {
 				//					//alert("输入的销售人员信息不能一致");
 				//					$(this).parentsUntil(".manageCard.manageContent").find("dd.confirmManageInfo").find("input").val(" ");
-				//				} 
+				//				}
 				//				else {
 				var e = `<li class="contentInfo">
 								<dl class="detailContent">
@@ -424,25 +424,4 @@ function selectedMcoInfo() {
 	});
 }
 
-function removeMcoInfo() {
-	$(".otherManageArea .manageCard.creditCardCompanies").find(".minusItem").on("click", function() {
-		//移除当前选中的元素
-		if($(".otherManageArea .manageCard.creditCardCompanies").find("li.contentInfo.selected").length < 1) {
-			alert("至少选中一行");
-		}
-		else {
-			$(".otherManageArea .manageCard.creditCardCompanies").find("li.contentInfo.selected").remove();
-
-			var orderInfo = $(".otherManageArea .manageCard.creditCardCompanies ul li.manegeDetailInfo dl.companyInfor ul li.contentInfo dd.orderInfo");
-			orderInfo.each(function(i, item) {
-				$(item).text(i + 1);
-			});
-			if($(".manageCard.creditCardCompanies").find("li.contentInfo").length < 1) {
-				localStorage.setItem("orderNum", 0);
-			}
-			$(".otherManageArea .manageCard.creditCardCompanies").find("dd.confirmManageInfo").find("input").val(" ");
-			addMcoInfo();
-		}
-
-	});
-}
+function removeMcoInfo() {}

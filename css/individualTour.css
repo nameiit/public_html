@@ -219,6 +219,7 @@ ul.add-msg li.exchangeRate span input[type='text'] {
 	font-size: 14px;
 }
 
+
 /*.updateDialog .updateForm ul.add-msg li.exchangeRate span {
 	width: 50% !important;
 }*/
@@ -1453,6 +1454,7 @@ ul.add-msg li.payment-type div.payment .btn-default {
 	line-height: 17px;
 	vertical-align: top;
 }
+
 ul.add-msg li.payment-type.execute .executeItem {
 	width: 16%;
 	text-align: left;
@@ -2729,6 +2731,7 @@ ul.add-msg div.systemNumTab li.tab_title dl dd {
 	line-height: 14px;
 }
 
+
 /*.updateDialog .updateForm ul.add-msg li.list_currency input[type='text'] {
 	width: 32% !important;
 }*/
@@ -2927,7 +2930,7 @@ ul.add-msg li.destination select.selectItem {
 ul.add-msg li.list_account.profitInfor a {
 	display: inline-block;
 	width: 20% !important;
-    margin-left: 0% !important;
+	margin-left: 0% !important;
 	vertical-align: top;
 	font-size: 14px;
 	text-align: center;
@@ -2943,164 +2946,289 @@ ul.add-msg li.list_account.profitInfor a {
 	text-decoration: none;
 	visibility: hidden;
 }
+
 ul.add-msg li.list_account.profitInfor a:hover {
 	color: #9192fa;
 	border: solid 1px #9192fa;
 	text-decoration: none;
 }
-ul.add-msg li.list_account.profitInfor{
+
+ul.add-msg li.list_account.profitInfor {
 	display: none;
 }
-ul.add-msg li.rate{
+
+ul.add-msg li.rate {
 	font-size: 0px;
 }
+
 ul.add-msg li.rate input[type="text"] {
-    width: 32% !important;
+	width: 32% !important;
 }
-ul.add-msg li.rate a{
+
+ul.add-msg li.rate a {
 	display: inline-block;
-    width: 30% !important;
-    margin-left: 2% !important;
-    vertical-align: top;
-    height: 30px;
-    line-height: 30px;
-    font-size: 14px;
-    background-color: #eeebe6;
-    text-align: center;
-    box-shadow: 1px 4px 4px #b3b3b1;
-    font-size: 14px;
-    border-radius: 5px;
-    font-weight: bold;
-    -webkit-transition: all;
-    transition: all;
-    -webkit-transition-timing-function: linear;
-    transition-timing-function: linear;
-    -webkit-transition-duration: .5s;
-    transition-duration: .5s;
-    color: #9295ff;
-    text-decoration: none;
-}
-ul.add-msg li.rate a.selected{
-	background-color: #ece8e7;
-    box-shadow: inset 1px 3px 4px #b8b8b8;
-    color: #f88032;
-}
-.updateTab ul li a:hover{
+	width: 30% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
 	text-decoration: none;
 }
-@media only screen and (min-width: 100px) and (max-width: 1440px) {
-	.updateTab ul li.number{width: 5.8%;}
+
+ul.add-msg li.rate a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
 }
-.partCreditCard{
+
+.updateTab ul li a:hover {
+	text-decoration: none;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1440px) {
+	.updateTab ul li.number {
+		width: 5.8%;
+	}
+}
+
+.partCreditCard {
 	display: none;
 }
-.floor .addInfo .cardLeft.indivUpdateLeftInfo ul.add-msg li input{
+
+.floor .addInfo .cardLeft.indivUpdateLeftInfo ul.add-msg li input {
 	width: 50% !important;
 }
-.updateDialog .updateForm ul.add-msg li div.notesInfor{
+
+.updateDialog .updateForm ul.add-msg li div.notesInfor {
 	width: 50% !important;
 }
-.floor .addInfo .cardLeft.indivUpdateLeftInfo ul.add-msg li.list_currency input{
+
+.floor .addInfo .cardLeft.indivUpdateLeftInfo ul.add-msg li.list_currency input {
 	width: 30% !important;
 }
-.updateDialog .updateForm ul.add-msg li.expDate div.expireDate{
+
+.updateDialog .updateForm ul.add-msg li.expDate div.expireDate {
 	width: 22% !important;
 }
-.updateDialog .updateForm  ul.add-msg li.expDate div.cardholder{
+
+.updateDialog .updateForm ul.add-msg li.expDate div.cardholder {
 	width: 28.5% !important;
 }
-.updateDialog .updateForm ul.add-msg li.expDate div.expireDate select{
+
+.updateDialog .updateForm ul.add-msg li.expDate div.expireDate select {
 	width: 35% !important;
-    padding-left: 0px;
-    min-width: 40px;
+	padding-left: 0px;
+	min-width: 40px;
 }
-.updateDialog .updateForm ul.add-msg li.expDate div.cardholder label{
+
+.updateDialog .updateForm ul.add-msg li.expDate div.cardholder label {
 	width: 46% !important;
 }
-.updateDialog .updateForm ul.add-msg li.expDate div.cardholder input[type="text"]{
+
+.updateDialog .updateForm ul.add-msg li.expDate div.cardholder input[type="text"] {
 	margin-left: 2% !important;
 	width: 43% !important;
 }
+
 @media only screen and (min-width: 100px) and (max-width: 1512px) {
-	.updateDialog .updateForm ul.add-msg li.expDate div.expireDate{
+	.updateDialog .updateForm ul.add-msg li.expDate div.expireDate {
 		width: 50% !important;
 	}
-	.updateDialog .updateForm ul.add-msg li.expDate div.expireDate select{
+	.updateDialog .updateForm ul.add-msg li.expDate div.expireDate select {
 		width: 15% !important;
 		margin-left: 2.2% !important;
 	}
-	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder{
+	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder {
 		width: 74.5% !important;
 		margin-top: 13px;
 	}
-	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder label{
+	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder label {
 		min-width: 92px;
 		width: initial !important;
 	}
-	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder input[type="text"]{
+	.updateDialog .updateForm ul.add-msg li.expDate div.cardholder input[type="text"] {
 		width: 28.4% !important;
-    	float: left;
-    	min-width: 83px;
-    	margin-left: 2.8% !important;
+		float: left;
+		min-width: 83px;
+		margin-left: 2.8% !important;
 	}
 }
-.updateDialog .updateForm .cardLeft label.markMsg{
+
+.updateDialog .updateForm .cardLeft label.markMsg {
 	width: 108px !important;
 }
-.updateDialog .updateForm ul.add-msg li.destination select{
+
+.updateDialog .updateForm ul.add-msg li.destination select {
 	width: 49% !important;
 	min-width: initial;
 }
+
 .updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li input[type="date"],
-.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li input[type="text"]{
+.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li input[type="text"] {
 	width: 64% !important;
 }
-.updateDialog .updateForm .indivUpdateRightInfo .payService ul.add-msg li.list_currency input[type='text']{
+
+.updateDialog .updateForm .indivUpdateRightInfo .payService ul.add-msg li.list_currency input[type='text'] {
 	width: 32% !important;
 }
 
-.updateDialog .updateForm ul.add-msg li.list_account{
+.updateDialog .updateForm ul.add-msg li.list_account {
 	visibility: visible;
-    display: block;
-}
-.updateDialog .updateForm ul.add-msg li.list_account.rate a{
-	display: inline-block;
-    width: 30% !important;
-    margin-left: 2% !important;
-    vertical-align: top;
-    height: 26px;
-    line-height: 26px;
-    font-size: 14px;
-    background-color: #eeebe6;
-    text-align: center;
-    box-shadow: 1px 4px 4px #b3b3b1;
-    font-size: 14px;
-    border-radius: 5px;
-    font-weight: bold;
-    -webkit-transition: all;
-    transition: all;
-    -webkit-transition-timing-function: linear;
-    transition-timing-function: linear;
-    -webkit-transition-duration: .5s;
-    transition-duration: .5s;
-    color: #9295ff;
-    text-decoration: none;
-}
-.updateDialog .updateForm ul.add-msg li.list_account.rate a.selected{
-	background-color: #ece8e7;
-    box-shadow: inset 1px 3px 4px #b8b8b8;
-    color: #f88032;
+	display: block;
 }
 
-.updateDialog .updateForm ul.add-msg li.list_account.rate input[type="text"]{
+.updateDialog .updateForm ul.add-msg li.list_account.rate a {
+	display: inline-block;
+	width: 30% !important;
+	margin-left: 2% !important;
+	vertical-align: top;
+	height: 26px;
+	line-height: 26px;
+	font-size: 14px;
+	background-color: #eeebe6;
+	text-align: center;
+	box-shadow: 1px 4px 4px #b3b3b1;
+	font-size: 14px;
+	border-radius: 5px;
+	font-weight: bold;
+	-webkit-transition: all;
+	transition: all;
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	-webkit-transition-duration: .5s;
+	transition-duration: .5s;
+	color: #9295ff;
+	text-decoration: none;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account.rate a.selected {
+	background-color: #ece8e7;
+	box-shadow: inset 1px 3px 4px #b8b8b8;
+	color: #f88032;
+}
+
+.updateDialog .updateForm ul.add-msg li.list_account.rate input[type="text"] {
 	width: 32% !important;
 }
-.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li.list_account input[type="text"]{
+
+.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li.list_account input[type="text"] {
 	width: 32% !important;
 }
-.updateTab ul li.profit{
+
+.updateTab ul li.profit {
 	width: 13%;
 }
-.updateTab ul dd.profit{
+
+.updateTab ul dd.profit {
 	width: 13% !important;
+}
+
+.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+	right: 18.2%;
+	width: 49.5%;
+}
+.updateDialog .updateForm ul.add-msg li.indivWholesaler .autocomplete-items{
+	right: 18.2%;
+	width: 49.5%;
+}
+.updateDialog .updateForm ul.add-msg li.indivSource .autocomplete-items{
+	right: 18.2%;
+	width: 49.5%;
+}
+
+@media only screen and (min-width: 1680px) and (max-width: 1780px) {
+	.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+		right: 17.5%;
+	}
+	.updateDialog .updateForm ul.add-msg li.indivWholesaler .autocomplete-items{
+		right: 17.5%;
+	}
+	.updateDialog .updateForm ul.add-msg li.indivSource .autocomplete-items{
+		right: 17.5%;
+	}
+}
+
+@media only screen and (min-width: 1600px) and (max-width: 1679px) {
+	.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+		right: 17.5%;
+	}
+	.updateDialog .updateForm ul.add-msg li.indivWholesaler .autocomplete-items{
+		right: 17.5%;
+	}
+	.updateDialog .updateForm ul.add-msg li.indivSource .autocomplete-items{
+		right: 17.5%;
+	}
+}
+
+@media only screen and (min-width: 1440px) and (max-width: 1599px) {
+	.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+		right: 15.5%;
+	}
+	.updateDialog .updateForm ul.add-msg li.indivWholesaler .autocomplete-items{
+		right: 15.5%;
+	}
+	.updateDialog .updateForm ul.add-msg li.indivSource .autocomplete-items{
+		right: 15.5%;
+	}
+}
+
+@media only screen and (min-width: 1366px) and (max-width:1439px) {
+	.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+		right: 14.5%;
+	}
+	.updateDialog .updateForm ul.add-msg li.indivWholesaler .autocomplete-items{
+		right: 14.5%;
+	}
+	.updateDialog .updateForm ul.add-msg li.indivSource .autocomplete-items{
+		right: 14.5%;
+	}
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1280px) {
+	.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li input[type="date"],
+	.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li input[type="text"] {
+		width: 50% !important;
+	}
+	ul.add-msg li.payment-type div.payment {
+		width: 50% !important;
+	}
+	.updateDialog .updateForm .indivUpdateRightInfo .payService ul.add-msg li.list_currency input[type='text'] {
+		width: 25% !important;
+	}
+	.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li.list_account input[type="text"] {
+		width: 25% !important;
+	}
+	ul.add-msg li.list_currency .payment.currency_type {
+		width: 23% !important;
+	}
+	span#indiv-tour-payment-type {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 80%;
+		font-size: 12px;
+	}
+	.updateDialog .updateForm ul.add-msg li.salesperson .autocomplete-items {
+		right: 10.7%;
+	}
+	.updateDialog .updateForm ul.add-msg li.indivWholesaler .autocomplete-items{
+		right: 10.7%;
+	}
+	.updateDialog .updateForm ul.add-msg li.indivSource .autocomplete-items{
+		right: 10.7%;
+	}
 }

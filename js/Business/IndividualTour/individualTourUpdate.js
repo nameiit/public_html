@@ -3,7 +3,7 @@ $(function() {
 	dragForm2();
 	updateIndivTourDiscount($("#indivDiscountText_update"), $("#indivDiscountNotice_update"), $("#indivDiscountApply_update"), $("#indivSubtractNum_update"), $("#indivDiscountOption_update"), $("#indivDiscountText_update_currency"));
 	//	addClients();
-	dateTimeCalculate($("#update-start-date"), $("#update-end-date"), $("#update-day-count"));
+	dateTimeCalculate($("#indiv_startTime"), $("#indiv_endTime"), $("#indiv_num_days"));
 	updateIndivTourDiscount($("#indivTourDiscountText"), $("#indivTourDiscountNotice"), $("#indivTourDiscountApply"), $("#indivTourSubtractNum"), $("#indivTourDiscountOption"), $("#updateIndivDiscountTextCurrency"));
 	autoCenterBox($("#dialog2"));
 	autoCenterBox($(".updateDialog .customerInfo.addClients"));
@@ -41,8 +41,8 @@ $(function() {
 		$(this).removeClass("selected");
 	});
 	//其他联系方式：
-	$("#add-customer-other-contact").on('change', function() {
-		$("#add-customer-other-contact-label").text($("#add-customer-other-contact").val() + '帐号');
+	$("#indivOtherContact").on('change', function() {
+		$("#indivOtherContactLabel").text($("#indivOtherContact").val() + '帐号');
 	});
 
 	$(document).scroll(function() {
@@ -101,32 +101,29 @@ $(document).ready(function() {
 			data: data,
 			success: function(response) {
 				response = JSON.parse(response);
+				console.log(response);
 				$('ul.tabListDetail').empty();
 				for(var i = 0; i < response.length; i++) {
-					$html = `<li>
-	            <dl class='callout_button'>`;
-					if(response[i]['process'] == 'confirmed') {
-						$html += `<label class="confirmedStatus"></label>`;
-					} else if(response[i]['process'] == 'pending') {
-						$html += `<label class="otherStatus"></label>`;
-					}
-					$html += `
-	            <dd class='systemNum'><a href='javascript:void(0);'></a></dd>
-	            <dd class='invoice'><a href='javascript:void(0);'></a></dd>
-	            <dd class='profit'><a href='javascript:void(0);'></a></dd>
-	            <dd class='debt'><a href='javascript:void(0);'></a></dd>
-	            <dd class='receivable'><a href='javascript:void(0);'></a></dd>
-	           
-	            <dd class='salePrice'><a href='javascript:void(0);'></a></dd>
-	            <dd class='createDate'><a href='javascript:void(0);'></a></dd>
-	            <dd class='customerName'><a href='javascript:void(0);'></a></dd>
-	            <dd class='startTime'><a href='javascript:void(0);'></a></dd>
-	            <dd class='returnTime'><a href='javascript:void(0);'></a></dd>
-	            <dd class='lockStatus'></dd>
-	            <dd class='finishStatus'></dd>
-	            <dd class='number'><a href="javascript:void(0);"></a></dd>
-	            </dl>
-	        </li>`
+					var lockStatus = response[i]['lock_status'] == 'Y' ? 'yesStatus' : 'noStatus';
+					var finishStatus = response[i]['finish_status'] == 'Y' ? 'yesStatus' : 'noStatus';
+					var following_id = response[i]['following_id_collection'] == null ? '' : response[i]['following_id_collection'];
+					
+					var $html = `
+							<li><dl class="callout_button">
+	                <dd class="systemNum"><a href='javascript:void(0);'>` + response[i]['transaction_id'] + `</a></dd>
+	                <dd class='invoice'><a href='javascript:void(0);'>` + response[i]['invoice'] + `</a></dd>
+	                <dd class='profit'><a href='javascript:void(0);'>` + response[i]['total_profit'] + `</a></dd>
+	                <dd class='debt'><a href='javascript:void(0);'>` + response[i]['debt'] + `</a></dd>
+	                <dd class='receivable'><a href='javascript:void(0);'>` + response[i]['received'] + `</a></dd>
+	                <dd class='salePrice'><a href='javascript:void(0);'>` + response[i]['selling_price'] + `</a></dd>
+	                <dd class='createDate'><a href='javascript:void(0);'>` + response[i]['create_time'].substring(0, 10) + `</a></dd>
+	                <dd class='customerName'><a href='javascript:void(0);'>` + response[i]['customer_name'] + `</a></dd>
+	                <dd class='startTime'><a href='javascript:void(0);'>` + response[i]['depart_date'].substring(0, 10) + `</a></dd>
+	                <dd class='returnTime'><a href='javascript:void(0);'>` + response[i]['arrival_date'].substring(0, 10) + `</a></dd>
+	                <dd class='lockStatus ` + lockStatus + `'><a href='javascript:void(0);'></a></dd>
+	                <dd class='finishStatus ` + finishStatus + `'><a href='javascript:void(0);'></a></dd>
+	                <dd class='number'><a href='javascript:void(0);'>` + following_id + `</a></dd>
+	            </dl></li>`
 					$('ul.tabListDetail').append($html);
 				}
 				heightRange();
@@ -143,8 +140,6 @@ $(document).ready(function() {
 			type: 'GET',
 			data: data,
 			success: function(response) {
-
-//				 console.log(response);
 				response = JSON.parse(response);
 
 				if(response['sum_profit'] == null) {
@@ -162,15 +157,19 @@ $(document).ready(function() {
 				} else {
 					$("#sum_received").text(response['sum_received']);
 				}
+				if (response['sum_selling_price'] == null) {
+					$("#sum_selling_price").text(0);
+				} else {
+					$("#sum_selling_price").text(response['sum_selling_price']);
+				}
 
-				
 				var num_orders = response['num_orders'];
 				if(num_orders == 0) {
 					$(".noResultBox").css("display", "block");
 				} else {
 					$('.tabListDetail').empty();
 					$('#p4').pagination({
-						totalData: response,
+						totalData: num_orders,
 						showData: 15,
 						current: 0,
 						coping: true,
@@ -339,19 +338,19 @@ $(document).ready(function() {
 				individual_tour_id = response['indiv_tour_id'];
 				// 填充弹出窗口的数据
 				$("#update-product-code").val(response['product_code']);
-				$("#update-tour-name").val(response['tour_name']);
-				$("#update-tour-invoice").val(response['indiv_tour_invoice']);
-				$("#update-salesperson").val(response['salesperson_code']);
-				$("#update-wholesaler").val(response['wholesaler_code']);
-				$("#update-source").val(response['source_name']);
-				$("#update-note").val(response['note']);
+				$("#indiv_tour_name").val(response['tour_name']);
+				$("#invoice").val(response['indiv_tour_invoice']);
+				$("#indiv_salesperson").val(response['salesperson_code']);
+				$("#indiv_wholesaler").val(response['wholesaler_code']);
+				$("#indiv_source").val(response['source_name']);
+				$("#indiv_note").val(response['note']);
 
-				$("#update-start-date").val(response['depart_date'].substring(0, 10));
-				$("#update-end-date").val(response['arrival_date'].substring(0, 10));
-				$("#update-day-count").val(response['duration']);
+				$("#indiv_startTime").val(response['depart_date'].substring(0, 10));
+				$("#indiv_endTime").val(response['arrival_date'].substring(0, 10));
+				$("#indiv_num_days").val(response['duration']);
 
-				$("#update-exchange-rate").val(response['exchange_rate']);
-				$("#update_base_price").val(response['base_price']);
+				$("#indiv_exchange_rate").val(response['exchange_rate']);
+				$("#indiv_base_price").val(response['base_price']);
 				$("#update_base_price_currency").val(response['base_currency']);
 				$("#update-indiv-payment-type").val(response['payment_type']);
 				$("#update_indivAmountDue").val(response['selling_price']);
@@ -381,13 +380,13 @@ $(document).ready(function() {
 
 				$("#add-customer-lname").val(response['lname']);
 				$("#add-customer-fname").val(response['fname']);
-				$("#add-customer-phone").val(response['phone']);
-				$("#add-customer-other-contact").val(response['other_contact_type']);
-				$("#add-customer-other-contact-number").val(response['other_contact_number']);
-				$("#add-customer-birthday").val(response['birth_date'].substring(0, 10));
-				$("#add-customer-gender").val(response['gender']);
-				$("#add-customer-email").val(response['email']);
-				$("#add-customer-zipcode").val(response['zipcode']);
+				$("#indivClientTel").val(response['phone']);
+				$("#indivOtherContact").val(response['other_contact_type']);
+				$("#indivOtherContactNumber").val(response['other_contact_number']);
+				$("#indivBirthday").val(response['birth_date'].substring(0, 10));
+				$("#indivGender").val(response['gender']);
+				$("#indivClientEmail").val(response['email']);
+				$("#indivZipCode").val(response['zipcode']);
 				// $("#add-customer-join-date").val(response['join_date'].substring(0, 10));
 				// $("#add-customer-join-location").val(response['join_location']);
 				// $("#add-customer-leave-date").val(response['leave_date'].substring(0, 10));
@@ -425,14 +424,14 @@ $(document).ready(function() {
 	/*
 	 * 得到销售，导游和来源的下拉列表
 	 */
-	$("#update-salesperson, #update-wholesaler, #update-source, #accounting-received, #wholesaler").on('focus', function() {
+	$("#indiv_salesperson, #indiv_wholesaler, #indiv_source, #accounting-received, #wholesaler").on('focus', function() {
 		var current_id = $(this).attr('id');
 		var target = "";
-		if(current_id == 'update-salesperson') {
+		if(current_id == 'indiv_salesperson') {
 			target = 'salesperson';
-		} else if(current_id == 'update-source') {
+		} else if(current_id == 'indiv_source') {
 			target = 'source';
-		} else if(current_id == 'update-wholesaler' || current_id == 'wholesaler') {
+		} else if(current_id == 'indiv_wholesaler' || current_id == 'wholesaler') {
 			target = 'wholesaler';
 		} else if(current_id == 'accounting-received') {
 			target = 'user_id';
@@ -463,36 +462,36 @@ $(document).ready(function() {
 			transactionId: $('.active').find('dl dd.listNum a')['0'].innerText,
 
 			product_code: $("#update-product-code").val(),
-			tour_name: $("#update-tour-name").val(),
-			invoice: $("#update-tour-invoice").val(),
-			salesperson: $("#update-salesperson").val(),
-			wholesaler: $("#update-wholesaler").val(),
-			source: $("#update-source").val(),
-			note: $("#update-note").val(),
+			tour_name: $("#indiv_tour_name").val(),
+			invoice: $("#invoice").val(),
+			salesperson: $("#indiv_salesperson").val(),
+			wholesaler: $("#indiv_wholesaler").val(),
+			source: $("#indiv_source").val(),
+			note: $("#indiv_note").val(),
 
-			start_date: $("#update-start-date").val(),
-			end_date: $("#update-end-date").val(),
-			durating: $("#update-day-count").val(),
+			start_date: $("#indiv_startTime").val(),
+			end_date: $("#indiv_endTime").val(),
+			durating: $("#indiv_num_days").val(),
 
-			base_price: $("#update_base_price").val(),
+			base_price: $("#indiv_base_price").val(),
 			base_price_currency: $("#update_base_price_currency").val(),
 			sell_price: $("#update_indivAmountDue").val(),
 			sell_price_currency: $("#update_sell_price_currency").val(),
 			transaction_fee: $("#transaction_fee").val(),
-			actual_received: $("#update_sale_price").val(),
+			actual_received: $("#indiv_sale_price").val(),
 			coupon: $("#indivDiscountText_update").val(),
 			coupon_currency: $("#indivDiscountText_update_currency").val(),
 
 			lname: $("#add-customer-lname").val(),
 			fname: $("#add-customer-fname").val(),
-			phone: $("#add-customer-phone").val(),
-			other_contact_type: $("#add-customer-other-contact").val(),
-			other_contact_number: $("#add-customer-other-contact-number").val(),
+			phone: $("#indivClientTel").val(),
+			other_contact_type: $("#indivOtherContact").val(),
+			other_contact_number: $("#indivOtherContactNumber").val(),
 
-			birthday: $("#add-customer-birthday").val(),
-			gender: $("#add-customer-gender").val(),
-			email: $("#add-customer-email").val(),
-			zipcode: $("#add-customer-zipcode").val(),
+			birthday: $("#indivBirthday").val(),
+			gender: $("#indivGender").val(),
+			email: $("#indivClientEmail").val(),
+			zipcode: $("#indivZipCode").val(),
 
 			join_date: $("#add-customer-join-date").val(),
 			join_location: $("#add-customer-join-location").val(),
@@ -538,8 +537,8 @@ $(document).ready(function() {
 		$(".updateEditConfirmBox").css("display", "none");
 	});
 
-	$("#add-customer-other-contact").on('change', function() {
-		$("#add-customer-other-contact-label").text($("#add-customer-other-contact").val() + '帐号');
+	$("#indivOtherContact").on('change', function() {
+		$("#indivOtherContactLabel").text($("#indivOtherContact").val() + '帐号');
 	});
 
 	// 更新订单列表的内容
@@ -649,15 +648,15 @@ function autoCenterBox(el) {
 function resetCustomerInfo() {
 	$("#add-customer-lname").val("");
 	$("#add-customer-fname").val("");
-	$("#add-customer-phone").val("");
-	$("#add-customer-other-contact").val("WeChat");
-	$("#add-customer-other-contact-label").text("WeChat帐号");
-	$("#add-customer-other-contact-number").val("");
+	$("#indivClientTel").val("");
+	$("#indivOtherContact").val("WeChat");
+	$("#indivOtherContactLabel").text("WeChat帐号");
+	$("#indivOtherContactNumber").val("");
 
-	$("#add-customer-birthday").val("");
-	$("#add-customer-gender").val("");
-	$("#add-customer-email").val("");
-	$("#add-customer-zipcode").val("");
+	$("#indivBirthday").val("");
+	$("#indivGender").val("");
+	$("#indivClientEmail").val("");
+	$("#indivZipCode").val("");
 	$("#add-customer-note").val("");
 
 	$("#add-customer-join-date").val("");
@@ -680,14 +679,14 @@ function getCustomerEditInfo() {
 	return data = {
 		lname: $("#add-customer-lname").val(),
 		fname: $("#add-customer-fname").val(),
-		phone: $("#add-customer-phone").val(),
-		other_contact_type: $("#add-customer-other-contact").val(),
-		other_contact_number: $("#add-customer-other-contact-number").val(),
+		phone: $("#indivClientTel").val(),
+		other_contact_type: $("#indivOtherContact").val(),
+		other_contact_number: $("#indivOtherContactNumber").val(),
 
-		birthday: $("#add-customer-birthday").val(),
-		gender: $("#add-customer-gender").val(),
-		email: $("#add-customer-email").val(),
-		zipcode: $("#add-customer-zipcode").val(),
+		birthday: $("#indivBirthday").val(),
+		gender: $("#indivGender").val(),
+		email: $("#indivClientEmail").val(),
+		zipcode: $("#indivZipCode").val(),
 		note: $("#add-customer-note").val(),
 
 		join_date: $("#add-customer-join-date").val(),
@@ -722,7 +721,7 @@ function heightRange() {
 function updateFinancialInfo() {
 	//切换
 	$(".info-price-individual li.salePriceInfo dl.salePrice dd").unbind("click").on("click", function() {
-		var exchangeRate = $("input#update-exchange-rate").val();
+		var exchangeRate = $("input#indiv_exchange_rate").val();
 		if(exchangeRate == "") {
 			alert("请先输入汇率");
 		}
@@ -750,10 +749,10 @@ function calculateCharge() {
 //按总卖价
 function updateGetPriceInfoByTotalPrice() {
 	$("ul.add-msg li.list_account.calculateProfit a#updateCalculateBtnByTotalPrice").on("click", function() {
-		var exchangeRate = $("input#update-exchange-rate").val(); //汇率
+		var exchangeRate = $("input#indiv_exchange_rate").val(); //汇率
 		var profit = $("input#indiv-profit"); //利润
-		var basePrice = $("input#update_base_price").val(); //底价
-		var salePrice = $("input#update_sale_price").val(); //总卖价
+		var basePrice = $("input#indiv_base_price").val(); //底价
+		var salePrice = $("input#indiv_sale_price").val(); //总卖价
 		var discount; //折扣
 		if(exchangeRate == "") {
 			alert("请确认汇率信息已填写");
@@ -762,13 +761,13 @@ function updateGetPriceInfoByTotalPrice() {
 			if(basePrice == "") {
 				basePrice = 0;
 			} else {
-				basePrice = $("input#update_base_price").val();
+				basePrice = $("input#indiv_base_price").val();
 			}
 			//卖价
 			if(salePrice == "") {
 				salePrice = 0;
 			} else {
-				salePrice = $("input#update_sale_price").val();
+				salePrice = $("input#indiv_sale_price").val();
 			}
 			//折扣
 			if($("ul.add-msg li.discountCard dl.discountNotice").css("display") == "none") {
@@ -870,13 +869,13 @@ function updateIndivTourDiscount(discountText, discountNotice, discountApply, su
 function updateGetPriceInfoByClient() {
 	$("ul.add-msg li.list_account.calculateProfit a#updateCalculateBtnByClients").on("click", function() {
 		//汇率
-		var exchangeRate = $("input#update-exchange-rate").val();
+		var exchangeRate = $("input#indiv_exchange_rate").val();
 		//底价
-		var basePrice = $("input#update_base_price").val();
+		var basePrice = $("input#indiv_base_price").val();
 		if(basePrice == "") {
 			basePrice = 0;
 		} else {
-			basePrice = $("input#update_base_price").val();
+			basePrice = $("input#indiv_base_price").val();
 		}
 		//利润
 		var profit = $("input#update_profit_client");
@@ -889,7 +888,7 @@ function updateGetPriceInfoByClient() {
 //销售价-折扣
 function getTotalPriceInfo() {
 	//利率
-	var exchangeRate = $("input#update-exchange-rate").val();
+	var exchangeRate = $("input#indiv_exchange_rate").val();
 	//实际支付
 	var actualPayment = $("dd.customer-actualpayment.updatePaymentactual");
 	var currentProfit = 0;
@@ -1341,11 +1340,11 @@ function paymentMethod() {
 		$("input#mco-credit").val("");
 		$("input#fee-ratio").val("");
 		$("span#mco-party").text("");
-		
+
 		$("span.mcoAmount_currency").text("美元");
 		$("span.mcoCredit_currency").text("美元");
 		$("span.faceValue_currency").text("美元");
-		
+
 		//输入信用卡
 		$(".creditCardInfo").find("input").val("");
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
@@ -1365,7 +1364,7 @@ function paymentMethod() {
 			$("input#card-holder").removeClass("notRequired");
 //			console.log($(".requiredItem").find("input:not([class='notRequired'])").length);
 			$(".creditCardInfo").css("display", "block");
-		} 
+		}
 		else {
 			$(".mcoList").css("display", "none");
 			$("input#face-value").addClass("notRequired");
@@ -1379,7 +1378,7 @@ function paymentMethod() {
 			$("input#mco-credit").val("");
 			$("input#fee-ratio").val("");
 			$("span#mco-party").text("");
-			
+
 			$("span.mcoAmount_currency").text("美元");
 			$("span.mcoCredit_currency").text("美元");
 			$("span.faceValue_currency").text("美元");
@@ -1387,30 +1386,30 @@ function paymentMethod() {
 			$(".creditCardInfo").find("input").val("");
 			$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 			$(".creditCardInfo").css("display", "none");
-			
+
 		}
 		heightRange();
 		$(".partCreditCard").css("display", "none");
 		$("input.non-creditCardAmount").val("");
 		$("input.creditCardAmount").val("");
-		
+
 	});
 	//非刷卡支付
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.no-creditCardPayment").find("li").find("a").on("click", function() {
 		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
 		payment_type.text($(this).text());
 		$(".mcoList").css("display", "none");
-		
+
 		$("input#face-value").addClass("notRequired");
 		$("input#mco-value").addClass("notRequired");
 		$("input#mco-credit").addClass("notRequired");
 		$("input#card-number").addClass("notRequired");
 		$("input#card-holder").addClass("notRequired");
-		
+
 		$("span.mcoAmount_currency").text("美元");
 		$("span.mcoCredit_currency").text("美元");
 		$("span.faceValue_currency").text("美元");
-		
+
 		$("input#face-value").val("");
 		$("input#mco-value").val("");
 		$("input#mco-credit").val("");
@@ -1623,24 +1622,24 @@ function mcoCreditCalculate(mcoCreditBox, mcoAmount, rateInfo) {
 //利润
 function getCalculateProfitInfo() {
 	//利润=卖价-底价-MCO金额+MCO Credit
-	var exchangeRate = $("input#update-exchange-rate").val();
+	var exchangeRate = $("input#indiv_exchange_rate").val();
 	var profit;
 	var salePrice;
 	var basePrice;
 	var mcoAmount;
 	var mcoCredit;
 	var profit = $("input#indiv-profit");
-	salePrice = $("input#update_sale_price").val();
-	basePrice = $("input#update_base_price").val();
+	salePrice = $("input#indiv_sale_price").val();
+	basePrice = $("input#indiv_base_price").val();
  	mcoAmount = $("input.indiv_mcoAmount").val();
 	mcoCredit = $("input.mcoCreditInfo").val();
 	//卖价
-	$("input#update_sale_price").on("keyup", function() {
+	$("input#indiv_sale_price").on("keyup", function() {
 		profitType();
-		exchangeRate = $("input#update-exchange-rate").val();
+		exchangeRate = $("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
 		salePrice = $(this).val();
-		basePrice = $("input#update_base_price").val();
+		basePrice = $("input#indiv_base_price").val();
 		mcoAmount = $("input.indiv_mcoAmount").val();
 		mcoCredit = $("input.mcoCreditInfo").val();
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "美元") {
@@ -1664,19 +1663,19 @@ function getCalculateProfitInfo() {
 
 		}
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "人民币") {
-			salePrice = $("input#update_sale_price").val();
-			basePrice = $("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input.indiv_mcoAmount").val();
 			mcoCredit = $("input.mcoCreditInfo").val();
 		}
 		profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate);
 	});
 	//底价
-	$("input#update_base_price").on("keyup", function() {
+	$("input#indiv_base_price").on("keyup", function() {
 		profitType();
-		exchangeRate = $("input#update-exchange-rate").val();
+		exchangeRate = $("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
-		salePrice = $("input#update_sale_price").val();
+		salePrice = $("input#indiv_sale_price").val();
 		basePrice = $(this).val();
 		mcoAmount = $("input.indiv_mcoAmount").val();
 		mcoCredit = $("input.mcoCreditInfo").val();
@@ -1700,8 +1699,8 @@ function getCalculateProfitInfo() {
 			}
 		}
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "人民币") {
-			salePrice = $("input#update_sale_price").val();
-			basePrice = $("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input.indiv_mcoAmount").val();
 			mcoCredit = $("input.mcoCreditInfo").val();
 		}
@@ -1710,10 +1709,10 @@ function getCalculateProfitInfo() {
 	//mco金额
 	$("input.indiv_mcoAmount").on("keyup", function() {
 		profitType();
-		exchangeRate = $("input#update-exchange-rate").val();
+		exchangeRate = $("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
-		salePrice = $("input#update_sale_price").val();;
-		basePrice = $("input#update_base_price").val()
+		salePrice = $("input#indiv_sale_price").val();;
+		basePrice = $("input#indiv_base_price").val()
 		mcoAmount = $(this).val();
 		mcoCredit = $("input.mcoCreditInfo").val();
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "美元") {
@@ -1736,8 +1735,8 @@ function getCalculateProfitInfo() {
 			}
 		}
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "人民币") {
-			salePrice = $("input#update_sale_price").val();
-			basePrice = $("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input.indiv_mcoAmount").val();
 			mcoCredit = $("input.mcoCreditInfo").val();
 		}
@@ -1746,10 +1745,10 @@ function getCalculateProfitInfo() {
 	//mcoCredit
 	$("input.mcoCreditInfo").on("keyup", function() {
 		profitType();
-		exchangeRate = $("input#update-exchange-rate").val();
+		exchangeRate = $("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
-		salePrice = $("input#update_sale_price").val();;
-		basePrice = $("input#update_base_price").val();
+		salePrice = $("input#indiv_sale_price").val();;
+		basePrice = $("input#indiv_base_price").val();
 		mcoAmount = $("input.indiv_mcoAmount").val();
 		mcoCredit = $(this).val();
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "美元") {
@@ -1773,19 +1772,19 @@ function getCalculateProfitInfo() {
 
 		}
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "人民币") {
-			salePrice = $("input#update_sale_price").val();;
-			basePrice = $("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();;
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input.indiv_mcoAmount").val();
 			mcoCredit = $("input.mcoCreditInfo").val();
 		}
 		profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate);
 	});
-	$("input#update-exchange-rate").on("keyup", function() {
+	$("input#indiv_exchange_rate").on("keyup", function() {
 		profitType();
-		exchangeRate = $("input#update-exchange-rate").val();
+		exchangeRate = $("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
-		salePrice = $("input#update_sale_price").val();
-		basePrice = $("input#update_base_price").val();
+		salePrice = $("input#indiv_sale_price").val();
+		basePrice = $("input#indiv_base_price").val();
 		mcoAmount = $("input.indiv_mcoAmount").val();
 		mcoCredit = $("input.mcoCreditInfo").val();
 		//利润单位美元:
@@ -1808,8 +1807,8 @@ function getCalculateProfitInfo() {
 			}
 		}
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "人民币") {
-			salePrice = $("input#update_sale_price").val();
-			basePrice = $("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input.indiv_mcoAmount").val();
 			mcoCredit = $("input.mcoCreditInfo").val();
 		}
@@ -1818,15 +1817,15 @@ function getCalculateProfitInfo() {
 	//卖价下拉菜单选择
 	$("ul.dropdown-menu.currency_box.salePrice_currencyBox").find("li").find("a").on("click", function() {
 		profitType();
-		exchangeRate = $("input#update-exchange-rate").val();
+		exchangeRate = $("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
-		salePrice = $("input#update_sale_price").val();
-		basePrice = $("input#update_base_price").val();
+		salePrice = $("input#indiv_sale_price").val();
+		basePrice = $("input#indiv_base_price").val();
 		mcoAmount = $("input.indiv_mcoAmount").val();
 		mcoCredit = $("input.mcoCreditInfo").val();
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "人民币") {
-			salePrice = $("input#update_sale_price").val();
-			basePrice = $("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input.indiv_mcoAmount").val();
 			mcoCredit = $("input.mcoCreditInfo").val();
 		}
@@ -1861,15 +1860,15 @@ function getCalculateProfitInfo() {
 	$("ul.dropdown-menu.currency_box.basePrice_currencyBox").find("li").find("a").on("click", function() {
 		profitType();
 
-		exchangeRate =$("input#update-exchange-rate").val();
+		exchangeRate =$("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
-		salePrice = $("input#update_sale_price").val();
-		basePrice = $("input#update_base_price").val();
+		salePrice = $("input#indiv_sale_price").val();
+		basePrice = $("input#indiv_base_price").val();
 		mcoAmount = $("input.indiv_mcoAmount").val();
 		mcoCredit = $("input.mcoCreditInfo").val();
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "人民币") {
-			salePrice = $("input#update_sale_price").val();
-			basePrice = $("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input.indiv_mcoAmount").val();
 			mcoCredit = $("input.mcoCreditInfo").val();
 		}
@@ -1905,16 +1904,16 @@ function getCalculateProfitInfo() {
 	//mco金额下拉菜单:
 	$("ul.dropdown-menu.currency_box.mcoAmount_currencyBox").find("li").find("a").on("click", function() {
 		profitType();
-		exchangeRate = $("input#update-exchange-rate").val();
+		exchangeRate = $("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
-		salePrice = $("input#update_sale_price").val();
-		basePrice = $("input#update_base_price").val();
+		salePrice = $("input#indiv_sale_price").val();
+		basePrice = $("input#indiv_base_price").val();
 		mcoAmount = $("input.indiv_mcoAmount").val();
 		mcoCredit = $("input.mcoCreditInfo").val();
 
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "人民币") {
-			salePrice = $("input#update_sale_price").val();
-			basePrice = $("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input.indiv_mcoAmount").val();
 			mcoCredit = $("input.mcoCreditInfo").val();
 		}
@@ -1948,15 +1947,15 @@ function getCalculateProfitInfo() {
 	//mcoCredit
 	$("ul.dropdown-menu.currency_box.mcoCredit_currencyBox").find("li").find("a").on("click", function() {
 		profitType();
-		exchangeRate = $("input#update-exchange-rate").val();
+		exchangeRate = $("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
-		salePrice = $("input#update_sale_price").val();
-		basePrice = $("input#update_base_price").val();
+		salePrice = $("input#indiv_sale_price").val();
+		basePrice = $("input#indiv_base_price").val();
 		mcoAmount = $("input.indiv_mcoAmount").val();
 		mcoCredit = $("input.mcoCreditInfo").val();
 		if($.trim($("li.list_account.profitInfor").find("span").text()) == "人民币") {
-			salePrice = $("input#update_sale_price").val();
-			basePrice = $("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input.indiv_mcoAmount").val();
 			mcoCredit = $("input.mcoCreditInfo").val();
 		}
@@ -2154,10 +2153,10 @@ function rateInfo() {
 		}
 		mcoCredit = $("input#mco-credit").val();
 		mcoAmount = $("input#mco-value").val();
-		exchangeRate = $("input#update-exchange-rate").val();
+		exchangeRate = $("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
-		salePrice = $("input#update_sale_price").val();
-		basePrice = $("input#update_base_price").val();
+		salePrice = $("input#indiv_sale_price").val();
+		basePrice = $("input#indiv_base_price").val();
 		if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "美元") {
 			if($("span.salePrice_currency").text() == "人民币") {
 				salePrice = (salePrice / exchangeRate).toFixed(2);
@@ -2173,8 +2172,8 @@ function rateInfo() {
 			}
 		}
 		if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "人民币") {
-			salePrice = $("input#update_sale_price").val();
-			basePrice = $("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input#mco-value").val();
 			mcoCredit = $("input#mco-credit").val();
 		}
@@ -2188,9 +2187,9 @@ function rateInfo() {
 function fullMcoPayment() {
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.creditCardPayment").find("li").find("a").on("click", function() {
 		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
-		payment_type.text($(this).text());
+//		payment_type.text($(this).text());
 		if($.trim(payment_type.text()) == "全额MCO") {
-			var salePrice = $("input#update_sale_price").val();
+			var salePrice = $("input#indiv_sale_price").val();
 			if($.trim(salePrice) !== "") {
 				$("input#face-value").val(0);
 				$("input#mco-value").val(salePrice);
@@ -2202,10 +2201,10 @@ function fullMcoPayment() {
 		}
 		var mcoCredit = $("input#mco-credit").val();
 		var mcoAmount = $("input#mco-value").val();
-		var exchangeRate = $("input#update-exchange-rate").val();
+		var exchangeRate = $("input#indiv_exchange_rate").val();
 		var profit = $("input#indiv-profit");
-		var salePrice = $("input#update_sale_price").val();
-		var basePrice = $("input#update_base_price").val();
+		var salePrice = $("input#indiv_sale_price").val();
+		var basePrice = $("input#indiv_base_price").val();
 		if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "美元") {
 			if($("span.salePrice_currency").text() == "人民币") {
 				salePrice = (salePrice / exchangeRate).toFixed(2);
@@ -2221,26 +2220,27 @@ function fullMcoPayment() {
 			}
 		}
 		if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "人民币") {
-			salePrice = $("input#update_sale_price").val();
-			basePrice =	$("input#update_base_price").val();
+			salePrice = $("input#indiv_sale_price").val();
+			basePrice =	$("input#indiv_base_price").val();
 			mcoAmount = $("input#mco-value").val();
 			mcoCredit = $("input#mco-credit").val();
 		}
 		profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate);
 	});
 }
+
 //供应商部分刷卡+非刷卡支付
 function partCreditCard() {
 	$("input.creditCardAmount").on("keyup", function() {
-		var salePrice =  $("input#update_sale_price").val();
-		if((salePrice !== "") && ($("input.non-creditCardAmount").val() == "")) {
+		var salePrice =  $("input#indiv_sale_price").val();
+		if(salePrice !== "") {
 			var amount = Number(salePrice - $(this).val());
 			$("input.non-creditCardAmount").val(amount);
 		}
 	})
 	$("input.non-creditCardAmount").on("keyup", function() {
-		var salePrice =  $("input#update_sale_price").val();
-		if((salePrice !== "") && ($("input.creditCardAmount").val() == "")) {
+		var salePrice =  $("input#indiv_sale_price").val();
+		if(salePrice !== "") {
 			var amount = Number(salePrice - $(this).val());
 			$("input.creditCardAmount").val(amount);
 		}

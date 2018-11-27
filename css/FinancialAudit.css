@@ -39,21 +39,15 @@
 	color: #ffffff;
 	text-align: center;
 }
-
-/*.cancelClear,
-.cancelPaid,
-.cancelFinish {
-	display: none;
-}*/
-
 .contentFloor .cancelFloor {
 	position: relative;
 	background-color: #ffffff;
 	padding: 15px;
 	border: solid 1px #d2d2d2;
 	border-radius: 4px;
-	min-height: 290px;
+	/*min-height: 290px;*/
 	margin-top: 44px;
+	padding-bottom: 60px;
 }
 
 .contentFloor .cancelFloor label.markMsg {
@@ -413,11 +407,14 @@ ul.tabFloor li dl dd.systemNum.selected {
 
 
 /*提示框   e*/
-
 .nav-box.eg {
 	text-align: left;
 	position: absolute;
-    bottom: 0px;
+    bottom: 10px;
+    height: 40px;
+}
+.nav-box.eg ul{
+	margin: 0px;
 }
 .contentFloor{position: relative;}
 .contentFloor a.backTop{

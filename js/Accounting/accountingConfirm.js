@@ -64,7 +64,8 @@ $(document).ready(function () {
       type: 'GET',
       data: data,
       success: function(response) {
-        response = JSON.parse(response);
+        // response = JSON.parse(response);
+        console.log(response);
         if (response['sum_profit'] == null) {
           $("#sum_profit").text(0);
         } else {

@@ -149,6 +149,7 @@ function sendFormMsg() {
 			var expired_date_month = $("#expired-date-month").val();
 			var expired_date_year = $("#expired-date-year").val();
 			var card_holder = $("#card-holder").val();
+			var mco_receiver = $("#mco-receiver").val();
 
 			Object.assign(data, {
 				mco_party: mco_party,
@@ -162,9 +163,13 @@ function sendFormMsg() {
 				card_number: card_number,
 				expired_date_month: expired_date_month,
 				expired_date_year: expired_date_year,
-				card_holder: card_holder
+				card_holder: card_holder,
+				mco_receiver: mco_receiver
 			});
 		}
+
+		data['cc_amount'] = $("#wholesaler-charge-amount").val();
+		data['noncc_amount'] = $("#mco-charge-amount").val();
 
 		if($("dd.selectInfo div.checkbox input").length > 0) {
 			var collection_list = [];
@@ -414,15 +419,17 @@ function resetCustomerForm() {
 }
 
 $(document).ready(function() {
-	$("#indiv_salesperson, #indiv_wholesaler, #indiv_source").on('focus', function() {
+	$("#indiv_salesperson, #indiv_wholesaler, #indiv_source, #mco-receiver").on('focus', function() {
 		var current_id = $(this).attr('id');
 		var target = "";
 		if(current_id == 'indiv_salesperson') {
 			target = 'salesperson';
-		} else if(current_id == 'indiv_source') {
+		} else if (current_id == 'indiv_source') {
 			target = 'source';
-		} else if(current_id == 'indiv_wholesaler') {
+		} else if (current_id == 'indiv_wholesaler') {
 			target = 'wholesaler';
+		} else if (current_id == 'mco-receiver') {
+			target = 'user_id';
 		}
 		var url = location.protocol.concat("//").concat(location.host).concat('/database/autoComplete.php');
 		$.ajax({
@@ -775,6 +782,7 @@ function paymentMethod() {
 		$("input#mco-credit").removeClass("notRequired");
 		$("input#card-number").removeClass("notRequired");
 		$("input#card-holder").removeClass("notRequired");
+		$("input#mco-receiver").removeClass("notRequired");
 
 	} else {
 		$("input#face-value").addClass("notRequired");
@@ -782,6 +790,7 @@ function paymentMethod() {
 		$("input#mco-credit").addClass("notRequired");
 		$("input#card-number").addClass("notRequired");
 		$("input#card-holder").addClass("notRequired");
+		$("input#mco-receiver").addClass("notRequired");
 
 		$("input#face-value").val("");
 		$("input#mco-value").val("");
@@ -799,7 +808,6 @@ function paymentMethod() {
 		$(".creditCardInfo").css("display", "none");
 	}
 	//刷卡支付
-
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.creditCardPayment").find("li").find("a").on("click", function() {
 		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
 		payment_type.text($(this).text());
@@ -813,7 +821,7 @@ function paymentMethod() {
 			$("input#mco-credit").removeClass("notRequired");
 			$("input#card-number").removeClass("notRequired");
 			$("input#card-holder").removeClass("notRequired");
-			//			console.log($(".requiredItem").find("input:not([class='notRequired'])").length);
+			$("input#mco-receiver").removeClass("notRequired");
 			$("ul.add-msg li.list_account.profitInfor a").css("visibility", "visible");
 			$(".creditCardInfo").css("display", "block");
 		} else {
@@ -823,6 +831,7 @@ function paymentMethod() {
 			$("input#mco-credit").addClass("notRequired");
 			$("input#card-number").addClass("notRequired");
 			$("input#card-holder").addClass("notRequired");
+			$("input#mco-receiver").addClass("notRequired");
 			$("ul.add-msg li.list_account.profitInfor a").css("visibility", "hidden");
 
 			$("input#face-value").val("");
@@ -858,6 +867,7 @@ function paymentMethod() {
 		$("input#mco-credit").addClass("notRequired");
 		$("input#card-number").addClass("notRequired");
 		$("input#card-holder").addClass("notRequired");
+		$("input#mco-receiver").addClass("notRequired");
 
 		$("span.mcoAmount_currency").text("美元");
 		$("span.mcoCredit_currency").text("美元");
@@ -876,15 +886,18 @@ function paymentMethod() {
 		$(".partCreditCard").css("display", "none");
 		$("input.non-creditCardAmount").val("");
 		$("input.creditCardAmount").val("");
-
 	});
 	//供应商部分刷卡+非刷卡支付
-	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.drop3Menu").find("li").find("a").on("click", function() {
-		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
+	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.drop3Menu").find("li").find("a").unbind("click").on("click", function() {
+		var payment_type=$(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
 		var payment_txt = "供应商部分刷卡+" + $.trim($(this).text());
 		$("span#indiv-tour-payment-type").text(payment_txt);
+		console.log(payment_txt);
 		$(".mcoList").css("display", "none");
 		$(".partCreditCard").css("display", "block");
+		
+		
+		
 	});
 	//刷卡公司
 	$(".payService ul li .payment").find("ul.companyMenu").find("li").find("a").on("click", function() {
@@ -892,6 +905,7 @@ function paymentMethod() {
 		companyInfo.text($(this).text());
 	});
 }
+
 function priceCalculate() {
 	//票面-MCO金额-卖价
 	//MCO金额=卖价-票面
@@ -1820,7 +1834,7 @@ function rateInfo() {
 function fullMcoPayment() {
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.creditCardPayment").find("li").find("a").on("click", function() {
 		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
-		payment_type.text($(this).text());
+//		payment_type.text($(this).text());
 		if($.trim(payment_type.text()) == "全额MCO") {
 			var salePrice = $("input#indiv_sale_price").val();
 			if($.trim(salePrice) !== "") {
@@ -1866,17 +1880,16 @@ function fullMcoPayment() {
 function partCreditCard() {
 	$("input.creditCardAmount").on("keyup", function() {
 		var salePrice = $("input#indiv_sale_price").val();
-		if((salePrice !== "") && ($("input.non-creditCardAmount").val() == "")) {
+		if(salePrice !== "") {
 			var amount = Number(salePrice - $(this).val());
 			$("input.non-creditCardAmount").val(amount);
 		}
 	})
 	$("input.non-creditCardAmount").on("keyup", function() {
 		var salePrice = $("input#indiv_sale_price").val();
-		if((salePrice !== "") && ($("input.creditCardAmount").val() == "")) {
+		if(salePrice !== "") {
 			var amount = Number(salePrice - $(this).val());
 			$("input.creditCardAmount").val(amount);
 		}
-
 	})
 }

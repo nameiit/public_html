@@ -318,19 +318,23 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<a href="javascript:void(0);">INVOICE</a>
 											</li>
 											<li class="profit">
-												<a href="javascript:void(0);">利润</a>
+												<a href="javascript:void(0);">
+													<label>
+														利润(<span id="sum_profit"></span>)
+													</label>
+												</a>
 											</li>
 											<li class="debt">
 												<a href="javascript:void(0);">
 													<label>
-														Debt(<span>123456.78</span>)
+														Debt(<span id="sum_debt"></span>)
 													</label>
 												</a>
 											</li>
 											<li class="receivable">
 												<a href="javascript:void(0);">
 													<label>
-														应收款(<span>123456.78</span>)
+														应收款(<span id="sum_received"></span>)
 													</label>
 												</a>
 											</li>
@@ -342,7 +346,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<li class="salePrice">
 												<a href="javascript:void(0);">
 													<label>
-														卖价(<span>123456.78</span>)
+														卖价(<span id="sum_selling_price"></span>)
 													</label>
 												</a>
 											</li>
@@ -543,32 +547,32 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<ul class="add-msg">
 														<li>
 															<label class="nm-left">产品编号</label>
-															<input type="text">
+															<input type="text" id="indiv_tour_id">
 														</li>
-														<li class="requiredItem">
+														<li class="requiredItem salesperson">
 															<label class="nm-left">销售人员</label>
-															<input id="update-salesperson" type="text" placeholder="Search...">
+															<input id="indiv_salesperson" type="text" placeholder="Search...">
 														</li>
 														<li>
 															<label class="nm-left">地接商团名</label>
 															<input type="text" id="update-tour-name">
 														</li>
-														<li class="requiredItem">
+														<li class="requiredItem indivWholesaler">
 															<label class="nm-left">地接商</label>
-															<input id="update-wholesaler" type="text" placeholder="Search...">
+															<input id="indiv_wholesaler" type="text" placeholder="Search...">
 														</li>
 														<li>
 															<label class="nm-left">INVOICE</label>
-															<input type="text" id="update-tour-invoice">
+															<input type="text" id="invoice">
 														</li>
-														<li>
+														<li class="indivSource">
 															<label class="nm-left">顾客来源</label>
-															<input id="update-source" type="text" placeholder="Search...">
+															<input id="indiv_source" type="text" placeholder="Search...">
 														</li>
 														<li>
 															<label class="nm-left">备注</label>
 															<!--<textarea rows="5" id="update-note"></textarea>-->
-															<div class="notesInfor" contenteditable="true" id="update-note"></div>
+															<div class="notesInfor" contenteditable="true" id="indiv_note"></div>
 														</li>
 													</ul>
 												</div>
@@ -644,9 +648,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																<input type="text" id="card-holder" class="notRequired">
 															</div>
 														</li>
-														<li>
+														<li class="requiredItem">
 															<label class="nm-left">MCO负责人</label>
-															<input type="text" placeholder="Search..." />
+															<input type="text" placeholder="Search..."  id="mco-receiver"/>
 														</li>
 													</ul>
 												</div>
@@ -770,15 +774,15 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<!--目的地    e-->
 														<li class="requiredItem">
 															<label class="nm-left">出发日期</label>
-															<input type="date" id="update-start-date">
+															<input type="date" id="indiv_startTime">
 														</li>
 														<li class="requiredItem">
 															<label class="nm-left">结束日期</label>
-															<input type="date" id="update-end-date">
+															<input type="date" id="indiv_endTime">
 														</li>
 														<li class="requiredItem">
 															<label class="nm-left">天数</label>
-															<input type="text" id="update-day-count">
+															<input type="text" id="indiv_num_days">
 														</li>
 													</ul>
 												</div>
@@ -788,7 +792,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<ul class="add-msg">
 														<li class="exchangeRate">
 															<label class="nm-left">成交汇率</label>
-															<span>1&nbsp;&nbsp;美元&nbsp;&nbsp;=&nbsp;&nbsp; <input type="text" id="update-exchange-rate" disabled value="6.6">&nbsp;&nbsp;人民币</span>
+															<span>1&nbsp;&nbsp;美元&nbsp;&nbsp;=&nbsp;&nbsp; <input type="text" id="indiv_exchange_rate" disabled value="6.6">&nbsp;&nbsp;人民币</span>
 														</li>
 														<!--支付地点 -->
 														<li class="requiredItem payment-type areaInfo">
@@ -814,17 +818,17 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																</div>
 															</div>
 														</li>
-														<!--卖价-->
+														<!--底价-->
 														<li class="requiredItem list_currency">
-															<label class="nm-left">卖价</label>
-															<input type="text"  id="update_sale_price" class="numFormat indiv_sellPrice"/>
+															<label class="nm-left">底价</label>
+															<input type="text" id="indiv_base_price"  class="numFormat"/>
 															<div class="payment currency_type">
 																<div class="dropdown currency">
 																	<button class="btn btn-default" type="button" data-toggle="dropdown">
-																		<span id="sell-price-currency" class="txt currency_txt salePrice_currency">货币</span>
+																		<span id="base-price-currency" class="txt currency_txt basePrice_currency">货币</span>
 																		<span class="caret"></span>
 																	</button>
-																	<ul class="dropdown-menu currency_box salePrice_currencyBox" role="menu">
+																	<ul class="dropdown-menu currency_box basePrice_currencyBox" role="menu">
 																		<li>
 																			<a tabindex="0">
 																				美元
@@ -839,17 +843,17 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																</div>
 															</div>
 														</li>
-														<!--底价-->
+														<!--卖价-->
 														<li class="requiredItem list_currency">
-															<label class="nm-left">底价</label>
-															<input type="text" id="update_base_price"  class="numFormat"/>
+															<label class="nm-left">卖价</label>
+															<input type="text"  id="indiv_sale_price" class="numFormat indiv_sellPrice"/>
 															<div class="payment currency_type">
 																<div class="dropdown currency">
 																	<button class="btn btn-default" type="button" data-toggle="dropdown">
-																		<span id="base-price-currency" class="txt currency_txt basePrice_currency">货币</span>
+																		<span id="sell-price-currency" class="txt currency_txt salePrice_currency">货币</span>
 																		<span class="caret"></span>
 																	</button>
-																	<ul class="dropdown-menu currency_box basePrice_currencyBox" role="menu">
+																	<ul class="dropdown-menu currency_box salePrice_currencyBox" role="menu">
 																		<li>
 																			<a tabindex="0">
 																				美元
@@ -959,11 +963,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<div class="partCreditCard">
 															<li>
 																<label class="nm-left">供应商刷卡金额</label>
-																<input type="text" class="creditCardAmount" />
+																<input type="text" class="creditCardAmount"  id="wholesaler-charge-amount"/>
 															</li>
 															<li>
 																<label class="nm-left">非刷卡金额</label>
-																<input type="text"  class="non-creditCardAmount"/>
+																<input type="text"  class="non-creditCardAmount" id="mco-charge-amount"/>
 															</li>
 														</div>
 														<!--mcoList  s-->
@@ -1066,7 +1070,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															<li class="rate list_account">
 																<label class="nm-left">费率</label>
 																<input type="text" class="rateInfo" id="fee-ratio">
-																<a href="javascript:void(0);">以4%计算</a>	
+																<a href="javascript:void(0);">以4%计算</a>
 															</li>
 
 														</div>
@@ -1075,7 +1079,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<li class="list_account calculateProfit profitInfor">
 															<label class="nm-left">利润</label>
 															<input type="text" id="indiv-profit" disabled>
-															<span>美元</span>
+															<span id="profit-currency">美元</span>
 														</li>
 													</ul>
 												</div>
@@ -1109,19 +1113,19 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															</dd>
 															<dd>
 																<label>联系方式</label>
-																<input type="text" id="add-customer-phone">
+																<input type="text" id="indivClientTel">
 															</dd>
 															<dd>
 																<label>其他联系方式</label>
-																<select id="add-customer-other-contact">
+																<select id="indivOtherContact">
 																	<option value="WeChat">WeChat</option>
 																	<option value="QQ">QQ</option>
 																	<option value="Facebook">Facebook</option>
 																</select>
 															</dd>
 															<dd>
-																<label id="add-customer-other-contact-label">WeChat账号</label>
-																<input type="text" id="add-customer-other-contact-number">
+																<label id="indivOtherContactLabel">WeChat账号</label>
+																<input type="text" id="indivOtherContactNumber">
 															</dd>
 														</dl>
 													</li>
@@ -1129,11 +1133,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dl>
 															<dd class="birthday">
 																<label>生日</label>
-																<input type="date" id="add-customer-birthday">
+																<input type="date" id="indivBirthday">
 															</dd>
 															<dd class="gender">
 																<label>性别</label>
-																<select id="add-customer-gender">
+																<select id="indivGender">
 																	<option value="UNKNOWN">Unknown</option>
 																	<option value="M">男</option>
 																	<option value="F">女</option>
@@ -1141,11 +1145,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															</dd>
 															<dd>
 																<label>邮箱</label>
-																<input type="text" id="add-customer-email">
+																<input type="text" id="indivClientEmail">
 															</dd>
 															<dd class="zipCode">
 																<label>邮政编码</label>
-																<input type="text" id="add-customer-zipcode">
+																<input type="text" id="indivZipCode">
 															</dd>
 														</dl>
 													</li>

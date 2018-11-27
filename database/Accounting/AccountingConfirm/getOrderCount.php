@@ -3,7 +3,7 @@ include('../../dbConnection.php');
 
 $transaction_id = empty($_GET['transaction_id']) ? '%' : $_GET['transaction_id'];
 $salesperson = empty($_GET['salesperson']) ? '%' : $_GET['salesperson'];
-$type = $_GET['type'];
+$type = $_GET['type'] == 'all' ? '%' : $_GET['type'];
 $from_date = $_GET['from_date'];
 $to_date = $_GET['to_date'];
 $fname = empty($_GET['fname']) ? '%' : $_GET['fname'];
@@ -29,9 +29,10 @@ if ($payment_type == 'non-cc') {
 }
 $sql = "SELECT
           count(*) AS num_orders,
-          sum(debt_raw) AS sum_debt,
-          sum(received) AS sum_received,
-          sum(selling_price) AS sum_selling_price
+          sum(fs.debt_raw) AS sum_debt,
+          sum(fs.received) AS sum_received,
+          sum(fs.selling_price) AS sum_selling_price,
+          t.type
         FROM FinanceStatus fs
         JOIN Transactions t ON fs.transaction_id = t.transaction_id
         JOIN AirticketTour a ON a.airticket_tour_id = t.airticket_tour_id
@@ -87,9 +88,10 @@ if ($invoice != '%') {
 
 $sql_indiv = "SELECT
                 count(*) AS num_orders,
-                sum(debt_raw) AS sum_debt,
-                sum(received) AS sum_received,
-                sum(selling_price) AS sum_selling_price
+                sum(fs.debt_raw) AS sum_debt,
+                sum(fs.received) AS sum_received,
+                sum(fs.selling_price) AS sum_selling_price,
+                t.type
               FROM FinanceStatus fs
               JOIN Transactions t ON fs.transaction_id = t.transaction_id
               JOIN IndividualTour i ON i.indiv_tour_id = t.indiv_tour_id
@@ -143,10 +145,15 @@ if ($invoice != '%') {
 
 
 if ($locator == '%' and $airline == '%') {
-    $sql = "SELECT num_orders, sum_debt, sum_received, sum_selling_price FROM ( " . $sql . " UNION " . $sql_indiv . " ) fs WHERE fs.type LIKE '$type'";
+    $sql = "SELECT sum(num_orders) AS num_orders,
+              sum(sum_debt) AS sum_debt,
+              sum(sum_received) AS sum_received,
+              sum(sum_selling_price) AS sum_selling_price
+            FROM ( " . $sql . " UNION " . $sql_indiv . " ) fs
+            WHERE fs.type LIKE '$type'";
 }
 
-
+echo $sql;
 $result = $conn->query($sql);
 
 $res = array();

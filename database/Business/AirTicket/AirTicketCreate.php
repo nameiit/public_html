@@ -196,7 +196,7 @@ if ($exchange_rate == 'nothing') {
             '$ticketedTime'
           )";
 }
-echo $query;
+// echo $query;
 $conn->query($query);
 
 $query = "SELECT max(airticket_tour_id) FROM AirticketTour
@@ -241,29 +241,29 @@ if ($profit_currency == 'RMB') {
 }
 
 $transactionsInsertSql = "INSERT INTO Transactions(
-    type,
-    airticket_tour_id,
-    create_time,
-    source_id,
-    note,
-    settle_time,
-    expense,
-    received,
-    total_profit,
-    currency
-) VALUES (
-    'airticket',
-    '$airticket_tour_id',
-    current_timestamp,
-    (SELECT source_id FROM CustomerSource WHERE source_name = '$source'),
-    '$note',
-    current_timestamp,
-    $base_price_trans,
-    $sell_price_trans,
-    $profit_trans,
-    'USD'
-)";
-// echo $transactionsInsertSql;
+                              type,
+                              airticket_tour_id,
+                              create_time,
+                              source_id,
+                              note,
+                              settle_time,
+                              expense,
+                              received,
+                              total_profit,
+                              currency
+                          ) VALUES (
+                              'airticket',
+                              '$airticket_tour_id',
+                              current_timestamp,
+                              (SELECT source_id FROM CustomerSource WHERE source_name = '$source'),
+                              '$note',
+                              current_timestamp,
+                              $base_price_trans,
+                              $sell_price_trans,
+                              $profit_trans,
+                              'USD'
+                          )";
+echo $transactionsInsertSql;
 $conn->query($transactionsInsertSql);
 
 $sql = "SELECT transaction_id FROM Transactions WHERE airticket_tour_id = '$airticket_tour_id'";
@@ -281,10 +281,11 @@ if ($payment_type == 'airmco') {
   $mco_credit_currency = $_POST['mco_credit_currency'];
   $fee_ratio = $_POST['fee_ratio'];
 
-  $card_number = $_POSt['card_number'];
+  $card_number = $_POST['card_number'];
   $expire_month = $_POST['expire_month'];
   $expire_year = $_POST['expire_month'];
   $card_holder = $_POST['card_holder'];
+  $mco_receiver = $_POST['mco_receiver'];
 
   $sql = "INSERT INTO NoticeBoard (
             valid_until, edited_by, content, gotop, category
@@ -297,6 +298,12 @@ if ($payment_type == 'airmco') {
   $result = $conn->query($sql);
   $noticeId = $result->fetch_assoc()['notice_id'];
 
+  $sql = "INSERT INTO NoticeTarget (notice_id, target_id)
+          SELECT $noticeId, ua.user_id
+          FROM UserAccount ua
+          WHERE ua.account_id LIKE '$mco_receiver'";
+  $conn->query($sql);
+
   $expire_date = $expire_month . '/' . $expire_year;
   if ($mco_currency == 'RMB') {
     $mco_value_trans /= $exchange_rate;
@@ -307,7 +314,13 @@ if ($payment_type == 'airmco') {
           ) VALUES (
             '$card_holder', '$card_number', '$expire_date', 'USD', '$mco_value_trans', '$noticeId', 'N', current_timestamp
           )";
+
+  // echo $sql;
   $conn->query($sql);
+
+  $sql = "SELECT mco_id FROM McoInfo WHERE notice_id = '$noticeId'";
+  $result = $conn->query($sql);
+  $mco_id = $result->fetch_assoc()['mco_id'];
 
   $sql = "INSERT INTO McoPayment
           (
@@ -318,7 +331,8 @@ if ($payment_type == 'airmco') {
             fee_ratio,
             face_currency,
             mco_currency,
-            mco_credit_currency
+            mco_credit_currency,
+            mco_id
           ) VALUES (
             '$mco_party',
             '$face_value',
@@ -327,11 +341,12 @@ if ($payment_type == 'airmco') {
             '$fee_ratio',
             '$face_currency',
             '$mco_currency',
-            '$mco_credit_currency'
+            '$mco_credit_currency',
+            '$mco_id'
           )";
     $conn->query($sql);
 
-    $sql = "SELECT max(mp_id) as mp_id FROM McoPayment WHERE face_value = '$face_value' AND mco_value = '$mco_value' AND mco_credit = '$mco_credit'";
+    $sql = "SELECT mp_id FROM McoPayment WHERE mco_id = $mco_id";
     $result = $conn->query($sql);
     $mp_id = $result->fetch_assoc()['mp_id'];
 
@@ -376,7 +391,7 @@ if ($payment_type == 'airall') {
               debt_raw,
               debt_cleared,
               received_raw,
-              received_finished
+              received_finished)
           SELECT
             $transaction_id,
             '$invoice', 'N', 'N', 'Y', 'N',
@@ -427,7 +442,6 @@ if ($payment_type == 'airall') {
           ON tc.starter_id = t.transaction_id
           WHERE t.transaction_id = $transaction_id
           GROUP BY tc.starter_id";
-    // echo $sql;
     $conn->query($sql);
     $sql = "INSERT INTO FinanceStatus (
               transaction_id,
@@ -455,7 +469,6 @@ if ($payment_type == 'airall') {
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id
           WHERE t.transaction_id = $transaction_id";
-      // echo $sql;
       $conn->query($sql);
 } else {
   $sql = "INSERT INTO FinanceStatus(transaction_id,
