@@ -611,11 +611,17 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<div class="creditCardInfo cardLeft nm-left">
 													<label class="markMsg"><i></i>信用卡信息</label>
 													<ul class="add-msg">
-														<li class="requiredItem">
+														<li class="creditCardItem">
+															<div class="checkbox checkbox-success">
+																<input id="creditCard" class="styled" type="checkbox">
+																<label for="creditCard">添加以下信用卡</label>
+															</div>
+														</li>
+														<li>
 															<label class="nm-left">卡号</label>
 															<input type="text" id="card-number" class="notRequired">
 														</li>
-														<li class="requiredItem expDate">
+														<li class="expDate">
 															<label class="nm-left">过期日</label>
 															<div class="expireDate">
 																<select id="expired-date-month">
@@ -648,7 +654,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																<input type="text" id="card-holder" class="notRequired">
 															</div>
 														</li>
-														<li class="requiredItem">
+														<li>
 															<label class="nm-left">MCO负责人</label>
 															<input type="text" placeholder="Search..."  id="mco-receiver"/>
 														</li>
@@ -961,19 +967,21 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															</div>
 														</li>
 														<div class="partCreditCard">
-															<li>
+															<!--<li class="list_currency">
 																<label class="nm-left">供应商刷卡金额</label>
 																<input type="text" class="creditCardAmount"  id="wholesaler-charge-amount"/>
+																<span class="currency">美元</span>
 															</li>
-															<li>
+															<li class="list_currency">
 																<label class="nm-left">非刷卡金额</label>
 																<input type="text"  class="non-creditCardAmount" id="mco-charge-amount"/>
-															</li>
+																<span class="currency">美元</span>
+															</li>-->
 														</div>
 														<!--mcoList  s-->
 														<div class="mcoList">
 															<li class="requiredItem payment-type companyInfor">
-																<label class="nm-left">刷卡公司</label>
+																<label class="nm-left">MCO刷卡公司</label>
 																<div class="payment">
 																	<div class="dropdown creditCardCompanies">
 																		<button class="btn btn-default" type="button" data-toggle="dropdown">
@@ -994,6 +1002,10 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																		</ul>
 																	</div>
 																</div>
+															</li>
+															<li>
+																<label class="nm-left">MCO&nbsp;INVOICE</label>
+																<input type="text"  class="mco_invoice"/>
 															</li>
 															<li class="requiredItem list_currency">
 																<label class="nm-left">票面</label>

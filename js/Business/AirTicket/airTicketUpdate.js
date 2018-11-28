@@ -209,7 +209,7 @@ $(document).ready(function() {
 		var month = today.getMonth();
 		var day = today.getDate();
 		var from_date = "";
-		var to_date = new Date(year, month + 1, 0);
+		var to_date = new Date(year + 1, month, day);
 
 		if($("#settletime").val() == 'all') {
 			data['from_date'] = "0";

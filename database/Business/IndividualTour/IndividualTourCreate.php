@@ -232,20 +232,23 @@ if ($payment_type == 'wholesalerall' ||
     $payment_type == 'wholesalerwechat' ||
     $payment_type == 'wholesalerremit') {
 
-  /******
-  在这里
-  *****/
-  $cc_amount = $_POST['cc_amount'];
-  $noncc_amount = $_POST['noncc_amount'];
-  /******
-  在这里
-  *****/
+
+  // $cc_amount = $_POST['cc_amount'];
+  // $noncc_amount = $_POST['noncc_amount'];
+
+  // if ($indiv_sell_price_currency == 'RMB') {
+  //   $cc_amount_trans = $cc_amount / $indiv_exchange_rate;
+  // }
+  // if ($indiv_sell_price_currency == 'RMB') {
+  //   $noncc_amount_trans = $noncc_amount / $indiv_exchange_rate;
+  // }
+
   $sql = "INSERT INTO FinanceStatus(transaction_id,
-              invoice,
-              lock_status,clear_status,paid_status,finish_status,
-              debt, received, selling_price, create_time,
-              depart_date, arrival_date, following_id_collection,
-              total_profit, debt_raw, received_raw, debt_cleared, received_finished)
+            invoice,
+            lock_status,clear_status,paid_status,finish_status,
+            debt, received, selling_price, create_time,
+            depart_date, arrival_date, following_id_collection,
+            total_profit, debt_raw, received_raw, debt_cleared, received_finished)
           SELECT
             $transactionId,
             '$invoice',
@@ -258,7 +261,7 @@ if ($payment_type == 'wholesalerall' ||
           ON tc.starter_id = t.transaction_id
           WHERE t.transaction_id = $transactionId
           GROUP BY tc.starter_id";
-          $conn->query($sql);
+  $conn->query($sql);
 } else if ($payment_type == 'wholesalermco') {
     $mco_party = $_POST['mco_party'];
     $face_value = $_POST['face_value'];
@@ -275,16 +278,22 @@ if ($payment_type == 'wholesalerall' ||
     $card_holder = $_POST['card_holder'];
     $mco_receiver = $_POST['mco_receiver'];
 
+    if ($mco_party == 'GTT') {
+      $paid_status_GTT = 'Y';
+    } else {
+      $paid_status_GTT = 'N';
+    }
+
     $sql = "INSERT INTO FinanceStatus(transaction_id, invoice,
-                  lock_status,clear_status,paid_status,finish_status,
-                  debt, received, selling_price, create_time,
-                  depart_date, arrival_date, following_id_collection,
-                  total_profit, debt_raw, debt_cleared, received_raw, received_finished)
+              lock_status,clear_status,paid_status,finish_status,
+              debt, received, selling_price, create_time,
+              depart_date, arrival_date, following_id_collection,
+              total_profit, debt_raw, debt_cleared, received_raw, received_finished)
             SELECT
               $transactionId,
               '$invoice',
-              'N', 'N', 'N', 'N',
-              $base_price_trans, 'CC', $sell_price_trans, t.create_time,
+              'N', 'N', '$paid_status_GTT', 'N',
+              $base_price_trans, $face_value, $sell_price_trans, t.create_time,
               '$indiv_startTime', '$indiv_endTime', group_concat(tc.following_id SEPARATOR ','),
               $face_value - $base_price_trans, $base_price_trans, 0, $face_value, 0
             FROM Transactions t
@@ -303,9 +312,9 @@ if ($payment_type == 'wholesalerall' ||
             $transactionId,
             '$invoice',
             'N', 'N', 'N', 'N',
-            concat($mco_value, '/', $mco_credit), 'CC', 0, t.create_time,
+            -$mco_credit, 'CC', 0, t.create_time,
             '$indiv_startTime', '$indiv_endTime', group_concat(tc.following_id SEPARATOR ','),
-            $mco_credit, $mco_value - $mco_credit, 0, $mco_value, 0, 'mco'
+            $mco_credit, - $mco_credit, 0, 0, 0, 'mco'
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id
@@ -316,18 +325,25 @@ if ($payment_type == 'wholesalerall' ||
 
   $expire_date = $expired_date_month . '/' . $expired_date_year;
 
-  $sql = "INSERT INTO NoticeBoard (valid_until, edited_by, category) VALUES (CURRENT_DATE + INTERVAL 1 year, $salesperson_id, 'mco')";
+  $sql = "INSERT INTO NoticeBoard (valid_until, edited_by, category) 
+          SELECT 
+          CURRENT_DATE + INTERVAL 1 year, 
+          ua.user_id, 'mco'
+          FROM UserAccount ua WHERE ua.account_id = '$indiv_salesperson'";
   $conn->query($sql);
-  $sql = "SELECT max(notice_id) AS notice_id FROM NoticeBoard WHERE edited_by = $salesperson_id AND category = 'mco'";
+  $sql = "SELECT max(nb.notice_id) AS notice_id 
+          FROM NoticeBoard nb 
+          JOIN UserAccount ua 
+          ON nb.edited_by = ua.user_id 
+          WHERE ua.account_id = '$indiv_salesperson'";
   $result = $conn->query($sql);
   $notice_id = $result->fetch_assoc()['notice_id'];
   $sql = "INSERT INTO NoticeTarget (notice_id, target_id)
           SELECT '$notice_id', ua.user_id
           FROM UserAccount ua
           WHERE ua.account_id LIKE '$mco_receiver'";
-
-  // echo $sql;
   $conn->query($sql);
+  
   $sql = "INSERT INTO McoInfo
           (
             cardholder,
@@ -399,15 +415,15 @@ if ($payment_type == 'wholesalerall' ||
   $card_holder = $_POST['card_holder'];
 
   $sql = "INSERT INTO FinanceStatus(transaction_id, invoice,
-                lock_status,clear_status,paid_status,finish_status,
-                debt, received, selling_price, create_time,
-                depart_date, arrival_date, following_id_collection,
-                total_profit, debt_raw, debt_cleared, received_raw, received_finished)
+            lock_status,clear_status,paid_status,finish_status,
+            debt, received, selling_price, create_time,
+            depart_date, arrival_date, following_id_collection,
+            total_profit, debt_raw, debt_cleared, received_raw, received_finished)
           SELECT
             $transactionId,
             '$invoice',
-            'N', 'N', 'N', 'N',
-            $base_price_trans, 'CC', $sell_price_trans, t.create_time,
+            'N', 'N', 'Y', 'Y',
+            $base_price_trans, 0, $sell_price_trans, t.create_time,
             '$indiv_startTime', '$indiv_endTime', group_concat(tc.following_id SEPARATOR ','),
             - $base_price_trans, $base_price_trans, 0, 0, 0
           FROM Transactions t
@@ -426,9 +442,9 @@ if ($payment_type == 'wholesalerall' ||
             $transactionId,
             '$invoice',
             'N', 'N', 'N', 'N',
-            concat($mco_value, '/', $mco_credit), 'CC', 0, t.create_time,
+            -$mco_credit, 'CC', 0, t.create_time,
             '$indiv_startTime', '$indiv_endTime', group_concat(tc.following_id SEPARATOR ','),
-            $mco_credit, $mco_value - $mco_credit, 0, $mco_value, 0, 'mco'
+            $mco_credit, - $mco_credit, 0, 0, 0, 'mco'
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id
@@ -464,16 +480,25 @@ if ($payment_type == 'wholesalerall' ||
 
     $sql = "UPDATE IndividualTour SET mp_id = '$mp_id' WHERE indiv_tour_id = '$individualTourId'";
     $conn->query($sql);
-    $sql = "INSERT INTO NoticeBoard (valid_until, edited_by, category) VALUES (CURRENT_DATE + INTERVAL 1 year, $salesperson_id, 'mco')";
+    $sql = "INSERT INTO NoticeBoard (valid_until, edited_by, category) 
+            SELECT 
+            CURRENT_DATE + INTERVAL 1 year, 
+            ua.user_id, 'mco'
+            FROM UserAccount ua WHERE ua.account_id = '$indiv_salesperson'";
     $conn->query($sql);
-    $sql = "SELECT max(notice_id) FROM NoticeBoard WHERE edited_by = $salesperson_id AND category = 'mco'";
+    $sql = "SELECT max(nb.notice_id) AS notice_id 
+            FROM NoticeBoard nb 
+            JOIN UserAccount ua 
+            ON nb.edited_by = ua.user_id 
+            WHERE ua.account_id = '$indiv_salesperson'";
     $result = $conn->query($sql);
     $notice_id = $result->fetch_assoc()['notice_id'];
     $sql = "INSERT INTO NoticeTarget (notice_id, target_id)
-            SELECT $notice_id, ua.user_id
-            FROM UserAccount
+            SELECT '$notice_id', ua.user_id
+            FROM UserAccount ua
             WHERE ua.account_id LIKE '$mco_receiver'";
     $conn->query($sql);
+
     $exp_date = $expired_date_month . '/' . $expired_date_year;
     $sql = "INSERT INTO McoInfo (cardholder, card_number, exp_date, notice_id, used_id, create_time) VALUES ('$card_holder', '$card_number', '$exp_date', $notice_id, current_timestamp)";
     $conn->query($sql);

@@ -339,7 +339,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="salesperson_code">
-																	<label for="salesperson_code">业务员<i></i></label>
+																	<label for="salesperson_code">销售<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -469,11 +469,23 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="uncollectedAmount">
+																	<label for="uncollectedAmount">未收金额<i></i></label>
+																</div>
+															</div>
+														</dd>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="base_price">
 																	<label for="base_price">航司底价<i></i></label>
 																</div>
 															</div>
 														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -482,10 +494,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -494,6 +502,10 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																</div>
 															</div>
 														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -502,10 +514,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -514,7 +522,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 																</div>
 															</div>
 														</dd>
-														<dd></dd>
 													</dl>
 												</li>
 											</ul>
@@ -564,26 +571,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</dd>
 													</dl>
 												</li>
-												<!--<li class="choiceContent">
-													<dl>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="startPlace">
-																	<label for="startPlace">出发地<i></i></label>
-																</div>
-															</div>
-														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="destination">
-																	<label for="destination">目的地<i></i></label>
-																</div>
-															</div>
-														</dd>
-													</dl>
-												</li>-->
 												<li class="choiceContent">
 													<dl>
 														<dd>
@@ -665,13 +652,23 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<li class="choiceContent">
 													<dl>
 														<dd>
+															<a href="javascript:void(0);" class="selectAllBtn">全选</a>
+														</dd>
+														<dd>
+															<a href="javascript:void(0);" class="selectNoneBtn">全不选</a>
+														</dd>
+													</dl>
+												</li>
+												<!--<li class="choiceContent">
+													<dl>
+														<dd>
 															<a href="javascript:void(0);" class="costAccount">成本核算</a>
 														</dd>
 														<dd>
 															<a href="javascript:void(0);" class="incomeAccount">收入核算</a>
 														</dd>
 													</dl>
-												</li>
+												</li>-->
 												<li class="choiceContent">
 													<dl>
 														<dd>

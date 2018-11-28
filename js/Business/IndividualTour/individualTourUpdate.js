@@ -258,7 +258,7 @@ $(document).ready(function() {
     var month = today.getMonth();
     var day = today.getDate();
     var from_date = "";
-    var to_date = new Date(year, month + 12, 0);
+    var to_date = new Date(year + 1, month, day);
 
 		if($("#settletime").val() == 'all') {
 			data['from_date'] = "0";
@@ -288,7 +288,6 @@ $(document).ready(function() {
       });
       data['non_cc_payment_type'] = JSON.stringify(non_cc_payment_type);
     }
-
 		return data;
 	}
 	loadData(getFilterData());
@@ -1351,6 +1350,7 @@ function paymentMethod() {
 			"left":"106px"
 		})
 		$(".payService ul li .payment").find("ul.dropdown-menu.drop3Menu").css("min-width", "initial");
+		$(".partCreditCard").find("li").removeClass("requiredItem");
 	});
 	if($(".mcoList").css("display") == "block") {
 		$(".mcoList").css("display", "block");
@@ -1421,6 +1421,7 @@ function paymentMethod() {
 		}
 		heightRange();
 		$(".partCreditCard").css("display", "none");
+		$(".partCreditCard").find("li").removeClass("requiredItem");
 		$("input.non-creditCardAmount").val("");
 		$("input.creditCardAmount").val("");
 
@@ -1451,6 +1452,7 @@ function paymentMethod() {
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 		$(".creditCardInfo").css("display", "none");
 		$(".partCreditCard").css("display", "none");
+		$(".partCreditCard").find("li").removeClass("requiredItem");
 		$("input.non-creditCardAmount").val("");
 		$("input.creditCardAmount").val("");
 	});
@@ -1460,6 +1462,7 @@ function paymentMethod() {
 		payment_type.text("供应商部分刷卡+" + $(this).text());
 		$(".mcoList").css("display", "none");
 		$(".partCreditCard").css("display", "block");
+		$(".partCreditCard").find("li").addClass("requiredItem");
 	});
 
 	//刷卡公司
@@ -1885,6 +1888,9 @@ function getCalculateProfitInfo() {
 				mcoCredit = (mcoCredit / exchangeRate).toFixed(2);
 			}
 		}
+
+		$(".partCreditCard").find("li").find("span.currency").text($.trim($("span.salePrice_currency").text()));
+
 		profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate);
 	});
 	//底价下拉菜单:

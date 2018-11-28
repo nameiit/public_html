@@ -3203,7 +3203,7 @@ ul.add-msg li.rate a.selected {
 	.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li input[type="text"] {
 		width: 50% !important;
 	}
-	ul.add-msg li.payment-type div.payment {
+	.updateDialog .updateForm ul.add-msg li.payment-type div.payment {
 		width: 50% !important;
 	}
 	.updateDialog .updateForm .indivUpdateRightInfo .payService ul.add-msg li.list_currency input[type='text'] {
@@ -3212,10 +3212,10 @@ ul.add-msg li.rate a.selected {
 	.updateDialog .updateForm .indivUpdateRightInfo ul.add-msg li.list_account input[type="text"] {
 		width: 25% !important;
 	}
-	ul.add-msg li.list_currency .payment.currency_type {
+	.updateDialog .updateForm ul.add-msg li.list_currency .payment.currency_type {
 		width: 23% !important;
 	}
-	span#indiv-tour-payment-type {
+	.updateDialog .updateForm span#indiv-tour-payment-type {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -3231,4 +3231,53 @@ ul.add-msg li.rate a.selected {
 	.updateDialog .updateForm ul.add-msg li.indivSource .autocomplete-items{
 		right: 10.7%;
 	}
+}
+.updateDialog .updateForm ul.add-msg li label{
+	font-size: 12px;
+}
+
+ul.add-msg li.creditCardItem{
+	/*display: none;*/
+}
+ul.add-msg li.creditCardItem div.checkbox{
+	margin: 0px;
+	height: 30px;
+	line-height: 30px;
+	text-align: left;
+    padding-left: 30px;
+}
+ul.add-msg li.creditCardItem div.checkbox input{
+	
+}
+ul.add-msg li.creditCardItem .checkbox label::before{
+	top: 5px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+}
+ul.add-msg li.creditCardItem .checkbox-success input[type="checkbox"]:checked+label::before{
+	top: 5px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+}
+ul.add-msg li.creditCardItem .checkbox-success input[type="checkbox"]:checked+label::after{
+    top: 1px;
+    left: -10px;
+}
+ul.add-msg li.creditCardItem div.checkbox label{
+	background-color: transparent;
+    border: none;
+    padding-left: 0px;
+    width: initial;
+    vertical-align: top;
+    text-align: left;
+}
+ul.add-msg li.list_currency span.currency{
+	width: 30% !important;
+    margin-left: 2% !important;
+    visibility: visible;
+    display: inline-block;
+    font-size: 14px;
+    text-align: left;
 }

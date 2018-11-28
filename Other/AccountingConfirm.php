@@ -341,6 +341,10 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<a href="javascript:void(0);" class="resetBtn" id="filter-reset">重置</a>
 												</div>
 												<div class="rightFloor currencyInfo">
+													<div class="rightContent">
+														<a href="javascript:void(0);" class="selectAllBtn">全选</a>
+														<a href="javascript:void(0);" class="selectNoneBtn">全不选</a>
+													</div>
 													<div class="rightContent ">
 															<img src="../img/notice_icon.png" />
 															货币单位：美元

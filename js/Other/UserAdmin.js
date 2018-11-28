@@ -224,6 +224,12 @@ $(document).ready(function() {
 		}
 		searchTab($("#username-filter"));
 	});
+	//admin:
+	$(".userGroup").find("li.adminNav").on("click",function(){
+		
+		
+	});
+
 	$(document).on('click', 'li.userDetail',  function () {
 		$("#update-username").val($(this).find("dd.userName")[0].innerText);
 		if ($(".current-item")[0].innerText == '添加') {
@@ -253,36 +259,29 @@ function manageToggle() {
 	//销售人员
 	$(".userGroup").find("li.salesNav").on("click", function() {
 		$(this).addClass("selected").siblings().removeClass("selected");
-		// $("input.userName").val(" ");
-		// $(".usersInfo ul").find("li").removeClass("selected");
-		// var userNameList = ["Sales.A", "Sales.B", "Sales.C", "Sales.D"];
-		// var userName = $(".usersInfo ul li dl").find("dd.userName");
-		// for (var i = 0; i < userNameList.length; i++) {
-		//     $(userName[i]).text($.trim(userNameList[i]));
-		// }
 	});
 	//会计
 	$(".userGroup").find("li.accountingNav").on("click", function() {
 		$(this).addClass("selected").siblings().removeClass("selected");
-		// $("input.userName").val(" ");
-		// $(".usersInfo ul").find("li").removeClass("selected");
-		// var userNameList = ["Accountant.A", "Accountant.B", "Accountant.C", "Accountant.D"];
-		// var userName = $(".usersInfo ul li dl").find("dd.userName");
-		// for (var i = 0; i < userNameList.length; i++) {
-		//     $(userName[i]).text($.trim(userNameList[i]));
-		// }
 	});
 	//管理员
 	$(".userGroup").find("li.managerNav").on("click", function() {
 		$(this).addClass("selected").siblings().removeClass("selected");
-		// $("input.userName").val(" ");
-		// $(".usersInfo ul").find("li").removeClass("selected");
-		// var userNameList = ["Manager.A", "Manager.B", "Manager.C", "Manager.D"];
-		// var userName = $(".usersInfo ul li dl").find("dd.userName");
-		// for (var i = 0; i < userNameList.length; i++) {
-		//     $(userName[i]).text($.trim(userNameList[i]));
-		// }
 	});
+	
+	//admin
+	$(".userGroup").find("li.adminNav").on("click", function() {
+		$(this).addClass("selected").siblings().removeClass("selected");
+		$html = `
+			<li class="userDetail">
+				<dl>
+					<dd class="userName">` + "用户名" + `</dd>
+					<dd class="loginTime">` + "最近登录时间" + `</dd>
+				</dl>
+			</li>`;
+		$("div.usersInfo ul").append($html);
+	});
+
 }
 
 function confirmAddInfo() {

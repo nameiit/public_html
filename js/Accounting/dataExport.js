@@ -6,6 +6,8 @@ $(function() {
 	choiceDate();
 	incomeAccount();
 	toUsersManagePage();
+	selectAll();
+    selectNone();
 
 	var choiceInfo = $(".choiceItem .choiceInfo");
 	var maxHeight;
@@ -369,7 +371,7 @@ $(document).ready(function() {
 		var month = today.getMonth();
 		var day = today.getDate();
 		var from_date = "";
-		var to_date = new Date(year, month + 1, 0);
+		var to_date = new Date(year + 1, month, day);
 
 		if($("#settletime").val() == 'all') {
 			data['from_date'] = "0";
@@ -399,7 +401,6 @@ $(document).ready(function() {
 			});
 			data['non_cc_payment_type'] = JSON.stringify(non_cc_payment_type);
 		}
-
 		return data;
 	}
 
@@ -580,3 +581,17 @@ $(document).ready(function() {
 		}
 	});
 });
+//全选
+function selectAll(){
+	$(".choiceItem.quickChoice .choiceInfo dl dd a.selectAllBtn").on("click",function(){
+		$(".choiceItem .choiceInfo ul li.choiceContent .selected").find("input").prop("checked", true);
+		$(".choiceItem .choiceInfo ul li.choiceContent .selected").addClass("current");
+	});
+}
+//全不选
+function selectNone(){
+	$(".choiceItem.quickChoice .choiceInfo dl dd a.selectNoneBtn").on("click",function(){
+		$(".choiceItem .choiceInfo ul li.choiceContent .selected").find("input").prop("checked", false);
+		$(".choiceItem .choiceInfo ul li.choiceContent .selected").removeClass("current");
+	});
+}

@@ -155,7 +155,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 					<div class="showMsg usersManage">
 						<div class="floor usersManageArea">
 							<div class="groupMsg">
-								<label class="theamTitle"> <i></i> 用户管理 </label>
+								<label class="theamTitle"><i></i>用户管理 </label>
 								<div class="usersManageContent">
 									<div class="userGroup">
 										<ul>
@@ -170,6 +170,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</li>
 											<li class="managerNav">
 												管理员
+											</li>
+											<li class="adminNav">
+												admin
 											</li>
 										</ul>
 									</div>

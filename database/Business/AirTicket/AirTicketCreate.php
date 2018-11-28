@@ -196,7 +196,6 @@ if ($exchange_rate == 'nothing') {
             '$ticketedTime'
           )";
 }
-// echo $query;
 $conn->query($query);
 
 $query = "SELECT max(airticket_tour_id) FROM AirticketTour
@@ -263,7 +262,6 @@ $transactionsInsertSql = "INSERT INTO Transactions(
                               $profit_trans,
                               'USD'
                           )";
-echo $transactionsInsertSql;
 $conn->query($transactionsInsertSql);
 
 $sql = "SELECT transaction_id FROM Transactions WHERE airticket_tour_id = '$airticket_tour_id'";
@@ -289,12 +287,16 @@ if ($payment_type == 'airmco') {
 
   $sql = "INSERT INTO NoticeBoard (
             valid_until, edited_by, content, gotop, category
-          ) VALUES (
-            CURRENT_DATE + INTERVAL 1 year, '$salespersonId', NULL, 'N', 'mco'
-          )";
+          ) SELECT
+            CURRENT_DATE + INTERVAL 1 year, ua.user_id, NULL, 'N', 'mco'
+          FROM UserAccount ua WHERE ua.account_id = '$salesperson'";
   $conn->query($sql);
 
-  $sql = "SELECT max(notice_id) AS notice_id FROM NoticeBoard WHERE edited_by = '$salespersonId'";
+  $sql = "SELECT max(nb.notice_id) AS notice_id
+          FROM NoticeBoard nb
+          JOIN UserAccount ua
+          ON nb.edited_by = ua.user_id
+          WHERE ua.account_id = '$salesperson'";
   $result = $conn->query($sql);
   $noticeId = $result->fetch_assoc()['notice_id'];
 
@@ -314,8 +316,6 @@ if ($payment_type == 'airmco') {
           ) VALUES (
             '$card_holder', '$card_number', '$expire_date', 'USD', '$mco_value_trans', '$noticeId', 'N', current_timestamp
           )";
-
-  echo $sql;
   $conn->query($sql);
 
   $sql = "SELECT mco_id FROM McoInfo WHERE notice_id = '$noticeId'";
@@ -394,7 +394,7 @@ if ($payment_type == 'airall') {
               received_finished)
           SELECT
             $transaction_id,
-            '$invoice', 'N', 'N', 'Y', 'N',
+            '$invoice', 'N', 'N', 'N', 'N',
             $base_price_trans,
             'CC',
             $sell_price_trans,
@@ -414,6 +414,12 @@ if ($payment_type == 'airall') {
           GROUP BY tc.starter_id";
     $conn->query($sql);
 } else if ($payment_type == 'airmco') {
+  $mco_party = $_POST['mco_party'];
+  if ($mco_party == 'GTT') {
+    $paid_status_GTT = 'Y';
+  } else {
+    $paid_status_GTT = 'N';
+  }
   $sql = "INSERT INTO FinanceStatus (
               transaction_id,
               invoice,
@@ -426,10 +432,10 @@ if ($payment_type == 'airall') {
               received_finished)
           SELECT
             $transaction_id,
-            '$invoice', 'N', 'N', 'N', 'N',
+            '$invoice', 'N', 'N', '$paid_status_GTT', 'N',
             $base_price_trans,
-            'CC',
-            0,
+            $face_value,
+            $sell_price_trans,
             t.create_time,
             '$start_date',
             '$return_date',
@@ -456,15 +462,15 @@ if ($payment_type == 'airall') {
           SELECT
             $transaction_id,
             '$invoice','N', 'N','N', 'N',
-            concat('$mco_value', '/', '$mco_credit'),
+            -$mco_credit,
             'CC',
-            $sell_price_trans,
+            0,
             t.create_time,
             '$start_date',
             '$return_date',
             $mco_credit,
-            'mco', $mco_value - $mco_credit, 0,
-            $mco_value, 0
+            'mco', -$mco_credit, 0,
+            0, 0
           FROM Transactions t
           LEFT JOIN TransactionCollections tc
           ON tc.starter_id = t.transaction_id

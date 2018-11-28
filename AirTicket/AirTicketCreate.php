@@ -338,7 +338,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</li>
 											<div class="mcoList">
 												<li class="requiredItem payment-type companyInfor">
-													<label class="nm-left">刷卡公司</label>
+													<label class="nm-left">MCO刷卡公司</label>
 													<div class="payment">
 														<div class="dropdown creditCardCompanies">
 															<button class="btn btn-default" type="button" data-toggle="dropdown">
@@ -360,6 +360,10 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															</ul>
 														</div>
 													</div>
+												</li>
+												<li>
+													<label class="nm-left">MCO&nbsp;INVOICE</label>
+													<input type="text"  class="mco_invoice"/>
 												</li>
 												<li class="requiredItem list_currency">
 													<label class="nm-left">票面</label>
@@ -424,11 +428,17 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											</li>
 											<div class="creditCardInfo">
 												<hr>
-												<li class="requiredItem">
+												<li class="creditCardItem">
+													<div class="checkbox checkbox-success">
+														<input id="creditCard" class="styled" type="checkbox">
+														<label for="creditCard">添加以下信用卡</label>
+													</div>
+												</li>
+												<li>
 													<label class="nm-left">卡号</label>
 													<input type="text" id="card-number" class="notRequired">
 												</li>
-												<li class="requiredItem expDate">
+												<li class="expDate">
 													<label class="nm-left">过期日</label>
 													<div class="expireDate">
 														<select id="expired-date-month">
@@ -463,7 +473,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</div>
 													<!--持卡人  e-->
 												</li>
-												<li class="requiredItem">
+												<li>
 													<label class="nm-left">MCO负责人</label>
 													<input type="text" placeholder="Search..." id="mco-receiver">
 												</li>
@@ -572,7 +582,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<label>电话</label>
 														<input type="text" id="ticket-create-customer-phone"/>
 													</dd>
-													<dd class="requiredItem">
+													<dd>
 														<label>邮箱</label>
 														<input type="text" id="ticket-create-customer-email"/>
 													</dd>

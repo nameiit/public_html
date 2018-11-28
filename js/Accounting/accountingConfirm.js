@@ -65,7 +65,7 @@ $(document).ready(function () {
       data: data,
       success: function(response) {
         response = JSON.parse(response);
-        console.log(response);
+        // console.log(response);
         if (response['sum_profit'] == null) {
           $("#sum_profit").text(0);
         } else {
@@ -191,7 +191,7 @@ $(document).ready(function () {
     var month = today.getMonth();
     var day = today.getDate();
     var from_date = "";
-    var to_date = new Date(year, month + 1, 0);
+    var to_date = new Date(year + 1, month, day);
 
     if($("#settletime").val() == 'all') {
       data['from_date'] = "0";
@@ -221,7 +221,6 @@ $(document).ready(function () {
       });
       data['non_cc_payment_type'] = JSON.stringify(non_cc_payment_type);
     }
-
     return data;
   }
   loadData(getFilterData());

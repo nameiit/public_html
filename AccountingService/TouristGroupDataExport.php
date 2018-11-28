@@ -8,7 +8,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>财务-散拼团数据导出</title>
+		<title>财务-旅游团数据导出</title>
 		<link href="../css/font-awesome.css" type="text/css" rel="stylesheet" />
 		<link href="../css/style.css" type="text/css" rel="stylesheet" />
 		<link href="../css/otherInfo.css" type="text/css" rel="stylesheet" />
@@ -339,7 +339,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="salesperson_code">
-																	<label for="salesperson_code">业务员<i></i></label>
+																	<label for="salesperson_code">销售<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -671,6 +671,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<li class="choiceContent">
 													<dl>
 														<dd>
+															<a href="javascript:void(0);" class="selectAllBtn">全选</a>
+														</dd>
+														<dd>
+															<a href="javascript:void(0);" class="selectNoneBtn">全不选</a>
+														</dd>
+													</dl>
+												</li>
+												<!--<li class="choiceContent">
+													<dl>
+														<dd>
 															<a href="javascript:void(0);" class="costAccount">成本核算</a>
 														</dd>
 														<dd>
@@ -685,7 +695,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</dd>
 														<dd></dd>
 													</dl>
-												</li>
+												</li>-->
 											</ul>
 										</div>
 									</div>

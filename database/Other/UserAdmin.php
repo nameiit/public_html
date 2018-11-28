@@ -22,7 +22,32 @@ class UserAdmin {
             $user_group_id = $result->fetch_assoc()['user_group_id'];
         }
 
-        $sql = "INSERT INTO UserAccount (account_id, password, user_group_id) VALUES ('$username', '$password_hash', $user_group_id)";
+        $sql = "INSERT INTO PowerControl(
+                clear_power, 
+                lock_power, 
+                paid_power, 
+                finish_power, 
+                clear_counter, 
+                lock_counter, 
+                paid_counter, 
+                finish_counter
+                ) VALUES ('N','N','N','N','N','N','N','N')";
+        $conn->query($sql);
+        $sql = "SELECT max(pc_id) AS pc_id FROM PowerControl
+                WHERE clear_power = 'N'
+                AND lock_power = 'N'
+                AND paid_power = 'N'
+                AND finish_power = 'N'
+                AND lock_counter = 'N'
+                AND clear_counter = 'N'
+                AND paid_counter = 'N'
+                AND finish_counter = 'N'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $pc_id = $result->fetch_assoc()['pc_id'];
+        }
+        $sql = "INSERT INTO UserAccount (account_id, password, user_group_id, pc_id) 
+                VALUES ('$username', '$password_hash', $user_group_id, $pc_id)";
         echo $sql;
         $conn->query($sql);
     }

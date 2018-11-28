@@ -135,7 +135,7 @@ function sendFormMsg() {
 			zipcode: $("#indivZipCode").val(),
 		};
 
-		if (payment_type == 'wholesalermco' || payment_type == 'mcoall') {
+		if(payment_type == 'wholesalermco' || payment_type == 'mcoall') {
 			var mco_party = $("#mco-party")[0].innerHTML;
 			var face_value = $("#face-value").val();
 			var face_currency = $("#face-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
@@ -166,15 +166,14 @@ function sendFormMsg() {
 				card_holder: card_holder,
 				mco_receiver: mco_receiver
 			});
-		} else if (payment_type == 'wholesalercheck' ||
-							 payment_type == 'wholesalercash' ||
-							 payment_type == 'wholesaleralipay' ||
-							 payment_type == 'wholesalerwechat' ||
-							 payment_type == 'wholesalerremit') {
+		} else if(payment_type == 'wholesalercheck' ||
+			payment_type == 'wholesalercash' ||
+			payment_type == 'wholesaleralipay' ||
+			payment_type == 'wholesalerwechat' ||
+			payment_type == 'wholesalerremit') {
 			data['cc_amount'] = $("#wholesaler-charge-amount").val();
 			data['noncc_amount'] = $("#mco-charge-amount").val();
 		}
-
 
 		if($("dd.selectInfo div.checkbox input").length > 0) {
 			var collection_list = [];
@@ -200,6 +199,24 @@ function sendFormMsg() {
 			$(this).blur();
 			$(".navInfo ul").css("height", rightHeight);
 		}
+		$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked", false);
+		$("span#indiv-tour-payment-type").text("支付方式");
+		$("ul.add-msg .mcoList").css("display", "none");
+		$("ul.add-msg .mcoList").find("input").val("");
+		$("span.currency_txt").text("美元");
+
+		$("ul.add-msg div.systemNumTab").css("display", "none");
+		$("ul.add-msg div.systemNumTab").find("li.tab_content").remove();
+		$(".addClients ul.clients-info li dl dd input").val("");
+		//重置：
+		$(".creditCardInfo").find("input").val("");
+		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
+		$(".creditCardInfo").css("display", "none");
+		$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked", false);
+
+		$("span#indiv-tour-payment-type").text("支付方式");
+		$("span#mco-party").text("");
+		$(".mcoList").css("display", "none");
 	}
 
 	$("#individualTourCreateActionConfirm").on('click', function() {
@@ -241,6 +258,7 @@ function sendFormMsg() {
 				$(".creditCardInfo").find("input").val("");
 				$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 				$(".creditCardInfo").css("display", "none");
+				$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked", false);
 
 				$("span#indiv-tour-payment-type").text("支付方式");
 				$("span#mco-party").text("");
@@ -429,11 +447,11 @@ $(document).ready(function() {
 		var target = "";
 		if(current_id == 'indiv_salesperson') {
 			target = 'salesperson';
-		} else if (current_id == 'indiv_source') {
+		} else if(current_id == 'indiv_source') {
 			target = 'source';
-		} else if (current_id == 'indiv_wholesaler') {
+		} else if(current_id == 'indiv_wholesaler') {
 			target = 'wholesaler';
-		} else if (current_id == 'mco-receiver') {
+		} else if(current_id == 'mco-receiver') {
 			target = 'user_id';
 		}
 		var url = location.protocol.concat("//").concat(location.host).concat('/database/autoComplete.php');
@@ -779,6 +797,7 @@ function paymentMethod() {
 		$(".payService ul li .payment").find("ul.dropdown-menu.drop3Menu").css("width", "120px");
 		$(".payService ul li .payment").find("ul.dropdown-menu.drop3Menu").css("min-width", "initial");
 		$(".partCreditCard").css("display", "none");
+		$(".partCreditCard").find("li").removeClass("requiredItem");
 	});
 	if($(".mcoList").css("display") == "block") {
 		$(".mcoList").css("display", "block");
@@ -796,12 +815,14 @@ function paymentMethod() {
 		$("input#card-number").addClass("notRequired");
 		$("input#card-holder").addClass("notRequired");
 		$("input#mco-receiver").addClass("notRequired");
+		$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked", false);
 
 		$("input#face-value").val("");
 		$("input#mco-value").val("");
 		$("input#mco-credit").val("");
 		$("input#fee-ratio").val("");
 		$("span#mco-party").text("");
+		$("input.mco_invoice").val("");
 
 		$("span.mcoAmount_currency").text("美元");
 		$("span.mcoCredit_currency").text("美元");
@@ -838,11 +859,13 @@ function paymentMethod() {
 			$("input#card-holder").addClass("notRequired");
 			$("input#mco-receiver").addClass("notRequired");
 			$("ul.add-msg li.list_account.profitInfor a").css("visibility", "hidden");
+			$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked", false);
 
 			$("input#face-value").val("");
 			$("input#mco-value").val("");
 			$("input#mco-credit").val("");
 			$("input#fee-ratio").val("");
+			$("input.mco_invoice").val("");
 			$("span#mco-party").text("");
 
 			$("span.mcoAmount_currency").text("美元");
@@ -855,6 +878,7 @@ function paymentMethod() {
 		}
 		heightRange();
 		$(".partCreditCard").css("display", "none");
+		$(".partCreditCard").find("li").removeClass("requiredItem");
 		$("input.non-creditCardAmount").val("");
 		$("input.creditCardAmount").val("");
 	});
@@ -883,26 +907,27 @@ function paymentMethod() {
 		$("input#mco-credit").val("");
 		$("input#fee-ratio").val("");
 		$("span#mco-party").text("");
+		$("input.mco_invoice").val("");
 
 		//输入信用卡
 		$(".creditCardInfo").find("input").val("");
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 		$(".creditCardInfo").css("display", "none");
 		$(".partCreditCard").css("display", "none");
+		$(".partCreditCard").find("li").removeClass("requiredItem");
 		$("input.non-creditCardAmount").val("");
 		$("input.creditCardAmount").val("");
+		$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked", false);
 	});
 	//供应商部分刷卡+非刷卡支付
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.drop3Menu").find("li").find("a").unbind("click").on("click", function() {
-		var payment_type=$(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
+		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
 		var payment_txt = "供应商部分刷卡+" + $.trim($(this).text());
 		$("span#indiv-tour-payment-type").text(payment_txt);
-		console.log(payment_txt);
+		$(".partCreditCard").find("li").addClass("requiredItem");
 		$(".mcoList").css("display", "none");
 		$(".partCreditCard").css("display", "block");
-
-
-
+		$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked", false);
 	});
 	//刷卡公司
 	$(".payService ul li .payment").find("ul.companyMenu").find("li").find("a").on("click", function() {
@@ -1337,7 +1362,7 @@ function getCalculateProfitInfo() {
 
 			}
 		}
-
+		$(".partCreditCard").find("li").find("span.currency").text($.trim($("span.salePrice_currency").text()));
 		profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate);
 	});
 	//底价下拉菜单:
@@ -1839,7 +1864,7 @@ function rateInfo() {
 function fullMcoPayment() {
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.creditCardPayment").find("li").find("a").on("click", function() {
 		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
-//		payment_type.text($(this).text());
+		//		payment_type.text($(this).text());
 		if($.trim(payment_type.text()) == "全额MCO") {
 			var salePrice = $("input#indiv_sale_price").val();
 			if($.trim(salePrice) !== "") {

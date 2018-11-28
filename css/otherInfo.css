@@ -4251,3 +4251,18 @@ ul.addInfo li.top_info:not(.mcoInfo) label {
 .theamInfo .showMsg.otherManage .theamTitle.supplementTitle{
 	width: 10%;
 }
+/*全选-全不选*/
+.filterBox ul.searchFloor li div.rightFloor a.selectAllBtn,
+.filterBox ul.searchFloor li div.rightFloor a.selectNoneBtn{
+	width: 47%;
+}
+.filterBox ul.searchFloor li div.currencyInfo div.rightContent{
+	text-align: initial;
+	position: relative;
+	display: inline-block;
+	width: 48%;
+	bottom: auto;
+}
+.filterBox ul.searchFloor li div.currencyInfo div.rightContent:last-child{
+	text-align: right;
+}

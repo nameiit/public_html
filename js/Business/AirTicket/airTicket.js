@@ -148,6 +148,7 @@ $(document).ready(function() {
 		$(".creditCardInfo").find("input").val("");
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 		$(".creditCardInfo").css("display", "none");
+		$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked",false);
 
 		$(".addClients ul.clients-info li dl dd.passenger div#passenger-list").find("span.new").remove();
 		$(".addClients ul.clients-info li dl dd.passenger div select").prop('selectedIndex', 0);
@@ -378,6 +379,7 @@ $(document).ready(function() {
 				$(".creditCardInfo").find("input").val("");
 				$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 				$(".creditCardInfo").css("display", "none");
+				$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked",false);
 
 				$(".addClients ul.clients-info li dl dd.passenger div select").prop('selectedIndex', 0);
 				$(".addClients ul.clients-info li dl dd.passenger div#passenger-list").find("span.new").remove();
@@ -706,6 +708,7 @@ function paymentMethod() {
 		$("input#mco-credit").val("");
 		$("input#fee-ratio").val("");
 		$("span#mco-party").text("");
+		$("input.mco_invoice").val("");
 //		$("input#airTicketProfit").val("");
 		$("span.mcoAmount_currency").text("美元");
 		$("span.mcoCredit_currency").text("美元");
@@ -715,6 +718,7 @@ function paymentMethod() {
 		$(".creditCardInfo").find("input").val("");
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 		$(".creditCardInfo").css("display", "none");
+		$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked",false);
 
 	}
 	//支付方式-信用卡
@@ -736,6 +740,7 @@ function paymentMethod() {
 			$("ul.add-msg li.list_account.profitInfor a").css("visibility", "visible");
 
 			$(".creditCardInfo").css("display", "block"); //输入信用卡
+			
 
 		} else {
 			$(".creditCardInfo").find("input").val("");
@@ -754,9 +759,11 @@ function paymentMethod() {
 			$("input#mco-credit").val("");
 			$("input#fee-ratio").val("");
 			$("span#mco-party").text("");
+			$("input.mco_invoice").val("");
 			$("span.mcoAmount_currency").text("美元");
 			$("span.mcoCredit_currency").text("美元");
 			$("span.faceValue_currency").text("美元");
+			$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked",false);
 		}
 		heightRange();
 	});
@@ -782,6 +789,7 @@ function paymentMethod() {
 		$("input#mco-credit").val("");
 		$("input#fee-ratio").val("");
 		$("span#mco-party").text("");
+		$("input.mco_invoice").val("");
 
 		$("span.mcoAmount_currency").text("美元");
 		$("span.mcoCredit_currency").text("美元");
@@ -790,6 +798,7 @@ function paymentMethod() {
 		$(".creditCardInfo").find("input").val("");
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 		$(".creditCardInfo").css("display", "none");
+		$("ul.add-msg li.creditCardItem div.checkbox input").attr("checked",false);
 	});
 
 
