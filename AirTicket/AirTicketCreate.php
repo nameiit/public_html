@@ -164,7 +164,14 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 										<ul class="add-msg add-msg-individual-left">
 											<li class="requiredItem">
 												<label class="nm-left">销售人员</label>
-												<input id="airticket_salesperson" type="text" placeholder="Search..." <?php if ($_SESSION["group_name"] == 'normal') { echo "value='" . $_SESSION['username'] . "'"; } ?>>
+												<input id="airticket_salesperson" type="text" placeholder="Search..." <?php
+													if ($_SESSION["group_name"] == 'normal') {
+														echo "value='" . $_SESSION['username'] . "' disabled";
+													}
+													if ($_SESSION["group_name"] == 'finance' || $_SESSION["group_name"] == 'accounting') {
+														echo "disabled"; 
+													}
+													?>>
 											</li>
 											<li class="requiredItem">
 												<label class="nm-left">机票定位</label>
@@ -363,7 +370,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												</li>
 												<li>
 													<label class="nm-left">MCO&nbsp;INVOICE</label>
-													<input type="text"  class="mco_invoice"/>
+													<input type="text"  class="mco_invoice" id="mco-invoice">
 												</li>
 												<li class="requiredItem list_currency">
 													<label class="nm-left">票面</label>

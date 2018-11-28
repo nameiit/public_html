@@ -40,15 +40,18 @@ $(document).ready(function() {
 				action: 'getUserList'
 			},
 			success: function(response) {
-//				console.log(response);
 				response = JSON.parse(response);
 				for (var i = 0; i < response.length; i++) {
 					if (response[i]['user_group_id'] == 1) {
 						sales_users.push(response[i]);
 					} else if (response[i]['user_group_id'] == 2) {
 						accounting_users.push(response[i]);
-					} else {
+					} else if (response[i]['user_group_id'] == 3) {
 						admin_users.push(response[i]);
+					} else if (response[i]['user_group_id'] == 4) {
+						finance_users.push(response[i]);
+					} else {
+						super_admin.push(response[i]);
 					}
 				}
 				for(var i = 0; i < sales_users.length; i++) {
@@ -78,12 +81,16 @@ $(document).ready(function() {
 		}
 		var group = $($("div.userGroup ul li.selected")[0])[0]['innerText'];
 		var user_group = "";
-		if(group == '销售人员') {
+		if (group == '销售人员') {
 			user_group = 'normal';
-		} else if(group == '会计') {
+		} else if (group == '会计') {
 			user_group = 'accounting';
-		} else {
+		} else if (group == '管理员') {
 			user_group = 'admin';
+		} else if (group == '财务') {
+			user_group = 'finance';
+		} else if (group == 'admin') {
+			user_group = 'superad';
 		}
 		var url = location.protocol.concat("//").concat(location.host).concat('/database/Other/UserAdmin.php');
 		$.ajax({
@@ -147,6 +154,7 @@ $(document).ready(function() {
 	});
 	function loadUsers(account_id) {
 		$("li.userDetail").remove();
+
 		var url = location.protocol.concat("//").concat(location.host).concat('/database/Other/UserAdmin.php');
 		$.ajax({
 			url: url,
@@ -163,16 +171,18 @@ $(document).ready(function() {
 				users = response;
 				var group = $($("div.userGroup ul li.selected")[0])[0]['innerText'];
 				var user_group = "";
-				if(group == '销售人员') {
+				if (group == '销售人员') {
 					user_group = 1;
-				} else if(group == '会计') {
+				} else if (group == '会计') {
 					user_group = 2;
-				} else {
+				} else if (group == '管理员') {
 					user_group = 3;
+				} else if (group == '财务') {
+					user_group = 4;
+				} else if (group == 'admin') {
+					user_group = 0;
 				}
 				for(var i = 0; i < users.length; i++) {
-					console.log(users[i]);
-					console.log(user_group);
 					if(users[i]['user_group_id'] == user_group) {
 						var last_time_login = (users[i]['last_time_login'] == null) ? "" : users[i]['last_time_login'];
 						$html = `
@@ -224,10 +234,42 @@ $(document).ready(function() {
 		}
 		searchTab($("#username-filter"));
 	});
-	//admin:
-	$(".userGroup").find("li.adminNav").on("click",function(){
-		
-		
+	$("li.adminNav").on('click', function() {
+		$this = $(this);
+		$.ajax({
+			url: location.protocol.concat("//").concat(location.host).concat('/database/Other/getUserGroup.php'),
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+			type: 'GET',
+			data: {account_id: $("#update-username").val()},
+			success: function(response) {
+				if (response == 'No access permission!') {
+					alert("没有权限查看该用户组!");
+				} else {
+					$this.addClass("selected").siblings().removeClass("selected");
+					$("li.userDetail").remove();
+					$("#username-filter").empty();
+					$(".searchable-select").remove();
+					$("#username-filter").append("<option value='all'>用户名</option>");
+					for(var i = 0; i < super_admin.length; i++) {
+						$("#username-filter").append("<option value='" + super_admin[i]['account_id'] + "'>" + super_admin[i]['account_id'] + "</option>");
+					}
+					searchTab($("#username-filter"));
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(textStatus, errorThrown);
+			}
+		});
+	});
+	$("li.financeNav").on('click', function() {
+		$("li.userDetail").remove();
+		$("#username-filter").empty();
+		$(".searchable-select").remove();
+		$("#username-filter").append("<option value='all'>用户名</option>");
+		for(var i = 0; i < finance_users.length; i++) {
+			$("#username-filter").append("<option value='" + finance_users[i]['account_id'] + "'>" + finance_users[i]['account_id'] + "</option>");
+		}
+		searchTab($("#username-filter"));
 	});
 
 	$(document).on('click', 'li.userDetail',  function () {
@@ -268,20 +310,15 @@ function manageToggle() {
 	$(".userGroup").find("li.managerNav").on("click", function() {
 		$(this).addClass("selected").siblings().removeClass("selected");
 	});
-	
-	//admin
-	$(".userGroup").find("li.adminNav").on("click", function() {
-		$(this).addClass("selected").siblings().removeClass("selected");
-		$html = `
-			<li class="userDetail">
-				<dl>
-					<dd class="userName">` + "用户名" + `</dd>
-					<dd class="loginTime">` + "最近登录时间" + `</dd>
-				</dl>
-			</li>`;
-		$("div.usersInfo ul").append($html);
-	});
 
+	//admin
+	// $(".userGroup").find("li.adminNav").on("click", function() {
+	// 	$(this).addClass("selected").siblings().removeClass("selected");
+	// });
+
+	$(".userGroup").find("li.financeNav").on("click", function() {
+		$(this).addClass("selected").siblings().removeClass("selected");
+	});
 }
 
 function confirmAddInfo() {
@@ -346,7 +383,7 @@ function autoWidth() {
 
 //权限管理
 function authorityManage(){
-	$("ul.manageDetail li.actionFilerBox.actionFloor a.authorityManageBtn").on("click",function(){
+	$("ul.manageDetail li.actionFilerBox.actionFloor a.authorityManageBtn").unbind('click').on("click",function(){
 //		$(".authorityManageCard").css("display","block");
 		$.ajax({
 			url: location.protocol.concat("//").concat(location.host).concat('/database/Other/PowerControl/getPowerControl.php'),
@@ -354,50 +391,54 @@ function authorityManage(){
 			type: 'GET',
 			data: {account_id: $("#update-username").val()},
 			success: function(response) {
-				response = JSON.parse(response);
+				if (response == 'No access permission!') {
+					alert("没有权限!");
+				} else {
+					response = JSON.parse(response);
 
-				if (response[0]['clear_power'] == 'Y') {
-					$("#clear-power-control")[0].checked = true;
-				} else {
-					$("#clear-power-control")[0].checked = false;
-				}
-				if (response[0]['lock_power'] == 'Y') {
-					$("#lock-power-control")[0].checked = true;
-				} else {
-					$("#lock-power-control")[0].checked = false;
-				}
-				if (response[0]['paid_power'] == 'Y') {
-					$("#paid-power-control")[0].checked = true;
-				} else {
-					$("#paid-power-control")[0].checked = false;
-				}
-				if (response[0]['finish_power'] == 'Y') {
-					$("#finish-power-control")[0].checked = true;
-				} else {
-					$("#finish-power-control")[0].checked = false;
-				}
-				if (response[0]['clear_counter'] == 'Y') {
-					$("#unclear-power-control")[0].checked = true;
-				} else {
-					$("#unclear-power-control")[0].checked = false;
-				}
-				if (response[0]['lock_counter'] == 'Y') {
-					$("#unlock-power-control")[0].checked = true;
-				} else {
-					$("#unlock-power-control")[0].checked = false;
-				}
-				if (response[0]['paid_counter'] == 'Y') {
-					$("#unpaid-power-control")[0].checked = true;
-				} else {
-					$("#unpaid-power-control")[0].checked = false;
-				}
-				if (response[0]['finish_counter'] == 'Y') {
-					$("#unfinish-power-control")[0].checked = true;
-				} else {
-					$("#unfinish-power-control")[0].checked = false;
-				}
+					if (response[0]['clear_power'] == 'Y') {
+						$("#clear-power-control")[0].checked = true;
+					} else {
+						$("#clear-power-control")[0].checked = false;
+					}
+					if (response[0]['lock_power'] == 'Y') {
+						$("#lock-power-control")[0].checked = true;
+					} else {
+						$("#lock-power-control")[0].checked = false;
+					}
+					if (response[0]['paid_power'] == 'Y') {
+						$("#paid-power-control")[0].checked = true;
+					} else {
+						$("#paid-power-control")[0].checked = false;
+					}
+					if (response[0]['finish_power'] == 'Y') {
+						$("#finish-power-control")[0].checked = true;
+					} else {
+						$("#finish-power-control")[0].checked = false;
+					}
+					if (response[0]['clear_counter'] == 'Y') {
+						$("#unclear-power-control")[0].checked = true;
+					} else {
+						$("#unclear-power-control")[0].checked = false;
+					}
+					if (response[0]['lock_counter'] == 'Y') {
+						$("#unlock-power-control")[0].checked = true;
+					} else {
+						$("#unlock-power-control")[0].checked = false;
+					}
+					if (response[0]['paid_counter'] == 'Y') {
+						$("#unpaid-power-control")[0].checked = true;
+					} else {
+						$("#unpaid-power-control")[0].checked = false;
+					}
+					if (response[0]['finish_counter'] == 'Y') {
+						$("#unfinish-power-control")[0].checked = true;
+					} else {
+						$("#unfinish-power-control")[0].checked = false;
+					}
 
-				$(".authorityManageCard").css("display","block");
+					$(".authorityManageCard").css("display","block");
+				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus, errorThrown);

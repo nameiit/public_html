@@ -424,59 +424,57 @@ $(document).ready(function() {
 
 				// $("ul.add-msg div.systemNumTab").css("display", "none");
 				// $("li.tab_content").remove();
-				// if(response['following_id_collection'] != null) {
-				// 	var collection_ids = response['following_id_collection'].split(",");
-				// 	for(var i = 0; i < collection_ids.length; i++) {
-				// 		$.ajax({
-				// 			url: location.protocol.concat("//").concat(location.host).concat('/database/Business/getCollectionList.php'),
-				// 			type: 'GET',
-				// 			data: {
-				// 				collection_id: collection_ids[i]
-				// 			},
-				// 			success: function(response) {
-				// 				response = JSON.parse(response);
-				//
-				// 				var following_id = response['following_id'];
-				// 				if(following_id == null) {
-				// 					following_id = "";
-				// 				}
-				// 				var appendContent = `
-				// 							<li class="tab_content">
-				// 								<dl>
-				// 									<dd class="selectInfo">
-				// 										<div class="checkbox checkbox-success">
-				// 											<input class="styled" type="checkbox" checked="checked" >
-				// 											<label></label>
-				// 										</div>
-				// 									</dd>
-				// 									<dd class="numberInfo">` + response['transaction_id'] + `</dd>
-				// 									<dd class="salesInfo">` + response['salesperson_code'] + `</dd>
-				// 									<dd class="number">
-				// 										<a>` + following_id + `</a>
-				// 									</dd>
-				// 								</dl>
-				// 							</li>
-				// 						`;
-				//
-				// 				$("ul.add-msg div.systemNumTab").css("display", "block");
-				// 				$("ul.add-msg div.systemNumTab").find("li.tab_title").after(appendContent);
-				// 				// $("ul.add-msg li.systemNum input").val("");
-				// 				heightRange();
-				// 				var ddCell = $("ul.add-msg div.systemNumTab li.tab_content dd");
-				// 				ddCell.on("mouseenter", function() {
-				// 					ddCell.each(function(i, item) {
-				// 						var txt = $.trim($(item).text());
-				// 						txt = txt.replace(/[\r\n]/g, "");
-				// 						$(item).attr("title", txt);
-				// 					});
-				// 				});
-				// 			},
-				// 			error: function(jqXHR, textStatus, errorThrown) {
-				// 				console.log(textStatus, errorThrown);
-				// 			}
-				// 		});
-				// 	}
-				// }
+				if(response['following_id_collection'] != null) {
+					var collection_ids = response['following_id_collection'].split(",");
+					for(var i = 0; i < collection_ids.length; i++) {
+						$.ajax({
+							url: location.protocol.concat("//").concat(location.host).concat('/database/Business/getCollectionList.php'),
+							type: 'GET',
+							data: { collection_id: collection_ids[i] },
+							success: function(response) {
+								response = JSON.parse(response);
+
+								var following_id = response['following_id'];
+								if(following_id == null) {
+									following_id = "";
+								}
+								var appendContent = `
+											<li class="tab_content">
+												<dl>
+													<dd class="selectInfo">
+														<div class="checkbox checkbox-success">
+															<input class="styled" type="checkbox" checked="checked" >
+															<label></label>
+														</div>
+													</dd>
+													<dd class="numberInfo">` + response['transaction_id'] + `</dd>
+													<dd class="salesInfo">` + response['salesperson_code'] + `</dd>
+													<dd class="number">
+														<a>` + following_id + `</a>
+													</dd>
+												</dl>
+											</li>
+										`;
+
+								$("ul.add-msg div.systemNumTab").css("display", "block");
+								$("ul.add-msg div.systemNumTab").find("li.tab_title").after(appendContent);
+								// $("ul.add-msg li.systemNum input").val("");
+								heightRange();
+								var ddCell = $("ul.add-msg div.systemNumTab li.tab_content dd");
+								ddCell.on("mouseenter", function() {
+									ddCell.each(function(i, item) {
+										var txt = $.trim($(item).text());
+										txt = txt.replace(/[\r\n]/g, "");
+										$(item).attr("title", txt);
+									});
+								});
+							},
+							error: function(jqXHR, textStatus, errorThrown) {
+								console.log(textStatus, errorThrown);
+							}
+						});
+					}
+				}
 				//
 				// $("#airticket-dialog").css("display", "block");
 				// // document.getElementById("airTicketDiscountApply_update").click();

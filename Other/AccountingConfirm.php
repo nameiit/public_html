@@ -2,6 +2,18 @@
 if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 	header('location: ../login.php');
 }
+
+function alert($msg) {
+		echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+
+if ($_SESSION["group_name"] == 'normal') {
+	alert("权限不足");
+	if(isset($_SERVER['HTTP_REFERER'])) {
+    $previous = $_SERVER['HTTP_REFERER'];
+	}
+	echo "<script type='text/javascript'>window.location.href = '$previous';</script>";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -365,22 +377,22 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 										</li>
 										<li class="single-row cellBox invoiceCell">
 											<label>INVOICE</label>
-											<input type="text" />
+											<input type="text" id="update-invoice">
 											<input type="text" disabled="disabled"/>
 										</li>
 										<li class="single-row cellBox debtCell">
 											<label>Debt</label>
-											<input type="text" />
+											<input type="text" id="update-debt">
 											<input type="text" disabled="disabled"/>
 										</li>
 										<li class="single-row cellBox receivableCell">
 											<label>应收款</label>
-											<input type="text" />
+											<input type="text" id="update-receive">
 											<input type="text" disabled="disabled"/>
 										</li>
 										<li class="single-row cellBox salePriceCell" >
 											<label>卖价</label>
-											<input type="text" />
+											<input type="text" id="update-selling-price">
 											<input type="text" disabled="disabled"/>
 										</li>
 										<li class="checkNo">

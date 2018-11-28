@@ -168,6 +168,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<li class="accountingNav">
 												会计
 											</li>
+											<li class="financeNav">
+												财务
+											</li>
 											<li class="managerNav">
 												管理员
 											</li>
@@ -360,10 +363,13 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 			</div>
 			<!--主内容区   e-->
 		</div>
-		<script type="text/javascript">var users = [];
+		<script type="text/javascript">
+			var users = [];
 			var sales_users = [];
 			var accounting_users = [];
+			var finance_users = [];
 			var admin_users = [];
+			var super_admin = [];
 		</script>
 		<script src="../js/jquery.min.js" type="text/javascript"></script>
 		<script src="../js/homePage/public.js" type="text/javascript"></script>

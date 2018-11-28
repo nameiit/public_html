@@ -5,7 +5,7 @@ class OtherManagement {
 	function getDepartment() {
 		global $conn;
 
-		$sql = "SELECT department_name, description FROM department";
+		$sql = "SELECT department_name, description FROM Department";
 		$result = $conn -> query($sql);
 
 		$rows = array();
@@ -23,7 +23,7 @@ class OtherManagement {
 		$department_name = $_POST['department_name'];
 		$description = $_POST['description'];
 
-		$sql = "INSERT INTO department (department_name, description) VALUES ('$department_name', '$description')";
+		$sql = "INSERT INTO Department (department_name, description) VALUES ('$department_name', '$description')";
 		$conn -> query($sql);
 	}
 

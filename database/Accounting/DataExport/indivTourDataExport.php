@@ -54,7 +54,7 @@ $sql = "SELECT
                 AND fs.ending <> 'ref'
                 AND fs.ending <> 'sup') AS selling_price,
             (SELECT sum(fs.received_finished)
-                FROM FinanceStatus fs 
+                FROM FinanceStatus fs
                 WHERE fs.transaction_id = t.transaction_id
                 AND fs.ending <> 'ref'
                 AND fs.ending <> 'sup') AS received,
@@ -95,7 +95,12 @@ $sql = "SELECT
         AND DATE_FORMAT(i.arrival_date, '%Y-%m-%d') LIKE '$end_date'
         AND w.wholesaler_code LIKE '$wholesaler'
         AND t.transaction_id IN (
-          SELECT DISTINCT transaction_id FROM FinanceStatus WHERE lock_status LIKE '$lock_status' AND clear_status LIKE '$clear_status' AND paid_status LIKE '$paid_status' AND finish_status LIKE '$finish_status'
+          SELECT DISTINCT transaction_id
+          FROM FinanceStatus
+          WHERE lock_status LIKE '$lock_status'
+          AND clear_status LIKE '$clear_status'
+          AND paid_status LIKE '$paid_status'
+          AND finish_status LIKE '$finish_status'
         )";
 
 if ($invoice != '%') {

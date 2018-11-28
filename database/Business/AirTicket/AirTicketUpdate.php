@@ -129,7 +129,7 @@ $conn->query($sql);
 
 // Update AirTicket table
 $query = "UPDATE
-            AirTicketTour
+            AirticketTour
           SET
             itinerary = '$itinerary',
             salesperson_id = (SELECT salesperson_id FROM Salesperson WHERE salesperson_code = '$salesperson'),
@@ -162,7 +162,7 @@ $conn->query($query);
 
 if ($couponId == NULL && $discount != NULL) {
   $query = "UPDATE
-              AirTicketTour
+              AirticketTour
             SET
               cc_id = NULL,
               coupon = '$discount',
@@ -171,7 +171,7 @@ if ($couponId == NULL && $discount != NULL) {
               airticket_tour_id = $airticket_tour_id";
 } else if ($discount == NULL) {
   $query = "UPDATE
-              AirTicketTour
+              AirticketTour
             SET
               cc_id = NULL,
               coupon = NULL,
@@ -180,7 +180,7 @@ if ($couponId == NULL && $discount != NULL) {
               airticket_tour_id = $airticket_tour_id";
 } else {
   $query = "UPDATE
-              AirTicketTour
+              AirticketTour
             SET
               cc_id = '$couponId',
               coupon = '$discount'

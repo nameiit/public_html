@@ -11,7 +11,7 @@ $sql = "SELECT
            GROUP BY starter_id
           ) AS following_id
         FROM Transactions t
-        JOIN AirTicketTour a
+        JOIN AirticketTour a
         ON a.airticket_tour_id = t.airticket_tour_id
         JOIN Salesperson s
         ON a.salesperson_id = s.salesperson_id

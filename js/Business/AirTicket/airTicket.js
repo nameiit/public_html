@@ -269,6 +269,7 @@ $(document).ready(function() {
 
 		if(payment_type == 'airmco') {
 			var mco_party = $("#mco-party")[0].innerHTML;
+			var mco_invoice = $("#mco-invoice").val();
 			var face_value = $("#face-value").val();
 			var face_currency = $("#face-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
 			var mco_value = $("#mco-value").val();
@@ -279,6 +280,7 @@ $(document).ready(function() {
 
 			Object.assign(data, {
 				mco_party: mco_party,
+				mco_invoice: mco_invoice,
 				face_value: face_value,
 				face_currency: face_currency,
 				mco_value: mco_value,
@@ -740,7 +742,7 @@ function paymentMethod() {
 			$("ul.add-msg li.list_account.profitInfor a").css("visibility", "visible");
 
 			$(".creditCardInfo").css("display", "block"); //输入信用卡
-			
+
 
 		} else {
 			$(".creditCardInfo").find("input").val("");

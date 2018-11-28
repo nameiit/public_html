@@ -112,8 +112,9 @@ class AirTicketOrderHistory {
                 (
                     SELECT transaction_id FROM Transactions WHERE airticket_tour_id IN
                     (
-                        SELECT DISTINCT airticket_tour_id FROM AirSchedule WHERE
-                        depart_airport LIKE '$leave_airport'
+                        SELECT DISTINCT airticket_tour_id
+                        FROM AirSchedule
+                        WHERE depart_airport LIKE '$leave_airport'
                         AND arrival_airport LIKE '$arrival_airport'
                         AND DATE_FORMAT(depart_date, '%Y-%m-%d') >= '$leave_date'
                         AND DATE_FORMAT(depart_date, '%Y-%m-%d') <= $arrival_date

@@ -82,7 +82,7 @@ $sql = "SELECT
           a.round_trip,
           a.locators,
           a.itinerary
-        FROM Airtickettour a
+        FROM AirticketTour a
         LEFT JOIN Transactions t
         ON a.airticket_tour_id = t.airticket_tour_id
         JOIN Salesperson s
@@ -97,7 +97,7 @@ $sql = "SELECT
         AND t.settle_time >= '$from_date'
         AND a.airticket_tour_id IN (
           SELECT DISTINCT airticket_tour_id
-          FROM Airschedule
+          FROM AirSchedule
           WHERE airline LIKE '$airline'
           AND (depart_date LIKE '$depart_date'
           OR depart_date LIKE '$back_date')
@@ -105,7 +105,12 @@ $sql = "SELECT
         AND a.ticketed_date LIKE '$ticketed_date'
         AND w.wholesaler_code LIKE '$wholesaler'
         AND t.transaction_id IN (
-          SELECT DISTINCT transaction_id FROM FinanceStatus WHERE lock_status LIKE '$lock_status' AND clear_status LIKE '$clear_status' AND paid_status LIKE '$paid_status' AND finish_status LIKE '$finish_status'
+          SELECT DISTINCT transaction_id
+          FROM FinanceStatus
+          WHERE lock_status LIKE '$lock_status'
+          AND clear_status LIKE '$clear_status'
+          AND paid_status LIKE '$paid_status'
+          AND finish_status LIKE '$finish_status'
         )";
 
 if ($invoice != '%') {

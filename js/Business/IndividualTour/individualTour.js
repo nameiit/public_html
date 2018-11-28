@@ -137,6 +137,7 @@ function sendFormMsg() {
 
 		if(payment_type == 'wholesalermco' || payment_type == 'mcoall') {
 			var mco_party = $("#mco-party")[0].innerHTML;
+			var mco_invoice = $("#mco-invoice").val();
 			var face_value = $("#face-value").val();
 			var face_currency = $("#face-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
 			var mco_value = $("#mco-value").val();
@@ -153,6 +154,7 @@ function sendFormMsg() {
 
 			Object.assign(data, {
 				mco_party: mco_party,
+				mco_invoice: mco_invoice,
 				face_value: face_value,
 				face_currency: face_currency,
 				mco_value: mco_value,

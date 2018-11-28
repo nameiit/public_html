@@ -16,7 +16,7 @@ $(document).ready(function () {
       data: data,
       success: function(response) {
         response = JSON.parse(response);
-        // console.log(response);
+        console.log(response);
 
         $('li.listDetail').remove();
         for(var i = 0; i < response.length; i++) {

@@ -29,7 +29,7 @@ $paid_status = $_GET['paid_status'] == 'all' ? '%' : $_GET['paid_status'];
 $finish_status = $_GET['finish_status'] == 'all' ? '%' : $_GET['finish_status'];
 
 $sql = "SELECT count(*)
-        FROM Airtickettour a
+        FROM AirticketTour a
         LEFT JOIN Transactions t
         ON a.airticket_tour_id = t.airticket_tour_id
         JOIN Salesperson s
@@ -43,8 +43,8 @@ $sql = "SELECT count(*)
         AND t.settle_time <= '$to_date'
         AND t.settle_time >= '$from_date'
         AND a.airticket_tour_id IN (
-          SELECT airticket_tour_id 
-          FROM Airschedule 
+          SELECT airticket_tour_id
+          FROM AirSchedule
           WHERE airline LIKE '$airline'
           AND (depart_date LIKE '$depart_date'
           OR depart_date LIKE '$back_date')
@@ -52,11 +52,11 @@ $sql = "SELECT count(*)
         AND a.ticketed_date LIKE '$ticketed_date'
         AND w.wholesaler_code LIKE '$wholesaler'
         AND t.transaction_id IN (
-          SELECT transaction_id 
-          FROM FinanceStatus 
-          WHERE lock_status LIKE '$lock_status' 
-          AND clear_status LIKE '$clear_status' 
-          AND paid_status LIKE '$paid_status' 
+          SELECT transaction_id
+          FROM FinanceStatus
+          WHERE lock_status LIKE '$lock_status'
+          AND clear_status LIKE '$clear_status'
+          AND paid_status LIKE '$paid_status'
           AND finish_status LIKE '$finish_status'
         )";
 
@@ -64,9 +64,9 @@ if ($invoice != '%') {
   $sql .= " AND t.transaction_id IN (SELECT transaction_id FROM FinanceStatus WHERE invoice LIKE '$invoice')";
 } else if ($from_invoice != '%' or $to_invoice != '%') {
   $sql .= " AND t.transaction_id IN (
-            SELECT transacation_id 
-            FROM FinanceStatus 
-            WHERE invoice >= '$from_invoice' 
+            SELECT transacation_id
+            FROM FinanceStatus
+            WHERE invoice >= '$from_invoice'
             AND invoice <= '$to_invoice')";
 }
 

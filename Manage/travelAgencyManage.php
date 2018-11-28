@@ -3,6 +3,20 @@ session_start();
 if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 	header('location: ../login.php');
 }
+
+function alert($msg) {
+		echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+
+if ($_SESSION["group_name"] == 'normal' ||
+		$_SESSION["group_name"] == 'accounting' ||
+		$_SESSION["group_name"] == 'finance') {
+	alert("权限不足");
+	if(isset($_SERVER['HTTP_REFERER'])) {
+    $previous = $_SERVER['HTTP_REFERER'];
+	}
+	echo "<script type='text/javascript'>window.location.href = '$previous';</script>";
+}
  ?>
 <!DOCTYPE html>
 <html>
@@ -120,7 +134,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 									<ul>
 										<li class="salesItem">
 											<a href="SalesManage.php" id="goSalesManage">
-												销<i style="visibility: hidden;font-style: normal;">隐</i>售
+												员<i style="visibility: hidden;font-style: normal;">隐</i>工
 												<img src="../img/rightArrow.png">
 											</a>
 										</li>

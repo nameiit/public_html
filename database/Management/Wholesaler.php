@@ -35,7 +35,7 @@ class Wholesaler {
         $wholesaler_id = $_GET['wholesaler_id'];
 
         $sql = "SELECT wholesaler_code, name, email, contact_person, region, contact_person_phone, business_type, description
-                FROM wholesaler
+                FROM Wholesaler
                 WHERE wholesaler_id = '$wholesaler_id'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
@@ -55,7 +55,7 @@ class Wholesaler {
         $description = (empty($_POST['description']))? NULL : $_POST['description'];
         $wholesaler_id = $_POST['wholesaler_id'];
 
-        $sql = "UPDATE wholesaler
+        $sql = "UPDATE Wholesaler
                 SET
                     wholesaler_code = '$wholesaler_code',
                     name = '$wholesaler_name',

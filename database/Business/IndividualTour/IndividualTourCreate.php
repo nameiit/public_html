@@ -264,6 +264,7 @@ if ($payment_type == 'wholesalerall' ||
   $conn->query($sql);
 } else if ($payment_type == 'wholesalermco') {
     $mco_party = $_POST['mco_party'];
+    $mco_invoice = $_POST['mco_invoice'];
     $face_value = $_POST['face_value'];
     $face_currency = $_POST['face_currency'];
     $mco_value = $_POST['mco_value'];
@@ -325,16 +326,16 @@ if ($payment_type == 'wholesalerall' ||
 
   $expire_date = $expired_date_month . '/' . $expired_date_year;
 
-  $sql = "INSERT INTO NoticeBoard (valid_until, edited_by, category) 
-          SELECT 
-          CURRENT_DATE + INTERVAL 1 year, 
+  $sql = "INSERT INTO NoticeBoard (valid_until, edited_by, category)
+          SELECT
+          CURRENT_DATE + INTERVAL 1 year,
           ua.user_id, 'mco'
           FROM UserAccount ua WHERE ua.account_id = '$indiv_salesperson'";
   $conn->query($sql);
-  $sql = "SELECT max(nb.notice_id) AS notice_id 
-          FROM NoticeBoard nb 
-          JOIN UserAccount ua 
-          ON nb.edited_by = ua.user_id 
+  $sql = "SELECT max(nb.notice_id) AS notice_id
+          FROM NoticeBoard nb
+          JOIN UserAccount ua
+          ON nb.edited_by = ua.user_id
           WHERE ua.account_id = '$indiv_salesperson'";
   $result = $conn->query($sql);
   $notice_id = $result->fetch_assoc()['notice_id'];
@@ -343,7 +344,7 @@ if ($payment_type == 'wholesalerall' ||
           FROM UserAccount ua
           WHERE ua.account_id LIKE '$mco_receiver'";
   $conn->query($sql);
-  
+
   $sql = "INSERT INTO McoInfo
           (
             cardholder,
@@ -401,6 +402,7 @@ if ($payment_type == 'wholesalerall' ||
 
 } else if ($payment_type == 'mcoall') {
   $mco_party = $_POST['mco_party'];
+  $mco_invoice = $_POST['mco_invoice'];
   $face_value = $_POST['face_value'];
   $face_currency = $_POST['face_currency'];
   $mco_value = $_POST['mco_value'];
@@ -480,16 +482,16 @@ if ($payment_type == 'wholesalerall' ||
 
     $sql = "UPDATE IndividualTour SET mp_id = '$mp_id' WHERE indiv_tour_id = '$individualTourId'";
     $conn->query($sql);
-    $sql = "INSERT INTO NoticeBoard (valid_until, edited_by, category) 
-            SELECT 
-            CURRENT_DATE + INTERVAL 1 year, 
+    $sql = "INSERT INTO NoticeBoard (valid_until, edited_by, category)
+            SELECT
+            CURRENT_DATE + INTERVAL 1 year,
             ua.user_id, 'mco'
             FROM UserAccount ua WHERE ua.account_id = '$indiv_salesperson'";
     $conn->query($sql);
-    $sql = "SELECT max(nb.notice_id) AS notice_id 
-            FROM NoticeBoard nb 
-            JOIN UserAccount ua 
-            ON nb.edited_by = ua.user_id 
+    $sql = "SELECT max(nb.notice_id) AS notice_id
+            FROM NoticeBoard nb
+            JOIN UserAccount ua
+            ON nb.edited_by = ua.user_id
             WHERE ua.account_id = '$indiv_salesperson'";
     $result = $conn->query($sql);
     $notice_id = $result->fetch_assoc()['notice_id'];

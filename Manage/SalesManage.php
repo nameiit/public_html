@@ -8,7 +8,9 @@ function alert($msg) {
 		echo "<script type='text/javascript'>alert('$msg');</script>";
 }
 
-if ($_SESSION["group_name"] == 'normal') {
+if ($_SESSION["group_name"] == 'normal' ||
+		$_SESSION["group_name"] == 'accounting' ||
+		$_SESSION["group_name"] == 'finance') {
 	alert("权限不足");
 	if(isset($_SERVER['HTTP_REFERER'])) {
     $previous = $_SERVER['HTTP_REFERER'];
@@ -132,7 +134,7 @@ if ($_SESSION["group_name"] == 'normal') {
 									<ul>
 										<li class="salesItem">
 											<a href="javascript:void(0);" id="goSalesManage">
-												销<i style="visibility: hidden;font-style: normal;">隐</i>售
+												员<i style="visibility: hidden;font-style: normal;">隐</i>工
 												<img src="../img/rightArrow.png">
 											</a>
 										</li>
@@ -160,7 +162,7 @@ if ($_SESSION["group_name"] == 'normal') {
 								<!--管理表s-->
 								<div class="manageTab salesManageTab">
 									<div class="tabCard">
-										<label class="markManage salesMark">销&nbsp;&nbsp;&nbsp;&nbsp;售</label>
+										<label class="markManage salesMark">员&nbsp;&nbsp;&nbsp;&nbsp;工</label>
 										<ul class="manageTabTitle salesTitle">
 											<li class="tabId">#</li>
 											<li class="codeInfo">
@@ -225,7 +227,7 @@ if ($_SESSION["group_name"] == 'normal') {
 									</ul>
 									<!--添加-->
 									<ul class="filerDetail addTabMsg">
-										<li class="filterTitle">销售:</li>
+										<li class="filterTitle">员工:</li>
 										<li>
 											<label>姓</label>
 											<input type="text" class="lastName" id="insert-salesperson-lname">
@@ -276,7 +278,7 @@ if ($_SESSION["group_name"] == 'normal') {
 									</ul>
 									<!--修改-->
 									<ul class="filerDetail amendTabMsg nm-hide amendBox">
-										<li class="filterTitle">销售:</li>
+										<li class="filterTitle">员工:</li>
 										<li>
 											<label>姓</label>
 											<input type="text" class="lastName" id="update-salesperson-lname">

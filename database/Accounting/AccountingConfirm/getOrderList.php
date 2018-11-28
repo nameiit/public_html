@@ -62,9 +62,18 @@ $sql = "SELECT
         AND fs.paid_status LIKE '$paid_status'
         AND fs.finish_status LIKE '$finish_status'
         AND t.transaction_id IN
-            (SELECT DISTINCT t.transaction_id FROM Transactions t JOIN AirticketNumber an ON t.airticket_tour_id = an.airticket_tour_id WHERE an.lname LIKE concat('%', '$lname', '%') AND an.fname LIKE concat('%', '$fname', '%'))
+            (SELECT DISTINCT t.transaction_id
+              FROM Transactions t
+              JOIN AirticketNumber an
+              ON t.airticket_tour_id = an.airticket_tour_id
+              WHERE an.lname LIKE concat('%', '$lname', '%')
+              AND an.fname LIKE concat('%', '$fname', '%'))
         AND t.transaction_id IN
-            (SELECT DISTINCT t.transaction_id FROM Transactions t JOIN Airschedule asl ON t.airticket_tour_id = asl.airticket_tour_id WHERE asl.airline LIKE '$airline')
+            (SELECT DISTINCT t.transaction_id
+              FROM Transactions t
+              JOIN AirSchedule asl
+              ON t.airticket_tour_id = asl.airticket_tour_id
+              WHERE asl.airline LIKE '$airline')
         ";
 if ($payment_type == 'cc'){
     $sql .= " AND fs.received = 'CC'";

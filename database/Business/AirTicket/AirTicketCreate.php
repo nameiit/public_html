@@ -271,6 +271,7 @@ $transaction_id = $result->fetch_assoc()['transaction_id'];
 
 if ($payment_type == 'airmco') {
   $mco_party = $_POST['mco_party'];
+  $mco_invoice = $_POST['mco_invoice'];
   $face_value = $_POST['face_value'];
   $face_currency = $_POST['face_currency'];
   $mco_value = $_POST['mco_value'];
@@ -350,7 +351,7 @@ if ($payment_type == 'airmco') {
     $result = $conn->query($sql);
     $mp_id = $result->fetch_assoc()['mp_id'];
 
-    $sql = "UPDATE AirTicketTour SET mp_id = '$mp_id' WHERE airticket_tour_id = '$airticket_tour_id'";
+    $sql = "UPDATE AirticketTour SET mp_id = '$mp_id' WHERE airticket_tour_id = '$airticket_tour_id'";
     $conn->query($sql);
 }
 

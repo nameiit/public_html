@@ -161,7 +161,10 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<input id="indiv_salesperson" type="text" placeholder="Search..."
 														<?php
 															if ($_SESSION["group_name"] == 'normal') {
-																echo "value='" . $_SESSION['username'] . "'";
+																echo "value='" . $_SESSION['username'] . "' disabled";
+															}
+															if ($_SESSION["group_name"] == 'finance' || $_SESSION["group_name"] == 'accounting') {
+																echo "disabled";
 															}
 														?>
 													>
@@ -615,7 +618,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</li>
 													<li>
 														<label class="nm-left">MCO&nbsp;INVOICE</label>
-														<input type="text"  class="mco_invoice"/>
+														<input type="text"  class="mco_invoice" id="mco-invoice">
 													</li>
 													<li class="requiredItem list_currency">
 														<label class="nm-left">票面</label>

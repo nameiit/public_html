@@ -1170,6 +1170,7 @@
  		multiRowInfo(); //选中多行
  	}
  }
+
  //选中单行
  function singleRowInfo() {
  	var invoiceTxt = $.trim($("ul.listInfo.confirmFloor li dd.systemNum.selected").parent().find("dd.invoice").text()); //invoice
@@ -1273,7 +1274,7 @@
 
  		$(".singleRow_confirmTips p.confirmNotice").text("确认修改");
  		$(".singleRow_confirmTips").css("display", "block");
- 		$(".singleRow_confirmTips").find("p.actionBox").find("button.actionConfirm").on("click", function() {
+ 		$(".singleRow_confirmTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
  			var getInvoice = $(".accounting-right ul.add-msg li.invoiceCell input").first().val(); //invoice
  			if(getInvoice != '') {
  				$("dd.systemNum.selected").parent("dl").find("dd.invoice").text(getInvoice);
@@ -1318,7 +1319,6 @@
  				} else {
  					// 					alert("不可更改");
  				}
-
  			}
  			//应收款 e
 
@@ -1328,9 +1328,25 @@
  				$("dd.systemNum.selected").parent("dl").find("dd.salePrice").text(getSalePrice);
  			}
 
- 			setTimeout(function() {
- 				$(".singleRow_confirmTips").css("display", "none");
- 			}, 500);
+      data = {
+        fs_id: fs_id[$("dd.selected")[0].innerText],
+        invoice: $("#update-invoice").val(),
+        debt: $("#update-debt").val(),
+        receive: $("#update-receive").val(),
+        selling_price: $("#update-selling-price").val(),
+        check_no: $("#check-number").val()
+      };
+      $.ajax({
+ 				url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/singleRowUpdate.php'),
+ 				type: 'POST',
+ 				data: {data},
+ 				success: function(response) {
+ 					$(".singleRow_confirmTips").css("display", "none");
+ 				},
+ 				error: function(jqXHR, textStatus, errorThrown) {
+ 					console.log(textStatus, errorThrown);
+ 				}
+ 			});
  		});
  		//取消
  		$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
@@ -1463,7 +1479,6 @@
  			sameSalePrice = false;
  		}
  	}
- 	multiRow_confirmChange(sameInvoice, sameDebt, sameReceivable, sameSalePrice);
 
  	var selectedCheck = null;
  	// 找到支票号码不为空的订单
@@ -1497,6 +1512,8 @@
  			}
  		}
  	}
+
+  multiRow_confirmChange(sameInvoice, sameDebt, sameReceivable, sameSalePrice);
  }
 
  //确认修改-提示框-多行
@@ -1517,11 +1534,8 @@
  		$(".confirmNoticeInfo").removeClass("amendTips");
  		$(".multiRow_confirmTips p.confirmNotice").text("确认修改");
  		$(".multiRow_confirmTips").css("display", "block");
- 		$(".multiRow_confirmTips").find("p.actionBox").find("button.actionConfirm").on("click", function() {
+ 		$(".multiRow_confirmTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
  			changeInfo_multiRow(sameInvoice, sameDebt, sameReceivable, sameSalePrice);
- 			setTimeout(function() {
- 				$(".multiRow_confirmTips").css("display", "none");
- 			}, 500);
  		});
  		//取消
  		$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
@@ -1534,66 +1548,89 @@
 
  //确认修改-多行
  function changeInfo_multiRow(sameInvoice, sameDebt, sameReceivable, sameSalePrice) {
- 	var l = $("dd.systemNum.selected").parent("dl").length;
- 	//invoice信息一致
- 	if(sameInvoice == true) {
- 		$(".accounting-right ul.add-msg li.cellBox.invoiceCell").find("input").on("keyup", function() {
- 			$(this).parent("li").find("input").val($(this).val());
- 		});
- 	}
+ 	// var l = $("dd.systemNum.selected").parent("dl").length;
+ 	// //invoice信息一致
+ 	// if(sameInvoice == true) {
+ 	// 	$(".accounting-right ul.add-msg li.cellBox.invoiceCell").find("input").on("keyup", function() {
+ 	// 		$(this).parent("li").find("input").val($(this).val());
+ 	// 	});
+ 	// }
  	//确认修改：
- 	if(sameInvoice == true) {
- 		var getInvoice = $(".accounting-right ul.add-msg li.invoiceCell input").first().val(); //invoice
- 		$("dd.systemNum.selected").parent("dl").find("dd.invoice").text(getInvoice);
- 	} else {
- 		//invoice不一致时，表格中的invoice信息无法进行修改
- 		//alert("invoice信息不能进行修改");
- 		$(".accounting-right ul.add-msg li.invoiceCell input").val("");
- 	}
+ 	// if(sameInvoice == true) {
+ 	// 	var getInvoice = $(".accounting-right ul.add-msg li.invoiceCell input").first().val(); //invoice
+ 	// 	$("dd.systemNum.selected").parent("dl").find("dd.invoice").text(getInvoice);
+ 	// } else {
+ 	// 	//invoice不一致时，表格中的invoice信息无法进行修改
+ 	// 	//alert("invoice信息不能进行修改");
+ 	// 	$(".accounting-right ul.add-msg li.invoiceCell input").val("");
+ 	// }
+  //
+ 	// if(sameDebt == true) {
+ 	// 	var getDebt = $(".accounting-right ul.add-msg li.debtCell input").first().val(); //debt
+ 	// 	$("dd.systemNum.selected").parent("dl").find("dd.debt").text(getDebt);
+  //
+ 	// } else {
+ 	// 	//alert("Debt信息不能进行修改");
+ 	// 	$(".accounting-right ul.add-msg li.debtCell input").first().val("");
+ 	// }
+ 	// //应收款
+ 	// var receivableTxt = localStorage.getItem("multiRow_initial_receivable");
+ 	// var sumReceivable = localStorage.getItem("multiRow_sum_receivable");
+ 	// var hasCC = localStorage.getItem("hasCC");
+ 	// if(sameReceivable == true) {
+ 	// 	if($(".accounting-right ul.add-msg li.receivableCell input").val() !== "") {
+ 	// 		var getReceivable = $(".accounting-right ul.add-msg li.receivableCell input").first().val();
+ 	// 		$("dd.systemNum.selected").parent("dl").find("dd.receivable").text(getReceivable);
+ 	// 		//			$(".accounting-right ul.add-msg li.receivableCell input").last().val(getReceivable * l)
+ 	// 	} else {
+ 	// 		$(".accounting-right ul.add-msg li.receivableCell input").val("");
+ 	// 	}
+  //
+ 	// } else {
+ 	// 	if(hasCC) {
+ 	// 		$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
+ 	// 		$(".accounting-right ul.add-msg li.receivableCell input").last().val(sumReceivable);
+ 	// 	} else {
+ 	// 		$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
+ 	// 	}
+  //
+ 	// 	//alert("应收款信息不能进行修改");
+ 	// 	$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
+ 	// }
+  //
+ 	// if(sameSalePrice == true) {
+ 	// 	//卖价
+ 	// 	var getSalePrice = $(".accounting-right ul.add-msg li.salePriceCell input").first().val();
+ 	// 	$("dd.systemNum.selected").parent("dl").find("dd.salePrice").text(getSalePrice);
+ 	// 	//		$(".accounting-right ul.add-msg li.salePriceCell input").last().val(getSalePrice * l)
+ 	// } else {
+ 	// 	//alert("卖价信息不能进行修改");
+ 	// 	$(".accounting-right ul.add-msg li.salePriceCell input").first().val("");
+ 	// }
 
- 	if(sameDebt == true) {
- 		var getDebt = $(".accounting-right ul.add-msg li.debtCell input").first().val(); //debt
- 		$("dd.systemNum.selected").parent("dl").find("dd.debt").text(getDebt);
-
- 	} else {
- 		//alert("Debt信息不能进行修改");
- 		$(".accounting-right ul.add-msg li.debtCell input").first().val("");
- 	}
- 	//应收款
- 	var receivableTxt = localStorage.getItem("multiRow_initial_receivable");
- 	var sumReceivable = localStorage.getItem("multiRow_sum_receivable");
- 	var hasCC = localStorage.getItem("hasCC");
- 	if(sameReceivable == true) {
- 		if($(".accounting-right ul.add-msg li.receivableCell input").val() !== "") {
- 			var getReceivable = $(".accounting-right ul.add-msg li.receivableCell input").first().val();
- 			$("dd.systemNum.selected").parent("dl").find("dd.receivable").text(getReceivable);
- 			//			$(".accounting-right ul.add-msg li.receivableCell input").last().val(getReceivable * l)
- 		} else {
- 			$(".accounting-right ul.add-msg li.receivableCell input").val("");
- 		}
-
- 	} else {
- 		if(hasCC) {
- 			$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
- 			$(".accounting-right ul.add-msg li.receivableCell input").last().val(sumReceivable);
- 		} else {
- 			$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
- 		}
-
- 		//alert("应收款信息不能进行修改");
- 		$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
- 	}
-
- 	if(sameSalePrice == true) {
- 		//卖价
- 		var getSalePrice = $(".accounting-right ul.add-msg li.salePriceCell input").first().val();
- 		$("dd.systemNum.selected").parent("dl").find("dd.salePrice").text(getSalePrice);
- 		//		$(".accounting-right ul.add-msg li.salePriceCell input").last().val(getSalePrice * l)
- 	} else {
- 		//alert("卖价信息不能进行修改");
- 		$(".accounting-right ul.add-msg li.salePriceCell input").first().val("");
- 	}
-
+  var fs_id_list = [];
+  for (var i = 0; i < $("dd.selected").length; i++) {
+    fs_id_list.push(fs_id[$("dd.selected")[i].innerText]);
+  }
+  data = {
+    fs_id_list: JSON.stringify(fs_id_list),
+    invoice: $("#update-invoice").val(),
+    debt: $("#update-debt").val(),
+    receive: $("#update-receive").val(),
+    selling_price: $("#update-selling-price").val(),
+    check_no: $("#check-number").val()
+  };
+  $.ajax({
+    url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/multiRowUpdate.php'),
+    type: 'POST',
+    data: {data},
+    success: function(response) {
+      $(".multiRow_confirmTips").css("display", "none");
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log(textStatus, errorThrown);
+    }
+  });
  }
 
  //还原信息-多行

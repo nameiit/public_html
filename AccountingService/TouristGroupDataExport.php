@@ -2,6 +2,18 @@
 if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 	header('location: ../login.php');
 }
+
+function alert($msg) {
+		echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+
+if ($_SESSION["group_name"] == 'normal') {
+	alert("权限不足");
+	if(isset($_SERVER['HTTP_REFERER'])) {
+    $previous = $_SERVER['HTTP_REFERER'];
+	}
+	echo "<script type='text/javascript'>window.location.href = '$previous';</script>";
+}
 ?>
 <!DOCTYPE html>
 <html>
