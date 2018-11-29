@@ -3272,6 +3272,7 @@ ul.add-msg li.creditCardItem div.checkbox label{
     width: initial;
     vertical-align: top;
     text-align: left;
+    width: 50% !important;
 }
 ul.add-msg li.list_currency span.currency{
 	width: 30% !important;

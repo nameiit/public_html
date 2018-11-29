@@ -1008,6 +1008,12 @@ function systematicSearch() {
 	$(".filterBox ul.searchFloor li.btnList").find("a").on("mouseup", function() {
 		$(this).removeClass('selected');
 	});
+	//收款地点：
+	$(".payService ul li .payment").find(".gatherPlace").find("ul.dropdown-menu").find("li").find("a").on("click", function() {
+		//当前地区
+		var currentArea = $(".payService ul li .payment").find(".gatherPlace").find("button.btn").find("span.txt");
+		currentArea.text($(this).text());
+	});
 	//成交时间:
 	$(".systematicSearch ul li div.rightContent.timeList").find("select").on("change", function() {
 		var currentText = $.trim($(this).find("option:selected").text());

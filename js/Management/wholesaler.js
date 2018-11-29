@@ -1,5 +1,13 @@
 $(document).ready(function() {
     manageTabAction();
+    
+ 
+    
+    
+    
+    
+    
+    
 
     function loadFilter() {
         var url = location.protocol.concat("//").concat(location.host).concat('/database/autoComplete.php');
@@ -216,9 +224,31 @@ $(document).ready(function() {
     });
 
     $("#insert-confirm").on('click', function() {
-        $(".insertConfirmBox").css("display", "block");
+    	var regs=/^[a-z|A-Z|0-9]+\._+\/$/;
+		if($("input#insert-wholesaler-code").val()==""||$("input#insert-wholesaler-name").val()==""){
+			alert("请确认必填信息已输入");
+		}
+		else{
+			if(regs.test($("input#insert-wholesaler-code").val())){
+				$(".insertConfirmBox").css("display", "block");
+				$(".insertConfirmBox p.confirmNotice").text("确认添加");
+				$(".insertConfirmBox").find("p.actionBox").find("button.actionConfirm").css("display", "inline-block");
+ 				$(".insertConfirmBox").find("p.actionBox").find("button.actionCancel").css("width", "50%");
+ 				$(".insertConfirmBox").find("p.actionBox").find("button.actionCancel").text("取消");
+			}
+			else{
+				$(".insertConfirmBox").css("display", "block");
+				$(".insertConfirmBox p.confirmNotice").text("只能输入格式ABcd123._/");
+				$(".insertConfirmBox").find("p.actionBox").find("button.actionConfirm").css("display", "none");
+ 				$(".insertConfirmBox").find("p.actionBox").find("button.actionCancel").css("width", "100%");
+ 				$(".insertConfirmBox").find("p.actionBox").find("button.actionCancel").text("返回");
+			}
+		}
+//      $(".insertConfirmBox").css("display", "block");
     });
-    $("#insertActionConfirm").on('click', function() {
+   
+   
+   $("#insertActionConfirm").on('click', function() {
         var url = location.protocol.concat("//").concat(location.host).concat('/database/Management/Wholesaler.php');
         $.ajax({
             url: url,

@@ -709,7 +709,6 @@
  		}
  	});
  }
-
  //取消LOCK
  function cancelLock() {
  	$(".accounting-right ul.add-msg li.cancelStatus").find("a.cancelLock").on("click", function() {
@@ -1025,28 +1024,6 @@
  	$(".accountingContent .groupMsg div.sumAmount").css("width", "inherit");
 
  }
-
- //checking number
- //function checkNumber() {
- //	$(".accountingContent .groupMsg div.checkNumber").show();
- //	//菜单
- //	$(".accountingContent .groupMsg div.checkNumber a.check").find("label").on("click", function() {
- //		$(".accountingContent .groupMsg div.checkNumber a.check ul").css("display", "block")
- //
- //	});
- //	$(".accountingContent .groupMsg div.checkNumber a.check ul").find("li").on("click", function() {
- //		var currentTxt = $.trim($(this).text());
- //		$(".accountingContent .groupMsg div.checkNumber a.check ul").css("display", "none");
- //		$(".accountingContent .groupMsg div.checkNumber a.check").find("label").html(currentTxt + `<img src="../img/arrowDown0_icon.png" class="arrow_down">`);
- //		if(currentTxt == "Wire Transfer") {
- //			$(".accountingContent .groupMsg div.checkNumber input").val(currentTxt);
- //		} else {
- //			$(".accountingContent .groupMsg div.checkNumber input").val(" ");
- //		}
- //	});
- //
- //}
-
  //当前时间
  function currentTime() {
  	var date = new Date();
@@ -1073,7 +1050,6 @@
  		seconds = seconds;
  	}
  	current = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + seconds;
- 	// console.log(current);
  	return current;
 
  }
@@ -1178,12 +1154,13 @@
  	var receivableTxt = $.trim($("ul.listInfo.confirmFloor li dd.systemNum.selected").parent().find("dd.receivable").text()); //应收款
  	var salePriceTxt = $.trim($("ul.listInfo.confirmFloor li dd.systemNum.selected").parent().find("dd.salePrice").text()); //卖价
 
- 	localStorage.setItem("initial_invoice", invoiceTxt); //修改前invoice
+ 	localStorage.setItem("initial_invoice", invoiceTxt);
 
- 	localStorage.setItem("initial_receivable", receivableTxt); //修改前应收款
- 	localStorage.setItem("initial_salePrice", salePriceTxt); //修改前卖价
+ 	localStorage.setItem("initial_receivable", receivableTxt);
+
+ 	localStorage.setItem("initial_salePrice", salePriceTxt);
  	var profitTxt = $.trim($("ul.listInfo.confirmFloor li dd.systemNum.selected").parent().find("dd.profit").text()); //利润
- 	localStorage.setItem("initial_profit", profitTxt)
+ 	localStorage.setItem("initial_profit", profitTxt);
 
  	$(".accounting-right ul.add-msg li.invoiceCell input").first().val(invoiceTxt);
 
@@ -1196,7 +1173,7 @@
  	if(debt == "") {
  		debt = 0;
  	}
- 	$(".accounting-right ul.add-msg li.debtCell input").first().val(debt);
+ 	$(".accounting-right ul.add-msg li.debtCell input").first().val(debt.toFixed(2));
  	localStorage.setItem("initial_debt", debtTxt);
  	if(receivableTxt == "CC") {
  		$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
@@ -1220,40 +1197,37 @@
  //还原信息-单行
  function restoreInfo_singleRow() {
  	$(".accounting-right ul.add-msg li.actionTabInfo a.restoreInfo").unbind("click").on("click", function() {
- 		var invoiceTxt = localStorage.getItem("initial_invoice");
- 		var debtTxt = localStorage.getItem("initial_debt");
- 		var receivableTxt = localStorage.getItem("initial_receivable");
- 		var salePriceTxt = localStorage.getItem("initial_salePrice");
- 		var profitTxt = localStorage.getItem("initial_profit")
- 		//还原
- 		//invoice
- 		$(".accounting-right ul.add-msg li.invoiceCell input").first().val(invoiceTxt);
- 		$("dd.systemNum.selected").parent("dl").find("dd.invoice").text(invoiceTxt);
- 		//debt
- 		var debtVal = Number($.trim(debtTxt.split('|')[1]).split('/')[1]);
- 		if(isNaN(debtVal)) {
- 			debtVal = 0;
- 		}
-
- 		var debt = Number($.trim(debtTxt.split('|')[1]).split('/')[0]) - debtVal;
-
- 		$(".accounting-right ul.add-msg li.debtCell input").first().val(debt);
- 		$("dd.systemNum.selected").parent("dl").find("dd.debt").text(debtTxt);
- 		$("dd.systemNum.selected").parent("dl").find("dd.profit").text(profitTxt);
-
- 		//应收款
- 		if(receivableTxt == "CC") {
- 			$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
- 		} else {
- 			$(".accounting-right ul.add-msg li.receivableCell input").first().val($.trim(receivableTxt.split('|')[1]));
- 		}
- 		$("dd.systemNum.selected").parent("dl").find("dd.receivable").text(receivableTxt);
- 		//卖价
- 		$(".accounting-right ul.add-msg li.salePriceCell input").first().val(salePriceTxt);
- 		$("dd.systemNum.selected").parent("dl").find("dd.salePrice").text(salePriceTxt);
+ 		singleRowInfo();
+// 		var invoiceTxt = localStorage.getItem("initial_invoice");
+// 		var debtTxt = localStorage.getItem("initial_debt");
+// 		var receivableTxt = localStorage.getItem("initial_receivable");
+// 		var salePriceTxt = localStorage.getItem("initial_salePrice");
+// 		var profitTxt = localStorage.getItem("initial_profit")
+// 		//还原
+// 		//invoice
+// 		$(".accounting-right ul.add-msg li.invoiceCell input").first().val(invoiceTxt);
+// 		$("dd.systemNum.selected").parent("dl").find("dd.invoice").text(invoiceTxt);
+// 		//debt
+// 		var debtVal = Number($.trim(debtTxt.split('|')[1]).split('/')[1]);
+// 		if(isNaN(debtVal)) {
+// 			debtVal = 0;
+// 		}
+//
+// 		var debt = Number($.trim(debtTxt.split('|')[1]).split('/')[0]) - debtVal;
+// 		$(".accounting-right ul.add-msg li.debtCell input").first().val(debt.toFixed(2));
+// 		$("dd.systemNum.selected").parent("dl").find("dd.debt").text(debtTxt);
+// 		//应收款
+// 		if(receivableTxt == "CC") {
+// 			$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
+// 		} else {
+// 			$(".accounting-right ul.add-msg li.receivableCell input").first().val($.trim(receivableTxt.split('|')[1]));
+// 		}
+// 		$("dd.systemNum.selected").parent("dl").find("dd.receivable").text(receivableTxt);
+// 		//卖价
+// 		$(".accounting-right ul.add-msg li.salePriceCell input").first().val(salePriceTxt);
+// 		$("dd.systemNum.selected").parent("dl").find("dd.salePrice").text(salePriceTxt);
  	});
  }
-
  //确认修改-提示框-单行
  function singleRow_confirmChange() {
  	$(".accounting-right ul.add-msg li.actionTabInfo a.confirmChange").unbind("click").on("click", function() {
@@ -1265,97 +1239,222 @@
  		$(".confirmNoticeInfo").removeClass("confirmPaidInfo");
  		$(".confirmNoticeInfo").removeClass("confirmInfoFinish");
  		$(".confirmNoticeInfo").removeClass("multiRow_confirmTips");
-
  		$(".confirmNoticeInfo").removeClass("cancelLockTips");
  		$(".confirmNoticeInfo").removeClass("cancelClearTips");
  		$(".confirmNoticeInfo").removeClass("cancelPaidTips");
  		$(".confirmNoticeInfo").removeClass("cancelFinishTips");
  		$(".confirmNoticeInfo").removeClass("amendTips");
 
- 		$(".singleRow_confirmTips p.confirmNotice").text("确认修改");
- 		$(".singleRow_confirmTips").css("display", "block");
- 		$(".singleRow_confirmTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
- 			var getInvoice = $(".accounting-right ul.add-msg li.invoiceCell input").first().val(); //invoice
- 			if(getInvoice != '') {
- 				$("dd.systemNum.selected").parent("dl").find("dd.invoice").text(getInvoice);
+ 		var initialDebt = $.trim(Number(localStorage.getItem("initial_debt").split('|')[1]).toFixed(2));
+ 		var currentDebt = $.trim(Number($(".accounting-right ul.add-msg li.debtCell input").first().val()).toFixed(2));
+ 		console.log(initialDebt);
+ 		console.log(currentDebt);
+ 		if(currentDebt == initialDebt) {
+ 			//debt值未改变
+ 			var receivableTxt = $("dd.systemNum.selected").parent("dl").find("dd.receivable").text(); //应收款
+ 			if($.trim(receivableTxt) == "CC") {
+ 				//应收款是CC
+ 				var initialInvoice = $.trim(localStorage.getItem("initial_invoice")); //invoice
+ 				var currentInvoice = $.trim($(".accounting-right ul.add-msg li.invoiceCell input").first().val());
+ 				if(currentInvoice == initialInvoice) {
+ 					$(".singleRow_confirmTips p.confirmNotice").text("没有改动");
+ 					$(".singleRow_confirmTips").css("display", "block");
+ 					$(".singleRow_confirmTips").find("p.actionBox").find("button.actionConfirm").css("display", "none");
+ 					$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").css("width", "100%");
+ 					$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").text("返回");
+ 					//取消
+ 					$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 						$(".singleRow_confirmTips").css("display", "none");
+ 					});
+ 				} else {
+ 					changeInfo_singleRow();
+ 				}
+
+ 			} else {
+ 				//应收款不是CC
+ 				var initialReceivable = $.trim(localStorage.getItem("initial_receivable").split('|')[1]);
+ 				var currentReceivable = $.trim($(".accounting-right ul.add-msg li.receivableCell input").first().val());
+ 				if(currentReceivable == initialReceivable) {
+ 					//应收款未改变
+ 					var initialInvoice = $.trim(localStorage.getItem("initial_invoice")); //invoice
+ 					var currentInvoice = $.trim($(".accounting-right ul.add-msg li.invoiceCell input").first().val());
+ 					if(currentInvoice == initialInvoice) {
+ 						//invoice未改变
+ 						$(".singleRow_confirmTips p.confirmNotice").text("没有改动");
+ 						$(".singleRow_confirmTips").css("display", "block");
+ 						$(".singleRow_confirmTips").find("p.actionBox").find("button.actionConfirm").css("display", "none");
+ 						$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").css("width", "100%");
+ 						$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").text("返回");
+ 						//取消
+ 						$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 							$(".singleRow_confirmTips").css("display", "none");
+ 						});
+ 					} else {
+ 						changeInfo_singleRow();
+ 					}
+
+ 				} else {
+ 					//应收款已改变
+ 					var paidStatus = $.trim($("dd.systemNum.selected").parent("dl").find("dd.receivable").text()).split("|")[0]; //paid的状态
+ 					if(paidStatus == "Y") {
+ 						//已经paid
+ 						$(".singleRow_confirmTips p.confirmNotice").text("已经PAID无法修改");
+ 						$(".singleRow_confirmTips").css("display", "block");
+ 						$(".singleRow_confirmTips").find("p.actionBox").find("button.actionConfirm").css("display", "none");
+ 						$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").css("width", "100%");
+ 						$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").text("返回");
+ 						//取消
+ 						$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 							$(".singleRow_confirmTips").css("display", "none");
+ 						});
+ 					} else {
+ 						//未PAID
+ 						changeInfo_singleRow();
+
+ 					}
+
+ 				}
+
  			}
- 			//Debt s
+ 		} else {
+ 			//debt值已改变
+ 			var lockStatus = $("dd.systemNum.selected").parent("dl").find("dd.lockStatus");
+ 			if(lockStatus.hasClass("yesStatus")) {
+ 				//已经lock
+ 				$(".singleRow_confirmTips p.confirmNotice").text("已经LOCK无法修改");
+ 				$(".singleRow_confirmTips").css("display", "block");
+ 				$(".singleRow_confirmTips").find("p.actionBox").find("button.actionConfirm").css("display", "none");
+ 				$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").css("width", "100%");
+ 				$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").text("返回");
+ 				//取消
+ 				$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 					$(".singleRow_confirmTips").css("display", "none");
+ 				});
+
+ 			} else {
+ 				//未lock
+ 				var receivableTxt = $("dd.systemNum.selected").parent("dl").find("dd.receivable").text();
+ 				if($.trim(receivableTxt) == "CC") {
+ 					//应收款是CC
+ 					changeInfo_singleRow();
+ 				} else {
+ 					//应收款不是CC
+ 					var initialReceivable = $.trim(localStorage.getItem("initial_receivable").split('|')[1]);
+ 					var currentReceivable = $.trim($(".accounting-right ul.add-msg li.receivableCell input").first().val());
+ 					console.log(initialReceivable);
+ 					console.log(currentReceivable);
+ 					if(currentReceivable == initialReceivable) {
+ 						//应收款未发生改变
+ 						changeInfo_singleRow();
+ 					} else {
+ 						//应收款已改变
+ 						//paid的状态:
+ 						var paidStatus = $.trim($("dd.systemNum.selected").parent("dl").find("dd.receivable").text()).split("|")[0];
+ 						if(paidStatus == "Y") {
+ 							//已经paid
+ 							$(".singleRow_confirmTips p.confirmNotice").text("已经PAID无法修改");
+ 							$(".singleRow_confirmTips").css("display", "block");
+ 							$(".singleRow_confirmTips").find("p.actionBox").find("button.actionConfirm").css("display", "none");
+ 							$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").css("width", "100%");
+ 							$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").text("返回");
+ 							//取消
+ 							$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 								$(".singleRow_confirmTips").css("display", "none");
+ 							});
+ 						} else {
+ 							//未paid
+ 							changeInfo_singleRow();
+ 						}
+
+ 					}
+
+ 				}
+
+ 			}
+
+ 		}
+
+ 	});
+ 	restoreInfo_singleRow(); //还原
+ }
+ //单行-修改：
+ function changeInfo_singleRow() {
+ 	$(".singleRow_confirmTips p.confirmNotice").text("确认修改");
+ 	$(".singleRow_confirmTips").css("display", "block");
+ 	$(".singleRow_confirmTips").find("p.actionBox").find("button.actionConfirm").css("display", "inline-block");
+ 	$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").css("width", "50%");
+ 	$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").text("取消");
+
+ 	$(".singleRow_confirmTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
+ 		var getInvoice = $(".accounting-right ul.add-msg li.invoiceCell input").first().val(); //invoice
+ 		if(getInvoice != '') {
+ 			$("dd.systemNum.selected").parent("dl").find("dd.invoice").text(getInvoice);
+ 		}
+
+ 		//Debt s
+ 		var initialDebt = $.trim(Number(localStorage.getItem("initial_debt").split('|')[1]).toFixed(2));
+ 		var currentDebt = $.trim(Number($(".accounting-right ul.add-msg li.debtCell input").first().val()).toFixed(2));
+ 		if(currentDebt !== initialDebt) {
  			var getDebt = $(".accounting-right ul.add-msg li.debtCell input").first().val(); //debt
  			var debtType = $.trim($("dd.systemNum.selected").parent("dl").find("dd.debt").text()).split("|")[0]; //类型
  			var debtEnd = $.trim($("dd.systemNum.selected").parent("dl").find("dd.debt").text()).split("|")[1].split('/')[1];
  			var debtTxt; //修改之后的debt
- 			// 			var systemNumSelected = $.trim($("ul.listInfo.confirmFloor li dl:not(.summaryInfo) dd.systemNum.selected").text());
- 			// 			if(systemNumSelected.indexOf("mco") !== -1) {
- 			//
- 			// 				$("dd.systemNum.selected").parent("dl").find("dd.debt").text();
- 			// 				debtEnd = Number($(".accounting-right ul.add-msg li.receivableCell input").first().val()) - getDebt;
- 			// 				getDebt = Number($(".accounting-right ul.add-msg li.receivableCell input").first().val());
- 			// 				debtTxt = debtType + "|" + getDebt + "/" + debtEnd;
- 			// 				$("dd.systemNum.selected").parent("dl").find("dd.debt").text(debtTxt);
- 			// 				$("dd.systemNum.selected").parent("dl").find("dd.profit").text(debtEnd);
- 			// 			} else {
- 			// 				if(typeof(debtEnd) == "undefined") {
- 			// 					//不包含"/"
- 			// 					debtTxt = debtType + "|" + getDebt;
- 			// 				} else {
- 			// 					//包含"/"
- 			// 					debtTxt = debtType + "|" + getDebt + "/" + debtEnd;
- 			// 				}
- 			// 				if(getDebt != '') {
- 			// 					$("dd.systemNum.selected").parent("dl").find("dd.debt").text(debtTxt);
- 			// 				}
- 			// 			}
  			debtTxt = debtType + "|" + getDebt;
  			$("dd.systemNum.selected").parent("dl").find("dd.debt").text(debtTxt);
- 			//Debt e
+ 			localStorage.setItem("initial_debt", debtTxt);
+ 		}
+ 		//Debt e
 
- 			//应收款 s
- 			var getReceivable = $(".accounting-right ul.add-msg li.receivableCell input").first().val();
- 			var receivableType = $.trim($("dd.systemNum.selected").parent("dl").find("dd.receivable").text()).split("|")[0]; //类型
- 			var receivableTxt = receivableType + "|" + getReceivable;
- 			if(getReceivable != '') {
- 				if(receivableType !== "CC") {
- 					$("dd.systemNum.selected").parent("dl").find("dd.receivable").text(receivableTxt);
- 				} else {
- 					// 					alert("不可更改");
- 				}
+ 		//应收款 s
+ 		var getReceivable = $(".accounting-right ul.add-msg li.receivableCell input").first().val();
+ 		var receivableType = $.trim($("dd.systemNum.selected").parent("dl").find("dd.receivable").text()).split("|")[0]; //类型
+ 		var receivableTxt = receivableType + "|" + getReceivable;
+ 		if(getReceivable != '') {
+ 			if(receivableType !== "CC") {
+ 				$("dd.systemNum.selected").parent("dl").find("dd.receivable").text(receivableTxt);
+ 				localStorage.setItem("initial_receivable", receivableTxt);
  			}
- 			//应收款 e
+ 		}
+ 		//应收款 e
+ 		//卖价
+ 		var getSalePrice = $(".accounting-right ul.add-msg li.salePriceCell input").first().val();
+ 		if(getSalePrice != '') {
+ 			$("dd.systemNum.selected").parent("dl").find("dd.salePrice").text(getSalePrice);
+ 		}
 
- 			//卖价
- 			var getSalePrice = $(".accounting-right ul.add-msg li.salePriceCell input").first().val();
- 			if(getSalePrice != '') {
- 				$("dd.systemNum.selected").parent("dl").find("dd.salePrice").text(getSalePrice);
- 			}
-
-      data = {
-        fs_id: fs_id[$("dd.selected")[0].innerText],
-        invoice: $("#update-invoice").val(),
-        debt: $("#update-debt").val(),
-        receive: $("#update-receive").val(),
-        selling_price: $("#update-selling-price").val(),
-        check_no: $("#check-number").val()
-      };
-      $.ajax({
- 				url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/singleRowUpdate.php'),
- 				type: 'POST',
- 				data: {data},
- 				success: function(response) {
- 					$(".singleRow_confirmTips").css("display", "none");
- 				},
- 				error: function(jqXHR, textStatus, errorThrown) {
- 					console.log(textStatus, errorThrown);
- 				}
- 			});
- 		});
- 		//取消
- 		$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 		setTimeout(function() {
  			$(".singleRow_confirmTips").css("display", "none");
- 		});
+ 		}, 500);
  	});
- 	restoreInfo_singleRow(); //还原
- }
+ 	// 	data = {
+ 	// 		fs_id: fs_id[$("dd.selected")[0].innerText],
+ 	// 		invoice: $("#update-invoice").val(),
+ 	// 		debt: $("#update-debt").val(),
+ 	// 		receive: $("#update-receive").val(),
+ 	// 		selling_price: $("#update-selling-price").val(),
+ 	// 		check_no: $("#check-number").val()
+ 	// 	};
+ 	// 	$.ajax({
+ 	// 		url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/singleRowUpdate.php'),
+ 	// 		type: 'POST',
+ 	// 		data: {
+ 	// 			data
+ 	// 		},
+ 	// 		success: function(response) {
+ 	// 			$(".singleRow_confirmTips").css("display", "none");
+ 	// 		},
+ 	// 		error: function(jqXHR, textStatus, errorThrown) {
+ 	// 			console.log(textStatus, errorThrown);
+ 	// 		}
+ 	// 	});
+ 	//取消
+ 	$(".singleRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 		$(".singleRow_confirmTips").css("display", "none");
+ 	});
 
+ }
+ 
+ 
  //选中多行
  function multiRowInfo() {
  	var sameInvoice; //所选行中的invoce是否一致
@@ -1513,11 +1612,11 @@
  		}
  	}
 
-  multiRow_confirmChange(sameInvoice, sameDebt, sameReceivable, sameSalePrice);
+ 	multiRow_confirmChange();
  }
 
  //确认修改-提示框-多行
- function multiRow_confirmChange(sameInvoice, sameDebt, sameReceivable, sameSalePrice) {
+ function multiRow_confirmChange() {
  	$(".accounting-right ul.add-msg li.actionTabInfo a.confirmChange").unbind("click").on("click", function() {
  		$(".confirmNoticeInfo").addClass("multiRow_confirmTips");
  		$(".confirmNoticeInfo").removeClass("singleRow_confirmTips");
@@ -1532,166 +1631,142 @@
  		$(".confirmNoticeInfo").removeClass("cancelPaidTips");
  		$(".confirmNoticeInfo").removeClass("cancelFinishTips");
  		$(".confirmNoticeInfo").removeClass("amendTips");
- 		$(".multiRow_confirmTips p.confirmNotice").text("确认修改");
- 		$(".multiRow_confirmTips").css("display", "block");
- 		$(".multiRow_confirmTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
- 			changeInfo_multiRow(sameInvoice, sameDebt, sameReceivable, sameSalePrice);
- 		});
- 		//取消
- 		$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
- 			$(".multiRow_confirmTips").css("display", "none");
- 		});
+ 		$("dd.systemNum.selected").each(function(i, item) {
+ 			var systemNumText = $.trim($(item).text());
+ 			systemNumText = systemNumText.substring(systemNumText.length - 3);
+ 			if(systemNumText == "mco") {
+ 				//已经paid
+ 				$(".multiRow_confirmTips p.confirmNotice").text("选中行有MCO,无法复数修改");
+ 				$(".multiRow_confirmTips").css("display", "block");
+ 				$(".multiRow_confirmTips").find("p.actionBox").find("button.actionConfirm").css("display", "none");
+ 				$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").css("width", "100%");
+ 				$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").text("返回");
+ 				//取消
+ 				$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 					$(".multiRow_confirmTips").css("display", "none");
+ 				});
 
+ 			} else {
+ 				var lockStatus = $(item).parent("dl").find("dd.lockStatus").hasClass("yesStatus");
+ 				if(lockStatus) {
+ 					$(".multiRow_confirmTips p.confirmNotice").text("部分选中行已经LOCK,无法修改");
+ 					$(".multiRow_confirmTips").css("display", "block");
+ 					$(".multiRow_confirmTips").find("p.actionBox").find("button.actionConfirm").css("display", "none");
+ 					$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").css("width", "100%");
+ 					$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").text("返回");
+ 					//取消
+ 					$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 						$(".multiRow_confirmTips").css("display", "none");
+ 					});
+ 				} else {
+ 					var paidStatus = $.trim($(item).parent("dl").find("dd.receivable").text().split("|")[0]);
+ 					if(paidStatus == "Y" || paidStatus == "CC") {
+ 						$(".multiRow_confirmTips p.confirmNotice").text("部分选中行已经PAID,无法修改");
+ 						$(".multiRow_confirmTips").css("display", "block");
+ 						$(".multiRow_confirmTips").find("p.actionBox").find("button.actionConfirm").css("display", "none");
+ 						$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").css("width", "100%");
+ 						$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").text("返回");
+ 						//取消
+ 						$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 							$(".multiRow_confirmTips").css("display", "none");
+ 						});
+ 					} else {
+ 						if($(".accounting-right ul.add-msg li.debtCell input").first().val() !== "" || $(".accounting-right ul.add-msg li.receivableCell input").first().val() !== "") {
+ 							changeInfo_multiRow();
+ 						}
+ 					}
+ 				}
+
+ 			}
+
+ 		});
  	});
- 	restoreInfo_multiRow(sameInvoice, sameDebt, sameReceivable, sameSalePrice);
+ 	restoreInfo_multiRow();
  }
-
  //确认修改-多行
- function changeInfo_multiRow(sameInvoice, sameDebt, sameReceivable, sameSalePrice) {
- 	// var l = $("dd.systemNum.selected").parent("dl").length;
- 	// //invoice信息一致
- 	// if(sameInvoice == true) {
- 	// 	$(".accounting-right ul.add-msg li.cellBox.invoiceCell").find("input").on("keyup", function() {
- 	// 		$(this).parent("li").find("input").val($(this).val());
+ function changeInfo_multiRow() {
+ 	$(".multiRow_confirmTips p.confirmNotice").text("确认修改");
+ 	$(".multiRow_confirmTips").css("display", "block");
+ 	$(".multiRow_confirmTips").find("p.actionBox").find("button.actionConfirm").css("display", "inline-block");
+ 	$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").css("width", "50%");
+ 	$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").text("取消");
+ 	$(".multiRow_confirmTips").find("p.actionBox").find("button.actionConfirm").unbind("click").on("click", function() {
+ 		var len = $("dd.systemNum.selected").length;
+ 		var getInvoice = $(".accounting-right ul.add-msg li.invoiceCell input").first().val(); //invoice
+ 		if(getInvoice!==""){
+ 			$("dd.systemNum.selected").parent("dl").find("dd.invoice").text(getInvoice);
+ 		}
+ 		//Debt s
+ 		var getDebt = $(".accounting-right ul.add-msg li.debtCell input").first().val(); //debt
+ 		var debtType = $.trim($("dd.systemNum.selected").parent("dl").find("dd.debt").text()).split("|")[0]; //类型
+ 		var debtEnd = $.trim($("dd.systemNum.selected").parent("dl").find("dd.debt").text()).split("|")[1].split('/')[1];
+ 		var debtTxt; //修改之后的debt
+ 		if(getDebt !== "") {
+ 			debtTxt = debtType + "|" + getDebt;
+ 			$("dd.systemNum.selected").parent("dl").find("dd.debt").text(debtTxt);
+ 			localStorage.setItem("multiRow_initial_debt", debtTxt);
+ 			$(".accounting-right ul.add-msg li.debtCell input").last().val(Number(getDebt * len).toFixed(2));
+ 			localStorage.setItem("multiRow_sum_debt", Number(getDebt * len).toFixed(2));
+ 		}
+ 		//Debt e
+ 		//应收款 s
+ 		var getReceivable = $(".accounting-right ul.add-msg li.receivableCell input").first().val();
+ 		var receivableType = $.trim($("dd.systemNum.selected").parent("dl").find("dd.receivable").text()).split("|")[0]; //类型
+ 		var receivableTxt = receivableType + "|" + getReceivable;
+ 		if(getReceivable != '') {
+ 			if(receivableType !== "CC") {
+ 				$("dd.systemNum.selected").parent("dl").find("dd.receivable").text(receivableTxt);
+ 				localStorage.setItem("multiRow_initial_receivable", receivableTxt);
+ 				$(".accounting-right ul.add-msg li.receivableCell input").last().val(Number(getReceivable * len));
+ 				localStorage.setItem("multiRow_sum_receivable", Number(getReceivable * len));
+ 			}
+ 		}
+ 		//应收款 e
+ 		setTimeout(function() {
+ 			$(".multiRow_confirmTips").css("display", "none");
+ 		}, 500);
+ 	});
+ 	//取消
+ 	$(".multiRow_confirmTips").find("p.actionBox").find("button.actionCancel").on("click", function() {
+ 		$(".multiRow_confirmTips").css("display", "none");
+ 	});
+ 	// 	var fs_id_list = [];
+ 	// 	for(var i = 0; i < $("dd.selected").length; i++) {
+ 	// 		fs_id_list.push(fs_id[$("dd.selected")[i].innerText]);
+ 	// 	}
+ 	// 	data = {
+ 	// 		fs_id_list: JSON.stringify(fs_id_list),
+ 	// 		invoice: $("#update-invoice").val(),
+ 	// 		debt: $("#update-debt").val(),
+ 	// 		receive: $("#update-receive").val(),
+ 	// 		selling_price: $("#update-selling-price").val(),
+ 	// 		check_no: $("#check-number").val()
+ 	// 	};
+ 	// 	$.ajax({
+ 	// 		url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/multiRowUpdate.php'),
+ 	// 		type: 'POST',
+ 	// 		data: {
+ 	// 			data
+ 	// 		},
+ 	// 		success: function(response) {
+ 	// 			$(".multiRow_confirmTips").css("display", "none");
+ 	// 		},
+ 	// 		error: function(jqXHR, textStatus, errorThrown) {
+ 	// 			console.log(textStatus, errorThrown);
+ 	// 		}
  	// 	});
- 	// }
- 	//确认修改：
- 	// if(sameInvoice == true) {
- 	// 	var getInvoice = $(".accounting-right ul.add-msg li.invoiceCell input").first().val(); //invoice
- 	// 	$("dd.systemNum.selected").parent("dl").find("dd.invoice").text(getInvoice);
- 	// } else {
- 	// 	//invoice不一致时，表格中的invoice信息无法进行修改
- 	// 	//alert("invoice信息不能进行修改");
- 	// 	$(".accounting-right ul.add-msg li.invoiceCell input").val("");
- 	// }
-  //
- 	// if(sameDebt == true) {
- 	// 	var getDebt = $(".accounting-right ul.add-msg li.debtCell input").first().val(); //debt
- 	// 	$("dd.systemNum.selected").parent("dl").find("dd.debt").text(getDebt);
-  //
- 	// } else {
- 	// 	//alert("Debt信息不能进行修改");
- 	// 	$(".accounting-right ul.add-msg li.debtCell input").first().val("");
- 	// }
- 	// //应收款
- 	// var receivableTxt = localStorage.getItem("multiRow_initial_receivable");
- 	// var sumReceivable = localStorage.getItem("multiRow_sum_receivable");
- 	// var hasCC = localStorage.getItem("hasCC");
- 	// if(sameReceivable == true) {
- 	// 	if($(".accounting-right ul.add-msg li.receivableCell input").val() !== "") {
- 	// 		var getReceivable = $(".accounting-right ul.add-msg li.receivableCell input").first().val();
- 	// 		$("dd.systemNum.selected").parent("dl").find("dd.receivable").text(getReceivable);
- 	// 		//			$(".accounting-right ul.add-msg li.receivableCell input").last().val(getReceivable * l)
- 	// 	} else {
- 	// 		$(".accounting-right ul.add-msg li.receivableCell input").val("");
- 	// 	}
-  //
- 	// } else {
- 	// 	if(hasCC) {
- 	// 		$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
- 	// 		$(".accounting-right ul.add-msg li.receivableCell input").last().val(sumReceivable);
- 	// 	} else {
- 	// 		$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
- 	// 	}
-  //
- 	// 	//alert("应收款信息不能进行修改");
- 	// 	$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
- 	// }
-  //
- 	// if(sameSalePrice == true) {
- 	// 	//卖价
- 	// 	var getSalePrice = $(".accounting-right ul.add-msg li.salePriceCell input").first().val();
- 	// 	$("dd.systemNum.selected").parent("dl").find("dd.salePrice").text(getSalePrice);
- 	// 	//		$(".accounting-right ul.add-msg li.salePriceCell input").last().val(getSalePrice * l)
- 	// } else {
- 	// 	//alert("卖价信息不能进行修改");
- 	// 	$(".accounting-right ul.add-msg li.salePriceCell input").first().val("");
- 	// }
-
-  var fs_id_list = [];
-  for (var i = 0; i < $("dd.selected").length; i++) {
-    fs_id_list.push(fs_id[$("dd.selected")[i].innerText]);
-  }
-  data = {
-    fs_id_list: JSON.stringify(fs_id_list),
-    invoice: $("#update-invoice").val(),
-    debt: $("#update-debt").val(),
-    receive: $("#update-receive").val(),
-    selling_price: $("#update-selling-price").val(),
-    check_no: $("#check-number").val()
-  };
-  $.ajax({
-    url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/multiRowUpdate.php'),
-    type: 'POST',
-    data: {data},
-    success: function(response) {
-      $(".multiRow_confirmTips").css("display", "none");
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      console.log(textStatus, errorThrown);
-    }
-  });
  }
-
  //还原信息-多行
- function restoreInfo_multiRow(sameInvoice, sameDebt, sameReceivable, sameSalePrice) {
+ function restoreInfo_multiRow() {
  	//还原
  	$(".accounting-right ul.add-msg li.actionTabInfo a.restoreInfo").unbind("click").on("click", function() {
- 		var invoiceTxt = localStorage.getItem("multiRow_initial_invoice");
- 		var debtTxt = localStorage.getItem("multiRow_initial_debt");
- 		var receivableTxt = localStorage.getItem("multiRow_initial_receivable");
- 		var salePriceTxt = localStorage.getItem("multiRow_initial_salePrice");
- 		var sumSalePrice = localStorage.getItem("multiRow_sum_salePrice");
- 		var sumReceivable = localStorage.getItem("multiRow_sum_receivable");
- 		var sumDebt = localStorage.getItem("multiRow_sum_debt");
- 		if(sameInvoice == true) {
- 			//invoice
- 			$(".accounting-right ul.add-msg li.invoiceCell input").val(invoiceTxt);
- 			$("dd.systemNum.selected").parent("dl").find("dd.invoice").text(invoiceTxt);
- 		} else {
- 			$(".accounting-right ul.add-msg li.invoiceCell input").val("");
- 		}
-
- 		if(sameDebt == true) {
- 			//debt
- 			$(".accounting-right ul.add-msg li.debtCell input").val($.trim(debtTxt.split("|")[1]));
- 			$(".accounting-right ul.add-msg li.debtCell input").last().val(sumDebt);
- 			$("dd.systemNum.selected").parent("dl").find("dd.debt").text(debtTxt);
- 		} else {
- 			$(".accounting-right ul.add-msg li.debtCell input").val("");
- 			$(".accounting-right ul.add-msg li.debtCell input").last().val(sumDebt);
- 		}
-
- 		if(sameReceivable == true) {
- 			//应收款
- 			if(receivableTxt == "CC") {
- 				$(".accounting-right ul.add-msg li.receivableCell input").first().val("");
- 				$(".accounting-right ul.add-msg li.receivableCell input").last().val(sumReceivable);
- 			} else {
-
- 				$(".accounting-right ul.add-msg li.receivableCell input").first().val($.trim(receivableTxt.split("|")[1]));
- 				$(".accounting-right ul.add-msg li.receivableCell input").last().val(sumReceivable);
- 			}
- 			$("dd.systemNum.selected").parent("dl").find("dd.receivable").text(receivableTxt);
- 		} else {
- 			$(".accounting-right ul.add-msg li.receivableCell input").val("");
- 			$(".accounting-right ul.add-msg li.receivableCell input").last().val(sumReceivable);
- 		}
-
- 		if(sameSalePrice == true) {
- 			//卖价
- 			$(".accounting-right ul.add-msg li.salePriceCell input").first().val(salePriceTxt);
- 			$(".accounting-right ul.add-msg li.salePriceCell input").last().val(sumSalePrice);
- 			$("dd.systemNum.selected").parent("dl").find("dd.salePrice").text(salePriceTxt);
- 		} else {
- 			$(".accounting-right ul.add-msg li.salePriceCell input").val("");
- 			$(".accounting-right ul.add-msg li.salePriceCell input").last().val(sumSalePrice);
- 		}
-
+ 		multiRowInfo();
+ 		$("dd.systemNum.selected").parent("dl").find("dd.invoice")
  	});
 
  }
-
+ 
+ 
  // 是否提交修改申请：
  function amendApplicationTips() {
  	var permission = true;

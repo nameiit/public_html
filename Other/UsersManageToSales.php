@@ -4,7 +4,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 	header('location: ../login.php');
 }
 
-if ($_SESSION['group_name'] != 'normal') {
+if ($_SESSION['group_name'] != 'normal' and
+		$_SESSION['group_name'] != 'finance' and
+		$_SESSION['group_name'] != 'accounting') {
 	header('location: UsersManageToAdmin.php');
 }
  ?>
@@ -55,17 +57,17 @@ if ($_SESSION['group_name'] != 'normal') {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
+							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png"> 业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<!--<dd>
+								<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>-->
+								</dd>
 								<dd>
-									<a href="../IndividualTour/IndividualTourCreate.php" class="lab-active">
+									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
 									</a>
 								</dd>
@@ -174,15 +176,15 @@ if ($_SESSION['group_name'] != 'normal') {
 							<!--基本信息    s-->
 							<div  class="basicInfo usersManageInfo">
 								<ul class="manageDetail">
-									<li>
+									<li class="requiredItem">
 										<label>姓</label>
 										<input type="text" class="lastName" id="sales-last-name">
 									</li>
-									<li>
+									<li class="requiredItem">
 										<label>名</label>
 										<input type="text" class="firstName" id="sales-first-name">
 									</li>
-									<li>
+									<li class="requiredItem">
 										<label>性别</label>
 										<select class="genderInfo" id="sales-gender">
 											<option value="M">男</option>
@@ -190,11 +192,11 @@ if ($_SESSION['group_name'] != 'normal') {
 											<option value="UNKNOWN">UNKNOWN</option>
 										</select>
 									</li>
-									<li>
+									<li class="requiredItem">
 										<label>移动电话</label>
 										<input type="text" class="phoneNum" id="sales-phone">
 									</li>
-									<li>
+									<li class="requiredItem">
 										<label>分部</label>
 										<select class="divisionInfo" id="sales-department">
 											<option value="Beijing">北京</option>
@@ -204,7 +206,7 @@ if ($_SESSION['group_name'] != 'normal') {
 											<option value="Flushing">法拉盛</option>
 										</select>
 									</li>
-									<li>
+									<li class="requiredItem">
 										<label>邮件</label>
 										<input type="text" class="mailInfo" id="sales-email">
 									</li>
@@ -223,6 +225,10 @@ if ($_SESSION['group_name'] != 'normal') {
 							<!--修改密码   s-->
 							<div class="changePassWord usersManageInfo salesPassWordBox">
 								<ul class="manageDetail">
+									<li>
+										<label>输入旧密码</label>
+										<input type="password" id="old-password"/>
+									</li>
 									<li>
 										<label>输入新密码</label>
 										<input type="password" id="new-password"/>

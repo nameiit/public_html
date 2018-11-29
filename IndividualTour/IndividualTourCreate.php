@@ -51,16 +51,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu title-active">
-							<a href="javascript:void(0);" class="bm-title ">
+							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
 								<img src="../img/c_yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg">
-								<!--<dd>
+								<dd>
 									<a href="../GroupTour/GroupTourCreate.php">
 										<label></label> 独立团
 									</a>
-								</dd>-->
+								</dd>
 								<dd>
 									<a href="javascript:void(0);" class="lab-active">
 										<label></label> 散拼团
@@ -416,6 +416,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<input type="text" id="indiv_exchange_rate" class="numFormat"/>
 													&nbsp;&nbsp;人民币</span>
 												</li>
+												<!--确认支付时间-->
+												<li class="requiredItem">
+													<label class="nm-left">确认支付时间</label>
+													<input type="date" />
+												</li>
 												<li class="requiredItem payment-type areaInfo">
 													<label class="nm-left">支付地点</label>
 													<div class="payment">
@@ -463,6 +468,23 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</div>
 													</div>
 												</li>
+												<!--收款地点   s-->
+												<li class="requiredItem payment-type areaInfo">
+													<label class="nm-left">收款地点</label>
+													<div class="payment">
+														<div class="dropdown area gatherPlace">
+															<button class="btn btn-default" type="button" data-toggle="dropdown">
+															    <span id="gatherPlace" class="txt">美国</span>
+															    <span class="caret"></span>
+															</button>
+															<ul class="dropdown-menu" role="menu">
+																<li><a tabindex="0">中国</a></li>
+																<li><a tabindex="0">美国</a></li>
+															</ul>
+														</div>
+													</div>
+												</li>
+												<!--收款地点   e-->
 												<li class="requiredItem list_currency">
 													<label class="nm-left">卖价</label>
 													<input type="text"  id="indiv_sale_price" class="numFormat indiv_sellPrice"/>

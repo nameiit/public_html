@@ -93,9 +93,9 @@ function searchInfo() {
 		var type = $.trim($(".supplementfloor ul.manageNav.searchInfo li.current-item").text());
 		if(type == "旅游团") {
 			if($("ul.touristGroups li input.systemNum").val() !== "") {
-				$(".searchResult ul li.title dl dd.changeItem").text("团号");
-				$(".searchResult ul li.detail dl dd.changeItem").addClass("groupNum");
-				$(".searchResult ul li.detail dl dd.changeItem").removeClass("locator");
+//				$(".searchResult ul li.title dl dd.changeItem").text("团号");
+//				$(".searchResult ul li.detail dl dd.changeItem").addClass("groupNum");
+//				$(".searchResult ul li.detail dl dd.changeItem").removeClass("locator");
 				tourSearch();
 			}
 			else{
@@ -103,9 +103,9 @@ function searchInfo() {
 			}
 		} else if(type == "机票") {
 			if($("ul.airticketInfo li input.systemNum").val() !== "") {
-				$(".searchResult ul li.title dl dd.changeItem").text("Locator");
-				$(".searchResult ul li.detail dl dd.changeItem").addClass("locator");
-				$(".searchResult ul li.detail dl dd.changeItem").removeClass("groupNum");
+//				$(".searchResult ul li.title dl dd.changeItem").text("Locator");
+//				$(".searchResult ul li.detail dl dd.changeItem").addClass("locator");
+//				$(".searchResult ul li.detail dl dd.changeItem").removeClass("groupNum");
 				airticketSearch();
 			}
 			else{
@@ -137,12 +137,16 @@ function tourSearch() {
 						<dl>
 							<dd class="systemNum">` + response[i]['transaction_id'] + `</dd>
 							<dd>` + response[i]['type'] + `</dd>
-							<dd class="changeItem">` + response[i]['product_code'] + `</dd>
+							<dd>顾客</dd>
+							<dd>批发商</dd>
+							<dd>INVOICE</dd>
 							<dd>` + response[i]['total_profit'] + `</dd>
 							<dd>` + response[i]['selling_price'] + `</dd>
 							<dd>` + response[i]['received'] + `</dd>
 							<dd>` + response[i]['debt'] + `</dd>
 							<dd>` + response[i]['debt_cleared'] + `</dd>
+							<dd>增补</dd>
+							<dd>退款</dd>
 						</dl>
 					</li>`;
 
@@ -182,12 +186,16 @@ function airticketSearch() {
 						<dl>
 							<dd class="systemNum">` + response[i]['transaction_id'] + `</dd>
 							<dd>` + response[i]['type'] + `</dd>
-							<dd class="changeItem">` + response[i]['invoice'] + `</dd>
+							<dd>顾客</dd>
+							<dd>批发商</dd>
+							<dd>INVOICE</dd>
 							<dd>` + response[i]['total_profit'] + `</dd>
 							<dd>` + response[i]['selling_price'] + `</dd>
 							<dd>` + response[i]['received'] + `</dd>
 							<dd>` + response[i]['debt'] + `</dd>
 							<dd>` + response[i]['debt_cleared'] + `</dd>
+							<dd>增补</dd>
+							<dd>退款</dd>
 						</dl>
 					</li>`;
 

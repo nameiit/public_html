@@ -1087,3 +1087,17 @@ ul.manageTabDetail li dd.statusInfo.Ystatus{
 ul.manageTabDetail li dd.statusInfo.Nstatus{
 	background-color: #fe0000;
 }
+.manageTabAction ul.filerDetail li.requiredItem{
+	position: relative;
+}
+.manageTabAction ul.filerDetail li.requiredItem label::after {
+    content: '*';
+    background: url(../img/required.png) center center no-repeat;
+    background-size: contain;
+    width: 7px;
+    height: 6px;
+    color: transparent;
+    position: absolute;
+    left: 28%;
+    top: 11px;
+}

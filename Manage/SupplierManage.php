@@ -65,15 +65,15 @@ if ($_SESSION["group_name"] == 'normal' ||
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
+							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png"> 业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<!--<dd>
+								<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>-->
+								</dd>
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -252,11 +252,11 @@ if ($_SESSION["group_name"] == 'normal' ||
 									<!--添加-->
 									<ul class="filerDetail addTabMsg">
 										<li class="filterTitle">批发商:</li>
-										<li>
+										<li class="requiredItem">
 											<label>Code</label>
 											<input type="text" class="code" id="insert-wholesaler-code">
 										</li>
-										<li>
+										<li class="requiredItem">
 											<label>批发商名称</label>
 											<input type="text"  class="supplierName" id="insert-wholesaler-name">
 										</li>
@@ -296,11 +296,11 @@ if ($_SESSION["group_name"] == 'normal' ||
 									<!--修改-->
 									<ul class="filerDetail amendTabMsg nm-hide">
 										<li class="filterTitle">批发商:</li>
-										<li>
+										<li class="requiredItem">
 											<label>Code</label>
 											<input type="text" class="code" id="update-wholesaler-code">
 										</li>
-										<li>
+										<li class="requiredItem">
 											<label>批发商名称</label>
 											<input type="text"  class="supplierName" id="update-wholesaler-name">
 										</li>

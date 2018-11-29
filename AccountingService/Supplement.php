@@ -50,16 +50,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
+							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<!--<dd>
+								<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>-->
+								</dd>
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -73,7 +73,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</dl>
 						</li>
 						<li class="kuaiji title-active">
-							<a href="AccountingConfirm.php" class="bm-title">
+							<a href="../Other/AccountingConfirm.php" class="bm-title">
 								<img src="../img/c_kuaiji.png">
 								财务
 							</a>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								</dd>
 								<dd>
 									<a href="Supplement.php" class="lab-active">
-										<label></label>增补以及退款
+										<label></label>增补退款
 									</a>
 								</dd>
 							</dl>
@@ -137,7 +137,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 					<div class="showMsg otherManage">
 						<div class="floor otherManageArea accountingContent">
 							<div class="groupMsg">
-								<label class="theamTitle supplementTitle"> <i></i>增补以及退款</label>
+								<label class="theamTitle supplementTitle"> <i></i>增补退款</label>
 								<!--旅游团搜索   s-->
 								<div class="groupSearch supplementfloor">
 									<!--<label class="markMsg"><i></i>旅游团搜索</label>-->
@@ -290,12 +290,17 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<dl>
 													<dd>系统编号</dd>
 													<dd>类型</dd>
-													<dd class="changeItem">团号</dd>
+													<!--<dd class="changeItem">团号</dd>-->
+													<dd>顾客</dd>
+													<dd>批发商</dd>
+													<dd>INVOICE</dd>
 													<dd>利润</dd>
 													<dd>应收金额</dd>
 													<dd>实收金额</dd>
 													<dd>应付金额</dd>
 													<dd>实付金额</dd>
+													<dd>增补</dd>
+													<dd>退款</dd>
 												</dl>
 											</li>
 										</ul>

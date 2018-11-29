@@ -62,18 +62,18 @@ if ($_SESSION["group_name"] == 'normal') {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
+							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<!--<dd>
+								<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>-->
+								</dd>
 								<dd>
-									<a href="../IndividualTour/IndividualTourCreate.php" class="lab-active">
+									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
 									</a>
 								</dd>
@@ -112,7 +112,7 @@ if ($_SESSION["group_name"] == 'normal') {
 								</dd>
 								<dd>
 									<a href="../AccountingService/Supplement.php">
-										<label></label>增补以及退款
+										<label></label>增补退款
 									</a>
 								</dd>
 							</dl>
@@ -392,7 +392,7 @@ if ($_SESSION["group_name"] == 'normal') {
 										</li>
 										<li class="single-row cellBox salePriceCell" >
 											<label>卖价</label>
-											<input type="text" id="update-selling-price">
+											<input type="text" id="update-selling-price" disabled="disabled">
 											<input type="text" disabled="disabled"/>
 										</li>
 										<li class="checkNo">

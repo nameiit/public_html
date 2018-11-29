@@ -4266,3 +4266,6 @@ ul.addInfo li.top_info:not(.mcoInfo) label {
 .filterBox ul.searchFloor li div.currencyInfo div.rightContent:last-child{
 	text-align: right;
 }
+.accounting-right ul.add-msg li.single-row input[type="text"]{
+	background-color: #FFFFFF;
+}

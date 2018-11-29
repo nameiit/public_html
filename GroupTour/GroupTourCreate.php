@@ -53,11 +53,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 								业务
 							</a>
 							<dl class="detailMsg">
-								<!--<dd>
+								<dd>
 									<a href="javascript:void(0);" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>-->
+								</dd>
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php" >
 										<label></label> 散拼团

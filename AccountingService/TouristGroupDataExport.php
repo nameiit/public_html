@@ -62,16 +62,16 @@ if ($_SESSION["group_name"] == 'normal') {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
+							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<!--<dd>
+								<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>-->
+								</dd>
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -85,7 +85,7 @@ if ($_SESSION["group_name"] == 'normal') {
 							</dl>
 						</li>
 						<li class="kuaiji title-active">
-							<a href="AccountingConfirm.php" class="bm-title">
+							<a href="../Other/AccountingConfirm.php" class="bm-title">
 								<img src="../img/c_kuaiji.png">
 								财务
 							</a>
@@ -112,7 +112,7 @@ if ($_SESSION["group_name"] == 'normal') {
 								</dd>
 								<dd>
 									<a href="Supplement.php">
-										<label></label>增补以及退款
+										<label></label>增补退款
 									</a>
 								</dd>
 							</dl>
@@ -429,6 +429,26 @@ if ($_SESSION["group_name"] == 'normal') {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="paymentPlace">
+																	<label for="paymentPlace">支付地点<i></i></label>
+																</div>
+															</div>
+														</dd>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="gatherPlace">
+																	<label for="gatherPlace">收款地点<i></i></label>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="exchange_rate">
 																	<label for="exchange_rate">汇率<i></i></label>
 																</div>
@@ -449,11 +469,23 @@ if ($_SESSION["group_name"] == 'normal') {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="paymentTime">
+																	<label for="paymentTime">确认支付时间<i></i></label>
+																</div>
+															</div>
+														</dd>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="debt">
 																	<label for="debt">应付金额<i></i></label>
 																</div>
 															</div>
 														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -462,10 +494,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -474,6 +502,10 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -482,10 +514,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -494,6 +522,10 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -502,10 +534,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -514,6 +542,10 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -522,10 +554,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -533,8 +561,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																	<label for="total_profit">毛利<i></i></label>
 																</div>
 															</div>
-														</dd>
-														<dd>
 														</dd>
 													</dl>
 												</li>
@@ -690,7 +716,7 @@ if ($_SESSION["group_name"] == 'normal') {
 														</dd>
 													</dl>
 												</li>
-												<!--<li class="choiceContent">
+												<li class="choiceContent">
 													<dl>
 														<dd>
 															<a href="javascript:void(0);" class="costAccount">成本核算</a>
@@ -707,7 +733,7 @@ if ($_SESSION["group_name"] == 'normal') {
 														</dd>
 														<dd></dd>
 													</dl>
-												</li>-->
+												</li>
 											</ul>
 										</div>
 									</div>

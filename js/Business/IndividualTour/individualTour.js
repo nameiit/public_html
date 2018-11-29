@@ -771,6 +771,12 @@ function paymentMethod() {
 			currentCurrency.text("人民币");
 		}
 	});
+	//收款地点：
+	$(".payService ul li .payment").find(".gatherPlace").find("ul.dropdown-menu").find("li").find("a").on("click", function() {
+		//当前地区
+		var currentArea = $(".payService ul li .payment").find(".gatherPlace").find("button.btn").find("span.txt");
+		currentArea.text($(this).text());
+	});
 	//货币
 	$(".payService").find("ul.currency_box li").find("a").on("click", function() {
 		var currency_type = $(this).parent("li").parent("ul").parent("div.dropdown").find("span.currency_txt");

@@ -62,16 +62,16 @@ if ($_SESSION["group_name"] == 'normal') {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
+							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<!--<dd>
+								<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>-->
+								</dd>
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -85,7 +85,7 @@ if ($_SESSION["group_name"] == 'normal') {
 							</dl>
 						</li>
 						<li class="kuaiji title-active">
-							<a href="AccountingConfirm.php" class="bm-title">
+							<a href="../Other/AccountingConfirm.php" class="bm-title">
 								<img src="../img/c_kuaiji.png">
 								财务
 							</a>
@@ -112,7 +112,7 @@ if ($_SESSION["group_name"] == 'normal') {
 								</dd>
 								<dd>
 									<a href="Supplement.php">
-										<label></label>增补以及退款
+										<label></label>增补退款
 									</a>
 								</dd>
 							</dl>
@@ -441,6 +441,26 @@ if ($_SESSION["group_name"] == 'normal') {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="paymentPlace">
+																	<label for="paymentPlace">支付地点<i></i></label>
+																</div>
+															</div>
+														</dd>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="gatherPlace">
+																	<label for="gatherPlace">收款地点<i></i></label>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="exchange_rate_usd_rmb">
 																	<label for="exchange_rate_usd_rmb">汇率<i></i></label>
 																</div>
@@ -469,8 +489,8 @@ if ($_SESSION["group_name"] == 'normal') {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="received">
-																	<label for="received">实收金额<i></i></label>
+																	<input class="styled" type="checkbox" id="paymentTime">
+																	<label for="paymentTime">确认支付时间<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -481,16 +501,36 @@ if ($_SESSION["group_name"] == 'normal') {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="uncollectedAmount">
-																	<label for="uncollectedAmount">未收金额<i></i></label>
+																	<input class="styled" type="checkbox" id="received">
+																	<label for="received">实收金额<i></i></label>
 																</div>
 															</div>
 														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="uncollectedAmount">
+																	<label for="uncollectedAmount">未收金额<i></i></label>
+																</div>
+															</div>
+														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="base_price">
 																	<label for="base_price">航司底价<i></i></label>
+																</div>
+															</div>
+														</dd>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="supplement">
+																	<label for="supplement">增补单<i></i></label>
 																</div>
 															</div>
 														</dd>
