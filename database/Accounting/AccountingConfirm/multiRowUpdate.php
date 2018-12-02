@@ -15,7 +15,7 @@ $check_no = $_POST['check_no'];
 for ($i = 0; $i < sizeof(fs_id_list); $i++) {
   // $sql = "UPDATE ......";
   // $conn->query($sql);
-  $fs_is = $fs_id_list[i];
+  $fs_id = $fs_id_list[$i];
   $sql = "SELECT transaction_id FROM FinanceStatus WHERE fs_id = $fs_id";
   $result = $conn->query($sql);
   $transaction_id = $result->fetch_assoc()['transaction_id'];

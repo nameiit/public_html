@@ -403,6 +403,8 @@ if ($payment_type == 'airmco') {
     $sql = "SELECT mco_id FROM McoInfo WHERE notice_id = '$noticeId'";
     $result = $conn->query($sql);
     $mco_id = $result->fetch_assoc()['mco_id'];
+  } else {
+    $mco_id = "NULL";
   }
   $sql = "INSERT INTO McoPayment
           (
@@ -493,6 +495,7 @@ if ($payment_type == 'airall') {
   } else {
     $paid_status_GTT = 'N';
   }
+  $mco_invoice = empty($_POST['mco_invoice']) ? '': $_POST['mco_invoice'];
   $sql = "INSERT INTO FinanceStatus (
               transaction_id,
               invoice,
@@ -532,7 +535,7 @@ if ($payment_type == 'airall') {
               received_finished, wholesaler_code)
           SELECT
             $transaction_id,
-            '$invoice','N', 'N','N', 'N',
+            '$mco_invoice','N', 'N','N', 'N',
             -$mco_credit,
             'CC',
             0,
