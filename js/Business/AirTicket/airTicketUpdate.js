@@ -9,14 +9,15 @@ $(document).ready(function() {
 		heightRange();
 	});
 	ordersAssociated();
-	radminidInfo();
+	//	radminidInfo();
 	systematicSearch();
 	getTimeInfo();
 	resetSystematicSearch();
 	checkInvoice();
 	arrowStatus();
-	rateInfo();//费率
-	passengerInfo();//乘客
+	rateInfo(); //费率
+	passengerInfo(); //乘客
+	addCreditCard();
 	$("ul.add-msg li.list_cost a").on("mousedown", function() {
 		$(this).addClass("selected");
 	});
@@ -60,22 +61,25 @@ $(document).ready(function() {
 					var lockStatus = response[i]['lock_status'] == 'Y' ? 'yesStatus' : 'noStatus';
 					var finishStatus = response[i]['finish_status'] == 'Y' ? 'yesStatus' : 'noStatus';
 					var following_id = response[i]['following_id_collection'] == null ? '' : response[i]['following_id_collection'];
+					if(following_id.indexOf(",") == -1) {
+						following_id = ""
+					}
 					var $html = `
-							<li><dl class="callout_button_plane">
-	                <dd class="systemNum"><a href='javascript:void(0);'>` + response[i]['transaction_id'] + `</a></dd>
-	                <dd class='invoice'><a href='javascript:void(0);'>` + response[i]['invoice'] + `</a></dd>
-	                <dd class='profit'><a href='javascript:void(0);'>` + response[i]['total_profit'] + `</a></dd>
-	                <dd class='debt'><a href='javascript:void(0);'>` + response[i]['debt'] + `</a></dd>
-	                <dd class='receivable'><a href='javascript:void(0);'>` + response[i]['received'] + `</a></dd>
-	                <dd class='salePrice'><a href='javascript:void(0);'>` + response[i]['selling_price'] + `</a></dd>
-	                <dd class='createDate'><a href='javascript:void(0);'>` + response[i]['create_time'].substring(0, 10) + `</a></dd>
-	                <dd class='customerName'><a href='javascript:void(0);'>` + response[i]['customer_name'] + `</a></dd>
-	                <dd class='startTime'><a href='javascript:void(0);'>` + response[i]['depart_date'].substring(0, 10) + `</a></dd>
-	                <dd class='returnTime'><a href='javascript:void(0);'>` + response[i]['arrival_date'].substring(0, 10) + `</a></dd>
-	                <dd class='lockStatus ` + lockStatus + `'><a href='javascript:void(0);'></a></dd>
-	                <dd class='finishStatus ` + finishStatus + `'><a href='javascript:void(0);'></a></dd>
-	                <dd class='number'><a href='javascript:void(0);'>` + following_id + `</a></dd>
-	            </dl></li>`
+						<li><dl class="callout_button_plane">
+		                <dd class="systemNum"><a href='javascript:void(0);'>` + response[i]['transaction_id'] + `</a></dd>
+		                <dd class='invoice'><a href='javascript:void(0);'>` + response[i]['invoice'] + `</a></dd>
+		                <dd class='profit'><a href='javascript:void(0);'>` + response[i]['total_profit'] + `</a></dd>
+		                <dd class='debt'><a href='javascript:void(0);'>` + response[i]['debt'] + `</a></dd>
+		                <dd class='receivable'><a href='javascript:void(0);'>` + response[i]['received'] + `</a></dd>
+		                <dd class='salePrice'><a href='javascript:void(0);'>` + response[i]['selling_price'] + `</a></dd>
+		                <dd class='createDate'><a href='javascript:void(0);'>` + response[i]['create_time'].substring(0, 10) + `</a></dd>
+		                <dd class='customerName'><a href='javascript:void(0);'>` + response[i]['customer_name'] + `</a></dd>
+		                <dd class='displayStartTime'><a href='javascript:void(0);'>` + response[i]['depart_date'].substring(0, 10) + `</a></dd>
+		                <dd class='returnTime'><a href='javascript:void(0);'>` + response[i]['arrival_date'].substring(0, 10) + `</a></dd>
+		                <dd class='lockStatus ` + lockStatus + `'><a href='javascript:void(0);'></a></dd>
+		                <dd class='finishStatus ` + finishStatus + `'><a href='javascript:void(0);'></a></dd>
+		                <dd class='number'><a href='javascript:void(0);'>` + following_id + `</a></dd>
+		            </dl></li>`
 					$('ul.tabListDetail').append($html);
 				}
 				heightRange();
@@ -94,22 +98,22 @@ $(document).ready(function() {
 			success: function(response) {
 				response = JSON.parse(response);
 
-				if (response['sum_profit'] == null) {
+				if(response['sum_profit'] == null) {
 					$("#sum_profit").text(0);
 				} else {
 					$("#sum_profit").text(response['sum_profit']);
 				}
-				if (response['sum_debt'] == null) {
+				if(response['sum_debt'] == null) {
 					$("#sum_debt").text(0);
 				} else {
 					$("#sum_debt").text(response['sum_debt']);
 				}
-				if (response['sum_received'] == null) {
+				if(response['sum_received'] == null) {
 					$("#sum_received").text(0);
 				} else {
 					$("#sum_received").text(response['sum_received']);
 				}
-				if (response['sum_selling_price'] == null) {
+				if(response['sum_selling_price'] == null) {
 					$("#sum_selling_price").text(0);
 				} else {
 					$("#sum_selling_price").text(response['sum_selling_price']);
@@ -263,14 +267,52 @@ $(document).ready(function() {
 		if(isNaN(transactionId)) {
 			transactionId = transactionId.substring(0, transactionId.length - 3);
 		}
+
+		/*
+		 * 取lock的状态
+		 */
+		var lockIsTrue = $('.active').find('dd.lockStatus').hasClass('yesStatus');
+		/*
+		 * 取paid的状态
+		 */
+		// var paidIsTrue =
+
 		$.ajax({
 			url: location.protocol.concat("//").concat(location.host).concat('/database/Business/AirTicket/AirTicketGetDetail.php'),
-			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
 			type: 'GET',
-			data: { transaction_id: transactionId },
+			data: {
+				transaction_id: transactionId
+			},
 			success: function(response) {
 				response = JSON.parse(response);
 				console.log(response);
+
+				/*
+				 * 如果是lock的状态
+				 */
+				if (lockIsTrue) {
+					$("#air-ticket-base-price").prop('disabled', true);
+					$("#mco-invoice").prop('disabled', true);
+					$("#face-value").prop('disabled', true);
+					$("#mco-value").prop('disabled', true);
+					$("#mco-credit").prop('disabled', true);
+					$("#fee-ratio").prop('disabled', true);
+					$("#card-number").prop('disabled', true);
+					$("#card-holder").prop('disabled', true);
+					$("#expired-date-month").prop('disabled', true);
+					$("#expired-date-year").prop('disabled', true);
+				}
+
+				/*
+				 * 如果是paid的状态
+				 */
+				 // if (paidIsTrue) {
+				 //
+				 // }
+
 				$("#airticket-itinerary").val(response['itinerary']);
 				$("#airticket_salesperson").val(response['salesperson_code']);
 				$("#air-ticket-create-locator").val(response['locators']);
@@ -325,6 +367,10 @@ $(document).ready(function() {
 				}
 
 				$("#exchange_rate").val(response['exchange_rate_usd_rmb']);
+				var confirm_payment_time = response['confirm_payment_time'];
+				if(confirm_payment_time != null) {
+					$("#confirm_payment_time").val(confirm_payment_time.substring(0, 10));
+				}
 				var payment_area = response['deal_location'] == 'US' ? '美国' : '中国';
 				$("#payment-area")[0].innerHTML = payment_area;
 				$("#air_amountDue").val(response['selling_price']);
@@ -355,10 +401,11 @@ $(document).ready(function() {
 				$("#airTicketProfit").val(response['total_profit']);
 				$("#profit-currency")[0].innerText = '美元';
 
-
+				$("div.creditCardInfo").css("display", "none");
 				if($("#air-ticket-create-payment-type")[0].innerHTML == "航司刷卡+MCO") {
 					$("#airmco").click();
 					$("#mco-party").text(response['mco_info'][0]['mco_party']);
+					$("#mco-invoice").val(response['mco_invoice']);
 					$("#face-value").val(response['mco_info'][0]['face_value']);
 					var face_currency = '美元';
 					if(response['mco_info'][0]['face_currency'] == 'RMB') {
@@ -378,16 +425,27 @@ $(document).ready(function() {
 					};
 					$("#mco-credit-currency").text(mco_credit_currency);
 					$("#fee-ratio").val(response['mco_info'][0]['fee_ratio']);
+					$("li.list_account a").click();
 
-					$("#card-number").val(response['mco_info'][0]['card_number']);
-					var expire_date = response['mco_info'][0]['exp_date'].split("/");
-					$("#expired-date-month").val(expire_date[0]);
-					$("#expired-date-year").val(expire_date[1]);
-					$("#card-holder").val(response['mco_info'][0]['cardholder']);
-					$("#mco-receiver").val(response['mco_info'][0]['account_id']);
+					if(response['mco_info'][0]['card_number'] != null) {
+						$('#creditCard').prop('checked', true);
+						$("#card-number").val(response['mco_info'][0]['card_number']);
+						var expire_date = response['mco_info'][0]['exp_date'].split("/");
+						$("#expired-date-month").val(expire_date[0]);
+						$("#expired-date-year").val(expire_date[1]);
+						$("#card-holder").val(response['mco_info'][0]['cardholder']);
+						$("#mco-receiver").val(response['mco_info'][0]['account_id']);
+					} else {
+						$('#creditCard').prop('checked', false);
+						$("#card-number").val("");
+						$("#expired-date-month").val("");
+						$("#expired-date-year").val("");
+						$("#card-holder").val("");
+						$("#mco-receiver").val("");
+					}
 				}
 
-				for (var i = 0; i < response['total_number'] - 1; i++) {
+				for(var i = 0; i < response['total_number'] - 1; i++) {
 					$("div#passenger-list").append(`
 						<span>
 							<select class="passenger-info">
@@ -404,7 +462,7 @@ $(document).ready(function() {
 				var customer_type = response['customer_type'].split(",");
 				var customer_name = response['customer_name'].split(",");
 				var airticket_number = response['airticket_number'].split(",");
-				for (var i = 0; i < response['total_number']; i++) {
+				for(var i = 0; i < response['total_number']; i++) {
 					$(".passenger-info").eq(i).val(customer_type[i]);
 					$(".passenger-name").eq(i).val(customer_name[i]);
 					$(".passenger-ticket-number").eq(i).val(airticket_number[i]);
@@ -422,69 +480,43 @@ $(document).ready(function() {
 				$("#ticket-create-customer-otherContactNumber").val(response['other_contact_number']);
 				$("#ticket-create-customer-zipcode").val(response['zipcode']);
 
-				// $("ul.add-msg div.systemNumTab").css("display", "none");
-				// $("li.tab_content").remove();
-				if(response['following_id_collection'] != null) {
-					var collection_ids = response['following_id_collection'].split(",");
-					for(var i = 0; i < collection_ids.length; i++) {
-						$.ajax({
-							url: location.protocol.concat("//").concat(location.host).concat('/database/Business/getCollectionList.php'),
-							type: 'GET',
-							data: { collection_id: collection_ids[i] },
-							success: function(response) {
-								response = JSON.parse(response);
-
-								var following_id = response['following_id'];
-								if(following_id == null) {
-									following_id = "";
-								}
-								var appendContent = `
-											<li class="tab_content">
-												<dl>
-													<dd class="selectInfo">
-														<div class="checkbox checkbox-success">
-															<input class="styled" type="checkbox" checked="checked" >
-															<label></label>
-														</div>
-													</dd>
-													<dd class="numberInfo">` + response['transaction_id'] + `</dd>
-													<dd class="salesInfo">` + response['salesperson_code'] + `</dd>
-													<dd class="number">
-														<a>` + following_id + `</a>
-													</dd>
-												</dl>
-											</li>
-										`;
-
-								$("ul.add-msg div.systemNumTab").css("display", "block");
-								$("ul.add-msg div.systemNumTab").find("li.tab_title").after(appendContent);
-								// $("ul.add-msg li.systemNum input").val("");
-								heightRange();
-								var ddCell = $("ul.add-msg div.systemNumTab li.tab_content dd");
-								ddCell.on("mouseenter", function() {
-									ddCell.each(function(i, item) {
-										var txt = $.trim($(item).text());
-										txt = txt.replace(/[\r\n]/g, "");
-										$(item).attr("title", txt);
-									});
-								});
-							},
-							error: function(jqXHR, textStatus, errorThrown) {
-								console.log(textStatus, errorThrown);
-							}
-						});
+				var collection_info = response['collection_info'].split(',');
+				$("ul.add-msg div.systemNumTab").find("li.tab_content").remove();
+				if(collection_info.length > 1) {
+					var collection_list = collection_info[0];
+					for(var i = 1; i < collection_info.length; i++) {
+						collection_list += "," + collection_info[i];
 					}
+					var appendContent = `
+								<li class="tab_content">
+									<dl>
+										<dd class="selectInfo">
+											<div class="checkbox checkbox-success">
+												<input class="styled" type="checkbox" checked="checked" >
+												<label></label>
+											</div>
+										</dd>
+										<dd class="numberInfo">` + response['tc_id'] + `</dd>
+										<dd class="">
+											<a>` + collection_list + `</a>
+										</dd>
+									</dl>
+								</li>
+							`;
+
+					$("ul.add-msg div.systemNumTab").css("display", "block");
+					$("ul.add-msg div.systemNumTab").find("li.tab_title").after(appendContent);
+					// $("ul.add-msg li.systemNum input").val("");
+					heightRange();
+					var ddCell = $("ul.add-msg div.systemNumTab li.tab_content dd");
+					ddCell.on("mouseenter", function() {
+						ddCell.each(function(i, item) {
+							var txt = $.trim($(item).text());
+							txt = txt.replace(/[\r\n]/g, "");
+							$(item).attr("title", txt);
+						});
+					});
 				}
-				//
-				// $("#airticket-dialog").css("display", "block");
-				// // document.getElementById("airTicketDiscountApply_update").click();
-				// autoCenter($("#airticket-dialog"));
-				// //利润   s
-				// salePrice = response['sale_price']; //销售价
-				// basePrice = response['base_price']; //底价
-				// returnCash = response['received2']; //返现
-				// profit = $("#airTicketProfit"); //利润
-				// exchangeRate = response['exchange_rate_usd_rmb']; //利率
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus, errorThrown);
@@ -520,8 +552,7 @@ $(document).ready(function() {
 			target = 'source';
 		} else if(current_id == 'wholesaler-filter' || current_id == 'wholesaler') {
 			target = 'wholesaler';
-		}
-		else if(current_id == 'accounting-received' || current_id == 'mco-receiver') {
+		} else if(current_id == 'accounting-received' || current_id == 'mco-receiver') {
 			target = 'user_id';
 		}
 
@@ -546,15 +577,6 @@ $(document).ready(function() {
 
 	// 得到更新窗口数据
 	function getUpdateInfo() {
-		var round_trip = 'oneway';
-		if($("#air-ticket-create-round-trip").hasClass('option-active')) {
-			round_trip = 'round';
-		}
-		var ticket_type = 'individual';
-		if($("#air-ticket-create-ticket-type").hasClass('option-active')) {
-			ticket_type = 'group';
-		}
-
 		var payment_area = $("#payment-area")[0].innerHTML == '中国' ? 'CN' : 'US';
 		var sell_price_currency = $("#sell-price-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
 		var base_price_currency = $("#base-price-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
@@ -575,18 +597,33 @@ $(document).ready(function() {
 			payment_type = 'airmco';
 		}
 		var profit = $("#airTicketProfit").val();
-		var profit_currency = $("#profit-currency")[0].innerHTML;
+		var profit_currency = $("#profit-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
+
+		var numOfAdult = numOfYouth = numOfChildren = numOfBaby = 0;
+		for(var i = 0; i < $(".passenger-info").length; i++) {
+			if($(".passenger-info").eq(i).val() == 'adult') {
+				numOfAdult++;
+			} else if($(".passenger-info").eq(i).val() == 'youth') {
+				numOfYouth++;
+			} else if($(".passenger-info").eq(i).val() == 'children') {
+				numOfChildren++;
+			} else if($(".passenger-info").eq(i).val() == 'infant') {
+				numOfBaby++;
+			}
+		}
 
 		var data = {
-			transactionId: $('.active').find('dl dd.listNum a')['0'].innerText,
 			itinerary: $("#airticket-itinerary").val(),
+
 			salesperson: $("#airticket_salesperson").val(),
 			locator: $("#air-ticket-create-locator").val(),
-			flight_code: $("#air-ticket-create-air-company-code").val(),
-			round_trip: round_trip,
-			ticket_type: ticket_type,
-			total_number: $("#air-ticket-create-total-number").val(),
+			air_company_code: $("#air-ticket-create-air-company-code").val(),
+			roundTrip: ($("#air-ticket-create-round-trip").hasClass('option-active')) ? 'round' : 'oneway',
+			ticketType: ($("#air-ticket-create-ticket-type").hasClass('option-active')) ? 'group' : 'individual',
+			numPassenger: $("#air-ticket-create-total-number").val(),
 			wholesaler: $("#wholesaler").val(),
+			ticketed_time: $("#ticketed_time").val(),
+			confirm_payment_time: $("#confirm_payment_time").val(),
 			invoice: $("#air-ticket-create-invoice").val(),
 			source: $("#airticket_source").val(),
 			note: $("#air-ticket-create-note").val(),
@@ -597,24 +634,23 @@ $(document).ready(function() {
 			sell_price_currency: sell_price_currency,
 			base_price: $("#air-ticket-base-price").val(),
 			base_price_currency: base_price_currency,
-			payment_type: payment_type,
+			payType: payment_type,
 			profit: profit,
 			profit_currency: profit_currency,
 
-			adult_number: $("#air-ticket-create-adult-number").val(),
-			youth_number: $("#air-ticket-create-youth-number").val(),
-			children_number: $("#air-ticket-create-children-number").val(),
-			infant_number: $("#air-ticket-create-baby-number").val(),
-			passenger_list: $("#air-ticket-create-passenger-list").val(),
+			numOfAdult: numOfAdult,
+			numOfYouth: numOfYouth,
+			numOfChildren: numOfChildren,
+			numOfBaby: numOfBaby,
 
 			phone: $("#ticket-create-customer-phone").val(),
 			email: $("#ticket-create-customer-email").val(),
+			otherContact: $("#ticket-create-customer-otherContact").val(),
+			otherContactNumber: $("#ticket-create-customer-otherContactNumber").val(),
 			birthday: $("#ticket-create-customer-birthday").val(),
 			gender: $("#ticket-create-customer-gender").val(),
-			other_contact_type: $("#ticket-create-customer-otherContact").val(),
-			other_contact_number: $("#ticket-create-customer-otherContactNumber").val(),
-			zipcode: $("#ticket-create-customer-zipcode").val(),
-		}
+			zipcode: $("#ticket-create-customer-zipcode").val()
+		};
 
 		var flight_number = [];
 		var leave_date = [];
@@ -631,8 +667,21 @@ $(document).ready(function() {
 			schedule: JSON.stringify(schedule)
 		});
 
+		var passenger_list = [];
+		var ticket_number = [];
+		var passenger_type = [];
+		for(var i = 0; i < $(".passenger-name").length; i++) {
+			passenger_list.push($(".passenger-name").eq(i).val());
+			ticket_number.push($(".passenger-ticket-number").eq(i).val());
+			passenger_type.push($(".passenger-info").eq(i).val());
+		}
+		data['passenger_list'] = JSON.stringify(passenger_list);
+		data['ticket_number'] = JSON.stringify(ticket_number);
+		data['passenger_type'] = JSON.stringify(passenger_type);
+
 		if(payment_type == 'airmco') {
 			var mco_party = $("#mco-party")[0].innerHTML;
+			var mco_invoice = $("#mco-invoice").val();
 			var face_value = $("#face-value").val();
 			var face_currency = $("#face-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
 			var mco_value = $("#mco-value").val();
@@ -640,9 +689,16 @@ $(document).ready(function() {
 			var mco_credit = $("#mco-credit").val();
 			var mco_credit_currency = $("#mco-credit-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
 			var fee_ratio = $("#fee-ratio").val();
+			var add_card = $("#creditCard")[0]['checked'];
+			if(add_card) {
+				add_card = 'Y';
+			} else {
+				add_card = 'N';
+			}
 
 			Object.assign(data, {
 				mco_party: mco_party,
+				mco_invoice: mco_invoice,
 				face_value: face_value,
 				face_currency: face_currency,
 				mco_value: mco_value,
@@ -651,21 +707,22 @@ $(document).ready(function() {
 				mco_credit_currency: mco_credit_currency,
 				fee_ratio: fee_ratio,
 				card_number: $("#card-number").val(),
-				expired_date_month: $("#expired-date-month").val(),
-				expired_date_year: $("#expired-date-year").val(),
+				expire_month: $("#expired-date-month").val(),
+				expire_year: $("#expired-date-year").val(),
 				card_holder: $("#card-holder").val(),
-				mco_receiver: $("#mco-receiver").val()
+				mco_receiver: $("#mco-receiver").val(),
+				add_card: add_card
 			});
 		}
 
 		if($("dd.selectInfo div.checkbox input").length > 0) {
-			var collection_list = [];
+			var tc_id;
 			$("dd.selectInfo div.checkbox input").each(function() {
-				collection_list.push($(this).parent().parent().next()[0].innerHTML);
+				tc_id = $(this).parent().parent().next()[0].innerText;
 			});
-			data['collection_list'] = JSON.stringify(collection_list);
+			data['tc_id'] = tc_id;
 		}
-
+		console.log(data);
 		return data;
 	}
 
@@ -678,15 +735,20 @@ $(document).ready(function() {
 
 	$("#updateEditActionConfirm").on('click', function() {
 		var data = getUpdateInfo();
+		var transactionId = $('.active').find('dl dd.systemNum a')['0'].innerText;
+		if(isNaN(transactionId)) {
+			transactionId = transactionId.substring(0, transactionId.length - 3);
+		}
+		data['transactionId'] = transactionId;
 		$.ajax({
-			url: location.protocol.concat("//").concat(location.host).concat('/database/Business/AirTicket/AirTicketUpdate.php'),
+			url: location.protocol.concat("//").concat(location.host).concat('/database/Business/AirTicket/AirTicketUpdate2.php'),
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
 			type: 'POST',
 			data: data,
 			success: function(response) {
-				// console.log(response);
+				console.log(response);
 				location.reload();
 				// updateDisplayInfo(data);
 				$("#airticket-dialog").css("display", "none");
@@ -754,7 +816,10 @@ $(document).ready(function() {
 	});
 
 	$("#updateDeleteActionConfirm").on('click', function() {
-		var transactionId = $('.active').find('dl dd.listNum a')['0'].innerText;
+		var transactionId = $('.active').find('dl dd.systemNum a')['0'].innerText;
+		if(isNaN(transactionId)) {
+			transactionId = transactionId.substring(0, transactionId.length - 3);
+		}
 		var url = location.protocol.concat("//").concat(location.host).concat('/database/Business/AirTicket/AirTicketDelete.php');
 		$.ajax({
 			url: url,
@@ -769,7 +834,17 @@ $(document).ready(function() {
 			success: function(response) {
 				$("#airticket-dialog").css("display", "none");
 				$(".updateDeleteConfirmBox").css("display", "none");
+				for(var i = 0; i < $(".active").siblings().length; i++) {
+					var related_id = $($(".active").siblings()[i]).find("dd.systemNum")[0].innerText;
+					if(isNaN(related_id)) {
+						related_id = related_id.substring(0, related_id.length - 3);
+					}
+					if(related_id == transactionId) {
+						$(".active").siblings()[i].remove();
+					}
+				}
 				$(".active").remove();
+				loadData(getFilterData());
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus, errorThrown);
@@ -1156,39 +1231,6 @@ function deleteTravelInfor() {
 function paymentMethod() {
 	$('.dropdown-submenu > a').submenupicker();
 	//地区
-	$("ul.add-msg li.payment-type div.payment .area").find(".dropdown-menu").find("li").find("a").on("click", function() {
-		$("ul.add-msg li.payment-type div.payment .area").find("button").find("span.txt").text($(this).text());
-	});
-	//支付方式-信用卡
-	$("ul.add-msg li.payment-type div.payment .paymentMethod").find(".dropdown-menu.method1").find("li").find("a").on("click", function() {
-		var txt = "信用卡" + $(this).text();
-		$("ul.add-msg li.payment-type div.payment .paymentMethod").find("button").find("span.txt").text(txt);
-		var way = $("ul.add-msg li.payment-type div.payment .paymentMethod").find("button").find("span.txt").text();
-		if(way == "信用卡MCO") {
-			$(".mcoList").css("display", "block");
-		} else {
-			$(".mcoList").css("display", "none");
-		}
-	});
-	//非信用卡
-	$("ul.add-msg li.payment-type div.payment .paymentMethod").find(".dropdown-menu.method2").find("li").find("a").on("click", function() {
-		$("ul.add-msg li.payment-type div.payment .paymentMethod").find("button").find("span.txt").text($(this).text());
-		$(".mcoList").css("display", "none");
-	});
-	//实行
-	$("ul.add-msg li.payment-type.execute div.payment").find(".dropdown-menu").find("li").find("a").on("click", function() {
-		$("ul.add-msg li.payment-type.execute div.payment").find("button").find("span.txt").text($(this).text());
-		if($("ul.add-msg li.payment-type.execute div.payment").find("button").find("span.txt").text() == "OTHER") {
-			$("ul.add-msg li.payment-type.execute input.other").css("display", "inline-block");
-		} else {
-			$("ul.add-msg li.payment-type.execute input.other").css("display", "none");
-		}
-	});
-}
-
-function paymentMethod() {
-	$('.dropdown-submenu > a').submenupicker();
-	//地区
 	$(".payService ul li .payment").find(".areaFloor").find("ul.dropdown-menu").find("li").find("a").on("click", function() {
 		//当前地区
 		var currentArea = $(".payService ul li .payment").find(".areaFloor").find("button.btn").find("span.txt");
@@ -1203,11 +1245,11 @@ function paymentMethod() {
 		}
 	});
 	//收款地点：
-	$(".payService ul li .payment").find(".gatherPlace").find("ul.dropdown-menu").find("li").find("a").on("click", function() {
-		//当前地区
-		var currentArea = $(".payService ul li .payment").find(".gatherPlace").find("button.btn").find("span.txt");
-		currentArea.text($(this).text());
-	});
+	//	$(".payService ul li .payment").find(".gatherPlace").find("ul.dropdown-menu").find("li").find("a").on("click", function() {
+	//		//当前地区
+	//		var currentArea = $(".payService ul li .payment").find(".gatherPlace").find("button.btn").find("span.txt");
+	//		currentArea.text($(this).text());
+	//	});
 	//货币
 	//	$(".currency_type").find("button").on("click",function(){
 	//		$("ul.currency_box").css("cssText", "display:none !important");
@@ -1235,6 +1277,7 @@ function paymentMethod() {
 	//支付方式
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.methodList").find("li").find("a").on("click", function() {
 		$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.methodList").css("width", "50%");
+		profitChange();
 	});
 	if($(".mcoList").css("display") == "block") {
 		$(".mcoList").css("display", "block");
@@ -1262,6 +1305,9 @@ function paymentMethod() {
 		$(".creditCardInfo").find("input").val("");
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 		$(".creditCardInfo").css("display", "none");
+		$("ul.add-msg li.creditCardItem div.checkbox input").prop("checked", true);
+
+		addCreditCard();
 
 	}
 	//支付方式-信用卡
@@ -1278,8 +1324,8 @@ function paymentMethod() {
 			$("input#card-number").removeClass("notRequired");
 			$("input#card-holder").removeClass("notRequired");
 			$(".creditCardInfo").css("display", "block"); //输入信用卡
-		}
-		else {
+			profitChange();
+		} else {
 			$(".mcoList").css("display", "none");
 			$(".creditCardInfo").find("input").val("");
 			$(".creditCardInfo").find("select").prop('selectedIndex', 0);
@@ -1297,6 +1343,9 @@ function paymentMethod() {
 			$("span.mcoAmount_currency").text("美元");
 			$("span.mcoCredit_currency").text("美元");
 			$("span.faceValue_currency").text("美元");
+			$("ul.add-msg li.creditCardItem div.checkbox input").prop("checked", true);
+			addCreditCard();
+			profitChange();
 
 		}
 	});
@@ -1324,7 +1373,9 @@ function paymentMethod() {
 		$(".creditCardInfo").find("input").val("");
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 		$(".creditCardInfo").css("display", "none");
-
+		$("ul.add-msg li.creditCardItem div.checkbox input").prop("checked", true);
+		addCreditCard();
+		profitChange();
 
 	});
 	//刷卡公司:
@@ -1898,12 +1949,8 @@ function ordersAssociated() {
 						alert('订单不存在!');
 					} else {
 						response = JSON.parse(response);
-
+						$("ul.add-msg div.systemNumTab").find("li.tab_content").remove();
 						var following_id = response['following_id'];
-						if(following_id == null) {
-							following_id = "";
-						}
-
 						var appendContent = `
 								<li class="tab_content">
 									<dl>
@@ -1914,8 +1961,7 @@ function ordersAssociated() {
 											</div>
 										</dd>
 										<dd class="numberInfo">` + response['transaction_id'] + `</dd>
-										<dd class="salesInfo">` + response['salesperson_code'] + `</dd>
-										<dd class="number">
+										<dd class="">
 											<a>` + following_id + `</a>
 										</dd>
 									</dl>
@@ -1972,6 +2018,19 @@ function radminidInfo() {
 							} else {
 								response = JSON.parse(response);
 
+								//								var appendContent = `
+								//										<dl class="unfold">
+								//											<dd class="selectInfo">
+								//												<div class="checkbox checkbox-success">
+								//													<input class="styled" type="checkbox">
+								//													<label></label>
+								//												</div>
+								//											</dd>
+								//											<dd class="numberInfo">` + response['transaction_id'] + `</dd>
+								//											<dd class="salesInfo">` + response['salesperson_code'] + `</dd>
+								//											<dd class="number"><a></a></dd>
+								//										</dl>
+								//									`;
 								var appendContent = `
 										<dl class="unfold">
 											<dd class="selectInfo">
@@ -1981,7 +2040,6 @@ function radminidInfo() {
 												</div>
 											</dd>
 											<dd class="numberInfo">` + response['transaction_id'] + `</dd>
-											<dd class="salesInfo">` + response['salesperson_code'] + `</dd>
 											<dd class="number"><a></a></dd>
 										</dl>
 									`;
@@ -2170,17 +2228,16 @@ function rateInfo() {
 	})
 }
 
-
 function passengerInfo() {
 	var len;
 	$(document).on('click', '.addClients ul.clients-info li dl dd.passenger img.addInfo', function() {
 		addPassenger();
-		len=$(".addClients ul.clients-info li dl dd.passenger div").find("span.new").length;
+		len = $(".addClients ul.clients-info li dl dd.passenger div").find("span.new").length;
 		$("input#air-ticket-create-total-number").val(len);
 	});
 	$(document).on('click', '.addClients ul.clients-info li dl dd.passenger img.deleteInfo', function() {
 		deletePassenger();
-		len=$(".addClients ul.clients-info li dl dd.passenger div").find("span.new").length;
+		len = $(".addClients ul.clients-info li dl dd.passenger div").find("span.new").length;
 		$("input#air-ticket-create-total-number").val(len);
 	});
 }
@@ -2204,9 +2261,59 @@ function addPassenger() {
 function deletePassenger() {
 	if($(".addClients ul.clients-info li dl dd.passenger div span").length > 1) {
 		$(".addClients ul.clients-info li dl dd.passenger div span").last().remove();
-	}
-	else {
+	} else {
 		alert("至少含一项乘客信息");
 	}
 	heightRange();
+}
+//添加以下信用卡
+function addCreditCard() {
+	if($("ul.add-msg li.creditCardItem div.checkbox input").is(":checked")) {
+		$("ul.add-msg li.creditCardItem div.checkbox input").parent().parent().siblings().not(".mcoReceiver").addClass("requiredItem");
+	} else {
+		$("ul.add-msg li.creditCardItem div.checkbox input").parent().parent().siblings().not(".mcoReceiver").removeClass("requiredItem");
+		$("ul.add-msg li.creditCardItem div.checkbox input").parent().parent().siblings().not(".mcoReceiver").find("input").addClass("notRequired");
+	}
+
+	$("ul.add-msg li.creditCardItem div.checkbox input").on("change", function() {
+		if($(this).is(":checked")) {
+			$(this).parent().parent().siblings().not(".mcoReceiver").addClass("requiredItem");
+		} else {
+
+			$(this).parent().parent().siblings().not(".mcoReceiver").removeClass("requiredItem");
+			$(this).parent().parent().siblings().not(".mcoReceiver").find("input").removeClass("error");
+		}
+	});
+}
+
+function profitChange() {
+	var mcoCredit = $("input#mco-credit").val();
+	var mcoAmount = $("input#mco-value").val();
+	var exchangeRate = $("input#exchange_rate").val();
+	var profit = $("input#airTicketProfit");
+	var salePrice = $("input#air_amountDue").val();
+	var basePrice = $("input#air-ticket-base-price").val();
+	if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "美元") {
+		if($("span.salePrice_currency").text() == "人民币") {
+			salePrice = (salePrice / exchangeRate).toFixed(2);
+		}
+		if($("span.basePrice_currency").text() == "人民币") {
+			basePrice = (basePrice / exchangeRate).toFixed(2);
+		}
+		if($.trim($("span.mcoAmount_currency").text()) == "人民币") {
+			mcoAmount = (mcoAmount / exchangeRate).toFixed(2);
+		}
+		if($.trim($("span.mcoCredit_currency").text()) == "人民币") {
+			mcoCredit = (mcoCredit / exchangeRate).toFixed(2);
+		}
+
+	}
+	if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "人民币") {
+		salePrice = $("input#air_amountDue").val();
+		basePrice = $("input#air-ticket-base-price").val();
+		mcoAmount = $("input#mco-value").val();
+		mcoCredit = $("input#mco-credit").val();
+	}
+	profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate);
+
 }

@@ -5,7 +5,7 @@ $(function() {
 	searchSwitch();
 	resetInfo();
 	searchInfo();
-	noRecord();
+//	noRecord();
 	confirmSupplement();
 	confirmRefund();
 
@@ -137,9 +137,9 @@ function tourSearch() {
 						<dl>
 							<dd class="systemNum">` + response[i]['transaction_id'] + `</dd>
 							<dd>` + response[i]['type'] + `</dd>
-							<dd>顾客</dd>
-							<dd>批发商</dd>
-							<dd>INVOICE</dd>
+							<dd>` + response[i]['customer_name'] + `</dd>
+							<dd>` + response[i]['wholesaler_code'] + `</dd>
+							<dd>` + response[i]['invoice'] + `</dd>
 							<dd>` + response[i]['total_profit'] + `</dd>
 							<dd>` + response[i]['selling_price'] + `</dd>
 							<dd>` + response[i]['received'] + `</dd>
@@ -154,6 +154,7 @@ function tourSearch() {
 				}
 			} else {
 				$(".searchResult").css("display", "none");
+				noRecord();
 			}
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -186,9 +187,9 @@ function airticketSearch() {
 						<dl>
 							<dd class="systemNum">` + response[i]['transaction_id'] + `</dd>
 							<dd>` + response[i]['type'] + `</dd>
-							<dd>顾客</dd>
-							<dd>批发商</dd>
-							<dd>INVOICE</dd>
+							<dd>` + response[i]['customer_name'] + `</dd>
+							<dd>` + response[i]['wholesaler_code'] + `</dd>
+							<dd>` + response[i]['invoice'] + `</dd>
 							<dd>` + response[i]['total_profit'] + `</dd>
 							<dd>` + response[i]['selling_price'] + `</dd>
 							<dd>` + response[i]['received'] + `</dd>
@@ -203,6 +204,7 @@ function airticketSearch() {
 				}
 			} else {
 				$(".searchResult").css("display", "none");
+				noRecord();
 			}
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
@@ -243,6 +245,9 @@ function confirmSupplement() {
 			$(".confirmNoticeInfo").removeClass("noRecord");
 			$(".confirmNoticeInfo").removeClass("confirmRefund");
 			$(".confirmSupplement").find("p.confirmNotice").text("确认增补");
+			$(".confirmSupplement .actionBox button.actionConfirm").css("display","inline-block");
+			$(".confirmSupplement .actionBox button.actionCancel").css("width","50%");
+			$(".confirmSupplement .actionBox button.actionCancel").text("取消");
 			$(".confirmSupplement").css("display", "block");
 			//确认
 			$(".confirmSupplement").find("p.actionBox").find("button.actionConfirm").on("click", function() {
@@ -252,6 +257,8 @@ function confirmSupplement() {
 					type: 'POST',
 					data: {
 						transaction_id: $("#sup-transaction-id").val(),
+						wholesaler: $("#wholesaler-sup").val(),
+						invoice: $("#invoice-sup").val(),
 						extra_in: $("#sup-extra-in").val(),
 						extra_in_currency: $("#sup-extra-in-currency").val(),
 						extra_out: $("#sup-extra-out").val(),
@@ -292,6 +299,9 @@ function confirmRefund() {
 			$(".confirmNoticeInfo").addClass("confirmRefund");
 			$(".confirmNoticeInfo").removeClass("noRecord");
 			$(".confirmNoticeInfo").removeClass("confirmSupplement");
+			$(".confirmRefund .actionBox button.actionConfirm").css("display","inline-block");
+			$(".confirmRefund .actionBox button.actionCancel").css("width","50%");
+			$(".confirmRefund .actionBox button.actionCancel").text("取消");
 			$(".confirmRefund").find("p.confirmNotice").text("确认退款");
 			$(".confirmRefund").css("display", "block");
 			//确认
@@ -302,6 +312,8 @@ function confirmRefund() {
 					type: 'POST',
 					data: {
 						transaction_id: $("#ref-transaction-id").val(),
+						wholesaler: $("#wholesaler-ref").val(),
+						invoice: $("#invoice-ref").val(),
 						ref_type: $("#ref-type").val(),
 						ref_value: $("#ref-value").val(),
 						ref_currency: $("#ref-currency").val(),
@@ -325,20 +337,47 @@ function confirmRefund() {
 		}
 	});
 }
-
+//没有记录：
 function noRecord() {
 	$(".confirmNoticeInfo").removeClass("confirmSupplement");
 	$(".confirmNoticeInfo").removeClass("confirmRefund");
 	$(".confirmNoticeInfo").addClass("noRecord");
-	$(".noRecord").find("p.confirmNotice").text("确认增补");
-	//确认
-	$(".noRecord").find("p.actionBox").find("button.actionConfirm").on("click", function() {
-		setTimeout(function() {
-			$(".noRecord").css("display", "none");
-		}, 500);
-	});
-	//取消
+	$(".noRecord").find("p.confirmNotice").text("没有记录");
+	$(".noRecord .actionBox button.actionConfirm").css("display","none");
+	$(".noRecord .actionBox button.actionCancel").css("display","inline-block");
+	$(".noRecord .actionBox button.actionCancel").css("width","100%");
+	$(".noRecord .actionBox button.actionCancel").text("返回");
+	$(".noRecord").css("display","block");
+	//返回：
 	$(".noRecord").find("p.actionBox").find("button.actionCancel").on("click", function() {
 		$(".noRecord").css("display", "none");
 	});
 }
+
+
+$(document).ready(function () {
+	$("#wholesaler-ref, #wholesaler-sup").on('focus', function() {
+		var current_id = $(this).attr('id');
+		var target = "";
+		if (current_id == 'wholesaler-ref' || current_id == 'wholesaler-sup') {
+			target = 'wholesaler';
+		}
+		var url = location.protocol.concat("//").concat(location.host).concat('/database/autoComplete.php');
+		$.ajax({
+			url: url,
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			type: 'post',
+			data: {
+				target: target
+			},
+			success: function(response) {
+				autocomplete(document.getElementById(current_id), JSON.parse(response));
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log(textStatus, errorThrown);
+			}
+		});
+	});
+});

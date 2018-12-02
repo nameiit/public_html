@@ -4253,7 +4253,9 @@ ul.addInfo li.top_info:not(.mcoInfo) label {
 }
 /*全选-全不选*/
 .filterBox ul.searchFloor li div.rightFloor a.selectAllBtn,
-.filterBox ul.searchFloor li div.rightFloor a.selectNoneBtn{
+.filterBox ul.searchFloor li div.rightFloor a.selectNoneBtn,
+.filterBox ul.searchFloor li div.rightFloor a.relate_selectAllBtn,
+.filterBox ul.searchFloor li div.rightFloor a.relate_selectNoneBtn{
 	width: 47%;
 }
 .filterBox ul.searchFloor li div.currencyInfo div.rightContent{
@@ -4268,4 +4270,9 @@ ul.addInfo li.top_info:not(.mcoInfo) label {
 }
 .accounting-right ul.add-msg li.single-row input[type="text"]{
 	background-color: #FFFFFF;
+}
+
+/*确认收款时间*/
+.filterBox ul li.confirmReceipt .rightFloor{
+	display: none;
 }

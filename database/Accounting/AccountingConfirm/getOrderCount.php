@@ -22,6 +22,9 @@ $finish_status = $_GET['finish_status'] == 'all' ? '%' : $_GET['finish_status'];
 $sup = $_GET['sup'];
 $ref = $_GET['ref'];
 
+$confrirm_payment_from_date = $_GET['receive_from_date'];
+$confrirm_payment_to_date = $_GET['receive_to_date'];
+
 
 if ($payment_type == 'non-cc') {
   $deal_location = $_GET['deal_location'];

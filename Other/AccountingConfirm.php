@@ -62,16 +62,16 @@ if ($_SESSION["group_name"] == 'normal') {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -208,6 +208,24 @@ if ($_SESSION["group_name"] == 'normal') {
 													<input type="date" id="to-date">
 												</div>
 											</li>
+											<!--确认收款时间   s-->
+											<li class="confirmReceipt">
+												<div class="leftFloor">
+													<label>确认收款时间</label>
+													<select id="confirmReceiveTime">
+														<option value="all">全部</option>
+														<option value="customized">Customize</option>
+														<option value="today">本日</option>
+														<option value="current_month">本月</option>
+													</select>
+												</div>
+												<div class="rightFloor">
+													<input type="date" id="receive-from-date">
+													<span>~</span>
+													<input type="date" id="receive-to-date">
+												</div>
+											</li>
+											<!--确认收款时间   e-->
 											<li>
 												<div class="leftFloor">
 													<label>顾客姓名</label>
@@ -358,8 +376,10 @@ if ($_SESSION["group_name"] == 'normal') {
 														<a href="javascript:void(0);" class="selectNoneBtn">全不选</a>
 													</div>
 													<div class="rightContent ">
-															<img src="../img/notice_icon.png" />
-															货币单位：美元
+															<!--<img src="../img/notice_icon.png" />
+															货币单位：美元-->
+														<a href="javascript:void(0);" class="relate_selectAllBtn">关联全选</a>
+														<a href="javascript:void(0);" class="relate_selectNoneBtn">关联全不选</a>
 													</div>
 												</div>
 											</li>
@@ -634,6 +654,7 @@ if ($_SESSION["group_name"] == 'normal') {
 		<script type="text/javascript">
 			  var checkNumber = {};
 			  var fs_id = {};
+			  var tc_id = {};
 		</script>
 		<script src="../js/jquery.min.js" type="text/javascript"></script>
 		<script src="../js/jquery.pagination.js" type="text/javascript"></script>

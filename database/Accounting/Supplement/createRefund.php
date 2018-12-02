@@ -2,6 +2,8 @@
  include('../../dbConnection.php');
 
  $transaction_id_refund = $_POST['transaction_id'];
+ $wholesaler = empty($_POST['wholesaler']) ? '' : $_POST['wholesaler'];
+ $invoice = empty($_POST['invoice']) ? '' : $_POST['invoice'];
  $refundTtype = $_POST['ref_type'];
  $refundAmount = $_POST['ref_value'];
  $refundCurrency = $_POST['ref_currency'];
@@ -25,6 +27,34 @@
                  '$refundCurrency'
              )";
      $conn->query($sql);
+     $sql = "INSERT INTO FinanceStatus (
+                transaction_id,
+                invoice,
+                lock_status,
+                clear_status,
+                paid_status,
+                finish_status,
+                debt,
+                received,
+                selling_price,
+                create_time,
+                total_profit,
+                ending,
+                debt_cleared,
+                received_finished,
+                debt_raw,
+                received_raw,
+                wholesaler_code
+            ) VALUES (
+                $transaction_id_refund,
+                '$invoice',
+                'N', 'N', 'N','N',
+                $refundAmountUSD, 0, 0,
+                current_timestamp,
+                -$refundAmountUSD,
+                'ref', 0, 0, $refundAmountUSD, 0, '$wholesaler'
+            ) ";
+     $conn->query($sql);
  } else {
      $sql = "INSERT INTO Refund (
              transaction_id,
@@ -38,6 +68,34 @@
              '$refundCurrency'
          )";
      $conn->query($sql);
+     $sql = "INSERT INTO FinanceStatus (
+        transaction_id,
+        invoice,
+        lock_status,
+        clear_status,
+        paid_status,
+        finish_status,
+        debt,
+        received,
+        selling_price,
+        create_time,
+        total_profit,
+        ending,
+        debt_cleared,
+        received_finished,
+        debt_raw,
+        received_raw,
+        wholesaler_code
+    ) VALUES (
+        $transaction_id_refund,
+        '$invoice',
+        'N', 'N', 'N','N',
+        0, $refundAmountUSD, 0,
+        current_timestamp,
+        $refundAmountUSD,
+        'ref', 0, 0, 0, $refundAmountUSD, '$wholesaler'
+    ) ";
+    $conn->query($sql);
  }
 
  // if exchange_rate_ref 有数据

@@ -45,7 +45,10 @@ $sql_indiv = "SELECT
                 fs.arrival_date,
                 fs.lock_status,
                 fs.finish_status,
-                fs.following_id_collection,
+                (SELECT GROUP_CONCAT(z.transaction_id SEPARATOR ',') 
+                FROM Transactions z 
+                WHERE z.tc_id = t.tc_id 
+                GROUP BY z.tc_id) AS following_id_collection,
                 t.type,
                 i.payment_type,
                 fs.check_no,
@@ -54,13 +57,12 @@ $sql_indiv = "SELECT
             JOIN Transactions t ON fs.transaction_id = t.transaction_id
             JOIN IndividualTour i ON i.indiv_tour_id = t.indiv_tour_id
             JOIN Salesperson s ON i.salesperson_id = s.salesperson_id
-            JOIN Wholesaler w ON i.wholesaler_id = w.wholesaler_id
             JOIN Customer c ON i.customer_id = c.customer_id
             WHERE fs.transaction_id LIKE '$transaction_id'
             AND s.salesperson_code LIKE '$salesperson'
             AND t.settle_time >= '$from_date'
             AND t.settle_time <= '$to_date'
-            AND w.wholesaler_code LIKE '$wholesaler'
+            AND fs.wholesaler_code LIKE '$wholesaler'
             AND fs.lock_status LIKE '$lock_status'
             AND fs.clear_status LIKE '$clear_status'
             AND fs.paid_status LIKE '$paid_status'

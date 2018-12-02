@@ -62,16 +62,16 @@ if ($_SESSION["group_name"] == 'normal') {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -429,23 +429,11 @@ if ($_SESSION["group_name"] == 'normal') {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="paymentPlace">
-																	<label for="paymentPlace">支付地点<i></i></label>
+																	<input class="styled" type="checkbox" id="deal_location">
+																	<label for="deal_location">收款账号国家<i></i></label>
 																</div>
 															</div>
 														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="gatherPlace">
-																	<label for="gatherPlace">收款地点<i></i></label>
-																</div>
-															</div>
-														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -454,6 +442,11 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -462,18 +455,18 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="confirm_payment_time">
+																	<label for="confirm_payment_time">确认时间<i></i></label>
+																</div>
+															</div>
+														</dd>
 													</dl>
 												</li>
 												<li class="choiceContent">
 													<dl>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="paymentTime">
-																	<label for="paymentTime">确认支付时间<i></i></label>
-																</div>
-															</div>
-														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -482,10 +475,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -494,6 +483,11 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -502,10 +496,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -514,6 +504,12 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -522,10 +518,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -534,6 +526,12 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -542,10 +540,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -554,6 +548,12 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -562,6 +562,7 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+														<dd></dd>
 													</dl>
 												</li>
 											</ul>
@@ -576,37 +577,37 @@ if ($_SESSION["group_name"] == 'normal') {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="routeName">
-																	<label for="routeName">路线名称<i></i> </label>
+																	<input class="styled" type="checkbox" id="tour_name">
+																	<label for="tour_name">路线名称<i></i> </label>
 																</div>
 															</div>
 														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="groupNum">
-																	<label for="groupNum">团号<i></i></label>
+																	<input class="styled" type="checkbox" id="product_code">
+																	<label for="product_code">团号<i></i></label>
 																</div>
 															</div>
 														</dd>
 
 													</dl>
 												</li>
-												<!--<li class="choiceContent">
+												<li class="choiceContent">
 													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="destinationType0">
-																	<label for="destinationType0">目的地US分类<i></i></label>
+																	<input class="styled" type="checkbox" id="depart_date">
+																	<label for="depart_date">出团日期<i></i></label>
 																</div>
 															</div>
 														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="destinationType1">
-																	<label for="destinationType1">一级分类<i></i></label>
+																	<input class="styled" type="checkbox" id="arrival_date">
+																	<label for="arrival_date">回团日期<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -617,48 +618,8 @@ if ($_SESSION["group_name"] == 'normal') {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="destinationType2">
-																	<label for="destinationType2">二级分类<i></i></label>
-																</div>
-															</div>
-														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="destinationType3">
-																	<label for="destinationType3">三级分类<i></i></label>
-																</div>
-															</div>
-														</dd>
-													</dl>
-												</li>-->
-												<li class="choiceContent">
-													<dl>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="departureDate">
-																	<label for="departureDate">出团日期<i></i></label>
-																</div>
-															</div>
-														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="returnDate">
-																	<label for="returnDate">回团日期<i></i></label>
-																</div>
-															</div>
-														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="destinationClass">
-																	<label for="destinationClass">目的地分类<i></i></label>
+																	<input class="styled" type="checkbox" id="destination_list">
+																	<label for="destination_list">目的地分类<i></i></label>
 																</div>
 															</div>
 														</dd>

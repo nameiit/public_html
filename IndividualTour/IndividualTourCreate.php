@@ -51,16 +51,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu title-active">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/c_yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="javascript:void(0);" class="lab-active">
 										<label></label> 散拼团
@@ -209,11 +209,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															<dd class="selectInfo">
 															</dd>
 															<dd class="numberInfo">
-																系统编号
+																关联组编号
 															</dd>
-															<dd class="salesInfo">
+															<!-- <dd class="salesInfo">
 																销售人员
-															</dd>
+															</dd> -->
 															<dd class="number">
 																关联编号
 															</dd>
@@ -271,7 +271,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<input type="text" id="card-holder" class="notRequired">
 													</div>
 												</li>
-												<li>
+												<li class="mcoReceiver">
 													<label class="nm-left">MCO负责人</label>
 													<input type="text" placeholder="Search..." id="mco-receiver">
 												</li>
@@ -417,12 +417,12 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													&nbsp;&nbsp;人民币</span>
 												</li>
 												<!--确认支付时间-->
-												<li class="requiredItem">
-													<label class="nm-left">确认支付时间</label>
-													<input type="date" />
+												<li>
+													<label class="nm-left">确认收入时间</label>
+													<input type="date" id="confirm_payment_time"/>
 												</li>
 												<li class="requiredItem payment-type areaInfo">
-													<label class="nm-left">支付地点</label>
+													<label class="nm-left">收款账号国家</label>
 													<div class="payment">
 														<div class="dropdown area areaFloor">
 															<button class="btn btn-default" type="button" data-toggle="dropdown">
@@ -468,23 +468,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</div>
 													</div>
 												</li>
-												<!--收款地点   s-->
-												<li class="requiredItem payment-type areaInfo">
-													<label class="nm-left">收款地点</label>
-													<div class="payment">
-														<div class="dropdown area gatherPlace">
-															<button class="btn btn-default" type="button" data-toggle="dropdown">
-															    <span id="gatherPlace" class="txt">美国</span>
-															    <span class="caret"></span>
-															</button>
-															<ul class="dropdown-menu" role="menu">
-																<li><a tabindex="0">中国</a></li>
-																<li><a tabindex="0">美国</a></li>
-															</ul>
-														</div>
-													</div>
-												</li>
-												<!--收款地点   e-->
 												<li class="requiredItem list_currency">
 													<label class="nm-left">卖价</label>
 													<input type="text"  id="indiv_sale_price" class="numFormat indiv_sellPrice"/>

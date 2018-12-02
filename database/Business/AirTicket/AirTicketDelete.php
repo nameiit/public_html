@@ -6,29 +6,28 @@ $result = $conn->query($query);
 if ($result->num_rows > 0) {
     $airticket_tour_id = $result->fetch_assoc()['airticket_tour_id'];
 }
-
+ 
 $query = "DELETE FROM AuditProcess 
           WHERE fs_id IN (SELECT fs_id FROM FinanceStatus WHERE transaction_id = $transactionId)";
 $conn->query($query);
-
 $query = "DELETE FROM FinanceStatus WHERE transaction_id = $transactionId";
 $conn->query($query);
-
 $query = "DELETE FROM LogLastEditor WHERE transaction_id = $transactionId";
 $conn->query($query);
 
+$query = "DELETE FROM ExtraSupplement WHERE transaction_id = $transactionId";
+$conn->query($query);
+$query = "DELETE FROM Refund WHERE transaction_id = $transactionId";
+$conn->query($query);
 $query = "DELETE FROM Transactions WHERE transaction_id = $transactionId";
 $conn->query($query);
 
 $query = "DELETE FROM AirticketNumber WHERE airticket_tour_id = $airticket_tour_id";
 $conn->query($query);
-
 $query = "DELETE FROM AirSchedule WHERE airticket_tour_id = $airticket_tour_id";
 $conn->query($query);
-
 $query = "DELETE FROM AirScheduleIntegrated WHERE airticket_tour_id = $airticket_tour_id";
 $conn->query($query);
-
 $query = "SELECT IFNULL(mp_id, 'KK') AS mp_id FROM AirticketTour WHERE airticket_tour_id = $airticket_tour_id";
 $result = $conn->query($query);
 $mp_id = $result->fetch_assoc()['mp_id'];

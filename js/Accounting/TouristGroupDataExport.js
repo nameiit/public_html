@@ -511,7 +511,8 @@ $(document).ready(function() {
 					var resultDetail = `<li class="resultDetail"><dl>`;
 					for (var j = 0; j < choiceNum; j++) {
 						var selectedId = $(selectedItem).eq(j).find("input")[0].id;
-						resultDetail += `<dd>` + response[i][selectedId] + `</dd>`;
+						var info = response[i][selectedId] == null ? '' : response[i][selectedId];
+						resultDetail += `<dd>` + info + `</dd>`;
 					}
 					resultDetail += `</dl></li>`;
 					$("ul.result").append(resultDetail);

@@ -7,7 +7,7 @@ $(function() {
 	updateIndivTourDiscount($("#indivTourDiscountText"), $("#indivTourDiscountNotice"), $("#indivTourDiscountApply"), $("#indivTourSubtractNum"), $("#indivTourDiscountOption"), $("#updateIndivDiscountTextCurrency"));
 	autoCenterBox($("#dialog2"));
 	autoCenterBox($(".updateDialog .customerInfo.addClients"));
-//	calculateCharge();
+	//	calculateCharge();
 	confirmRequest();
 	systematicSearch();
 	getTimeInfo();
@@ -15,15 +15,16 @@ $(function() {
 	checkInvoice();
 	Pagination();
 	ordersAssociated();
-	radminidInfo();
+	//	radminidInfo();
 	paymentMethod();
 	priceCalculate();
 	getCalculateProfitInfo();
 	arrowStatus();
-	destinationInfo();//目的地
-	rateInfo();//费率
-	fullMcoPayment();//选择全额mco
+	destinationInfo(); //目的地
+	rateInfo(); //费率
+	fullMcoPayment(); //选择全额mco
 	partCreditCard();
+	addCreditCard();
 	$("div.notesInfor").on("keyup", function() {
 		heightRange();
 	});
@@ -101,12 +102,15 @@ $(document).ready(function() {
 			data: data,
 			success: function(response) {
 				response = JSON.parse(response);
-				console.log(response);
+//				console.log(response);
 				$('ul.tabListDetail').empty();
 				for(var i = 0; i < response.length; i++) {
 					var lockStatus = response[i]['lock_status'] == 'Y' ? 'yesStatus' : 'noStatus';
 					var finishStatus = response[i]['finish_status'] == 'Y' ? 'yesStatus' : 'noStatus';
 					var following_id = response[i]['following_id_collection'] == null ? '' : response[i]['following_id_collection'];
+					if(following_id.indexOf(",") == -1) {
+						following_id = ""
+					}
 
 					var $html = `
 							<li><dl class="callout_button">
@@ -157,7 +161,7 @@ $(document).ready(function() {
 				} else {
 					$("#sum_received").text(response['sum_received']);
 				}
-				if (response['sum_selling_price'] == null) {
+				if(response['sum_selling_price'] == null) {
 					$("#sum_selling_price").text(0);
 				} else {
 					$("#sum_selling_price").text(response['sum_selling_price']);
@@ -165,6 +169,7 @@ $(document).ready(function() {
 
 				var num_orders = response['num_orders'];
 				if(num_orders == 0) {
+					$('ul.tabListDetail').empty();
 					$(".noResultBox").css("display", "block");
 				} else {
 					$('.tabListDetail').empty();
@@ -211,29 +216,29 @@ $(document).ready(function() {
 	}
 
 	function getFromAndToDate(data) {
-    var today = new Date();
-    var year = today.getFullYear();
-    var month = today.getMonth();
-    var day = today.getDate();
+		var today = new Date();
+		var year = today.getFullYear();
+		var month = today.getMonth();
+		var day = today.getDate();
 
-    var diff = $("#settletime").val();
-    if (diff.length == 15) {
-      diff = diff[14];
-    } else {
-      diff = diff.substring(14, 16);
-    }
+		var diff = $("#settletime").val();
+		if(diff.length == 15) {
+			diff = diff[14];
+		} else {
+			diff = diff.substring(14, 16);
+		}
 
-    if (month - Number(diff) < 0) {
-      from_date = new Date(year - 1, 12 - (Number(diff) - month), 1);
-      to_date = new Date(year - 1, 12 - (Number(diff) - month) + 1, 0);
-    } else {
-      from_date = new Date(year, month - Number(diff), 1);
-      to_date = new Date(year, month - Number(diff) + 1, 0);
-    }
-    data['from_date'] = formatDate(from_date);
-    data['to_date'] = formatDate(to_date);
-    return data;
-  }
+		if(month - Number(diff) < 0) {
+			from_date = new Date(year - 1, 12 - (Number(diff) - month), 1);
+			to_date = new Date(year - 1, 12 - (Number(diff) - month) + 1, 0);
+		} else {
+			from_date = new Date(year, month - Number(diff), 1);
+			to_date = new Date(year, month - Number(diff) + 1, 0);
+		}
+		data['from_date'] = formatDate(from_date);
+		data['to_date'] = formatDate(to_date);
+		return data;
+	}
 
 	function getFilterData() {
 		var data = {
@@ -241,24 +246,24 @@ $(document).ready(function() {
 			transaction_id: $("#transaction-id").val(),
 			product_code: $("#product-code").val(),
 			fname: $("#fname").val(),
-      lname: $("#lname").val(),
+			lname: $("#lname").val(),
 			from_invoice: $("#from-invoice").val(),
-      to_invoice: $("#to-invoice").val(),
+			to_invoice: $("#to-invoice").val(),
 			invoice: $("#invoice-filter").val(),
 			wholesaler: $("#wholesaler").val(),
 			payment_type: $("#payment-type").val(),
 			lock_status: $("#lock-status").val(),
-      clear_status: $("#clear-status").val(),
-      paid_status: $("#paid-status").val(),
-      finish_status: $("#paid-status").val()
+			clear_status: $("#clear-status").val(),
+			paid_status: $("#paid-status").val(),
+			finish_status: $("#paid-status").val()
 		};
 
 		var today = new Date();
-    var year = today.getFullYear();
-    var month = today.getMonth();
-    var day = today.getDate();
-    var from_date = "";
-    var to_date = new Date(year + 1, month, day);
+		var year = today.getFullYear();
+		var month = today.getMonth();
+		var day = today.getDate();
+		var from_date = "";
+		var to_date = new Date(year + 1, month, day);
 
 		if($("#settletime").val() == 'all') {
 			data['from_date'] = "0";
@@ -269,25 +274,25 @@ $(document).ready(function() {
 		} else if($("#settletime").val() == 'current_month') {
 			data['from_date'] = formatDate(new Date(year, month, 1));
 			data['to_date'] = formatDate(to_date);
-		} else if ($("#settletime").val().startsWith('current_month-')) {
+		} else if($("#settletime").val().startsWith('current_month-')) {
 			getFromAndToDate(data);
 		} else {
-			from_date = $("#from-date").val() == ""? "0" : $("#from-date").val();
-			to_date = $("#to-date").val() == ""? formatDate(to_date) : $("#to-date").val();
+			from_date = $("#from-date").val() == "" ? "0" : $("#from-date").val();
+			to_date = $("#to-date").val() == "" ? formatDate(to_date) : $("#to-date").val();
 			data['from_date'] = from_date;
 			data['to_date'] = to_date;
 		}
 
-		if (data['payment_type'] == 'non-cc') {
-      data['deal_location'] = $("#deal-location").val();
-      var non_cc_payment_type = [];
-      $("#non-cc-payment-type div input").each(function () {
-        if ($(this)[0].checked) {
-          non_cc_payment_type.push($(this)[0].id);
-        }
-      });
-      data['non_cc_payment_type'] = JSON.stringify(non_cc_payment_type);
-    }
+		if(data['payment_type'] == 'non-cc') {
+			data['deal_location'] = $("#deal-location").val();
+			var non_cc_payment_type = [];
+			$("#non-cc-payment-type div input").each(function() {
+				if($(this)[0].checked) {
+					non_cc_payment_type.push($(this)[0].id);
+				}
+			});
+			data['non_cc_payment_type'] = JSON.stringify(non_cc_payment_type);
+		}
 		return data;
 	}
 	loadData(getFilterData());
@@ -295,12 +300,12 @@ $(document).ready(function() {
 	/*
 	 * 根据筛选条件得到独立团信息
 	 */
-	$("#individual-tour-update-filter").on('click', function() {
+	$("#filter-confirm").on('click', function() {
 		var data = getFilterData();
 		loadData(data);
 	});
 
-	$("#individual-tour-update-reset").on('click', function() {
+	$("#filter-reset").on('click', function() {
 		$("#individual-update-date-filter").val("30");
 		$("#individual-update-from-date").val("");
 		$("#individual-update-to-date").val("");
@@ -327,13 +332,16 @@ $(document).ready(function() {
 		var url = location.protocol.concat("//").concat(location.host).concat('/database/Business/IndividualTour/IndividualTourGetDetail.php');
 		$.ajax({
 			url: url,
-			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
 			type: 'GET',
-			data: { transaction_id: transactionId },
+			data: {
+				transaction_id: transactionId
+			},
 			success: function(response) {
 				response = JSON.parse(response);
 				console.log(response);
-
 				// individual_tour_id = response['indiv_tour_id'];
 				// // 填充弹出窗口的数据
 				$("#indiv_tour_id").val(response['product_code']);
@@ -344,11 +352,19 @@ $(document).ready(function() {
 				$("#indiv_source").val(response['source_name']);
 				$("#indiv_note").val(response['note']);
 
+				$("#us-class").val(response['us_class']);
+				$("#first-class").val(response['first_class']);
+				$("#second-class").val(response['second_class']);
+				$("#third-class").val(response['third_class']);
+
 				$("#indiv_startTime").val(response['depart_date'].substring(0, 10));
 				$("#indiv_endTime").val(response['arrival_date'].substring(0, 10));
 				$("#indiv_num_days").val(response['duration']);
 
 				$("#indiv_exchange_rate").val(response['exchange_rate']);
+				if (response['confirm_payment_time'] != null) {
+					$("#confirm_payment_time").val(response['confirm_payment_time'].substring(0, 10));
+				}
 				var deal_location = (response['deal_location'] == 'US') ? '美国' : '中国';
 				$("#payment-area")[0].innerHTML = deal_location;
 
@@ -361,36 +377,35 @@ $(document).ready(function() {
 				$("#sell-price-currency")[0].innerHTML = selling_currency;
 
 				var payment_type = response['payment_type'];
-				if (payment_type == 'cash') {
+				if(payment_type == 'cash') {
 					payment_type = '现金';
-				} else if (payment_type == 'check') {
+				} else if(payment_type == 'check') {
 					payment_type = '支票';
-				} else if (payment_type == 'alipay') {
+				} else if(payment_type == 'alipay') {
 					payment_type = '支付宝';
-				} else if (payment_type == 'wechat') {
+				} else if(payment_type == 'wechat') {
 					payment_type = '微信支付';
-				} else if (payment_type == 'remit') {
+				} else if(payment_type == 'remit') {
 					payment_type = 'REMIT';
-				} else if (payment_type == 'wholesalerall') {
+				} else if(payment_type == 'wholesalerall') {
 					payment_type = '供应商全额刷卡';
-				} else if (payment_type == 'wholesalercheck') {
+				} else if(payment_type == 'wholesalercheck') {
 					payment_type = '供应商部分刷卡+支票';
-				} else if (payment_type == 'wholesalercash') {
+				} else if(payment_type == 'wholesalercash') {
 					payment_type = '供应商部分刷卡+现金';
-				} else if (payment_type == 'wholesaleralipay') {
+				} else if(payment_type == 'wholesaleralipay') {
 					payment_type = '供应商部分刷卡+支付宝';
-				} else if (payment_type == 'wholesalerwechat') {
+				} else if(payment_type == 'wholesalerwechat') {
 					payment_type = '供应商部分刷卡+微信支付';
-				} else if (payment_type == 'wholesalerremit') {
+				} else if(payment_type == 'wholesalerremit') {
 					payment_type = '供应商部分刷卡+REMIT';
-				} else if (payment_type == 'wholesalermco') {
+				} else if(payment_type == 'wholesalermco') {
 					payment_type = '供应商部分刷卡+额外MCO';
-				} else if (payment_type == 'mcoall') {
+				} else if(payment_type == 'mcoall') {
 					payment_type = '全额MCO';
 				}
-				$("#indiv-tour-payment-type")[0].innerHTML = payment_type;
-				$("#indiv-profit").val(response['total_profit']);
 
+				$("div.creditCardInfo").css("display", "none");
 				if(payment_type == "供应商部分刷卡+额外MCO" || payment_type == '全额MCO') {
 					$("#wholesalermco").click();
 					$("#mco-party").text(response['mco_party']);
@@ -414,14 +429,25 @@ $(document).ready(function() {
 					$("#mco-credit-currency").text(mco_credit_currency);
 					$("#fee-ratio").val(response['fee_ratio']);
 
-					$("#card-number").val(response['card_number']);
-					var expire_date = response['exp_date'].split("/");
-					$("#expired-date-month").val(expire_date[0]);
-					$("#expired-date-year").val(expire_date[1]);
-					$("#card-holder").val(response['cardholder']);
-					$("#mco-receiver").val(response['account_id']);
+					if (response['card_number'] != null) {
+						$("#card-number").val(response['card_number']);
+						var expire_date = response['exp_date'].split("/");
+						$("#expired-date-month").val(expire_date[0]);
+						$("#expired-date-year").val(expire_date[1]);
+						$("#card-holder").val(response['cardholder']);
+						$("#mco-receiver").val(response['account_id']);
+					} else {
+						$("#creditCard").prop('checked', false);
+						$("#card-number").val("");
+						$("#expired-date-month").val("");
+						$("#expired-date-year").val("");
+						$("#card-holder").val("");
+						$("#mco-receiver").val("");
+					}
 				}
 
+				$("#indiv-tour-payment-type").text(payment_type);
+				$("#indiv-profit").val(response['total_profit']);
 
 				$("#indivLastName").val(response['lname']);
 				$("#indivFirstName").val(response['fname']);
@@ -429,10 +455,50 @@ $(document).ready(function() {
 				$("#indivOtherContact").val(response['other_contact_type']);
 				$("#indivOtherContactLabell").text(response['other_contact_type'] + '帐号');
 				$("#indivOtherContactNumber").val(response['other_contact_number']);
-				$("#indivBirthday").val(response['birth_date'].substring(0, 10));
+				if(response['birth_date'] != null) {
+					$("#indivBirthday").val(response['birth_date'].substring(0, 10));
+				}
 				$("#indivGender").val(response['gender']);
 				$("#indivClientEmail").val(response['email']);
 				$("#indivZipCode").val(response['zipcode']);
+
+				var collection_info = response['collection_info'].split(',');
+				$("ul.add-msg div.systemNumTab").find("li.tab_content").remove();
+				if(collection_info.length > 1) {
+					var collection_list = collection_info[0];
+					for(var i = 1; i < collection_info.length; i++) {
+						collection_list += "," + collection_info[i];
+					}
+					var appendContent = `
+								<li class="tab_content">
+									<dl>
+										<dd class="selectInfo">
+											<div class="checkbox checkbox-success">
+												<input class="styled" type="checkbox" checked="checked" >
+												<label></label>
+											</div>
+										</dd>
+										<dd class="numberInfo">` + response['tc_id'] + `</dd>
+										<dd class="number">
+											<a>` + collection_list + `</a>
+										</dd>
+									</dl>
+								</li>
+							`;
+
+					$("ul.add-msg div.systemNumTab").css("display", "block");
+					$("ul.add-msg div.systemNumTab").find("li.tab_title").after(appendContent);
+					// $("ul.add-msg li.systemNum input").val("");
+					heightRange();
+					var ddCell = $("ul.add-msg div.systemNumTab li.tab_content dd");
+					ddCell.on("mouseenter", function() {
+						ddCell.each(function(i, item) {
+							var txt = $.trim($(item).text());
+							txt = txt.replace(/[\r\n]/g, "");
+							$(item).attr("title", txt);
+						});
+					});
+				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus, errorThrown);
@@ -454,7 +520,7 @@ $(document).ready(function() {
 	/*
 	 * 得到销售，导游和来源的下拉列表
 	 */
-	$("#indiv_salesperson, #indiv_wholesaler, #indiv_source, #accounting-received, #wholesaler").on('focus', function() {
+	$("#indiv_salesperson, #indiv_wholesaler, #indiv_source, #accounting-received, #wholesaler, #mco-receiver").on('focus', function() {
 		var current_id = $(this).attr('id');
 		var target = "";
 		if(current_id == 'indiv_salesperson') {
@@ -463,7 +529,7 @@ $(document).ready(function() {
 			target = 'source';
 		} else if(current_id == 'indiv_wholesaler' || current_id == 'wholesaler') {
 			target = 'wholesaler';
-		} else if(current_id == 'accounting-received') {
+		} else if(current_id == 'accounting-received' || current_id == 'mco-receiver') {
 			target = 'user_id';
 		}
 
@@ -488,45 +554,135 @@ $(document).ready(function() {
 
 	// 得到更新窗口数据
 	function getUpdateInfo() {
+		var payment_area = $("#payment-area")[0].innerHTML == '中国' ? 'CN' : 'US';
+		var sell_price_currency = $("#sell-price-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
+		var base_price_currency = $("#base-price-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
+		var payment_type = $("#indiv-tour-payment-type")[0].innerText;
+		if(payment_type == '现金') {
+			payment_type = 'cash';
+		} else if(payment_type == '支票') {
+			payment_type = 'check';
+		} else if(payment_type == '支付宝') {
+			payment_type = 'alipay';
+		} else if(payment_type == '微信支付') {
+			payment_type = 'wechat';
+		} else if(payment_type == 'REMIT') {
+			payment_type = 'remit';
+		} else if(payment_type == '供应商全额刷卡') {
+			payment_type = 'wholesalerall';
+		} else if(payment_type == '供应商部分刷卡+支票') {
+			payment_type = 'wholesalercheck';
+		} else if(payment_type == '供应商部分刷卡+现金') {
+			payment_type = 'wholesalercash';
+		} else if(payment_type == '供应商部分刷卡+支付宝') {
+			payment_type = 'wholesaleralipay';
+		} else if(payment_type == '供应商部分刷卡+微信支付') {
+			payment_type = 'wholesalerwechat';
+		} else if(payment_type == '供应商部分刷卡+REMIT') {
+			payment_type = 'wholesalerremit';
+		} else if(payment_type == '供应商部分刷卡+额外MCO') {
+			payment_type = 'wholesalermco';
+		} else if(payment_type == '全额MCO') {
+			payment_type = 'mcoall';
+		}
+		var profit = $("#indiv-profit").val();
+		var profit_currency = $("#profit-currency")[0].innerText == '美元' ? 'USD' : 'RMB';
+
+		var add_card = $("#creditCard")[0]['checked'];
+		if(add_card) {
+			add_card = 'Y';
+		} else {
+			add_card = 'N';
+		}
+
 		var data = {
-			transactionId: $('.active').find('dl dd.listNum a')['0'].innerText,
-
-			product_code: $("#update-product-code").val(),
-			tour_name: $("#indiv_tour_name").val(),
+			indiv_tour_id: $("#indiv_tour_id").val(),
+			indiv_salesperson: $("#indiv_salesperson").val(),
+			indiv_tour_name: $("#indiv_tour_name").val(),
+			indiv_wholesaler: $("#indiv_wholesaler").val(),
 			invoice: $("#invoice").val(),
-			salesperson: $("#indiv_salesperson").val(),
-			wholesaler: $("#indiv_wholesaler").val(),
-			source: $("#indiv_source").val(),
-			note: $("#indiv_note").val(),
+			indiv_source: $("#indiv_source").val(),
+			indiv_note: $("#indiv_note").val(),
 
-			start_date: $("#indiv_startTime").val(),
-			end_date: $("#indiv_endTime").val(),
-			durating: $("#indiv_num_days").val(),
+			us_class: $("#us-class").val(),
+			first_class: $("#first-class").val(),
+			second_class: $("#second-class").val(),
+			third_class: $("#third-class").val(),
+			indiv_startTime: $("#indiv_startTime").val(),
+			indiv_endTime: $("#indiv_endTime").val(),
+			indiv_num_days: $("#indiv_num_days").val(),
 
-			base_price: $("#indiv_base_price").val(),
-			base_price_currency: $("#update_base_price_currency").val(),
-			sell_price: $("#update_indivAmountDue").val(),
-			sell_price_currency: $("#update_sell_price_currency").val(),
-			transaction_fee: $("#transaction_fee").val(),
-			actual_received: $("#indiv_sale_price").val(),
-			coupon: $("#indivDiscountText_update").val(),
-			coupon_currency: $("#indivDiscountText_update_currency").val(),
+			indiv_exchange_rate: $("#indiv_exchange_rate").val(),
+			payment_area: payment_area,
+			indiv_sell_price: $("#indiv_sale_price").val(),
+			indiv_sell_price_currency: sell_price_currency,
+			indiv_base_price: $("#indiv_base_price").val(),
+			indiv_base_price_currency: base_price_currency,
+			payment_type: payment_type,
+			profit: profit,
+			profit_currency: profit_currency,
 
-			lname: $("#add-customer-lname").val(),
-			fname: $("#add-customer-fname").val(),
+			fname: $("#indivFirstName").val(),
+			lname: $("#indivLastName").val(),
 			phone: $("#indivClientTel").val(),
-			other_contact_type: $("#indivOtherContact").val(),
-			other_contact_number: $("#indivOtherContactNumber").val(),
-
+			otherContactWay: $("#indivOtherContact").val(),
+			otherContactInfo: $("#indivOtherContactNumber").val(),
 			birthday: $("#indivBirthday").val(),
 			gender: $("#indivGender").val(),
 			email: $("#indivClientEmail").val(),
 			zipcode: $("#indivZipCode").val(),
+			confirm_payment_time: $("#confirm_payment_time").val(),
+			add_card: add_card
+		};
 
-			join_date: $("#add-customer-join-date").val(),
-			join_location: $("#add-customer-join-location").val(),
-			leave_date: $("#add-customer-leave-date").val(),
-			leave_location: $("#add-customer-leave-location").val()
+		if(payment_type == 'wholesalermco' || payment_type == 'mcoall') {
+			var mco_party = $("#mco-party")[0].innerHTML;
+			var mco_invoice = $("#mco-invoice").val();
+			var face_value = $("#face-value").val();
+			var face_currency = $("#face-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
+			var mco_value = $("#mco-value").val();
+			var mco_currency = $("#mco-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
+			var mco_credit = $("#mco-credit").val();
+			var mco_credit_currency = $("#mco-credit-currency")[0].innerHTML == '美元' ? 'USD' : 'RMB';
+			var fee_ratio = $("#fee-ratio").val();
+
+			var card_number = $("#card-number").val();
+			var expired_date_month = $("#expired-date-month").val();
+			var expired_date_year = $("#expired-date-year").val();
+			var card_holder = $("#card-holder").val();
+			var mco_receiver = $("#mco-receiver").val();
+
+			Object.assign(data, {
+				mco_party: mco_party,
+				mco_invoice: mco_invoice,
+				face_value: face_value,
+				face_currency: face_currency,
+				mco_value: mco_value,
+				mco_currency: mco_currency,
+				mco_credit: mco_credit,
+				mco_credit_currency: mco_credit_currency,
+				fee_ratio: fee_ratio,
+				card_number: card_number,
+				expired_date_month: expired_date_month,
+				expired_date_year: expired_date_year,
+				card_holder: card_holder,
+				mco_receiver: mco_receiver
+			});
+		} else if(payment_type == 'wholesalercheck' ||
+			payment_type == 'wholesalercash' ||
+			payment_type == 'wholesaleralipay' ||
+			payment_type == 'wholesalerwechat' ||
+			payment_type == 'wholesalerremit') {
+			data['cc_amount'] = $("#wholesaler-charge-amount").val();
+			data['noncc_amount'] = $("#mco-charge-amount").val();
+		}
+
+		if($("dd.selectInfo div.checkbox input").length > 0) {
+			var tc_id;
+			$("dd.selectInfo div.checkbox input").each(function() {
+				tc_id = $(this).parent().parent().next()[0].innerText;
+			});
+			data['tc_id'] = tc_id;
 		}
 		return data;
 	}
@@ -540,10 +696,15 @@ $(document).ready(function() {
 
 	$("#updateEditActionConfirm").on('click', function() {
 		var data = getUpdateInfo();
+		console.log(data);
 
 		var displayData = data;
-		var transactionId = $('.active').find('dl dd.listNum a')['0'].innerText;
-		var url = location.protocol.concat("//").concat(location.host).concat('/database/Business/IndividualTour/IndividualTourUpdate.php');
+		var transactionId = $('.active').find('dl dd.systemNum a')['0'].innerText;
+		if(isNaN(transactionId)) {
+			transactionId = transactionId.substring(0, transactionId.length - 3);
+		}
+		data['transactionId'] = transactionId;
+		var url = location.protocol.concat("//").concat(location.host).concat('/database/Business/IndividualTour/IndividualTourUpdate2.php');
 		$.ajax({
 			url: url,
 			headers: {
@@ -591,7 +752,10 @@ $(document).ready(function() {
 	});
 
 	$("#updateDeleteActionConfirm").on('click', function() {
-		var transactionId = $('.active').find('dl dd.listNum a')['0'].innerText;
+		var transactionId = $('.active').find('dl dd.systemNum a')['0'].innerText;
+		if(isNaN(transactionId)) {
+			transactionId = transactionId.substring(0, transactionId.length - 3);
+		}
 		var url = location.protocol.concat("//").concat(location.host).concat('/database/Business/IndividualTour/IndividualTourDelete.php');
 		$.ajax({
 			url: url,
@@ -606,8 +770,17 @@ $(document).ready(function() {
 				// console.log(response);
 				$("#dialog2").css("display", "none");
 				$(".updateDeleteConfirmBox").css("display", "none");
+				for(var i = 0; i < $(".active").siblings().length; i++) {
+					var related_id = $($(".active").siblings()[i]).find("dd.systemNum")[0].innerText;
+					if(isNaN(related_id)) {
+						related_id = related_id.substring(0, related_id.length - 3);
+					}
+					if(related_id == transactionId) {
+						$(".active").siblings()[i].remove();
+					}
+				}
 				$(".active").remove();
-				location.reload();
+				loadData(getFilterData());
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log(textStatus, errorThrown);
@@ -1009,11 +1182,11 @@ function systematicSearch() {
 		$(this).removeClass('selected');
 	});
 	//收款地点：
-	$(".payService ul li .payment").find(".gatherPlace").find("ul.dropdown-menu").find("li").find("a").on("click", function() {
-		//当前地区
-		var currentArea = $(".payService ul li .payment").find(".gatherPlace").find("button.btn").find("span.txt");
-		currentArea.text($(this).text());
-	});
+	//	$(".payService ul li .payment").find(".gatherPlace").find("ul.dropdown-menu").find("li").find("a").on("click", function() {
+	//		//当前地区
+	//		var currentArea = $(".payService ul li .payment").find(".gatherPlace").find("button.btn").find("span.txt");
+	//		currentArea.text($(this).text());
+	//	});
 	//成交时间:
 	$(".systematicSearch ul li div.rightContent.timeList").find("select").on("change", function() {
 		var currentText = $.trim($(this).find("option:selected").text());
@@ -1079,37 +1252,34 @@ function getTimeInfo() {
 //INVOICE输入检测
 function checkInvoice() {
 	$(".systematicSearch ul.searchFloor li div.invoiceInfo div.invoice1").find("input").on("keyup", function() {
-		if($(this).siblings("input").val()==""){
-   			alert("请确认两项信息已输入");
-   		}
-   		else{
-   			if((!isNaN($(this).val()))&&(!isNaN($(this).siblings("input").val()))) {
+		if($(this).siblings("input").val() == "") {
+			alert("请确认两项信息已输入");
+		} else {
+			if((!isNaN($(this).val())) && (!isNaN($(this).siblings("input").val()))) {
 
-	 		}
-	 		else {
-	 			alert("请确认填写数字格式");
-				if(isNaN($(this).val())){
+			} else {
+				alert("请确认填写数字格式");
+				if(isNaN($(this).val())) {
 					$(this).val("");
 					$(this).focus();
 				}
-				if(isNaN($(this).siblings("input").val())){
+				if(isNaN($(this).siblings("input").val())) {
 					$(this).siblings("input").val("");
 					$(this).siblings("input").focus();
 				}
-	 		}
-   		}
-	});
-	$(".systematicSearch ul.searchFloor li div.invoiceInfo").find("img").on("click",function(){
-		if($(this).attr("src")=="../img/invoice_icon1.png"){
-			$(this).attr("src","../img/invoice_icon2.png");
-			$(".filterBox ul.searchFloor li div.invoiceInfo div.invoice2").css("display","none");
-			$(".filterBox ul.searchFloor li div.invoiceInfo div.invoice1").css("display","inline-block");
-			$(".systematicSearch ul.searchFloor li div.invoiceInfo").find("input").val("");
+			}
 		}
-		else{
-			$(this).attr("src","../img/invoice_icon1.png");
-			$(".filterBox ul.searchFloor li div.invoiceInfo div.invoice1").css("display","none");
-			$(".filterBox ul.searchFloor li div.invoiceInfo div.invoice2").css("display","inline-block");
+	});
+	$(".systematicSearch ul.searchFloor li div.invoiceInfo").find("img").on("click", function() {
+		if($(this).attr("src") == "../img/invoice_icon1.png") {
+			$(this).attr("src", "../img/invoice_icon2.png");
+			$(".filterBox ul.searchFloor li div.invoiceInfo div.invoice2").css("display", "none");
+			$(".filterBox ul.searchFloor li div.invoiceInfo div.invoice1").css("display", "inline-block");
+			$(".systematicSearch ul.searchFloor li div.invoiceInfo").find("input").val("");
+		} else {
+			$(this).attr("src", "../img/invoice_icon1.png");
+			$(".filterBox ul.searchFloor li div.invoiceInfo div.invoice1").css("display", "none");
+			$(".filterBox ul.searchFloor li div.invoiceInfo div.invoice2").css("display", "inline-block");
 			$(".systematicSearch ul.searchFloor li div.invoiceInfo").find("input").val("");
 		}
 	});
@@ -1121,8 +1291,7 @@ function arrowStatus() {
 		if(($(this).find("img.arrow_down").attr("src") == "../img/arrowDown_icon.png") && ($(this).find("img.arrow_up").attr("src") == "../img/arrowUp0_icon.png")) {
 			$(this).find("img.arrow_down").attr("src", "../img/arrowDown0_icon.png");
 			$(this).find("img.arrow_up").attr("src", "../img/arrowUp_icon.png");
-		}
-		else {
+		} else {
 			$(this).find("img.arrow_down").attr("src", "../img/arrowDown_icon.png");
 			$(this).find("img.arrow_up").attr("src", "../img/arrowUp0_icon.png");
 		}
@@ -1182,53 +1351,60 @@ function ordersAssociated() {
 		var listText = $("ul.add-msg div.systemNumTab li dl dd.numberInfo").text();
 		var currentInputTxt = $.trim(systemNumTxt);
 		var currentListTxt = $.trim(listText);
-		if(systemNumTxt !== "") {
-			if(currentListTxt.indexOf(currentInputTxt) == -1) {
-				i++;
-				relatedNum = relatedNum + ',' + "21" + i;
-				var e = `
-						<li class="tab_content">
-							<dl>
-								<dd class="selectInfo">
-									<div class="checkbox checkbox-success">
-										<input id="numInfo` + i + `"    class="styled" type="checkbox" checked="checked">
-										<label for="numInfo` + i + `"></label>
-									</div>
-								</dd>
-								<dd class="numberInfo">
-									` + systemNumTxt +
-					`
-								</dd>
-								<dd class="salesInfo">
-									MICHEAL_SHENG
-								</dd>
+		if(currentListTxt.indexOf(currentInputTxt) == -1) {
+			i++;
+			// 得到关联订单的信息
+			$.ajax({
+				url: location.protocol.concat("//").concat(location.host).concat('/database/Business/getCollectionList.php'),
+				type: 'GET',
+				data: {
+					collection_id: currentInputTxt
+				},
+				success: function(response) {
+					if(response == 'Not exist transactions!') {
+						alert('订单不存在!');
+					} else {
+						response = JSON.parse(response);
+						$("ul.add-msg div.systemNumTab").find("li.tab_content").remove();
+						var following_id = response['following_id'];
+						var appendContent = `
+								<li class="tab_content">
+									<dl>
+										<dd class="selectInfo">
+											<div class="checkbox checkbox-success">
+												<input class="styled" type="checkbox" checked="checked" >
+												<label></label>
+											</div>
+										</dd>
+										<dd class="numberInfo">` + response['transaction_id'] + `</dd>
+										<dd class="number">
+											<a>` + following_id + `</a>
+										</dd>
+									</dl>
+								</li>
+							`;
 
-								<dd class="number">
-									<a>
-									` + relatedNum +
-					`
-									</a>
-								</dd>
-							</dl>
-						</li>
-					`;
-				$("ul.add-msg div.systemNumTab").css("display", "block");
-				$("ul.add-msg div.systemNumTab").find("li.tab_title").after(e);
-				$("ul.add-msg li.systemNum input").val("");
-				heightRange();
+						$("ul.add-msg div.systemNumTab").css("display", "block");
+						$("ul.add-msg div.systemNumTab").find("li.tab_title").after(appendContent);
+						$("ul.add-msg li.systemNum input").val("");
+						heightRange();
 
-				var ddCell = $("ul.add-msg div.systemNumTab li.tab_content dd");
-				ddCell.on("mouseenter", function() {
-					ddCell.each(function(i, item) {
-						var txt = $.trim($(item).text());
-						txt = txt.replace(/[\r\n]/g, "");
-						$(item).attr("title", txt);
-					});
-				});
-
-			} else {
-				$("ul.add-msg li.systemNum input").val("");
-			}
+						var ddCell = $("ul.add-msg div.systemNumTab li.tab_content dd");
+						ddCell.on("mouseenter", function() {
+							ddCell.each(function(i, item) {
+								var txt = $.trim($(item).text());
+								txt = txt.replace(/[\r\n]/g, "");
+								$(item).attr("title", txt);
+							});
+						});
+					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
+				}
+			});
+		} else {
+			$("ul.add-msg li.systemNum input").val("");
 		}
 	});
 }
@@ -1263,6 +1439,28 @@ function radminidInfo() {
 					if(numInfo.length == 1) {
 						serialNum = serialNum.replace(',', '');
 					}
+					//					var e = `
+					//					<dl class="unfold">
+					//						<dd class="selectInfo">
+					//							<div class="checkbox checkbox-success">
+					//								<input id="numInfo_` + i + `" class="styled" type="checkbox">
+					//								<label for="numInfo_` + i + `"></label>
+					//							</div>
+					//						</dd>
+					//						<dd class="numberInfo">
+					//							` + numInfo[i] + `
+					//						</dd>
+					//						<dd class="salesInfo">
+					//							MICHEAL_SHENG
+					//						</dd>
+					//
+					//						<dd class="number">
+					//							<a>` +
+					//						serialNum + `
+					//							</a>
+					//						</dd>
+					//					</dl>
+					//					`;
 					var e = `
 					<dl class="unfold">
 						<dd class="selectInfo">
@@ -1274,10 +1472,6 @@ function radminidInfo() {
 						<dd class="numberInfo">
 							` + numInfo[i] + `
 						</dd>
-						<dd class="salesInfo">
-							MICHEAL_SHENG
-						</dd>
-
 						<dd class="number">
 							<a>` +
 						serialNum + `
@@ -1321,9 +1515,9 @@ function paymentMethod() {
 	});
 
 	//货币
-//	$(".currency_type").find("button").on("click",function(){
-//		$("ul.currency_box").css("cssText", "display:none !important");
-//	});
+	//	$(".currency_type").find("button").on("click",function(){
+	//		$("ul.currency_box").css("cssText", "display:none !important");
+	//	});
 
 	$(".payService").find("ul.currency_box li").find("a").on("click", function() {
 		var currency_type = $(this).parent("li").parent("ul").parent("div.dropdown").find("span.currency_txt");
@@ -1351,12 +1545,13 @@ function paymentMethod() {
 		$(".payService ul li .payment").find("ul.dropdown-menu.creditCardPayment").css("width", "200%");
 		$(".payService ul li .payment").find("ul.dropdown-menu.drop3Menu").css("width", "120px");
 		$(".payService ul li .payment").find("ul.dropdown-menu.drop3Menu").css({
-			"width":"120px",
-			"top":"115px",
-			"left":"106px"
+			"width": "120px",
+			"top": "115px",
+			"left": "106px"
 		})
 		$(".payService ul li .payment").find("ul.dropdown-menu.drop3Menu").css("min-width", "initial");
 		$(".partCreditCard").find("li").removeClass("requiredItem");
+		profitChange();
 	});
 	if($(".mcoList").css("display") == "block") {
 		$(".mcoList").css("display", "block");
@@ -1386,6 +1581,8 @@ function paymentMethod() {
 		$(".creditCardInfo").find("input").val("");
 		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 		$(".creditCardInfo").css("display", "none");
+		$("ul.add-msg li.creditCardItem div.checkbox input").prop("checked", true);
+		addCreditCard();
 	}
 	//刷卡支付
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.creditCardPayment").find("li").find("a").on("click", function() {
@@ -1399,17 +1596,17 @@ function paymentMethod() {
 			$("input#mco-credit").removeClass("notRequired");
 			$("input#card-number").removeClass("notRequired");
 			$("input#card-holder").removeClass("notRequired");
-//			console.log($(".requiredItem").find("input:not([class='notRequired'])").length);
+			//			console.log($(".requiredItem").find("input:not([class='notRequired'])").length);
 			$(".creditCardInfo").css("display", "block");
-		}
-		else {
+			profitChange();
+		} else {
 			$(".mcoList").css("display", "none");
 			$("input#face-value").addClass("notRequired");
 			$("input#mco-value").addClass("notRequired");
 			$("input#mco-credit").addClass("notRequired");
 			$("input#card-number").addClass("notRequired");
 			$("input#card-holder").addClass("notRequired");
-//			console.log($(".requiredItem").find("input:not([class='notRequired'])").length);
+			//			console.log($(".requiredItem").find("input:not([class='notRequired'])").length);
 			$("input#face-value").val("");
 			$("input#mco-value").val("");
 			$("input#mco-credit").val("");
@@ -1423,6 +1620,9 @@ function paymentMethod() {
 			$(".creditCardInfo").find("input").val("");
 			$(".creditCardInfo").find("select").prop('selectedIndex', 0);
 			$(".creditCardInfo").css("display", "none");
+			$("ul.add-msg li.creditCardItem div.checkbox input").prop("checked", true);
+			addCreditCard();
+			profitChange();
 
 		}
 		heightRange();
@@ -1461,6 +1661,9 @@ function paymentMethod() {
 		$(".partCreditCard").find("li").removeClass("requiredItem");
 		$("input.non-creditCardAmount").val("");
 		$("input.creditCardAmount").val("");
+		$("ul.add-msg li.creditCardItem div.checkbox input").prop("checked", true);
+		addCreditCard();
+		profitChange();
 	});
 	//供应商部分刷卡+非刷卡支付
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.drop3Menu").find("li").find("a").on("click", function() {
@@ -1469,6 +1672,12 @@ function paymentMethod() {
 		$(".mcoList").css("display", "none");
 		$(".partCreditCard").css("display", "block");
 		$(".partCreditCard").find("li").addClass("requiredItem");
+		$(".creditCardInfo").find("input").val("");
+		$(".creditCardInfo").find("select").prop('selectedIndex', 0);
+		$(".creditCardInfo").css("display", "none");
+		$("ul.add-msg li.creditCardItem div.checkbox input").prop("checked", true);
+		addCreditCard();
+		profitChange();
 	});
 
 	//刷卡公司
@@ -1671,7 +1880,7 @@ function getCalculateProfitInfo() {
 	var profit = $("input#indiv-profit");
 	salePrice = $("input#indiv_sale_price").val();
 	basePrice = $("input#indiv_base_price").val();
- 	mcoAmount = $("input.indiv_mcoAmount").val();
+	mcoAmount = $("input.indiv_mcoAmount").val();
 	mcoCredit = $("input.mcoCreditInfo").val();
 	//卖价
 	$("input#indiv_sale_price").on("keyup", function() {
@@ -1903,7 +2112,7 @@ function getCalculateProfitInfo() {
 	$("ul.dropdown-menu.currency_box.basePrice_currencyBox").find("li").find("a").on("click", function() {
 		profitType();
 
-		exchangeRate =$("input#indiv_exchange_rate").val();
+		exchangeRate = $("input#indiv_exchange_rate").val();
 		profit = $("input#indiv-profit");
 		salePrice = $("input#indiv_sale_price").val();
 		basePrice = $("input#indiv_base_price").val();
@@ -2230,7 +2439,7 @@ function rateInfo() {
 function fullMcoPayment() {
 	$(".payService ul li .payment").find(".paymentMethod").find("ul.dropdown-menu.creditCardPayment").find("li").find("a").on("click", function() {
 		var payment_type = $(".payService ul li .payment").find(".paymentMethod").find("button.btn").find("span.txt");
-//		payment_type.text($(this).text());
+		//		payment_type.text($(this).text());
 		if($.trim(payment_type.text()) == "全额MCO") {
 			var salePrice = $("input#indiv_sale_price").val();
 			if($.trim(salePrice) !== "") {
@@ -2264,7 +2473,7 @@ function fullMcoPayment() {
 		}
 		if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "人民币") {
 			salePrice = $("input#indiv_sale_price").val();
-			basePrice =	$("input#indiv_base_price").val();
+			basePrice = $("input#indiv_base_price").val();
 			mcoAmount = $("input#mco-value").val();
 			mcoCredit = $("input#mco-credit").val();
 		}
@@ -2275,17 +2484,68 @@ function fullMcoPayment() {
 //供应商部分刷卡+非刷卡支付
 function partCreditCard() {
 	$("input.creditCardAmount").on("keyup", function() {
-		var salePrice =  $("input#indiv_sale_price").val();
+		var salePrice = $("input#indiv_sale_price").val();
 		if(salePrice !== "") {
 			var amount = Number(salePrice - $(this).val());
 			$("input.non-creditCardAmount").val(amount);
 		}
 	})
 	$("input.non-creditCardAmount").on("keyup", function() {
-		var salePrice =  $("input#indiv_sale_price").val();
+		var salePrice = $("input#indiv_sale_price").val();
 		if(salePrice !== "") {
 			var amount = Number(salePrice - $(this).val());
 			$("input.creditCardAmount").val(amount);
 		}
 	})
+}
+//添加以下信用卡
+function addCreditCard() {
+	if($("ul.add-msg li.creditCardItem div.checkbox input").is(":checked")) {
+		$("ul.add-msg li.creditCardItem div.checkbox input").parent().parent().siblings().not(".mcoReceiver").addClass("requiredItem");
+	} else {
+		$("ul.add-msg li.creditCardItem div.checkbox input").parent().parent().siblings().not(".mcoReceiver").removeClass("requiredItem");
+		$("ul.add-msg li.creditCardItem div.checkbox input").parent().parent().siblings().not(".mcoReceiver").find("input").addClass("notRequired");
+	}
+
+	$("ul.add-msg li.creditCardItem div.checkbox input").on("change", function() {
+		if($(this).is(":checked")) {
+			$(this).parent().parent().siblings().not(".mcoReceiver").addClass("requiredItem");
+		} else {
+
+			$(this).parent().parent().siblings().not(".mcoReceiver").removeClass("requiredItem");
+			$(this).parent().parent().siblings().not(".mcoReceiver").find("input").removeClass("error");
+		}
+	});
+}
+
+function profitChange() {
+	var mcoCredit = $("input#mco-credit").val();
+	var mcoAmount = $("input#mco-value").val();
+	var exchangeRate = $("input#exchange_rate").val();
+	var profit = $("input#indiv-profit");
+	var salePrice = $("input#indiv_sale_price").val();
+	var basePrice = $("input#indiv_base_price").val();
+	if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "美元") {
+		if($("span.salePrice_currency").text() == "人民币") {
+			salePrice = (salePrice / exchangeRate).toFixed(2);
+		}
+		if($("span.basePrice_currency").text() == "人民币") {
+			basePrice = (basePrice / exchangeRate).toFixed(2);
+		}
+		if($.trim($("span.mcoAmount_currency").text()) == "人民币") {
+			mcoAmount = (mcoAmount / exchangeRate).toFixed(2);
+		}
+		if($.trim($("span.mcoCredit_currency").text()) == "人民币") {
+			mcoCredit = (mcoCredit / exchangeRate).toFixed(2);
+		}
+
+	}
+	if($("ul.add-msg li.list_account.profitInfor").find("span").text() == "人民币") {
+		salePrice = $("input#air_amountDue").val();
+		basePrice = $("input#air-ticket-base-price").val();
+		mcoAmount = $("input#mco-value").val();
+		mcoCredit = $("input#mco-credit").val();
+	}
+	profitInfor(profit, salePrice, basePrice, mcoAmount, mcoCredit, exchangeRate);
+
 }

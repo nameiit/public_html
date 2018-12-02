@@ -62,16 +62,16 @@ if ($_SESSION["group_name"] == 'normal') {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -441,23 +441,11 @@ if ($_SESSION["group_name"] == 'normal') {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="paymentPlace">
-																	<label for="paymentPlace">支付地点<i></i></label>
+																	<input class="styled" type="checkbox" id="deal_location">
+																	<label for="deal_location">收款账号国家<i></i></label>
 																</div>
 															</div>
 														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="gatherPlace">
-																	<label for="gatherPlace">收款地点<i></i></label>
-																</div>
-															</div>
-														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -466,6 +454,11 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
+
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -474,10 +467,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -486,18 +475,19 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="paymentTime">
-																	<label for="paymentTime">确认支付时间<i></i></label>
-																</div>
-															</div>
-														</dd>
 													</dl>
 												</li>
 												<li class="choiceContent">
 													<dl>
+
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="confirm_payment_time">
+																	<label for="confirm_payment_time">确认时间<i></i></label>
+																</div>
+															</div>
+														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -506,18 +496,19 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="uncollectedAmount">
-																	<label for="uncollectedAmount">未收金额<i></i></label>
-																</div>
-															</div>
-														</dd>
+
 													</dl>
 												</li>
 												<li class="choiceContent">
 													<dl>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="received_not_finished">
+																	<label for="received_not_finished">未收金额<i></i></label>
+																</div>
+															</div>
+														</dd>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -526,6 +517,11 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -534,10 +530,6 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
-													</dl>
-												</li>
-												<li class="choiceContent">
-													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
@@ -546,11 +538,24 @@ if ($_SESSION["group_name"] == 'normal') {
 																</div>
 															</div>
 														</dd>
+
+													</dl>
+												</li>
+												<li class="choiceContent">
+													<dl>
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="okay_its_yours_usd">
 																	<label for="okay_its_yours_usd">实付退款<i></i></label>
+																</div>
+															</div>
+														</dd>
+														<dd>
+															<div class="selected">
+																<div class="checkbox checkbox-success checkboxBtn">
+																	<input class="styled" type="checkbox" id="nice_gotit_usd">
+																	<label for="nice_gotit_usd">实收退款<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -561,19 +566,12 @@ if ($_SESSION["group_name"] == 'normal') {
 														<dd>
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
-																	<input class="styled" type="checkbox" id="nice_gotit_usd">
-																	<label for="nice_gotit_usd">实收退款<i></i></label>
-																</div>
-															</div>
-														</dd>
-														<dd>
-															<div class="selected">
-																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="total_profit">
 																	<label for="total_profit">毛利<i></i></label>
 																</div>
 															</div>
 														</dd>
+														<dd></dd>
 													</dl>
 												</li>
 											</ul>

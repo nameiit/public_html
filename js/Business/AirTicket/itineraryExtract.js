@@ -183,7 +183,7 @@ $(document).ready(function () {
       fcode[0] = fcode[0].trim(" ");
       fcode = fcode[0].substr(-6, );
     } else {
-      fcode = " ";
+      fcode = "";
     }
 
     // invoice
@@ -585,7 +585,7 @@ $(document).ready(function () {
       invoice = invoice[0].split(" ");
       invoicestr = invoice[2];
     } else {
-      invoicestr = " ";
+      invoicestr = "";
     }
     result.push({
       "name": customerName,

@@ -80,7 +80,9 @@ $sql = "SELECT
             DATE_FORMAT(i.arrival_date, '%Y-%m-%d') AS arrival_date,
             (SELECT REPLACE(concat(us_class, '/', first_class, '/', second_class, '/', third_class), 'us/first/second/third', 'NULL')
                 FROM DestinationList
-                WHERE dl_id = i.dl_id) AS destination_list
+                WHERE dl_id = i.dl_id) AS destination_list, 
+            i.deal_location, 
+            t.confirm_payment_time
         FROM Transactions t
         JOIN IndividualTour i ON t.indiv_tour_id = i.indiv_tour_id
         JOIN Salesperson s ON s.salesperson_id = i.salesperson_id

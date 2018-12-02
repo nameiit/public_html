@@ -2,6 +2,9 @@
 
 $transactionId = $_GET['transaction_id'];
 
+
+//
+
 $query = "SELECT
             a.itinerary,
             s.salesperson_code,
@@ -15,7 +18,6 @@ $query = "SELECT
             a.invoice,
             cs.source_name,
             t.note,
-
             a.exchange_rate_usd_rmb,
             a.deal_location,
             a.selling_price,
@@ -24,28 +26,24 @@ $query = "SELECT
             a.base_currency,
             a.payment_type,
             t.total_profit,
-
             (
               SELECT GROUP_CONCAT(concat(an.lname, '/', an.fname) SEPARATOR ',')
               FROM AirticketNumber an
               WHERE an.airticket_tour_id = a.airticket_tour_id
               GROUP BY an.airticket_tour_id
             ) AS customer_name,
-
             (
               SELECT GROUP_CONCAT(an.airticket_number SEPARATOR ',')
               FROM AirticketNumber an
               WHERE an.airticket_tour_id = a.airticket_tour_id
               GROUP BY an.airticket_tour_id
             ) AS airticket_number,
-
             (
               SELECT GROUP_CONCAT(an.customer_type SEPARATOR ',')
               FROM AirticketNumber an
               WHERE an.airticket_tour_id = a.airticket_tour_id
               GROUP BY an.airticket_tour_id
             ) AS customer_type,
-
             a.adult_number,
             a.youth_number,
             a.child_number,
@@ -57,7 +55,18 @@ $query = "SELECT
             c.other_contact_type,
             c.other_contact_number,
             c.zipcode,
-            group_concat(tc.following_id SEPARATOR ',') AS following_id_collection
+            (
+              SELECT invoice
+              FROM FinanceStatus
+              WHERE transaction_id = t.transaction_id
+              AND ending = 'mco'
+            ) AS mco_invoice,
+            t.confirm_payment_time, 
+            (SELECT group_concat(z.transaction_id SEPARATOR ',')
+            FROM Transactions z
+            WHERE z.tc_id = t.tc_id
+            GROUP BY z.tc_id) AS collection_info, 
+           t.tc_id
         FROM AirticketTour a
         JOIN Transactions t
         ON a.airticket_tour_id = t.airticket_tour_id
@@ -69,10 +78,7 @@ $query = "SELECT
         ON cs.source_id = t.source_id
         JOIN Customer c
         ON a.customer_id = c.customer_id
-        LEFT JOIN TransactionCollections tc
-        ON tc.starter_id = t.transaction_id
-        WHERE t.transaction_id = $transactionId
-        GROUP BY tc.starter_id";
+        WHERE t.transaction_id = $transactionId";
 // echo $query;
 $result = $conn->query($query);
 
@@ -125,14 +131,13 @@ $sql = "SELECT
             ua.account_id
         FROM McoPayment mp
         JOIN AirticketTour a ON a.mp_id = mp.mp_id
-        JOIN McoInfo mi ON mp.mco_id = mi.mco_id
-        JOIN NoticeBoard nb ON mi.notice_id = nb.notice_id
-        JOIN NoticeTarget nt ON nt.notice_id = nb.notice_id
-        JOIN UserAccount ua ON ua.user_id = nt.target_id
-        JOIN Transactions t ON a.airticket_tour_id = t.airticket_tour_id
+        LEFT JOIN McoInfo mi ON mp.mco_id = mi.mco_id
+        LEFT JOIN NoticeBoard nb ON mi.notice_id = nb.notice_id
+        LEFT JOIN NoticeTarget nt ON nt.notice_id = nb.notice_id
+        LEFT JOIN UserAccount ua ON ua.user_id = nt.target_id
+        LEFT JOIN Transactions t ON a.airticket_tour_id = t.airticket_tour_id
         WHERE t.transaction_id = '$transactionId'";
 $result = $conn->query($sql);
-
 $mco_info = array();
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {

@@ -10,6 +10,7 @@ $ticketType = $_POST['ticketType'];
 $numPassenger = $_POST['numPassenger'];
 $wholesaler = empty($_POST['wholesaler'])? 'unknown' : $_POST['wholesaler'];
 $ticketedTime = $_POST['ticketed_time'];
+$confirmPaymentTime = empty($_POST['confirm_payment_time']) ? 'KSH' : $_POST['confirm_payment_time'];
 $invoice = $_POST['invoice'];
 $source = empty($_POST['source'])? 'unknown' : $_POST['source'];
 $note = $_POST['note'];
@@ -208,7 +209,7 @@ for ($i = 0; $i < sizeof($passenger_list); $i++) {
   $firstName = explode("/", $passenger_list[$i])[1];
   $lastName = explode("/", $passenger_list[$i])[0];
   $customerType = $passenger_type[$i];
-  $ticketNumber = explode("/", $ticket_number[$i])[0];
+  $ticketNumber = $ticket_number[$i];
   $sql = "INSERT INTO AirticketNumber (fname, lname, customer_type, airticket_number, airticket_tour_id)
           VALUES ('$firstName', '$lastName', '$customerType', '$ticketNumber', $airticket_tour_id)";
   $conn->query($sql);
@@ -249,7 +250,8 @@ $transactionsInsertSql = "INSERT INTO Transactions(
                               expense,
                               received,
                               total_profit,
-                              currency
+                              currency,
+                              confirm_payment_time
                           ) VALUES (
                               'airticket',
                               '$airticket_tour_id',
@@ -260,8 +262,13 @@ $transactionsInsertSql = "INSERT INTO Transactions(
                               $base_price_trans,
                               $sell_price_trans,
                               $profit_trans,
-                              'USD'
-                          )";
+                              'USD',";
+
+if ($confirmPaymentTime == 'KSH') {
+  $transactionsInsertSql .= " NULL)";
+} else {
+  $transactionsInsertSql .= " '$confirmPaymentTime‘)";
+}
 $conn->query($transactionsInsertSql);
 
 $sql = "SELECT transaction_id FROM Transactions WHERE airticket_tour_id = '$airticket_tour_id'";
@@ -269,9 +276,18 @@ $result = $conn->query($sql);
 $transaction_id = $result->fetch_assoc()['transaction_id'];
 
 
+if (isset($_POST['tc_id'])) {
+  $tc_id = $_POST['tc_id'];
+  $sql = "UPDATE Transactions SET tc_id = $tc_id WHERE transaction_id = $transaction_id";
+  $conn->query($sql);
+} else {
+  $sql = "UPDATE Transactions SET tc_id = transaction_id WHERE transaction_id = $transaction_id";
+  $conn->query($sql);
+}
+
 if ($payment_type == 'airmco') {
   $mco_party = $_POST['mco_party'];
-  $mco_invoice = $_POST['mco_invoice'];
+  $mco_invoice = empty($_POST['mco_invoice']) ? '': $_POST['mco_invoice'];
   $face_value = $_POST['face_value'];
   $face_currency = $_POST['face_currency'];
   $mco_value = $_POST['mco_value'];
@@ -280,48 +296,60 @@ if ($payment_type == 'airmco') {
   $mco_credit_currency = $_POST['mco_credit_currency'];
   $fee_ratio = $_POST['fee_ratio'];
 
+  $add_card = $_POST['add_card'];
+
   $card_number = $_POST['card_number'];
   $expire_month = $_POST['expire_month'];
   $expire_year = $_POST['expire_year'];
   $card_holder = $_POST['card_holder'];
-  $mco_receiver = $_POST['mco_receiver'];
+  $mco_receiver = empty($_POST['mco_receiver']) ? 'KSH' : $_POST['mco_receiver'];
 
-  $sql = "INSERT INTO NoticeBoard (
-            valid_until, edited_by, content, gotop, category
-          ) SELECT
-            CURRENT_DATE + INTERVAL 1 year, ua.user_id, NULL, 'N', 'mco'
-          FROM UserAccount ua WHERE ua.account_id = '$salesperson'";
-  $conn->query($sql);
+  if ($add_card == 'Y') {
+    $sql = "INSERT INTO NoticeBoard (
+              valid_until, edited_by, content, gotop, category
+            ) SELECT
+              CURRENT_DATE + INTERVAL 1 year, ua.user_id, NULL, 'N', 'mco'
+            FROM UserAccount ua WHERE ua.account_id = '$salesperson'";
+    $conn->query($sql);
 
-  $sql = "SELECT max(nb.notice_id) AS notice_id
-          FROM NoticeBoard nb
-          JOIN UserAccount ua
-          ON nb.edited_by = ua.user_id
-          WHERE ua.account_id = '$salesperson'";
-  $result = $conn->query($sql);
-  $noticeId = $result->fetch_assoc()['notice_id'];
+    $sql = "SELECT max(nb.notice_id) AS notice_id
+            FROM NoticeBoard nb
+            JOIN UserAccount ua
+            ON nb.edited_by = ua.user_id
+            WHERE ua.account_id = '$salesperson'";
+    $result = $conn->query($sql);
+    $noticeId = $result->fetch_assoc()['notice_id'];
 
-  $sql = "INSERT INTO NoticeTarget (notice_id, target_id)
-          SELECT $noticeId, ua.user_id
-          FROM UserAccount ua
-          WHERE ua.account_id LIKE '$mco_receiver'";
-  $conn->query($sql);
+    if ($mco_receiver != 'KSH') {
+      $sql = "INSERT INTO NoticeTarget (notice_id, target_id)
+              SELECT $noticeId, ua.user_id
+              FROM UserAccount ua
+              WHERE ua.account_id LIKE '$mco_receiver'";
+      $conn->query($sql);
+    } else {
+      $sql = "INSERT INTO NoticeTarget (notice_id, target_id)
+              VALUES ($noticeId, NULL)";
+      $conn->query($sql);
+    }
 
-  $expire_date = $expire_month . '/' . $expire_year;
-  if ($mco_currency == 'RMB') {
-    $mco_value_trans /= $exchange_rate;
+    $expire_date = $expire_month . '/' . $expire_year;
+    if ($mco_currency == 'RMB') {
+      $mco_value_trans /= $exchange_rate;
+    }
+
+    $sql = "INSERT INTO McoInfo (
+              cardholder, card_number, exp_date, charging_amount_currency, charging_amount, notice_id, used, create_time
+            ) VALUES (
+              '$card_holder', '$card_number', '$expire_date', 'USD', '$mco_value_trans', '$noticeId', 'N', current_timestamp
+            )";
+    $conn->query($sql);
+
+    $sql = "SELECT mco_id FROM McoInfo WHERE notice_id = '$noticeId'";
+    $result = $conn->query($sql);
+    $mco_id = $result->fetch_assoc()['mco_id'];
+  } else {
+    $mco_id = 'NULL';
   }
-
-  $sql = "INSERT INTO McoInfo (
-            cardholder, card_number, exp_date, charging_amount_currency, charging_amount, notice_id, used, create_time
-          ) VALUES (
-            '$card_holder', '$card_number', '$expire_date', 'USD', '$mco_value_trans', '$noticeId', 'N', current_timestamp
-          )";
-  $conn->query($sql);
-
-  $sql = "SELECT mco_id FROM McoInfo WHERE notice_id = '$noticeId'";
-  $result = $conn->query($sql);
-  $mco_id = $result->fetch_assoc()['mco_id'];
 
   $sql = "INSERT INTO McoPayment
           (
@@ -343,25 +371,19 @@ if ($payment_type == 'airmco') {
             '$face_currency',
             '$mco_currency',
             '$mco_credit_currency',
-            '$mco_id'
+            $mco_id
           )";
     $conn->query($sql);
 
-    $sql = "SELECT mp_id FROM McoPayment WHERE mco_id = $mco_id";
+    $sql = "SELECT max(mp_id) AS mp_id FROM McoPayment
+            WHERE mco_party = '$mco_party'
+            AND face_value = '$face_value'
+            AND mco_value = '$mco_value'";
     $result = $conn->query($sql);
     $mp_id = $result->fetch_assoc()['mp_id'];
 
     $sql = "UPDATE AirticketTour SET mp_id = '$mp_id' WHERE airticket_tour_id = '$airticket_tour_id'";
     $conn->query($sql);
-}
-
-if (isset($_POST['collection_list'])) {
-  $collection_list = json_decode($_POST['collection_list']);
-
-  for ($i = 0; $i < sizeof($collection_list); $i++) {
-    $sql = "INSERT INTO TransactionCollections (starter_id, following_id) VALUES ('$transaction_id', $collection_list[$i])";
-    $conn->query($sql);
-  }
 }
 
 if ($mco_currency == 'RMB') {
@@ -392,7 +414,8 @@ if ($payment_type == 'airall') {
               debt_raw,
               debt_cleared,
               received_raw,
-              received_finished)
+              received_finished, 
+              wholesaler_code)
           SELECT
             $transaction_id,
             '$invoice', 'N', 'N', 'N', 'N',
@@ -402,17 +425,16 @@ if ($payment_type == 'airall') {
             t.create_time,
             '$start_date',
             '$return_date',
-            group_concat(tc.following_id SEPARATOR ','),
+            group_concat(t.transaction_id SEPARATOR ','),
             $sell_price_trans - $base_price_trans,
             $base_price_trans,
             0,
             $sell_price_trans,
-            0
+            0, 
+            '$wholesaler'
           FROM Transactions t
-          LEFT JOIN TransactionCollections tc
-          ON tc.starter_id = t.transaction_id
           WHERE t.transaction_id = $transaction_id
-          GROUP BY tc.starter_id";
+          GROUP BY t.tc_id";
     $conn->query($sql);
 } else if ($payment_type == 'airmco') {
   $mco_party = $_POST['mco_party'];
@@ -430,7 +452,8 @@ if ($payment_type == 'airall') {
               total_profit, debt_raw,
               debt_cleared,
               received_raw,
-              received_finished)
+              received_finished, 
+              wholesaler_code)
           SELECT
             $transaction_id,
             '$invoice', 'N', 'N', '$paid_status_GTT', 'N',
@@ -440,42 +463,40 @@ if ($payment_type == 'airall') {
             t.create_time,
             '$start_date',
             '$return_date',
-            group_concat(tc.following_id SEPARATOR ','),
+            group_concat(t.transaction_id SEPARATOR ','),
             $face_value - $base_price_trans,
             $base_price_trans, 0,
-            $face_value, 0
+            $face_value, 0, '$wholesaler'
           FROM Transactions t
-          LEFT JOIN TransactionCollections tc
-          ON tc.starter_id = t.transaction_id
           WHERE t.transaction_id = $transaction_id
-          GROUP BY tc.starter_id";
+          GROUP BY t.tc_id";
     $conn->query($sql);
     $sql = "INSERT INTO FinanceStatus (
               transaction_id,
               invoice,
               lock_status,clear_status,paid_status,finish_status,
               debt, received, selling_price, create_time,
-              depart_date, arrival_date,
+              depart_date, arrival_date, following_id_collection,
               total_profit, ending, debt_raw,
               debt_cleared,
               received_raw,
-              received_finished)
+              received_finished, wholesaler_code)
           SELECT
             $transaction_id,
-            '$invoice','N', 'N','N', 'N',
+            '$mco_invoice','N', 'N','N', 'N',
             -$mco_credit,
             'CC',
             0,
             t.create_time,
             '$start_date',
             '$return_date',
+            group_concat(t.transaction_id SEPARATOR ','),
             $mco_credit,
             'mco', -$mco_credit, 0,
-            0, 0
+            0, 0, '$mco_party'
           FROM Transactions t
-          LEFT JOIN TransactionCollections tc
-          ON tc.starter_id = t.transaction_id
-          WHERE t.transaction_id = $transaction_id";
+          WHERE t.transaction_id = $transaction_id
+          GROUP BY t.tc_id";
       $conn->query($sql);
 } else {
   $sql = "INSERT INTO FinanceStatus(transaction_id,
@@ -492,7 +513,7 @@ if ($payment_type == 'airall') {
               debt_raw,
               debt_cleared,
               received_raw,
-              received_finished)
+              received_finished, wholesaler_code)
           SELECT
             $transaction_id,
             '$invoice', 'N', 'N', 'N', 'N',
@@ -502,18 +523,14 @@ if ($payment_type == 'airall') {
             t.create_time,
             '$start_date',
             '$return_date',
-            group_concat(tc.following_id SEPARATOR ','),
+            group_concat(t.transaction_id SEPARATOR ','),
             $sell_price_trans - $base_price_trans,
             $base_price_trans, 0,
-            $sell_price_trans, 0
+            $sell_price_trans, 0, '$wholesaler'
           FROM Transactions t
-          LEFT JOIN TransactionCollections tc
-          ON tc.starter_id = t.transaction_id
           WHERE t.transaction_id = $transaction_id
-          GROUP BY tc.starter_id";
+          GROUP BY t.tc_id";
     $conn->query($sql);
 }
-
-
 mysqli_close($conn);
  ?>

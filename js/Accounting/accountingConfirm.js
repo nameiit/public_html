@@ -6,6 +6,7 @@ $(document).ready(function () {
     // 清空之前的数据
     checkNumber = {};
     fs_id = {};
+    tc_id = {};
 
     $.ajax({
       url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/getOrderList.php'),
@@ -16,13 +17,16 @@ $(document).ready(function () {
       data: data,
       success: function(response) {
         response = JSON.parse(response);
-        console.log(response);
+     console.log(response);
 
         $('li.listDetail').remove();
         for(var i = 0; i < response.length; i++) {
           var lockStatus = response[i]['lock_status'] == 'Y'? 'yesStatus' : 'noStatus';
           var finishStatus = response[i]['finish_status'] == 'Y'? 'yesStatus' : 'noStatus';
           var following_id = response[i]['following_id_collection'] == null? '' : response[i]['following_id_collection'];
+           if(following_id.indexOf(",")==-1){
+          		following_id=""
+          }
           $html = `
             <li class="listDetail">
               <dl>
@@ -46,6 +50,7 @@ $(document).ready(function () {
             checkNumber[response[i]['transaction_id']] = response[i]['check_no'];
           }
           fs_id[response[i]['transaction_id']] = response[i]['fs_id'];
+          tc_id[response[i]['transaction_id']] = response[i]['tc_id'];
         }
         radminidInfo();
         autoHeight();
@@ -164,6 +169,31 @@ $(document).ready(function () {
     return data;
   }
 
+  function getFromAndToDate_ConfirmReceive(data) {
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth();
+    var day = today.getDate();
+
+    var diff = $("#confirmReceiveTime").val();
+    if (diff.length == 15) {
+      diff = diff[14];
+    } else {
+      diff = diff.substring(14, 16);
+    }
+
+    if (month - Number(diff) < 0) {
+      from_date = new Date(year - 1, 12 - (Number(diff) - month), 1);
+      to_date = new Date(year - 1, 12 - (Number(diff) - month) + 1, 0);
+    } else {
+      from_date = new Date(year, month - Number(diff), 1);
+      to_date = new Date(year, month - Number(diff) + 1, 0);
+    }
+    data['receive_from_date'] = formatDate(from_date);
+    data['receive_to_date'] = formatDate(to_date);
+    return data;
+  }
+
   function getFilterData() {
     var data = {
       transaction_id: $("#transaction-id").val(),
@@ -211,6 +241,24 @@ $(document).ready(function () {
       data['to_date'] = to_date;
     }
 
+    if($("#confirmReceiveTime").val() == 'all') {
+      data['receive_from_date'] = "0";
+      data['receive_to_date'] = formatDate(to_date);
+    } else if($("#confirmReceiveTime").val() == 'today') {
+      data['receive_from_date'] = formatDate(today);
+      data['receive_to_date'] = formatDate(to_date);
+    } else if($("#confirmReceiveTime").val() == 'current_month') {
+      data['receive_from_date'] = formatDate(new Date(year, month, 1));
+      data['receive_to_date'] = formatDate(to_date);
+    } else if ($("#confirmReceiveTime").val().startsWith('current_month-')) {
+      getFromAndToDate_ConfirmReceive(data);
+    } else {
+      from_date = $("#receive-from-date").val() == ""? "0" : $("#receive-from-date").val();
+      to_date = $("#receive-to-date").val() == ""? formatDate(to_date) : $("#receive-to-date").val();
+      data['receive_from_date'] = from_date;
+      data['receive_to_date'] = to_date;
+    }
+
     if (data['payment_type'] == 'non-cc') {
       data['deal_location'] = $("#deal-location").val();
       var non_cc_payment_type = [];
@@ -221,6 +269,7 @@ $(document).ready(function () {
       });
       data['non_cc_payment_type'] = JSON.stringify(non_cc_payment_type);
     }
+    console.log(data);
     return data;
   }
   loadData(getFilterData());
@@ -302,51 +351,54 @@ $(document).ready(function () {
   				thisLi.removeClass("current");
   				heightRange();
   			} else {
-  				var currentNum = thisLi.find("dd.systemNum").text();
-  				var numInfo = $.trim($(this).text()).split(",");
-  				for(var i = 0; i < numInfo.length; i++) {
-            $.ajax({
-  						url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/getCollectionOrder.php'),
-  						type: 'GET',
-  						data: {
-  							collection_id: numInfo[i]
-  						},
-  						success: function(response) {
-  							if(response == 'Not exist transactions!') {
-  								alert('订单不存在!');
-  							} else {
-  								response = JSON.parse(response);
+  				var currentNum = thisLi.find("dd.systemNum")[0].innerText;
+                var current_tc_id = tc_id[currentNum];
 
-                  var lockStatus = response[0]['lock_status'] == 'Y'? 'yesStatus' : 'noStatus';
-                  var finishStatus=response[0]['finish_status'] == 'Y'? 'yesStatus' : 'noStatus';
-  								var appendContent = `
-                      <dl class="unfold">
-                        <dd class="systemNum"> ` + response[0]['transaction_id'] + `</dd>
-                        <dd class="invoice">` + response[0]['invoice']  + `</dd>
-                        <dd class="profit">` + response[0]['total_profit']  + `</dd>
-                        <dd class="debt">` + response[0]['debt']  + `</dd>
-                        <dd class="receivable">` + response[0]['received']  + `</dd>
-                        <dd class="salePrice">` + response[0]['selling_price']  + `</dd>
-                        <dd class="createDate">` + response[0]['create_time'].substring(0, 10)  + `</dd>
-                        <dd class="startTime">` + response[0]['depart_date'].substring(0, 10)  + `</dd>
-                        <dd class="returnTime">` + response[0]['arrival_date'].substring(0, 10)  + `</dd>
-                        <dd class="lockStatus ` + lockStatus + `"></dd>
-                        <dd class="finishStatus ` + finishStatus + `"></dd>
-                        <dd class="number"><a></a></dd>
-                      </dl>
-  									`;
+                $.ajax({
+                    url: location.protocol.concat("//").concat(location.host).concat('/database/Accounting/AccountingConfirm/getCollectionOrder.php'),
+                    type: 'GET',
+                    data: {
+                        collection_id: current_tc_id
+                    },
+                    success: function(response) {
+                        if(response == 'Not exist transactions!') {
+                            alert('订单不存在!');
+                        } else {
+                            response = JSON.parse(response);
 
-  								thisLi.append(appendContent);
-                  autoHeight();
-        					heightRange();
-        					$("ul.listInfo.confirmFloor li dl.unfold dd.number a").unbind("click");
-  							}
-  						},
-  						error: function(jqXHR, textStatus, errorThrown) {
-  							console.log(textStatus, errorThrown);
-  						}
-  					});
-  				}
+                            for (var i = 0; i < response.length; i++) {
+                                if (response[i]['transaction_id'] != currentNum) {
+                                    var lockStatus = response[i]['lock_status'] == 'Y'? 'yesStatus' : 'noStatus';
+                                    var finishStatus=response[i]['finish_status'] == 'Y'? 'yesStatus' : 'noStatus';
+                                    var appendContent = `
+                                          <dl class="unfold">
+                                            <dd class="systemNum"> ` + response[i]['transaction_id'] + `</dd>
+                                            <dd class="invoice">` + response[i]['invoice']  + `</dd>
+                                            <dd class="profit">` + response[i]['total_profit']  + `</dd>
+                                            <dd class="debt">` + response[i]['debt']  + `</dd>
+                                            <dd class="receivable">` + response[i]['received']  + `</dd>
+                                            <dd class="salePrice">` + response[i]['selling_price']  + `</dd>
+                                            <dd class="createDate">` + response[i]['create_time'].substring(0, 10)  + `</dd>
+                                            <dd class="startTime">` + response[i]['depart_date'].substring(0, 10)  + `</dd>
+                                            <dd class="returnTime">` + response[i]['arrival_date'].substring(0, 10)  + `</dd>
+                                            <dd class="lockStatus ` + lockStatus + `"></dd>
+                                            <dd class="finishStatus ` + finishStatus + `"></dd>
+                                            <dd class="number"><a></a></dd>
+                                          </dl>
+                                        `;
+                                    thisLi.append(appendContent);
+                                }
+                            }
+
+                            autoHeight();
+                            heightRange();
+                            $("ul.listInfo.confirmFloor li dl.unfold dd.number a").unbind("click");
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
 
   				thisLi.addClass("current");
   				//总结：

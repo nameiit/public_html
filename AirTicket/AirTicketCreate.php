@@ -51,16 +51,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu title-active">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/c_yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php" >
 										<label></label> 散拼团
@@ -169,7 +169,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														echo "value='" . $_SESSION['username'] . "' disabled";
 													}
 													if ($_SESSION["group_name"] == 'finance' || $_SESSION["group_name"] == 'accounting') {
-														echo "disabled"; 
+														echo "disabled";
 													}
 													?>>
 											</li>
@@ -266,12 +266,12 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<label class="nm-left">成交汇率</label>
 												<span>1&nbsp;&nbsp;美元&nbsp;&nbsp;=&nbsp;&nbsp; <input type="text" id="exchange_rate" class="numFormat">&nbsp;&nbsp;人民币</span>
 											</li>
-											<li class="requiredItem">
-												<label class="nm-left">确认支付时间</label>
-												<input type="date" />
+											<li>
+												<label class="nm-left">确认收入时间</label>
+												<input type="date"  id="confirm_payment_time"/>
 											</li>
 											<li class="requiredItem payment-type areaInfo">
-												<label class="nm-left">支付地点</label>
+												<label class="nm-left">收款账号国家</label>
 												<div class="payment">
 													<div class="dropdown area areaFloor">
 														<button class="btn btn-default" type="button" data-toggle="dropdown">
@@ -301,23 +301,6 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</div>
 												</div>
 											</li>
-											<!--收款地点   s-->
-											<li class="requiredItem payment-type areaInfo">
-												<label class="nm-left">收款地点</label>
-												<div class="payment">
-													<div class="dropdown area gatherPlace">
-														<button class="btn btn-default" type="button" data-toggle="dropdown">
-														    <span id="gatherPlace" class="txt">美国</span>
-														    <span class="caret"></span>
-														</button>
-														<ul class="dropdown-menu" role="menu">
-															<li><a tabindex="0">中国</a></li>
-															<li><a tabindex="0">美国</a></li>
-														</ul>
-													</div>
-												</div>
-											</li>
-											<!--收款地点   e-->
 											<li class="requiredItem list_currency">
 												<label class="nm-left">卖价</label>
 												<input type="text" id="air_amountDue" class="numFormat airTicket_sellPrice"/>
@@ -458,7 +441,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<hr>
 												<li class="creditCardItem">
 													<div class="checkbox checkbox-success">
-														<input id="creditCard" class="styled" type="checkbox">
+														<input id="creditCard" class="styled" type="checkbox" checked="checked">
 														<label for="creditCard">添加以下信用卡</label>
 													</div>
 												</li>
@@ -501,9 +484,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													</div>
 													<!--持卡人  e-->
 												</li>
-												<li>
+												<li class="mcoReceiver">
 													<label class="nm-left">MCO负责人</label>
-													<input type="text" placeholder="Search..." id="mco-receiver">
+													<input type="text" placeholder="Search..." id="mco-receiver" class="notRequired">
 												</li>
 											</div>
 										</ul>
@@ -526,11 +509,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														<dd class="selectInfo">
 														</dd>
 														<dd class="numberInfo">
-															系统编号
+															关联组编号
 														</dd>
-														<dd class="salesInfo">
+														<!-- <dd class="salesInfo">
 															销售人员
-														</dd>
+														</dd> -->
 														<!--<dd class="typeInfo">
 															类型
 														</dd>-->

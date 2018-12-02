@@ -47,15 +47,18 @@ $sql = "SELECT
           (SELECT sum(fs.selling_price)
             FROM FinanceStatus fs
             WHERE fs.transaction_id = t.transaction_id
-            AND fs.ending <> 'ref') AS selling_price,
+            AND fs.ending <> 'ref'
+            AND fs.ending <> 'sup') AS selling_price,
           (SELECT sum(fs.received_finished)
             FROM FinanceStatus fs
             WHERE fs.transaction_id = t.transaction_id
-            AND fs.ending <> 'ref') AS received,
+            AND fs.ending <> 'ref'
+            AND fs.ending <> 'sup') AS received,
           (SELECT sum(fs.debt_raw)
             FROM FinanceStatus fs
             WHERE fs.transaction_id = t.transaction_id
-            AND fs.ending <> 'ref') AS base_price,
+            AND fs.ending <> 'ref'
+            AND fs.ending <> 'sup') AS base_price,
           (SELECT REPLACE(concat('-', IFNULL(sum(r.okay_its_yours_usd_pending), 0), '|', '+', IFNULL(sum(r.nice_gotit_usd_pending), 0)), '-0.00|+0.00', '')
             FROM Refund r
             WHERE r.transaction_id = t.transaction_id) AS give_me_refund_usd,
@@ -81,7 +84,18 @@ $sql = "SELECT
           a.ticket_type,
           a.round_trip,
           a.locators,
-          a.itinerary
+          a.itinerary, 
+          a.deal_location, 
+          t.confirm_payment_time, 
+          (SELECT sum(fs.received_raw) - sum(fs.received_finished)
+            FROM FinanceStatus fs
+            WHERE fs.transaction_id = t.transaction_id
+            AND fs.ending <> 'ref'
+            AND fs.ending <> 'sup') AS received_not_finished,
+          (SELECT concat(concat('-', sum(fs.debt_raw)), '/', concat('+', sum(fs.received_raw))) 
+            FROM FinanceStatus fs
+            WHERE fs.transaction_id = t.transaction_id
+            AND fs.ending = 'sup') AS supplement
         FROM AirticketTour a
         LEFT JOIN Transactions t
         ON a.airticket_tour_id = t.airticket_tour_id

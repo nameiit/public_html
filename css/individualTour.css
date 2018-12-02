@@ -1841,7 +1841,7 @@ ul.add-msg div.systemNumTab li dl dd.number a {
 	white-space: nowrap;
 	color: #0b6623;
 	display: inline-block;
-	width: 56%;
+	width: 100%;
 	cursor: pointer;
 }
 
@@ -2770,7 +2770,7 @@ ul.add-msg div.systemNumTab li.tab_title dl dd {
 }
 
 ul.add-msg div.systemNumTab li dl dd.number a {
-	text-decoration: underline !important;
+	text-decoration: none !important;
 }
 
 ul.add-msg div.systemNumTab li.current dl.unfold dd.number a {
@@ -3281,4 +3281,23 @@ ul.add-msg li.list_currency span.currency{
     display: inline-block;
     font-size: 14px;
     text-align: left;
+}
+
+ul.add-msg div.systemNumTab li dl dd.numberInfo{
+	width: 44%;
+}
+ul.add-msg div.systemNumTab li dl dd.number{
+	width: 44%;
+}
+.updateDialog .updateForm ul.add-msg div.systemNumTab li dl dd.numberInfo{
+	width: 44% !important;
+}
+.updateDialog .updateForm ul.add-msg div.systemNumTab li dl dd.number{
+	width: 44% !important;
+}
+.updateDialog .updateForm ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label::before{
+	top: 3px;
+}
+.updateDialog .updateForm ul.add-msg div.systemNumTab li dl dd.selectInfo .checkbox input[type="checkbox"]:checked+label::after{
+	top: -1px !important;
 }

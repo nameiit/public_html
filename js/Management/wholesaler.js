@@ -1,14 +1,5 @@
 $(document).ready(function() {
     manageTabAction();
-    
- 
-    
-    
-    
-    
-    
-    
-
     function loadFilter() {
         var url = location.protocol.concat("//").concat(location.host).concat('/database/autoComplete.php');
         $.ajax({
@@ -40,8 +31,14 @@ $(document).ready(function() {
                             data: { target: 'wholesaler_contact_person' },
                             success: function(response) {
                                 response = JSON.parse(response);
+                                var arr = [];
                                 for (var i = 0; i < response.length; i++) {
-                                    $("#wholesaler-contact-person-filter").append("<option value='" + response[i] + "'>" + response[i] + "</option>");
+                                  if (!arr.includes(response[i])) {
+                                    arr.push(response[i]);
+                                  }
+                                }
+                                for (var i = 0; i < arr.length; i++) {
+                                    $("#wholesaler-contact-person-filter").append("<option value='" + arr[i] + "'>" + arr[i] + "</option>");
                                 }
 
                                 searchTab($("#wholesaler-code-filter, #wholesaler-name-filter, #wholesaler-contact-person-filter, #wholesaler-region-filter, #wholesaler-business-type-filter"),
@@ -222,9 +219,9 @@ $(document).ready(function() {
             resetUpdateTable();
         }
     });
-
     $("#insert-confirm").on('click', function() {
-    	var regs=/^[a-z|A-Z|0-9]+\._+\/$/;
+//  	var regs=/^[a-z|A-Z|0-9]+\._+\/$/;
+		var regs=/^[\w+]+\.+\/$/;
 		if($("input#insert-wholesaler-code").val()==""||$("input#insert-wholesaler-name").val()==""){
 			alert("请确认必填信息已输入");
 		}
@@ -246,8 +243,8 @@ $(document).ready(function() {
 		}
 //      $(".insertConfirmBox").css("display", "block");
     });
-   
-   
+
+
    $("#insertActionConfirm").on('click', function() {
         var url = location.protocol.concat("//").concat(location.host).concat('/database/Management/Wholesaler.php');
         $.ajax({

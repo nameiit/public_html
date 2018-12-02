@@ -33,7 +33,7 @@ if ($payment_type == 'non-cc') {
   $non_cc_payment_type_arr = json_decode($_GET['non_cc_payment_type']);
 }
 
-$sql = "SELECT
+$sql = "SELECT * FROM (SELECT
           concat(fs.transaction_id, IFNULL(fs.ending, '')) AS transaction_id,
           fs.invoice,
           fs.total_profit,
@@ -45,7 +45,10 @@ $sql = "SELECT
           fs.arrival_date,
           fs.lock_status,
           fs.finish_status,
-          fs.following_id_collection,
+          (SELECT GROUP_CONCAT(z.transaction_id SEPARATOR ',') 
+           FROM Transactions z 
+           WHERE z.tc_id = t.tc_id 
+           GROUP BY z.tc_id) AS following_id_collection,
           (SELECT GROUP_CONCAT(concat(UPPER(an.lname), '/', an.fname) SEPARATOR ',') 
             FROM AirticketNumber an 
             JOIN Transactions ts 
@@ -56,24 +59,23 @@ $sql = "SELECT
         JOIN Transactions t ON fs.transaction_id = t.transaction_id
         JOIN AirticketTour a ON a.airticket_tour_id = t.airticket_tour_id
         JOIN Salesperson s ON a.salesperson_id = s.salesperson_id
-        JOIN Wholesaler w ON a.wholesaler_id = w.wholesaler_id
         WHERE fs.transaction_id LIKE '$transaction_id'
         AND s.salesperson_code LIKE '$salesperson'
         AND t.settle_time >= '$from_date'
         AND t.settle_time <= '$to_date'
-        AND w.wholesaler_code LIKE '$wholesaler'
+        AND fs.wholesaler_code LIKE '$wholesaler'
         AND a.locators LIKE '$locator'
         AND fs.lock_status LIKE '$lock_status'
         AND fs.clear_status LIKE '$clear_status'
         AND fs.paid_status LIKE '$paid_status'
         AND fs.finish_status LIKE '$finish_status'
         AND a.airticket_tour_id IN 
-        (SELECT airticket_tour_id 
+        (SELECT DISTINCT airticket_tour_id 
         FROM AirticketNumber 
         WHERE fname LIKE concat('%', '$fname','%') 
         AND lname LIKE concat('%','$lname','%')) 
         AND a.airticket_tour_id IN 
-        (SELECT airticket_tour_id FROM AirSchedule WHERE airline LIKE '$airline')";
+        (SELECT DISTINCT airticket_tour_id FROM AirSchedule WHERE airline LIKE '$airline')";
 if ($invoice != '%') {
     $sql .= " AND fs.invoice LIKE '$invoice'";
 } else if ($from_invoice != '%' or $to_invoice != '%') {
@@ -103,7 +105,7 @@ if (!empty($_GET['create_time_sort'])) {
 } else if (!empty($_GET['return_time_sort'])) {
   $sql .= $_GET['return_time_sort'];
 } else {
-  $sql .= " ORDER BY fs.transaction_id DESC";
+  $sql .= " ) kk ORDER BY kk.transaction_id DESC";
 }
 $sql .= " LIMIT 15 OFFSET $offset";
 

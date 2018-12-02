@@ -12,10 +12,15 @@ $sql = "SELECT
             fs.selling_price,
             fs.received,
             fs.debt,
-            fs.debt_cleared
+            fs.debt_cleared, 
+            concat(UPPER(c.fname), '/', c.lname) AS customer_name, 
+            w.wholesaler_code, 
+            fs.invoice
         FROM Transactions t
         JOIN FinanceStatus fs ON t.transaction_id = fs.transaction_id
         JOIN IndividualTour i ON t.indiv_tour_id = i.indiv_tour_id
+        JOIN Wholesaler w ON w.wholesaler_id = i.wholesaler_id
+        JOIN Customer c ON i.customer_id = c.customer_id
         WHERE t.transaction_id LIKE '$transaction_id'
         AND i.product_code LIKE '$product_code'
         AND t.type = 'individual'";

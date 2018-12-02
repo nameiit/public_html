@@ -3,6 +3,20 @@ session_start();
 if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 	header('location: ../login.php');
 }
+
+function alert($msg) {
+		echo "<script type='text/javascript'>alert('$msg');</script>";
+}
+
+if ($_SESSION["group_name"] == 'normal' ||
+		$_SESSION["group_name"] == 'accounting' ||
+		$_SESSION["group_name"] == 'finance') {
+	alert("权限不足");
+	if(isset($_SERVER['HTTP_REFERER'])) {
+    $previous = $_SERVER['HTTP_REFERER'];
+	}
+	echo "<script type='text/javascript'>window.location.href = '$previous';</script>";
+}
  ?>
 
 <!DOCTYPE html>
@@ -50,16 +64,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团

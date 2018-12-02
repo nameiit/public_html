@@ -50,16 +50,16 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png">
 								业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -219,6 +219,14 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<label>系统编号</label>
 											<input type="text" id="sup-transaction-id">
 										</li>
+										<li>
+											<label>批发商</label>
+											<input type="text" id="wholesaler-sup" placeholder="Search..." >
+										</li>
+										<li>
+											<label>INVOICE</label>
+											<input type="text" id="invoice-sup">
+										</li>
 										<li class="supplementItem">
 											<label>增补收入</label>
 											<input type="text" id="sup-extra-in">
@@ -252,6 +260,14 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 										<li class="requiredItem">
 											<label>系统编号</label>
 											<input type="text" id="ref-transaction-id">
+										</li>
+										<li>
+											<label>批发商</label>
+											<input type="text" id="wholesaler-ref" placeholder="Search..." >
+										</li>
+										<li>
+											<label>INVOICE</label>
+											<input type="text" id="invoice-ref">
 										</li>
 										<li>
 											<label>申请退款</label>

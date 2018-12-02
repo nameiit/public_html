@@ -2279,6 +2279,7 @@ ul.add-msg div.systemNumTab li.tab_content dl {
 ul.add-msg div.systemNumTab li.tab_content {
 	margin-bottom: 0px;
 	border-bottom: solid 1px #d2d2d2;
+	min-height: initial;
 }
 
 ul.add-msg div.systemNumTab li.tab_content:last-child {
@@ -2338,7 +2339,7 @@ ul.add-msg div.systemNumTab li dl dd.number a {
 	white-space: nowrap;
 	color: #0b6623;
 	display: inline-block;
-	width: 45% !important;
+	width: 100% !important;
 	cursor: pointer;
 }
 
@@ -3194,11 +3195,11 @@ ul.add-msg div.systemNumTab li dl dd.selectInfo .checkbox input[type="checkbox"]
 	width: 8% !important;
 }
 
-.updateTab ul li.startTime {
+.updateTab ul li.displayStartTime {
 	width: 8%;
 }
 
-.updateTab ul dd.startTime {
+.updateTab ul dd.displayStartTime {
 	width: 8% !important;
 }
 
@@ -3268,7 +3269,7 @@ ul.add-msg div.systemNumTab li dl dd.selectInfo .checkbox input[type="checkbox"]
 }
 
 ul.add-msg div.systemNumTab li dl dd.number a {
-	text-decoration: underline !important;
+	text-decoration: none !important;
 }
 
 ul.add-msg div.systemNumTab li.current dl.unfold dd.number a {
@@ -3828,7 +3829,7 @@ ul.add-msg li.creditCardItem div.checkbox{
     padding-left: 30px;
 }
 ul.add-msg li.creditCardItem div.checkbox input{
-	
+
 }
 ul.add-msg li.creditCardItem .checkbox label::before{
 	top: 5px;
@@ -3858,4 +3859,32 @@ ul.add-msg li.creditCardItem div.checkbox label{
 .updateDialog .updateForm ul.add-msg li.creditCardItem .checkbox-success input[type="checkbox"]:checked+label::after {
     top: 3px;
     left: -9px;
+}
+ul.add-msg div.systemNumTab li dl dd.numberInfo{
+	width: 44% !important;
+}
+ul.add-msg div.systemNumTab li dl dd.number{
+	width: 44% !important;
+}
+.updateDialog .updateForm ul.add-msg div.systemNumTab li dl dd.numberInfo{
+	width: 44% !important;
+}
+.updateDialog .updateForm ul.add-msg div.systemNumTab li dl dd.number{
+	width: 44% !important;
+}
+.updateDialog .updateForm ul.add-msg div.systemNumTab li dl dd.selectInfo div.checkbox label::before{
+	top: 3px;
+}
+.updateDialog .updateForm ul.add-msg div.systemNumTab li dl dd.selectInfo .checkbox input[type="checkbox"]:checked+label::after{
+	top: -1px !important;
+}
+ul.add-msg div.systemNumTab li dl dd.selectInfo .checkbox input[type="checkbox"]:checked+label::after{
+	top: -3px !important;
+}
+.updateDialog .updateForm  ul.add-msg div.systemNumTab li.tab_content dl dd:last-child{
+	    width: 44% !important;
+}
+.updateDialog .updateForm  ul.add-msg div.systemNumTab li.tab_content dl dd:last-child a{
+	width: 100%;
+	display: inline-block;
 }

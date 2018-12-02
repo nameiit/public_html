@@ -65,15 +65,15 @@ if ($_SESSION["group_name"] == 'normal' ||
 							</a>
 						</li>
 						<li class="yewu">
-							<a href="../GroupTour/GroupTourCreate.php" class="bm-title ">
+							<a href="../IndividualTour/IndividualTourCreate.php" class="bm-title ">
 								<img src="../img/yewu.png"> 业务
 							</a>
 							<dl class="detailMsg nm-hide">
-								<dd>
+								<!--<dd>
 									<a href="../GroupTour/GroupTourCreate.php" class="lab-active">
 										<label></label> 独立团
 									</a>
-								</dd>
+								</dd>-->
 								<dd>
 									<a href="../IndividualTour/IndividualTourCreate.php">
 										<label></label> 散拼团
@@ -200,8 +200,8 @@ if ($_SESSION["group_name"] == 'normal' ||
 												<!--业务-->
 												<select class="searchItem" id="wholesaler-business-type-filter">
 													<option value="all">业务</option>
-													<option value="A">A</option>
-													<option value="B">B</option>
+													<option value="独立团">独立团</option>
+													<option value="机票">机票</option>
 												</select>
 											</li>
 											<li class="tabDetailTab">

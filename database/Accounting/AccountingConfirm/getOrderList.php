@@ -23,6 +23,9 @@ $sup = $_GET['sup'];
 $ref = $_GET['ref'];
 $offset = $_GET['offset'];
 
+$confrirm_payment_from_date = $_GET['receive_from_date'];
+$confrirm_payment_to_date = $_GET['receive_to_date'];
+
 
 if ($payment_type == 'non-cc') {
   $deal_location = $_GET['deal_location'] == 'all' ? '%' : $_GET['deal_location'];
@@ -30,6 +33,7 @@ if ($payment_type == 'non-cc') {
 }
 
 $sql = "SELECT
+          t.tc_id,
           fs.fs_id,
           concat(fs.transaction_id, IFNULL(fs.ending, '')) AS transaction_id,
           fs.invoice,
@@ -42,7 +46,10 @@ $sql = "SELECT
           fs.arrival_date,
           fs.lock_status,
           fs.finish_status,
-          fs.following_id_collection,
+          (SELECT GROUP_CONCAT(z.transaction_id SEPARATOR ',')
+           FROM Transactions z
+           WHERE z.tc_id = t.tc_id
+           GROUP BY z.tc_id) AS following_id_collection,
           t.type,
           a.payment_type,
           fs.check_no
@@ -50,12 +57,11 @@ $sql = "SELECT
         JOIN Transactions t ON fs.transaction_id = t.transaction_id
         JOIN AirticketTour a ON a.airticket_tour_id = t.airticket_tour_id
         JOIN Salesperson s ON a.salesperson_id = s.salesperson_id
-        JOIN Wholesaler w ON a.wholesaler_id = w.wholesaler_id
         WHERE fs.transaction_id LIKE '$transaction_id'
         AND s.salesperson_code LIKE '$salesperson'
         AND t.settle_time >= '$from_date'
         AND t.settle_time <= '$to_date'
-        AND w.wholesaler_code LIKE '$wholesaler'
+        AND fs.wholesaler_code LIKE '$wholesaler'
         AND a.locators LIKE '$locator'
         AND fs.lock_status LIKE '$lock_status'
         AND fs.clear_status LIKE '$clear_status'
@@ -109,6 +115,7 @@ if ($invoice != '%') {
 }
 
 $sql_indiv = "SELECT
+                t.tc_id,
                 fs.fs_id,
                 concat(fs.transaction_id, IFNULL(fs.ending, '')) AS transaction_id,
                 fs.invoice,
@@ -121,7 +128,10 @@ $sql_indiv = "SELECT
                 fs.arrival_date,
                 fs.lock_status,
                 fs.finish_status,
-                fs.following_id_collection,
+                (SELECT GROUP_CONCAT(z.transaction_id SEPARATOR ',')
+                FROM Transactions z
+                WHERE z.tc_id = t.tc_id
+                GROUP BY z.tc_id) AS following_id_collection,
                 t.type,
                 i.payment_type,
                 fs.check_no
