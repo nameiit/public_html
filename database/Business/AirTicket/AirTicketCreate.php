@@ -281,7 +281,7 @@ if (isset($_POST['tc_id'])) {
   $sql = "UPDATE Transactions SET tc_id = $tc_id WHERE transaction_id = $transaction_id";
   $conn->query($sql);
 } else {
-  $sql = "UPDATE Transactions SET tc_id = transaction_id WHERE transaction_id = $transaction_id";
+  $sql = "UPDATE Transactions SET tc_id = $transaction_id WHERE transaction_id = $transaction_id";
   $conn->query($sql);
 }
 
