@@ -31,7 +31,7 @@ for ($i = 0; $i < sizeof($fs_id_list); $i++) {
             lock_status = 'N',
             paid_status = 'N',
             clear_status = 'N',
-            finish_status = 'N',";
+            ";
   if (!empty($debt)) {
     $sql = $sql . " debt = $debt, debt_raw = $debt, debt_cleared = 0, ";
   }
@@ -41,7 +41,9 @@ for ($i = 0; $i < sizeof($fs_id_list); $i++) {
   if (!empty($check_no)) {
     $sql = $sql . " check_no = $check_no, ";
   }
-  $sql = $sql . " total_profit = received_raw - debt_raw WHERE fs_id = $fs_id";
+  $sql = $sql . " finish_status = 'N' WHERE fs_id = $fs_id";
+  $conn->query($sql);
+  $sql = "UPDATE FinanceStatus SET total_profit = received_raw - debt_raw WHERE fs_id = $fs_id";
   $conn->query($sql);
   if ($debt_raw_old != $debt) {
     $sql = "INSERT INTO UpdateLog (
