@@ -156,7 +156,7 @@ $query = "INSERT INTO IndividualTour (
 $result = $conn->query($query);
 
 // 得到IndividualTour Id
-$query = "SELECT indiv_tour_id from IndividualTour WHERE salesperson_id = '$salesperson_id' ORDER BY indiv_tour_id DESC LIMIT 1";
+$query = "SELECT indiv_tour_id FROM IndividualTour WHERE salesperson_id = '$salesperson_id' ORDER BY indiv_tour_id DESC LIMIT 1";
 $result = $conn->query($query);
 $individualTourId = $result->fetch_assoc()['indiv_tour_id'];
 
@@ -206,11 +206,7 @@ if ($confirmPaymentTime == 'KSH') {
 }
 $conn->query($transactionsInsertSql);
 
-$sql = "SELECT max(transaction_id) AS transaction_id
-        FROM Transactions t
-        JOIN IndividualTour i
-        ON i.indiv_tour_id = t.indiv_tour_id
-        WHERE i.salesperson_id = '$salesperson_id';";
+$sql = "SELECT transaction_id FROM Transactions WHERE indiv_tour_id = $individualTourId";
 $result = $conn->query($sql);
 $transactionId = $result->fetch_assoc()['transaction_id'];
 

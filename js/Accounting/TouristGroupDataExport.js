@@ -527,6 +527,7 @@ $(document).ready(function() {
 						});
 					}
 					heightRange();
+					detailCell();
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -672,4 +673,14 @@ function selectNone(){
 		$(".choiceItem .choiceInfo ul li.choiceContent .selected").find("input").prop("checked", false);
 		$(".choiceItem .choiceInfo ul li.choiceContent .selected").removeClass("current");
 	});
+}
+function detailCell(){
+	var ddCell = $(".resultTab ul li.resultDetail dl dd");
+ 	ddCell.on("mouseenter", function() {
+ 		ddCell.each(function(i, item) {
+ 			var txt = $.trim($(item).text());
+ 			txt = txt.replace(/[\r\n]/g, "");
+ 			$(item).attr("title", txt);
+ 		});
+ 	});
 }

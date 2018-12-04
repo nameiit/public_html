@@ -47,6 +47,8 @@ $(document).ready(function () {
       alert("Itinerary格式不正确，请重新输入。");
     }
 
+    console.log(res);
+
     if(res[0]['locator'] != null) {
       $("#air-ticket-create-locator").val(res[0]['locator']);
     }
@@ -172,10 +174,13 @@ $(document).ready(function () {
 
     var ticketNumberList = itinerary.match(/1P\/[A-Za-z0-9]{3}\/[A-Za-z0-9]{2}\*E[0-9]+\s+[A-Z]+\/[A-Z]+\*[A-Z]{3}/g);
     var ticketNumber = new Array();
-    var len = ticketNumberList.length;
-    for (var j = 0; j < namelist.length; j++) {
-      ticketNumber.push(ticketNumberList[len - j - 1].match(/E[0-9]{2,}/g));
+    if (ticketNumberList != null) {
+        var len = ticketNumberList.length;
+        for (var j = 0; j < namelist.length; j++) {
+          ticketNumber.push(ticketNumberList[len - j - 1].match(/E[0-9]{2,}/g));
+        }
     }
+
 
     // 航司编码
     var fcode = itinerary.match(/\*DR[\n\s][A-Za-z0-9\s]+[\n]/g);

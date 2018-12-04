@@ -12,7 +12,7 @@ $selling_price = $_POST['selling_price'];
 $check_no = $_POST['check_no'];
 
 //更新多行
-for ($i = 0; $i < sizeof(fs_id_list); $i++) {
+for ($i = 0; $i < sizeof($fs_id_list); $i++) {
   // $sql = "UPDATE ......";
   // $conn->query($sql);
   $fs_id = $fs_id_list[$i];
@@ -27,18 +27,21 @@ for ($i = 0; $i < sizeof(fs_id_list); $i++) {
   $received_raw_old = $temp['received_raw'];
   $selling_price_raw_old = $temp['selling_price'];
   $sql = "UPDATE FinanceStatus
-            SET debt = $debt,
-            received = $receive,
-            received_raw = $receive,
-            debt_raw = $debt,
-            debt_cleared = 0,
-            received_finished = 0,
-            total_profit = $receive - $debt,
+            SET 
             lock_status = 'N',
             paid_status = 'N',
             clear_status = 'N',
-            finish_status = 'N'
-          WHERE fs_id = $fs_id";
+            finish_status = 'N',";
+  if (!empty($debt)) {
+    $sql = $sql . " debt = $debt, debt_raw = $debt, debt_cleared = 0, ";
+  }
+  if (!empty($receive)) {
+    $sql = $sql . " received = $receive, received_raw = $debt, received_finished = 0, ";
+  }
+  if (!empty($check_no)) {
+    $sql = $sql . " check_no = $check_no, ";
+  }
+  $sql = $sql . " total_profit = received_raw - debt_raw WHERE fs_id = $fs_id";
   $conn->query($sql);
   if ($debt_raw_old != $debt) {
     $sql = "INSERT INTO UpdateLog (

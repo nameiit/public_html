@@ -267,7 +267,7 @@ $transactionsInsertSql = "INSERT INTO Transactions(
 if ($confirmPaymentTime == 'KSH') {
   $transactionsInsertSql .= " NULL)";
 } else {
-  $transactionsInsertSql .= " '$confirmPaymentTime‘)";
+  $transactionsInsertSql .= " '$confirmPaymentTime')";
 }
 $conn->query($transactionsInsertSql);
 
@@ -414,7 +414,7 @@ if ($payment_type == 'airall') {
               debt_raw,
               debt_cleared,
               received_raw,
-              received_finished, 
+              received_finished,
               wholesaler_code)
           SELECT
             $transaction_id,
@@ -430,7 +430,7 @@ if ($payment_type == 'airall') {
             $base_price_trans,
             0,
             $sell_price_trans,
-            0, 
+            0,
             '$wholesaler'
           FROM Transactions t
           WHERE t.transaction_id = $transaction_id
@@ -443,6 +443,7 @@ if ($payment_type == 'airall') {
   } else {
     $paid_status_GTT = 'N';
   }
+  $mco_invoice = empty($_POST['mco_invoice']) ? '': $_POST['mco_invoice'];
   $sql = "INSERT INTO FinanceStatus (
               transaction_id,
               invoice,
@@ -452,7 +453,7 @@ if ($payment_type == 'airall') {
               total_profit, debt_raw,
               debt_cleared,
               received_raw,
-              received_finished, 
+              received_finished,
               wholesaler_code)
           SELECT
             $transaction_id,

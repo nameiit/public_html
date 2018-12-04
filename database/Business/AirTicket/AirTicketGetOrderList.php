@@ -45,15 +45,15 @@ $sql = "SELECT * FROM (SELECT
           fs.arrival_date,
           fs.lock_status,
           fs.finish_status,
-          (SELECT GROUP_CONCAT(z.transaction_id SEPARATOR ',') 
-           FROM Transactions z 
-           WHERE z.tc_id = t.tc_id 
+          (SELECT GROUP_CONCAT(z.transaction_id SEPARATOR ',')
+           FROM Transactions z
+           WHERE z.tc_id = t.tc_id
            GROUP BY z.tc_id) AS following_id_collection,
-          (SELECT GROUP_CONCAT(concat(UPPER(an.lname), '/', an.fname) SEPARATOR ',') 
-            FROM AirticketNumber an 
-            JOIN Transactions ts 
-            ON an.airticket_tour_id = ts.airticket_tour_id 
-            WHERE ts.transaction_id = t.transaction_id 
+          (SELECT GROUP_CONCAT(concat(UPPER(an.lname), '/', an.fname) SEPARATOR ',')
+            FROM AirticketNumber an
+            JOIN Transactions ts
+            ON an.airticket_tour_id = ts.airticket_tour_id
+            WHERE ts.transaction_id = t.transaction_id
             GROUP BY an.airticket_tour_id) AS customer_name
         FROM FinanceStatus fs
         JOIN Transactions t ON fs.transaction_id = t.transaction_id
@@ -69,12 +69,12 @@ $sql = "SELECT * FROM (SELECT
         AND fs.clear_status LIKE '$clear_status'
         AND fs.paid_status LIKE '$paid_status'
         AND fs.finish_status LIKE '$finish_status'
-        AND a.airticket_tour_id IN 
-        (SELECT DISTINCT airticket_tour_id 
-        FROM AirticketNumber 
-        WHERE fname LIKE concat('%', '$fname','%') 
-        AND lname LIKE concat('%','$lname','%')) 
-        AND a.airticket_tour_id IN 
+        AND a.airticket_tour_id IN
+        (SELECT DISTINCT airticket_tour_id
+        FROM AirticketNumber
+        WHERE fname LIKE concat('%', '$fname','%')
+        AND lname LIKE concat('%','$lname','%'))
+        AND a.airticket_tour_id IN
         (SELECT DISTINCT airticket_tour_id FROM AirSchedule WHERE airline LIKE '$airline')";
 if ($invoice != '%') {
     $sql .= " AND fs.invoice LIKE '$invoice'";

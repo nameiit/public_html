@@ -664,12 +664,11 @@ function paymentMethod() {
 		//当前货币
 		var currentCurrency = $(".payService").find("span.currency_txt");
 		if(currentArea.text() == "美国") {
-			currentCurrency.text("美元");
+//			currentCurrency.text("美元");
 		}
 		if(currentArea.text() == "中国") {
-			currentCurrency.text("人民币");
+//			currentCurrency.text("人民币");
 		}
-
 	});
 	//收款地点：
 	$(".payService ul li .payment").find(".gatherPlace").find("ul.dropdown-menu").find("li").find("a").on("click", function() {

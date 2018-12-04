@@ -19,8 +19,12 @@ $(function() {
 	choiceInfo.css({
 		"height": maxHeight,
 	});
+	
+	
+	
+	
+	
 })
-
 function systematicSearch() {
 	$(".filterBox ul.searchFloor li.btnList").find("a").on("mousedown", function() {
 		$(this).addClass('selected');
@@ -286,7 +290,6 @@ function autoWidth() {
 		ulWidth = ulWidth + $(cell.eq(i)).outerWidth(true);
 		//		console.log($(cell.eq(i)).outerWidth(true));
 	}
-
 	$(".resultTab ul.result").css("width", ulWidth + "px");
 	return ulWidth;
 }
@@ -439,6 +442,8 @@ $(document).ready(function() {
 					}
 					resultDetail += `</dl></li>`;
 					$("ul.result").append(resultDetail);
+					
+					
 					autoWidth();
 					if(autoWidth() > $(".resultTab").outerWidth()) {
 						$(".resultTab").css({
@@ -450,6 +455,7 @@ $(document).ready(function() {
 						});
 					}
 					heightRange();
+					detailCell();
 				}
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
@@ -595,4 +601,14 @@ function selectNone(){
 		$(".choiceItem .choiceInfo ul li.choiceContent .selected").find("input").prop("checked", false);
 		$(".choiceItem .choiceInfo ul li.choiceContent .selected").removeClass("current");
 	});
+}
+function detailCell(){
+	var ddCell = $(".resultTab ul li.resultDetail dl dd");
+ 	ddCell.on("mouseenter", function() {
+ 		ddCell.each(function(i, item) {
+ 			var txt = $.trim($(item).text());
+ 			txt = txt.replace(/[\r\n]/g, "");
+ 			$(item).attr("title", txt);
+ 		});
+ 	});
 }

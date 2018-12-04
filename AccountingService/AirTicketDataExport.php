@@ -442,7 +442,7 @@ if ($_SESSION["group_name"] == 'normal') {
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="deal_location">
-																	<label for="deal_location">收款账号国家<i></i></label>
+																	<label for="deal_location" class="fontInfo">收款账号国家<i></i></label>
 																</div>
 															</div>
 														</dd>
@@ -484,7 +484,7 @@ if ($_SESSION["group_name"] == 'normal') {
 															<div class="selected">
 																<div class="checkbox checkbox-success checkboxBtn">
 																	<input class="styled" type="checkbox" id="confirm_payment_time">
-																	<label for="confirm_payment_time">确认时间<i></i></label>
+																	<label for="confirm_payment_time">确收时间<i></i></label>
 																</div>
 															</div>
 														</dd>

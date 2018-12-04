@@ -29,7 +29,8 @@ if (empty($_POST['receive'])) {
             paid_status = 'Y',
             clear_status = 'N',
             finish_status = 'N',
-            debt_cleared = 0
+            debt_cleared = 0, 
+            check_no = '$check_no'
           WHERE fs_id = $fs_id";
   $conn->query($sql);
   IF ($debt_raw_old != $debt) {
@@ -75,7 +76,8 @@ if (empty($_POST['receive'])) {
             lock_status = 'N',
             paid_status = 'N',
             clear_status = 'N',
-            finish_status = 'N'
+            finish_status = 'N',
+            check_no = '$check_no'
           WHERE fs_id = $fs_id";
   $conn->query($sql);
   if ($debt_raw_old != $debt) {

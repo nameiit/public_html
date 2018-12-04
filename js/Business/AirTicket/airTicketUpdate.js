@@ -257,6 +257,34 @@ $(document).ready(function() {
 		loadData(getFilterData());
 	});
 
+	$("#create-time-sort").on('click', function () {
+    var data = getFilterData();
+    if ($(this).find("img.arrow_up")[0].src == location.protocol.concat("//").concat(location.host).concat('/img/arrowUp0_icon.png')) {
+      data['create_time_sort'] = ' ) kk ORDER BY kk.create_time DESC';
+    } else {
+      data['create_time_sort'] = ' ) kk ORDER BY kk.create_time ASC';
+    }
+    loadData(data);
+  });
+	$("#leave-time-sort").on('click', function () {
+    var data = getFilterData();
+    if ($(this).find("img.arrow_up")[0].src == location.protocol.concat("//").concat(location.host).concat('/img/arrowUp0_icon.png')) {
+      data['leave_time_sort'] = ' ) kk ORDER BY kk.depart_date DESC';
+    } else {
+      data['leave_time_sort'] = ' ) kk ORDER BY kk.depart_date ASC';
+    }
+    loadData(data);
+  });
+  $("#return-time-sort").on('click', function () {
+    var data = getFilterData();
+    if ($(this).find("img.arrow_up")[0].src == location.protocol.concat("//").concat(location.host).concat('/img/arrowUp0_icon.png')) {
+      data['return_time_sort'] = ' ) kk ORDER BY kk.arrival_date DESC';
+    } else {
+      data['return_time_sort'] = ' ) kk ORDER BY kk.arrival_date ASC';
+    }
+    loadData(data);
+  });
+
 	/*
 	 * 显示选中订单的具体信息
 	 */
@@ -275,7 +303,14 @@ $(document).ready(function() {
 		/*
 		 * 取paid的状态
 		 */
-		// var paidIsTrue =
+		var paidIsTrue;
+		var receivableTxt=$('.active').find('dd.receivable').text().split("|")[0];
+		if(receivableTxt=="N"){
+			paidIsTrue=false;
+		}
+		else{
+			paidIsTrue=true;
+		}
 
 		$.ajax({
 			url: location.protocol.concat("//").concat(location.host).concat('/database/Business/AirTicket/AirTicketGetDetail.php'),
@@ -294,24 +329,68 @@ $(document).ready(function() {
 				 * 如果是lock的状态
 				 */
 				if (lockIsTrue) {
-					$("#air-ticket-base-price").prop('disabled', true);
-					$("#mco-invoice").prop('disabled', true);
-					$("#face-value").prop('disabled', true);
-					$("#mco-value").prop('disabled', true);
-					$("#mco-credit").prop('disabled', true);
-					$("#fee-ratio").prop('disabled', true);
-					$("#card-number").prop('disabled', true);
-					$("#card-holder").prop('disabled', true);
-					$("#expired-date-month").prop('disabled', true);
-					$("#expired-date-year").prop('disabled', true);
+//					$("#air-ticket-base-price").prop('disabled', true);
+//					$("#mco-invoice").prop('disabled', true);
+//					$("#face-value").prop('disabled', true);
+//					$("#mco-value").prop('disabled', true);
+//					$("#mco-credit").prop('disabled', true);
+//					$("#fee-ratio").prop('disabled', true);
+//					$("#card-number").prop('disabled', true);
+//					$("#card-holder").prop('disabled', true);
+//					$("#expired-date-month").prop('disabled', true);
+//					$("#expired-date-year").prop('disabled', true);
+					$(".cardRight.payService").not(".creditCardInfo").find("input").not(".mco_input").prop("disabled", true);
+					$("ul.dropdown-menu").find("li").css("display","none");
+					$("ul.dropdown-menu").css({
+						"padding":"0px",
+						"border":"0px"
+					});
+					$(".cardRight.payService").find(".btn-default").css("background-color","rgb(235, 235, 228)");
+					$(".creditCardInfo").find("input").not(".mco_input").prop("disabled", true);
+					$(".creditCardInfo").find("select").prop('disabled', true);
 				}
-
+				else{
+					$(".cardRight.payService").not(".creditCardInfo").find("input").not(".mco_input").prop("disabled", false);
+					$("ul.dropdown-menu").find("li").css("display","inline-block");
+					$("ul.dropdown-menu").css("padding","5px 0");
+					$("ul.dropdown-menu").css({
+						"padding":"5px 0",
+						"border":"1px"
+					});
+					$(".cardRight.payService").find(".btn-default").css("background-color","#fff");
+					$(".creditCardInfo").find("input").not(".mco_input").prop("disabled", false);
+					$(".creditCardInfo").find("select").prop('disabled', false);
+				}
 				/*
 				 * 如果是paid的状态
 				 */
-				 // if (paidIsTrue) {
-				 //
-				 // }
+//				 if(paidIsTrue){
+//					$(".cardRight.payService").not(".creditCardInfo").find("input").not(".mco_input").prop("disabled", true);
+//					$("ul.dropdown-menu").find("li").css("display","none");
+//					$("ul.dropdown-menu").css({
+//						"padding":"0px",
+//						"border":"0px"
+//					});
+//					$(".cardRight.payService").find(".btn-default").css("background-color","rgb(235, 235, 228)");
+//					$(".creditCardInfo").find("input").not(".mco_input").prop("disabled", true);
+//					$(".creditCardInfo").find("select").prop('disabled', true);
+//				}
+//				 else{
+//				 	$(".cardRight.payService").not(".creditCardInfo").find("input").not(".mco_input").prop("disabled", false);
+//					$("ul.dropdown-menu").find("li").css("display","inline-block");
+//					$("ul.dropdown-menu").css("padding","5px 0");
+//					$("ul.dropdown-menu").css({
+//						"padding":"5px 0",
+//						"border":"1px"
+//					});
+//					$(".cardRight.payService").find(".btn-default").css("background-color","#fff");
+//					$(".creditCardInfo").find("input").not(".mco_input").prop("disabled", false);
+//					$(".creditCardInfo").find("select").prop('disabled', false);
+//				 }
+
+
+
+
 
 				$("#airticket-itinerary").val(response['itinerary']);
 				$("#airticket_salesperson").val(response['salesperson_code']);
@@ -1238,10 +1317,10 @@ function paymentMethod() {
 		//当前货币
 		var currentCurrency = $(".payService").find("span.currency_txt");
 		if(currentArea.text() == "美国") {
-			currentCurrency.text("美元");
+//			currentCurrency.text("美元");
 		}
 		if(currentArea.text() == "中国") {
-			currentCurrency.text("人民币");
+//			currentCurrency.text("人民币");
 		}
 	});
 	//收款地点：
@@ -1268,10 +1347,10 @@ function paymentMethod() {
 			}
 			currencyArr.push($(item).text());
 		});
-		if(($.inArray("人民币", currencyArr) !== -1) && num < len) {
-			$(".airticketMsg ul.add-msg li.exchangeRate").addClass("requiredItem");
+		if(($.inArray("人民币", currencyArr)!== -1) && num < len) {
+			$(".updateDialog .updateForm ul.add-msg li.exchangeRate").addClass("requiredItem");
 		} else {
-			$(".airticketMsg ul.add-msg li.exchangeRate").removeClass("requiredItem");
+			$(".updateDialog .updateForm ul.add-msg li.exchangeRate").removeClass("requiredItem");
 		}
 	});
 	//支付方式

@@ -219,7 +219,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<label>系统编号</label>
 											<input type="text" id="sup-transaction-id">
 										</li>
-										<li>
+										<li class="wholesaler">
 											<label>批发商</label>
 											<input type="text" id="wholesaler-sup" placeholder="Search..." >
 										</li>
@@ -261,7 +261,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<label>系统编号</label>
 											<input type="text" id="ref-transaction-id">
 										</li>
-										<li>
+										<li class="wholesaler">
 											<label>批发商</label>
 											<input type="text" id="wholesaler-ref" placeholder="Search..." >
 										</li>
@@ -276,7 +276,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<option value="nice_gotit">已付金额退款</option>
 											</select>
 										</li>
-										<li class="supplementItem refundAmount">
+										<li class="supplementItem refundAmount requiredItem">
 											<label>退款金额</label>
 											<input type="text" id="ref-value">
 											<select id="ref-currency">
@@ -315,8 +315,8 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 													<dd>实收金额</dd>
 													<dd>应付金额</dd>
 													<dd>实付金额</dd>
-													<dd>增补</dd>
-													<dd>退款</dd>
+													<!--<dd>增补</dd>
+													<dd>退款</dd>-->
 												</dl>
 											</li>
 										</ul>

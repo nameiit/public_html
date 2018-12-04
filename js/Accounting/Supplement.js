@@ -31,6 +31,10 @@ $(function() {
 			}
 		});
 	});
+	
+	
+	
+	
 });
 
 //切换:
@@ -55,7 +59,7 @@ function searchSwitch() {
 			$(".searchResult ul li.detail dl dd.changeItem").removeClass("groupNum");
 		}
 	});
-	//	//增补-退款
+	//增补-退款
 	$(".fillSupplement  ul.manageNav.supplementInfo li").on("click", function() {
 		$(".supplementfloor ul.searchFloor li input").val("");
 		$(".supplementfloor ul.searchFloor li.supplementItem select").prop('selectedIndex', 0);
@@ -145,8 +149,6 @@ function tourSearch() {
 							<dd>` + response[i]['received'] + `</dd>
 							<dd>` + response[i]['debt'] + `</dd>
 							<dd>` + response[i]['debt_cleared'] + `</dd>
-							<dd>增补</dd>
-							<dd>退款</dd>
 						</dl>
 					</li>`;
 
@@ -195,8 +197,6 @@ function airticketSearch() {
 							<dd>` + response[i]['received'] + `</dd>
 							<dd>` + response[i]['debt'] + `</dd>
 							<dd>` + response[i]['debt_cleared'] + `</dd>
-							<dd>增补</dd>
-							<dd>退款</dd>
 						</dl>
 					</li>`;
 
@@ -233,13 +233,19 @@ function confirmSupplement() {
 	$("ul.searchFloor.supplement li.btnList").find("a.confirmBtn").on("click", function() {
 		var confirmFlag;
 		//		alert($("ul.searchFloor.supplement li").find("input:visible").length);
-		$("ul.searchFloor.supplement li").find("input:visible").each(function(i, item) {
-			if($.trim($(item).val()) == "") {
-				confirmFlag = false;
-			} else {
-				confirmFlag = true;
-			}
-		});
+//		$("ul.searchFloor.supplement li").find("input:visible").each(function(i, item) {
+//			if($.trim($(item).val()) == "") {
+//				confirmFlag = false;
+//			} else {
+//				confirmFlag = true;
+//			}
+//		});
+		if($("input#sup-transaction-id").val()!==""&&($("input#sup-extra-in").val()!==""||$("input#sup-extra-out").val()!=="")){
+			confirmFlag = true;
+		}
+		else{
+			confirmFlag = false;
+		}
 		if(confirmFlag) {
 			$(".confirmNoticeInfo").addClass("confirmSupplement");
 			$(".confirmNoticeInfo").removeClass("noRecord");
@@ -268,6 +274,10 @@ function confirmSupplement() {
 					success: function(response) {
 						console.log(response);
 						$(".confirmSupplement").css("display", "none");
+						//重置：
+						$("ul.searchFloor.supplement").find("input").val("");
+						$(".supplementfloor ul.searchFloor li.supplementItem select").prop('selectedIndex', 0);
+						$(".supplementfloor ul.searchFloor li.exchangeRate").css("display","none");
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
 						console.log(textStatus, errorThrown);
@@ -278,8 +288,14 @@ function confirmSupplement() {
 			$(".confirmSupplement").find("p.actionBox").find("button.actionCancel").on("click", function() {
 				$(".confirmSupplement").css("display", "none");
 			});
-		} else {
-			alert("请确认增补信息已填写完整");
+		} 
+		else {
+			if(($("input#sup-extra-in").val()==""||$("input#sup-extra-out").val()=="")&&$("input#sup-transaction-id").val()!==""){
+				alert("增补收入和增补成本至少填写一项");
+			}
+			else{
+				alert("请确认必填信息已填写完整");
+			}
 		}
 	});
 }
@@ -288,13 +304,19 @@ function confirmSupplement() {
 function confirmRefund() {
 	$("ul.searchFloor.refund li.btnList").find("a.confirmBtn").on("click", function() {
 		var confirmFlag;
-		$("ul.searchFloor.refund li").find("input:visible").each(function(i, item) {
-			if($.trim($(item).val()) == "") {
-				confirmFlag = false;
-			} else {
-				confirmFlag = true;
-			}
-		});
+//		$("ul.searchFloor.refund li").find("input:visible").each(function(i, item) {
+//			if($.trim($(item).val()) == "") {
+//				confirmFlag = false;
+//			} else {
+//				confirmFlag = true;
+//			}
+//		});
+		if($("input#ref-transaction-id").val()!==""&&$("input#ref-value").val()!==""){
+			confirmFlag = true;
+		}
+		else{
+			confirmFlag = false;
+		}
 		if(confirmFlag) {
 			$(".confirmNoticeInfo").addClass("confirmRefund");
 			$(".confirmNoticeInfo").removeClass("noRecord");
@@ -322,6 +344,11 @@ function confirmRefund() {
 					success: function(response) {
 						console.log(response);
 						$(".confirmRefund").css("display", "none");
+						//重置：
+						$("ul.searchFloor.refund").find("input").val("");
+						$(".supplementfloor ul.searchFloor li select#ref-type").prop("selectedIndex", 0);
+						$(".supplementfloor ul.searchFloor li select#ref-currency").prop("selectedIndex", 0);
+						$(".supplementfloor ul.searchFloor li.exchangeRate").css("display","none");
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
 						console.log(textStatus, errorThrown);
@@ -333,10 +360,11 @@ function confirmRefund() {
 				$(".confirmRefund").css("display", "none");
 			});
 		} else {
-			alert("请确认退款信息已填写完整");
+			alert("请确认必填信息已填写完整");
 		}
 	});
 }
+
 //没有记录：
 function noRecord() {
 	$(".confirmNoticeInfo").removeClass("confirmSupplement");

@@ -347,7 +347,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												</a>
 											</li>
 											<li class="createDate">
-												<a href="javascript:void(0);">
+												<a href="javascript:void(0);" id="create-time-sort">
 													创建时间
 													<img src="../img/arrowUp0_icon.png" class="arrow_up">
 													<img src="../img/arrowDown0_icon.png" class="arrow_down">
@@ -357,14 +357,14 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<a href="javascript:void(0);">顾客</a>
 											</li>
 											<li class="displayStartTime">
-												<a href="javascript:void(0);">
+												<a href="javascript:void(0);" id="leave-time-sort">
 													出发时间
 													<img src="../img/arrowUp0_icon.png" class="arrow_up">
 													<img src="../img/arrowDown0_icon.png" class="arrow_down">
 												</a>
 											</li>
 											<li class="returnTime">
-												<a href="javascript:void(0);">
+												<a href="javascript:void(0);" id="return-time-sort">
 													回程时间
 													<img src="../img/arrowUp0_icon.png" class="arrow_up">
 													<img src="../img/arrowDown0_icon.png" class="arrow_down">
@@ -643,7 +643,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 											<div class="cardRight nm-right info-price info-price-individual payService">
 												<label class="markMsg"><i></i>支付信息</label>
 												<ul class="add-msg">
-													<li class="exchangeRate requiredItem">
+													<li class="exchangeRate">
 														<label class="nm-left">成交汇率</label>
 														<span>1&nbsp;&nbsp;美元&nbsp;&nbsp;=&nbsp;&nbsp; <input type="text" id="exchange_rate" disabled>&nbsp;&nbsp;人民币</span>
 													</li>
@@ -755,7 +755,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</li>
 													    <li>
 															<label class="nm-left">MCO&nbsp;INVOICE</label>
-															<input type="text"  class="mco_invoice" id="mco-invoice">
+															<input type="text"  class="mco_invoice mco_input" id="mco-invoice">
 														</li>
 														<li class="requiredItem list_currency">
 															<label class="nm-left">票面</label>
@@ -866,7 +866,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															</li>
 															<li class="mcoReceiver">
 																<label class="nm-left">MCO负责人</label>
-																<input type="text" placeholder="Search..." id="mco-receiver" class="notRequired">
+																<input type="text" placeholder="Search..." id="mco-receiver" class="notRequired mco_input">
 															</li>
 														</div>
 												</ul>

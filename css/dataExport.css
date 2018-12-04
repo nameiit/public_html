@@ -1087,6 +1087,9 @@
 	height: 34px;
 	line-height: 34px;
 }
+.resultTab ul li.resultDetail dl dd{
+	cursor: pointer;
+}
 
 .resultTab ul li dl dd {
 	display: inline-block;
@@ -1097,7 +1100,11 @@
 	line-height: 34px;
 	vertical-align: top;
 	min-width: 110px;
-	width: initial;
+	/*width: initial;*/
+	width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .resultTab ul li dl dd:last-child {
@@ -1153,4 +1160,8 @@
 	.systematicSearch ul.searchFloor li .rightFloor.invoiceInfo.airTicket_invoice .rightContent .invoice1{
 		margin-left: 2.4% !important;
 	}
+}
+
+.choiceItem .choiceInfo ul li.choiceContent .selected div.checkbox.checkboxBtn label.fontInfo{
+	font-size: 12px !important;
 }

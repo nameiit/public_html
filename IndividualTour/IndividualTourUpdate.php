@@ -351,7 +351,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												</a>
 											</li>
 											<li class="createDate">
-												<a href="javascript:void(0);">
+												<a href="javascript:void(0);" id="create-time-sort">
 													创建时间
 													<img src="../img/arrowUp0_icon.png" class="arrow_up">
 													<img src="../img/arrowDown0_icon.png" class="arrow_down">
@@ -361,14 +361,14 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 												<a href="javascript:void(0);">顾客</a>
 											</li>
 											<li class="startTime">
-												<a href="javascript:void(0);">
+												<a href="javascript:void(0);" id="leave-time-sort">
 													出团日期
 													<img src="../img/arrowUp0_icon.png" class="arrow_up">
 													<img src="../img/arrowDown0_icon.png" class="arrow_down">
 												</a>
 											</li>
 											<li class="returnTime">
-												<a href="javascript:void(0);">
+												<a href="javascript:void(0);" id="return-time-sort">
 													回团日期
 													<img src="../img/arrowUp0_icon.png" class="arrow_up">
 													<img src="../img/arrowDown0_icon.png" class="arrow_down">
@@ -656,7 +656,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 														</li>
 														<li class="mcoReceiver">
 															<label class="nm-left">MCO负责人</label>
-															<input type="text" placeholder="Search..."  id="mco-receiver"/>
+															<input type="text" placeholder="Search..."  id="mco-receiver" class="mco_input"/>
 														</li>
 													</ul>
 												</div>
@@ -1010,7 +1010,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
 															</li>
 															<li>
 																<label class="nm-left">MCO&nbsp;INVOICE</label>
-																<input type="text"  class="mco_invoice"/>
+																<input type="text"  class="mco_invoice mco_input"/>
 															</li>
 															<li class="requiredItem list_currency">
 																<label class="nm-left">票面</label>

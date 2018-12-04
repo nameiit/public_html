@@ -777,10 +777,10 @@ function paymentMethod() {
 		//当前货币
 		var currentCurrency = $(".payService").find("span.currency_txt");
 		if($.trim(currentArea.text()) == "美国") {
-			currentCurrency.text("美元");
+//			currentCurrency.text("美元");
 		}
 		if($.trim(currentArea.text()) == "中国") {
-			currentCurrency.text("人民币");
+//			currentCurrency.text("人民币");
 		}
 	});
 	//收款地点：

@@ -102,7 +102,7 @@ $(document).ready(function() {
 			data: data,
 			success: function(response) {
 				response = JSON.parse(response);
-//				console.log(response);
+				console.log(response);
 				$('ul.tabListDetail').empty();
 				for(var i = 0; i < response.length; i++) {
 					var lockStatus = response[i]['lock_status'] == 'Y' ? 'yesStatus' : 'noStatus';
@@ -297,6 +297,34 @@ $(document).ready(function() {
 	}
 	loadData(getFilterData());
 
+	$("#create-time-sort").on('click', function () {
+		var data = getFilterData();
+		if ($(this).find("img.arrow_up")[0].src == location.protocol.concat("//").concat(location.host).concat('/img/arrowUp0_icon.png')) {
+			data['create_time_sort'] = 'ORDER BY create_time DESC';
+		} else {
+			data['create_time_sort'] = 'ORDER BY create_time ASC';
+		}
+		loadData(data);
+	});
+	$("#leave-time-sort").on('click', function () {
+		var data = getFilterData();
+		if ($(this).find("img.arrow_up")[0].src == location.protocol.concat("//").concat(location.host).concat('/img/arrowUp0_icon.png')) {
+			data['leave_time_sort'] = 'ORDER BY depart_date DESC';
+		} else {
+			data['leave_time_sort'] = 'ORDER BY depart_date ASC';
+		}
+		loadData(data);
+	});
+	$("#return-time-sort").on('click', function () {
+		var data = getFilterData();
+		if ($(this).find("img.arrow_up")[0].src == location.protocol.concat("//").concat(location.host).concat('/img/arrowUp0_icon.png')) {
+			data['return_time_sort'] = 'ORDER BY arrival_date DESC';
+		} else {
+			data['return_time_sort'] = 'ORDER BY arrival_date ASC';
+		}
+		loadData(data);
+	});
+
 	/*
 	 * 根据筛选条件得到独立团信息
 	 */
@@ -328,6 +356,17 @@ $(document).ready(function() {
 			transactionId = transactionId.substring(0, transactionId.length - 3);
 		}
 		$("#indivDiscountNotice_update").css("display", "none");
+		//lock状态
+		var lockIsTrue = $('.active').find('dd.lockStatus').hasClass('yesStatus');
+		//paid状态
+		var paidIsTrue;
+		var receivableTxt=$('.active').find('dd.receivable').text().split("|")[0];
+		if(receivableTxt=="N"){
+			paidIsTrue=false;
+		}
+		else{
+			paidIsTrue=true;
+		}
 
 		var url = location.protocol.concat("//").concat(location.host).concat('/database/Business/IndividualTour/IndividualTourGetDetail.php');
 		$.ajax({
@@ -341,7 +380,72 @@ $(document).ready(function() {
 			},
 			success: function(response) {
 				response = JSON.parse(response);
-				console.log(response);
+//				console.log(response);
+				if(lockIsTrue){
+					$(".cardRight.payService").find("input").not(".mco_input").prop("disabled", true);
+					$("ul.dropdown-menu").find("li").css("display","none");
+					$("ul.dropdown-menu").css({
+						"padding":"0px",
+						"border":"0px"
+					});
+					$(".cardRight.payService").find(".btn-default").css("background-color","rgb(235, 235, 228)");
+					$(".creditCardInfo").find("input").not(".mco_input").prop("disabled", true);
+					$(".creditCardInfo").find("select").prop('disabled', true);
+				}
+				else{
+					$(".cardRight.payService").not(".creditCardInfo").find("input").not(".mco_input").prop("disabled", false);
+					$("ul.dropdown-menu").find("li").css("display","inline-block");
+					$("ul.dropdown-menu").css("padding","5px 0");
+					$("ul.dropdown-menu").css({
+						"padding":"5px 0",
+						"border":"1px"
+					});
+					$(".cardRight.payService").find(".btn-default").css("background-color","#fff");
+					$(".creditCardInfo").find("input").not(".mco_input").prop("disabled", false);
+					$(".creditCardInfo").find("select").prop('disabled', false);
+				}
+
+
+
+//				if(paidIsTrue){
+//					$(".cardRight.payService").find("input").not(".mco_input").prop("disabled", true);
+//					$("ul.dropdown-menu").find("li").css("display","none");
+//					$("ul.dropdown-menu").css({
+//						"padding":"0px",
+//						"border":"0px"
+//					});
+//					$(".cardRight.payService").find(".btn-default").css("background-color","rgb(235, 235, 228)");
+//					$(".creditCardInfo").find("input").not(".mco_input").prop("disabled", true);
+//					$(".creditCardInfo").find("select").prop('disabled', true);
+//				}
+//				else{
+//					$(".cardRight.payService").not(".creditCardInfo").find("input").not(".mco_input").prop("disabled", false);
+//					$("ul.dropdown-menu").find("li").css("display","inline-block");
+//					$("ul.dropdown-menu").css("padding","5px 0");
+//					$("ul.dropdown-menu").css({
+//						"padding":"5px 0",
+//						"border":"1px"
+//					});
+//					$(".cardRight.payService").find(".btn-default").css("background-color","#fff");
+//					$(".creditCardInfo").find("input").not(".mco_input").prop("disabled", false);
+//					$(".creditCardInfo").find("select").prop('disabled', false);
+//				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				// individual_tour_id = response['indiv_tour_id'];
 				// // 填充弹出窗口的数据
 				$("#indiv_tour_id").val(response['product_code']);
@@ -1507,10 +1611,10 @@ function paymentMethod() {
 		//当前货币
 		var currentCurrency = $(".payService").find("span.currency_txt");
 		if($.trim(currentArea.text()) == "美国") {
-			currentCurrency.text("美元");
+//			currentCurrency.text("美元");
 		}
 		if($.trim(currentArea.text()) == "中国") {
-			currentCurrency.text("人民币");
+//			currentCurrency.text("人民币");
 		}
 	});
 

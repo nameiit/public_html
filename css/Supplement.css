@@ -347,5 +347,12 @@ ul.searchFloor.refund {
     top: 11px;
 }
 .searchResult ul li dl dd{
-	 width: 8.2%;
+	width: 9.9%;
+}
+.supplementfloor ul.searchFloor li.wholesaler{
+	
+}
+.supplementfloor ul.searchFloor li.wholesaler .autocomplete-items{
+	width: 74.6%;
+    right: 0%;
 }
