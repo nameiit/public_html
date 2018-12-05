@@ -173,7 +173,8 @@ if ($exchange_rate == 'nothing') {
             wholesaler_id,
             deal_location,
             payment_type,
-            ticketed_date
+            ticketed_date,
+            customer_id
           ) VALUES (
             '$air_company_code',
             '$salespersonId',
@@ -194,10 +195,10 @@ if ($exchange_rate == 'nothing') {
             IFNULL((SELECT wholesaler_id FROM Wholesaler WHERE wholesaler_code = '$wholesaler'), (SELECT wholesaler_id FROM Wholesaler WHERE wholesaler_code = 'unknown')),
             '$payment_area',
             '$payment_type',
-            '$ticketedTime'
+            '$ticketedTime',
+            '$customerId'
           )";
 }
-// echo $query;
 $conn->query($query);
 
 $query = "SELECT max(airticket_tour_id) FROM AirticketTour
