@@ -39,7 +39,7 @@ $sql = "SELECT
           fs.invoice,
           fs.total_profit,
           concat(fs.clear_status, '|', debt) AS debt,
-          REPLACE(REPLACE(concat(fs.paid_status, '|', fs.received), 'Y|CC', 'CC'), 'N|CC', 'CC') AS received,
+          REPLACE(REPLACE(REPLACE(REPLACE(concat(fs.paid_status, '|', fs.received), 'N|0.00', 'CC'), 'Y|0.00', 'CC'), 'Y|CC', 'CC'), 'N|CC', 'CC') AS received,
           fs.selling_price,
           fs.create_time,
           fs.depart_date,
