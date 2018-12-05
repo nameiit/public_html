@@ -92,7 +92,7 @@ $result = $conn->query($query);
 $customerId = $result->fetch_assoc()['customer_id'];
 
 // 得到零售商id
-$query = "SELECT wholesaler_id FROM Wholesaler WHERE wholesaler_code = '$indiv_wholesaler'";
+$query = "SELECT IFNULL((SELECT wholesaler_id FROM Wholesaler WHERE wholesaler_code = '$indiv_wholesaler'), (SELECT wholesaler_id FROM Wholesaler WHERE wholesaler_code = 'unknown')) AS wholesaler_id";
 $result = $conn->query($query);
 $wholesaler_id = $result->fetch_assoc()['wholesaler_id'];
 
@@ -193,7 +193,7 @@ $transactionsInsertSql = "INSERT INTO Transactions(
                             '$indiv_note',
                             current_timestamp,
                             (SELECT arrival_date FROM IndividualTour WHERE indiv_tour_id = $individualTourId),
-                            (SELECT source_id FROM CustomerSource WHERE source_name = '$indiv_source'),
+                            IFNULL((SELECT source_id FROM CustomerSource WHERE source_name = '$indiv_source'), (SELECT source_id FROM CustomerSource WHERE source_name = 'unknown')),
                             '$sell_price_trans',
                             '$base_price_trans',
                             $profit_trans,

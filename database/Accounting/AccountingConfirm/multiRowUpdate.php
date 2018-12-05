@@ -36,10 +36,13 @@ for ($i = 0; $i < sizeof($fs_id_list); $i++) {
     $sql = $sql . " debt = $debt, debt_raw = $debt, debt_cleared = 0, ";
   }
   if (!empty($receive)) {
-    $sql = $sql . " received = $receive, received_raw = $debt, received_finished = 0, ";
+    $sql = $sql . " received = $receive, received_raw = $receive, received_finished = 0, ";
   }
   if (!empty($check_no)) {
     $sql = $sql . " check_no = $check_no, ";
+  }
+  if (!empty($invoice)) {
+    $sql = $sql . " invoice = $invoice, ";
   }
   $sql = $sql . " finish_status = 'N' WHERE fs_id = $fs_id";
   $conn->query($sql);
