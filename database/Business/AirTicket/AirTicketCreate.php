@@ -186,7 +186,7 @@ if ($exchange_rate == 'nothing') {
             '$numOfInfant',
             '$itinerary',
             '$invoice',
-            $exchange_rate,
+            '$exchange_rate',
             '$sell_price',
             '$sell_price_currency',
             '$base_price',
